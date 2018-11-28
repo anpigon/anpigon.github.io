@@ -1455,3 +1455,40 @@ em.search-keyword {
   color: #fff;
   background-color: #999999;
   text-shadow: 0; }
+
+  .post-content {
+    font-family: 'Noto Serif KR', sans-serif;
+  }
+  .post-list .post-content {
+    /* display: none; */
+    display: block; /* Fallback for non-webkit */
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;   /* required for Opera */
+    -ms-text-overflow: ellipsis;  /* required for IE8, allegedly */
+    /* Firefox solution: */
+    @-moz-document url-prefix() {
+      overflow: hidden;
+      position: relative;
+      &:before {
+        background: transparent;
+        bottom: 0;
+        position: absolute;
+        right: 0;
+        float: right;
+        content: '\2026';
+        margin-left: -3rem;
+        width: 3rem;
+      }
+      &:after {
+        content: '';
+        background: #fcfcfc;
+        position: absolute;
+        height: 50px;
+        width: 100%;
+        z-index: 1;
+      }
+  }
