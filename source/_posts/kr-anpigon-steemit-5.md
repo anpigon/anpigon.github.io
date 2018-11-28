@@ -1,0 +1,276 @@
+---
+title: '스팀잇(Steemit)기반 앱 만들기 #5 - 댓글 보여주기'
+tags:
+  - kr
+  - kr-dev
+  - kr-newbie
+  - jjangjjangman
+  - busy
+author: anpigon
+date: 2018-08-09 00:40:18
+---
+
+이번 시간에는 스팀잇 본문의 댓글을 가져와서 하단에 보여주는 기능을 구현해봅니다. 현재까지 구현된 전체 소스 내용은 깃허브([PostView.vue](https://github.com/anpigon/steemit-app/blob/ch05/src/components/PostView.vue))에서 확인 가능합니다.
+
+저도 공부하면서 구현하는 중이라서 설명이 많이 부족할 수 있습니다. 궁금한 사항은 댓글로 문의하시면, 최대한 답변 해드리도록 노력하겠습니다.
+
+___
+###### 이전글
+
+- [스팀잇(Steemit)기반 앱 만들기 #1](https://steemit.com/kr/@anpigon/steemit-1-10f53977c621e)
+- [스팀잇(Steemit)기반 앱 만들기 #2 - 최근글 가져오기](https://steemit.com/kr/@anpigon/steemit-2)
+- [스팀잇(Steemit)기반 앱 만들기 #3 - 무한 스크롤 구현하기](https://steemit.com/kr/@anpigon/steemit-3)
+- [스팀잇(Steemit)기반 앱 만들기 #4 - 상세화면 구현하기](https://steemit.com/kr/@anpigon/steemit-4)
+___
+
+![LOGO](https://imgur.com/CXqysy8.png)
+
+> 강좌를 연재하면서 허전한 것 같아 로고를 한번 만들어 보았습니다.
+
+
+## 본문 하단에 댓글 보여주기
+
+본문 하단에 댓글을 보여주기 위해서 **components/PostView.vue** 파일을 수정합니다. `data()`에 댓글들을 저장할 `comments`와 플래그 값을 저장할 `loadedComments`를 추가합니다. `loadedComments`는 댓글을 가져오는 요청이 완료되었는지를 판단할 것입니다.
+
+```js
+data () ｛
+  ... 생략 ...
+	comments: [],
+  loadedComments: false
+｝
+```
+그리고 **PostView.vue** 컴포넌트 아랫부분에 댓글을 출력할 영역을 추가합니다. 이 댓글 영역은 `loadedComments` 플래그 값에 따라 로딩 이미지가 보이거나, 또는 댓글 목록이 보일 것입니다.
+```html
+<v-flex xs12>
+  <v-subheader class='pl-0'>댓글 (｛｛children｝｝)</v-subheader>
+  <v-card ref='comments'>
+    <v-container grid-list-md v-if='!loadedComments'>
+      <v-layout align-center justify-center>
+        <v-progress-circular color="primary" indeterminate></v-progress-circular>
+      </v-layout>
+    </v-container>
+    <v-card-text v-if='loadedComments'>
+      여기는 댓글 영역입니다.
+    </v-card-text>
+  </v-card>
+</v-flex>
+```
+
+나중에 스크롤 된 페이지에서 댓글 컴포넌트의 위치를 참조하기 위해 `<v-card>` 컴포넌트에 `ref` 옵션을 사용하였습니다. `ref`에는 **"comments"** 값을 입력합니다.
+
+<br>
+
+___
+
+이번에 구현할 댓글 가져오기 기능은 **PostVirw.vue** 컴포넌트가 생성되었을 때는 동작하지 않습니다. 페이지를 스크롤 하다가 하단의 댓글 영역이 화면에 보이면, 이때 서버에서 댓글을 가져와서 보여주도록 하겠습니다. 이렇게 동작하기 위해서는 댓글 영역이 화면에 보이는지를 계산해야 합니다. 쉽게 구현하기 위해서 **Vuerify.js**의 스크롤 디렉티브(Scrolling Directive)를 사용합니다.
+
+아래와 같이 컨텐츠을 감싸고 있는 `<v-layout>` 컴포넌트에 `v-scroll` 옵션을 추가합니다. 그리고 **"onScroll"**값을 입력합니다. 이제 페이지를 스크롤 하는 경우에 `v-scroll()` 함수가 호출 될 것입니다.
+
+```html
+<v-layout justify-start column fill-height v-scroll="onScroll">
+```
+
+전체 소스는 [여기](https://github.com/anpigon/steemit-app/blob/ch05/src/components/PostView.vue#L8)에서 확인 가능합니다. 
+
+
+<br>
+____
+
+
+그리고 스크롤할때 호출되는 `onScroll()` 함수를 다음과 같이 구현합니다. 
+
+```js
+methods: ｛
+  onScroll () ｛
+    const windowOffsetTop = window.pageYOffset || document.documentElement.scrollTop
+    const windowOffsetBottom = windowOffsetTop + window.innerHeight
+    console.log('현재 스크롤된 화면의 Bottom 위치:', windowOffsetBottom)
+  ｝
+｝
+```
+
+브라우저 내장 함수를 사용하여 스크롤된 화면의 맨하단 위치값을 계산합니다.
+
+<br>
+
+____
+
+이제 댓글 영역이 화면에 보이는지 아닌지를 계산해보겠습니다. 댓글 영역의 위치 값을 알기 위해서 `computed`에 댓글 영역의 offsetTop값을 가져오는 `commentsOffsetTop()` 함수를 추가합니다. 바로 전에 우리가 `ref`를 사용하여 **"comments"**값을 입력했던 것을 기억하나요? `this.$refs`를 사용하면 해당 컴포넌트를 참조 할 수 있습니다. 다음과 같이 `this.$refs.comments.$el.offsetTop`를 사용하여 댓글 영역의 offsetTop 값을 가져옵니다.
+
+```js
+computed: ｛
+  commentsOffsetTop () ｛
+    return this.$refs.comments.$el.offsetTop
+  ｝
+｝
+```
+
+그리고 화면의 위치값을 계산하기 위해 스크롤할때 호출되는 `onScroll()` 함수를 수정하겠습니다. `windowOffsetBottom`와 `commentsOffsetTop` 값을 사용하여 페이지 스크롤이 댓글 영역에 도달하였는지 계산합니다.
+
+```js
+onScroll () ｛
+  const windowOffsetTop = window.pageYOffset || document.documentElement.scrollTop
+  const windowOffsetBottom = windowOffsetTop + window.innerHeight
+  if (!this.loadedComments && windowOffsetBottom > this.commentsOffsetTop) ｛
+    console.log('댓글 영역 도달!!!')
+  ｝
+｝
+```
+
+
+
+<br>
+____
+
+하지만, 스크롤 할 때마다 계속해서 서버에서 댓글을 가져오는 요청이 발생되어서는 안되겠죠? **lodash** 의 `debounce()` 함수를 사용하여 서버요청이 매번 발생되지 않도록 합니다. 아래와 같이 npm을 사용하여 **lodash** 를 설치합니다.
+
+```bash
+$ npm install lodash --save
+```
+`debounce()` 함수를 사용하면 한번 호출 한 이후에는 지연된 호출을 하도록 설정 할 수 있습니다. 다음과 같이 **lodash**를 임포트합니다.
+
+```js
+import _ from 'lodash'
+```
+
+그리고 **lodash**의 `debounce()` 함수를 사용하여 서버에서 댓글을 가져오는 `getComments()` 함수를 구현해보도록 하겠습니다.
+
+```js
+methods: ｛
+  
+  ... 생략...
+  
+  getComments: _.debounce(function () ｛
+    const path = `/$｛this.category｝/@$｛this.author｝/$｛this.permlink｝` // 댓글을 가져올 글의 path
+    steem.api.getStateAsync(path)
+      .then(r => ｛
+      console.log(r)
+      this.loadedComments = true
+    ｝)
+  ｝, 1000)
+｝ 
+```
+> 참고로 위와 같이 `debounce()` 함수의 2번째 인자값에 1000을 넣게 되면, 페이지 스크롤이 발생해도 1초가 지나기 전까지는 `getComments()`가 실행 되지 않습니다.
+
+<br>
+콘솔에서 `steem.api.getStateAsync()` 함수를 호출해보면 아래와 같은 구조의 데이터를 가져옵니다. 여기에서 댓글 데이터만 추출해야합니다. 아래 데이터를 보시면 `content`에 본문과 댓글이 배열 형태로 포함되어 있습니다. `depth`값이 0이면 본문이고, 그외에는 댓글이라고 보면 됩니다. 
+
+___
+
+![imgur](https://i.imgur.com/IjJfU8Y.png')
+
+___
+
+우리는 계층형 구조로된 댓글 데이터가 필요하기 때문에, 가져온 데이터의 `content`에서 본문을 제외한 댓글을 계층 형태의 배열로 만들어주는 함수를 구현합니다. 간단하게 구현하기 위해 재귀함수 형태로 구현합니다. 참고로 성능은 고려되지 않았습니다. 데이터량이 많으면 느려질 수 있습니다.
+
+```js
+function addComments (contents, root) ｛
+  if (root.children > 0) ｛ // root가 children를 가지고 있으면 실행
+    if (!root.comments) root.comments = [] // root의 댓글을 담을 comments 변수 초기화
+    root.replies.forEach(key => ｛ // 댓글key를 가지고 있는 root.replies 배열을 반복하여 contents에서 key와 매칭되는 댓글 데이터 가져옴
+      const comment = _.pick(contents[key], ['id', 'author', 'author_reputation', 'body', 'created', 'net_votes', 'permlink', 'parent_author', 'parent_permlink', 'url', 'children', 'depth', 'replies'])
+      root.comments.push(comment) // root의 댓글목록에 추가
+      addComments(contents, comment) // 현재 댓글에 자식 댓글이 있는지 찾기 위해 재귀함수 호출
+    ｝)
+  ｝
+｝
+```
+
+코드 내용에 대한 설명은 주석으로 대신합니다.
+
+그리고 댓글을 가져오는 `getComments()` 함수를 아래와 같이 수정합니다. 앞서 만든 재귀함수 `addComments()`를 사용하여 댓글을 계층형 배열로 만들어 줍니다.
+
+```js
+steem.api.getStateAsync(path)
+  .then((｛ content ｝) => ｛
+  this.loadedComments = true
+
+  // 댓글 목록 조회
+  const root = _.find(content, ｛ depth: 0 ｝) // content에서 본문만 가져오기
+  addComments(content, root) // 재귀함수 호출
+  this.comments = root.comments
+｝)
+```
+
+이제 마지막으로 댓글 컴포넌트도 재귀적으로 호출되도록 구현하겠습니다.
+
+댓글 컴포넌트로 사용될 **components/Component.vue** 파일를 생성합니다.
+
+```html
+<template>
+  <div>
+      <template v-for="c in comments">
+        <v-layout :key="c.id">
+          <v-flex v-if="c.depth > 1" xs1>
+            <span class='depth'></span>
+          </v-flex>
+          <v-flex>
+            <v-card flat style='padding:0' class='comments'>
+              <v-card-title class="grey--text pb-1">
+                ｛｛ c.author ｝｝ 
+                <span class='reputation pl-1 pr-1'>(｛｛c.author_reputation | filterReputation｝｝)</span>
+                · ｛｛c.created | filterCreated｝｝
+              </v-card-title>
+              <v-card-text class='pt-0 pb-0 overflow-hidden' v-html='c.body'></v-card-text>
+              <v-card-actions class='pr-3'>
+                <v-btn small flat><v-icon left dark class='mr-2'>favorite_border</v-icon> 좋아요 (｛｛c.net_votes｝｝)</v-btn>
+                <v-spacer></v-spacer>
+                <strong>$｛｛ c.payout_value ｝｝</strong>
+              </v-card-actions>
+            </v-card>
+            <v-divider></v-divider>
+            <Comments :comments='c.comments'></Comments>
+          </v-flex>
+        </v-layout>
+      </template>
+  </div>
+</template>
+<script>
+export default ｛
+  name: 'Comments',
+  props: ['comments']
+｝
+</script>
+<style>
+.overflow-hidden ｛
+  overflow: hidden;
+  word-wrap: break-word;
+｝
+.depth ｛
+  border-left: 5px solid #eee;
+  height: calc(100％ - 20px);
+  display: block;
+  margin: 10px 0 10px 10px;
+｝
+</style>
+```
+
+방금 만든 **Component.vue** 컴포넌트를 사용하기 위해서 다음과 같이 **PostView.vue** 컴포넌트를 수정합니다. `<v-card-text v-if='loadedComments'></v-card-text>`에 **Component.vue** 컴포넌트를 사용하도록 아래와 같이 수정합니다.
+
+```html
+<template v-if='loadedComments'>
+	<Comments :comments='comments'></Comments>
+</template>
+```
+<br>
+
+
+
+아래는 댓글을 가져와서 보여주는 화면입니다. 
+___
+
+![imgur](https://imgur.com/LwpIXc4.png)
+
+___
+
+여기까지 읽어주셔서 감사합니다.
+
+
+
+<br>
+
+전체 소스 내용은 [github](https://github.com/anpigon/steemit-app)에서 볼 수 있습니다.
+
+> - github: https://github.com/anpigon/steemit-app
+
+<br>

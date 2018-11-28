@@ -1,0 +1,267 @@
+---
+title: '이더리움(Ethereum) 공부 #1 - 키와 주소'
+tags:
+  - kr
+  - jjangjjangman
+  - busy
+  - kr-dev
+  - ethereum
+author: anpigon
+date: 2018-08-26 00:49:36
+---
+
+안녕하세요. @anpigon입니다.
+
+<div class='pull-right'><img src='https://steemitimages.com/150x0/https://images-na.ssl-images-amazon.com/images/I/51eW3hlp3jL._SX379_BO1,204,203,200_.jpg'></div> 
+
+**마스터 이더리움(Mastering Ethereum)** 책을 보면서 정리한 글입니다. 아직 전체 내용을 다 보지는 못하였습니다. 하지만 궁금한 사항을 댓글로 문의하면, 최대한 답변해드리도록 노력하겠습니다. 
+> 책 전체 내용은 깃허브에서 볼 수 있습니다.
+https://github.com/ethereumbook/ethereumbook
+
+
+<br>
+
+___
+
+<br>
+
+이더리움은 주소, 개인키, 디지털 서명 등을 통해 이더(ether)를 소유하고 통제한다. 그리고 키와 주소는 지갑 또는 웰렛이라고 부르는 소프트웨어에 의해 생성되고 관리된다.
+이더리움에는 2가지 유형의 계정이 있다. 외부 소유 계정(EOA)과 컨트랙트 계정(CA)이다. EOA는 지갑에서 개인키로 생성한 계정이고, CA는 컨트랙트에서 생성된 계정이다.
+
+<br>
+
+___
+
+# 개인키와 공개키
+
+개인키는 이더를 지출하는 트랜잭션을 디지털 서명하는 데 사용된다. 그리고 공개키는 이더을 수신하는 주소로 사용된다.
+
+이더리움은 정보를 보호하기 위해  **[타원 곡선 암호화(ECC, Elliptic Curve Cryptography)](https://ko.wikipedia.org/wiki/％ED％83％80％EC％9B％90％EA％B3％A1％EC％84％A0_％EC％95％94％ED％98％B8)** 방식을 사용하여 공개키를 암호화한다. 타원 곡선 암호는 타원 곡선을 구성하는 여러 점들 위에서 덧셈 및 곱셈으로 표현되는 **[이산 로그 문제(discrete logarithm problem)](https://en.wikipedia.org/wiki/Discrete_logarithm)**를 기반으로 한 비대칭 또는 공개키 암호화 방식이다. 그리고 이더리움은 비트코인처럼 미국립표준기술원(NIST)에서 개발한 [secco256k1](https://en.bitcoin.it/wiki/Secp256k1)이라고 부르는 표준 타원 곡선을 사용한다. 그래서 이더리움은 비트코인에서 사용하는 라이브러리 및 도구를 재사용 할 수 있다. 
+
+이제 개인키와 공개키를 생성하는 방법을 알아보자. 
+<br>
+
+___
+
+
+## 개인키(Private key)
+
+개인키는 단순히 **무작위로 추출된 숫자**이다. 좀 더 정확하게 말하면, 개인키는 0과 n - 1 사이의 임의의 수이다. 여기서 n은 타원곡선의 위수(order)로 정의된 상수(n = 1.1578 * 10^77^, 2^256^보다 약간 작은 값)이다.
+
+다음은 난수에서 생성한 개인키(k)이다. 16진수 문자열로 표시하였다.
+
+```
+a96580eb08a2a600911fa5b98a00fb6faf7417834131f81c070d804c45bc2729
+```
+
+개인키를 생성할 수 있는 범위(2<sup>256</sup>)를 10진수로 나타내면 약 10<sup>77</sup>이다. 비교를 위해 예를 들자면, 우주는 약 10<sup>80</sup>개의 원자로 구성되어 있다고 한다. 만약 개인키를 잃어버린다면 우주에서 바늘 찾기만큼 어렵다.
+
+자바스크립트를 사용하여 개인키를 생성해보자.  이더리움 키 생성에는 **[bitcore-lib](https://github.com/bitpay/bitcore-lib)** 라이브러리를 사용한다. 
+
+아래와 같이 **bitcore-lib**을 설치한다.
+
+```bash
+$ npm install bitcore-lib --save
+```
+
+<br>그리고 **bitcore-lib** 라이브러리를 사용하여 개인키를 생성한다.
+
+```js
+var Bitcore = require('bitcore-lib');
+
+var priKey = Bitcore.PrivateKey();
+console.log(priKey);
+```
+###### 실행결과:
+![개인키 생성 결과](https://imgur.com/BIw7ebF.png)
+
+<br>
+
+___
+
+
+# 공개키(Public key)
+
+공개키는 타원곡선 곱셈 함수를 사용하여 개인키로부터 계산된다. 계산 공식은 다음과 같다.
+
+```matlab
+K = k * G
+```
+*k*는 개인키이고 *G*는 생성지점이라고 하는 상수다. 그리고 *K*는 계산결과로 나온 공개키다.
+
+개인키에서 공개키는 계산할 수 있지만, 반대로 공개키에서 개인키는 계산할 수는 없다. **[이산 로그(discrete logarithm) 찾기](https://en.wikipedia.org/wiki/Discrete_logarithm)**로도 알려져 있는 역계산법은 *K*값을 안다는 가정 하에 *k*값을 계산하는 것이다. 하지만, *K*값을 찾기 위해서는 가능한 *k*를 모두 대입하는 방법밖에 없기때문에 *K*값을 찾는 것은 거의 불가능에 가깝다.
+
+<div class='text-center'>
+
+![타원곡선](https://steemitimages.com/400x0/https://imgur.com/DC7JkEp.png)
+<sup>파워포인트로 그린 것이기 때문에 실제 타원곡선과 다릅니다.</sup>
+</div>
+
+랜덤으로 생성된 숫자 개인키(k)를 시작하여 생성지점 G라고하는 곡선의 미리 결정된 점을 곱하여 곡선상의 다른 점, 즉 대응하는 공개키(K)를 계산한다.
+
+```
+K = a96580eb08a2a600911fa5b98a00fb6faf7417834131f81c070d804c45bc2729 * G
+```
+
+<br>공개키(K)는 타원 곡선의 한 점으로 타원 곡선 방정식을 만족하는 X와 Y 좌표이다. 그래서 K = (x, y)로 정의된다.
+
+```js
+K = (x, y)
+
+x = F028892BAD7ED57D2FB57BF33081D5CFCF6F9ED3D3D7F159C2E2FFF579DC341A
+y = 07CF33DA18BD734C600B96A72BBC4749D5141C90EC8AC328AE52DDFE2E505BDB
+```
+공개키는 x좌표를 알면 y좌표를 대략 알 수 있다. 그래서 보통 y좌표가 상단인지 하단인지 구분하는 단일 비트와 x좌표만 사용하여 압축된 공개키를 사용한다. 압축되지 않은 공개키와 압축된 공개키는 모두 secp256k1 문서에 설명되어 있다.
+
+이제 자바스크립트를 사용하여 개인키로부터 공개키를 계산해보자.
+
+```js
+var pubKey = priKey.toPublicKey();
+console.log(pubKey);
+```
+
+###### 실행결과:
+![공개키생성결과](https://imgur.com/vKMTsU3.png)
+
+
+<br>
+___
+
+# 이더리움 주소
+
+이더리움 주소는 공개키  해시(Keccak-256)의 마지막 20바이트로 구성된다. Keccak-256는 단방향 해시 함수이다.
+
+개인키(*k*):
+
+```
+k = f8f8a2f43c8376ccb0871305060d7b27b0554d2cc72bccf41b2705608452f315
+```
+
+<br>공개키(*K*)는 X와 Y 좌표를 연결하고 16진수 문자열로 표시한다.
+
+```
+K = 6e145ccef1033dea239875dd00dfb4fee6e3348b84985c92f103444683bae07b83b5c38e5e2b0c8529d7fa3f64d46daa1ece2d9ac14cab9477d042c84c32ccd0
+```
+
+<br>Keccak-256을 사용하여 공개키의 해시를 계산한다.
+
+```
+Keccak256(K) = 2a5bc342ed616b5ba5732269001d3f1ef827552ae1114027bd3ecf1f086ba0f9
+```
+
+<br>공개키 해시의 마지막 20 바이트만 유지한다.
+
+```
+001d3f1ef827552ae1114027bd3ecf1f086ba0f9
+```
+
+<br>마지막으로 맨 앞에 "0x"를 붙여 이더리움 주소임을 표시한다.
+
+```
+0x001d3f1ef827552ae1114027bd3ecf1f086ba0f9
+```
+
+<br>이제 자바스크립트로 공개키에서 이더리움 주소를 생성해보자.
+
+이더리움 주소 생성에는 **[ethereumjs-util](https://github.com/ethereumjs/ethereumjs-util)** 라이브러리를 사용한다. 아래와 같이 **ethereumjs-util**를 설치한다.
+
+```bash
+$ npm install ethereumjs-util --save
+```
+
+<br>**ethereumjs-util** 라이브러리를 사용하면 이더리움 주소를 간단하게 생성 할 수 있다.
+
+```js
+var Bitcore = require('bitcore-lib');
+var EthUtil = require('ethereumjs-util');
+
+// 키쌍 생성
+var priKey = Bitcore.PrivateKey();
+var pubKey = priKey.toPublicKey();
+
+// keccak 해시(20 바이트)
+var addressHash = EthUtil.pubToAddress(pubKey.toBuffer(), true); 
+
+// 이더리움 주소 생성
+var etherAddress = '0x' + addressHash.toString('hex');
+console.log(etherAddress);
+```
+
+###### 실행결과:
+
+![이더리움주소생성결과](https://imgur.com/IT3Txmj.png)
+
+<br>
+___
+
+
+# 이더리움 주소 유효성 체크
+
+이더리움 주소 유효성 체크는 **[EIP-55(Ethereum Improvement Proposal 55)](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-55.md)**에 제안된 내용이다. EIP-55는 이더리움 주소에 체크섬을 추가하여 주소의 무결성을 검증하고 오류로부터 보호한다. 이 제안은 EIP-55가 적용되지 않은 이전 지갑에서도 전혀 문제를 일으키지 않는다.
+
+방법은 간단하다. 16진수 문자열로 구성된 이더리움 주소에서 소문자를 체크섬 형태의 대문자로 바꾸기만 하면 된다.
+
+기존 이더리움 주소:
+```
+0x7f7625faa1ca985e9ad678656a9dcdf79620df6b
+```
+
+<br>EIP-55 체크섬이 적용된 이더리움 주소:
+
+```
+0x7f7625FAa1CA985E9Ad678656A9DcdF79620dF6B
+```
+
+<br>두 주소의 차이를 살펴보면 일부 소문자가 대문자로 변경되었다. 자세히 살펴보지 않으면 차이점을 발견하기 어렵다.
+
+이더리움 주소에서 접두어(0x)를 제거하고 주소를 해시(Keccak256)한다.
+
+```
+Keccak256("7f7625faa1ca985e9ad678656a9dcdf79620df6b")
+```
+
+<br>Keccak256 해시 결과:
+
+```
+3015b5c87eeb15cce85e3e48eefb50b400dd497c7b0bd41f16937ead349b3784
+```
+
+<br>이더리움 주소와 해시를 비교한다. 그리고 주소와 매칭되는 해시의 16진수가 0x8 이상인 경우에 주소의 소문자를 대문자로 변경한다.
+
+```
+Address: 7f7625faa1ca985e9ad678656a9dcdf79620df6b
+Hash   : 3015b5c87eeb15cce85e3e48eefb50b400dd497c...
+```
+
+<br>이더리움 주소 7번째에 위치한 소문자 f를 보자. 해당 해시의 7번째에 위치한 16진수 c는 0x8보다 크다. 그러므로 소문자 f를 대문자 F로 변경한다. 이와 같은 방법으로 이더리움 주소의 모든 소문자를 변경한다. 아래의 변경된 결과를 확인해보자.
+
+```
+Address: 7f7625FAa1CA985E9Ad678656A9DcdF79620dF6B
+Hash   : 3015b5c87eeb15cce85e3e48eefb50b400dd497c...
+```
+
+<br>EIP-55의 체크섬 주소를 사용하면 이더리움 주소의 오류를 감지할 수 있다.
+
+자바스크립 코드로 나타내면 아래와 같다.
+```js
+// 체크섬 주소로 변환
+etherAddress = EthUtil.toChecksumAddress(etherAddress)
+
+// 이더리움 주소 유효성 체크
+if (EthUtil.isValidAddress(etherAddress) === false) ｛
+  console.log('올바른 이더리움 주소가 아닙니다.')
+｝
+
+// 이더리움 체크섬 주소 유효성 체크
+if (EthUtil.isValidChecksumAddress(etherAddress) === false) ｛
+  console.log('올바른 이더리움 체크섬 주소가 아닙니다.')
+｝
+```
+
+___
+
+<br>만약 이더리움 지갑 소프트웨어를 개발한다면 EIP-55를 반드시 적용하자. 그러면 사용자가 이더리움 주소를 잘못 입력하여 송금하는 일을 사전에 방지할 수 있다.
+
+여기까지 읽어주셔서 감사합니다.
+
+

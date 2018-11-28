@@ -1,0 +1,91 @@
+---
+title: 안피곤의 글 모음집
+tags:
+  - kr
+  - jjangjjangman
+  - kr-tip
+  - interesteem
+  - busy
+author: anpigon
+date: 2018-09-16 14:47:27
+---
+
+![sleep1209288_1920.jpg](https://files.steempeak.com/file/steempeak/anpigon/2Sq9Ysch-sleep-1209288_1920.jpg)
+
+안녕하세요. @anpigon입니다. 
+
+그 동안 작성했던 글을 모아 글 모음집을 발행합니다.
+
+<br><hr>
+
+# 스팀잇 기반 앱 만들기
+
+NodeJS, Vue.js, Vuetify.js 를 사용하여 스팀잇 앱 서비스를 개발하는 과정을 기록한 포스팅입니다. 현재는 개발을 중단한 상태입니다.
+
+* [스팀잇(Steemit)기반 앱 만들기 #1 - 시작하기](https://steemit.com/kr/@anpigon/steemit-1-10f53977c621e)
+* [스팀잇(Steemit)기반 앱 만들기 #2 - 최근글 가져오기](https://steemit.com/kr/@anpigon/steemit-2)
+* [스팀잇(Steemit)기반 앱 만들기 #3 - 무한 스크롤 구현하기](https://steemit.com/kr/@anpigon/steemit-3)
+* [스팀잇(Steemit)기반 앱 만들기 #4 - 상세화면 구현하기](https://steemit.com/kr/@anpigon/steemit-4)
+* [스팀잇(Steemit)기반 앱 만들기 #5 - 댓글 보여주기](https://steemit.com/kr/@anpigon/steemit-5)
+* [스팀잇(Steemit)기반 앱 만들기 #6 - 로그인 기능](https://steemit.com/kr/@anpigon/steemit-6)
+* [스팀잇(Steemit)기반 앱 만들기 #7 - 사용자 프로필 패널 구현하기](https://steemit.com/kr/@anpigon/steemit-7)
+* [스팀잇(Steemit)기반 앱 만들기 #8 - 보팅 내역 보여주기](https://steemit.com/kr/@anpigon/steemit-8)
+
+<br><hr>
+
+# 이더리움 공부
+마스터 이더리움(Mastering Ethereum) 책을 보면서 정리한 포스팅입니다. 이더리움은 계속 공부하면서 정리한 내용을 포스팅할 계획입니다. 최종 목표는 이더리움 지갑 개발입니다.
+
+* [이더리움(Ethereum) 공부 #1 - 키와 주소](https://steemit.com/kr/@anpigon/ethereum-1)
+* [이더리움(Ethereum) 공부 #2 - HD 지갑과 니모닉 코드](https://steemit.com/busy/@anpigon/ethereum-2-hd)
+* [이더리움(Ethereum) 공부 #3 - 트랜잭션과 서명](https://steemit.com/busy/@anpigon/ethereum-3)
+
+<br><hr>
+
+# 파이썬 머신러닝
+머신러닝쪽에 관심이 생겨서 최근에 포스팅을 시작했습니다. 이 분야는 어렵지만 재미있는 걸 만들어 낼 수 있을것 같아서 공부를 시작했습니다.
+
+* [파이썬 머신러닝 #1 - 스팀잇 형태소 분석하기](https://steemit.com/busy/@anpigon/5s1aam)
+* [파이썬 머신러닝 #2 - 스팀잇으로 단어구름 만들기(단어구름 만들어드려요)](https://steemit.com/busy/@anpigon/2)
+* [파이썬 머신러닝 #3 - 스팀잇 아이디로 성별 예측하기](https://steemit.com/busy/@anpigon/3)
+
+<br><hr>
+
+# 스팀잇 프로젝트
+
+재미로 개발한 스팀잇 기반으로 동작하는 서비스입니다.
+
+* [Steem Project #0 - 뉴비분들을 위한 보팅 계산기(소숫점 3자리)](https://steemit.com/kr/@anpigon/6gxjap)
+* [Steem Project #1 - 스팀잇 펫 연구소(펫이 보팅 해드려요)](https://steemit.com/busy/@anpigon/steem-project-1)
+
+<br><hr>
+
+# 스팀잇 팁
+
+스팀잇에서 활용할 수 있는 팁 관련 글입니다.
+
+* [크롬 브라우저에서 스팀잇 UI를 이쁘게 바꿔보자.](https://steemit.com/kr/@anpigon/ui)
+* [스팀잇에서 사용 가능한 HTML태그와 속성을 알아보자.](https://steemit.com/kr/@anpigon/html)
+* [크롬브라우저에서 이모지(emoji) 쉽게 입력하는 방법](https://steemit.com/busy/@anpigon/emoji)
+* [안드로이드폰에서 보상 받기 자동화하기](https://steemit.com/busy/@anpigon/2eez4w)
+
+<br><hr>
+
+# 재미있고 신기한 서비스 소개
+
+제가 재미있거나 신기하다고 생각한 서비스들을 모아봤습니다.
+
+### [Product Graveyard](http://productgraveyard.com/)
+한때 잘나갔지만 지금은 사라진 서비스를 무덤으로 보여줍니다. 한때 유명했던 MSN, 피카사, 구글RSS리더, AIM 서비스 등이 보입니다. 사라진 서비스의 죽음을 애도합니다.
+
+### [Chrome Music Lab](https://musiclab.chromeexperiments.com/)
+구글에서 만든 실험적인 음악관련 앱들 모음입니다. 예를 들면 **Song Maker앱**을 사용하면 음악을 쉽게 만들 수 있습니다. 클릭과 드래그만으로 만들어집니다.
+
+### [World Draw](https://worlddraw.withgoogle.com/draw)
+유저가 2D로 스케치하면 그걸 분석해서 3D로 변환해줍니다. 구글에서 만들었습니다.
+
+### [Quick Draw](https://quickdraw.withgoogle.com/)
+여러분이 스케치한 낙서로 사물을 인식합니다. 이것 또한 구글에서 만들었습니다.
+
+
+<br>여기까지 읽어주셔서 감사합니다.

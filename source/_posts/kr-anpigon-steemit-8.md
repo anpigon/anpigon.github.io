@@ -1,0 +1,325 @@
+---
+title: '스팀잇(Steemit)기반 앱 만들기 #8 - 보팅 내역 보여주기'
+tags:
+  - kr
+  - kr-dev
+  - kr-newbie
+  - jjangjjangman
+  - busy
+author: anpigon
+date: 2018-08-23 22:29:30
+---
+
+<center>![스팀잇 웹앱 만들기](https://steemitimages.com/0x200/https://imgur.com/ET3mAqF.png)</center>
+
+안녕하세요. @anpigon입니다.
+
+이 포스팅은 제가 스팀잇과 프론트엔드 기술을 공부하고 앱을 구현하는 과정을 정리한 글입니다. 그래서 설명이 많이 부족할 수 있습니다. 궁금한 사항은 댓글로 문의하시면, 최대한 답변해드리도록 노력하겠습니다. 
+
+이번에는 아래와 같이 보팅 내역을 볼 수 있는 페이지를 구현하였습니다.
+
+<center>![스크린샷](https://steemitimages.com/500x0/https://imgur.com/jASXzDP.png)</center>
+
+<sup>구현된 앱은 [steemlog.github.io](https://steemlog.github.io/)에서 확인 할 수 있습니다.</sup>
+
+___
+
+# VoteHistory 컴포넌트 구현하기
+
+보팅 내역을 표시하는 **VoteHistory 컴포넌트**를 구현하자. 아래와 같이 [VoteHistory.vue](https://github.com/anpigon/steemit-app/blob/vote/src/components/VoteHistory.vue) 파일을 생성한다. 
+
+```js
+export default ｛
+  // ...
+  computed: ｛
+    // ...
+    votes () ｛
+      let totalRshares = 0
+      let totalWeight = 0
+      this.active_votes.forEach(e => ｛
+        // 해당 포스트에 보팅된 총 리워드 합산
+        totalRshares += parseFloat(e.rshares)
+        // 해당 포스트에 보팅된 총 가중치 합산
+        totalWeight += parseFloat(e.weight)
+      ｝)
+      return this.active_votes.map(e => ｛
+        let value, curation
+        if (this.pending_payout_value > 0) ｛ 
+          // 페이아웃 이전인 경우
+          value = (e.rshares * (this.global.rewardBalance / this.global.recentClaims) * this.global.price)
+          curation = '≈$' + (e.weight / this.total_vote_weight * this.pending_payout_value * 0.25 / this.global.price).toFixed(3)
+        ｝ else ｛ 
+          // 페이아웃 이후인 경우
+          const o = '$' + this.total_payout_value / (this.total_payout_value + this.curator_payout_value)
+          value = e.rshares / totalRshares * parseFloat(this.total_payout_value / o)
+          curation = (e.weight / totalWeight * this.curator_payout_value).toFixed(3)
+        ｝
+        return ｛
+          voter: e.voter,
+          reputation: steem.formatter.reputation(e.reputation),
+          weight: e.percent / 100,
+          value: value.toFixed(3),
+          curation: curation,
+          time: new Date(e.time + 'Z')
+        ｝
+      ｝)
+    ｝,
+    ...mapState(｛
+      global: state => state.global
+    ｝)
+  ｝,
+  beforeCreate () ｛
+    const author = this.$route.params.author
+    const permlink = this.$route.params.permlink
+
+    steem.api.getContentAsync(author, permlink)
+      .then(n => ｛
+        this.title = n.title
+        this.total_vote_weight = n.total_vote_weight
+        this.pending_payout_value = parseFloat(n.pending_payout_value.split(' ')[0])
+        this.total_payout_value = parseFloat(n.total_payout_value.split(' ')[0])
+        this.curator_payout_value = parseFloat(n.curator_payout_value.split(' ')[0])
+        this.active_votes = n.active_votes
+        this.author = n.author
+        this.author_reputation = n.author_reputation
+        this.created = n.created
+        this.category = n.category
+        this.net_votes = n.net_votes
+        this.children = n.children
+        this.cashout_time = n.cashout_time
+      ｝)
+      .catch(e => console.log(e))
+      .finally(() => (this.loading = false))
+  ｝,
+  created () ｛
+    this.$store.dispatch('global/loadGlobalProperties')
+  ｝
+  // ...
+｝
+```
+> 코드량이 많아서 핵심 로직만 남기고 생략하였습니다. 전체 소스는 깃허브 소스를 참고하길 바랍니다.
+
+
+<br>
+그리고 Router에 **VoteHistory 컴포넌트** 경로를 추가한다. `/@anpigon/steemit-7/vote` 형태의 경로(path)는 **VoteHistory 컴포넌트**로 연결될 것이다.
+
+```js
+export default new Router(｛
+  routes: [
+    // ...
+    ｛
+      path: '/@:author/:permlink/vote',
+      name: 'VoteHistory',
+      component: () => import('@/components/VoteHistory')
+    ｝,
+    // ...
+  ]
+｝)
+```
+
+<br>
+
+___
+
+# VoteHistory 컴포넌트 링크 연결하기
+
+포스트 하단의 좋아요 텍스트를 클릭하면 보팅 내역 페이지로 이동하게 만들자. **VoteHistory 컴포넌트**의 링크 연결에는 `<router-link>`를 사용한다. **Main 컴포넌트**와 **PostView 컴포넌트**에서 '좋아요' 텍스트를 찾아서 아래와 같이 수정한다. 이제 **'좋아요'**를 클릭하면 보팅 내역 페이지로 이동할 것이다.
+
+```html
+ <router-link :to="'/@' + author + '/' + permlink + '/vote'" class='mr-1'>좋아요 ｛｛ net_votes ｝｝명</router-link>
+```
+
+<br>
+
+___
+
+
+# 추가 수정사항
+
+다음은 **VoteHistory 컴포넌트**를 구현하면서 추가로 수정한 내용이다.
+
+### 뒤로가기 버튼이 있는 상단바 구현하기
+
+메인 컴포넌트 외에는 상단바에 뒤로가기 버튼만 보이도록 수정하였다.
+
+<center>![상단바](https://steemitimages.com/400x0/https://imgur.com/q6utSJN.png)</center>
+
+다음과 같이 Main 라우터에 메타(meta) 데이터를 추가한다. `meta.main`의 값으로 메인 컴포넌트인지 아닌지를 판단할 것이다.
+
+```js
+export default new Router(｛
+  routes: [
+    ｛
+      path: '/',
+      name: 'Main',
+      component: Main, 
+      meta: ｛ main: true ｝ 
+    ｝,
+    // ...
+  ]
+｝)
+```
+그 다음에 **App.vue** 파일을 수정한다. `computed`에 메인 컴포넌트를 판단하는 `isMainComponent`를  추가하였다.
+
+```js
+export default ｛
+  // ...
+  computed: ｛
+    // ...
+    isMainComponent () ｛
+      return !!this.$route.meta.main
+    ｝
+  ｝
+  // ...
+｝
+```
+
+그리고 아래와 같이 뒤로가기 버튼만 있는 상단바 `<v-toolbar>`를 추가한다. 해당 상단바는 `isMainComponent`가 **false**인 경우에만 보여진다.
+
+```html
+<v-toolbar fixed app v-show='!isMainComponent'>
+  <v-toolbar-side-icon @click.stop="$router.go(-1)">
+    <v-icon>arrow_back_ios</v-icon>
+  </v-toolbar-side-icon>
+  <v-toolbar-title class="ml-0">뒤로가기</v-toolbar-title>
+</v-toolbar>
+```
+
+<br>
+
+___
+
+
+### 피드, 최신글, 인기글, 대세글 메뉴 추가
+
+
+
+아래 화면과 같이 피드, 최근글, 인기글, 대세글  메뉴를 상단바에 추가하였다.
+
+![imgur](https://imgur.com/pTHRe5P.png)
+
+
+각 메뉴를 선택했을 때 보여줄 컴포넌트를 구현하자. 우선 **Main.vue** 에서 글목록을 보여주는 코드를 분리하여  **Discussions.vue** 파일을 만들자. **피드(FeedPanel)**, **최신글(CreatedPanel)**,  **인기글(HotPanel)**,  **대세글(TrendingPanel)** 컴포넌트는 **Discussions.vue**를 상속받아서 구현할 것이다.
+
+생성할 컴포넌트 파일 구조는 다음과 같다.
+
+```
+src
+└── components
+    ├── panels
+    │   ├── Discussions.vue # 상속받을 구현체
+    │   ├── FeedPanel.vue # 피드
+    │   ├── CreatedPanel.vue # 최신글
+    │   ├── HotPanel.vue # 인기글
+    │   └── TrendingPanel.vue # 대세글
+    └── ...
+
+```
+
+<br>
+
+____
+
+![예제](https://imgur.com/kZJ1jcD.png)
+
+**Main.vue**에서 글목록을 담당하는 코드를 분리하여 [Discussions.vue](https://github.com/anpigon/steemit-app/blob/feed/src/components/panels/Discussions.vue) 파일에 저장한다. **Main.vue**에서 분리되어 필요없는 코드를 지우고 아래와 같이 `<router-view>`로 대체한다. `<router-view>` 영역에는 피드, 최신글, 인기글, 대세글 컴포넌트를  렌더링하여 보여줄 것이다.
+
+```html
+<v-flex xs12 md9>
+  <keep-alive>
+    <router-view></router-view>
+  </keep-alive>
+</v-flex>
+```
+
+
+그 다음에 [FeedPanel.vue](https://github.com/anpigon/steemit-app/blob/feed/src/components/panels/FeedPanel.vue), [CreatedPanel.vue](https://github.com/anpigon/steemit-app/blob/feed/src/components/panels/CreatedPanel.vue), [HotPanel.vue](https://github.com/anpigon/steemit-app/blob/feed/src/components/panels/HotPanel.vue), [TrendingPanel.vue](https://github.com/anpigon/steemit-app/blob/feed/src/components/panels/TrendingPanel.vue) 파일을 생성한다. 각각 컴포넌트들은 **Discussions.vue**를 상속받아서 구현한다.
+
+컴포넌트 상속을 구현하기 위해서 Vue에서 제공하는 기능인 [믹스인(mixin)](https://kr.vuejs.org/v2/guide/mixins.html)을 사용하였다. 그리고 **Discussions.vue**를 상속받아 구현된 **FeedPanel.vue**의 전체 코드는 아래와 같다.
+
+```js
+<script>
+import steem from 'steem'
+import Discussions from './Discussions'
+
+export default ｛
+  name: 'Feed',
+  mixins: [ Discussions ],
+  methods: ｛
+    getDiscussions () ｛
+      const query = ｛
+        tag: this.$route.params.username,
+        limit: 11,
+        start_permlink: this.next.permlink,
+        start_author: this.next.author
+      ｝
+      return steem.api.getDiscussionsByFeedAsync(query)
+    ｝
+  ｝
+｝
+</script>
+```
+
+**FeedPanel.vue**는 **Discussions.vue**를 상속받았으므로  **Discussions.vue**의 기능을 그대로 사용할 수 있다. 그래서 글을 가져오는 로직이 달라져야 하는 `getDiscussions()` 함수만 재정의 하였다.
+
+**CreatedPanel.vue, HotPanel.vue, TrendingPanel.vue**도 **Discussions.vue**를 상속받아 구현한다.
+
+
+
+마지막으로 **Main 라우터**를 수정한다. 각 컴포넌트들은 **Main.vue** 하위에 있어야 한다. 그래서 아래와 같이 **Main 라우터** `children`에 **Feed**, **Created**, **Hot**, **Trending** 라우터를 등록하였다.
+
+```js
+export default new Router(｛
+  routes: [
+    ｛
+      path: '/',
+      name: 'Main',
+      component: Main,
+      children: [
+        ｛ path: 'default', redirect: ｛ name: 'Created' ｝, alias: '' ｝,
+        ｛ name: 'Feed', path: '@:username/feed', component: () => import('@/components/panels/FeedPanel'), meta: ｛ main: true ｝, props: true ｝,
+        ｛ name: 'Created', path: 'created', component: () => import('@/components/panels/CreatedPanel'), meta: ｛ main: true ｝ ｝,
+        ｛ name: 'Hot', path: 'hot', component: () => import('@/components/panels/HotPanel'), meta: ｛ main: true ｝ ｝,
+        ｛ name: 'Trending', path: 'trending', component: () => import('@/components/panels/TrendingPanel'), meta: ｛ main: true ｝ ｝
+      ]
+    ｝,
+    // ...   
+  ]
+｝)
+```
+
+<br>
+
+___
+
+다음은 완성된 화면입니다.
+
+아래 화면과 같이 메뉴를 클릭하면 피드, 최신글, 인기글, 대세글을 가져옵니다.
+
+![동작화면](https://imgur.com/wJRE6WE.gif)
+
+<br>
+
+___
+
+
+
+전체 소스 내용은 [github](https://github.com/anpigon/steemit-app)에서 볼 수 있습니다. 그리고 구현된 앱은 [steemlog.github.io](https://steemlog.github.io/)에서 확인 할 수 있습니다.
+
+
+
+여기까지 읽어주셔서 감사합니다.
+
+
+___
+
+###### 이전글
+
+- [스팀잇(Steemit)기반 앱 만들기 #1 - 시작하기](https://steemit.com/kr/@anpigon/steemit-1-10f53977c621e)
+- [스팀잇(Steemit)기반 앱 만들기 #2 - 최근글 가져오기](https://steemit.com/kr/@anpigon/steemit-2)
+- [스팀잇(Steemit)기반 앱 만들기 #3 - 무한 스크롤 구현하기](https://steemit.com/kr/@anpigon/steemit-3)
+- [스팀잇(Steemit)기반 앱 만들기 #4 - 상세화면 구현하기](https://steemit.com/kr/@anpigon/steemit-4)
+- [스팀잇(Steemit)기반 앱 만들기 #5 - 댓글 보여주기](https://steemit.com/kr/@anpigon/steemit-5)
+- [스팀잇(Steemit)기반 앱 만들기 #6 - 로그인 기능](https://steemit.com/kr/@anpigon/steemit-6)
+- [스팀잇(Steemit)기반 앱 만들기 #7 - 사용자 프로필 패널 구현하기](https://steemit.com/kr/@anpigon/steemit-7)
+
