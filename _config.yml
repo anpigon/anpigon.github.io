@@ -3,12 +3,18 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
+## 웹 사이트의 제목
 title: 안피곤님의 블로그
+## 웹 사이트의 부제
 subtitle:
+## 웹 사이트에 대한 설명
 description:
 keywords:
+## 작성자 이름
 author: 안피곤
+## 웹 사이트의 주 사용언어. 2-lettter ISO-639-1 code 참조. 기본값은 en.
 language: ko
+## 웹 사이트에서 사용하는 timezone. Hexo는 기본적으로 PC의 시간값을 사용합니다. 사용 가능한 timezone의 종류는 여기에서 확인할 수 있습니다. 다음과 같은 형식으로 사용하세요. America/New_York, Japan, UTC.
 timezone:
 
 # URL
@@ -16,15 +22,23 @@ timezone:
 url: https://anpigon.github.io/hexo/
 root: /hexo/
 permalink: :year/:month/:day/:title/
+## Permalink 각 부분(segment)의 기본값	
 permalink_defaults:
 
 # Directory
+## 컨텐츠들이 저장되어 있는 소스 폴더
 source_dir: source
+## 생성된 정적 사이트들이 저장될 공용 폴더
 public_dir: public
+## 태그 디렉토리
 tag_dir: tags
+## 저장소 디렉토리
 archive_dir: archives
+## 카테고리 디렉토리
 category_dir: categories
+## Code 디렉토리
 code_dir: downloads/code
+## i18n 디렉토리
 i18n_dir: :lang
 skip_render:
 
@@ -33,7 +47,7 @@ new_post_name: :title.md # File name of new posts
 default_layout: post
 titlecase: false # Transform title into titlecase
 external_link: true # Open external links in new tab
-filename_case: 0
+filename_case: 1
 render_drafts: false
 post_asset_folder: false
 relative_link: false
@@ -56,7 +70,18 @@ index_generator:
 # Category & Tag
 default_category: uncategorized
 category_map:
+  - 개발 이야기
+  - 책 이야기
+  - 영화 이야기
+  - 여행 이야기
+  - 맛집 이야기
+  - 일상 이야기
+  - 기타
 tag_map:
+
+category_generator:
+  per_page: 10
+  order_by: -date
 
 # Date / Time format
 ## Hexo uses Moment.js to parse and display date
@@ -72,8 +97,8 @@ pagination_dir: page
 
 # Extensions
 ## Plugins: https://hexo.io/plugins/
-plugins:
-  - hexo-algoliasearch
+# plugins:
+#   - hexo-algoliasearch
 
 ## Themes: https://hexo.io/themes/
 # theme: landscape
@@ -91,18 +116,60 @@ steem_users:
   - anpigon
   # - blockchainstudio
 
-algolia:
-  appId: "8RFD3JC5TE"
-  apiKey: "48a406413e85b1d7f28c62de9971d641"
-  adminApiKey: "7772dd247831678aad42c9b2625f858e"
-  chunkSize: 5000
-  indexName: "my-hexo-blog"
-  fields:
-    - content:strip:truncate,0,500
-    - excerpt:strip
-    - gallery
-    - permalink
-    - photos
-    - slug
-    - tags
-    - title
+# algolia:
+#   appId: "8RFD3JC5TE"
+#   apiKey: "48a406413e85b1d7f28c62de9971d641"
+#   adminApiKey: "7772dd247831678aad42c9b2625f858e"
+#   chunkSize: 5000
+#   indexName: "my-hexo-blog"
+#   fields:
+#     - content:strip:truncate,0,500
+#     - excerpt:strip
+#     - gallery
+#     - permalink
+#     - photos
+#     - slug
+#     - tags
+#     - title
+
+# sitemap auto generator
+sitemap:
+  path: sitemap.xml
+
+# rss feed auto generator
+feed:
+# feed type (atom / rss2)
+type: rss2
+# feed path (Default: atom.xml / rss2.xml)
+path: rss2.xml
+# 최신 포스트의 수 설정. (0 또는 false 입력시 전체 포스트)
+limit: 20
+
+markdown_it_plus:
+  highlight: true
+  html: true
+  xhtmlOut: true
+  breaks: true
+  langPrefix:
+  linkify: truex
+  typographer:
+  quotes: “”‘’
+  pre_class: highlight
+
+# server:
+#   port: 4000
+#   log: false
+#   ip: 0.0.0.0
+#   compress: false
+#   header: true
+#   serveStatic:
+#     extensions:
+#     - html
+
+# livereload:
+#   port: 35729
+
+
+auto_dir_categorize:
+	enable: true  # options:true, false; default is true
+	force: false # options:true, false; default is false

@@ -1726,3 +1726,11 @@ em.search-keyword {
         margin: 8px 0;
     }
 }
+
+.category-list-item > .category-list-child {
+    margin-left: 0.5rem;
+
+    & > li.category-list-item:before {
+        content: "\00B7  ";
+    }
+}

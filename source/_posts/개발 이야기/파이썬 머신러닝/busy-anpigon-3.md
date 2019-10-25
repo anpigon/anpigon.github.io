@@ -8,6 +8,7 @@ tags:
   - busy
 author: anpigon
 date: 2018-09-15 22:43:24
+categorys: 개발이야기
 ---
 
 ![mindset3536805_1920.jpg](https://files.steempeak.com/file/steempeak/anpigon/2TR0dGML-mindset-3536805_1920.jpg)
