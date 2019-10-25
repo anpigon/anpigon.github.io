@@ -1,0 +1,33 @@
+---
+title: '[자랑글] 와~! 블스님께 상으로 50스팀 받았습니다.'
+tags:
+  - zzan
+  - zzan-kr
+  - life
+  - sct
+  - sct-kr
+  - sct-freeboard
+  - palnet
+  - neoxian
+  - kr
+  - busy
+  - jjm
+author: anpigon
+date: 2019-09-01 00:08:39
+---
+
+![](https://steemitimages.com/640x0/https://files.steempeak.com/file/steempeak/anpigon/zJM7MVKa-E18489E185B3E1848FE185B3E18485E185B5E186ABE18489E185A3E186BA202019-08-3120E1848BE185A9E18492E185AE2011.36.11.png)
+
+***
+
+Nitrous 공식 Contributor가 되어서 블스님이 주시는 상금을 받았습니다.
+
+지금까지 스팀 활동하면서 받은 수익중에서 제일 큰 금액이네요. ㅎㅎ
+
+그냥 자랑하고 싶어서 글을 씁니다.
+
+***
+
+* 관련글: https://www.steemzzang.com/deathofpob/@blockchainstudio/github-dev-first-prize-anpigon
+
+

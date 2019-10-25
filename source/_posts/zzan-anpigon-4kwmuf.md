@@ -1,0 +1,48 @@
+---
+title: 본문 하단에 작가의 최근글 보기 기능 구현
+tags:
+  - zzan
+  - liv
+  - palnet
+  - neoxian
+  - kr-dev
+  - sct
+  - sct-freeboard
+  - busy
+  - jjm
+  - kr
+author: anpigon
+date: 2019-07-31 23:21:57
+---
+
+![](https://files.steempeak.com/file/steempeak/anpigon/abfX6SM4-E18489E185B3E1848FE185B3E18485E185B5E186ABE18489E185A3E186BA202019-07-3120E1848BE185A9E18492E185AE2011.26.11.png)
+***
+
+안녕하세요. 안피곤입니다.
+
+글을 읽고나서 이 작가의 글이 마음에 든다면 다음 글도 바로 읽고 싶지 않을까요?
+
+이 기능은 원사마님이 낸 아이디어입니다. 저도 구현되면 좋을 것 같아서 개발했습니다.
+글 본문 하단에 작가님의 최근 글 10개를 보여주고 있습니다. 그리고 작가가 작성한 글이 없다면 보이지 않습니다. 
+
+아직 니트러스에는 반영되지 않았습니다. 제가 사용해 보고, 그리고 ZZAN 운영팀의 의견을 들어보고 반영하겠습니다.
+개발서버에서 바로 확인 가능합니다. https://anpigon.herokuapp.com
+
+<br><center>![](https://steemitimages.com/300x0/https://steemitimages.com/DQmT13qHqTU2Ra6MC8ucFrePXPqF21kQzkr72kedVoxRJLN/%EA%B5%AC%EB%B6%84%EC%84%A0_%EC%9B%94%EA%B3%84%EA%B4%80.png)</center><br><br>
+
+### 아이디어를 모집합니다.
+
+제가 생각한 아이디어는 kr 사용자에게 태그를 한글로 번역해서 보여주면 어떨까 생각하고 있습니다. 
+이렇게 하면 태그를 이용한 카테고리 분류를 좀더 명확하게 할 수 있지 않을까 생각했습니다.
+
+이런 기능이 있으면 좋겠다 하시면 댓글을 달아주세요. 댓글은 제가 잘 메모해 놓겠습니다.
+
+<br>
+
+댓글, 팔로우, 업보팅해 주시는 모든 분들 감사합니다.
+
+항상 행복한 하루 보내시길 바랍니다.
+
+***
+
+<center><img src='https://steemitimages.com/400x0/https://cdn.steemitimages.com/DQmQmWhMN6zNrLmKJRKhvSScEgWZmpb8zCeE2Gray1krbv6/BC054B6E-6F73-46D0-88E4-C88EB8167037.jpeg'><h5>vote, reblog, follow <code><a href='/@anpigon'>@anpigon</a></code></h5></center>

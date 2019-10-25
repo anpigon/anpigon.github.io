@@ -72,6 +72,9 @@ pagination_dir: page
 
 # Extensions
 ## Plugins: https://hexo.io/plugins/
+plugins:
+  - hexo-algoliasearch
+
 ## Themes: https://hexo.io/themes/
 # theme: landscape
 theme: maupassant
@@ -87,3 +90,19 @@ deploy:
 steem_users:
   - anpigon
   # - blockchainstudio
+
+algolia:
+  appId: "8RFD3JC5TE"
+  apiKey: "48a406413e85b1d7f28c62de9971d641"
+  adminApiKey: "7772dd247831678aad42c9b2625f858e"
+  chunkSize: 5000
+  indexName: "my-hexo-blog"
+  fields:
+    - content:strip:truncate,0,500
+    - excerpt:strip
+    - gallery
+    - permalink
+    - photos
+    - slug
+    - tags
+    - title

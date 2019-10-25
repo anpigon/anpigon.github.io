@@ -1,0 +1,230 @@
+---
+title: 그 동안의 스팀잇 활동을 돌아보며...
+tags:
+  - zzan
+  - liv
+  - palnet
+  - neoxian
+  - kr-dev
+  - busy
+  - jjm
+  - kr
+author: anpigon
+date: 2019-07-13 22:55:15
+---
+
+![](https://files.steempeak.com/file/steempeak/anpigon/h6LrYd7T-Anpigon20Studio201.png)
+***
+
+안녕하세요. 안피곤입니다.
+
+작년에 스팀잇을 시작하던 시기에는 블록체인, 머신러닝, Front-End(Vue.js)에 모두 관심을 가지고 있었습니다. 이 중에서 머신러닝과 블록체인에 가장 흥미가 있지만, 이 분야는 학습하고 이해하는데 정말 어려웠습니다.
+
+그나마 상대적으로 학습하기 쉬운 Front-End 분야는 하면 할수록 점점 더 재미있습니다. 작년에 Vue.js를 배우면서 React.js를  처음 알게 되었습니다. 그리고는 Vue.js를 버리고는 React.js로 갈아탔습니다.  React.js 강의 자료가 훨씬 더 많았기 때문입니다. 그리고 지금은 React Native가 가장 재미있습니다.
+
+작년 7월쯤에 스팀잇에서 활동하기 시작했습니다. 그리고 이제 스팀잇에서 시작한 지 약 1년 정도 되었습니다. 처음 스팀잇을 알게 되었을 때, 글을 작성하면 보상이 생기는 스팀잇 플랫폼이 무척 매력적이었습니다. 그래서 스팀잇에 많은 글을 올렸습니다. 그리고 이전보다 더 많은 결과물을 생산했습니다. 스팀잇 이전에는 티스토리에 구글 광고를 붙여서 블로그를 운영했었습니다. 하지만 출금 가능 최소 금액에 도달하지 못해서 한 번도 출금해본 적이 없습니다.
+
+그리고 약 3달 전에는 Whan Team에 합류하면서 능력(개발)자들을 알게 되었습니다. 현재 Whan 팀에 속해있는 개<sub>발자</sub><sup>그맨</sup> 들과 대화하면 무척 재미있습니다. 그리고 이분들과 함께 있으면 생산력이 2.5배가 됩니다. 다들 너무 열심히 하셔서 항상 제가 뒤처지는 느낌을 받습니다. 스팀잇을 활동하면서 얻은 가장 큰 선물라고 생각합니다.
+
+<br>마지막으로 스팀잇에서 그동안 활동했던 흔적을 돌아봤습니다. 그리고 제가 올렸던 글을 시리즈별로 정리했습니다. 
+
+<br><center>![](https://steemitimages.com/640x0/https://cdn.steemitimages.com/DQmNpcHsY4vBGAxKez3HgK3B9k1MouVQ2YSqCHHVFi4QvPD/newLOGO_%EC%96%87%EC%9D%80.png)</center><br>
+
+## 날씨 앱 만들기
+
+리액트 네이티브를 맨 처음 학습하면서 만들었던 첫 모바일앱입니다. 위치 기반으로 현재 날씨를 보여주는 입니다. 디자인이 정말 뷰티풀 합니다. 이 강의를 듣기 시작하면서 리액트 네이티브 매력에 빠지기 시작했습니다. ㅋ 
+||
+|-|
+|![](https://steemitimages.com/200x0/https://steemitimages.com/DQmRBpSQnmBfeG6oDFZ2mMrxSswzvtgdykXBE8VLHs4a6HV/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202018-11-25%2001.30.54.png)|
+
+||
+|-|
+|[\[React Native\] 리액트 네이티브 시작하기](/@anpigon/react-native-1--1542639852750)|
+|[\[React Native\] 리액트 네이티브 날씨앱 만들기 #1](/@anpigon/react-native-2--1542732103861)|
+|[\[React Native\] 리액트 네이티브 날씨앱 만들기 #2](/@anpigon/react-native-3-2-1542874472110)|
+|[\[React Native\] 리액트 네이티브 날씨앱 만들기 #3](/@anpigon/react-native-4-3-1542990470234)|
+|[\[React Native\] 리액트 네이티브 날씨앱 만들기 #4](/@anpigon/react-native-5-4-1543113530194)|
+
+<br>
+<br>
+
+## TO-DO 앱 만들기
+
+리액트 네이티브 학습하고 만든 두 번째 모바일앱입니다. 이 앱을 마지막으로 그다음부터는 제가 만들고 싶은 앱을 만들기 시작했습니다. 이것 다음에 무비 앱도 만들었는데 시리즈 글은 작성하지 않았네요. *"[리액트 네이티브로 무비앱을 만들어서 스토어에 올렸어요!](/@anpigon/3radqh)"*
+
+||||
+|-|-|-|
+|![](https://steemitimages.com/0x590/https://ipfs.busy.org/ipfs/QmZ46LrC3ep4mUsrzdGozfo6Zbu7BGAQvrRF4cSB7W9Agb)|![](https://steemitimages.com/DQmPD5CsLgDCZRxJLq3mtyZsu2DtwmCAh9BSZ7b1oXNWmNG/QmaXe6VQs1jck7KCa6kfDL654pWfNyUKzgCzRS9rN67BVT.gif)|![](https://steemitimages.com/DQmU8rDwcmpJmfDxWSuSqGtzTEgYMtY4YL64UoAPetKYR62/QmdEJ4tK1PSLiF5xXKmaKiAqCZFAgQ3eGwXLQgvDc3nQrV.gif)|
+
+|| 
+|-| 
+|[\[React Native\] 리액트 네이티브 TO-DO 앱 만들기 #1](/@anpigon/react-native-todo-1-1543931900794)| 
+|[\[React Native\] 리액트 네이티브 TO-DO 앱 만들기 #2](/@anpigon/react-native-todo-2-1544357245729)| 
+|[\[React Native\] 리액트 네이티브 TO-DO 앱 만들기 #3](/@anpigon/react-native-todo-3-1544444494475)| 
+|[\[React Native\] 리액트 네이티브 TO-DO 앱 만들기 #4](/@anpigon/react-native-todo-4-1544540786908)| 
+|[\[React Native\] 리액트 네이티브 TO-DO 앱 만들기 #5](/@anpigon/react-native-todo-5-1544624822669)|
+
+<br>
+<br>
+
+## 인스타그램 UI 모바일앱 만들기
+
+스팀잇을 인스타그램 UI처럼 만들고 싶어서 유튜브 무료 강의를 보면서 따라 만들었습니다. 아직 스킬이 부족해서 그 이상의 기능은 업데이트는  못했습니다. 지금 생각하면 많이 아쉽습니다. 이 시리즈 이후부터 리액트 네이티브 스킬을 올리기 위해 부지런히 노력했습니다.
+
+||||
+|-|-|-|
+|![](https://steemitimages.com/0x600/https://user-images.githubusercontent.com/3969643/51506135-06079580-1e2e-11e9-973a-b25b1a3fb3cb.png)|![](https://steemitimages.com/0x600/https://steemitimages.com/p/7vqvwioC5cYNbtKc2fyNCtKRU5w1VUbTnsgs3sMwYa3Jj4GwLQx4ShMRiLJimtW3oKNmjaEqGD5makXMzxnBNSitEkv6WkCaoMpymaHHFWVGfqSfqJbzWnafANvnKcTMLPYQ1zMoMK1dUZfXaZ85JvVn1318SxfjjPWgj7PD74EEau6ssYGQUitKAmzimtr73iKPKFjC6bhAe8QMfWRhL7MnBc7caUcTroxQjH6Ru8rmLtfE1GESQAtch2BpQTTVLdkXEBRTMFJ2Tfm4uotf3QMgibpNuLD85No6wBtKBdFyCTTkKkB5CiTYsMorXdyPysS45TymXWS4oEybVTi4Snkp35bRMu3MoNdn81BJ6SP5JX8LE52yhFdX8sd5RQJf3wctJ8cthfmSNVUiwAjkQamx2m)|![](https://steemitimages.com/0x0/https://steemitimages.com/DQmNdRKUTLPzkJzEsddqkDF7tWhuZefHP6qS2PKpbL78W46/2019-01-25%2000-21-27.2019-01-25%2000_23_38.gif)|
+
+||
+|-|
+|[\[React Native\] 인스타그램 UI 만들기 #1](/@anpigon/react-native-ui-1) |
+|[\[React Native\] 인스타그램 UI 만들기 #2](/@anpigon/react-native-ui-2-1548079722841)|
+|[\[React Native\] 인스타그램 UI 만들기 #3](/@anpigon/react-native-ui-3-1548134597178)|
+|[\[React Native\] 인스타그램 UI 만들기 #4](/@anpigon/react-native-ui-4-1548207724086)|
+|[\[React Native\] 인스타그램 UI 만들기 #5](/@anpigon/react-native-ui-5-1548346515419)|
+
+<br>
+<br>
+
+## 이더리움 모바일 지갑앱 만들기
+
+제가 보유하고 있는 다양한 코인들을 하나의 지갑 앱에서 관리하고 싶어서 만들기 시작했습니다. 이더리움 지갑 앱을 시작으로 비트코인, 이오스, 트론, 스텔라 루멘 등 코인을 하나의 앱에서 관리하는 지갑 앱을 만들고 싶었습니다.
+
+하지만 만들다 보니 블록체인마다 규격이 너무 다릅니다. 그래서 앱 구조가 점점 복잡해지고 구현 난이도가 너무 높아졌습니다. 그리고 블록체인마다 다른 UI를 어떻게 표현해야 할지가 제일 고민이었습니다.
+
+비트코인 잔액(UTXO) 조회, 네트워크 수수료 조회, 블록체인 트랜잭션 모니터링 등.. 앞으로 구현해야 할 기술적 부채도 있습니다. 그리고 마켓에 검색해보면 훌륭한 모바일 지갑 앱이 다수 존재합니다. 그래서 지갑 앱 구현은 이 정도 구현 수준에서 마무리했습니다.
+ 
+||||
+|-|-|-|
+|![](https://steemitimages.com/0x600/https://steemitimages.com/DQmNpmzypELfPkUqACifpBfs9BAx2HT7VwZ9jFQoNEbjaQh/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202019-02-09%2013.58.33.png)|![](https://steemitimages.com/0x600/https://steemitimages.com/DQmZFgmGwquNWTTjAYGG6k8FbUfSYc1848AdqfEgmf3n431/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202019-02-14%2013.24.41.png)|![](https://steemitimages.com/DQmY8wpWBMKDtTP9Fq5AwQ8nhaT4MfDyMDVAGHYZGSN2SH1/2019-02-15%2009-49-18.2019-02-15%2009_50_51.gif)|
+
+|| 
+|-| 
+|[이더리움 모바일 지갑(Ethereum Mobile Wallet) 만들기 #1](/@anpigon/react-native-ethereum-mobile-wallet)| 
+|[이더리움 모바일 지갑(Ethereum Mobile Wallet) 만들기 #2](/@anpigon/react-native-ethereum-mobile-wallet-2)| 
+|[이더리움 모바일 지갑(Ethereum Mobile Wallet) 만들기 #3](/@anpigon/react-native-ethereum-mobile-wallet-3)| 
+|[이더리움 모바일 지갑(Ethereum Mobile Wallet) 만들기 #4](/@anpigon/react-native-ethereum-mobile-wallet-4)| 
+|[이더리움 모바일 지갑(Ethereum Mobile Wallet) 만들기 #5](/@anpigon/react-native-ethereum-mobile-wallet-5)| 
+|[이더리움 모바일 지갑(Ethereum Mobile Wallet) 만들기 #6](/@anpigon/react-native-ethereum-mobile-wallet-6)| 
+|[이더리움 모바일 지갑(Ethereum Mobile Wallet) 만들기 #7](/@anpigon/react-native-ethereum-mobile-wallet-7)| 
+|[이더리움 모바일 지갑(Ethereum Mobile Wallet) 만들기 #8 - 배포하기](/@anpigon/ethereum-mobile-wallet-8)|
+
+<br>
+<br>
+
+## Steem 모바일 지갑앱 만들기
+
+이때쯤 다양한 SCOT 토큰들이 등장했습니다. SCOT 토큰 잔액을 모바일앱에서 확인하고 싶어서 시작했습니다. 바로 이더리움 지갑을 개발하면서 얻은 경험을 바탕으로 금방 구현할 것 같았습니다. 하지만 scot-api가 너무 불안정했습니다. 잦은 HTTP 404 오류와 json 파싱 오류가 심각했습니다. 
+
+지금 스팀과 토큰 잔액 조회 기능 외에는 구현되어 있지 않습니다. 시간 날 때마다 가끔씩 코드를 들여다보며 기능을 조금씩 추가하고 있습니다. 하지만 지갑 개발에 시간을 많이 할애하지 않아서 진도는 거의 안 나가고 있네요.
+
+그리고 개발의신👑원사마님께서 스팀 지갑을 개발하기 시작했으니, 저의 Steem 모바일 지갑 앱 만들기 시리즈는 여기서 마무리합니다. 원사마님 화이팅입니다. - *참고글: "원사마님의 [\[flutter\] 스팀 지갑 개발 #001 - START](/zzan/@wonsama/flutter-001-start)"*
+
+||||
+|-|-|-|
+|![](https://steemitimages.com/0x0/https://files.steempeak.com/file/steempeak/anpigon/NPlJ4SZZ-E18489E185B3E1848FE185B3E18485E185B5E186ABE18489E185A3E186BA202019-07-0120E1848BE185A9E1848CE185A5E186AB2011.37.14.png)|![](https://steemitimages.com/0x0/https://files.steempeak.com/file/steempeak/anpigon/jRf9ZiMk-E18489E185B3E1848FE185B3E18485E185B5E186ABE18489E185A3E186BA202019-07-0120E1848BE185A9E1848CE185A5E186AB2011.37.21.png)|![](https://files.steempeak.com/file/steempeak/anpigon/yu01JcGK-2019-06-292010-09-23.2019-06-292010_11_48.gif)|
+
+||
+|-|
+|[Steem 모바일 지갑앱 만들기 #1](/@anpigon/react-native-steem-1)|
+|[Steem 모바일 지갑앱 만들기 #2](/@anpigon/react-native-steem-2)|
+|[Steem 모바일 지갑앱 만들기 #3](/@anpigon/react-native-steem-3)|
+|[Steem 모바일 지갑앱 만들기 #4](/@anpigon/react-native-steem-4)|
+
+<br><br>
+
+## STEEM/SCT 보팅파워(VP) 안드로이드 위젯 만들기
+
+각 Nitrous의 보팅 파워를 모바일에서 확인하기 위해 개발을 시작했습니다. 리액트 네이티브로 개발하기 시작했지만, 기술적인 문제로 결국 안드로이드 Java로 다시 구현했습니다. Android Oreo 버전부터 백그라운드 제약이 심해져서 조금 힘들었던 프로젝트였습니다. 
+
+지금은 개인적으로 Whan 팀원들의 보팅 파워를 모니터링하고 감시하는데 사용하고 있습니다. 팀원들의 보팅 파워가 떨어지면 CHEER UP 해주고 있습니다.
+
+||||
+|-|-|-|
+|![](https://steemitimages.com/0x600/https://files.steempeak.com/file/steempeak/anpigon/kodrdzTA-Screenshot_20190601-101605_One20UI20Home.jpg)|![](https://steemitimages.com/0x600/https://steemitimages.com/DQmPxNju7GqUKbiLALcHjoHWZbkwJRAWdppwF1xfNUUeomS/KakaoTalk_Photo_2019-06-11-01-24-15-2.jpeg)|![](https://steemitimages.com/0x600/https://files.steempeak.com/file/steempeak/anpigon/guV8rARl-KakaoTalk_Photo_2019-06-11-01-24-15-1.jpeg)|
+
+||
+|-|
+|[STEEM/SCT 보팅파워(VP) 안드로이드 위젯 #1](/@anpigon/steem-sct-vp-1)|
+|[STEEM/SCT 보팅파워(VP) 안드로이드 위젯 #2 - 앱 업데이트 이야기](/@anpigon/steem-sct-vp-2)|
+|[STEEM/SCT 보팅파워(VP) 안드로이드 위젯 #3 - Doze와 앱 대기(App Standby) 이야기](/@anpigon/steem-sct-vp-3-doze-app-standby)|
+|[STEEM/SCT 보팅파워(VP) 안드로이드 위젯 #4 - 마지막 업데이트 이야기](/@anpigon/steem-sct-vp-4)|
+
+<br><br>
+
+## 영화 리뷰 모바일 앱 개발 이야기 
+
+저는 소설책과 영화 보는 것을 매우 좋아합니다. 그래서 Triple A 커뮤니티가 오픈했을 때 기존에 만들고 있던 도서 리뷰 앱을 영화 리뷰 앱으로 바꾸어 시리즈를 연재했습니다. 도서 리뷰 앱은 만들기 바빠서 스팀잇에 글을 안 올렸네요. ㅎㅎ
+
+구현하면서 어떻게 하면 사용자들이 영화 리뷰를 쉽게 올리고 리뷰를 편하게 볼 수 있을까 고민을 했습니다. 그래서 다른 영화 리뷰 모바일앱들을 벤치마킹하면서 UI 고민을 정말 많이 했습니다. 스팀 블록체인 위에 동작하는 앱 UX를 기획하는 건 쉽지 않네요. 욕심은 왓챠같은 앱을 만들고 싶으나 기획 방향을 틀어야 할 것 같습니다.
+
+결국은 아이디어가 부족해서 잠시 시리즈 진행을 멈췄습니다. 여기서 기획 스킬의 부족함을 절실히 느꼈습니다. 하지만 아이디어 영감이 떠오르면 다시 진행할 계획입니다. 
+<sub>ps. 또한 만드시는 과정을 지켜보는 분이 계셔서 큰 부담이 작용한 것 같습니다. 엄청난 앱을 만들어야하는데 그게 잘 안되네요. ㅎㅎ</sub>
+
+||||
+|-|-|-|
+|![](https://steemitimages.com/470x0/https://files.steempeak.com/file/steempeak/anpigon/PUsySRgL-E18489E185B3E1848FE185B3E18485E185B5E186ABE18489E185A3E186BA202019-06-2320E1848BE185A9E1848CE185A5E186AB2012.40.37.png)|![](https://steemitimages.com/470x0/https://files.steempeak.com/file/steempeak/anpigon/EEXtSiQW-E18489E185B3E1848FE185B3E18485E185B5E186ABE18489E185A3E186BA202019-06-2220E1848BE185A9E1848CE185A5E186AB209.11.26.png)|![](hhttps://files.steempeak.com/file/steempeak/anpigon/t4tRTiQ2-2019-06-232009_13_56_2.gif)|
+
+||
+|-|
+|[영화 리뷰 모바일 앱 개발 이야기 #1](/@anpigon/react-native-1)|
+|[영화 리뷰 모바일 앱 개발 이야기 #2](/@anpigon/react-native-2)|
+|[영화 리뷰 모바일 앱 개발 이야기 #3](/@anpigon/react-native-3)|
+|[영화 리뷰 모바일 앱 개발 이야기 #4](/@anpigon/react-native-4)|
+
+<br>
+<br>
+
+## WHAN APP 개발 이야기
+
+최근에 오픈한 LIV 커뮤니티는 Nitrous UI를 일반 게시판처럼 바꿔버렸습니다. 여기서 아이디어를 얻었습니다. 그래서 스팀잇을 블로그나 SNS가 아닌 게시판이라는 관점으로 바라보고 개발하기 시작했습니다. 모두의 커뮤니티 모바일앱을 벤치마킹했습니다. 한동안은 이 시리즈를 계속 연재할 생각입니다. 많은 관심 바랍니다.
+
+제 앱에 큰 관심을 보여주신 philhyuntd님 너무 감사합니다. 단순히 앱 개발 시리즈로 끝날 뻔한 Whan Dapp을 살려주셨습니다. 그리고 적극적으로 테스트해주셔서 감사합니다.  - "[WHAN Dapp 첫 테스트](https://www.steemzzang.com/zzan/@philhyuntd/20190711t130630760z)"
+
+앞으로 philhyuntd님은 묻지도 따지지도 않고 풀보팅하겠습니다. ㅋ 보팅 파워가 작아서 금액이 적지만 언젠가 커지겠죠. ㅎㅎ
+
+||||
+|-|-|-|
+|![](https://steemitimages.com/0x600/https://files.steempeak.com/file/steempeak/anpigon/SnTSZZpr-54TLbcUcnRm42j8GnpdnmmbBwy8ezgJG9sn6BKTkFjLZTgXfPv3moHevaSpfy7gbvU2PLoCkxgx8Bnf1oK5gcYvFXdzCow1DPoHpb67ZnChhrmKnybkUFD6Eu2hPngb1Xs4ALEowU.jpeg)|![](https://steemitimages.com/500x0/https://img.esteem.ws/4azt4ps4c9.gif)|![](https://files.steempeak.com/file/steempeak/anpigon/s5dsNunu-test2.gif)|
+
+||
+|-|
+|[WHAN APP 기획 개발 이야기 #1](/@anpigon/snax-whan-app)|
+|[WHAN APP 개발 이야기 #2](/@anpigon/react-native-whan-app-2)|
+|[WHAN APP 개발 이야기 #3](/@anpigon/20190709t020445612z)|
+|[WHAN APP 개발 이야기 #4](/@anpigon/react-native-whan-app-4)|
+
+<br>
+<br>
+
+## 오픈소스 활동
+
+올 상반기에 오픈소스에 기여했던 내용입니다. 이전에 잘 사용했던 스팀 툴을 다시 살리고 싶어서 시작했습니다. 첫 번째 타깃이 해피 베리 보이님의 스팀 툴이었습니다. 햅보이님께 스팀 툴을 업그레이드해보자고 조심스럽게 손을 내밀었는데 그 손을 꽉 잡아주셔서 감사합니다.
+
+그리고 steeme와 steem.apps도 버리기 너무 아까워 소스를 포크 하여 제가 기능을 추가했습니다. 이 두 앱은 스팀잇을 처음 시작할 때부터 시작해서 지금도 잘 사용하고 있는 앱입니다.
+
+그리고 ayogom님, realmankwon님 영향으로 Nitrous에 소스 투고도 하였습니다. Nitrous는 기능 추가보다 우선 UI부터 바꿨으면 좋겠습니다. ㅋ
+
+||
+|-|
+|[\[Steem Tools\] 크롬 익스텐션 개발 : 커스텀 폰트 기능 추가](https://steemit.com/sct/@anpigon/4gusrb)|
+|[\[Steem Tools\] 크롬 익스텐션 개발 : 스팀 엔진 토큰 목록 추가](https://steemit.com/sct/@anpigon/steem-tools-20190604)|
+|[nhj12311님이 만든 steem.apps에 #aaa, #stc 태그 추가.](https://steemit.com/sct/@anpigon/nhj12311-steem-apps-aaa-stc)|
+|[nhj12311님이 만든 steem.apps에 토큰 보상을 추가.](https://steemit.com/sct/@anpigon/nhj12311-steem-apps)|
+|[asbear님이 만든 steeme에 티스토리 업로드 기능 추가.](https://steemit.com/sct/@anpigon/2zgchx)|
+|[\[소스투고\] SCT 소스 수정 : 임대 금액 표시 오류(NaN) 수정](https://steemit.com/sct/@anpigon/6vcmd)|
+|[\[소스투고\] SCT 소스 수정 : SCT 앱 아이콘 표시 기능과 토큰(Token) 잔액 Style 변경](https://steemit.com/sct/@anpigon/sct-sct-token-style)|
+|[\[소스 투고\] Nitrous 태그를 색상으로 구분하기](https://steemit.com/sct/@anpigon/5lmuhk-nitrous)|
+|[\[소스 투고\] Steemzzang 태그 선택 자동 입력 기능 ](https://steemit.com/zzan/@anpigon/7e4ab827f87e8)|
+
+<br>
+
+긴 글을 읽어주셔서 감사합니다.
+
+댓글, 팔로우, 업보팅해 주시는 모든 분들 감사합니다.
+
+항상 행복한 하루 보내시길 바랍니다.
+
+***
+
+<center><img src='https://steemitimages.com/400x0/https://steemitimages.com/DQmQmWhMN6zNrLmKJRKhvSScEgWZmpb8zCeE2Gray1krbv6/BC054B6E-6F73-46D0-88E4-C88EB8167037.jpeg'><h5>vote, reblog, follow <code><a href='/@anpigon'>@anpigon</a></code></h5></center>

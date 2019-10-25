@@ -83,4 +83,4 @@ deploy:
 #steem_users: anpigon
 steem_users:
 - anpigon
-- blockchainstudio
+# - blockchainstudio
