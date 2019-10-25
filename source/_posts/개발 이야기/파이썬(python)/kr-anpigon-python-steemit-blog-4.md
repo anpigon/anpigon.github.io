@@ -1,5 +1,5 @@
 ---
-title: 'python steemit blog 나만의 스팀잇 블로그 만들기 #4 - 글 상세'
+title: '나만의 스팀잇 블로그 만들기 #4 - 글 상세'
 tags:
   - kr
   - kr-dev

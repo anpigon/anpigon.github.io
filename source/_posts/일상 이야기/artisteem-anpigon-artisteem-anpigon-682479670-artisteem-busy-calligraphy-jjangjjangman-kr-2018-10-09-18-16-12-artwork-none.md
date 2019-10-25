@@ -8,7 +8,6 @@ tags:
   - kr
 author: anpigon
 date: 2018-10-09 18:16:15
-categories: 일상이야기
 ---
 
 ![Artwork Image](http://13.124.16.246:8000/media/1539075930821.png)
