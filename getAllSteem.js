@@ -25,7 +25,8 @@ function updateSteemArticles(username) {
 
 if (hexo.config.steem_users) {
   for (var i = 0; i < hexo.config.steem_users.length; i++) {
-    updateSteemArticles(hexo.config.steem_users[i])
+    // updateSteemArticles(hexo.config.steem_users[i])
+    updateSteemArticles('wangpigon')
   }
 } else {
   console.log('No steem usernames found, please add to the _config.yml')
