@@ -23,11 +23,3 @@ date: 2019-08-06 23:40:18
 ***
 
 짠 북클럽의 이벤트 링크: https://www.steemzzang.com/zzan/@book.club/2foj4m
-
----
-
-#####  <sub> **Sponsored ( Powered by [dclick](https://www.dclick.io) )** </sub>
-[![dclick-imagead](https://s3.ap-northeast-2.amazonaws.com/dclick/image/jaydih/1564049520487.jpeg)](https://api.dclick.io/v1/c?x=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjIjoiYW5waWdvbiIsInMiOiIzMWY4eGwiLCJhIjpbImktMzg4Il0sInVybCI6Imh0dHBzOi8vc3RlZW1tb25zdGVycy5jb20vP3JlZj1qYXlkaWgiLCJpYXQiOjE1NjUxMDMyODYsImV4cCI6MTg4MDQ2MzI4Nn0.QMXqI7wfG0T1Wp7ZwAZVVRIgETwTl8pXF0owiubI71g)
-
-***
-<center><sup>Originally posted on [안피곤님의 블로그](http://anpigon.dblog.org/31f8xl). Steem blog powered by [ENGRAVE](https://engrave.website).</sup></center>

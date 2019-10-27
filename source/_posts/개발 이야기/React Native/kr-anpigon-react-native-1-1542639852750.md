@@ -1,11 +1,6 @@
 ---
 title: '[React Native #1] 리액트 네이티브 시작하기'
 tags:
-  - kr
-  - kr-dev
-  - jjangjjangman
-  - dclick
-  - busy
 author: anpigon
 date: 2018-11-20 00:04:15
 ---
@@ -85,10 +80,3 @@ ___
 오랜만에 리액트 네이티브 문서를 봤더니 엄청난 발전이 있어서 놀랐습니다. 그리고 개발하기가 정말 쉽고 편해졌습니다. Xcode 또는 Android Studio를 설치하지 않고도 개발할 수 있는게 정말 놀랍네요. 그리고 간단한 코드나 화면은 개발툴 없이 [snack](https://snack.expo.io/)을 이용하면 쉽게 테스트 가능합니다.
 
 사실 저는 개인적으로 구글의 플러터가 더 마음에 들지만, 개발속도(도구)/레퍼런스(오픈소스, 커뮤니티)/개발언어(JS) 등으로 인해 리액트 네이티브를 도저히 버릴 수가 없네요.
-
----
-
-#####  <sub> **Sponsored ( Powered by [dclick](https://www.dclick.io) )** </sub>
-##### [HBR 블록체인의 진실과 미래를 읽다.](https://api.dclick.io/v1/c?x=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjIjoiYW5waWdvbiIsInMiOiJyZWFjdC1uYXRpdmUtMS0tMTU0MjYzOTg1Mjc1MCIsImEiOlsidC03MzMiXSwidXJsIjoiaHR0cHM6Ly9zdGVlbWl0LmNvbS9rci9AYm9vc3R5b3UvaGJyIiwiaWF0IjoxNTQyNjM5ODUyLCJleHAiOjE4NTc5OTk4NTJ9.17VLIClGU_HY3wWxUS9xiQR4tRy1qHOy4dKadSVF-1E)
-<sup>안녕하세요. 부추입니다. 최근에 리디셀렉트를 구독하게 되었는데요. 거기에서 하버드비지니스리뷰 ...</sup>
-</center>

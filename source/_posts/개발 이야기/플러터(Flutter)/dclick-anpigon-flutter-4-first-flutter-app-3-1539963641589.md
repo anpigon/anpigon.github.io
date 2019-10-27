@@ -134,9 +134,3 @@ https://steemitimages.com/0x0/https://files.steempeak.com/file/steempeak/anpigon
 ---
 
 https://steemitimages.com/0x0/https://files.steempeak.com/file/steempeak/anpigon/otMhz1ZG-divider-2461548_1280-cutout.png
-
-***
-#####  <sub> **Sponsored ( Powered by [dclick](https://www.dclick.io) )** </sub>
-##### [[트립스팀]할로윈을 즐기고 싶다면 에버랜드로!!(10/14-15)](https://api.dclick.io/v1/c?x=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjIjoiYW5waWdvbiIsInMiOiItZmx1dHRlci00LWZpcnN0LWZsdXR0ZXItYXBwLTMtMTUzOTk2MzY0MTU4OSIsImEiOlsyMDNdLCJ1cmwiOiJodHRwczovL3N0ZWVtaXQuY29tL3RyaXBzdGVlbS9Ac3dlZXRwYXBhL3R0MjAxODEwMTh0MjMwODA1MDQxeiIsImlhdCI6MTUzOTk2MzY0MSwiZXhwIjoxODU1MzIzNjQxfQ.v27VWz0z1d2s27wT6UtNG5G57MyN-Gsf05wizagzz3I)
-<sup>![image]( 안녕하세요 달콤한 아빠 입니다 저희 가족은 지난 월요일 에버랜드라는 정말 좋...</sup>
-<br><center>![logo](https://steemitimages.com/200x100/https://cdn.steemitimages.com/DQmbjkrc5UT4GgZXygAnS3mLrboAy7Y8gr7R7guB8HG3f5n/logopad500.png)<br><br>이 글은 스팀 기반 광고 플랫폼<br>[dclick](https://www.dclick.io) 에 의해 작성 되었습니다.</center>

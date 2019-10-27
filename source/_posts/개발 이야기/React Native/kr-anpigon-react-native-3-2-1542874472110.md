@@ -1,11 +1,6 @@
 ---
 title: '[React Native #3] 리액트 네이티브 날씨앱 만들기 #2'
 tags:
-  - kr
-  - kr-dev
-  - jjangjjangman
-  - busy
-  - dclick
 author: anpigon
 date: 2018-11-22 17:14:33
 ---
@@ -186,12 +181,3 @@ ___
 유주완님의 서울버스앱을 시발점으로 **정부3.0 - 공공 데이터 개방의 시대**가 열린 적이 있었습니다. 그런데 공공데이터 시절에 공개되었던 데이터들이 지금은 대부분 비공개로 전환되었네요.ㅋ
 
 여기까지 읽어주셔서 감사합니다.
-
-
-
----
-
-#####  <sub> **Sponsored ( Powered by [dclick](https://www.dclick.io) )** </sub>
-##### [■ Tasteem × Promisteem ／ 이삿날엔 중국집 대신 이자카야 〈男 OTOKO〉](https://api.dclick.io/v1/c?x=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjIjoiYW5waWdvbiIsInMiOiJyZWFjdC1uYXRpdmUtMy0yLTE1NDI4NzQ0NzIxMTAiLCJhIjpbInQtODc5Il0sInVybCI6Imh0dHBzOi8vc3RlZW1pdC5jb20vdGFzdGVlbS9Aa2ltZWdnZ2cvdGFzdGVlbS01YmYwMGUiLCJpYXQiOjE1NDI4NzQ0NzIsImV4cCI6MTg1ODIzNDQ3Mn0.0Sc3aopWOFj9bbvSoVMQO7rN2OZyLVXKJofztg-xCJo)
-<sup>이삿날엔 중국집 대신 이자카야 男　O　T　O　K　O 예로부터 이삿 날엔 일손 나눈 크루들(?)...</sup>
-</center>

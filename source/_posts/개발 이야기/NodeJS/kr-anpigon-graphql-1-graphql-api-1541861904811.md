@@ -255,10 +255,3 @@ export default resolvers
 
 
 끝.
-
----
-
-#####  <sub> **Sponsored ( Powered by [dclick](https://www.dclick.io) )** </sub>
-##### [[매매일지]/#2-1/현상태](https://steemit.com/dclick/@lastine/21-1541598017431)
-<sup>네오는 4％ 먹고(매도) 다시 매수했습니다^^ 지지만 잘해주면 굳 스텔라 61.8％ 되돌림때 ...</sup>
-</center>

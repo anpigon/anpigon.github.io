@@ -1,11 +1,6 @@
 ---
 title: '모바일 앱 개발 : Flutter 시작하기 #3 - First Flutter App (2)'
 tags:
-  - dclick
-  - kr
-  - kr-dev
-  - busy
-  - interesteem
 author: anpigon
 date: 2018-10-16 00:16:57
 ---
@@ -220,8 +215,3 @@ ListView 클래스는 builder 속성으로 팩토리 빌더 및 콜백 함수인
 <hr>
 
 ![divider2461548_1280cutout.png](https://files.steempeak.com/file/steempeak/anpigon/otMhz1ZG-divider-2461548_1280-cutout.png)
-***
-#####  <sub> **Sponsored ( Powered by [dclick](https://www.dclick.io) )** </sub>
-##### [구글 코리아, 페이스북 국내 매출을 사장이 모른다?](https://api.dclick.io/v1/c?x=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjIjoiYW5waWdvbiIsInMiOiItZmx1dHRlci0zLXdyaXRlLXlvdXItZmlyc3QtZmx1dHRlci1hcHAtcGFydC0xMi0xNTM5NjE2NjE0OTYxIiwiYSI6WzY3XSwidXJsIjoiaHR0cHM6Ly9zdGVlbWl0LmNvbS9rci9AdHJhZGluZ2lkZWFzLzRucXdiNSIsImlhdCI6MTUzOTYxNjYxNCwiZXhwIjoxODU0OTc2NjE0fQ.cvGcrOm1IIX9JXTiWgfCAYOjwfv6qViCiWvMyK2gTRY)
-<sup>오늘 국감장에 나온 구글코리아 존리 대표가 국감장에 출석해서 국내 매출 정보를 알려줄 수 없다...</sup>
-<br><center>![logo](https://steemitimages.com/200x100/https://cdn.steemitimages.com/DQmbjkrc5UT4GgZXygAnS3mLrboAy7Y8gr7R7guB8HG3f5n/logopad500.png)<br><br>이 글은 스팀 기반 광고 플랫폼<br>[dclick](https://www.dclick.io) 에 의해 작성 되었습니다.</center>

@@ -130,9 +130,3 @@ ___
 
 ***
 <center><sup>Originally posted on [독서모임](http://book.dblog.org/61). Steem blog powered by [ENGRAVE](https://engrave.website).</sup></center>
-
----
-
-#####  <sub> **Sponsored ( Powered by [dclick](https://www.dclick.io) )** </sub>
-##### [우리는 지속가능한 삶을 살고 있는가](https://api.dclick.io/v1/c?x=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjIjoiYW5waWdvbiIsInMiOiI2MSIsImEiOlsidC0yMDI2Il0sInVybCI6Imh0dHBzOi8vc3RlZW1pdC5jb20venphbi9Ab2xkc3RvbmUvNmt2d2RmIiwiaWF0IjoxNTY5NDU5NDM5LCJleHAiOjE4ODQ4MTk0Mzl9.v4X5vKJxEwyYXZHuNcBHLqueDVay0h0jxKOa9RzBYfY)
-<sup>모두들 자신의 삶에 불만들이 많다. 그렇지만 하나 분명한 것은 우리는 지금 지나칠 정도로 물질...</sup>

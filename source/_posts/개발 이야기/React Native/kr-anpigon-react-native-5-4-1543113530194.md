@@ -1,11 +1,6 @@
 ---
 title: '[React Native #5] 리액트 네이티브 날씨앱 만들기 #4'
 tags:
-  - kr
-  - kr-dev
-  - jjangjjangman
-  - busy
-  - dclick
 author: anpigon
 date: 2018-11-25 11:38:51
 ---
@@ -250,8 +245,3 @@ https://github.com/anpigon/weather_app
 <br>
 
 여기까지 읽어주셔서 감사합니다.
-
----
-
-#####  <sub> **Sponsored ( Powered by [dclick](https://www.dclick.io) )** </sub>
-[![dclick-imagead](https://s3.ap-northeast-2.amazonaws.com/dclick/image/dclick/1540980285836.jpg)](https://api.dclick.io/v1/c?x=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjIjoiYW5waWdvbiIsInMiOiJyZWFjdC1uYXRpdmUtNS00LTE1NDMxMTM1MzAxOTQiLCJhIjpbImktMTAiXSwidXJsIjoiaHR0cHM6Ly9rci11c2VkLmdpdGh1Yi5pby8iLCJpYXQiOjE1NDMxMTM1MzAsImV4cCI6MTg1ODQ3MzUzMH0.MWSi3NgqN3aPHP_EEjLVSiZOkHBHs5GsEPpCTRXxtwg)

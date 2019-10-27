@@ -1,33 +1,45 @@
-var steem = require('steem');
+const steem = require("steem");
+const path = require("path");
+const fs = require("fs");
+const package = require("./package.json");
 
-function updateSteemArticles(username) {
-  steem.api.getDiscussionsByBlog({limit:100, tag:username}, function(err, result) {
-    for (var i = 0; i < result.length; i++) {
-      const { title, body, category, author, permlink, created, json_metadata } = result[i];
-      if (result[i].author == username || hexo.config.steem_resteems) {
-        const tags = JSON.parse(json_metadata).tags || [];
-        const date = new Date(`${created}Z`);
-        const content = body.replace(/\|/g, '|').replace(/%/g, '％').replace(/{/g, '｛').replace(/}/g, '｝');
-        // let t = title.replace(/"(.*)"/g, '“$1”').replace(/"/g, '“');//.replace(/\[|\]|:|-|#|\(|\)|\'/g, '').replace('?', '').replace('?', '');
-        // console.log(t, tags);
-        hexo.post.create({
-          slug: `${category}/${author}/${permlink}`,
-          title: title.replace(/"(.*)"/g, '“$1”').replace(/"/g, '“'),
-          content,
-          date,
-          tags,
-          author,
-        }, true)
+async function updateSteemArticles(username) {
+  const results = await steem.api.getDiscussionsByBlogAsync({ limit: 100, tag: username });
+  for(const item of results) {
+    if (item.author == username) {
+        const tags = JSON.parse(item.json_metadata).tags || [];
+        const title = item.title.replace(/"(.*)"/g, "“$1”").replace(/"/g, "“");
+        const body = item.body
+          .replace(/\|/g, "|")
+          .replace(/%/g, "％")
+          .replace(/{/g, "｛")
+          .replace(/}/g, "｝");
+        const contents = [
+          "---",
+          `title: "${title}"`,
+          `author: ${item.author}`,
+          `date: "${item.created}Z"`,
+          // `path: "${category}/@${author}/${permlink}"`,
+          `tags:`,
+          ...tags.map(tag => `  - "${tag}"`),
+          "---",
+          `${body}`
+        ];
+        const date = new Date(`${item.created}Z`);
+        const year = date.getFullYear();
+        const month = (date.getMonth() + 1).toString().padStart(2, "0");
+        const day = date
+          .getDate()
+          .toString()
+          .padStart(2, "0");
+        const fileName = `${year}-${month}-${day}---${item.permlink}`;
+        fs.writeFileSync(
+          path.join(__dirname, `/source/_posts/${fileName}.md`),
+          contents.join("\n"),
+          "utf8"
+        );
       }
-    }
-  });
+  }
 }
 
-if (hexo.config.steem_users) {
-  for (var i = 0; i < hexo.config.steem_users.length; i++) {
-    // updateSteemArticles(hexo.config.steem_users[i])
-    updateSteemArticles('wangpigon')
-  }
-} else {
-  console.log('No steem usernames found, please add to the _config.yml')
-}
+updateSteemArticles("anpigon");

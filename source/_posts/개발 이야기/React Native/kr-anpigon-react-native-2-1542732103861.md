@@ -1,11 +1,6 @@
 ---
 title: '[React Native #2] 리액트 네이티브 날씨앱 만들기'
 tags:
-  - kr
-  - kr-dev
-  - jjangjjangman
-  - dclick
-  - busy
 author: anpigon
 date: 2018-11-21 01:41:45
 ---
@@ -129,15 +124,4 @@ Object ｛
 
 날씨 앱을 안드로이드 자바로 구현할 때는 개발환경 세팅이나 필요한 모듈을 다운로드하는데 시간이 많이 걸렸습니다. 그런데 리액트 네이티브는 개발환경 세팅이나 모듈 설치하는데 많은 시간이 필요하지 않아서 좋네요. 그리고 저는 리액트 네이티브가 자바스크립트로 구현해서 그런지 코딩이 금방 손에 익었습니다.ㅋ 구글의 플러터도 자바스크립트를 사용했으면 더 좋았을 텐데 하는 아쉬움이 남았습니다.
 
-
 여기까지 읽어주셔서 감사합니다.
-
-
-
-
----
-
-#####  <sub> **Sponsored ( Powered by [dclick](https://www.dclick.io) )** </sub>
-##### [My Actifit Report Card: 11월 18 2018](https://api.dclick.io/v1/c?x=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjIjoiYW5waWdvbiIsInMiOiJyZWFjdC1uYXRpdmUtMi0tMTU0MjczMjEwMzg2MSIsImEiOlsidC04ODUiXSwidXJsIjoiaHR0cHM6Ly9zdGVlbWl0LmNvbS9hY3RpZml0L0BzZWxmdm90ZWp1c3RpY2UvYWN0aWZpdC1zZWxmdm90ZWp1c3RpY2UtMjAxODExMTh0MTAxMzIzNjUxeiIsImlhdCI6MTU0MjczMjEwMywiZXhwIjoxODU4MDkyMTAzfQ.tlnfvApXOuUCbqqDdTpR5KuVxCxItkf_hewxrZNJ8as)
-<sup>Many sets of tennis doubles game. Enough is enough. ...</sup>
-</center>

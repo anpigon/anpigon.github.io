@@ -1,11 +1,6 @@
 ---
 title: '[React Native #4] 리액트 네이티브 날씨앱 만들기 #3'
 tags:
-  - kr
-  - kr-dev
-  - jjangjjangman
-  - busy
-  - dclick
 author: anpigon
 date: 2018-11-24 01:27:51
 ---
@@ -168,11 +163,3 @@ ___
 하얀 배경에 검정 텍스트만 보여주니 깔끔하고 좋네요. ㅎㅎ
 
 여기까지 읽어주셔서 감사합니다.
-
-
----
-
-#####  <sub> **Sponsored ( Powered by [dclick](https://www.dclick.io) )** </sub>
-##### [기념 액자 도착](https://api.dclick.io/v1/c?x=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjIjoiYW5waWdvbiIsInMiOiJyZWFjdC1uYXRpdmUtNC0zLTE1NDI5OTA0NzAyMzQiLCJhIjpbInQtODU5Il0sInVybCI6Imh0dHBzOi8vc3RlZW1pdC5jb20va3IvQGFybWRvd24vLS0xNTQyNjI5Mjc3MTIyIiwiaWF0IjoxNTQyOTkwNDcwLCJleHAiOjE4NTgzNTA0NzB9.UM5OZpH1hW-EI2HanaSHOOZuHcibvkXnhSBLNLYIyHM)
-<sup>Sponsored ( Powered by dclick )</sup>
-</center>

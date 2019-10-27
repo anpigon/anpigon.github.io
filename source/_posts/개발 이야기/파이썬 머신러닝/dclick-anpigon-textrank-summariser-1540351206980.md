@@ -1,13 +1,8 @@
 ---
 title: '파이썬 머신러닝 #7 - 문서 요약하기(TextRank Summariser)'
 tags:
-  - kr
-  - kr-dev
-  - dclick
-  - jjangjjangman
   - 파이썬
   - 머신러닝
-  - busy
 author: anpigon
 date: 2018-10-24 12:20:09
 ---
@@ -123,8 +118,3 @@ print(summarize(news.text, ratio=0.1))
 
 
 ![](https://steemitimages.com/0x0/https://files.steempeak.com/file/steempeak/anpigon/otMhz1ZG-divider-2461548_1280-cutout.png)
-***
-#####  <sub> **Sponsored ( Powered by [dclick](https://www.dclick.io) )** </sub>
-##### [[데이빗 이야기 #2] 만든 사람은 있지만, 손대는 사람은 없는 완전 자동화된 암호화폐 거래소 데이빗(DAYBIT) 사용후기](https://api.dclick.io/v1/c?x=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjIjoiYW5waWdvbiIsInMiOiItdGV4dHJhbmstc3VtbWFyaXNlci0xNTQwMzUxMjA2OTgwIiwiYSI6WzE4MF0sInVybCI6Imh0dHBzOi8vc3RlZW1pdC5jb20vZGNsaWNrL0Bkb25la2ltLy0yLWRheWJpdC0tMTUzOTgzNjA1ODc1MiIsImlhdCI6MTU0MDM1MTIwNiwiZXhwIjoxODU1NzExMjA2fQ.0EwTGiK_1qKZ0bnlCcu28XbAHxK6i5O4jqkINYoYeNc)
-<sup>안녕하세요, 디온(@donekim)입니다. 지난 번 포스팅에 이어서 오늘은 데이빗 거래소의 사...</sup>
-<br><center>![logo](https://steemitimages.com/200x100/https://cdn.steemitimages.com/DQmbjkrc5UT4GgZXygAnS3mLrboAy7Y8gr7R7guB8HG3f5n/logopad500.png)<br><br>이 글은 스팀 기반 광고 플랫폼<br>[dclick](https://www.dclick.io) 에 의해 작성 되었습니다.</center>

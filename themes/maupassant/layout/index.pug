@@ -8,8 +8,7 @@ block title
 
 block content
   for post in page.posts.toArray()
-    //- - post.content = post.content.replace(/(<([^>]+)>)/ig, '')
-    .post.post-list
+    .post
       h1.post-title
         include _partial/helpers.pug
         a(href=url_for(post.path))
@@ -28,23 +27,20 @@ block content
         .post-content
           != post.excerpt
       else if post.content
-        - var post_content = post.content.replace(/(<([^>]+)>)/ig, '')
-        //- - var br = 0
-        //- - for (var i = 0; i < 5; ++i) {
-        //-   - br = post_content.indexOf('\n',br+1)
-        //-   if br < 0
-        //-     - break
-        //-   if br > 150
-        //-     - break
-        //- - }
-        //- if br < 0
-        //-   .post-content
-        //-     != post_content
-        //- else
-        //-   .post-content
-        //-     != post_content.substring(0, br)
-        .post-content
-            != post_content.substring(0, 300)
+        - var br = 0
+        - for (var i = 0; i < 5; ++i) {
+          - br = post.content.indexOf('\n',br+1)
+          if br<0
+            - break
+          if br >150
+            - break
+        - }
+        if br < 0
+          .post-content
+            != post.content
+        else
+          .post-content
+            != post.content.substring(0, br)
       p(class='readmore')
         a(href=url_for(post.path))= __('Readmore')
 

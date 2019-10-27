@@ -1,11 +1,6 @@
 ---
 title: '모바일 앱 개발 : Flutter 시작하기 #5 - First Flutter App (4)'
 tags:
-  - kr
-  - kr-dev
-  - busy
-  - interesteem
-  - jjangjjangman
   - flutter
   - 플러터
 author: anpigon
@@ -208,9 +203,3 @@ class MyApp extends StatelessWidget ｛
 ---
 
 ![](https://steemitimages.com/0x0/https://files.steempeak.com/file/steempeak/anpigon/otMhz1ZG-divider-2461548_1280-cutout.png)
-
-***
-#####  <sub> **Sponsored ( Powered by [dclick](https://www.dclick.io) )** </sub>
-##### [[백서툰] EOS 백서 만화로 이해하기 (2)](https://api.dclick.io/v1/c?x=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjIjoiYW5waWdvbiIsInMiOiItZmx1dHRlci01LWZpcnN0LWZsdXR0ZXItYXBwLTQtMTU0MDEzNTM4OTM1MiIsImEiOlsxNjVdLCJ1cmwiOiJodHRwczovL3N0ZWVtaXQuY29tL2RjbGljay9Ac29uc29yeS8tZW9zLTItMTUzOTc2MTA0NDM4OCIsImlhdCI6MTU0MDEzNTM4OSwiZXhwIjoxODU1NDk1Mzg5fQ.dDn9e6l6HROkrlSz7Oea4E7ffsZAHoUXNCRcPywVmJY)
-<sup>지난화에 이어 'EOS백서 만화로 이해하기' 2편입니다. 백서 원문이 궁금하신 분들은 이곳을 ...</sup>
-<br><center>![logo](https://steemitimages.com/200x100/https://cdn.steemitimages.com/DQmbjkrc5UT4GgZXygAnS3mLrboAy7Y8gr7R7guB8HG3f5n/logopad500.png)<br><br>이 글은 스팀 기반 광고 플랫폼<br>[dclick](https://www.dclick.io) 에 의해 작성 되었습니다.</center>

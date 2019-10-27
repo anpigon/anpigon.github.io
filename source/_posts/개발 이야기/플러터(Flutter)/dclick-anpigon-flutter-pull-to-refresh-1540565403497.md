@@ -260,11 +260,3 @@ void _onRefresh(bool up) ｛
 우리는 필요한 기능을 구현하면서 그때그때 공부한다. 그리고 초급일 때는 초급 수준까지만 공부하면 된다. 어려운 로직을 이해하려고 노력할 필요는 없다. 그리고 급하게 공부할 필요도 없다. IT기술은 빠른 속도로 발전하고 트렌드가 바뀐다. 방관하는 자세로 느긋하게 공부하면 된다.ㅋ
 
 <br>여기까지 읽어주셔서 감사합니다.
-
-<center><br>᛫  ᛫  ᛫  ᛫  ᛫<br></center>
-
-***
-#####  <sub> **Sponsored ( Powered by [dclick](https://www.dclick.io) )** </sub>
-##### [집앞 새로생긴 족발집](https://api.dclick.io/v1/c?x=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjIjoiYW5waWdvbiIsInMiOiJmbHV0dGVyLXB1bGwtdG8tcmVmcmVzaC0tMTU0MDU2NTQwMzQ5NyIsImEiOlsxNDVdLCJ1cmwiOiJodHRwczovL3N0ZWVtaXQuY29tL2RjbGljay9AbGluZGFmbHloaWdoLy0tMTUzOTg1NjIxNjQ3OSIsImlhdCI6MTU0MDU2NTQwMywiZXhwIjoxODU1OTI1NDAzfQ.xf0TueDTt95wn3pszsqQvAxJhHxgZjocmyjiSqqKJm0)
-<sup>집앞 족발집이 생겨서 한번 먹어봤는데 ... 비싼데 맛이 반반... 싱싱한것과 오래된것을 반반...</sup>
-<br><center>![logo](https://steemitimages.com/200x100/https://cdn.steemitimages.com/DQmbjkrc5UT4GgZXygAnS3mLrboAy7Y8gr7R7guB8HG3f5n/logopad500.png)<br><br>이 글은 스팀 기반 광고 플랫폼<br>[dclick](https://www.dclick.io) 에 의해 작성 되었습니다.</center>

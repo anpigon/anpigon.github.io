@@ -90,17 +90,3 @@ date: 2018-10-11 00:32:33
 모두 감사합니다.
 
 https://media.giphy.com/media/Kwi3CtKyY5vd6/giphy.gif
-
-
-
-
-
-
-
-
-
-***
-#####  <sub> **Sponsored ( Powered by [dclick](https://www.dclick.io) )** </sub>
-##### [DCLICK: An Incentivized Ad platform by Proof of Click - 스팀 기반 애드센스를 소개합니다.](https://api.dclick.io/v1/c?x=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiJhbnBpZ29uIiwidXJsIjoiaHR0cHM6Ly9zdGVlbWl0LmNvbS9kY2xpY2svQGRjbGljay9kY2xpY2stYW4taW5jZW50aXZpemVkLWFkLXBsYXRmb3JtLWJ5LXByb29mLW9mLWNsaWNrLSIsInBlcm1saW5rIjoiLWFucGlnb25jb2Rpbmdjb250ZXN0cmVzdWx0LS0xNTM5MTg1NTUyMjMyIiwiaWF0IjoxNTM5MTg1NTUyLCJleHAiOjE4NTQ1NDU1NTJ9.2PRoI5vXEns2QaVAx4gRhF-UDYk_SZlQmvN9ZmOY9aU)
-<sup>안녕하세요 스티미언 여러분. 오늘 여러분께 스팀 블록체인 기반 광고 플랫폼 DCLICK을 소개...</sup>
-<br><center>![logo](https://steemitimages.com/200x100/https://cdn.steemitimages.com/DQmbjkrc5UT4GgZXygAnS3mLrboAy7Y8gr7R7guB8HG3f5n/logopad500.png)<br><br>이 글은 스팀 기반 광고 플랫폼<br>[dclick](https://www.dclick.io) 에 의해 작성 되었습니다.</center>

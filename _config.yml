@@ -55,9 +55,13 @@ future: true
 highlight:
   enable: true
   line_number: true
-  auto_detect: false
+  auto_detect: true
   tab_replace:
   
+# Math Equation
+mathjax: false 
+mathjax2: false
+
 # Home page setting
 # path: Root path for your blogs index page. (default = '')
 # per_page: Posts displayed per page. (0 = disable pagination)
@@ -103,6 +107,7 @@ pagination_dir: page
 ## Themes: https://hexo.io/themes/
 # theme: landscape
 theme: maupassant
+# theme: next
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
@@ -111,10 +116,8 @@ deploy:
   repo: https://github.com/anpigon/hexo.git 
   branch: gh-pages
 
-#steem_users: anpigon
-steem_users:
-  - anpigon
-  # - blockchainstudio
+# steem_users:
+#   - anpigon
 
 # algolia:
 #   appId: "8RFD3JC5TE"
@@ -169,7 +172,6 @@ markdown_it_plus:
 # livereload:
 #   port: 35729
 
-
 auto_dir_categorize:
 	enable: true  # options:true, false; default is true
-	force: false # options:true, false; default is false
+  force: false # options:true, false; default is false

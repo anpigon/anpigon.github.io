@@ -229,11 +229,3 @@ class FeedListState extends State<FeedList> ｛
 - [https://github.com/anpigon/flutter-steemit-app](https://github.com/anpigon/flutter-steemit-app)
 
 <br>여기까지 읽어주셔서 감사합니다.
-
-<br>
-
-***
-#####  <sub> **Sponsored ( Powered by [dclick](https://www.dclick.io) )** </sub>
-##### [드디어 이지 스팀잇이 출간되었습니다(+M-shape도요~)](https://api.dclick.io/v1/c?x=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjIjoiYW5waWdvbiIsInMiOiJmbHV0dGVyLS0xNTQwMzExMDI1NzI1IiwiYSI6WzE5MV0sInVybCI6Imh0dHBzOi8vc3RlZW1pdC5jb20va3IvQGZvcmhhcHB5d29tZW4vbS1zaGFwZS10ZXl1eHZ6dmR1IiwiaWF0IjoxNTQwMzExMDI1LCJleHAiOjE4NTU2NzEwMjV9.zJKrPhja-xQ6ztMJOoAukhT9upaCOIPAfnHZi7JNFp8)
-<sup>안녕하세요. 포해피우먼입니다. 오늘은 반가운 소식을 가지고 왔습니다. 아기다리고기다리 (-_-...</sup>
-<br><center>![logo](https://steemitimages.com/200x100/https://cdn.steemitimages.com/DQmbjkrc5UT4GgZXygAnS3mLrboAy7Y8gr7R7guB8HG3f5n/logopad500.png)<br><br>이 글은 스팀 기반 광고 플랫폼<br>[dclick](https://www.dclick.io) 에 의해 작성 되었습니다.</center>

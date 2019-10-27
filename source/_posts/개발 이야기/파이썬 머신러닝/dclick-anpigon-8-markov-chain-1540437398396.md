@@ -1,13 +1,10 @@
 ---
 title: '파이썬 머신러닝 #8 - 마르코프 체인(Markov Chain) : 문장 생성하기'
 tags:
-  - dclick
   - kr
   - kr-dev
-  - jjangjjangman
   - 파이썬
   - 머신러닝
-  - busy
 author: anpigon
 date: 2018-10-25 12:16:39
 ---

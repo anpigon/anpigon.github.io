@@ -145,8 +145,3 @@ scot-api의 느린 속도 때문에 답답해서, 마켓 정보를 가져오는 
 |[WHAN APP 개발 이야기 #5](/zzan/@anpigon/react-native-whan-app-5)|
 |[WHAN APP 개발 이야기 #6](/zzan/@anpigon/react-native-whan-app-6)|
 |[WHAN APP 개발 이야기 #7](/zzan/@anpigon/20190721033641041z)|
-
----
-
-#####  <sub> **Sponsored ( Powered by [dclick](https://www.dclick.io) )** </sub>
-[![dclick-imagead](https://s3.ap-northeast-2.amazonaws.com/dclick/image/jacobyu/1560603830043.png)](https://api.dclick.io/v1/c?x=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjIjoiYW5waWdvbiIsInMiOiJyZWFjdC1uYXRpdmUtd2hhbi1hcHAtOC1yZWFjdC1uYXRpdmUtY2FjaGUiLCJhIjpbImktMzc2Il0sInVybCI6Imh0dHBzOi8vcGxheS5nb29nbGUuY29tL3N0b3JlL2FwcHMvZGV0YWlscz9pZD1jb20uYXBwLnNtLnNwZWFraW5nbWFzdGVyIiwiaWF0IjoxNTY0OTc3ODMzLCJleHAiOjE4ODAzMzc4MzN9.6P-0jc85Rv5Mk-eeFUYpVbvEGmwuoDmRe44pqKF3R6g)

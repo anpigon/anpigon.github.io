@@ -236,8 +236,3 @@ $ hexo new page about
 <br>여기까지 읽어주셔서 감사합니다.
 <br>
 
-
----
-
-#####  <sub> **Sponsored ( Powered by [dclick](https://www.dclick.io) )** </sub>
-[![dclick-imagead](https://s3.ap-northeast-2.amazonaws.com/dclick/image/dclick/1540980285836.jpg)](https://kr-used.github.io/)

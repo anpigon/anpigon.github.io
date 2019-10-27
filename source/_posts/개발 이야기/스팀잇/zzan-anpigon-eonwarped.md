@@ -55,12 +55,3 @@ date: 2019-08-06 23:23:33
 ***
 
 <center><img src='https://steemitimages.com/400x0/https://cdn.steemitimages.com/DQmQmWhMN6zNrLmKJRKhvSScEgWZmpb8zCeE2Gray1krbv6/BC054B6E-6F73-46D0-88E4-C88EB8167037.jpeg'><h5>vote, reblog, follow <code><a href='/@anpigon'>@anpigon</a></code></h5></center>
-
-<br>
-
-
----
-
-#####  <sub> **Sponsored ( Powered by [dclick](https://www.dclick.io) )** </sub>
-##### [퀴어자유도시 제주를 상상하다! 제 3회 제주퀴어문화축제](https://api.dclick.io/v1/c?x=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjIjoiYW5waWdvbiIsInMiOiJlb253YXJwZWQiLCJhIjpbInQtMjAzMiJdLCJ1cmwiOiJodHRwczovL3RvZ2V0aGVyLmtha2FvLmNvbS9mdW5kcmFpc2luZ3MvNjc5NTEiLCJpYXQiOjE1NjUxMDM0MjgsImV4cCI6MTg4MDQ2MzQyOH0.kD1SWzDFb3UGcn2P5DVKHmJV1OpCaxRHquBLJtoq368)
-<sup>응원, 공유하면 카카오가 대신 기부합니다.</sup>

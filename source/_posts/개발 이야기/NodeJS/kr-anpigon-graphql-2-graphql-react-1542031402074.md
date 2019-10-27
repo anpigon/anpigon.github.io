@@ -181,19 +181,3 @@ export default App;
 구현하고 보니 코드 라인 수가 몇줄 안된다. 내 생각에는 `apollo-graphql`를 사용하면 개발시간을 절약할 수 있을 것 같다.
 
 끝.
-
-
-
-
-
-
-
-
-
-
----
-
-#####  <sub> **Sponsored ( Powered by [dclick](https://www.dclick.io) )** </sub>
-##### [바이트볼 주간 뉴스레터(11월 9일자), Delta 다이렉트 지원, 프리랜서 작가 채용, WCG 공헌자 천 명 돌파 ](https://api.dclick.io/v1/c?x=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjIjoiYW5waWdvbiIsInMiOiJncmFwaHFsLTItZ3JhcGhxbC1yZWFjdC0tMTU0MjAzMTQwMjA3NCIsImEiOlsidC02NjkiXSwidXJsIjoiaHR0cHM6Ly9zdGVlbWl0LmNvbS9rci9AZGFrZXNoaS8tMTEtOS1kZWx0YS13Y2ctLTE1NDE3NDUxMTM1NDMiLCJpYXQiOjE1NDIwMzE0MDIsImV4cCI6MTg1NzM5MTQwMn0.VmzBw0GqMozWSPtQGFAppjlW2beT08j_-7fwwjs_T84)
-<sup>바이트볼 주간 뉴스레터 2018. 11. 09 일자 소식을 전합니다. 이번 주 주요 내용은 다...</sup>
-</center>

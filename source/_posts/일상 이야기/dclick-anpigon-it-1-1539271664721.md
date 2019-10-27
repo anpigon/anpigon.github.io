@@ -1,15 +1,9 @@
 ---
 title: 'IT개발자로 사는 방법 #1'
 tags:
-  - dclick
-  - kr
-  - kr-writing
-  - kr-dev
-  - kr-event
 author: anpigon
 date: 2018-10-12 00:27:45
 ---
-
 
 안녕하세요. @anpigon 입니다. 
 
@@ -73,38 +67,3 @@ date: 2018-10-12 00:27:45
 <br>혼자서 서울에서 부산까지 걸어가면 약 15박 16일이 소요된다. 그럼 2명이서 걸어가면 7박 8일만에 갈수있다 것과 비슷하다.  7박8일만에 가려면 잠도 안자고 계속 걸어야한다.
 
 <br>여기까지 읽어 주셔서 감사합니다.
-
-<br><hr><br>
-
-## 이벤트 퀴즈(종료)
-
-<br>글 내용에 포함되어 있는 그림의 장소를 맞춰보세요. 
-
-제일 먼저 맞추는 한 분께 상금 **1 SBD** 드립니다.
-
-서울이 아닌 타 지역에 계신 분들께는 죄송합니다.
-> 참고로 구로/가산디지털 지역은 아닙니다. 
-<br>
-
-##### 힌트
-1. 지하철 2호선 라인
-
-### 정답자
-@thrufore 님이 맞추셨습니다. 축하합니다.
-
-정답은 **"을지로3가"** 였습니다.
-![20181010_190520.jpg](https://ipfs.busy.org/ipfs/QmPzr3PNNnDJqybWkf79uxowamyWbnJrU9mrTS5n5kXQ8v)
-
-<br><hr>
-
-그리고 귀여운 뱀 이모티콘 만들었어요. 
-<div class='phishy'>
-
-**(^^** @wonsama **~**
-</div>
-
-<hr>
-<h5><sub> <strong>Sponsored ( Powered by <a href="https://www.dclick.io">dclick</a> )</strong> </sub></h5>
-<h5><a href="https://steemit.com/dclick/@dclick/dclick-an-incentivized-ad-platform-by-proof-of-click-">DCLICK: An Incentivized Ad platform by Proof of Click - 스팀 기반 애드센스를 소개합니다.</a></h5>
-<p><sup>안녕하세요 스티미언 여러분. 오늘 여러분께 스팀 블록체인 기반 광고 플랫폼 DCLICK을 소개…</sup><br>
-<br></p><center><img src="https://steemitimages.com/200x100/https://cdn.steemitimages.com/DQmbjkrc5UT4GgZXygAnS3mLrboAy7Y8gr7R7guB8HG3f5n/logopad500.png" alt="logo"><br><br>이 글은 스팀 기반 광고 플랫폼<br><a href="https://www.dclick.io">dclick</a> 에 의해 작성 되었습니다.</center><p></p>
