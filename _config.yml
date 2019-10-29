@@ -49,7 +49,7 @@ titlecase: false # Transform title into titlecase
 external_link: true # Open external links in new tab
 filename_case: 1
 render_drafts: false
-post_asset_folder: false
+post_asset_folder: true
 relative_link: false
 future: true
 highlight:
@@ -57,10 +57,7 @@ highlight:
   line_number: true
   auto_detect: true
   tab_replace:
-  
-# Math Equation
-mathjax: false 
-mathjax2: false
+
 
 # Home page setting
 # path: Root path for your blogs index page. (default = '')
@@ -83,9 +80,9 @@ category_map:
   - 기타
 tag_map:
 
-category_generator:
-  per_page: 50
-  order_by: -date
+# category_generator:
+#   per_page: 50
+#   order_by: -date
 
 # Date / Time format
 ## Hexo uses Moment.js to parse and display date
@@ -106,8 +103,11 @@ pagination_dir: page
 
 ## Themes: https://hexo.io/themes/
 # theme: landscape
-theme: maupassant
+# theme: maupassant
 # theme: next
+theme: tranquilpeak
+# theme: yilia
+# theme: pure
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
@@ -119,21 +119,25 @@ deploy:
 # steem_users:
 #   - anpigon
 
-# algolia:
-#   appId: "8RFD3JC5TE"
-#   apiKey: "48a406413e85b1d7f28c62de9971d641"
-#   adminApiKey: "7772dd247831678aad42c9b2625f858e"
-#   chunkSize: 5000
-#   indexName: "my-hexo-blog"
-#   fields:
-#     - content:strip:truncate,0,500
-#     - excerpt:strip
-#     - gallery
-#     - permalink
-#     - photos
-#     - slug
-#     - tags
-#     - title
+algolia:
+  appId: "8RFD3JC5TE"
+  apiKey: "48a406413e85b1d7f28c62de9971d641"
+  adminApiKey: "7772dd247831678aad42c9b2625f858e"
+  chunkSize: 5000
+  indexName: "my-hexo-blog"
+  fields:
+    - content:strip:truncate,0,500
+    - excerpt:strip
+    - gallery
+    - photos
+    - slug
+    - title
+    - tags
+    - date
+    - categories
+    # - excerpt
+    - permalink
+    - thumbnailImageUrl
 
 # sitemap auto generator
 sitemap:
@@ -141,12 +145,13 @@ sitemap:
 
 # rss feed auto generator
 feed:
-# feed type (atom / rss2)
-type: rss2
-# feed path (Default: atom.xml / rss2.xml)
-path: rss2.xml
-# 최신 포스트의 수 설정. (0 또는 false 입력시 전체 포스트)
-limit: 20
+  type: atom # feed type (atom / rss2)
+  path: atom.xml  # feed path (Default: atom.xml / rss2.xml)
+  limit: 20 # 최신 포스트의 수 설정. (0 또는 false 입력시 전체 포스트)
+  
+# Math Equation
+mathjax: false 
+mathjax2: false
 
 markdown_it_plus:
   highlight: true
@@ -154,10 +159,17 @@ markdown_it_plus:
   xhtmlOut: true
   breaks: true
   langPrefix:
-  linkify: truex
+  linkify: true
   typographer:
   quotes: “”‘’
   pre_class: highlight
+  # plugins:
+  #   - plugin:
+  #       name: markdown-it-katex
+  #       enable: true
+  #   - plugin:
+  #       name: markdown-it-mark
+  #       enable: false  
 
 # server:
 #   port: 4000
@@ -175,3 +187,20 @@ markdown_it_plus:
 auto_dir_categorize:
 	enable: true  # options:true, false; default is true
   force: false # options:true, false; default is false
+
+# hexo-neat
+neat_enable: false
+neat_html:
+  enable: true
+  exclude:  
+neat_css:
+  enable: true
+  exclude:
+    - '*.min.css'
+neat_js:
+  enable: true
+  mangle: true
+  output:
+  compress:
+  exclude:
+    - '*.min.js' 
