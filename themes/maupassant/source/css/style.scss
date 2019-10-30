@@ -274,6 +274,21 @@ div {
         text-overflow: ellipsis;
         -webkit-line-clamp: 3;
         -webkit-box-orient: vertical;
+
+        &.thumbnail {
+            position: relative;
+            padding-left: 85px;
+
+            a[rel=gallery] {
+                position: absolute;
+                left: 5px;
+                top: 10px;
+            }
+
+            .caption {
+                display: none;
+            }
+        }
         /** 추가 **/
 
         h2 {

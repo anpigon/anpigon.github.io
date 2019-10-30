@@ -7,7 +7,9 @@ block title
     title= config.title
 
 block content
+  - var imgRegExp = new RegExp("https?://*[^>\n]*(?:(?:\\.(?:tiff?|jpe?g|gif|png|svg|ico)|ipfs/[a-z\\d]{40,}))", "gim")
   for post in page.posts.toArray()
+    - var photos = post.content.match(imgRegExp)
     .post
       h1.post-title
         include _partial/helpers.pug
@@ -27,10 +29,24 @@ block content
         .post-content
           != post.excerpt
       else if post.content
-        var description = trim(strip_html(post.content).replace(/\n/gm, ' '))
-        .post-content
-          != truncate(description, { length: 300 })
-        // anpigon 아래 주석 처리함.
+        - var description = strip_html(post.content)
+        //- - description = description.replace(/\n/gm, ' ')
+        - description = description.replace(imgRegExp, '')
+        - description = description.replace(/^(((http(s?))\:\/\/)?)([0-9a-zA-Z\-]+\.)+[a-zA-Z]{2,6}(\:[0-9]+)?(\/\S*)?/g, '')
+        - description = description.replace(/(http(s)?:\/\/steemitimages.com\/([0-9]+x[0-9]+)\/)?http(s)?:\/\/(\w*:\w*@)?[-\w.]+(:\d+)?(\/([\w/_.]*(\?\S+)?)?)?/g, '')
+        - description = description.replace(/\s+$/, '')
+        - description = description.replace(/\n|\r|\s+/g, ' ')
+        - description = description.replace(/^(\s+)?>/, '')
+        - description = description.replace(/&(nb|em|en)sp;/g, '')
+        - description = trim(description)
+        if photos && photos.length > 0
+          .post-content.thumbnail
+            != truncate(description, { length: 300 })
+            != image_tag(photos[0], { alt: "", class: "thumbnail", width: 68, height: 68 })
+        else
+          .post-content
+            != truncate(description, { length: 300 })
+        //- anpigon 아래 주석 처리함.
         //- - var br = 0
         //- - for (var i = 0; i < 10; ++i) {
         //-   - br = post.content.indexOf('\n',br+1)
