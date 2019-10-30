@@ -71,13 +71,6 @@ index_generator:
 # Category & Tag
 default_category: uncategorized
 category_map:
-  - 개발 이야기
-  - 책 이야기
-  - 영화 이야기
-  - 여행 이야기
-  - 맛집 이야기
-  - 일상 이야기
-  - 기타
 tag_map:
 
 # category_generator:
@@ -156,7 +149,7 @@ mathjax2: false
 markdown_it_plus:
   highlight: true
   html: true
-  xhtmlOut: true
+  xhtmlOut: false
   breaks: true
   langPrefix:
   linkify: true
@@ -171,36 +164,23 @@ markdown_it_plus:
   #       name: markdown-it-mark
   #       enable: false  
 
-# server:
-#   port: 4000
-#   log: false
-#   ip: 0.0.0.0
-#   compress: false
-#   header: true
-#   serveStatic:
-#     extensions:
-#     - html
-
-# livereload:
-#   port: 35729
-
 auto_dir_categorize:
 	enable: true  # options:true, false; default is true
   force: false # options:true, false; default is false
 
 # hexo-neat
-neat_enable: false
-neat_html:
-  enable: true
-  exclude:  
-neat_css:
-  enable: true
-  exclude:
-    - '*.min.css'
-neat_js:
-  enable: true
-  mangle: true
-  output:
-  compress:
-  exclude:
-    - '*.min.js' 
+# neat_enable: false
+# neat_html:
+#   enable: true
+#   exclude:  
+# neat_css:
+#   enable: true
+#   exclude:
+#     - '*.min.css'
+# neat_js:
+#   enable: true
+#   mangle: true
+#   output:
+#   compress:
+#   exclude:
+#     - '*.min.js' 
