@@ -9,7 +9,7 @@ block title
 block content
   - var imgRegExp = new RegExp("https?://*[^>\n]*(?:(?:\\.(?:tiff?|jpe?g|gif|png|svg|ico)|ipfs/[a-z\\d]{40,}))", "gim")
   for post in page.posts.toArray()
-    - var photos = post.content.match(imgRegExp)
+    //- - var photos = post.content.match(imgRegExp)
     .post
       h1.post-title
         include _partial/helpers.pug
