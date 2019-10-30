@@ -108,8 +108,8 @@ github:
 # Gitment
 # Introduction: https://imsun.net/posts/gitment-introduction/
 comment:
-  type: valine  # 启用哪种评论系统
-  disqus:  # enter disqus shortname here
+  type: disqus  # 启用哪种评论系统
+  disqus:  anpigon-github-io # enter disqus shortname here
   youyan: 
     uid: # enter youyan uid 
   livere:

@@ -95,12 +95,13 @@ pagination_dir: page
 #   - hexo-algoliasearch
 
 ## Themes: https://hexo.io/themes/
-# theme: landscape
-theme: maupassant
-# theme: next
+# theme: maupassant
+theme: next
 # theme: tranquilpeak
-# theme: yilia
 # theme: pure
+
+# theme: landscape
+# theme: yilia
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
@@ -129,8 +130,8 @@ algolia:
     - date
     - categories
     # - excerpt
-    - permalink
-    - thumbnailImageUrl
+    # - permalink
+    # - thumbnailImageUrl
 
 # sitemap auto generator
 sitemap:
