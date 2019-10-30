@@ -37,8 +37,12 @@ description:
 
 <br><hr>
 
-[\[북클럽\] 돌아온 스짱 북클럽 미션: 내 인생 가장 슬픈 책](https://www.steemzzang.com/zzan/@book.club/6ykcyd)
+> [\[북클럽\] 돌아온 스짱 북클럽 미션: 내 인생 가장 슬픈 책](https://www.steemzzang.com/zzan/@book.club/6ykcyd)
 
 ***
 
-<center><sup>Originally posted on [안피곤님의 블로그](http://anpigon.dblog.org/seujjang-bugkeulreob-misyeon-nae-insaeng-gajang-seulpeun-caeg-mi-bipo-yu). Steem blog powered by [ENGRAVE](https://engrave.website).</sup></center>
+<center><sup>
+
+Originally posted on [안피곤님의 블로그](http://anpigon.dblog.org/seujjang-bugkeulreob-misyeon-nae-insaeng-gajang-seulpeun-caeg-mi-bipo-yu). Steem blog powered by [ENGRAVE](https://engrave.website).
+
+</sup></center>
