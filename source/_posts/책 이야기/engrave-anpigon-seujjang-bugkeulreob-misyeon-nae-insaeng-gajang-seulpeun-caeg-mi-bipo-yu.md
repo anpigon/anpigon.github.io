@@ -7,6 +7,10 @@ tags:
   - 미 비포 유
 author: anpigon
 date: 2019-10-07 23:42:21
+description: 
+  죽음 앞에서 사랑이 물었다.
+  내 곁에서 그냥, 살아주면 안 되나요?
+  내가 읽었던 소설 중에 가장 슬픈 책은 바로 로맨스 소설 ⟪미 비포 유⟫ 입니다. 사실 로맨스 소설을 즐겨읽는 편은 아니지만, 하지만 이 책은 매우 슬펐습니다. ㅠㅠ 저에게 이렇게 감동적이고 가슴 깊은 곳에 울림을 주는 책은 ⟪나의 라임 오렌지 나무⟫, ⟪가시고기⟫, ⟪국화꽃 향기⟫, 김정현의 ⟪아버지⟫ 이후로 오랜만이었습니다. 사실 저의 가장 슬픈 책은 단연코 ⟪나의 라임 오렌지나무⟫라고 생각합니다. 하지만  다른 누군가가 북클럽 이벤트에 ⟪나의 라임 오렌지나무⟫를 쓸 것 같아서, 저는 가장 최근에 읽었던 ⟪미 비포 유⟫를 선택했습니다. ㅎㅎ
 ---
 
 ![](http://i.011st.com/ex_t/R/400x400/1/85/0/src/pd/19/1/0/3/5/0/8/qRcqV/1114103508_B.jpg)
@@ -36,4 +40,5 @@ date: 2019-10-07 23:42:21
 [\[북클럽\] 돌아온 스짱 북클럽 미션: 내 인생 가장 슬픈 책](https://www.steemzzang.com/zzan/@book.club/6ykcyd)
 
 ***
+
 <center><sup>Originally posted on [안피곤님의 블로그](http://anpigon.dblog.org/seujjang-bugkeulreob-misyeon-nae-insaeng-gajang-seulpeun-caeg-mi-bipo-yu). Steem blog powered by [ENGRAVE](https://engrave.website).</sup></center>

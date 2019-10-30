@@ -27,20 +27,26 @@ block content
         .post-content
           != post.excerpt
       else if post.content
-        - var br = 0
-        - for (var i = 0; i < 5; ++i) {
-          - br = post.content.indexOf('\n',br+1)
-          if br<0
-            - break
-          if br >150
-            - break
-        - }
-        if br < 0
-          .post-content
-            != post.content
-        else
-          .post-content
-            != post.content.substring(0, br)
+        var description = trim(strip_html(post.content).replace(/\n/gm, ' '))
+        .post-content
+          != truncate(description, { length: 300 })
+        // anpigon 아래 주석 처리함.
+        //- - var br = 0
+        //- - for (var i = 0; i < 10; ++i) {
+        //-   - br = post.content.indexOf('\n',br+1)
+        //-   if br < 0
+        //-     - break
+        //-   if br > 150
+        //-     - break
+        //- - }
+        //- if br < 0
+        //-   .post-content
+        //-     != post.content
+        //- else
+        //-   .post-content
+        //-     != post.content.substring(0, br)
+            .replace(/<[^>]*>?/gm, '')
+            // .replace(/[\n(\<br\s?\/?\>)]/gi, ' ')
       p(class='readmore')
         a(href=url_for(post.path))= __('Readmore')
 

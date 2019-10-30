@@ -267,6 +267,15 @@ div {
         text-align: justify;
         text-justify: distribute;
         word-break: normal;
+        
+        /** 추가 **/
+        display: -webkit-box;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        /** 추가 **/
+
         h2 {
             margin: 1.4em 0 1.1em;
             border-bottom: 1px solid #eee;

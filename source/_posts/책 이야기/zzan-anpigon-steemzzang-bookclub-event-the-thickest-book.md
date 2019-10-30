@@ -1,11 +1,8 @@
 ---
-title: '[스짱 북클럽 이벤트 참여] 가장 두꺼운 책 : steemzzang-bookclub-event-the-thickest-book'
+title: '[북클럽] 가장 두꺼운 책 : 이지유럽'
 tags:
-  - zzan
+  - 북클럽
   - book
-  - kr-book
-  - booksteem
-  - kr
 author: anpigon
 date: 2019-09-07 00:58:57
 ---
