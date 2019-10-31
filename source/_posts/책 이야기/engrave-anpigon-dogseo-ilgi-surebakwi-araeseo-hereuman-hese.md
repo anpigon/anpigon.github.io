@@ -1,14 +1,8 @@
 ---
-title: '[독서 일기] 수레바퀴 아래서 - 헤르만 헤세'
+title: '⟪수레바퀴 아래서⟫ 헤르만 헤세'
 tags:
-  - engrave
-  - kr
-  - zzan
-  - sct
-  - sct-book
-  - book
-  - booksteem
-  - kr-book
+  - 헤르만 헤세
+  - 독서 후기
 author: anpigon
 date: 2019-10-03 14:41:18
 ---
@@ -150,7 +144,11 @@ date: 2019-10-03 14:41:18
 
 
 ***
-<center><sup>Originally posted on [스팀 블록체인 독서모임](http://book.dblog.org/dogseo-ilgi-surebakwi-araeseo---hereuman-hese). Steem blog powered by [ENGRAVE](https://engrave.website).</sup></center>
+<center><sup>
+
+Originally posted on [스팀 블록체인 독서모임](http://book.dblog.org/dogseo-ilgi-surebakwi-araeseo---hereuman-hese). Steem blog powered by [ENGRAVE](https://engrave.website).
+
+</sup></center>
 
 
 

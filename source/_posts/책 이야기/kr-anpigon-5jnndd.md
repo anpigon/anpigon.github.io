@@ -1,75 +1,60 @@
 ---
 title: '뇌를 위한 휴식 : 마인드풀니스'
 tags:
-  - busy
-  - kr
-  - kr-newbie
-  - jjangjjangman
-  - mindfuless
+  - 마인드풀니스
+  - 구가야 아키라
+  - 최고의 휴식
 author: anpigon
 date: 2018-08-22 00:01:03
 ---
 
-안녕하세요. @anpigon입니다.
+## 마인드풀니스 소개
 
 피곤을 해소하는 방법 중 하나인 **마인드풀니스**를 소개합니다. 마인드풀니스는 뇌를 휴식하는 방법입니다.  마음 챙김 명상이라고도 합니다.
 
-___
-<div class='text-center'>
+<br>
 
 ![뇌를 위한 휴식 마인드풀니스](https://steemitimages.com/0x300/https://imgur.com/a2cMI4Q.png)
 
-</div>
+
+<br>
 
 ___
 
+2007년 구글에서 SIY(Search Inside Yourself) 프로그램을 도입했는데, 이것이 **마인드풀니스(Mindfuless)** 의 시작이다. 지금은 구글뿐만 아니라 애플, 페이스북, 인텔 등 유명한 기업에서도 마인드풀니스를 운영하고 있다.
 
-
-2007년 구글에서 SIY(Search Inside Yourself) 프로그램을 도입했는데, 이것이 **마인드풀니스(Mindfuless)**의 시작이다. 지금은 구글뿐만 아니라 애플, 페이스북, 인텔 등 유명한 기업에서도 마인드풀니스를 운영하고 있다.
-
-우리가 아무것도 하지 않을 때 활성화되는 뇌의 부위를  **디폴트 모드 네트워크(DMN, Default Mode Network)**라고 한다. 우리의 뇌는 신체가 소비하는 전체 에너지 중에서 20％를 사용한다. 그리고 뇌가 소비하는 에너지의 60 ~ 80％는 디폴트 모드 네트워크라고 불리는 뇌의 회로에 사용된다.
+우리가 아무것도 하지 않을 때 활성화되는 뇌의 부위를  **디폴트 모드 네트워크(DMN, Default Mode Network)** 라고 한다. 우리의 뇌는 신체가 소비하는 전체 에너지 중에서 20％를 사용한다. 그리고 뇌가 소비하는 에너지의 60 ~ 80％는 디폴트 모드 네트워크라고 불리는 뇌의 회로에 사용된다.
 
 ___
 
-<div class='text-center'>
+<br>
 
-![디폴트 모드 네트워크](https://steemitimages.com/0x300/https://imgur.com/JeTXL1V.png)
+<center>
 
-</div>
-
-<div class='text-center'>
+![](https://steemitimages.com/0x300/https://imgur.com/JeTXL1V.png)
 
 <sub>**디폴트 모드 네트워크**</sub>
 <sup>가만히 있을때 활성화 되는 뇌의 부위</sup>
 
-</div>
-
-___
+</center>
 
 디폴트 모드 네트워크가 과도하게 활성화되어 에너지를 낭비하는 경우, 아무것도 하지 않아도 우리는 피곤함을 느끼게 된다. 디폴트 모드 네트워크를 스스로 통제할 수 있는 뇌 구조를 만드는 것이 마인드풀니스의 핵심이라고 할 수 있다.
 > 힘들고 고통스러웠던 과거나 불안한 미래를 떠올린다면 디폴트 모드 네트워크가 과도하게 활성화된다.
 
 <br>
-___
-
 <br>
+<br>
+<br>
+
+## 마인드풀니스 호흡 방법
 
 다음은 구가야 아키라의 《최고의 휴식》에 나온 마인드풀니스 호흡 방법이다.
 
-<div class='text-center'>
+<center>
 
 ![마인드풀니스 호흡법](https://steemitimages.com/0x400/https://imgur.com/BooXFJF.png)
 
-</div>
-
-<div class='text-center'>
-
-<sup>**마인드풀니스 호흡법**</sup>
-
-</div>
-
-
-___
+</center>
 
 1. **기본자세를 취한다.** 
     - 눈을 감고 자세를 편하게 앉는다.
@@ -87,4 +72,3 @@ ___
 하루에 5분에서 10분 정도 매일 지속하는 것이 중요하다. 그리고 매일 같은 시간, 같은 장소에서 하는 습관을 들이는 것이 좋다.
 
 여기까지 읽어주셔서 감사합니다.
-
