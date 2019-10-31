@@ -21,18 +21,18 @@ permalink: /about/
 
 ***
 
-## 사이드 프로젝트
+### 사이드 프로젝트
 
 아래는 개인적으로 진행중인 사이드 프로젝트입니다.
 
-### 스팀잇 펫 연구소
+#### 스팀잇 펫 연구소
 
 STEEM 블록체인에서 봇을 활용한 큐레이션 서비스
 
 * [https://anpigon.github.io/pet](https://anpigon.github.io/pet/#/)
 
 
-### Steem Engine Nitrous Instance
+#### Steem Engine Nitrous Instance
 
 STEEM의 사이드 블록체인, Steem Engine 기반의 Nitrous 오픈 소스 참여
 
@@ -41,7 +41,7 @@ STEEM의 사이드 블록체인, Steem Engine 기반의 Nitrous 오픈 소스 �
 * Github: [https://github.com/steem-engine-exchange/nitrous](https://github.com/steem-engine-exchange/nitrous)
 
 
-### 안드로이드 이더리움 모바일 지갑앱
+#### 안드로이드 이더리움 모바일 지갑앱
 
 React Native 기반의 이더리움 모바일 지갑앱
 
@@ -54,13 +54,13 @@ React Native 기반의 이더리움 모바일 지갑앱
 - ERC20은 미지원(개발 미완료)
 
 
-### 안드로이드 STEEM & SCOT 보팅 파워 위젯
+#### 안드로이드 STEEM & SCOT 보팅 파워 위젯
 
 STEEM과 스팀엔진 기반의 토큰(SCOT) 보팅 파워를 볼 수 있는 안드로이드 바탕화면 위젯 앱
 
 * Google Play Store: [https://play.google.com/store/apps/details?id=com.steem_widget](https://play.google.com/store/apps/details?id=com.steem_widget)
 
-## 스팀엔진 토큰 거래소
+#### 스팀엔진 토큰 거래소
 
 스팀엔진 토큰 덱스 거래소(구현중)
 
