@@ -76,7 +76,7 @@ https://www.glideapps.com/
 
 **glideapps**는 아래 1분 42초 동영상만 보고 나면, 코딩을 전혀 몰라도 모바일앱을  아주 쉽게 금방 만들 수 있습니다. 한번 해보세요.
 
-https://youtu.be/_MEmyCRBbXM
+<iframe width="560" height="315" src="https://www.youtube.com/embed/_MEmyCRBbXM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 <br>
 
