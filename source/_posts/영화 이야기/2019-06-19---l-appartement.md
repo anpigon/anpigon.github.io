@@ -2,6 +2,7 @@
 title: "⟪라빠르망(L'Appartement)⟫ - 미스터리 사랑 이야기"
 author: wangpigon
 date: "2019-06-19T06:02:24Z"
+permalink: "/aaa/@wangpigon/l-appartement"
 tags:
   - "영화 후기"
 ---

@@ -2,6 +2,7 @@
 title: "[소설] 더글라스 케네디 ⟪스테이트 오브 더 유니언 (Kennedy, Douglas - State of the Union)⟫"
 author: steemory
 date: "2019-05-05T23:12:42Z"
+permlink: "/kr/@steemory/kennedy-douglas-state-of-the-union"
 tags:
   - "독서 후기"
   - "더글라스 케네디"

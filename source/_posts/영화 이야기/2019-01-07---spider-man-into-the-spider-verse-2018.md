@@ -2,6 +2,7 @@
 title: "스파이더맨: 뉴 유니버스 (Spider-Man: Into the Spider-Verse, 2018)"
 author: steemory
 date: "2019-01-06T15:02:48Z"
+permalink: "/kr/@steemory/spider-man-into-the-spider-verse-2018"
 tags:
   - 영화 후기
   - 스파이더맨

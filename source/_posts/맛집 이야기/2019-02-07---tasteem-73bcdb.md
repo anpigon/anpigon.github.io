@@ -2,9 +2,9 @@
 title: "[종로] 백숙/삼계탕 맛집 - 토속촌"
 author: steemory
 date: "2019-02-07T02:33:57Z"
+permalink: "/tasteem/@steemory/tasteem-73bcdb"
 tags:
   - "테이스팀"
-permalink: /tasteem/@steemory/tasteem-73bcdb
 ---
 ![](https://static.tasteem.io/uploads/3843/post/27110/content_edf4abf2-6a21-414e-978c-f24d64b53094.jpeg)
 <br/>
