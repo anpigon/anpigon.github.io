@@ -1,9 +1,9 @@
 ---
 title: 안녕하세요. 스팀잇을 본격적으로 시작합니다.
 tags:
-  
 author: anpigon
 date: 2018-07-19 21:43:33
+published: false
 ---
 
 가입은 오래전에 하였지만,

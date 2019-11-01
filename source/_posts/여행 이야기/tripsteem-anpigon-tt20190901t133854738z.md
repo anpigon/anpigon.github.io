@@ -128,7 +128,7 @@ date: 2019-09-01 22:38:57
 
 공연이 끝나고 난 뒤 텅빈 공연장을 찍어보았습니다.
 
-https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190831_221008-1567340601379.jpg
+![](https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190831_221008-1567340601379.jpg)
 
 > 나의 기억 속에
 날 아프게 하는 모든 것들까지도
@@ -144,8 +144,5 @@ https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190831_221008-1567340601
 
 <a href='https://kr.tripsteem.com/'><b>trips.teem</b></a> 으로 작성된 글 입니다.
 
-<a href='https://kr.tripsteem.com/'>![image](https://cdn.steemitimages.com/DQmUFZTyUVo6PuZGHeF9VxLHxkrufqLa37Wz8U6A9j115JU/%EB%B0%B0%EB%84%88_%EB%B4%84.jpg)</a>
+<a href='https://kr.tripsteem.com/'>![](https://cdn.steemitimages.com/DQmUFZTyUVo6PuZGHeF9VxLHxkrufqLa37Wz8U6A9j115JU/%EB%B0%B0%EB%84%88_%EB%B4%84.jpg)</a>
 </center>
-
-***
-<center><sup>Originally posted on [안피곤님의 블로그](http://anpigon.dblog.org/tt20190901t133854738z). Steem blog powered by [ENGRAVE](https://engrave.website).</sup></center>

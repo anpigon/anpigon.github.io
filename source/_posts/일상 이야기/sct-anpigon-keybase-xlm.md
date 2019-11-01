@@ -1,14 +1,11 @@
 ---
 title: Keybase 스텔라루멘(XLM) 에어드랍 신청 했어요.
 tags:
-  
-  
   - airdrop
   - coin
-  
-  
 author: anpigon
 date: 2019-09-10 13:48:39
+published: false
 ---
 
 작년에는 [blockchain](https://www.blockchain.com)에서 했던 에어드랍 이벤트에서 100 XLM을 받았었어요. 그때 당시 원화로 환전했을때 2만5천원 정도 했던 것으로 기억납니다.

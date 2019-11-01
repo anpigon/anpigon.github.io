@@ -3,10 +3,9 @@ title: 레드마인(Redmine) svn 저장소 등록시 404 오류가 발생할때
 tags:
   - redmine
   - svn
-  
-  
 author: anpigon
 date: 2018-03-08 14:43:42
+published: false
 ---
 
 레드마인에서 SVN 저장소 연결 정보를 입력하고 저장소 페이지를 가보면 404 오류가 계속 뜨는 경우, 

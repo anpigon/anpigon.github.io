@@ -44,7 +44,9 @@ https://www.youtube.com/playlist?list=PL7jH19IHhOLPp990qs8MbSsUlzKcTKuCf
 
 <br>
 
-<center>![](https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/0fc3b915-ca39-4af8-88cf-efc70feff922/hr-milan-van-bruggen-02.jpg)</center>
+<center>
+
+![](https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/0fc3b915-ca39-4af8-88cf-efc70feff922/hr-milan-van-bruggen-02.jpg)</center>
 
 <br>
 
@@ -79,7 +81,3 @@ https://youtu.be/_MEmyCRBbXM
 <br>
 
 ![](https://cdn.steemitimages.com/DQmYTcttU9sf5MN2qDKjYVDhBuajQ1LYerxWi6HiguQUw72/image.png)
-
-# 그리고 이제 누가 SCT, ZZAN, AAA 모바일앱을 만들어 주세요~!!
-
-## 화이팅입니다~!

@@ -14,38 +14,38 @@ date: 2019-09-05 15:13:00
 
 전시회를 감상하면서 저는 어릴때 했던 8비트 게임이 생각났습니다. 그 추억때문인지 픽셀 아트를 보면 아련한 감성이 느껴집니다. 너무 너무 어릴적 이라서 기억은 잘 안나지만, 아직 마음속에 남아 있는 추억 때문인것 같습니다.
 
-https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/collage-1567663149500.png
+![](https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/collage-1567663149500.png)
 
 <br>
 
 한쪽 벽면에는 많은 액자가 붙어있습니다. 명화를 픽셀로 표현한 것 같습니다. 영화 ⟪베스트 오퍼⟫의 주인공이 된 느낌이었습니다. ㅎㅎ
 
-https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190828_174539-1567661778060.jpg
+![](https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190828_174539-1567661778060.jpg)
 
-https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/collage3-1567661812276.png
+![](https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/collage3-1567661812276.png)
 
 <br>
 <br>
 
 그리고 반 고흐의 ⟪별이 빛나는 밤⟫을 픽셀로 표현한 걸 보고 놀랐습니다. 느낌을 정말 잘 살렸네요. 이 그림은 정말 갖고 싶었어요. ㅋ
 
-https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190828_174635-1567661914902.jpg
+![](https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190828_174635-1567661914902.jpg)
 
 <br>
 <br>
 
 이번 그림은 싸이월드의 미니룸 같아요. 반 고흐, 요하네스 페르메이르, 그리고 앤디 워홀의 방인것 같습니다. 방이 너무 작네요. ㅋㅋ
 
-https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/collage2-1567661619072.png
+![](https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/collage2-1567661619072.png)
 
 <br>
 <br>
 
 다음 그림은 좌우로 왔다 갔다 하면 낮과 밤이 보입니다. 
 
-https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190828_175310-1567661274286.jpg
+![](https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190828_175310-1567661274286.jpg)
 
-https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190828_175315-1567661277706.jpg
+![](https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190828_175315-1567661277706.jpg)
 
 궁금하면 동영상으로 감상해보세요. ㅎㅎ
 
@@ -66,8 +66,5 @@ https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190828_175315-1567661277
 
 <a href='https://kr.tripsteem.com/'><b>trips.teem</b></a> 으로 작성된 글 입니다.
 
-<a href='https://kr.tripsteem.com/'>![image](https://cdn.steemitimages.com/DQmUFZTyUVo6PuZGHeF9VxLHxkrufqLa37Wz8U6A9j115JU/%EB%B0%B0%EB%84%88_%EB%B4%84.jpg)</a>
+<a href='https://kr.tripsteem.com/'>![](https://cdn.steemitimages.com/DQmUFZTyUVo6PuZGHeF9VxLHxkrufqLa37Wz8U6A9j115JU/%EB%B0%B0%EB%84%88_%EB%B4%84.jpg)</a>
 </center>
-
-***
-<center><sup>Originally posted on [안피곤님의 블로그](http://anpigon.dblog.org/tt20190905t061257794z). Steem blog powered by [ENGRAVE](https://engrave.website).</sup></center>

@@ -4,13 +4,9 @@ author: steemory
 date: "2018-12-15T03:42:24Z"
 tags:
   - "테이스팀"
-  
-  
-  
-  
-  
+permalink: /tasteem/@steemory/tasteem-8fbca9
 ---
-![title_image](https://static.tasteem.io/uploads/3843/post/23981/content_b82c3c5d-a361-40e1-b764-eb5afeaabe3c.jpeg)
+![](https://static.tasteem.io/uploads/3843/post/23981/content_b82c3c5d-a361-40e1-b764-eb5afeaabe3c.jpeg)
 <br/>
 건대 근처에 백종원 식당이 많아졌어요. 이러다가 백종원 동네로 바뀌는게 아닌지? ㅎㅎ
 
@@ -23,32 +19,32 @@ tags:
 
 <br>
 요건 치즈 매운 철판 닭갈비에요.
-![20181212_202823.jpg](https://static.tasteem.io/uploads/image/image/117004/8ca93f36-8fb6-4488-a2ab-40488173928b.jpeg)
+![](https://static.tasteem.io/uploads/image/image/117004/8ca93f36-8fb6-4488-a2ab-40488173928b.jpeg)
 
 <br>
 치즈는 이렇게 따로 줍니다.
-![20181212_202827.jpg](https://static.tasteem.io/uploads/image/image/117005/a2d129d6-a5af-406b-841f-4576c265f940.jpeg)
+![](https://static.tasteem.io/uploads/image/image/117005/a2d129d6-a5af-406b-841f-4576c265f940.jpeg)
 > 사장님이 10분 있다가 닭이 있으면 치즈 넣으래요.
 
 <br>
 
-![20181212_203331.jpg](https://static.tasteem.io/uploads/image/image/117006/a2d129d6-a5af-406b-841f-4576c265f940.jpeg)
+![](https://static.tasteem.io/uploads/image/image/117006/a2d129d6-a5af-406b-841f-4576c265f940.jpeg)
 
 닭이 이렇게 익을 때쯤 치즈를 살살살 뿌려주세요.
 
 
-![20181212_203629.jpg](https://static.tasteem.io/uploads/image/image/117008/8ca93f36-8fb6-4488-a2ab-40488173928b.jpeg)
+![](https://static.tasteem.io/uploads/image/image/117008/8ca93f36-8fb6-4488-a2ab-40488173928b.jpeg)
 
 
 
-![20181212_203636.jpg](https://static.tasteem.io/uploads/image/image/117010/a2d129d6-a5af-406b-841f-4576c265f940.jpeg)
+![](https://static.tasteem.io/uploads/image/image/117010/a2d129d6-a5af-406b-841f-4576c265f940.jpeg)
 > 치즈가 사르르 녹고 있어요~
 
 <br>
 
 요건 샐러드인데 매운 닭갈비 먹고 입안이 맵고 따갑고 아플때 드세요. 그럼 아픈게 싸악 다 나아요. ㅎㅎ 특허내야할 듯...
 
-![20181212_202832.jpg](https://static.tasteem.io/uploads/image/image/117012/a2d129d6-a5af-406b-841f-4576c265f940.jpeg)
+![](https://static.tasteem.io/uploads/image/image/117012/a2d129d6-a5af-406b-841f-4576c265f940.jpeg)
 >  샐러드는 다 먹고 모자르면 셀프바에서 더 가져와서 먹으면 됩니다. 참고로 셀프바에 닭고기는 없어요.ㅜㅠ
 
 한번쯤은 먹어보고 싶은 맛입니다. 
