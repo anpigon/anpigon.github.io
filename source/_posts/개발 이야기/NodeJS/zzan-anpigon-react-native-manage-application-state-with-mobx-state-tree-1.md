@@ -180,7 +180,7 @@ it("can create a wishlist", () => {
 
 *** 
 
-<center><img src='https://steemitimages.com/400x0/https://cdn.steemitimages.com/DQmQmWhMN6zNrLmKJRKhvSScEgWZmpb8zCeE2Gray1krbv6/BC054B6E-6F73-46D0-88E4-C88EB8167037.jpeg'><h5>vote, reblog, follow <code><a href='/@anpigon'>@anpigon</a></code></h5></center>
+<center><img src='https://steemitimages.com/400x0/https://cdn.steemitimages.com/DQmQmWhMN6zNrLmKJRKhvSScEgWZmpb8zCeE2Gray1krbv6/BC054B6E-6F73-46D0-88E4-C88EB8167037.jpeg'><h5>vote, reblog, follow <code><a href='https://steemit.com/@anpigon'>@anpigon</a></code></h5></center>
 
 ***
 <center><sup>Originally posted on [안피곤님의 블로그](http://anpigon.dblog.org/react-native-manage-application-state-with-mobx-state-tree-1). Steem blog powered by [ENGRAVE](https://engrave.website).</sup></center>
