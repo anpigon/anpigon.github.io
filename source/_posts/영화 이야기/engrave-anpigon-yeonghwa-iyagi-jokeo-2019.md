@@ -78,10 +78,7 @@ date: 2019-10-07 12:16:45
 
 <hr><div class="pull-left"><img src='https://cdn.steemitimages.com/300x0/https://cdn.steemitimages.com/DQmRUA4nEVgikokJ63CPw6ZgKLL48dvoUtYTvFvYnuMwBpt/image.png' style="margin-right: 10px"/></div><b>리뷰전문 트리플A</b><br><sub>한국의 로튼토마토를 추구하는 영화, 드라마, 애니메이션 리뷰사이트인 트리플A가 서비스중입니다.<br>리뷰는 트리플A 에서<br><a href='https://www.triplea.reviews'>https://www.triplea.reviews</a><br><a href='https://www.triplea.reviews/@anpigon'>https://www.triplea.reviews/@anpigon</a></sub><br>
 
-
 ***
-<center><sup>
+<center>
 
-Originally posted on [안피곤님의 블로그](http://anpigon.dblog.org/yeonghwa-iyagi-jokeo-2019). Steem blog powered by [ENGRAVE](https://engrave.website).
-
-</sup></center>
+<sup>Originally posted on [안피곤님의 블로그](http://anpigon.dblog.org/yeonghwa-iyagi-jokeo-2019). Steem blog powered by [ENGRAVE](https://engrave.website).</sup></center>

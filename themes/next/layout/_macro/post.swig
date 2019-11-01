@@ -197,7 +197,11 @@
           {%- endif %}
           <!--/noindex-->
         {% elif post.excerpt %}
-          {{ post.excerpt }}
+          {%- if theme.excerpt_truncate %}
+            {{ truncate(strip_html(post.excerpt), { length: 200 }) }}
+          {% else %}
+            {{ post.excerpt }}
+          {%- endif %}
           <!--noindex-->
           {%- if theme.read_more_btn %}
             <div class="post-button">

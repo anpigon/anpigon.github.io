@@ -6,8 +6,8 @@ tags:
   - 슬픈책
 author: anpigon
 date: 2019-10-07 23:42:21
-gallery:
-  - http://i.011st.com/ex_t/R/400x400/1/85/0/src/pd/19/1/0/3/5/0/8/qRcqV/1114103508_B.jpg
+# gallery:
+#   - http://i.011st.com/ex_t/R/400x400/1/85/0/src/pd/19/1/0/3/5/0/8/qRcqV/1114103508_B.jpg
 # description: 
 #   죽음 앞에서 사랑이 물었다.
 #   내 곁에서 그냥, 살아주면 안 되나요?
