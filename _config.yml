@@ -19,9 +19,9 @@ timezone: Asia/Seoul
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: https://anpigon.github.io/hexo/
-root: /hexo/
-permalink: :year/:month/:day/:title/
+url: https://anpigon.github.io/
+root: /
+permalink: # :year/:month/:day/:title/
 ## Permalink 각 부분(segment)의 기본값	
 permalink_defaults:
 
@@ -107,7 +107,7 @@ theme: next
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: https://github.com/anpigon/hexo.git 
+  repo: https://github.com/anpigon/anpigon.github.io.git 
   branch: gh-pages
 
 # steem_users:
