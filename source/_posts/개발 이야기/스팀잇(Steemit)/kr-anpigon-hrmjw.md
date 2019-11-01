@@ -1,11 +1,11 @@
 ---
 title: 보팅파워와 재생시간 분석하기
 tags:
-  - kr
-  - busy
-  - kr-newbie
-  - kr-dev
-  - jjangjjangman
+  
+  
+  
+  
+  
 author: anpigon
 date: 2018-07-23 23:50:45
 ---

@@ -1,15 +1,15 @@
 ---
 title: SCOT 토큰 임대 정보를 볼 수 있는 앱
 tags:
-  - zzan
-  - liv
-  - palnet
-  - neoxian
-  - sct
-  - kr-dev
-  - busy
-  - jjm
-  - kr
+  
+  
+  
+  
+  
+  
+  
+  
+  
 author: anpigon
 date: 2019-07-29 22:49:24
 ---

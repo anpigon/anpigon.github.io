@@ -1,12 +1,12 @@
 ---
 title: 플러터(Flutter) 모바일 앱 개발 -  스팀잇 피드 구현하기
 tags:
-  - kr
-  - kr-dev
+  
+  
   - flutter
-  - jjangjjangman
+  
   - 플러터
-  - busy
+  
 author: anpigon
 date: 2018-10-24 01:10:27
 ---

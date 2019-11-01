@@ -1,10 +1,10 @@
 ---
 title: '[React] Mobx-state-tree 학습하기 #5 : React에서 mobx-state-tree 모델 렌더링하기'
 tags:
-  - zzan
-  - kr
-  - kr-dev
-  - dev
+  
+  
+  
+  
 author: anpigon
 date: 2019-08-24 10:51:39
 ---

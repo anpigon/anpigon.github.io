@@ -1,10 +1,9 @@
 ---
 title: '[봉평 허브나라] - 2019 이문세의 숲속음악회'
 tags:
-  - tripsteem
-  - trip
-  - kr-trip
-  - kr
+  - 트립스팀
+  - 이문세
+  - 콘서트
 author: anpigon
 date: 2019-09-01 22:38:57
 ---

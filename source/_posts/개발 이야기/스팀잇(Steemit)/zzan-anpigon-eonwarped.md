@@ -1,16 +1,16 @@
 ---
 title: '[코딩/개발] 깃허브에서 eonwarped에게 코드 리뷰 받은 이야기'
 tags:
-  - zzan
-  - liv
-  - palnet
-  - neoxian
-  - sct
-  - sct-freeboard
-  - kr-dev
-  - busy
-  - jjm
-  - kr
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 author: anpigon
 date: 2019-08-06 23:23:33
 ---

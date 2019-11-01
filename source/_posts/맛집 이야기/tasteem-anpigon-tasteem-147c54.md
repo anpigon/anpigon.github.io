@@ -1,11 +1,8 @@
 ---
 title: 석촌호수 송리단길 분위기 역대급 카페 “경성광장”
 tags:
-  - tasteem
-  - tasteem-kr
-  - kr
-  - muksteem
-  - kr-cafe
+  - 테이스팀
+  - 카페
 author: anpigon
 date: 2018-10-27 23:06:09
 ---

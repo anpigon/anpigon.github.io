@@ -1,11 +1,11 @@
 ---
 title: '스팀잇(Steemit)기반 앱 만들기 #5 - 댓글 보여주기'
 tags:
-  - kr
-  - kr-dev
-  - kr-newbie
-  - jjangjjangman
-  - busy
+  
+  
+  
+  
+  
 author: anpigon
 date: 2018-08-09 00:40:18
 ---

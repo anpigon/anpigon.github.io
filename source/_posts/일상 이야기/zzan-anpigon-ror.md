@@ -1,15 +1,6 @@
 ---
 title: ROR 알파 테스터 후기
 tags:
-  - zzan
-  - game
-  - iv
-  - liv
-  - palnet
-  - neoxian
-  - busy
-  - jjm
-  - kr
 author: anpigon
 date: 2019-08-16 01:15:09
 ---

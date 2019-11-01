@@ -1,11 +1,11 @@
 ---
 title: '[종료] 안피곤 천하제일 코딩 대회를 개최합니다.'
 tags:
-  - kr
-  - kr-dev
-  - jjangjjangman
-  - kr-event
-  - kr-newbie
+  
+  
+  
+  
+  
 author: anpigon
 date: 2018-10-04 23:21:36
 ---

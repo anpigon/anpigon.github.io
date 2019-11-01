@@ -1,11 +1,11 @@
 ---
 title: '나만의 스팀잇 블로그 만들기 #2 - 글 목록'
 tags:
-  - kr
-  - kr-dev
-  - jjangjjangman
-  - interesteem
-  - busy
+  
+  
+  
+  
+  
 author: anpigon
 date: 2018-10-02 21:34:54
 ---

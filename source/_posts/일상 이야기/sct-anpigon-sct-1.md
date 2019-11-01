@@ -1,18 +1,6 @@
 ---
 title: '[SCT 이벤트 참여] 1억이 생기면 어디에 펑펑 쓰고싶나요? (본인에게만 사용)'
 tags:
-  - sct
-  - sct-kr
-  - sct-freeboard
-  - sct-event
-  - palnet
-  - steemleo
-  - zzan
-  - liv
-  - neoxian
-  - kr
-  - busy
-  - jjm
 author: anpigon
 date: 2019-08-11 00:07:48
 ---

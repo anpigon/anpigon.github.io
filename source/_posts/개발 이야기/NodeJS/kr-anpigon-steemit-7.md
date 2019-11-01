@@ -1,11 +1,11 @@
 ---
 title: ' 스팀잇(Steemit)기반 앱 만들기 #7 - 사용자 프로필 패널 구현하기'
 tags:
-  - kr
-  - kr-dev
-  - busy
-  - jjangjjangman
-  - kr-newbie
+  
+  
+  
+  
+  
 author: anpigon
 date: 2018-08-19 20:10:33
 ---

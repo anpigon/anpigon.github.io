@@ -1,19 +1,6 @@
 ---
 title: '[React Native] 리액트 네이티브에 카카오 로그인 구현하기 #3 : React Native Firebase SDK 사용하기'
 tags:
-  - zzan
-  - zzan-kr
-  - zzan-dev
-  - sct
-  - sct-kr
-  - sct-freeboard
-  - sct-dev
-  - liv
-  - palnet
-  - neoxian
-  - busy
-  - jjm
-  - kr
 author: anpigon
 date: 2019-08-18 18:27:45
 ---

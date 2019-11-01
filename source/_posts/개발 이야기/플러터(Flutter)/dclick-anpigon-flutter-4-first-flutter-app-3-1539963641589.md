@@ -1,10 +1,10 @@
 ---
 title: '모바일 앱 개발 : Flutter 시작하기 #4 - First Flutter App (3)'
 tags:
-  - kr
-  - kr-dev
-  - busy
-  - interesteem
+  
+  
+  
+  
   - flutter
   - 플러터
 author: anpigon

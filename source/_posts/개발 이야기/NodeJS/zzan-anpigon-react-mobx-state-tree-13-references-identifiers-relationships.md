@@ -3,12 +3,12 @@ title: >-
   [React] Mobx-state-tree 학습하기 #13 : References와 Identifiers를 사용하여 데이터에
   Relationships 만들기
 tags:
-  - zzan
-  - kr
-  - kr-dev
-  - dev
-  - busy
-  - jjm
+  
+  
+  
+  
+  
+  
 author: anpigon
 date: 2019-08-30 17:47:24
 ---

@@ -1,13 +1,13 @@
 ---
 title: '파이썬 머신러닝 #6 - 스팀잇에서 유사한 게시물 찾기'
 tags:
-  - kr
-  - kr-dev
-  - jjangjjangman
-  - interesteem
+  
+  
+  
+  
   - 파이썬
   - 머신러닝
-  - busy
+  
 author: anpigon
 date: 2018-09-27 09:24:27
 ---

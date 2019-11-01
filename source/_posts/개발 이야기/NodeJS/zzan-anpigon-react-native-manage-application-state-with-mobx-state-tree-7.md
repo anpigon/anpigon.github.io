@@ -1,12 +1,12 @@
 ---
 title: '[React] Mobx-state-tree 학습하기 #7 : Remove Model Instances from the Tree'
 tags:
-  - zzan
-  - kr
-  - kr-dev
-  - dev
-  - busy
-  - jjm
+  
+  
+  
+  
+  
+  
 author: anpigon
 date: 2019-08-25 20:23:36
 ---

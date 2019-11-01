@@ -1,11 +1,11 @@
 ---
 title: '파이썬으로 스팀잇 형태소 분석하기 #1'
 tags:
-  - busy
-  - kr
-  - kr-dev
-  - jjangjjangman
-  - interesteem
+  
+  
+  
+  
+  
 author: anpigon
 date: 2018-09-11 00:28:06
 ---

@@ -1,11 +1,11 @@
 ---
 title: '스팀잇(Steemit)기반 앱 만들기 #1'
 tags:
-  - kr
-  - kr-dev
-  - kr-newbie
-  - jjangjjangman
-  - interesteem
+  
+  
+  
+  
+  
 author: anpigon
 date: 2018-07-30 23:08:09
 ---

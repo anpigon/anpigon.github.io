@@ -1,10 +1,10 @@
 ---
 title: '[GraphQL #2] GraphQL로 React앱 만들기'
 tags:
-  - kr
-  - kr-dev
-  - jjangjjangman
-  - busy
+  
+  
+  
+  
   - GraphQL
   - React
 author: anpigon

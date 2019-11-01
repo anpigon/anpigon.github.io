@@ -1,13 +1,13 @@
 ---
 title: 스팀짱에 최근 업데이트된 기능을 소개합니다. (스짱소)
 tags:
-  - zzan
-  - notice
-  - liv
-  - palnet
-  - neoxian
-  - sct
-  - sct-freeboard
+  
+  
+  
+  
+  
+  
+  
 author: anpigon
 date: 2019-08-12 15:48:33
 ---

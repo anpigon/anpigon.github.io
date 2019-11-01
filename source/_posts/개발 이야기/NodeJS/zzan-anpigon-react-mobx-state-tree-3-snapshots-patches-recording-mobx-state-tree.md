@@ -3,12 +3,12 @@ title: >-
   [React] Mobx-state-tree 학습하기 #3 : Snapshots 또는  Patches를 Recording하여
   mobx-state-tree 모델 테스트하기
 tags:
-  - zzan
-  - kr
-  - kr-dev
-  - dev
-  - busy
-  - jjm
+  
+  
+  
+  
+  
+  
 author: anpigon
 date: 2019-08-19 13:55:36
 ---

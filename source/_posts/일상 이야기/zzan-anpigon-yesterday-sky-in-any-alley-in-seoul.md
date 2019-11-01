@@ -1,9 +1,7 @@
 ---
-title: '[글쓰기 테스트] Yesterday sky in any alley in Seoul.'
+title: '[사진] Yesterday sky in any alley in Seoul.'
 tags:
-  - zzan
-  - photo
-  - photography
+  - 사진
 author: anpigon
 date: 2019-09-03 10:38:12
 ---

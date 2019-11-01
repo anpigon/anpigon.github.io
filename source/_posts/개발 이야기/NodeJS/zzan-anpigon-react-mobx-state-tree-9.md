@@ -1,12 +1,12 @@
 ---
 title: '[React] Mobx-state-tree 학습하기 #9 : 로컬 저장소에 저장소 저장'
 tags:
-  - zzan
-  - kr
-  - kr-dev
-  - dev
-  - busy
-  - jjm
+  
+  
+  
+  
+  
+  
 author: anpigon
 date: 2019-08-27 01:24:18
 ---

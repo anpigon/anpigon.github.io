@@ -1,12 +1,12 @@
 ---
 title: 'Steem Project 소개 #1 - Hexo Steem 개인 블로그 만들기'
 tags:
-  - kr
-  - kr-dev
-  - steemit
+  
+  
+  
   - hexo
   - project
-  - busy
+  
 author: anpigon
 date: 2018-11-04 01:16:33
 ---

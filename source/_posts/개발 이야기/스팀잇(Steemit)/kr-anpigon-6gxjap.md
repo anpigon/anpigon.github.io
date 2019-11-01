@@ -1,11 +1,11 @@
 ---
 title: 뉴비분들을 위한 보팅 계산기
 tags:
-  - kr
-  - kr-newbie
-  - kr-dev
-  - jjangjjangman
-  - busy
+  
+  
+  
+  
+  
 author: anpigon
 date: 2018-08-13 20:53:00
 ---

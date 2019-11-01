@@ -1,11 +1,11 @@
 ---
 title: '나만의 스팀잇 블로그 만들기 #1'
 tags:
-  - kr
-  - kr-dev
-  - jjangjjangman
-  - interesteem
-  - kr-newbie
+  
+  
+  
+  
+  
 author: anpigon
 date: 2018-10-01 21:48:12
 ---

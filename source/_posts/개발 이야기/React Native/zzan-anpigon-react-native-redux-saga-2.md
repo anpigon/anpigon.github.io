@@ -1,16 +1,16 @@
 ---
 title: '[React Native] Redux-Saga 학습하기 #2'
 tags:
-  - zzan
-  - liv
-  - palnet
-  - neoxian
-  - sct
-  - sct-freeboard
-  - kr-dev
-  - busy
-  - jjm
-  - kr
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 author: anpigon
 date: 2019-08-09 11:23:18
 ---

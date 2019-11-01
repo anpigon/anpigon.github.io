@@ -1,15 +1,15 @@
 ---
 title: 스팀짱 지갑에 업데이트된 기능을 알려드립니다.
 tags:
-  - zzan
-  - liv
-  - palnet
-  - neoxian
-  - sct
-  - sct-freeboard
-  - kr
-  - busy
-  - jjm
+  
+  
+  
+  
+  
+  
+  
+  
+  
 author: anpigon
 date: 2019-08-17 22:15:18
 ---

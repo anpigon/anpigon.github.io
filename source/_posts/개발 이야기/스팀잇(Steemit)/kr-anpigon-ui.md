@@ -1,11 +1,11 @@
 ---
 title: 크롬 브라우저에서 스팀잇 UI를 바꿔보자.
 tags:
-  - kr
-  - kr-newbie
-  - jjangjjangman
-  - busy
-  - steemit
+  
+  
+  
+  
+  
 author: anpigon
 date: 2018-08-17 15:05:21
 ---

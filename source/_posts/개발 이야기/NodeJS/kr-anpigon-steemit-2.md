@@ -1,11 +1,11 @@
 ---
 title: '스팀잇(Steemit)기반 앱 만들기 #2 - 최근글 가져오기'
 tags:
-  - kr
-  - kr-dev
-  - kr-newbie
-  - jjangjjangman
-  - busy
+  
+  
+  
+  
+  
 author: anpigon
 date: 2018-08-01 13:40:00
 ---

@@ -1,11 +1,11 @@
 ---
 title: '파이썬 머신러닝 #3 - 스팀잇 아이디로 성별  예측하기'
 tags:
-  - kr
-  - kr-dev
+  
+  
   - 머신러닝
   - 파이썬
-  - busy
+  
 author: anpigon
 date: 2018-09-15 22:43:24
 categorys: 개발이야기

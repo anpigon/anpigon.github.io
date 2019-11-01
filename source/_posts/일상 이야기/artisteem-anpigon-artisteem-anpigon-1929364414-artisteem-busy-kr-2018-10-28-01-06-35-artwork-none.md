@@ -2,9 +2,9 @@
 title: '[CO] Let''s play maple leaves.'
 tags:
   - artisteem
-  - kr
+  
   - art
-  - busy
+  
 author: anpigon
 date: 2018-10-28 01:06:39
 ---

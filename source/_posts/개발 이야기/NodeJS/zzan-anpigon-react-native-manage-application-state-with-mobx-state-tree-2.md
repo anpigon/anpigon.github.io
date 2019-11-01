@@ -1,16 +1,8 @@
 ---
 title: '[React]  Mobx-state-tree 학습하기 #2 : Mobx-state-tree 모델에서 Actions을 사용하기'
 tags:
-  - zzan
-  - zzan-kr
-  - kr-dev
-  - liv
-  - palnet
-  - neoxian
-  - sct
-  - sct-kr
-  - sct-freeboard
-  - react-native
+  - React
+  - Mobx
 author: anpigon
 date: 2019-08-18 02:26:39
 ---

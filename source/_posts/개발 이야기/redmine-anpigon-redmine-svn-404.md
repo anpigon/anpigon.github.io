@@ -3,8 +3,8 @@ title: 레드마인(Redmine) svn 저장소 등록시 404 오류가 발생할때
 tags:
   - redmine
   - svn
-  - kr
-  - kr-dev
+  
+  
 author: anpigon
 date: 2018-03-08 14:43:42
 ---

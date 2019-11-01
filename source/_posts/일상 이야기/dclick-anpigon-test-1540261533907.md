@@ -1,13 +1,13 @@
 ---
 title: 스캠 봇 계정이 DCLICK 광고를 사용할 수 있을까?
 tags:
-  - kr
-  - dclick
-  - test
+  
+  
+  
   - 스팀잇
   - 디클릭
   - 광고
-  - busy
+  
 author: anpigon
 date: 2018-10-23 11:25:36
 ---

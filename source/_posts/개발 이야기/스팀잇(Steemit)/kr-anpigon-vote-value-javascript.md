@@ -1,11 +1,11 @@
 ---
 title: 내 보팅 가치(Vote Value)를 JavaScript로 계산하기
 tags:
-  - kr
-  - kr-dev
-  - busy
-  - jjangjjangman
-  - steemit
+  
+  
+  
+  
+  
 author: anpigon
 date: 2018-08-02 17:39:45
 ---

@@ -1,18 +1,12 @@
 ---
-title: '[스짱 북클럽 이벤트 참여] 만약 무인도에서 한 달을 보내야 한다면 갖고 가고 싶은 책은?'
+title: '[북클럽] 만약 무인도에서 한 달을 보내야 한다면 갖고 가고 싶은 책'
 tags:
-  - zzan
-  - book
-  - kr-book
-  - booksteem
-  - kr
-  - busy
-  - jjm
+  - 북클럽
 author: anpigon
 date: 2019-08-11 00:40:00
 ---
 
-![제목 없는 디자인.png](https://files.steempeak.com/file/steempeak/anpigon/x4dy5Jga-E1848CE185A6E18486E185A9E186A820E1848BE185A5E186B9E18482E185B3E186AB20E18483E185B5E1848CE185A1E1848BE185B5E186AB.png)
+![](https://files.steempeak.com/file/steempeak/anpigon/x4dy5Jga-E1848CE185A6E18486E185A9E186A820E1848BE185A5E186B9E18482E185B3E186AB20E18483E185B5E1848CE185A1E1848BE185B5E186AB.png)
 
 [**"스짱 북클럽 이벤트 | 만약 무인도에서 한 달을 보내야 한다면 갖고 가고 싶은 책은?"**](https://www.steemzzang.com/zzan/@book.club/5pmbmv-or) 이벤트에 참여합니다.
 
@@ -24,16 +18,16 @@ ___
 
 저는 무인도에 **"무인도에서 살아남기"** 책을 가져가겠습니다. 저는 매우 현실적이기 때문입니다. 소설, 인문학, 역사책 이런 종류의 책은 무인도에서는 불 피는 용도밖에 사용 못 합니다. ㅋ
 
-<center>![](https://steemitimages.com/300x0/https://files.steempeak.com/file/steempeak/anpigon/VTzwYteE-E18489E185B3E1848FE185B3E18485E185B5E186ABE18489E185A3E186BA202019-08-1120E1848BE185A9E1848CE185A5E186AB2012.13.53.png)</center>
+![](https://steemitimages.com/300x0/https://files.steempeak.com/file/steempeak/anpigon/VTzwYteE-E18489E185B3E1848FE185B3E18485E185B5E186ABE18489E185A3E186BA202019-08-1120E1848BE185A9E1848CE185A5E186AB2012.13.53.png)
 
 책 내용을 살펴봤는데 내용이 매우 알찹니다. 이 책 하나만 있으면 무인도에서 한 달 살기에 문제없을 것 같습니다.
 
 만화의 주요 내용은 무인도에 표류하게 된 일행이 자연과 과학을 이용하여 생존하는 내용입니다. 주인공들이 실제 상황에 처했다는 가정 하에 생존을 위한 정보를 제공하고 연관된 과학 지식을 함께 다루고 있습니다. 그리고 만화 속의 사건과 과학 정보를 결합시켜 물을 구하는 방법, 정수기 제조법, 증류와 여과의 원리, 렌즈로 불 피우는 방법, 구조 신호 보내기와 날씨 예측법, 식량을 오래 저장하는 방법 등 다양한 생활 과학 원리를 설명하고 있습니다.
 
 <br>
-___ 
 
-**목차**
+## 목차
+
 1. 곤충 채집 여행 - 아르키메데스의 원리와 배가 물에 뜨는 원리인 부력
 2. 난파 - 동물들의 초감각, 쥐에 관한 상식
 3. 표류 - 해류란? 해류를 일으키는 원인
@@ -41,9 +35,9 @@ ___
 5. 탐험 - 방향 탐지법
 6. 집짓기 - 야외에서 자연물을 이용해 지을 수 있는 여러 가지 집의 종류
 
-___
+<br>
 
-**책 내용 발췌**
+## 책 내용 발췌
 
 >물 정수하는 법
 무인도에서 물을 발견했을 때, 그 물을 먹을 수 있느냐 없느냐를 판단하는 것은 매우 중요한 일입니다. 물 속에 불순물이 섞여 있을 경우, 그것을 제거하는 방법은 여러 가지가 있는데, 물의 상태를 보고 적절한 방법을 선택해야 합니다.
@@ -69,4 +63,6 @@ ___
 감사합니다.
 
 ***
-<center><sup>Originally posted on [안피곤님의 블로그](http://anpigon.dblog.org/2gkge4). Steem blog powered by [ENGRAVE](https://engrave.website).</sup></center>
+<center>
+
+<sup>Originally posted on [안피곤님의 블로그](http://anpigon.dblog.org/2gkge4). Steem blog powered by [ENGRAVE](https://engrave.website).</sup></center>

@@ -3,12 +3,12 @@ title: "[건대/광진/화양] 백종원식 철판요리 - 백철판0410"
 author: steemory
 date: "2018-12-15T03:42:24Z"
 tags:
-  - "tasteem"
-  - "tasteem-kr"
-  - "muksteem"
-  - "jjangjjangman"
-  - "kr"
-  - "busy"
+  - "테이스팀"
+  
+  
+  
+  
+  
 ---
 ![title_image](https://static.tasteem.io/uploads/3843/post/23981/content_b82c3c5d-a361-40e1-b764-eb5afeaabe3c.jpeg)
 <br/>

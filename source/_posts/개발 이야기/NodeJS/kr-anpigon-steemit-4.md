@@ -1,11 +1,11 @@
 ---
 title: '스팀잇(Steemit)기반 앱 만들기 #4 - 상세화면 구현하기'
 tags:
-  - kr
-  - kr-dev
-  - kr-newbie
-  - jjangjjangman
-  - busy
+  
+  
+  
+  
+  
 author: anpigon
 date: 2018-08-07 10:40:24
 ---

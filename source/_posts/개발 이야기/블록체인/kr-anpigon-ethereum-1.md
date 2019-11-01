@@ -1,10 +1,10 @@
 ---
 title: '이더리움(Ethereum) 공부 #1 - 키와 주소'
 tags:
-  - kr
-  - jjangjjangman
-  - busy
-  - kr-dev
+  
+  
+  
+  
   - ethereum
 author: anpigon
 date: 2018-08-26 00:49:36

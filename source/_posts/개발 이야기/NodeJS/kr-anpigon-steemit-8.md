@@ -1,11 +1,11 @@
 ---
 title: '스팀잇(Steemit)기반 앱 만들기 #8 - 보팅 내역 보여주기'
 tags:
-  - kr
-  - kr-dev
-  - kr-newbie
-  - jjangjjangman
-  - busy
+  
+  
+  
+  
+  
 author: anpigon
 date: 2018-08-23 22:29:30
 ---

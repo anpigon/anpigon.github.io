@@ -1,11 +1,11 @@
 ---
 title: 'Steem Project #2 - 댓글 자동 답변봇'
 tags:
-  - kr
-  - kr-dev
-  - jjangjjangman
-  - interesteem
-  - busy
+  
+  
+  
+  
+  
 author: anpigon
 date: 2018-09-21 15:37:45
 ---

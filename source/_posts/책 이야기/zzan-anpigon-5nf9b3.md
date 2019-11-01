@@ -1,13 +1,8 @@
 ---
-title: '[스짱 북클럽 이벤트 참여] 지금 읽고 있는 책 뒷표지'
+title: '[북클럽] 지금 읽고 있는 책 뒷표지 : 김영하 ⟪보다⟫'
 tags:
-  - zzan
-  - book
-  - kr-book
-  - booksteem
-  - kr
-  - busy
-  - jjm
+  - 북클럽
+  - 김영하
 author: anpigon
 date: 2019-08-08 12:51:57
 ---
@@ -22,7 +17,10 @@ date: 2019-08-08 12:51:57
 
 ***
 
-이벤트 링크 : https://www.steemzzang.com/zzan/@book.club/or
+<center><a href="https://www.steemzzang.com"><img src="https://cdn.steemitimages.com/DQmNRsTCCtzVe8AiEsCEYm35cTAzqeMMLuPCBRuJTiRJqeo/zzanbanner.jpg" alt="zzanbanner" style="margin:0"/></a> 
+<sup><a href="https://www.steemzzang.com/zzan/@book.club/or">스짱 북클럽 이벤트 | 지금 읽고 있는 책 뒷표지를 올려주세요</a></sup></center>
 
 ***
-<center><sup>Originally posted on [안피곤님의 블로그](http://anpigon.dblog.org/5nf9b3). Steem blog powered by [ENGRAVE](https://engrave.website).</sup></center>
+<center>
+
+<sup>Originally posted on [안피곤님의 블로그](http://anpigon.dblog.org/5nf9b3). Steem blog powered by [ENGRAVE](https://engrave.website).</sup></center>

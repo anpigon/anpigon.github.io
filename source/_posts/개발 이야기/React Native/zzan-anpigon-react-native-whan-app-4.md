@@ -1,15 +1,6 @@
 ---
 title: '[React Native] WHAN APP 개발 이야기 #4'
 tags:
-  - zzan
-  - liv
-  - kr
-  - kr-dev
-  - nahasct
-  - neoxian
-  - palnet
-  - busy
-  - jjm
 author: anpigon
 date: 2019-07-11 11:05:21
 ---

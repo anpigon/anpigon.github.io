@@ -1,11 +1,11 @@
 ---
 title: 안피곤 천하제일 코딩 대회 결과 발표
 tags:
-  - dclick
-  - kr
-  - kr-dev
-  - kr-event
-  - interesteem
+  
+  
+  
+  
+  
 author: anpigon
 date: 2018-10-11 00:32:33
 ---

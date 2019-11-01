@@ -1,7 +1,7 @@
 ---
 title: 안녕하세요. 스팀잇을 본격적으로 시작합니다.
 tags:
-  - kr
+  
 author: anpigon
 date: 2018-07-19 21:43:33
 ---

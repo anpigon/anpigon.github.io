@@ -1,11 +1,11 @@
 ---
 title: '나만의 스팀잇 블로그 만들기 #4 - 글 상세'
 tags:
-  - kr
-  - kr-dev
-  - jjangjjangman
-  - interesteem
-  - busy
+  
+  
+  
+  
+  
 author: anpigon
 date: 2018-10-04 22:17:27
 ---

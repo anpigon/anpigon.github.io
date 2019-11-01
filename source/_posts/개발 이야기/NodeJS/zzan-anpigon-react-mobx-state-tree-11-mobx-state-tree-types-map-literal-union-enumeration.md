@@ -3,12 +3,12 @@ title: >-
   [React] Mobx-state-tree 학습하기 #11 : 더 많은 mobx-state-tree Types 배우기: map,
   literal, union, enumeration
 tags:
-  - zzan
-  - kr
-  - kr-dev
-  - dev
-  - busy
-  - jjm
+  
+  
+  
+  
+  
+  
 author: anpigon
 date: 2019-08-29 15:07:54
 ---

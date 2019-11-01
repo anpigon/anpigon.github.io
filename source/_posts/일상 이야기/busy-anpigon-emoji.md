@@ -1,11 +1,11 @@
 ---
 title: 크롬브라우저에서 이모지(emoji) 쉽게 입력하는 방법
 tags:
-  - busy
-  - kr
-  - kr-newbie
-  - jjangjjangman
-  - interesteem
+  
+  
+  
+  
+  
 author: anpigon
 date: 2018-09-11 09:22:39
 ---

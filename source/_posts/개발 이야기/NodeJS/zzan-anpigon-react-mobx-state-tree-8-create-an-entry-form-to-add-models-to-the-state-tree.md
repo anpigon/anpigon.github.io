@@ -3,10 +3,10 @@ title: >-
   [React] Mobx-state-tree 학습하기 #8 : Create an Entry Form to Add Models to the
   State Tree
 tags:
-  - zzan
-  - kr
-  - kr-dev
-  - dev
+  
+  
+  
+  
 author: anpigon
 date: 2019-08-26 11:57:03
 ---

@@ -1,17 +1,17 @@
 ---
 title: '[React Native] MobX State Tree 학습하기 #1'
 tags:
-  - zzan
-  - kr-dev
-  - liv
-  - palnet
-  - neoxian
-  - sct
-  - sct-freeboard
+  
+  
+  
+  
+  
+  
+  
   - react-native
-  - busy
-  - jjm
-  - kr
+  
+  
+  
 author: anpigon
 date: 2019-08-11 13:18:15
 ---

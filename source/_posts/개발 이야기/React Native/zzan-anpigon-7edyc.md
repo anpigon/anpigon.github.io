@@ -1,15 +1,15 @@
 ---
 title: '[리액트 네이티브 모바일앱 개발] 무료 동영상 강의를 소개합니다.'
 tags:
-  - zzan
-  - sct
-  - sct-kr
-  - sct-freeboard
-  - palnet
-  - kr
-  - kr-dev
-  - busy
-  - jjm
+  
+  
+  
+  
+  
+  
+  
+  
+  
 author: anpigon
 date: 2019-09-06 01:13:24
 ---

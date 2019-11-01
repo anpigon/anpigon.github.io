@@ -1,10 +1,9 @@
 ---
 title: '[트립스팀] 잠실 롯데타워 에비뉴엘 아트홀 - 픽셀 아티스트 주재범의  ＜PICK X CELL＞展'
 tags:
-  - tripsteem
-  - kr
-  - trip
-  - kr-trip
+  - 트립스팀
+  - 전시회
+  - 잠실 롯데타워
 author: anpigon
 date: 2019-09-05 15:13:00
 ---

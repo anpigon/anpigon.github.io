@@ -1,12 +1,12 @@
 ---
 title: 스팀짱 업데이트 공지
 tags:
-  - zzan
-  - kr
-  - kr-dev
-  - dev
-  - busy
-  - jjm
+  
+  
+  
+  
+  
+  
 author: anpigon
 date: 2019-08-21 12:17:00
 ---

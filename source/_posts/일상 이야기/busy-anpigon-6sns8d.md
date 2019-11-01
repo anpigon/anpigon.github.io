@@ -1,11 +1,11 @@
 ---
 title: 블록체인 기반 은행 인증서비스 “뱅크사인” 사용후기
 tags:
-  - busy
-  - kr
-  - jjangjjangman
-  - kr-newbie
-  - interesteem
+  
+  
+  
+  
+  
 author: anpigon
 date: 2018-08-29 15:16:06
 ---

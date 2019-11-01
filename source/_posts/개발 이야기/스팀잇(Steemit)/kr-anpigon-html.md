@@ -1,11 +1,11 @@
 ---
 title: 스팀잇에서 사용 가능한 HTML태그와 속성을 알아보자.
 tags:
-  - kr
-  - kr-newbie
-  - busy
-  - jjangjjangman
-  - steemit
+  
+  
+  
+  
+  
 author: anpigon
 date: 2018-08-23 00:08:45
 ---

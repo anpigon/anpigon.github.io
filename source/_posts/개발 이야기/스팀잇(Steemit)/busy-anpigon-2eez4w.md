@@ -1,11 +1,11 @@
 ---
 title: 안드로이드에서 보상 받기 자동화하기
 tags:
-  - busy
-  - kr
-  - kr-dev
-  - interesteem
-  - jjangjjangman
+  
+  
+  
+  
+  
 author: anpigon
 date: 2018-09-13 01:36:39
 ---

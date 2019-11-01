@@ -1,12 +1,12 @@
 ---
 title: '[React]  Mobx-state-tree 학습하기 #1 : Mobx-state-tree를 사용해서 Reat State 관리하기'
 tags:
-  - zzan
-  - kr-dev
-  - dev
-  - kr
-  - busy
-  - jjm
+  
+  
+  
+  
+  
+  
 author: anpigon
 date: 2019-08-16 20:38:48
 ---

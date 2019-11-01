@@ -1,11 +1,11 @@
 ---
 title: '파이썬 머신러닝 #5 - 유사한 게시물 찾기'
 tags:
-  - kr
-  - kr-dev
-  - jjangjjangman
-  - busy
-  - interesteem
+  
+  
+  
+  
+  
 author: anpigon
 date: 2018-09-20 13:17:45
 ---

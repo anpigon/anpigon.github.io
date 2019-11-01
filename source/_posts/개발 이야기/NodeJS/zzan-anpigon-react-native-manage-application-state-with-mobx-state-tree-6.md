@@ -1,12 +1,12 @@
 ---
 title: '[React] Mobx-state-tree 학습하기 #6 : React에서 mobx-state-tree Models 수정하기'
 tags:
-  - zzan
-  - kr
-  - kr-dev
-  - dev
-  - busy
-  - jjm
+  
+  
+  
+  
+  
+  
 author: anpigon
 date: 2019-08-25 18:12:39
 ---

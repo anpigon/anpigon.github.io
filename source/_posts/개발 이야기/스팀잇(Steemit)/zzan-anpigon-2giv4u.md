@@ -1,12 +1,12 @@
 ---
 title: '스팀짱 업데이트 공지 : 미체결 주문 내역 보기'
 tags:
-  - zzan
-  - kr
-  - kr-dev
-  - dev
-  - busy
-  - jjm
+  
+  
+  
+  
+  
+  
 author: anpigon
 date: 2019-08-23 22:30:42
 ---

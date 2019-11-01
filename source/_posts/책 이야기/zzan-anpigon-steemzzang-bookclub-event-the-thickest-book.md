@@ -2,7 +2,6 @@
 title: '[북클럽] 가장 두꺼운 책 : 이지유럽'
 tags:
   - 북클럽
-  - book
 author: anpigon
 date: 2019-09-07 00:58:57
 ---
@@ -27,10 +26,10 @@ date: 2019-09-07 00:58:57
 <br>그리고 무게는 1.6kg이며, 가격은 10%할인가로 21,600원입니다. 이 정도 가격이면 아령보다 이 책을 구입하는게 가성비가 훨씬 좋다고 생각합니다. 운동도 하면서 유럽 여행에 대한 정보도 얻을 수 있어요.
 
 
-
 ***
 
-북클럽 이벤트 링크 : [스짱 북클럽 미션 | 가장 두꺼운 책](https://www.steemzzang.com/zzan/@book.club/7wkzm3-or)
+<center><a href="https://www.steemzzang.com"><img src="https://cdn.steemitimages.com/DQmNRsTCCtzVe8AiEsCEYm35cTAzqeMMLuPCBRuJTiRJqeo/zzanbanner.jpg" alt="zzanbanner" style="margin:0"/></a> 
+<sup><a href="ttps://www.steemzzang.com/zzan/@book.club/7wkzm3-or">스짱 북클럽 미션 | 가장 두꺼운 책</a></sup></center>
 
 ***
 <center><sup>Originally posted on [안피곤님의 블로그](http://anpigon.dblog.org/steemzzang-bookclub-event-the-thickest-book). Steem blog powered by [ENGRAVE](https://engrave.website).</sup></center>

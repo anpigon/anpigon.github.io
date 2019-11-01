@@ -1,12 +1,12 @@
 ---
 title: '[React]  Mobx-state-tree 학습하기 #4 :  Views를 사용하여 모델에서 정보 보여주기'
 tags:
-  - zzan
-  - kr
-  - kr-dev
-  - dev
-  - busy
-  - jjm
+  
+  
+  
+  
+  
+  
 author: anpigon
 date: 2019-08-20 11:29:36
 ---

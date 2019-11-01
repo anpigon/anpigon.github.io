@@ -1,15 +1,9 @@
 ---
-title: "[영화] “라빠르망(L'Appartement)” - 미스터리 사랑 이야기"
+title: "“라빠르망(L'Appartement)” - 미스터리 사랑 이야기"
 author: wangpigon
 date: "2019-06-19T06:02:24Z"
 tags:
-  - "aaa"
-  - "kr"
-  - "movie"
-  - "kr-movie"
-  - "thegivingtree"
-  - "busy"
-  - "jjm"
+  - "영화 후기"
 ---
 ![](https://cdn.steemitimages.com/DQmU6mSeiVzntc64khqqFkQ2kRoJK9oCP7S33CRZSUZnCBs/V1700247p_01.gif)
 

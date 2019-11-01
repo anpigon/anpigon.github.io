@@ -1,12 +1,12 @@
 ---
 title: '[React] Mobx-state-tree 학습하기 #14 : 서버에서 데이터 가져오기'
 tags:
-  - zzan
-  - kr
-  - kr-dev
-  - dev
-  - busy
-  - jjm
+  
+  
+  
+  
+  
+  
 author: anpigon
 date: 2019-08-31 15:54:27
 ---

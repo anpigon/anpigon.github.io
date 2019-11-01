@@ -1,18 +1,8 @@
 ---
-title: >-
-  [React] Mobx-state-tree 학습하기 #16 : Use Volatile State and Lifecycle Methods to
-  Manage Private State
+title: "[React] Mobx-state-tree 학습하기 #16 : Use Volatile State and Lifecycle Methods to Manage Private State"
 tags:
-  - zzan
-  - zzan-dev
-  - sct
-  - sct-kr
-  - sct-freeboard
-  - palnet
-  - neoxian
-  - kr
-  - kr-dev
-  - busy
+  - React
+  - Mobx
 author: anpigon
 date: 2019-09-03 11:07:54
 ---

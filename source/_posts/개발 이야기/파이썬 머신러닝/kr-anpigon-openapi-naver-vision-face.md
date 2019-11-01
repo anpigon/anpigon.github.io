@@ -1,11 +1,11 @@
 ---
 title: 네이버 API를 이용한 얼굴 인식하기 - 닮은 유명인 찾기
 tags:
-  - kr
-  - kr-dev
-  - jjangjjangman
-  - interesteem
-  - busy
+  
+  
+  
+  
+  
 author: anpigon
 date: 2018-10-05 16:42:54
 ---

@@ -1,17 +1,6 @@
 ---
 title: '[자랑글] 와~! 블스님께 상으로 50스팀 받았습니다.'
 tags:
-  - zzan
-  - zzan-kr
-  - life
-  - sct
-  - sct-kr
-  - sct-freeboard
-  - palnet
-  - neoxian
-  - kr
-  - busy
-  - jjm
 author: anpigon
 date: 2019-09-01 00:08:39
 ---

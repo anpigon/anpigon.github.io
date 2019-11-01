@@ -1,11 +1,8 @@
 ---
 title: '[아티스팀] 자꾸만 눈이 가는 하늘'
 tags:
-  - artisteem
-  - kr
-  - jjangjjangman
-  - busy
-  - kr-newbie
+  - 아티스팀
+  - 하늘
 author: anpigon
 date: 2018-08-22 19:35:18
 ---

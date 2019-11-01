@@ -1,12 +1,12 @@
 ---
 title: Keybase 스텔라루멘(XLM) 에어드랍 신청 했어요.
 tags:
-  - sct
-  - kr
+  
+  
   - airdrop
   - coin
-  - busy
-  - jjm
+  
+  
 author: anpigon
 date: 2019-09-10 13:48:39
 ---

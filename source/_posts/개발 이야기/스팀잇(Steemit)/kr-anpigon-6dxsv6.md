@@ -1,11 +1,11 @@
 ---
 title: 보팅 시간에 따른 큐레이션 보상 비율 분석하기
 tags:
-  - kr
-  - kr-newbie
-  - jjangjjangman
-  - busy
-  - kr-dev
+  
+  
+  
+  
+  
 author: anpigon
 date: 2018-07-25 14:21:15
 ---

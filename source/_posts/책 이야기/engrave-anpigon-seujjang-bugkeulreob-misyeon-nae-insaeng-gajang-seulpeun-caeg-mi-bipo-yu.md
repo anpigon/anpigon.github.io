@@ -4,7 +4,6 @@ tags:
   - 책
   - 북클럽
   - 슬픈책
-  - 미 비포 유
 author: anpigon
 date: 2019-10-07 23:42:21
 gallery:

@@ -1,13 +1,7 @@
 ---
-title: '[스짱 북클럽 이벤트 참여] 지금 읽는 책 77쪽 7번째 줄을 공유!'
+title: '[북클럽] 지금 읽는 책 77쪽 7번째 줄 : 위대한 개츠비'
 tags:
-  - zzan
-  - book
-  - kr-book
-  - booksteem
-  - kr
-  - busy
-  - jjm
+  - 북클럽
 author: anpigon
 date: 2019-08-07 17:06:39
 ---
@@ -28,7 +22,10 @@ date: 2019-08-07 17:06:39
 
 ***
 
-이벤트 링크: https://www.steemzzang.com/zzan/@book.club/or-77-7
+<center><a href="https://www.steemzzang.com"><img src="https://cdn.steemitimages.com/DQmNRsTCCtzVe8AiEsCEYm35cTAzqeMMLuPCBRuJTiRJqeo/zzanbanner.jpg" alt="zzanbanner" style="margin:0"/></a> 
+<sup><a href="https://www.steemzzang.com/zzan/@book.club/or-77-7">스짱 북클럽 이벤트 | 지금 읽는 책 77쪽 7번째 줄을 공유해주세요</a></sup></center>
 
 ***
-<center><sup>Originally posted on [안피곤님의 블로그](http://anpigon.dblog.org/77-7). Steem blog powered by [ENGRAVE](https://engrave.website).</sup></center>
+<center>
+
+<sup>Originally posted on [안피곤님의 블로그](http://anpigon.dblog.org/77-7). Steem blog powered by [ENGRAVE](https://engrave.website).</sup></center>

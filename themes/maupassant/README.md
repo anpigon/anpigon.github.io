@@ -137,7 +137,7 @@ version: 0.0.0
 ```
 - disqus - [Disqus](https://disqus.com) shortname
 - uyan - [Uyan](http://www.uyan.cc) id
-- livere - [LiveRe](https://livere.com) data-uid
+ere - [LiveRe](https://livere.com) data-uid
 - changyan - [Changyan](http://changyan.kuaizhan.com) appid
 - gitment - [Gitment](https://github.com/imsun/gitment) comment system
 - gitalk - [Gitalk](https://github.com/gitalk/gitalk) comment system

@@ -1,13 +1,8 @@
 ---
 title: '[GraphQL #1] GraphQL로 API 서버 만들기'
 tags:
-  - kr
-  - kr-dev
-  - jjangjjangman
-  - hapramp
   - GraphQL
   - React
-  - busy
 author: anpigon
 date: 2018-11-10 23:58:24
 ---

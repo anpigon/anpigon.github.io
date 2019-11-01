@@ -1,11 +1,11 @@
 ---
 title: '파이썬 머신러닝 #4 - 스팀잇 글 감정 분류하기'
 tags:
-  - kr
-  - kr-dev
-  - jjangjjangman
-  - interesteem
-  - busy
+  
+  
+  
+  
+  
 author: anpigon
 date: 2018-09-19 10:55:12
 ---

@@ -1,11 +1,8 @@
 ---
-title: '[스팀짱 북클럽 이벤트 참여] 책 사진을 예쁘게 찍어서 올려주세요'
+title: '[북클럽] 책 사진을 예쁘게 찍어서 올려주세요 : 김영하 ⟪오빠가 돌아왔다⟫'
 tags:
-  - zzan
-  - book
-  - kr-book
-  - booksteem
-  - kr
+  - 북클럽
+  - 김영하
 author: anpigon
 date: 2019-08-24 20:11:24
 ---
@@ -18,11 +15,14 @@ date: 2019-08-24 20:11:24
 
 노트북이랑 같이 예쁘게 사진 찍어서 올립니다.
 
-![](https://files.steempeak.com/file/steempeak/anpigon/3bBpn7f7-20190824_194740.jpg)
+![](https://steemitimages.com/0x0/https://files.steempeak.com/file/steempeak/anpigon/3bBpn7f7-20190824_194740.jpg)
 
 ***
 
-이벤트 링크 : [스짱 북클럽 이벤트 | 지금 이순간 나와 가장 가까운 곳에 있는 책 표지를 찍어서 올려주세요](https://www.steemzzang.com/zzan/@book.club/puzmt-or)
+<center><a href="https://www.steemzzang.com"><img src="https://cdn.steemitimages.com/DQmNRsTCCtzVe8AiEsCEYm35cTAzqeMMLuPCBRuJTiRJqeo/zzanbanner.jpg" alt="zzanbanner" style="margin:0"/></a> 
+<sup><a href="https://www.steemzzang.com/zzan/@book.club/puzmt-or">스짱 북클럽 이벤트 | 지금 이순간 나와 가장 가까운 곳에 있는 책 표지를 찍어서 올려주세요</a></sup></center>
 
 ***
-<center><sup>Originally posted on [안피곤님의 블로그](http://anpigon.dblog.org/5y7rlq). Steem blog powered by [ENGRAVE](https://engrave.website).</sup></center>
+<center>
+
+<sup>Originally posted on [안피곤님의 블로그](http://anpigon.dblog.org/5y7rlq). Steem blog powered by [ENGRAVE](https://engrave.website).</sup></center>

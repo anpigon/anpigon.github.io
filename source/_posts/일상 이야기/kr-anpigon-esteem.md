@@ -1,11 +1,11 @@
 ---
 title: '스팀잇 모바일앱 이야기 : eSteem을 수정해볼까?'
 tags:
-  - kr
-  - kr-dev
-  - kr-app
-  - jjangjjangman
-  - interesteem
+  
+  
+  
+  
+  
 author: anpigon
 date: 2018-09-28 20:16:36
 ---

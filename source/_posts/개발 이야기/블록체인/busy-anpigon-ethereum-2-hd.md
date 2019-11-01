@@ -1,11 +1,11 @@
 ---
 title: '이더리움(Ethereum) 공부 #2 - HD 지갑과 니모닉 코드'
 tags:
-  - busy
-  - kr
-  - kr-dev
-  - jjangjjangman
-  - kr-newbie
+  
+  
+  
+  
+  
 author: anpigon
 date: 2018-08-28 22:41:27
 ---

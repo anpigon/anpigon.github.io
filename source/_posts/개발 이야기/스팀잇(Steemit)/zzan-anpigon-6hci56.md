@@ -1,12 +1,12 @@
 ---
 title: '스팀짱 업데이트 공지 : 미체결 주문 취소 버튼 추가'
 tags:
-  - zzan
-  - kr
-  - kr-dev
-  - dev
-  - busy
-  - jjm
+  
+  
+  
+  
+  
+  
 author: anpigon
 date: 2019-08-25 11:21:27
 ---

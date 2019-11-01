@@ -1,11 +1,11 @@
 ---
 title: '모바일 앱 개발 : Flutter 시작하기 #2 - First Flutter App (1)'
 tags:
-  - kr
-  - kr-dev
-  - jjangjjangman
-  - interesteem
-  - busy
+  
+  
+  
+  
+  
 author: anpigon
 date: 2018-10-09 01:40:54
 ---

@@ -1,8 +1,8 @@
 ---
 title: '[아티스팀] 캘리그라피 이벤트 응모 : 꿈을 향한 열정 '
 tags:
-  - artisteem
-  - calligraphy
+  - 아티스팀
+  - 캘리그라피
 author: anpigon
 date: 2018-10-09 18:16:15
 ---

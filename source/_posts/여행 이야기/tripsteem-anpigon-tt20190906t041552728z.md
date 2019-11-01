@@ -1,10 +1,9 @@
 ---
 title: '[트립스팀]  강원도 양양 - 낙산사'
 tags:
-  - tripsteem
-  - kr
-  - trip
-  - kr-trip
+  - 트립스팀
+  - 국내여행
+  - 강원도
 author: anpigon
 date: 2019-09-06 13:15:54
 ---
