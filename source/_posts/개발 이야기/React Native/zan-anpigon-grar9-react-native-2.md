@@ -13,7 +13,7 @@ date: 2019-08-17 19:31:06
 
 ![](https://files.steempeak.com/file/steempeak/anpigon/zRw9wME7-E1848CE185A6E18486E185A9E186A820E1848EE185AEE18480E185A1.png)
 
-이전 글 ["[React Native] 리액트 네이티브에 카카오 로그인 구현하기 #1"](/zzan/@anpigon/6np73q-react-native)에서 이어지는 내용입니다.
+이전 글 ["[React Native] 리액트 네이티브에 카카오 로그인 구현하기 #1"](https://steemit.com/zzan/@anpigon/6np73q-react-native)에서 이어지는 내용입니다.
 
 <br>
 ___

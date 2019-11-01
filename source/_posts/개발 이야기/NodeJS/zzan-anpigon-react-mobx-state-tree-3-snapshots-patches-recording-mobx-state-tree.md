@@ -13,7 +13,7 @@ author: anpigon
 date: 2019-08-19 13:55:36
 ---
 
-이전글 ["\[React\] Mobx-state-tree 학습하기 #2 : Mobx-state-tree 모델에서 Actions을 사용하기"](/zzan/@anpigon/react-native-manage-application-state-with-mobx-state-tree-2)에서 이어지는 내용입니다. 참고로 이 포스팅은 제가 학습한 내용을 노트에 정리하듯이 기록하여 올리는 글이기 때문에 보팅 안해주셔서 됩니다. 
+이전글 ["\[React\] Mobx-state-tree 학습하기 #2 : Mobx-state-tree 모델에서 Actions을 사용하기"](https://steemit.com/zzan/@anpigon/react-native-manage-application-state-with-mobx-state-tree-2)에서 이어지는 내용입니다. 참고로 이 포스팅은 제가 학습한 내용을 노트에 정리하듯이 기록하여 올리는 글이기 때문에 보팅 안해주셔서 됩니다. 
 
 
 <br>

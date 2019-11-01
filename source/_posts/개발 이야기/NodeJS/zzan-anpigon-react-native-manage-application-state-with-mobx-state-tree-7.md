@@ -11,7 +11,7 @@ author: anpigon
 date: 2019-08-25 20:23:36
 ---
 
-이전글 [**"\[React\] Mobx-state-tree 학습하기 #6 : Views를 사용하여 모델에서 정보 보여주기"**](/zzan/@anpigon/react-native-manage-application-state-with-mobx-state-tree-6)에서 이어지는 내용입니다. 참고로 이 포스팅은 제가 학습한 내용을 노트에 정리하듯이 기록하여 올리는 글이기 때문에 보팅 안해주셔서 됩니다.  많은 분들이 코딩에 흥미를  느꼈으면 좋겠습니다.  ㅋ
+이전글 [**"\[React\] Mobx-state-tree 학습하기 #6 : Views를 사용하여 모델에서 정보 보여주기"**](https://steemit.com/zzan/@anpigon/react-native-manage-application-state-with-mobx-state-tree-6)에서 이어지는 내용입니다. 참고로 이 포스팅은 제가 학습한 내용을 노트에 정리하듯이 기록하여 올리는 글이기 때문에 보팅 안해주셔서 됩니다.  많은 분들이 코딩에 흥미를  느꼈으면 좋겠습니다.  ㅋ
 
 <br>
 

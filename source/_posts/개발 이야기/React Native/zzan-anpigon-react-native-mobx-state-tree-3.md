@@ -18,12 +18,12 @@ date: 2019-08-14 13:32:45
 
 https://img.youtube.com/vi/snBvYS6eC2E/mqdefault.jpg
 
-이전글 [**"\[React Native\] MobX State Tree 학습하기 #2"**](/zzan/@anpigon/react-native-mobx-state-tree-2) 에서 이어지는 내용입니다.
+이전글 [**"\[React Native\] MobX State Tree 학습하기 #2"**](https://steemit.com/zzan/@anpigon/react-native-mobx-state-tree-2) 에서 이어지는 내용입니다.
 
 |**시리즈**|
 |-|
-|[\[React Native\] MobX State Tree 학습하기 #1](/zzan/@anpigon/react-native-mobx-state-tree-2)|
-|[\[React Native\] MobX State Tree 학습하기 #2](/zzan/@anpigon/react-native-mobx-state-tree-2)|
+|[\[React Native\] MobX State Tree 학습하기 #1](https://steemit.com/zzan/@anpigon/react-native-mobx-state-tree-2)|
+|[\[React Native\] MobX State Tree 학습하기 #2](https://steemit.com/zzan/@anpigon/react-native-mobx-state-tree-2)|
 |\[React Native\] MobX State Tree 학습하기 #3|
 ___
 

@@ -139,9 +139,9 @@ scot-api의 느린 속도 때문에 답답해서, 마켓 정보를 가져오는 
 |-|
 |**이전글**|
 |[WHAN APP 기획 개발 이야기 #1](/sct/@anpigon/snax-whan-app)|
-|[WHAN APP 개발 이야기 #2](/zzan/@anpigon/react-native-whan-app-2)|
+|[WHAN APP 개발 이야기 #2](https://steemit.com/zzan/@anpigon/react-native-whan-app-2)|
 |[WHAN APP 개발 이야기 #3](/test/@anpigon/20190709t020445612z)|
-|[WHAN APP 개발 이야기 #4](/zzan/@anpigon/react-native-whan-app-4)|
-|[WHAN APP 개발 이야기 #5](/zzan/@anpigon/react-native-whan-app-5)|
-|[WHAN APP 개발 이야기 #6](/zzan/@anpigon/react-native-whan-app-6)|
-|[WHAN APP 개발 이야기 #7](/zzan/@anpigon/20190721033641041z)|
+|[WHAN APP 개발 이야기 #4](https://steemit.com/zzan/@anpigon/react-native-whan-app-4)|
+|[WHAN APP 개발 이야기 #5](https://steemit.com/zzan/@anpigon/react-native-whan-app-5)|
+|[WHAN APP 개발 이야기 #6](https://steemit.com/zzan/@anpigon/react-native-whan-app-6)|
+|[WHAN APP 개발 이야기 #7](https://steemit.com/zzan/@anpigon/20190721033641041z)|
