@@ -3,6 +3,9 @@ layout: post
 # categories: blockchain
 title: "이더리움 멀티시그 지갑 컨트랙트 배포하기"
 date: 2018-06-24
+tags:
+  - "블록체인"
+  - "이더리움"
 ---
 
 이번에는 이더리움 멀티시그 지갑 컨트랙트를 배포하는 것을 알아봅니다. 
