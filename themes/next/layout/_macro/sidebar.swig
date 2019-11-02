@@ -46,7 +46,21 @@
         </div>
       {%- endif %}
 
+      <!-- 정사각형 광고 -->
+      <div>
+        <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-2365531018407022"
+            data-ad-slot="7521850306"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+      </div>
+
     </div>
   </aside>
-  <div id="sidebar-dimmer"></div>
+  <div id="sidebar-dimmer">3</div>
+
 {% endmacro %}

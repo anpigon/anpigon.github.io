@@ -8,7 +8,8 @@
   "scripts": {
     "start": "hexo clean && hexo g && hexo s",
     "dev": "hexo server --draft --open",
-    "deploy": "hexo clean && hexo deploy"
+    "deploy": "hexo clean && hexo deploy",
+    "algolia": "hexo algolia"
   },
   "dependencies": {
     "hexo": "^3.9.0",
