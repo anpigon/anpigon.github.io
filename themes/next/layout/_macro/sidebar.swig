@@ -46,19 +46,22 @@
         </div>
       {%- endif %}
 
-      <!-- 정사각형 광고 -->
-      <div style="margin-top: 15px;">
-        <ins class="adsbygoogle"
-            style="display:block"
-            data-ad-client="ca-pub-2365531018407022"
-            data-ad-slot="7521850306"
-            data-ad-format="auto"
-            data-full-width-responsive="true"></ins>
-        <script>
-            (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
-      </div>
-
+      {%- if theme.google_adsense.google_ad_client %}
+        {%- if theme.google_adsense.data_ad_slot_for_sidebar %}
+          <!-- 정사각형 광고 -->
+          <div style="margin-top: 15px;">
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="{{ theme.google_adsense.google_ad_client }}"
+                data-ad-slot="{{ theme.google_adsense.data_ad_slot_for_sidebar }}"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+          </div>
+        {%- endif %}
+      {%- endif %}
     </div>
   </aside>
   <div id="sidebar-dimmer">3</div>

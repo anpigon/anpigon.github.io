@@ -1072,3 +1072,10 @@ deploy:
   repo: https://github.com/anpigon/hexo
   # example, https://github.com/hexojs/hexojs.github.io
   branch: gh-pages
+
+ 
+google_adsense:
+  google_ad_client: "ca-pub-2365531018407022"
+  data_ad_slot_for_sidebar: "7521850306"
+  data_ad_slot_for_post: "3390644000"
+  enable_page_level_ads: false

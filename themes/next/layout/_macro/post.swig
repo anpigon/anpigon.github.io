@@ -215,23 +215,29 @@
           {{ post.content }}
         {%- endif %}
       {% else %}
-        <div style="margin-bottom: 15px">
-          <!-- 블로그 본문 상단 광고 -->
-          <ins class="adsbygoogle"
-              style="display:block"
-              data-ad-client="ca-pub-2365531018407022"
-              data-ad-slot="3390644000"
-              data-ad-format="auto"
-              data-full-width-responsive="true"></ins>
-          <script>
-              (adsbygoogle = window.adsbygoogle || []).push({});
-          </script>
-        </div>
+        {%- if theme.google_adsense.google_ad_client %}
+          {%- if theme.google_adsense.data_ad_slot_for_post %}
+            <div style="margin-bottom:35px;margin-top:-20px;">
+              <!-- 블로그 본문 상단 광고 -->
+              <ins class="adsbygoogle"
+                  style="display:block"
+                  data-ad-client="{{ theme.google_adsense.google_ad_client }}"
+                  data-ad-slot="3390644000"
+                  data-ad-format="auto"
+                  data-full-width-responsive="true"></ins>
+              <script>
+                  (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+          {%- endif %}
+        {%- endif %}
+
         {{ post.content }}
+
+        <!-- Originally posted on -->
+        <hr><center><tt><p>Originally posted on <a href="http://steemit.com{{ post.path }}" target="_blank" rel="noopener" data-pjax-state="">http://steemit.com</a></p></tt></center>
       {%- endif %}
 
-      <!-- Originally posted on -->
-      <hr><center><tt><p>Originally posted on <a href="http://steemit.com{{ post.path }}" target="_blank" rel="noopener" data-pjax-state="">http://steemit.com</a></p></tt></center>
     </div>
 
     {#####################}
