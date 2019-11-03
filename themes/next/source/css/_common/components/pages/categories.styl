@@ -11,6 +11,20 @@
     list-style: none;
     margin: 0;
     padding: 0;
+
+    & > .category-list-item {
+      & > .category-list-link {
+        /*font-size: 1.2em;*/
+        font-weight: 700;
+      }
+      & > .category-list-child {
+        margin-left: 15px;
+
+        & .category-list-link {
+          font-size: $font-size-smaller;
+        }
+      }
+    }
   }
 
   .category-list-item {
