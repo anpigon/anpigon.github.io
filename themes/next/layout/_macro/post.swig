@@ -217,6 +217,9 @@
       {% else %}
         {{ post.content }}
       {%- endif %}
+
+      <!-- Originally posted on -->
+      <hr><center><tt><p>Originally posted on <a href="http://steemit.com{{ post.path }}" target="_blank" rel="noopener" data-pjax-state="">http://steemit.com</a></p></tt></center>
     </div>
 
     {#####################}

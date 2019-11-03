@@ -29,6 +29,3 @@ published: false
 **관련 기사:**
 ∙ [스텔라 개발재단과 키베이스, 1억2000만 달러 어치의 에어드롭 실시](https://kr.cointelegraph.com/news/stellar-development-foundation-and-keybase-jointly-launch-120m-airdrop)
 ∙ [Stellar to Airdrop 2 Billion XLM Crypto Tokens Worth $120 Million](https://www.coindesk.com/stellar-to-airdrop-2-billion-xlm-into-keybase-wallets)
-
-***
-<center><sup>Originally posted on [안피곤님의 블로그](http://anpigon.dblog.org/keybase-xlm). Steem blog powered by [ENGRAVE](https://engrave.website).</sup></center>

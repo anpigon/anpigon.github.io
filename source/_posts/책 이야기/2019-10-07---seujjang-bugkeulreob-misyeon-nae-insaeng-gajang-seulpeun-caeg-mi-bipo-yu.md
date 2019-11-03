@@ -45,11 +45,3 @@ autoThumbnailImage: yes
 
 <center><a href="https://www.steemzzang.com"><img src="https://cdn.steemitimages.com/DQmNRsTCCtzVe8AiEsCEYm35cTAzqeMMLuPCBRuJTiRJqeo/zzanbanner.jpg" alt="zzanbanner" style="margin:0"/></a> 
 <sup><a href="https://www.steemzzang.com/zzan/@book.club/6ykcyd">돌아온 스짱 북클럽 미션: 내 인생 가장 슬픈 책</a></sup></center>
-
-***
-
-<center><sup>
-
-Originally posted on [안피곤님의 블로그](http://anpigon.dblog.org/seujjang-bugkeulreob-misyeon-nae-insaeng-gajang-seulpeun-caeg-mi-bipo-yu). Steem blog powered by [ENGRAVE](https://engrave.website).
-
-</sup></center>

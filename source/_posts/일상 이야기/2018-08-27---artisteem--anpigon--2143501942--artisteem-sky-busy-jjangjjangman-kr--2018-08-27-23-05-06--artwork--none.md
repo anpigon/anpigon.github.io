@@ -16,6 +16,3 @@ tags:
 멀리 보이는 롯데타워가 구름에 가려졌어요.
 
 ![](https://imgur.com/9itfoOJ.png)
-
-***
-<center><sup>Originally posted on [안피곤님의 블로그](http://anpigon.dblog.org/artisteem--anpigon--2143501942--artisteem-sky-busy-jjangjjangman-kr--2018-08-27-23-05-06--artwork--none). Steem blog powered by [ENGRAVE](https://engrave.website).</sup></center>

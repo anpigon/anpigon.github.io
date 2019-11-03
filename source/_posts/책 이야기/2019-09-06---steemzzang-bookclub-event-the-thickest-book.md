@@ -31,6 +31,3 @@ tags:
 
 <center><a href="https://www.steemzzang.com"><img src="https://cdn.steemitimages.com/DQmNRsTCCtzVe8AiEsCEYm35cTAzqeMMLuPCBRuJTiRJqeo/zzanbanner.jpg" alt="zzanbanner" style="margin:0"/></a> 
 <sup><a href="ttps://www.steemzzang.com/zzan/@book.club/7wkzm3-or">스짱 북클럽 미션 | 가장 두꺼운 책</a></sup></center>
-
-***
-<center><sup>Originally posted on [안피곤님의 블로그](http://anpigon.dblog.org/steemzzang-bookclub-event-the-thickest-book). Steem blog powered by [ENGRAVE](https://engrave.website).</sup></center>

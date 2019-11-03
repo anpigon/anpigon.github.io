@@ -37,6 +37,3 @@ https://steemitimages.com/640x0/https://cdn.steemitimages.com/DQmNpcHsY4vBGAxKez
 사이드바 상단영역에는 프로필을 보여 줄 예정입니다. 그리고 사이드바 아래에는 제가 필요할 것 같은 기능을 리스트로 출력해보았습니다.
 
 <br>모두 해피 코딩하세요.
-
-***
-<center><sup>Originally posted on [안피곤님의 블로그](http://anpigon.dblog.org/snax-whan-app). Steem blog powered by [ENGRAVE](https://engrave.website).</sup></center>

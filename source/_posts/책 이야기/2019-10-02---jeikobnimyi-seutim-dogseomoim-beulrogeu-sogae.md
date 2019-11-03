@@ -52,8 +52,3 @@ tags:
 <br>
 
 YES24 블로그에 리뷰를 쓰고, 스팀잇에도 리뷰를 작성하면 더 많은 보상을 받아 갈 수 있어요.  [⎡스팀 독서모임⎦](https://book.dblog.org)에 리뷰를 작성해보세요. ㅎㅎ
-
-***
-<center>
-
-<sup>Originally posted on [안피곤님의 블로그](http://anpigon.dblog.org/jeikobnimyi-seutim-dogseomoim-beulrogeu-sogae). Steem blog powered by [ENGRAVE](https://engrave.website).</sup></center>

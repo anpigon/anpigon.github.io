@@ -47,7 +47,7 @@
       {%- endif %}
 
       <!-- 정사각형 광고 -->
-      <div>
+      <div style="margin-top: 15px;">
         <ins class="adsbygoogle"
             style="display:block"
             data-ad-client="ca-pub-2365531018407022"
