@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="yfKOiBPD8WlKH3NPG_CG1zr4MsCgCG1YVdGKhMS2CKc">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Noto Serif KR:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.4.2',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: true,
+    pangu: false,
+    algolia: {
+      appID: 'YY693DUDAI',
+      apiKey: 'db449d453b150820f66e7bc3d4523a17',
+      indexName: 'my-hexo-blog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '복사',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="안녕하세요. @anpigon입니다.마스터 이더리움(Mastering Ethereum) 책을 보면서 정리한 글입니다. 아직 전체 내용을 다 보지는 못하였습니다. 하지만 궁금한 사항을 댓글로 문의하면, 최대한 답변해드리도록 노력하겠습니다. 책 전체 내용은 깃허브에서 볼 수 있습니다. https://github.com/ethereumbook/ethereumboo">
+<meta name="keywords" content="블록체인,이더리움">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[블록체인] 이더리움(Ethereum) 공부 #1 - 키와 주소">
+<meta property="og:url" content="https://anpigon.github.io/kr/@anpigon/ethereum-1/index.html">
+<meta property="og:site_name" content="안피곤님의 블로그">
+<meta property="og:description" content="안녕하세요. @anpigon입니다.마스터 이더리움(Mastering Ethereum) 책을 보면서 정리한 글입니다. 아직 전체 내용을 다 보지는 못하였습니다. 하지만 궁금한 사항을 댓글로 문의하면, 최대한 답변해드리도록 노력하겠습니다. 책 전체 내용은 깃허브에서 볼 수 있습니다. https://github.com/ethereumbook/ethereumboo">
+<meta property="og:locale" content="ko">
+<meta property="og:updated_time" content="2019-11-11T13:41:49.829Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="[블록체인] 이더리움(Ethereum) 공부 #1 - 키와 주소">
+<meta name="twitter:description" content="안녕하세요. @anpigon입니다.마스터 이더리움(Mastering Ethereum) 책을 보면서 정리한 글입니다. 아직 전체 내용을 다 보지는 못하였습니다. 하지만 궁금한 사항을 댓글로 문의하면, 최대한 답변해드리도록 노력하겠습니다. 책 전체 내용은 깃허브에서 볼 수 있습니다. https://github.com/ethereumbook/ethereumboo">
+
+<link rel="canonical" href="https://anpigon.github.io/kr/@anpigon/ethereum-1/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>[블록체인] 이더리움(Ethereum) 공부 #1 - 키와 주소 | 안피곤님의 블로그</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-20589042-10"></script>
+    <script pjax>
+      var host = window.location.hostname;
+      if (host !== "localhost" || !true) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-20589042-10');
+      }
+    </script>
+
+
+
+
+
+
+  
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-2365531018407022",
+          enable_page_level_ads: false
+     });
+</script>
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">안피곤님의 블로그</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">코딩, 독서, 여행, 영화, 맛집</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>홈</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>태그<span class="badge">139</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>카테고리<span class="badge">25</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>아카이브<span class="badge">323</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>검색
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input" id="search-input"></div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="algolia-results">
+  <div id="algolia-stats"></div>
+  <div id="algolia-hits"></div>
+  <div id="algolia-pagination" class="algolia-pagination"></div>
+</div>
+
+  
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="ko">
+    <link itemprop="mainEntityOfPage" href="https://anpigon.github.io/kr/@anpigon/ethereum-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/me.jpg">
+      <meta itemprop="name" content="안피곤">
+      <meta itemprop="description" content="시간이 천천히 갔으면 좋겠다.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="안피곤님의 블로그">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          [블록체인] 이더리움(Ethereum) 공부 #1 - 키와 주소
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">작성일</span>
+
+              <time title="Post created: 2018-08-26 00:49:36" itemprop="dateCreated datePublished" datetime="2018-08-26T00:49:36+09:00">2018-08-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Updated at: 2019-11-11 22:41:49" itemprop="dateModified" datetime="2019-11-11T22:41:49+09:00">2019-11-11</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/개발-이야기/" itemprop="url" rel="index">
+                    <span itemprop="name">개발 이야기</span>
+                  </a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/개발-이야기/블록체인/" itemprop="url" rel="index">
+                    <span itemprop="name">블록체인</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/kr/@anpigon/ethereum-1/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="/kr/@anpigon/ethereum-1/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+            <div style="margin-bottom:35px;margin-top:-20px;">
+              <!-- 블로그 본문 상단 광고 -->
+              <ins class="adsbygoogle"
+                  style="display:block"
+                  data-ad-client="ca-pub-2365531018407022"
+                  data-ad-slot="3390644000"
+                  data-ad-format="auto"
+                  data-full-width-responsive="true"></ins>
+              <script>
+                  (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+        <p>안녕하세요. @anpigon입니다.</p><div class="pull-right"><img data-src="https://steemitimages.com/150x0/https://images-na.ssl-images-amazon.com/images/I/51eW3hlp3jL._SX379_BO1,204,203,200_.jpg"></div><p><strong>마스터 이더리움(Mastering Ethereum)</strong> 책을 보면서 정리한 글입니다. 아직 전체 내용을 다 보지는 못하였습니다. 하지만 궁금한 사항을 댓글로 문의하면, 최대한 답변해드리도록 노력하겠습니다.</p><blockquote>
+<p>책 전체 내용은 깃허브에서 볼 수 있습니다.<br>
+<a href="https://github.com/ethereumbook/ethereumbook" target="_blank" rel="noopener">https://github.com/ethereumbook/ethereumbook</a></p>
+</blockquote><a id="more"></a>
+ 
+
+
+<br>
+<hr>
+<br>
+<p>이더리움은 주소, 개인키, 디지털 서명 등을 통해 이더(ether)를 소유하고 통제한다. 그리고 키와 주소는 지갑 또는 웰렛이라고 부르는 소프트웨어에 의해 생성되고 관리된다.<br>
+이더리움에는 2가지 유형의 계정이 있다. 외부 소유 계정(EOA)과 컨트랙트 계정(CA)이다. EOA는 지갑에서 개인키로 생성한 계정이고, CA는 컨트랙트에서 생성된 계정이다.</p>
+<br>
+<hr>
+<h1 id="개인키와-공개키"><a class="markdownIt-Anchor" href="#개인키와-공개키"></a> 개인키와 공개키</h1>
+<p>개인키는 이더를 지출하는 트랜잭션을 디지털 서명하는 데 사용된다. 그리고 공개키는 이더을 수신하는 주소로 사용된다.</p>
+<p>이더리움은 정보를 보호하기 위해  <strong><a href="https://ko.wikipedia.org/wiki/%EF%BC%85ED%EF%BC%8583%EF%BC%8580%EF%BC%85EC%EF%BC%859B%EF%BC%8590%EF%BC%85EA%EF%BC%85B3%EF%BC%85A1%EF%BC%85EC%EF%BC%8584%EF%BC%85A0_%EF%BC%85EC%EF%BC%8595%EF%BC%8594%EF%BC%85ED%EF%BC%8598%EF%BC%85B8" target="_blank" rel="noopener">타원 곡선 암호화(ECC, Elliptic Curve Cryptography)</a></strong> 방식을 사용하여 공개키를 암호화한다. 타원 곡선 암호는 타원 곡선을 구성하는 여러 점들 위에서 덧셈 및 곱셈으로 표현되는 **<a href="https://en.wikipedia.org/wiki/Discrete_logarithm" target="_blank" rel="noopener">이산 로그 문제(discrete logarithm problem)</a>**를 기반으로 한 비대칭 또는 공개키 암호화 방식이다. 그리고 이더리움은 비트코인처럼 미국립표준기술원(NIST)에서 개발한 <a href="https://en.bitcoin.it/wiki/Secp256k1" target="_blank" rel="noopener">secco256k1</a>이라고 부르는 표준 타원 곡선을 사용한다. 그래서 이더리움은 비트코인에서 사용하는 라이브러리 및 도구를 재사용 할 수 있다.</p>
+<p>이제 개인키와 공개키를 생성하는 방법을 알아보자.<br>
+<br></p>
+<hr>
+<h2 id="개인키private-key"><a class="markdownIt-Anchor" href="#개인키private-key"></a> 개인키(Private key)</h2>
+<p>개인키는 단순히 <strong>무작위로 추출된 숫자</strong>이다. 좀 더 정확하게 말하면, 개인키는 0과 n - 1 사이의 임의의 수이다. 여기서 n은 타원곡선의 위수(order)로 정의된 상수(n = 1.1578 * 10<sup>77</sup>, 2<sup>256</sup>보다 약간 작은 값)이다.</p>
+<p>다음은 난수에서 생성한 개인키(k)이다. 16진수 문자열로 표시하였다.</p>
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a<span class="number">96580</span>eb<span class="number">08</span>a<span class="number">2</span>a<span class="number">600911</span>fa<span class="number">5</span>b<span class="number">98</span>a<span class="number">00</span>fb<span class="number">6</span>faf<span class="number">7417834131</span>f<span class="number">81</span><span class="keyword">c</span><span class="number">070</span>d<span class="number">804</span><span class="keyword">c</span><span class="number">45</span>bc<span class="number">2729</span></span><br></pre></td></tr></table></figure>
+<p>개인키를 생성할 수 있는 범위(2<sup>256</sup>)를 10진수로 나타내면 약 10<sup>77</sup>이다. 비교를 위해 예를 들자면, 우주는 약 10<sup>80</sup>개의 원자로 구성되어 있다고 한다. 만약 개인키를 잃어버린다면 우주에서 바늘 찾기만큼 어렵다.</p>
+<p>자바스크립트를 사용하여 개인키를 생성해보자.  이더리움 키 생성에는 <strong><a href="https://github.com/bitpay/bitcore-lib" target="_blank" rel="noopener">bitcore-lib</a></strong> 라이브러리를 사용한다.</p>
+<p>아래와 같이 <strong>bitcore-lib</strong>을 설치한다.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install bitcore-lib --save</span><br></pre></td></tr></table></figure>
+<p><br>그리고 <strong>bitcore-lib</strong> 라이브러리를 사용하여 개인키를 생성한다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Bitcore = <span class="built_in">require</span>(<span class="string">'bitcore-lib'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> priKey = Bitcore.PrivateKey();</span><br><span class="line"><span class="built_in">console</span>.log(priKey);</span><br></pre></td></tr></table></figure>
+<h6 id="실행결과"><a class="markdownIt-Anchor" href="#실행결과"></a> 실행결과:</h6>
+<p><img alt="개인키 생성 결과" data-src="https://imgur.com/BIw7ebF.png"></p>
+<br>
+<hr>
+<h1 id="공개키public-key"><a class="markdownIt-Anchor" href="#공개키public-key"></a> 공개키(Public key)</h1>
+<p>공개키는 타원곡선 곱셈 함수를 사용하여 개인키로부터 계산된다. 계산 공식은 다음과 같다.</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">K = k * G</span><br></pre></td></tr></table></figure>
+<p><em>k</em>는 개인키이고 <em>G</em>는 생성지점이라고 하는 상수다. 그리고 <em>K</em>는 계산결과로 나온 공개키다.</p>
+<p>개인키에서 공개키는 계산할 수 있지만, 반대로 공개키에서 개인키는 계산할 수는 없다. **<a href="https://en.wikipedia.org/wiki/Discrete_logarithm" target="_blank" rel="noopener">이산 로그(discrete logarithm) 찾기</a>**로도 알려져 있는 역계산법은 <em>K</em>값을 안다는 가정 하에 <em>k</em>값을 계산하는 것이다. 하지만, <em>K</em>값을 찾기 위해서는 가능한 <em>k</em>를 모두 대입하는 방법밖에 없기때문에 <em>K</em>값을 찾는 것은 거의 불가능에 가깝다.</p>
+<div class="text-center">
+<p><img alt="타원곡선" data-src="https://steemitimages.com/400x0/https://imgur.com/DC7JkEp.png"><br>
+<sup>파워포인트로 그린 것이기 때문에 실제 타원곡선과 다릅니다.</sup></p>
+</div>
+<p>랜덤으로 생성된 숫자 개인키(k)를 시작하여 생성지점 G라고하는 곡선의 미리 결정된 점을 곱하여 곡선상의 다른 점, 즉 대응하는 공개키(K)를 계산한다.</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">K</span> = a96580eb08a2a600911fa5b98a00fb6faf7417834131f81c070d804c45bc2729 * G</span><br></pre></td></tr></table></figure>
+<p><br>공개키(K)는 타원 곡선의 한 점으로 타원 곡선 방정식을 만족하는 X와 Y 좌표이다. 그래서 K = (x, y)로 정의된다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">K = (x, y)</span><br><span class="line"></span><br><span class="line">x = F028892BAD7ED57D2FB57BF33081D5CFCF6F9ED3D3D7F159C2E2FFF579DC341A</span><br><span class="line">y = <span class="number">07</span>CF33DA18BD734C600B96A72BBC4749D5141C90EC8AC328AE52DDFE2E505BDB</span><br></pre></td></tr></table></figure>
+<p>공개키는 x좌표를 알면 y좌표를 대략 알 수 있다. 그래서 보통 y좌표가 상단인지 하단인지 구분하는 단일 비트와 x좌표만 사용하여 압축된 공개키를 사용한다. 압축되지 않은 공개키와 압축된 공개키는 모두 secp256k1 문서에 설명되어 있다.</p>
+<p>이제 자바스크립트를 사용하여 개인키로부터 공개키를 계산해보자.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> pubKey = priKey.toPublicKey();</span><br><span class="line"><span class="built_in">console</span>.log(pubKey);</span><br></pre></td></tr></table></figure>
+<h6 id="실행결과-2"><a class="markdownIt-Anchor" href="#실행결과-2"></a> 실행결과:</h6>
+<p><img alt="공개키생성결과" data-src="https://imgur.com/vKMTsU3.png"></p>
+<br>
+<hr>
+<h1 id="이더리움-주소"><a class="markdownIt-Anchor" href="#이더리움-주소"></a> 이더리움 주소</h1>
+<p>이더리움 주소는 공개키  해시(Keccak-256)의 마지막 20바이트로 구성된다. Keccak-256는 단방향 해시 함수이다.</p>
+<p>개인키(<em>k</em>):</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">k</span> = f8f8a2f43c8376ccb0871305060d7b27b0554d2cc72bccf41b2705608452f315</span><br></pre></td></tr></table></figure>
+<p><br>공개키(<em>K</em>)는 X와 Y 좌표를 연결하고 16진수 문자열로 표시한다.</p>
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">K = <span class="number">6e145</span>ccef<span class="number">1033</span>dea<span class="number">239875</span>dd<span class="number">00</span>dfb<span class="number">4</span>fee<span class="number">6e3348</span>b<span class="number">84985</span><span class="keyword">c</span><span class="number">92</span>f<span class="number">103444683</span>bae<span class="number">07</span>b<span class="number">83</span>b<span class="number">5</span><span class="keyword">c</span><span class="number">38e5</span>e<span class="number">2</span>b<span class="number">0</span><span class="keyword">c</span><span class="number">8529</span>d<span class="number">7</span>fa<span class="number">3</span>f<span class="number">64</span>d<span class="number">46</span>daa<span class="number">1</span>ece<span class="number">2</span>d<span class="number">9</span>ac<span class="number">14</span>cab<span class="number">9477</span>d<span class="number">042</span><span class="keyword">c</span><span class="number">84</span><span class="keyword">c</span><span class="number">32</span>ccd<span class="number">0</span></span><br></pre></td></tr></table></figure>
+<p><br>Keccak-256을 사용하여 공개키의 해시를 계산한다.</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">Keccak256</span><span class="params">(K)</span></span> = <span class="number">2</span>a5bc342ed616b5ba5732269001d3f1ef827552ae1114027bd3ecf1f086ba0f9</span><br></pre></td></tr></table></figure>
+<p><br>공개키 해시의 마지막 20 바이트만 유지한다.</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">001</span>d3f1ef827552ae1114027bd3ecf1f086ba0f9</span><br></pre></td></tr></table></figure>
+<p><br>마지막으로 맨 앞에 &quot;0x&quot;를 붙여 이더리움 주소임을 표시한다.</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0x001d3f1ef827552ae1114027bd3ecf1f086ba0f9</span></span><br></pre></td></tr></table></figure>
+<p><br>이제 자바스크립트로 공개키에서 이더리움 주소를 생성해보자.</p>
+<p>이더리움 주소 생성에는 <strong><a href="https://github.com/ethereumjs/ethereumjs-util" target="_blank" rel="noopener">ethereumjs-util</a></strong> 라이브러리를 사용한다. 아래와 같이 <strong>ethereumjs-util</strong>를 설치한다.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install ethereumjs-util --save</span><br></pre></td></tr></table></figure>
+<p><br><strong>ethereumjs-util</strong> 라이브러리를 사용하면 이더리움 주소를 간단하게 생성 할 수 있다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Bitcore = <span class="built_in">require</span>(<span class="string">'bitcore-lib'</span>);</span><br><span class="line"><span class="keyword">var</span> EthUtil = <span class="built_in">require</span>(<span class="string">'ethereumjs-util'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 키쌍 생성</span></span><br><span class="line"><span class="keyword">var</span> priKey = Bitcore.PrivateKey();</span><br><span class="line"><span class="keyword">var</span> pubKey = priKey.toPublicKey();</span><br><span class="line"></span><br><span class="line"><span class="comment">// keccak 해시(20 바이트)</span></span><br><span class="line"><span class="keyword">var</span> addressHash = EthUtil.pubToAddress(pubKey.toBuffer(), <span class="literal">true</span>); </span><br><span class="line"></span><br><span class="line"><span class="comment">// 이더리움 주소 생성</span></span><br><span class="line"><span class="keyword">var</span> etherAddress = <span class="string">'0x'</span> + addressHash.toString(<span class="string">'hex'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(etherAddress);</span><br></pre></td></tr></table></figure>
+<h6 id="실행결과-3"><a class="markdownIt-Anchor" href="#실행결과-3"></a> 실행결과:</h6>
+<p><img alt="이더리움주소생성결과" data-src="https://imgur.com/IT3Txmj.png"></p>
+<br>
+<hr>
+<h1 id="이더리움-주소-유효성-체크"><a class="markdownIt-Anchor" href="#이더리움-주소-유효성-체크"></a> 이더리움 주소 유효성 체크</h1>
+<p>이더리움 주소 유효성 체크는 **<a href="https://github.com/ethereum/EIPs/blob/master/EIPS/eip-55.md" target="_blank" rel="noopener">EIP-55(Ethereum Improvement Proposal 55)</a>**에 제안된 내용이다. EIP-55는 이더리움 주소에 체크섬을 추가하여 주소의 무결성을 검증하고 오류로부터 보호한다. 이 제안은 EIP-55가 적용되지 않은 이전 지갑에서도 전혀 문제를 일으키지 않는다.</p>
+<p>방법은 간단하다. 16진수 문자열로 구성된 이더리움 주소에서 소문자를 체크섬 형태의 대문자로 바꾸기만 하면 된다.</p>
+<p>기존 이더리움 주소:</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0x7f7625faa1ca985e9ad678656a9dcdf79620df6b</span></span><br></pre></td></tr></table></figure>
+<p><br>EIP-55 체크섬이 적용된 이더리움 주소:</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0x7f7625FAa1CA985E9Ad678656A9DcdF79620dF6B</span></span><br></pre></td></tr></table></figure>
+<p><br>두 주소의 차이를 살펴보면 일부 소문자가 대문자로 변경되었다. 자세히 살펴보지 않으면 차이점을 발견하기 어렵다.</p>
+<p>이더리움 주소에서 접두어(0x)를 제거하고 주소를 해시(Keccak256)한다.</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">Keccak256</span><span class="params">(<span class="string">"7f7625faa1ca985e9ad678656a9dcdf79620df6b"</span>)</span></span></span><br></pre></td></tr></table></figure>
+<p><br>Keccak256 해시 결과:</p>
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">3015</span>b<span class="number">5</span><span class="keyword">c</span><span class="number">87</span>eeb<span class="number">15</span>cce<span class="number">85e3</span>e<span class="number">48</span>eefb<span class="number">50</span>b<span class="number">400</span>dd<span class="number">497</span><span class="keyword">c</span><span class="number">7</span>b<span class="number">0</span>bd<span class="number">41</span>f<span class="number">16937</span>ead<span class="number">349</span>b<span class="number">3784</span></span><br></pre></td></tr></table></figure>
+<p><br>이더리움 주소와 해시를 비교한다. 그리고 주소와 매칭되는 해시의 16진수가 0x8 이상인 경우에 주소의 소문자를 대문자로 변경한다.</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Address: <span class="number">7f</span>7625faa1ca985e9ad678656a9dcdf79620df6b</span><br><span class="line">Hash   : <span class="number">3015</span>b5c87eeb15cce85e3e48eefb50b400dd497c...</span><br></pre></td></tr></table></figure>
+<p><br>이더리움 주소 7번째에 위치한 소문자 f를 보자. 해당 해시의 7번째에 위치한 16진수 c는 0x8보다 크다. 그러므로 소문자 f를 대문자 F로 변경한다. 이와 같은 방법으로 이더리움 주소의 모든 소문자를 변경한다. 아래의 변경된 결과를 확인해보자.</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Address: <span class="number">7f</span>7625FAa1CA985E9Ad678656A9DcdF79620dF6B</span><br><span class="line">Hash   : <span class="number">3015</span>b5c87eeb15cce85e3e48eefb50b400dd497c...</span><br></pre></td></tr></table></figure>
+<p><br>EIP-55의 체크섬 주소를 사용하면 이더리움 주소의 오류를 감지할 수 있다.</p>
+<p>자바스크립 코드로 나타내면 아래와 같다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 체크섬 주소로 변환</span></span><br><span class="line">etherAddress = EthUtil.toChecksumAddress(etherAddress)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 이더리움 주소 유효성 체크</span></span><br><span class="line"><span class="keyword">if</span> (EthUtil.isValidAddress(etherAddress) === <span class="literal">false</span>) ｛</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'올바른 이더리움 주소가 아닙니다.'</span>)</span><br><span class="line">｝</span><br><span class="line"></span><br><span class="line"><span class="comment">// 이더리움 체크섬 주소 유효성 체크</span></span><br><span class="line"><span class="keyword">if</span> (EthUtil.isValidChecksumAddress(etherAddress) === <span class="literal">false</span>) ｛</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'올바른 이더리움 체크섬 주소가 아닙니다.'</span>)</span><br><span class="line">｝</span><br></pre></td></tr></table></figure>
+<hr>
+<p><br>만약 이더리움 지갑 소프트웨어를 개발한다면 EIP-55를 반드시 적용하자. 그러면 사용자가 이더리움 주소를 잘못 입력하여 송금하는 일을 사전에 방지할 수 있다.</p>
+<p>여기까지 읽어주셔서 감사합니다.</p>
+
+          <!-- 스팀잇에서 작성한 글만 보여져야함(판단 기준이 애매함) -->
+          <!-- Originally posted on -->
+          <hr><center><tt><p>Originally posted on <a href="http://steemit.com/kr/@anpigon/ethereum-1/" target="_blank" rel="noopener" data-pjax-state="">http://steemit.com</a></p></tt></center>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/블록체인/" rel="tag"># 블록체인</a>
+              <a href="/tags/이더리움/" rel="tag"># 이더리움</a>
+          </div>
+
+        
+  <div class="post-widgets">
+    <div class="wp_rating">
+      <div id="wpac-rating"></div>
+    </div>
+  </div>
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/kr/@anpigon/steemit-8/" rel="next" title="[Vue.js] 스팀잇(Steemit)기반 앱 만들기 #8 - 보팅 내역 보여주기">
+                  <i class="fa fa-chevron-left"></i> [Vue.js] 스팀잇(Steemit)기반 앱 만들기 #8 - 보팅 내역 보여주기
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/artisteem/@anpigon/artisteem--anpigon--2143501942--artisteem-sky-busy-jjangjjangman-kr--2018-08-27-23-05-06--artwork--none/" rel="prev" title="[아티스팀] 서울 한강 야경">
+                  [아티스팀] 서울 한강 야경 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    
+  <div class="comments" id="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          목차
+        </li>
+        <li class="sidebar-nav-overview">
+          흝어보기
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#개인키와-공개키"><span class="nav-number">1.</span> <span class="nav-text"> 개인키와 공개키</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#개인키private-key"><span class="nav-number">1.1.</span> <span class="nav-text"> 개인키(Private key)</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#실행결과"><span class="nav-number">1.1.0.0.0.1.</span> <span class="nav-text"> 실행결과:</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#공개키public-key"><span class="nav-number">2.</span> <span class="nav-text"> 공개키(Public key)</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#실행결과-2"><span class="nav-number">2.0.0.0.0.1.</span> <span class="nav-text"> 실행결과:</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#이더리움-주소"><span class="nav-number">3.</span> <span class="nav-text"> 이더리움 주소</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#실행결과-3"><span class="nav-number">3.0.0.0.0.1.</span> <span class="nav-text"> 실행결과:</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#이더리움-주소-유효성-체크"><span class="nav-number">4.</span> <span class="nav-text"> 이더리움 주소 유효성 체크</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="안피곤"
+    src="/images/me.jpg">
+  <p class="site-author-name" itemprop="name">안피곤</p>
+  <div class="site-description" itemprop="description">시간이 천천히 갔으면 좋겠다.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">323</span>
+          <span class="site-state-item-name">포스트</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-name">카테고리</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">139</span>
+        <span class="site-state-item-name">태그</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/anpigon" title="GitHub &rarr; https://github.com/anpigon" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:markan82@gmail.com" title="E-Mail &rarr; mailto:markan82@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+          <!-- 정사각형 광고 -->
+          <div style="margin-top: 15px;">
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-2365531018407022"
+                data-ad-slot="7521850306"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+          </div>
+    </div>
+  </aside>
+  <div id="sidebar-dimmer">3</div>
+
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">안피곤</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.9.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.4.2
+  </div>
+
+        
+
+
+
+
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-firestore.js"></script>
+  <script>
+    firebase.initializeApp({
+      apiKey: 'AIzaSyA4QZWCWb3IuIHjbkAmO0ttIM2b-qtLTP8',
+      projectId: 'next-blog-8f9a0'
+    });
+
+    function getCount(doc, increaseCount) {
+      // IncreaseCount will be false when not in article page
+
+      return doc.get().then(d => {
+        var count = 0;
+        if (!d.exists) { // Has no data, initialize count
+          if (increaseCount) {
+            doc.set({
+              count: 1
+            });
+            count = 1;
+          }
+        } else { // Has data
+          count = d.data().count;
+          if (increaseCount) {
+            // If first view this article
+            doc.set({ // Increase count
+              count: count + 1
+            });
+            count++;
+          }
+        }
+
+        return count;
+      });
+    }
+
+    function appendCountTo(el) {
+      return count => {
+        el.innerText = count;
+      }
+    }
+  </script>
+  <script pjax>
+    (function() {
+      var db = firebase.firestore();
+      var articles = db.collection('articles');
+
+      if (CONFIG.page.isPost) { // Is article page
+        var title = document.querySelector('.post-title').innerText.trim();
+        var doc = articles.doc(title);
+        var increaseCount = true;
+        if (localStorage.getItem(title)) {
+          increaseCount = false;
+        } else {
+          // Mark as visited
+          localStorage.setItem(title, true);
+        }
+        getCount(doc, increaseCount).then(appendCountTo(document.querySelector('.firestore-visitors-count')));
+      } else if (CONFIG.page.isHome) { // Is index page
+        var promises = [...document.querySelectorAll('.post-title')].map(element => {
+          var title = element.innerText.trim();
+          var doc = articles.doc(title);
+          return getCount(doc);
+        });
+        Promise.all(promises).then(counts => {
+          var metas = document.querySelectorAll('.firestore-visitors-count');
+          counts.forEach((val, idx) => {
+            appendCountTo(metas[idx])(val);
+          });
+        });
+      }
+    })();
+  </script>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.getAttribute('pjax') !== null) {
+      element.setAttribute('pjax', '');
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+  <script pjax>
+  if (CONFIG.page.isPost) {
+    wpac_init = window.wpac_init || [];
+    wpac_init.push({
+      widget: 'Rating',
+      id: 21712,
+      el: 'wpac-rating',
+      color: 'fc6423'
+    });
+    (function() {
+      if ('WIDGETPACK_LOADED' in window) return;
+      WIDGETPACK_LOADED = true;
+      var mc = document.createElement('script');
+      mc.type = 'text/javascript';
+      mc.async = true;
+      mc.src = '//embed.widgetpack.com/widget.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+    })();
+  }
+  </script>
+
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.4.1/dist/instantsearch.min.css">
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.4.1/dist/instantsearch.js"></script><script src="/js/algolia-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+
+  
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://anpigon-github-io.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  function loadComments() {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: {page: {
+            url: "https://anpigon.github.io/kr/@anpigon/ethereum-1/",
+            identifier: "/kr/@anpigon/ethereum-1/",
+            title: "[블록체인] 이더리움(Ethereum) 공부 #1 - 키와 주소"
+          }
+        }
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://anpigon-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  }
+    (function() {
+      var offsetTop = document.getElementById('comments').offsetTop - window.innerHeight;
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        window.addEventListener('load', loadComments, false);
+      } else {
+        var disqus_scroll = () => {
+          // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = document.getElementById('comments').offsetTop - window.innerHeight;
+          var scrollTop = window.scrollY;
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            window.removeEventListener('scroll', disqus_scroll);
+            loadComments();
+          }
+        };
+        window.addEventListener('scroll', disqus_scroll);
+      }
+    })();
+  
+</script>
+
+    </div>
+</body>
+</html>

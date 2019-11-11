@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="yfKOiBPD8WlKH3NPG_CG1zr4MsCgCG1YVdGKhMS2CKc">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Noto Serif KR:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.4.2',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: true,
+    pangu: false,
+    algolia: {
+      appID: 'YY693DUDAI',
+      apiKey: 'db449d453b150820f66e7bc3d4523a17',
+      indexName: 'my-hexo-blog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '복사',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="안녕하세요. 안피곤입니다.이전 글 &amp;quot;국내 도서 검색 OPEN API 비교&amp;quot;에서 책 검색 OPEN API를 조사했습니다. 그러나 제가 원하는 데이터를 모두 제공하는 API는 찾지 못했습니다. 그나마 Daum 책 검색 API가 가장 괜찮은 것 같습니다. 아니 이제는 Kakao 책 검색 API라고 해야하죠.">
+<meta name="keywords" content="React Native,국내 도서 검색 OPEN API">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[React Native] 카카오 책 검색 API 사용하기">
+<meta property="og:url" content="https://anpigon.github.io/kr/@anpigon/react-native-api/index.html">
+<meta property="og:site_name" content="안피곤님의 블로그">
+<meta property="og:description" content="안녕하세요. 안피곤입니다.이전 글 &amp;quot;국내 도서 검색 OPEN API 비교&amp;quot;에서 책 검색 OPEN API를 조사했습니다. 그러나 제가 원하는 데이터를 모두 제공하는 API는 찾지 못했습니다. 그나마 Daum 책 검색 API가 가장 괜찮은 것 같습니다. 아니 이제는 Kakao 책 검색 API라고 해야하죠.">
+<meta property="og:locale" content="ko">
+<meta property="og:updated_time" content="2019-11-11T13:41:49.814Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="[React Native] 카카오 책 검색 API 사용하기">
+<meta name="twitter:description" content="안녕하세요. 안피곤입니다.이전 글 &amp;quot;국내 도서 검색 OPEN API 비교&amp;quot;에서 책 검색 OPEN API를 조사했습니다. 그러나 제가 원하는 데이터를 모두 제공하는 API는 찾지 못했습니다. 그나마 Daum 책 검색 API가 가장 괜찮은 것 같습니다. 아니 이제는 Kakao 책 검색 API라고 해야하죠.">
+
+<link rel="canonical" href="https://anpigon.github.io/kr/@anpigon/react-native-api/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>[React Native] 카카오 책 검색 API 사용하기 | 안피곤님의 블로그</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-20589042-10"></script>
+    <script pjax>
+      var host = window.location.hostname;
+      if (host !== "localhost" || !true) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-20589042-10');
+      }
+    </script>
+
+
+
+
+
+
+  
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-2365531018407022",
+          enable_page_level_ads: false
+     });
+</script>
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">안피곤님의 블로그</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">코딩, 독서, 여행, 영화, 맛집</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>홈</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>태그<span class="badge">139</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>카테고리<span class="badge">25</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>아카이브<span class="badge">323</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>검색
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input" id="search-input"></div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="algolia-results">
+  <div id="algolia-stats"></div>
+  <div id="algolia-hits"></div>
+  <div id="algolia-pagination" class="algolia-pagination"></div>
+</div>
+
+  
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="ko">
+    <link itemprop="mainEntityOfPage" href="https://anpigon.github.io/kr/@anpigon/react-native-api/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/me.jpg">
+      <meta itemprop="name" content="안피곤">
+      <meta itemprop="description" content="시간이 천천히 갔으면 좋겠다.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="안피곤님의 블로그">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          [React Native] 카카오 책 검색 API 사용하기
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">작성일</span>
+
+              <time title="Post created: 2019-04-10 02:48:18" itemprop="dateCreated datePublished" datetime="2019-04-10T02:48:18+09:00">2019-04-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Updated at: 2019-11-11 22:41:49" itemprop="dateModified" datetime="2019-11-11T22:41:49+09:00">2019-11-11</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/개발-이야기/" itemprop="url" rel="index">
+                    <span itemprop="name">개발 이야기</span>
+                  </a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/개발-이야기/react-native/" itemprop="url" rel="index">
+                    <span itemprop="name">React Native</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/kr/@anpigon/react-native-api/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="/kr/@anpigon/react-native-api/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+            <div style="margin-bottom:35px;margin-top:-20px;">
+              <!-- 블로그 본문 상단 광고 -->
+              <ins class="adsbygoogle"
+                  style="display:block"
+                  data-ad-client="ca-pub-2365531018407022"
+                  data-ad-slot="3390644000"
+                  data-ad-format="auto"
+                  data-full-width-responsive="true"></ins>
+              <script>
+                  (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+        <p>안녕하세요. 안피곤입니다.</p><p>이전 글 &quot;<a href="/kr/@anpigon/open-api">국내 도서 검색 OPEN API 비교</a>&quot;에서 책 검색 OPEN API를 조사했습니다. 그러나 제가 원하는 데이터를 모두 제공하는 API는 찾지 못했습니다. 그나마 Daum 책 검색 API가 가장 괜찮은 것 같습니다. 아니 이제는 Kakao 책 검색 API라고 해야하죠.</p><a id="more"></a>
+
+<p>저는 당연히 온라인 서점에서 책 검색 OPEN API 서비스를 제공할 것이라고 생각했습니다. 그런데 교보문서, 영풍문고에서 OPEN API 서비스는 찾아 볼 수가 없네요. 알라딘과 인터파크에서 OPEN API 서비스를 하고 있지만, 지금은 관리하지 않는 것 같아요.</p>
+<p>국내 온라인 서점에서 운영하는 OPEN API 서비스 관리가 안 되는 점이 매우 안타깝습니다. 사실 국가기관인 한국정보화진흥원에서 운영하는 <a href="https://www.data.go.kr" target="_blank" rel="noopener">https://www.data.go.kr</a> 운영도 부실하긴 마찬가지입니다.</p>
+<p>국내 OPEN API 외에 <a href="https://developers.google.com/books/docs/v1/using" target="_blank" rel="noopener">Google Books APIs</a>와 <a href="https://isbndb.com/apidocs" target="_blank" rel="noopener">ISBNdb</a> 사이트의 API 문서도 살펴보긴 했었습니다. 하지만 한글을 지원하면서 <a href="https://developers.themoviedb.org/3" target="_blank" rel="noopener">The Movie DB</a> 만큼의 데이터를 제공하는 책 검색 OPEN API는 없는 것 같습니다. ㅠㅠ</p>
+<p>다음은 Kakao에서 제공하는 책 검색 API를 이용하여 구현한 코드입니다. 전체 코드를 공개하기에는 코드량이 너무 많아서 핵심 코드만 공개하였습니다.</p>
+<p> </p>
+<center><br>* * *<br></center>
+&nbsp;
+<h2 id="책-검색-open-api-조회하기"><a class="markdownIt-Anchor" href="#책-검색-open-api-조회하기"></a> 책 검색 OPEN API 조회하기</h2>
+<p>카카오에서 제공하는 <a href="https://developers.kakao.com/docs/restapi/search#%EF%BC%85EC%EF%BC%85B1%EF%BC%8585-%EF%BC%85EA%EF%BC%85B2%EF%BC%8580%EF%BC%85EC%EF%BC%8583%EF%BC%8589" target="_blank" rel="noopener">책 검색 API</a>를 이용하여 아래와 같이 구현하였습니다. 그리고 네트워크 통신 라이브러리는 <code>axios</code>를 사용했습니다.</p>
+<figure class="highlight qml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> axios from <span class="string">'axios'</span>;</span><br><span class="line"><span class="keyword">import</span> ｛ parseDateString ｝ from <span class="string">'../utils/formatter'</span>;</span><br><span class="line"><span class="keyword">import</span> ｛ DAUM_API_URL, DAUM_API_KEY ｝ from <span class="string">'../config.js'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> client = axios.create(｛</span><br><span class="line">  <span class="attribute">baseURL</span>: <span class="string">`$｛DAUM_API_URL｝`</span>,</span><br><span class="line">  <span class="attribute">method</span>: <span class="string">'post'</span>,</span><br><span class="line">  <span class="attribute">headers</span>: ｛</span><br><span class="line">    <span class="string">'Content-Type'</span>: <span class="string">'application/json; charset=utf-8'</span>,</span><br><span class="line">    <span class="string">'Host'</span>: <span class="string">'dapi.kakao.com'</span>,</span><br><span class="line">    <span class="string">'Authorization'</span>: <span class="string">`KakaoAK $｛DAUM_API_KEY｝`</span>,</span><br><span class="line">  ｝,</span><br><span class="line">  <span class="attribute">timeout</span>: <span class="number">10000</span> <span class="comment">// 타임아웃 10초</span></span><br><span class="line">｝);</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * @param ｛*｝ query 검색을 원하는 질의어</span></span><br><span class="line"><span class="comment"> * @param ｛*｝ size 한 페이지에 보여질 문서의 개수(1-50 사이)</span></span><br><span class="line"><span class="comment"> * @param ｛*｝ page 결과 페이지 번호(1-100 사이)</span></span><br><span class="line"><span class="comment"> * @param ｛*｝ sort 결과 문서 정렬 방식(accuracy:정확도순, latest:최신순)</span></span><br><span class="line"><span class="comment"> * @param ｛*｝ target 검색 필드 제한(title:제목, isbn:ISBN, publisher:출판사, person:인명)</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> searchBook = (query = <span class="string">''</span>, page = <span class="string">'1'</span>, <span class="built_in">size</span> = <span class="number">10</span>, sort = <span class="string">'sim'</span>, target = <span class="string">''</span>) =&gt; ｛</span><br><span class="line">  <span class="keyword">const</span> params = ｛</span><br><span class="line">    query,</span><br><span class="line">    <span class="built_in">size</span>,</span><br><span class="line">    page,</span><br><span class="line">    sort,</span><br><span class="line">    target</span><br><span class="line">  ｝;</span><br><span class="line">  <span class="keyword">return</span> client.get(<span class="string">'/v3/search/book'</span>, ｛</span><br><span class="line">      params</span><br><span class="line">    ｝)</span><br><span class="line">    .then((｛</span><br><span class="line">      status,</span><br><span class="line">      statusText,</span><br><span class="line">      data</span><br><span class="line">    ｝) =&gt; ｛</span><br><span class="line">      <span class="keyword">if</span> (status === <span class="number">200</span>) ｛</span><br><span class="line">        <span class="keyword">const</span> ｛</span><br><span class="line">          <span class="attribute">meta</span>: ｛</span><br><span class="line">            is_end, <span class="comment">// 현재 페이지가 마지막 페이지인지 여부(false이면 다음 페이지를 요청할 수 있음)</span></span><br><span class="line">            pageable_count, <span class="comment">// 검색 결과로 제공 가능한 문서수</span></span><br><span class="line">            total_count, <span class="comment">// 전체 검색된 문서수</span></span><br><span class="line">          ｝,</span><br><span class="line">          documents</span><br><span class="line">        ｝ = data;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">const</span> result = ｛</span><br><span class="line">          <span class="attribute">isEnd</span>: is_end,</span><br><span class="line">          <span class="attribute">pageableCount</span>: pageable_count,</span><br><span class="line">          <span class="attribute">totalCount</span>: total_count,</span><br><span class="line">          <span class="attribute">items</span>: (documents &amp;&amp; documents.length) ? documents</span><br><span class="line">            .filter((｛</span><br><span class="line">              thumbnail</span><br><span class="line">            ｝) =&gt; !!thumbnail) <span class="comment">// 표지 이미지 없는 책은 제외</span></span><br><span class="line">            .map((｛</span><br><span class="line">              title, <span class="comment">// 도서 제목</span></span><br><span class="line">              contents, <span class="comment">// 도서 소개</span></span><br><span class="line">              <span class="built_in">url</span>, <span class="comment">// 도서 상세 URL</span></span><br><span class="line">              isbn, <span class="comment">// 국제 표준 도서번호(ISBN10 ISBN13)</span></span><br><span class="line">              datetime, <span class="comment">// 도서 출판날짜(ISO 8601)</span></span><br><span class="line">              authors, <span class="comment">// 도서 저자 리스트</span></span><br><span class="line">              publisher, <span class="comment">// 도서 출판사</span></span><br><span class="line">              translators, <span class="comment">// 도서 번역자 리스트</span></span><br><span class="line">              price, <span class="comment">// 도서 정가</span></span><br><span class="line">              sale_price, <span class="comment">// 도서 판매가</span></span><br><span class="line">              thumbnail, <span class="comment">// 도서 표지 썸네일 URL(120x174)</span></span><br><span class="line">              status <span class="comment">// 도서 판매 상태 정보(정상, 품절, 절판)</span></span><br><span class="line">            ｝, index) =&gt; ｛</span><br><span class="line">              <span class="keyword">return</span> ｛</span><br><span class="line">                <span class="attribute">id:</span><span class="string"> String</span>(((page - <span class="number">1</span>) * <span class="built_in">size</span>) + index),</span><br><span class="line">                <span class="attribute">title</span>: title,</span><br><span class="line">                contents,</span><br><span class="line">                <span class="built_in">url</span>,</span><br><span class="line">                <span class="attribute">isbn</span>: isbn ? isbn.split(<span class="string">' '</span>) : [],</span><br><span class="line">                <span class="attribute">authors</span>: <span class="keyword">typeof</span>(authors) === <span class="string">'string'</span> ? [authors] : authors,</span><br><span class="line">                <span class="attribute">translators</span>: <span class="keyword">typeof</span>(translators) === <span class="string">'string'</span> ? [translators] : translators,</span><br><span class="line">                <span class="attribute">pubdate</span>: parseDateString(datetime),</span><br><span class="line">                publisher,</span><br><span class="line">                thumbnail,</span><br><span class="line">              ｝</span><br><span class="line">            ｝) : []</span><br><span class="line">        ｝</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">      ｝ <span class="keyword">else</span> ｛</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">`$｛status｝:$｛statusText｝`</span>);</span><br><span class="line">      ｝</span><br><span class="line">    ｝)</span><br><span class="line">｝</span><br></pre></td></tr></table></figure>
+<p> </p>
+<h2 id="결과-화면"><a class="markdownIt-Anchor" href="#결과-화면"></a> 결과 화면</h2>
+<p>구현된 모바일앱 화면입니다. 유시민 작가님의 책을 검색해보겠습니다.</p>
+<p><img alt data-src="https://user-images.githubusercontent.com/3969643/55816772-0f9bc200-5b2e-11e9-9049-8b214c0211d3.gif"></p>
+<blockquote>
+<p>목록은 FlatList를 사용했는데 스크롤 항목이 많아지니깐, VirtualizedList Scroll performance 문제가 조금 있네요. 좀 더 공부하면서 해결해봐야겠습니다.<br>
+<sub>참고: <a href="https://github.com/facebook/react-native/issues/13413" target="_blank" rel="noopener">https://github.com/facebook/react-native/issues/13413</a></sub></p>
+</blockquote>
+<br>
+<p>여기까지 읽어주셔서 감사합니다.</p>
+
+          <!-- 스팀잇에서 작성한 글만 보여져야함(판단 기준이 애매함) -->
+          <!-- Originally posted on -->
+          <hr><center><tt><p>Originally posted on <a href="http://steemit.com/kr/@anpigon/react-native-api/" target="_blank" rel="noopener" data-pjax-state="">http://steemit.com</a></p></tt></center>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/react-native/" rel="tag"># React Native</a>
+              <a href="/tags/국내-도서-검색-open-api/" rel="tag"># 국내 도서 검색 OPEN API</a>
+          </div>
+
+        
+  <div class="post-widgets">
+    <div class="wp_rating">
+      <div id="wpac-rating"></div>
+    </div>
+  </div>
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/kr/@anpigon/open-api/" rel="next" title="국내 도서 검색 OPEN API 비교">
+                  <i class="fa fa-chevron-left"></i> 국내 도서 검색 OPEN API 비교
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/kr/@anpigon/react-native-steem-1/" rel="prev" title="[React Native] Steem 모바일 지갑앱 만들기 #1">
+                  [React Native] Steem 모바일 지갑앱 만들기 #1 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    
+  <div class="comments" id="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          목차
+        </li>
+        <li class="sidebar-nav-overview">
+          흝어보기
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#책-검색-open-api-조회하기"><span class="nav-number">1.</span> <span class="nav-text"> 책 검색 OPEN API 조회하기</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#결과-화면"><span class="nav-number">2.</span> <span class="nav-text"> 결과 화면</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="안피곤"
+    src="/images/me.jpg">
+  <p class="site-author-name" itemprop="name">안피곤</p>
+  <div class="site-description" itemprop="description">시간이 천천히 갔으면 좋겠다.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">323</span>
+          <span class="site-state-item-name">포스트</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-name">카테고리</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">139</span>
+        <span class="site-state-item-name">태그</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/anpigon" title="GitHub &rarr; https://github.com/anpigon" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:markan82@gmail.com" title="E-Mail &rarr; mailto:markan82@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+          <!-- 정사각형 광고 -->
+          <div style="margin-top: 15px;">
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-2365531018407022"
+                data-ad-slot="7521850306"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+          </div>
+    </div>
+  </aside>
+  <div id="sidebar-dimmer">3</div>
+
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">안피곤</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.9.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.4.2
+  </div>
+
+        
+
+
+
+
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-firestore.js"></script>
+  <script>
+    firebase.initializeApp({
+      apiKey: 'AIzaSyA4QZWCWb3IuIHjbkAmO0ttIM2b-qtLTP8',
+      projectId: 'next-blog-8f9a0'
+    });
+
+    function getCount(doc, increaseCount) {
+      // IncreaseCount will be false when not in article page
+
+      return doc.get().then(d => {
+        var count = 0;
+        if (!d.exists) { // Has no data, initialize count
+          if (increaseCount) {
+            doc.set({
+              count: 1
+            });
+            count = 1;
+          }
+        } else { // Has data
+          count = d.data().count;
+          if (increaseCount) {
+            // If first view this article
+            doc.set({ // Increase count
+              count: count + 1
+            });
+            count++;
+          }
+        }
+
+        return count;
+      });
+    }
+
+    function appendCountTo(el) {
+      return count => {
+        el.innerText = count;
+      }
+    }
+  </script>
+  <script pjax>
+    (function() {
+      var db = firebase.firestore();
+      var articles = db.collection('articles');
+
+      if (CONFIG.page.isPost) { // Is article page
+        var title = document.querySelector('.post-title').innerText.trim();
+        var doc = articles.doc(title);
+        var increaseCount = true;
+        if (localStorage.getItem(title)) {
+          increaseCount = false;
+        } else {
+          // Mark as visited
+          localStorage.setItem(title, true);
+        }
+        getCount(doc, increaseCount).then(appendCountTo(document.querySelector('.firestore-visitors-count')));
+      } else if (CONFIG.page.isHome) { // Is index page
+        var promises = [...document.querySelectorAll('.post-title')].map(element => {
+          var title = element.innerText.trim();
+          var doc = articles.doc(title);
+          return getCount(doc);
+        });
+        Promise.all(promises).then(counts => {
+          var metas = document.querySelectorAll('.firestore-visitors-count');
+          counts.forEach((val, idx) => {
+            appendCountTo(metas[idx])(val);
+          });
+        });
+      }
+    })();
+  </script>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.getAttribute('pjax') !== null) {
+      element.setAttribute('pjax', '');
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+  <script pjax>
+  if (CONFIG.page.isPost) {
+    wpac_init = window.wpac_init || [];
+    wpac_init.push({
+      widget: 'Rating',
+      id: 21712,
+      el: 'wpac-rating',
+      color: 'fc6423'
+    });
+    (function() {
+      if ('WIDGETPACK_LOADED' in window) return;
+      WIDGETPACK_LOADED = true;
+      var mc = document.createElement('script');
+      mc.type = 'text/javascript';
+      mc.async = true;
+      mc.src = '//embed.widgetpack.com/widget.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+    })();
+  }
+  </script>
+
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.4.1/dist/instantsearch.min.css">
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.4.1/dist/instantsearch.js"></script><script src="/js/algolia-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+
+  
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://anpigon-github-io.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  function loadComments() {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: {page: {
+            url: "https://anpigon.github.io/kr/@anpigon/react-native-api/",
+            identifier: "/kr/@anpigon/react-native-api/",
+            title: "[React Native] 카카오 책 검색 API 사용하기"
+          }
+        }
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://anpigon-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  }
+    (function() {
+      var offsetTop = document.getElementById('comments').offsetTop - window.innerHeight;
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        window.addEventListener('load', loadComments, false);
+      } else {
+        var disqus_scroll = () => {
+          // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = document.getElementById('comments').offsetTop - window.innerHeight;
+          var scrollTop = window.scrollY;
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            window.removeEventListener('scroll', disqus_scroll);
+            loadComments();
+          }
+        };
+        window.addEventListener('scroll', disqus_scroll);
+      }
+    })();
+  
+</script>
+
+    </div>
+</body>
+</html>

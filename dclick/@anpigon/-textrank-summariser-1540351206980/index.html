@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="yfKOiBPD8WlKH3NPG_CG1zr4MsCgCG1YVdGKhMS2CKc">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Noto Serif KR:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.4.2',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: true,
+    pangu: false,
+    algolia: {
+      appID: 'YY693DUDAI',
+      apiKey: 'db449d453b150820f66e7bc3d4523a17',
+      indexName: 'my-hexo-blog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '복사',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="Summary by Nick Youngson CC BY-SA 3.0 ImageCreator 안녕하세요. @anpigon입니다.파이썬을 이용하여 문서를 쉽게 요약할 수 있는 기능을 소개합니다. 이 글은 summarization.summarizer – TextRank Summariser을 참고하여 작성한 글입니다.">
+<meta name="keywords" content="파이썬,머신러닝,TextRank">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[머신러닝] 파이썬 머신러닝 #7 - 문서 요약하기(TextRank Summariser)">
+<meta property="og:url" content="https://anpigon.github.io/dclick/@anpigon/-textrank-summariser-1540351206980/index.html">
+<meta property="og:site_name" content="안피곤님의 블로그">
+<meta property="og:description" content="Summary by Nick Youngson CC BY-SA 3.0 ImageCreator 안녕하세요. @anpigon입니다.파이썬을 이용하여 문서를 쉽게 요약할 수 있는 기능을 소개합니다. 이 글은 summarization.summarizer – TextRank Summariser을 참고하여 작성한 글입니다.">
+<meta property="og:locale" content="ko">
+<meta property="og:updated_time" content="2019-11-11T13:41:49.837Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="[머신러닝] 파이썬 머신러닝 #7 - 문서 요약하기(TextRank Summariser)">
+<meta name="twitter:description" content="Summary by Nick Youngson CC BY-SA 3.0 ImageCreator 안녕하세요. @anpigon입니다.파이썬을 이용하여 문서를 쉽게 요약할 수 있는 기능을 소개합니다. 이 글은 summarization.summarizer – TextRank Summariser을 참고하여 작성한 글입니다.">
+
+<link rel="canonical" href="https://anpigon.github.io/dclick/@anpigon/-textrank-summariser-1540351206980/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>[머신러닝] 파이썬 머신러닝 #7 - 문서 요약하기(TextRank Summariser) | 안피곤님의 블로그</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-20589042-10"></script>
+    <script pjax>
+      var host = window.location.hostname;
+      if (host !== "localhost" || !true) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-20589042-10');
+      }
+    </script>
+
+
+
+
+
+
+  
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-2365531018407022",
+          enable_page_level_ads: false
+     });
+</script>
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">안피곤님의 블로그</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">코딩, 독서, 여행, 영화, 맛집</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>홈</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>태그<span class="badge">139</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>카테고리<span class="badge">25</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>아카이브<span class="badge">323</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>검색
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input" id="search-input"></div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="algolia-results">
+  <div id="algolia-stats"></div>
+  <div id="algolia-hits"></div>
+  <div id="algolia-pagination" class="algolia-pagination"></div>
+</div>
+
+  
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="ko">
+    <link itemprop="mainEntityOfPage" href="https://anpigon.github.io/dclick/@anpigon/-textrank-summariser-1540351206980/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/me.jpg">
+      <meta itemprop="name" content="안피곤">
+      <meta itemprop="description" content="시간이 천천히 갔으면 좋겠다.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="안피곤님의 블로그">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          [머신러닝] 파이썬 머신러닝 #7 - 문서 요약하기(TextRank Summariser)
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">작성일</span>
+
+              <time title="Post created: 2018-10-24 12:20:09" itemprop="dateCreated datePublished" datetime="2018-10-24T12:20:09+09:00">2018-10-24</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Updated at: 2019-11-11 22:41:49" itemprop="dateModified" datetime="2019-11-11T22:41:49+09:00">2019-11-11</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/개발-이야기/" itemprop="url" rel="index">
+                    <span itemprop="name">개발 이야기</span>
+                  </a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/개발-이야기/파이썬-머신러닝/" itemprop="url" rel="index">
+                    <span itemprop="name">파이썬 머신러닝</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/dclick/@anpigon/-textrank-summariser-1540351206980/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="/dclick/@anpigon/-textrank-summariser-1540351206980/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+            <div style="margin-bottom:35px;margin-top:-20px;">
+              <!-- 블로그 본문 상단 광고 -->
+              <ins class="adsbygoogle"
+                  style="display:block"
+                  data-ad-client="ca-pub-2365531018407022"
+                  data-ad-slot="3390644000"
+                  data-ad-format="auto"
+                  data-full-width-responsive="true"></ins>
+              <script>
+                  (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+        <img data-src="https://steemitimages.com/0x0/http://www.thebluediamondgallery.com/typewriter/images/summary.jpg"><sup> Summary by <a href="http://www.nyphotographic.com/" target="_blank" rel="noopener">Nick Youngson</a> <a rel="noopener" href="http://creativecommons.org/licenses/by-sa/3.0/" target="_blank">CC BY-SA 3.0</a> <a href="http://www.imagecreator.co.uk/" target="_blank" rel="noopener">ImageCreator</a> </sup><hr><p>안녕하세요. @anpigon입니다.</p><p>파이썬을 이용하여 문서를 쉽게 요약할 수 있는 기능을 소개합니다. 이 글은 <a href="https://radimrehurek.com/gensim/summarization/summariser.html" target="_blank" rel="noopener">summarization.summarizer – TextRank Summariser</a>을 참고하여 작성한 글입니다.</p><a id="more"></a>
+
+
+
+<p><br><hr><br></p>
+<h1 id="gensim-newspaper-모듈-설치"><a class="markdownIt-Anchor" href="#gensim-newspaper-모듈-설치"></a> gensim, newspaper 모듈 설치</h1>
+<p><br>문서를 요약하는데 사용할 gensim와 newspaper 모듈을 설치한다. newspaper 모듈은 파이썬 버전에 따라 설치방법이 다르다. 파이썬2에서는 <code>pip install newspaper</code>로 설치 한다. 그리고 파이썬3에서는 <code>pip install newspaper3k</code>로 설치한다. 나는 파이썬3를 사용하고 있으므로 아래와 같이 설치하였다.</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pip <span class="keyword">install</span> gensim newspaper3k</span><br></pre></td></tr></table></figure>
+<p><br>추가로 모듈를 설치하는데 pip 업그레이드가 필요하다는 메시지가 나와서 아래와 같이 pip를 업그레이드하였다.</p>
+<p><img alt="1" data-src="https://files.steempeak.com/file/steempeak/anpigon/nPj6bJ2x-Screenshot203.png"></p>
+<p><br><hr><br></p>
+<h1 id="스팀잇-글-가져오기"><a class="markdownIt-Anchor" href="#스팀잇-글-가져오기"></a> 스팀잇 글 가져오기</h1>
+<p><br>원사마님이 작성한 글 <a href="https://steemit.com/dclick/@wonsama/-181023--1540308198584" target="_blank" rel="noopener">&quot;[ 하생시 ] 18.10.23 하루를 생각하는 시간&quot;</a>으로 요약 테스트해보았다. 참고로 내가 작성한 글은 내용 대부분이 개발 코드라서 문서 요약이 되질 않았기 때문이다.</p>
+<p>아래와 같이 URL에서 글 본문 내용을 가져온다. <a href="https://github.com/codelucas/newspaper/" target="_blank" rel="noopener">newspaper</a> 모듈을 사용하면 블로그 또는 기사에서 제목과 본문 내용을 쉽게 가져올 수 있다.</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">from gensim.summarization.summarizer <span class="keyword">import</span> summarize</span><br><span class="line">from <span class="keyword">new</span><span class="type">spaper</span> <span class="keyword">import</span> Article</span><br><span class="line"></span><br><span class="line">url = <span class="string">' https://steemit.com/dclick/@wonsama/-181023--1540308198584'</span></span><br><span class="line"><span class="keyword">new</span><span class="type">s</span> = Article(url, language=<span class="string">'ko'</span>)</span><br><span class="line"><span class="keyword">new</span><span class="type">s</span>.download()</span><br><span class="line"><span class="keyword">new</span><span class="type">s</span>.parse()</span><br><span class="line">print(<span class="keyword">new</span><span class="type">s</span>.text)</span><br></pre></td></tr></table></figure>
+<p><img alt="1" data-src="https://files.steempeak.com/file/steempeak/anpigon/wv8ZRljU-Screenshot204.png"></p>
+<p><br><hr><br></p>
+<h1 id="문서-요약하기"><a class="markdownIt-Anchor" href="#문서-요약하기"></a> 문서 요약하기</h1>
+<p><br><code>summarize</code>에 입력 가능한 매개 변수는 다음과 같다.</p>
+<ul>
+<li>text (str) – 요약할 테스트.</li>
+<li>ratio (float, optional) – 요약에 대해 선택할 원본 텍스트의 문장 수 비율을 결정하는 0~1 사이 숫자.</li>
+<li>word_count (int or None, optional) – 출력에 포함할 단어 수. 두 파라미터가 모두 제공되는 경우 <em>ratio</em>는 무시된다.</li>
+<li>split (bool, optional) – True면 문장 list가 반환된다. False는 조인(join)된 문자열이 반환된다.</li>
+</ul>
+<p><br>우선 추가 옵션 없이 글 내용을 요약해보자.</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="name">summarize</span>(<span class="name">news</span>.text))</span><br></pre></td></tr></table></figure>
+<p><img alt="1" data-src="https://files.steempeak.com/file/steempeak/anpigon/gQOorlDr-Screenshot205.png"></p>
+<p><br>그다음은 출력할 단어 수를 50개로 설정하고 요약해본다.</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="name">summarize</span>(<span class="name">news</span>.text, word_count=50))</span><br></pre></td></tr></table></figure>
+<p><img alt="2" data-src="https://files.steempeak.com/file/steempeak/anpigon/wAQldbOP-Screenshot206.png"></p>
+<p><br>마지막으로 문장 비율을 설정하고 요약해보았다.</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="name">summarize</span>(<span class="name">news</span>.text, ratio=0.<span class="number">1</span>))</span><br></pre></td></tr></table></figure>
+<p><img alt="3" data-src="https://files.steempeak.com/file/steempeak/anpigon/jmR5ONzo-Screenshot207.png"></p>
+<p><br>결론은, 원사마님이 작성한 글의 핵심 문장은 <b>&quot;요즘은 개발은 안하고 맨날 제안서만 쓴다.&quot;</b>입니다.</p>
+<p><br>여기까지 읽어주셔서 감사합니다.</p>
+<br>
+<hr>
+<p><strong>참고 블로그</strong></p>
+<ul>
+<li><a href="https://cran.r-project.org/web/packages/textrank/vignettes/textrank.html" target="_blank" rel="noopener">“Textrank for summarizing text” by Jan Wijffels</a></li>
+<li><a href="https://sungmooncho.com/2012/08/26/pagerank/" target="_blank" rel="noopener">“TextRank를 이용한 문서요약” by Excelsior-JH</a></li>
+<li><a href="http://excelsior-cjh.tistory.com/93" target="_blank" rel="noopener">“‘쉽게 설명한’ 구글의 페이지 랭크 알고리즘” by 조성문</a></li>
+</ul>
+<hr>
+<p><img alt data-src="https://steemitimages.com/0x0/https://files.steempeak.com/file/steempeak/anpigon/otMhz1ZG-divider-2461548_1280-cutout.png"></p>
+<p><strong>이전글</strong></p>
+<ul>
+<li><a href="https://steemit.com/busy/@anpigon/5s1aam" target="_blank" rel="noopener">파이썬 머신러닝 #1 - 스팀잇 형태소 분석하기</a></li>
+<li><a href="https://steemit.com/busy/@anpigon/2" target="_blank" rel="noopener">파이썬 머신러닝 #2 - 스팀잇 형태소 분석해서 단어구름 만들기</a></li>
+<li><a href="https://steemit.com/busy/@anpigon/3" target="_blank" rel="noopener">파이썬 머신러닝 #3 - 스팀잇 아이디로 성별  예측하기</a></li>
+<li><a href="https://steemit.com/kr/@anpigon/4" target="_blank" rel="noopener">파이썬 머신러닝 #4 - 스팀잇 글 감정 분류하기</a></li>
+<li><a href="https://steemit.com/kr/@anpigon/5" target="_blank" rel="noopener">파이썬 머신러닝 #5 - 유사한 게시물 찾기</a></li>
+<li><a href="https://steemit.com/kr/@anpigon/6" target="_blank" rel="noopener">파이썬 머신러닝 #6 - 스팀잇에서 유사한 게시물 찾기</a></li>
+</ul>
+<p><img alt data-src="https://steemitimages.com/0x0/https://files.steempeak.com/file/steempeak/anpigon/otMhz1ZG-divider-2461548_1280-cutout.png"></p>
+<hr>
+<h5 id="sub-sponsored-powered-by-dclick-sub"><a class="markdownIt-Anchor" href="#sub-sponsored-powered-by-dclick-sub"></a> <sub> <strong>Sponsored ( Powered by <a href="https://www.dclick.io" target="_blank" rel="noopener">dclick</a> )</strong> </sub></h5>
+<h5 id="데이빗-이야기-2-만든-사람은-있지만-손대는-사람은-없는-완전-자동화된-암호화폐-거래소-데이빗daybit-사용후기"><a class="markdownIt-Anchor" href="#데이빗-이야기-2-만든-사람은-있지만-손대는-사람은-없는-완전-자동화된-암호화폐-거래소-데이빗daybit-사용후기"></a> <a href="https://api.dclick.io/v1/c?x=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjIjoiYW5waWdvbiIsInMiOiItdGV4dHJhbmstc3VtbWFyaXNlci0xNTQwMzUxMjA2OTgwIiwiYSI6WzE4MF0sInVybCI6Imh0dHBzOi8vc3RlZW1pdC5jb20vZGNsaWNrL0Bkb25la2ltLy0yLWRheWJpdC0tMTUzOTgzNjA1ODc1MiIsImlhdCI6MTU0MDM1MTIwNiwiZXhwIjoxODU1NzExMjA2fQ.0EwTGiK_1qKZ0bnlCcu28XbAHxK6i5O4jqkINYoYeNc" target="_blank" rel="noopener">[데이빗 이야기 #2] 만든 사람은 있지만, 손대는 사람은 없는 완전 자동화된 암호화폐 거래소 데이빗(DAYBIT) 사용후기</a></h5>
+<p><sup>안녕하세요, 디온(@donekim)입니다. 지난 번 포스팅에 이어서 오늘은 데이빗 거래소의 사…</sup><br>
+<br><center><img alt="logo" data-src="https://steemitimages.com/200x100/https://cdn.steemitimages.com/DQmbjkrc5UT4GgZXygAnS3mLrboAy7Y8gr7R7guB8HG3f5n/logopad500.png"><br><br>이 글은 스팀 기반 광고 플랫폼<br><a href="https://www.dclick.io" target="_blank" rel="noopener">dclick</a> 에 의해 작성 되었습니다.</center></p>
+
+          <!-- 스팀잇에서 작성한 글만 보여져야함(판단 기준이 애매함) -->
+          <!-- Originally posted on -->
+          <hr><center><tt><p>Originally posted on <a href="http://steemit.com/dclick/@anpigon/-textrank-summariser-1540351206980/" target="_blank" rel="noopener" data-pjax-state="">http://steemit.com</a></p></tt></center>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/파이썬/" rel="tag"># 파이썬</a>
+              <a href="/tags/머신러닝/" rel="tag"># 머신러닝</a>
+              <a href="/tags/textrank/" rel="tag"># TextRank</a>
+          </div>
+
+        
+  <div class="post-widgets">
+    <div class="wp_rating">
+      <div id="wpac-rating"></div>
+    </div>
+  </div>
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/dclick/@anpigon/flutter--1540311025725/" rel="next" title="[Flutter] 플러터(Flutter) 모바일 앱 개발 -  스팀잇 피드 구현하기">
+                  <i class="fa fa-chevron-left"></i> [Flutter] 플러터(Flutter) 모바일 앱 개발 -  스팀잇 피드 구현하기
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/dclick/@anpigon/-8-markov-chain--1540437398396/" rel="prev" title="[머신러닝] 파이썬 머신러닝 #8 - 마르코프 체인(Markov Chain) : 문장 생성하기">
+                  [머신러닝] 파이썬 머신러닝 #8 - 마르코프 체인(Markov Chain) : 문장 생성하기 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    
+  <div class="comments" id="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          목차
+        </li>
+        <li class="sidebar-nav-overview">
+          흝어보기
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#gensim-newspaper-모듈-설치"><span class="nav-number">1.</span> <span class="nav-text"> gensim, newspaper 모듈 설치</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#스팀잇-글-가져오기"><span class="nav-number">2.</span> <span class="nav-text"> 스팀잇 글 가져오기</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#문서-요약하기"><span class="nav-number">3.</span> <span class="nav-text"> 문서 요약하기</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#sub-sponsored-powered-by-dclick-sub"><span class="nav-number">3.0.0.0.1.</span> <span class="nav-text">  Sponsored ( Powered by dclick ) </span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#데이빗-이야기-2-만든-사람은-있지만-손대는-사람은-없는-완전-자동화된-암호화폐-거래소-데이빗daybit-사용후기"><span class="nav-number">3.0.0.0.2.</span> <span class="nav-text"> [데이빗 이야기 #2] 만든 사람은 있지만, 손대는 사람은 없는 완전 자동화된 암호화폐 거래소 데이빗(DAYBIT) 사용후기</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="안피곤"
+    src="/images/me.jpg">
+  <p class="site-author-name" itemprop="name">안피곤</p>
+  <div class="site-description" itemprop="description">시간이 천천히 갔으면 좋겠다.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">323</span>
+          <span class="site-state-item-name">포스트</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-name">카테고리</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">139</span>
+        <span class="site-state-item-name">태그</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/anpigon" title="GitHub &rarr; https://github.com/anpigon" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:markan82@gmail.com" title="E-Mail &rarr; mailto:markan82@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+          <!-- 정사각형 광고 -->
+          <div style="margin-top: 15px;">
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-2365531018407022"
+                data-ad-slot="7521850306"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+          </div>
+    </div>
+  </aside>
+  <div id="sidebar-dimmer">3</div>
+
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">안피곤</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.9.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.4.2
+  </div>
+
+        
+
+
+
+
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-firestore.js"></script>
+  <script>
+    firebase.initializeApp({
+      apiKey: 'AIzaSyA4QZWCWb3IuIHjbkAmO0ttIM2b-qtLTP8',
+      projectId: 'next-blog-8f9a0'
+    });
+
+    function getCount(doc, increaseCount) {
+      // IncreaseCount will be false when not in article page
+
+      return doc.get().then(d => {
+        var count = 0;
+        if (!d.exists) { // Has no data, initialize count
+          if (increaseCount) {
+            doc.set({
+              count: 1
+            });
+            count = 1;
+          }
+        } else { // Has data
+          count = d.data().count;
+          if (increaseCount) {
+            // If first view this article
+            doc.set({ // Increase count
+              count: count + 1
+            });
+            count++;
+          }
+        }
+
+        return count;
+      });
+    }
+
+    function appendCountTo(el) {
+      return count => {
+        el.innerText = count;
+      }
+    }
+  </script>
+  <script pjax>
+    (function() {
+      var db = firebase.firestore();
+      var articles = db.collection('articles');
+
+      if (CONFIG.page.isPost) { // Is article page
+        var title = document.querySelector('.post-title').innerText.trim();
+        var doc = articles.doc(title);
+        var increaseCount = true;
+        if (localStorage.getItem(title)) {
+          increaseCount = false;
+        } else {
+          // Mark as visited
+          localStorage.setItem(title, true);
+        }
+        getCount(doc, increaseCount).then(appendCountTo(document.querySelector('.firestore-visitors-count')));
+      } else if (CONFIG.page.isHome) { // Is index page
+        var promises = [...document.querySelectorAll('.post-title')].map(element => {
+          var title = element.innerText.trim();
+          var doc = articles.doc(title);
+          return getCount(doc);
+        });
+        Promise.all(promises).then(counts => {
+          var metas = document.querySelectorAll('.firestore-visitors-count');
+          counts.forEach((val, idx) => {
+            appendCountTo(metas[idx])(val);
+          });
+        });
+      }
+    })();
+  </script>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.getAttribute('pjax') !== null) {
+      element.setAttribute('pjax', '');
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+  <script pjax>
+  if (CONFIG.page.isPost) {
+    wpac_init = window.wpac_init || [];
+    wpac_init.push({
+      widget: 'Rating',
+      id: 21712,
+      el: 'wpac-rating',
+      color: 'fc6423'
+    });
+    (function() {
+      if ('WIDGETPACK_LOADED' in window) return;
+      WIDGETPACK_LOADED = true;
+      var mc = document.createElement('script');
+      mc.type = 'text/javascript';
+      mc.async = true;
+      mc.src = '//embed.widgetpack.com/widget.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+    })();
+  }
+  </script>
+
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.4.1/dist/instantsearch.min.css">
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.4.1/dist/instantsearch.js"></script><script src="/js/algolia-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+
+  
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://anpigon-github-io.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  function loadComments() {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: {page: {
+            url: "https://anpigon.github.io/dclick/@anpigon/-textrank-summariser-1540351206980/",
+            identifier: "/dclick/@anpigon/-textrank-summariser-1540351206980/",
+            title: "[머신러닝] 파이썬 머신러닝 #7 - 문서 요약하기(TextRank Summariser)"
+          }
+        }
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://anpigon-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  }
+    (function() {
+      var offsetTop = document.getElementById('comments').offsetTop - window.innerHeight;
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        window.addEventListener('load', loadComments, false);
+      } else {
+        var disqus_scroll = () => {
+          // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = document.getElementById('comments').offsetTop - window.innerHeight;
+          var scrollTop = window.scrollY;
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            window.removeEventListener('scroll', disqus_scroll);
+            loadComments();
+          }
+        };
+        window.addEventListener('scroll', disqus_scroll);
+      }
+    })();
+  
+</script>
+
+    </div>
+</body>
+</html>
