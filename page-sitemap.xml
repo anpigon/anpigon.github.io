@@ -29,6 +29,13 @@
     </url>
     
     <url>
+        <loc>https://anpigon.github.io/tags/</loc>
+        <lastmod>2019-10-31T13:42:43.555Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
         <loc>https://anpigon.github.io/all-tags/</loc>
         <lastmod>2019-10-31T13:42:43.555Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -37,13 +44,6 @@
     
     <url>
         <loc>https://anpigon.github.io/categories/</loc>
-        <lastmod>2019-10-31T13:42:43.555Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    
-    <url>
-        <loc>https://anpigon.github.io/tags/</loc>
         <lastmod>2019-10-31T13:42:43.555Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
