@@ -234,8 +234,12 @@
 
         {{ post.content }}
 
-        <!-- Originally posted on -->
-        <hr><center><tt><p>Originally posted on <a href="http://steemit.com{{ post.path }}" target="_blank" rel="noopener" data-pjax-state="">http://steemit.com</a></p></tt></center>
+        {%- if post.path.split("/").length === 5 and post.author %}
+          <!-- 스팀잇에서 작성한 글만 보여져야함(판단 기준이 애매함) -->
+          <!-- Originally posted on -->
+          <hr><center><tt><p>Originally posted on <a href="http://steemit.com{{ post.path }}" target="_blank" rel="noopener" data-pjax-state="">http://steemit.com</a></p></tt></center>
+        {%- endif %}
+        
       {%- endif %}
 
     </div>
