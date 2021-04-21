@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          fetch-depth: 0  
+          fetch-depth: 0
 
       - uses: actions/setup-node@v2
         with:
@@ -25,7 +25,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
 
-     - name: BEFORE_INSTALL
+      - name: BEFORE_INSTALL
         run: npm i -g hexo workbox-cli
 
       - name: BEFORE_SCRIPT
