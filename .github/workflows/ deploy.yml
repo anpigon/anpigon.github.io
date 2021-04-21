@@ -26,7 +26,7 @@ jobs:
             ${{ runner.os }}-node-
 
       - name: Build
-        run:
+        run: |
           npm install -g hexo-cli 
           npm ci & npm run build
 
