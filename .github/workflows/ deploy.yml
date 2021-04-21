@@ -34,9 +34,9 @@ jobs:
           git config --global user.email 'markan82@gmail.com'
           sed -i "s/__GITHUB_TOKEN__/${{ secrets.HEXO_DEPLOY_TOKEN }}/" _config.yml
 
-      - name: THEME_INSTALL
-        run: |
-          git submodule update --init --remote --recursive
+      # - name: THEME_INSTALL
+      #   run: |
+      #     git submodule update --init --remote --recursive
 
       - name: NPM_INSTALL
         run: npm install
