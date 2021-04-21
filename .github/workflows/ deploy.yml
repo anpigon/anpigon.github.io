@@ -29,11 +29,11 @@ jobs:
         run: npm i -g hexo
         # run: npm i -g hexo workbox-cli
 
-      - name: BEFORE_SCRIPT
-        run: |
-          git config --global user.name 'anpigon'
-          git config --global user.email 'markan82@gmail.com'
-          sed -i "s/__GITHUB_TOKEN__/${{ secrets.HEXO_DEPLOY_TOKEN }}/" _config.yml
+      # - name: BEFORE_SCRIPT
+      #   run: |
+      #     git config --global user.name 'anpigon'
+      #     git config --global user.email 'markan82@gmail.com'
+      #     sed -i "s/__GITHUB_TOKEN__/${{ secrets.HEXO_DEPLOY_TOKEN }}/" _config.yml
 
       # - name: THEME_INSTALL
       #   run: |
@@ -54,7 +54,8 @@ jobs:
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.DEPLOY_KEY }}
-          external_repository: anpigon/anpigon.github.io
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          # github_token: ${{ secrets.DEPLOY_KEY }}
+          # external_repository: anpigon/anpigon.github.io
           publish_branch: gh-pages
           publish_dir: ./public
