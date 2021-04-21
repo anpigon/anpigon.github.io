@@ -26,7 +26,8 @@ jobs:
             ${{ runner.os }}-node-
 
       - name: BEFORE_INSTALL
-        run: npm i -g hexo workbox-cli
+        run: npm i -g hexo
+        # run: npm i -g hexo workbox-cli
 
       - name: BEFORE_SCRIPT
         run: |
@@ -47,8 +48,8 @@ jobs:
       - name: HEXO_GENERATE
         run: hexo generate
 
-      - name: WORKBOX_BUILD
-        run: workbox injectManifest
+      # - name: WORKBOX_BUILD
+      #   run: workbox injectManifest
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
