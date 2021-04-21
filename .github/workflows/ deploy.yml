@@ -25,10 +25,30 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
 
-      - name: Build
+     - name: BEFORE_INSTALL
+        run: npm i -g hexo workbox-cli
+
+      - name: BEFORE_SCRIPT
         run: |
-          npm install -g hexo-cli 
-          npm i & npm run build
+          git config --global user.name 'anpigon'
+          git config --global user.email 'markan82@gmail.com'
+          sed -i "s/__GITHUB_TOKEN__/${{ secrets.HEXO_DEPLOY_TOKEN }}/" _config.yml
+
+      - name: THEME_INSTALL
+        run: |
+          git submodule update --init --remote --recursive
+
+      - name: NPM_INSTALL
+        run: npm install
+
+      - name: HEXO_CLEAN
+        run: hexo clean
+
+      - name: HEXO_GENERATE
+        run: hexo generate
+
+      - name: WORKBOX_BUILD
+        run: workbox injectManifest
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
