@@ -9,7 +9,9 @@
     "start": "hexo clean && hexo g && hexo s",
     "dev": "hexo server --draft --open",
     "deploy": "hexo algolia && hexo clean && hexo deploy",
-    "algolia": "hexo algolia"
+    "algolia": "hexo algolia",
+    "generate": "hexo generate",
+    "build": "hexo algolia && hexo clean && hexo generate"
   },
   "dependencies": {
     "hexo": "^5.4.0",
