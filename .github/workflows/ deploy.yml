@@ -26,9 +26,7 @@ jobs:
             ${{ runner.os }}-node-
 
       - name: Install
-        run: |
-          npm i -g hexo 
-          npm ci
+        run: npm ci
 
       - name: Build
         run: npm run build
@@ -36,9 +34,6 @@ jobs:
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
-          # github_token: ${{ secrets.GITHUB_TOKEN }}
           deploy_key: ${{ secrets.PERSONAL_TOKEN }} # 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
           external_repository: anpigon/anpigon.github.io
-          # publish_branch: gh-pages # default
-          # publish_branch: master
           publish_dir: ./public
