@@ -25,38 +25,20 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
 
-      - name: BEFORE_INSTALL
-        run: npm i -g hexo
-        # run: npm i -g hexo workbox-cli
+      - name: Install
+        run: |
+          npm i -g hexo 
+          npm ci
 
-      # - name: BEFORE_SCRIPT
-      #   run: |
-      #     git config --global user.name 'anpigon'
-      #     git config --global user.email 'markan82@gmail.com'
-      #     sed -i "s/__GITHUB_TOKEN__/${{ secrets.HEXO_DEPLOY_TOKEN }}/" _config.yml
-
-      # - name: THEME_INSTALL
-      #   run: |
-      #     git submodule update --init --remote --recursive
-
-      - name: NPM_INSTALL
-        run: npm install
-
-      - name: HEXO_CLEAN
-        run: hexo clean
-
-      - name: HEXO_GENERATE
-        run: hexo generate
-
-      # - name: WORKBOX_BUILD
-      #   run: workbox injectManifest
+      - name: Build
+        run: npm run build
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           # github_token: ${{ secrets.GITHUB_TOKEN }}
-          deploy_key: ${{ secrets.DEPLOY_KEY }}
+          deploy_key: ${{ secrets.PERSONAL_TOKEN }} # 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
           external_repository: anpigon/anpigon.github.io
-          # publish_branch: gh-pages
-          publish_branch: master
+          # publish_branch: gh-pages # default
+          # publish_branch: master
           publish_dir: ./public
