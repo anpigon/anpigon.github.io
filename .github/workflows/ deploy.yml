@@ -37,3 +37,7 @@ jobs:
           personal_token: ${{ secrets.PERSONAL_TOKEN }} # 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
           external_repository: anpigon/anpigon.github.io
           publish_dir: ./public
+          force_orphan: true
+          user_name: "anpigon"
+          user_email: "markan82@gmail.com"
+          # commit_message : "Updates"
