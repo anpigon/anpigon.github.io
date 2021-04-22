@@ -8,7 +8,7 @@ tags:
 ---
 ![React Native Authentication flows.png](https://files.steempeak.com/file/steempeak/anpigon/pBSMru9g-React20Native20Authentication20flows.png)
 
-React Navigation의 **Authentication flows** 문서를 참고하여 작성하였습니다.
+React Navigation의 **Authentication flows** 문서를 참고하여 작성되었습니다.
 > 참고: https://reactnavigation.org/docs/en/auth-flow.html
 
 <br>

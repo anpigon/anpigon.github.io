@@ -13,7 +13,7 @@ tags:
 
 이번 시간에는 구글 플레이 스토어에 우리가 만든 앱을 배포해봅니다. 우선은 안드로이드앱 배포 만 설명합니다.
 
-**Google Play 스토어**에 앱을 등록하기 위해서는 서명된 APK를 만들어야 합니다. 앱 서명에 대한 자세한 내용은 [\<안드로이드 개발자 가이드 : 앱 서명\>](https://developer.android.com/studio/publish/app-signing)를 참고하세요. 한글로 자세하게 설명되어 있습니다. 그리고 아래 내용은 [\<리액트 네이티브 Generating Signed APK\>](https://facebook.github.io/react-native/docs/signed-apk-android) 문서를 참고하여 작성하였습니다.
+**Google Play 스토어**에 앱을 등록하기 위해서는 서명된 APK를 만들어야 합니다. 앱 서명에 대한 자세한 내용은 [\<안드로이드 개발자 가이드 : 앱 서명\>](https://developer.android.com/studio/publish/app-signing)를 참고하세요. 한글로 자세하게 설명되어 있습니다. 그리고 아래 내용은 [\<리액트 네이티브 Generating Signed APK\>](https://facebook.github.io/react-native/docs/signed-apk-android) 문서를 참고하여 작성되었습니다.
 
 <center><br>* * *<br></center>
 

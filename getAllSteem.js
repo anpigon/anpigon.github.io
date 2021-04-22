@@ -9,7 +9,7 @@ const out = "/source/_drafts/";
 async function updateSteemArticles(username, start_author, start_permlink) {
   console.log(username, start_author, start_permlink)
   const results = await steem.api.getDiscussionsByBlogAsync({
-    limit: 100,
+    limit: 10,
     tag: username,
     start_author,
     start_permlink
@@ -18,11 +18,11 @@ async function updateSteemArticles(username, start_author, start_permlink) {
     if (item.author == username) {
       const tags = JSON.parse(item.json_metadata).tags || [];
       const title = item.title.replace(/"(.*)"/g, "“$1”").replace(/"/g, "“");
-      const body = item.body
-        .replace(/\|/g, "|")
-        .replace(/%/g, "％")
-        .replace(/{/g, "｛")
-        .replace(/}/g, "｝");
+      const body = item.body;
+        // .replace(/\|/g, "|")
+        // .replace(/%/g, "％")
+        // .replace(/{/g, "｛")
+        // .replace(/}/g, "｝");
       const contents = [
         "---",
         `title: "${title}"`,
@@ -33,7 +33,9 @@ async function updateSteemArticles(username, start_author, start_permlink) {
         `tags:`,
         ...tags.map(tag => `  - "${tag}"`),
         "---",
-        `${body}`
+        `${body}`,
+        '\n<hr>\n',
+        `<sub>이 글은 [스팀잇](https://steemit.com/trending/hive-196917)에서 작성되었습니다.</sub>\n<sup>[https://steemit.com${item.url}](https://steemit.com${item.url})</sup>`
       ];
       const date = new Date(`${item.created}Z`);
       const year = date.getFullYear();
