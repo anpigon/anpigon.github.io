@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="yfKOiBPD8WlKH3NPG_CG1zr4MsCgCG1YVdGKhMS2CKc">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Noto Serif KR:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.4.2',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: true,
+    pangu: false,
+    algolia: {
+      appID: 'YY693DUDAI',
+      apiKey: 'db449d453b150820f66e7bc3d4523a17',
+      indexName: 'my-hexo-blog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '복사',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="이번에는 이더리움 출금 화면을 만들어 봅니다. 하지만 이더리움을 출금하기 위해서는 지갑에 이더(Ether)가 있어야 합니다. 구현하기 전에 Ropsten Testnet Faucet 사이트에 접속합니다. 그리고 이더(Ether) 요청을 하여 받아보겠습니다.  테스트넷 이더 받기">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[React Native] 이더리움 모바일 지갑(Ethereum Mobile Wallet) 만들기 #6">
+<meta property="og:url" content="https://anpigon.github.io/kr/@anpigon/react-native-ethereum-mobile-wallet-6">
+<meta property="og:site_name" content="안피곤님의 블로그">
+<meta property="og:description" content="이번에는 이더리움 출금 화면을 만들어 봅니다. 하지만 이더리움을 출금하기 위해서는 지갑에 이더(Ether)가 있어야 합니다. 구현하기 전에 Ropsten Testnet Faucet 사이트에 접속합니다. 그리고 이더(Ether) 요청을 하여 받아보겠습니다.  테스트넷 이더 받기">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:image" content="https://cdn.steemitimages.com/DQmTBYPHABLZoXJMWL9msssEoTsXz9LvVaK7dT49uXXGQi7/galaxy-2.png">
+<meta property="og:image" content="https://cdn.steemitimages.com/DQmW14HFfEPYwvNtapSoPEAzTAHZt23VWnGRjxNxqSwCv96/%EF%BC%85E1%EF%BC%8584%EF%BC%8589%EF%BC%85E1%EF%BC%8585%EF%BC%85B3%EF%BC%85E1%EF%BC%8584%EF%BC%858F%EF%BC%85E1%EF%BC%8585%EF%BC%85B3%EF%BC%85E1%EF%BC%8584%EF%BC%8585%EF%BC%85E1%EF%BC%8585%EF%BC%85B5%EF%BC%85E1%EF%BC%8586%EF%BC%85AB%EF%BC%85E1%EF%BC%8584%EF%BC%8589%EF%BC%85E1%EF%BC%8585%EF%BC%85A3%EF%BC%85E1%EF%BC%8586%EF%BC%85BA%EF%BC%85202019-02-09%EF%BC%852013.48.10.png">
+<meta property="og:image" content="https://cdn.steemitimages.com/300x0/https://cdn.steemitimages.com/DQmNpmzypELfPkUqACifpBfs9BAx2HT7VwZ9jFQoNEbjaQh/%EF%BC%85E1%EF%BC%8584%EF%BC%8589%EF%BC%85E1%EF%BC%8585%EF%BC%85B3%EF%BC%85E1%EF%BC%8584%EF%BC%858F%EF%BC%85E1%EF%BC%8585%EF%BC%85B3%EF%BC%85E1%EF%BC%8584%EF%BC%8585%EF%BC%85E1%EF%BC%8585%EF%BC%85B5%EF%BC%85E1%EF%BC%8586%EF%BC%85AB%EF%BC%85E1%EF%BC%8584%EF%BC%8589%EF%BC%85E1%EF%BC%8585%EF%BC%85A3%EF%BC%85E1%EF%BC%8586%EF%BC%85BA%EF%BC%85202019-02-09%EF%BC%852013.58.33.png">
+<meta property="og:image" content="https://steemitimages.com/300x0/https://user-images.githubusercontent.com/3969643/52543223-3fa73d00-2deb-11e9-9706-40e610d8cdce.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/3969643/52542054-521b7980-2ddf-11e9-9a12-fb4b4f82b7d7.png">
+<meta property="og:image" content="https://steemitimages.com/300x0/https://user-images.githubusercontent.com/3969643/52542080-93ac2480-2ddf-11e9-90e0-465dcd824d4a.png">
+<meta property="article:published_time" content="2019-02-13T02:01:45.000Z">
+<meta property="article:modified_time" content="2021-04-21T11:50:30.069Z">
+<meta property="article:author" content="안피곤">
+<meta property="article:tag" content="이더리움">
+<meta property="article:tag" content="React Native">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.steemitimages.com/DQmTBYPHABLZoXJMWL9msssEoTsXz9LvVaK7dT49uXXGQi7/galaxy-2.png">
+
+<link rel="canonical" href="https://anpigon.github.io/kr/@anpigon/react-native-ethereum-mobile-wallet-6">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>[React Native] 이더리움 모바일 지갑(Ethereum Mobile Wallet) 만들기 #6 | 안피곤님의 블로그</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-20589042-10"></script>
+    <script pjax>
+      var host = window.location.hostname;
+      if (host !== "localhost" || !true) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-20589042-10');
+      }
+    </script>
+
+
+
+
+
+
+  
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-2365531018407022",
+          enable_page_level_ads: false
+     });
+</script>
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="안피곤님의 블로그" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">안피곤님의 블로그</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">코딩, 독서, 여행, 영화, 맛집</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>홈</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>태그<span class="badge">139</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>카테고리<span class="badge">25</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>아카이브<span class="badge">325</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>검색
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input" id="search-input"></div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="algolia-results">
+  <div id="algolia-stats"></div>
+  <div id="algolia-hits"></div>
+  <div id="algolia-pagination" class="algolia-pagination"></div>
+</div>
+
+  
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="ko">
+    <link itemprop="mainEntityOfPage" href="https://anpigon.github.io/kr/@anpigon/react-native-ethereum-mobile-wallet-6">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/me.jpg">
+      <meta itemprop="name" content="안피곤">
+      <meta itemprop="description" content="시간이 천천히 갔으면 좋겠다.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="안피곤님의 블로그">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          [React Native] 이더리움 모바일 지갑(Ethereum Mobile Wallet) 만들기 #6
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">작성일</span>
+
+              <time title="Post created: 2019-02-13 11:01:45" itemprop="dateCreated datePublished" datetime="2019-02-13T11:01:45+09:00">2019-02-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Updated at: 2021-04-21 20:50:30" itemprop="dateModified" datetime="2021-04-21T20:50:30+09:00">2021-04-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">개발 이야기</span>
+                  </a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/react-native/" itemprop="url" rel="index">
+                    <span itemprop="name">React Native</span>
+                  </a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/react-native/%EC%9D%B4%EB%8D%94%EB%A6%AC%EC%9B%80-%EC%A7%80%EA%B0%91-%EC%95%B1-%EB%A7%8C%EB%93%A4%EA%B8%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">이더리움 지갑 앱 만들기</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/kr/@anpigon/react-native-ethereum-mobile-wallet-6#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="/kr/@anpigon/react-native-ethereum-mobile-wallet-6" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+            <div style="margin-bottom:35px;margin-top:-20px;">
+              <!-- 블로그 본문 상단 광고 -->
+              <ins class="adsbygoogle"
+                  style="display:block"
+                  data-ad-client="ca-pub-2365531018407022"
+                  data-ad-slot="3390644000"
+                  data-ad-format="auto"
+                  data-full-width-responsive="true"></ins>
+              <script>
+                  (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+        <p><img alt data-src="https://cdn.steemitimages.com/DQmTBYPHABLZoXJMWL9msssEoTsXz9LvVaK7dT49uXXGQi7/galaxy-2.png"></p><p>이번에는 이더리움 출금 화면을 만들어 봅니다. 하지만 이더리움을 출금하기 위해서는 지갑에 이더(Ether)가 있어야 합니다.<br>
+구현하기 전에 <strong>Ropsten Testnet Faucet</strong> 사이트에 접속합니다. 그리고 이더(Ether) 요청을 하여 받아보겠습니다.</p><p> </p><h2 id="테스트넷-이더-받기"><a class="markdownIt-Anchor" href="#테스트넷-이더-받기"></a> 테스트넷 이더 받기</h2><a id="more"></a>
+
+
+
+<p>아래 사이트를 이용하면 테스트넷의 이더(Ether)을 받을 수 있습니다. 이더리움 주소를 입력하고 <code>Send me test Ether</code> 버튼을 클릭하면 수십 초 내에 이더(Ether)가 입금됩니다. 참고로, 우리는 <em>Ropsten Testnet</em> 에서 지갑앱을 구현합니다.</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://faucet.ropsten.be">https://faucet.ropsten.be</a></li>
+</ul>
+<p><img alt data-src="https://cdn.steemitimages.com/DQmW14HFfEPYwvNtapSoPEAzTAHZt23VWnGRjxNxqSwCv96/%EF%BC%85E1%EF%BC%8584%EF%BC%8589%EF%BC%85E1%EF%BC%8585%EF%BC%85B3%EF%BC%85E1%EF%BC%8584%EF%BC%858F%EF%BC%85E1%EF%BC%8585%EF%BC%85B3%EF%BC%85E1%EF%BC%8584%EF%BC%8585%EF%BC%85E1%EF%BC%8585%EF%BC%85B5%EF%BC%85E1%EF%BC%8586%EF%BC%85AB%EF%BC%85E1%EF%BC%8584%EF%BC%8589%EF%BC%85E1%EF%BC%8585%EF%BC%85A3%EF%BC%85E1%EF%BC%8586%EF%BC%85BA%EF%BC%85202019-02-09%EF%BC%852013.48.10.png"></p>
+<blockquote>
+<p>또는, 메타마스크에서 제공하는 <a target="_blank" rel="noopener" href="https://faucet.metamask.xn--io-f89i">https://faucet.metamask.io를</a> 이용할 수도 있습니다. <em><a target="_blank" rel="noopener" href="http://faucet.metamask.io">faucet.metamask.io</a></em>를 이용하려면 크롬브라우저에 메타마스크(metamask)가 설치되어 있어야 합니다. 메타마스크 설치를 하려면 <a target="_blank" rel="noopener" href="https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn?hl=ko">여기</a>를 클릭하세요.</p>
+</blockquote>
+<p> <br>
+ </p>
+<h2 id="이더리움-잔액-조회하기"><a class="markdownIt-Anchor" href="#이더리움-잔액-조회하기"></a> 이더리움 잔액 조회하기</h2>
+<p>이제 지갑 목록에 이더리움 잔액을 보여줄 것입니다. <code>components/WalletScreen.js</code> 파일을 수정합니다.</p>
+<p><strong>./src/components/WalletScreen.js</strong></p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="comment">// (...)</span></span><br><span class="line"><span class="keyword">import</span> ｛ ethers ｝ <span class="keyword">from</span> <span class="string">&#x27;ethers&#x27;</span>; <span class="comment">// 추가된 코드</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">WalletsScreen</span> <span class="keyword">extends</span> <span class="title">Component</span> ｛</span></span><br><span class="line"><span class="class">  </span></span><br><span class="line"><span class="class">  <span class="title">static</span> <span class="title">navigationOptions</span> </span>= ｛ <span class="comment">// (…) ｝</span></span><br><span class="line">  <span class="title">constructor</span>(<span class="params">props</span>) ｛ // (<span class="params">…</span>) ｝</span><br><span class="line">	<span class="title">_onWillFocus</span> = <span class="title">payload</span> =&gt; ｛ // (<span class="params">…</span>) ｝</span><br><span class="line">	<span class="title">render</span>(<span class="params"></span>) ｛ // (<span class="params">…</span>) ｝</span><br><span class="line">  </span><br><span class="line">	<span class="title">componentWillMount</span>(<span class="params"></span>) ｛</span><br><span class="line">    </span><br><span class="line">    // 1. <span class="title">provider</span> 생성</span><br><span class="line">    <span class="title">let</span> <span class="title">provider</span> = <span class="title">ethers</span>.<span class="title">getDefaultProvider</span>(<span class="params"><span class="string">&#x27;ropsten&#x27;</span></span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> pollingInterval = <span class="number">20</span> * <span class="number">1000</span>; <span class="comment">//20초</span></span><br><span class="line">    <span class="built_in">this</span>.poller = <span class="built_in">setInterval</span>(<span class="function">() =&gt;</span> ｛</span><br><span class="line">      <span class="keyword">const</span> wallets = [...this.state.wallets];</span><br><span class="line">      </span><br><span class="line">      <span class="comment">// 2. 지갑 잔액 조회 시작</span></span><br><span class="line">      wallets.forEach(<span class="function"><span class="params">wallet</span> =&gt;</span> ｛</span><br><span class="line">        provider.getBalance(wallet.address).then(<span class="function">(<span class="params">balance</span>) =&gt;</span> ｛</span><br><span class="line">          <span class="comment">// 이더리움 잔액 wei를 ehter로 변환</span></span><br><span class="line">          <span class="keyword">const</span> etherString = ethers.utils.formatEther(balance);</span><br><span class="line">          wallet.balance = etherString;</span><br><span class="line">        ｝);</span><br><span class="line">      ｝);</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 3. 지갑 목록 화면 갱신 및 Storage 업데이트</span></span><br><span class="line">      <span class="built_in">this</span>.setState(｛ wallets ｝, <span class="function">() =&gt;</span> ｛</span><br><span class="line">        AsyncStorage.setItem(<span class="string">&#x27;WALLETS&#x27;</span>, <span class="built_in">JSON</span>.stringify(wallets));</span><br><span class="line">      ｝);</span><br><span class="line"></span><br><span class="line">    ｝, pollingInterval); <span class="comment">// 20초 마다 수행</span></span><br><span class="line">    </span><br><span class="line">  ｝ <span class="comment">// componentWillMount</span></span><br><span class="line">    </span><br><span class="line">｝</span><br></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li><strong>WalletsScreen</strong> 클래스에 <code>componentWillMount()</code> 함수가 추가되었습니다.</li>
+<li><code>ethers</code>를 사용하여 <em>Ropsten 테스트넷</em>의 <strong>provider</strong>를 생성합니다. <code>ethers</code>의 사용 방법은 <a target="_blank" rel="noopener" href="https://docs.ethers.io/ethers.js/html/">ether API 문서</a>를 참고합니다.</li>
+<li>지갑 잔액 조회는 <code>setInterval()</code> 함수를 사용하여 폴링하도록 구현하였습니다. 그리고 20초마다 폴링하도록 <code>pollingInterval</code>에 <em>20000</em>을 입력하였습니다.
+<blockquote>
+<p>참고로, <a target="_blank" rel="noopener" href="https://docs.ethers.io/ethers.js/html/api-providers.html#events">Events</a> 방식으로 구현하여 잔액을 표시할 수도 있습니다. 일단은 구현을 간단하게 하기위헤서 폴링으로 구현하였습니다.</p>
+</blockquote>
+</li>
+<li>그리고 잔액 조회가 완료되면, 화면을 갱신하고 <strong>Storage</strong>을 업데이트 합니다.</li>
+</ul>
+</blockquote>
+<p> </p>
+<p>앱을 실행해보면, 이더리움 첫번째 지갑에 <strong>1.0 ETH</strong>가 보입니다.</p>
+<p><img alt data-src="https://cdn.steemitimages.com/300x0/https://cdn.steemitimages.com/DQmNpmzypELfPkUqACifpBfs9BAx2HT7VwZ9jFQoNEbjaQh/%EF%BC%85E1%EF%BC%8584%EF%BC%8589%EF%BC%85E1%EF%BC%8585%EF%BC%85B3%EF%BC%85E1%EF%BC%8584%EF%BC%858F%EF%BC%85E1%EF%BC%8585%EF%BC%85B3%EF%BC%85E1%EF%BC%8584%EF%BC%8585%EF%BC%85E1%EF%BC%8585%EF%BC%85B5%EF%BC%85E1%EF%BC%8586%EF%BC%85AB%EF%BC%85E1%EF%BC%8584%EF%BC%8589%EF%BC%85E1%EF%BC%8585%EF%BC%85A3%EF%BC%85E1%EF%BC%8586%EF%BC%85BA%EF%BC%85202019-02-09%EF%BC%852013.58.33.png"></p>
+<p> </p>
+<h2 id="출금-화면-만들기"><a class="markdownIt-Anchor" href="#출금-화면-만들기"></a> 출금 화면 만들기</h2>
+<p>아래 이미지는 이번에 만들 출금 화면입니다. <em>이체 금액</em>, <em>받는 주소</em>, <em>가스 수수료</em>를 입력할 수 있습니다.</p>
+<p><img alt data-src="https://steemitimages.com/300x0/https://user-images.githubusercontent.com/3969643/52543223-3fa73d00-2deb-11e9-9706-40e610d8cdce.png"></p>
+<p> </p>
+<p><code>components/SendScreen.js</code> 파일을 생성합니다. 코드 내용이 너무 많아서 일부만 가져와서 설명합니다. <code>SendScreen.js</code> 파일의 전체 코드 내용은 <a target="_blank" rel="noopener" href="https://github.com/anpigon/rn_ethereum_wallet/blob/4489a32ff0cb958fe5852efc49509fe58446e61e/src/components/SendScreen.js"><strong>여기</strong></a>에 업로드 되어 있습니다.</p>
+<p><strong>./src/components/SendScreen.js</strong></p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="comment">// (...)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">ReceiveScreen</span> <span class="keyword">extends</span> <span class="title">Component</span> ｛</span></span><br><span class="line"><span class="class"></span></span><br><span class="line"><span class="class">	<span class="title">static</span> <span class="title">navigationOptions</span> </span>= <span class="comment">// (...)</span></span><br><span class="line">	<span class="title">constructor</span>(<span class="params">props</span>) ｛ // (<span class="params">...</span>) ｝</span><br><span class="line">  </span><br><span class="line">  // 이더리움 주소 체크 함수</span><br><span class="line">  <span class="title">checkAddress</span> = (<span class="params">address</span>) =&gt; ｛</span><br><span class="line">    <span class="title">if</span> (<span class="params">!<span class="regexp">/^(0x)?[0-9a-f]｛40｝$/i</span>.test(address)</span>) ｛</span><br><span class="line">      <span class="title">return</span> <span class="title">false</span>;</span><br><span class="line">    ｝</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">  ｝;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 다음 버튼을 눌렀을때</span></span><br><span class="line">  next = <span class="function">() =&gt;</span> ｛</span><br><span class="line">    <span class="keyword">let</span> ehter = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">try</span> ｛</span><br><span class="line">      <span class="comment">// 이더(Ehter) 단위 금액을 Wei로 변환</span></span><br><span class="line">      ehter = ethers.utils.parseEther(<span class="built_in">String</span>(<span class="built_in">this</span>.state.value || <span class="number">0</span>));</span><br><span class="line">      <span class="keyword">if</span>(ehter.lte(<span class="number">0</span>)) ｛ <span class="comment">// 0보다 작으면</span></span><br><span class="line">        <span class="keyword">return</span> Alert.alert(<span class="string">&#x27;이체 금액을 확인해주세요.&#x27;</span>);</span><br><span class="line">      ｝</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 가스비(수수료) 계산 </span></span><br><span class="line">      <span class="keyword">let</span> estimateFee = ethers.utils.parseUnits(<span class="built_in">this</span>.state.gasPrice, <span class="string">&#x27;gwei&#x27;</span>).mul(<span class="built_in">String</span>(<span class="built_in">this</span>.state.gasLimit));</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 이체하는데 필요한 총 금액 계산(이체 금액 + 가스비)</span></span><br><span class="line">      <span class="keyword">let</span> totalRequiredAmount = ehter.add(estimateFee);</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 잔액이 이체에 필요한 금액보다 작으면...</span></span><br><span class="line">      <span class="keyword">let</span> balance = ethers.utils.parseEther(wallet.balance);</span><br><span class="line">      <span class="keyword">if</span>(balance.lt(totalRequiredAmount)) ｛</span><br><span class="line">        <span class="keyword">let</span> totalRequiredEther = ethers.utils.formatEther(totalRequiredAmount);</span><br><span class="line">        <span class="keyword">return</span> Alert.alert(<span class="string">&#x27;잔액이 부족합니다.&#x27;</span>, <span class="string">`수수료 포함하여 필요한 금액\n$｛totalRequiredEther｝ ETH`</span>);</span><br><span class="line">      ｝</span><br><span class="line">    ｝ <span class="keyword">catch</span>(e) ｛</span><br><span class="line">      <span class="keyword">return</span> Alert.alert(<span class="string">&#x27;이체 금액을 확인해주세요.&#x27;</span>);</span><br><span class="line">    ｝</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 받는 주소 검증</span></span><br><span class="line">    <span class="keyword">try</span> ｛</span><br><span class="line">      <span class="keyword">if</span>(!<span class="built_in">this</span>.checkAddress(<span class="built_in">this</span>.state.toAddress)) ｛</span><br><span class="line">        <span class="keyword">return</span> Alert.alert(<span class="string">&#x27;받는 주소를 확인해주세요.&#x27;</span>);</span><br><span class="line">      ｝</span><br><span class="line">    ｝ <span class="keyword">catch</span>(e) ｛</span><br><span class="line">      <span class="keyword">return</span> Alert.alert(<span class="string">&#x27;받는 주소를 확인해주세요.&#x27;</span>);</span><br><span class="line">    ｝</span><br><span class="line">    Alert.alert(<span class="string">&#x27;ok&#x27;</span>);</span><br><span class="line">  ｝</span><br><span class="line">  </span><br><span class="line">  render() ｛ <span class="comment">// (...) ｝</span></span><br><span class="line">｝</span><br></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>다음 버튼을 누르면 <code>next()</code>  함수가 호출 될 것입니다. <code>render()</code> 구현부가 위의 코드에는 생략되어 있습니다. <a target="_blank" rel="noopener" href="https://github.com/anpigon/rn_ethereum_wallet/blob/4489a32ff0cb958fe5852efc49509fe58446e61e/src/components/SendScreen.js">전체 코드</a>를 참고하시기 바랍니다.</li>
+<li><code>next()</code>  함수에서는 이더리움 주소 유효성 검사와 수수료 계산, 잔액 체크를 하고 있습니다. 모든 유효성 검사가 완료되면 알럿 메세지로 <strong>OK</strong>가 출력될 것입니다. 그리고 필요한 가스비와 이더리움 주소 유효성 검사는 아래에서 더 설명합니다.</li>
+</ul>
+</blockquote>
+<p> </p>
+<p>마지막으로 <code>App.js</code>와 <code>components/WalletInfoScreen.js</code> 파일을 수정합니다. 다음은 수정한 부분의 일부 코드만 가져왔습니다.</p>
+<p><strong>./src/App.js</strong></p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> AppStackNavigator = createStackNavigator(｛</span><br><span class="line">  Wallets: ｛ screen: WalletsScreen ｝, <span class="comment">// 지갑 목록</span></span><br><span class="line">	CreateWallet: ｛ screen: CreateWalletScreen ｝, <span class="comment">// 지갑 생성</span></span><br><span class="line">  WalletInfo: ｛ screen: WalletInfoScreen ｝, <span class="comment">// 지갑 정보</span></span><br><span class="line">  ReceiveScreen: ｛ screen: ReceiveScreen ｝, <span class="comment">// 지갑 입금</span></span><br><span class="line">  </span><br><span class="line">  SendScreen: ｛ screen: SendScreen ｝, <span class="comment">// 지금 출금 (추가된 코드)</span></span><br><span class="line"><span class="comment">// (...)</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>App 네이게이터에 <code>SendScreen: ｛ screen: SendScreen ｝</code> 가 추가되었습니다.</li>
+</ul>
+</blockquote>
+<p> </p>
+<p><strong>./components/WalletInfoScreen.js</strong></p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">WalletInfoScreen</span> <span class="keyword">extends</span> <span class="title">Component</span> ｛</span></span><br><span class="line"><span class="class">  <span class="title">render</span>() ｛</span></span><br><span class="line"><span class="class">    <span class="title">return</span> (</span></span><br><span class="line"><span class="class">      &lt;<span class="title">Container</span> <span class="title">style</span></span>=｛styles.container｝&gt;</span><br><span class="line">        &lt;Header&gt;(...)&lt;/Header&gt;</span><br><span class="line">        &lt;Content padder&gt;</span><br><span class="line">          &lt;Card transparent&gt;</span><br><span class="line">            &lt;CardItem&gt;(...)&lt;/CardItem&gt;</span><br><span class="line">            &lt;CardItem&gt;(...)&lt;/CardItem&gt;</span><br><span class="line">            &lt;CardItem&gt;(...)&lt;/CardItem&gt;</span><br><span class="line">            &lt;CardItem&gt;</span><br><span class="line">              &lt;Body style=｛｛ flexDirection: <span class="string">&#x27;row&#x27;</span>, <span class="attr">justifyContent</span>: <span class="string">&#x27;space-around&#x27;</span>｝｝&gt;</span><br><span class="line">                &lt;Button (...)&gt;<span class="xml"><span class="tag">&lt;<span class="name">Text</span>&gt;</span>입금<span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span>&lt;/Button&gt;</span><br><span class="line">                &lt;Button </span><br><span class="line">                  bordered </span><br><span class="line">                  warning</span><br><span class="line">                  style=｛｛flex:<span class="number">1</span>, <span class="attr">justifyContent</span>:<span class="string">&#x27;center&#x27;</span>, <span class="attr">marginLeft</span>: <span class="number">10</span>｝｝</span><br><span class="line">                  onPress=｛() =&gt; <span class="built_in">this</span>.props.navigation.navigate(<span class="string">&#x27;SendScreen&#x27;</span>, wallet)｝&gt;</span><br><span class="line">                  &lt;Text&gt;출금&lt;/Text&gt;</span><br><span class="line">               	&lt;/Button&gt;</span><br><span class="line">              &lt;/Body&gt;</span><br><span class="line">            &lt;/CardItem&gt;</span><br><span class="line">          &lt;/Card&gt;</span><br><span class="line">        &lt;/Content&gt;</span><br><span class="line">      &lt;/Container&gt;</span><br><span class="line">    );</span><br><span class="line">  ｝</span><br><span class="line">｝</span><br></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>출금 버튼에 <code>onPress=｛() =&gt; this.props.navigation.navigate('SendScreen', wallet)｝</code> 를 추가합니다. 이제 출금 버튼을 누르면 <strong>SendScreen</strong> 화면으로 이동할 것입니다.</li>
+</ul>
+</blockquote>
+<p> </p>
+<p>여기까지 이더리움 지갑 잔액 조회와 입금 화면을 개발하였습니다.</p>
+<p>아래에는 이더리움 주소 유효성 체크 방법과 이더리움 가스비에 대해서 더 설명합니다.</p>
+<p> </p>
+<center><br>* * *<br></center>
+<p> <br>
+ </p>
+<h2 id="이더리움-주소-유효성-검사-방법"><a class="markdownIt-Anchor" href="#이더리움-주소-유효성-검사-방법"></a> 이더리움 주소 유효성 검사 방법</h2>
+<p>이더리움 주소는 <code>0x</code>로 시작합니다. 그리고 40바이트의 <strong>영문자+숫자</strong>로 구성됩니다. 사실 **EIP-55 체크섬(checksum)**이 포함된 이더리움 주소도 검사해야 합니다. 하지만 이번 구현 코드에서는 포함하지 않았습니다.</p>
+<p>이더리움 체크섬 주소의 유효성 검사를 포함한 코드는 아래를 참고하세요.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Hash = <span class="built_in">require</span>(<span class="string">&#x27;eth-lib/lib/hash&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkAddressChecksum</span>(<span class="params">address</span>) ｛</span></span><br><span class="line"><span class="function">  </span></span><br><span class="line"><span class="function">  // #1. 40바이트의 영문자+숫자로 구성되어 있는지 검사합니다.</span></span><br><span class="line"><span class="function">  <span class="title">if</span> (<span class="params">!<span class="regexp">/^(0x)?[0-9a-f]｛40｝$/i</span>.test(address)</span>) ｛</span></span><br><span class="line"><span class="function">    <span class="title">return</span> <span class="title">false</span></span>;</span><br><span class="line">  ｝</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// #2. EIP-55 체크섬이 포함되어 있지 않은 주소의 경우에는 true를 반환합니다.</span></span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">if</span> (<span class="regexp">/^(0x|0X)?[0-9a-f]｛40｝$/</span>.test(address) || <span class="regexp">/^(0x|0X)?[0-9A-F]｛40｝$/</span>.test(address)) ｛</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">  ｝ </span><br><span class="line">  </span><br><span class="line">  <span class="comment">// #3. EIp-55 체크섬이 포함된 주소의 유효성을 검사합니다.</span></span><br><span class="line">  <span class="keyword">else</span> ｛</span><br><span class="line">    <span class="comment">// 이더리움 주소를 keccak256 해시하여,</span></span><br><span class="line">    <span class="comment">// 주소와 매칭되는 해시의 16진수가 0x8 이상인 경우에 대문자인지 비교합니다.</span></span><br><span class="line">    address = address.replace(<span class="regexp">/^0x/i</span>, <span class="string">&#x27;&#x27;</span>);</span><br><span class="line">		<span class="keyword">const</span> addressHash = Hash.keccak256(address.toLowerCase()).replace(<span class="regexp">/^0x/i</span>, <span class="string">&#x27;&#x27;</span>);</span><br><span class="line">  	<span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">40</span>; i++) ｛</span><br><span class="line">    	<span class="keyword">if</span> (</span><br><span class="line">      	(<span class="built_in">parseInt</span>(addressHash[i], <span class="number">16</span>) &gt; <span class="number">7</span> &amp;&amp; address[i].toUpperCase() !==</span><br><span class="line">address[i]) ||</span><br><span class="line">      	(<span class="built_in">parseInt</span>(addressHash[i], <span class="number">16</span>) &lt;= <span class="number">7</span> &amp;&amp; address[i].toLowerCase() !==</span><br><span class="line">address[i])</span><br><span class="line">			)｛</span><br><span class="line">				<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">			｝ <span class="comment">// if</span></span><br><span class="line">    ｝ <span class="comment">// for</span></span><br><span class="line">  ｝</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">｝</span><br></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>이더리움 주소를 keccak256 해시하기 위해서, <a target="_blank" rel="noopener" href="https://github.com/MaiaVictor/eth-lib">eth-lib</a> 모듈의 <code>keccak256()</code> 함수를 사용하였습니다.</li>
+</ul>
+</blockquote>
+<p> <br>
+ </p>
+<h2 id="이더리움-가스비-알아내기"><a class="markdownIt-Anchor" href="#이더리움-가스비-알아내기"></a> 이더리움 가스비 알아내기</h2>
+<p>이더리움으로 거래(Transatcion)를 하기 위해서는 수수료(가스비)가 필요합니다. 그리고 가스 스테이션 서비스(<a target="_blank" rel="noopener" href="https://ethgasstation.info">https://ethgasstation.info</a>)를 이용하면, 현재 메인넷의 가스비를 알 수 있습니다.</p>
+<p><img alt data-src="https://user-images.githubusercontent.com/3969643/52542054-521b7980-2ddf-11e9-9a12-fb4b4f82b7d7.png"></p>
+<p>확인해보면, 현재 지출되고 있는 가스비가 <code>1.1 ~ 7</code> 사이 라는 것을 알 수 있습니다.</p>
+<p><img alt data-src="https://steemitimages.com/300x0/https://user-images.githubusercontent.com/3969643/52542080-93ac2480-2ddf-11e9-90e0-465dcd824d4a.png"></p>
+<p> </p>
+<p>그리고 다음은 가스비를 조회할 수 있는 API 정보입니다.</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/ethgasstation/ethgasstation-api">https://github.com/ethgasstation/ethgasstation-api</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.etherchain.org/api/gasPriceOracle">https://www.etherchain.org/api/gasPriceOracle</a></li>
+<li><a target="_blank" rel="noopener" href="https://ethgasstation.info/json/ethgasAPI.json">https://ethgasstation.info/json/ethgasAPI.json</a></li>
+</ul>
+<p> </p>
+<p>지금 구현한 지갑앱에서는 가스비를 코드상에 값을 하드 코딩하였습니다. 나중에서는 API 서비스에서 조회하여 가스비를 유동적으로 보여줄 필요가 있을 것 같습니다.</p>
+<blockquote>
+<p>추가로 <strong>ethers</strong>에서 제공하는  <code>provider.getGasPrice()</code> 함수를 사용하면, 평균 가스비를 가져올 수 있습니다.</p>
+</blockquote>
+<p> </p>
+<p>여기까지 구현한 전체 코드는 모두 <a target="_blank" rel="noopener" href="https://github.com/anpigon/rn_ethereum_wallet/tree/4489a32ff0cb958fe5852efc49509fe58446e61e">깃허브</a>에 업로드 되어있습니다.</p>
+<p>여기까지 읽어주셔서 감사합니다.</p>
+
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%EC%9D%B4%EB%8D%94%EB%A6%AC%EC%9B%80/" rel="tag"># 이더리움</a>
+              <a href="/tags/react-native/" rel="tag"># React Native</a>
+          </div>
+
+        
+  <div class="post-widgets">
+    <div class="wp_rating">
+      <div id="wpac-rating"></div>
+    </div>
+  </div>
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/kr/@steemory/3-or-or-900-or" rel="next" title="[세바시] 글쓰기를 잘할 수 있는 3가지 비법 | 고영성 '일취월장', '완벽한 공부법' 저자 체인지그라운드 고문 | 세바시 900회 | 글쓰기 강연 듣기">
+                  <i class="fa fa-chevron-left"></i> [세바시] 글쓰기를 잘할 수 있는 3가지 비법 | 고영성 '일취월장', '완벽한 공부법' 저자 체인지그라운드 고문 | 세바시 900회 | 글쓰기 강연 듣기
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/kr/@steemory/or-mbc-pd-or-or-899" rel="prev" title="[세바시] 괴로움을 즐거움으로 바꾸는 글쓰기 | 김민식 ‘매일 아침 써봤니?’ 저자, MBC 드라마 PD | 강의 강연 글쓰기 기초 강좌 | 세바시 899회">
+                  [세바시] 괴로움을 즐거움으로 바꾸는 글쓰기 | 김민식 ‘매일 아침 써봤니?’ 저자, MBC 드라마 PD | 강의 강연 글쓰기 기초 강좌 | 세바시 899회 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    
+  <div class="comments" id="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          목차
+        </li>
+        <li class="sidebar-nav-overview">
+          흝어보기
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%ED%85%8C%EC%8A%A4%ED%8A%B8%EB%84%B7-%EC%9D%B4%EB%8D%94-%EB%B0%9B%EA%B8%B0"><span class="nav-number">1.</span> <span class="nav-text"> 테스트넷 이더 받기</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EC%9D%B4%EB%8D%94%EB%A6%AC%EC%9B%80-%EC%9E%94%EC%95%A1-%EC%A1%B0%ED%9A%8C%ED%95%98%EA%B8%B0"><span class="nav-number">2.</span> <span class="nav-text"> 이더리움 잔액 조회하기</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EC%B6%9C%EA%B8%88-%ED%99%94%EB%A9%B4-%EB%A7%8C%EB%93%A4%EA%B8%B0"><span class="nav-number">3.</span> <span class="nav-text"> 출금 화면 만들기</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EC%9D%B4%EB%8D%94%EB%A6%AC%EC%9B%80-%EC%A3%BC%EC%86%8C-%EC%9C%A0%ED%9A%A8%EC%84%B1-%EA%B2%80%EC%82%AC-%EB%B0%A9%EB%B2%95"><span class="nav-number">4.</span> <span class="nav-text"> 이더리움 주소 유효성 검사 방법</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EC%9D%B4%EB%8D%94%EB%A6%AC%EC%9B%80-%EA%B0%80%EC%8A%A4%EB%B9%84-%EC%95%8C%EC%95%84%EB%82%B4%EA%B8%B0"><span class="nav-number">5.</span> <span class="nav-text"> 이더리움 가스비 알아내기</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="안피곤"
+    src="/images/me.jpg">
+  <p class="site-author-name" itemprop="name">안피곤</p>
+  <div class="site-description" itemprop="description">시간이 천천히 갔으면 좋겠다.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">325</span>
+          <span class="site-state-item-name">포스트</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-name">카테고리</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">139</span>
+        <span class="site-state-item-name">태그</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/anpigon" title="GitHub &rarr; https://github.com/anpigon" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:markan82@gmail.com" title="E-Mail &rarr; mailto:markan82@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+          <!-- 정사각형 광고 -->
+          <div style="margin-top: 15px;">
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-2365531018407022"
+                data-ad-slot="7521850306"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+          </div>
+    </div>
+  </aside>
+  <div id="sidebar-dimmer">3</div>
+
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">안피곤</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v5.4.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.4.2
+  </div>
+
+        
+
+
+
+
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-firestore.js"></script>
+  <script>
+    firebase.initializeApp({
+      apiKey: 'AIzaSyA4QZWCWb3IuIHjbkAmO0ttIM2b-qtLTP8',
+      projectId: 'next-blog-8f9a0'
+    });
+
+    function getCount(doc, increaseCount) {
+      // IncreaseCount will be false when not in article page
+
+      return doc.get().then(d => {
+        var count = 0;
+        if (!d.exists) { // Has no data, initialize count
+          if (increaseCount) {
+            doc.set({
+              count: 1
+            });
+            count = 1;
+          }
+        } else { // Has data
+          count = d.data().count;
+          if (increaseCount) {
+            // If first view this article
+            doc.set({ // Increase count
+              count: count + 1
+            });
+            count++;
+          }
+        }
+
+        return count;
+      });
+    }
+
+    function appendCountTo(el) {
+      return count => {
+        el.innerText = count;
+      }
+    }
+  </script>
+  <script pjax>
+    (function() {
+      var db = firebase.firestore();
+      var articles = db.collection('articles');
+
+      if (CONFIG.page.isPost) { // Is article page
+        var title = document.querySelector('.post-title').innerText.trim();
+        var doc = articles.doc(title);
+        var increaseCount = true;
+        if (localStorage.getItem(title)) {
+          increaseCount = false;
+        } else {
+          // Mark as visited
+          localStorage.setItem(title, true);
+        }
+        getCount(doc, increaseCount).then(appendCountTo(document.querySelector('.firestore-visitors-count')));
+      } else if (CONFIG.page.isHome) { // Is index page
+        var promises = [...document.querySelectorAll('.post-title')].map(element => {
+          var title = element.innerText.trim();
+          var doc = articles.doc(title);
+          return getCount(doc);
+        });
+        Promise.all(promises).then(counts => {
+          var metas = document.querySelectorAll('.firestore-visitors-count');
+          counts.forEach((val, idx) => {
+            appendCountTo(metas[idx])(val);
+          });
+        });
+      }
+    })();
+  </script>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.getAttribute('pjax') !== null) {
+      element.setAttribute('pjax', '');
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+  <script pjax>
+  if (CONFIG.page.isPost) {
+    wpac_init = window.wpac_init || [];
+    wpac_init.push({
+      widget: 'Rating',
+      id: 21712,
+      el: 'wpac-rating',
+      color: 'fc6423'
+    });
+    (function() {
+      if ('WIDGETPACK_LOADED' in window) return;
+      WIDGETPACK_LOADED = true;
+      var mc = document.createElement('script');
+      mc.type = 'text/javascript';
+      mc.async = true;
+      mc.src = '//embed.widgetpack.com/widget.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+    })();
+  }
+  </script>
+
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.4.1/dist/instantsearch.min.css">
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.4.1/dist/instantsearch.js"></script>
+<script src="/js/algolia-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+
+  
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://anpigon-github-io.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  function loadComments() {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: {page: {
+            url: "https://anpigon.github.io/kr/@anpigon/react-native-ethereum-mobile-wallet-6",
+            identifier: "/kr/@anpigon/react-native-ethereum-mobile-wallet-6",
+            title: "[React Native] 이더리움 모바일 지갑(Ethereum Mobile Wallet) 만들기 #6"
+          }
+        }
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://anpigon-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  }
+    (function() {
+      var offsetTop = document.getElementById('comments').offsetTop - window.innerHeight;
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        window.addEventListener('load', loadComments, false);
+      } else {
+        var disqus_scroll = () => {
+          // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = document.getElementById('comments').offsetTop - window.innerHeight;
+          var scrollTop = window.scrollY;
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            window.removeEventListener('scroll', disqus_scroll);
+            loadComments();
+          }
+        };
+        window.addEventListener('scroll', disqus_scroll);
+      }
+    })();
+  
+</script>
+
+    </div>
+</body>
+</html>

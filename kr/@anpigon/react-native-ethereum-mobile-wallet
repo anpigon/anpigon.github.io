@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="yfKOiBPD8WlKH3NPG_CG1zr4MsCgCG1YVdGKhMS2CKc">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Noto Serif KR:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.4.2',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: true,
+    pangu: false,
+    algolia: {
+      appID: 'YY693DUDAI',
+      apiKey: 'db449d453b150820f66e7bc3d4523a17',
+      indexName: 'my-hexo-blog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '복사',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="오래 전 멀고 먼 블록체인 저편에… 암호화폐는 암흑의 시기이다. 하지만, 네드 베이더는 물리쳤고, 스티미디언 부대들은 스팀 얼라이언스 기지를 구축했다.  이번에는 리액트 네이티브로 이더리움 모바일 지갑을 만들어 봅니다. 리액트 네이티브로 암호화폐 지갑을 만드는 과정이 쉽지는 않을 것입니다.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[React Native] 이더리움 모바일 지갑(Ethereum Mobile Wallet) 만들기 #1">
+<meta property="og:url" content="https://anpigon.github.io/kr/@anpigon/react-native-ethereum-mobile-wallet">
+<meta property="og:site_name" content="안피곤님의 블로그">
+<meta property="og:description" content="오래 전 멀고 먼 블록체인 저편에… 암호화폐는 암흑의 시기이다. 하지만, 네드 베이더는 물리쳤고, 스티미디언 부대들은 스팀 얼라이언스 기지를 구축했다.  이번에는 리액트 네이티브로 이더리움 모바일 지갑을 만들어 봅니다. 리액트 네이티브로 암호화폐 지갑을 만드는 과정이 쉽지는 않을 것입니다.">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:image" content="https://cdn.steemitimages.com/720x0/https://cdn.steemitimages.com/DQmTBYPHABLZoXJMWL9msssEoTsXz9LvVaK7dT49uXXGQi7/galaxy-2.png">
+<meta property="og:image" content="https://cdn.steemitimages.com/300x0/https://cdn.steemitimages.com/DQmdMGhJyw4You8U9e17KDv4L1kktYmAuHfQMAzA3em4ETk/%EF%BC%85E1%EF%BC%8584%EF%BC%8589%EF%BC%85E1%EF%BC%8585%EF%BC%85B3%EF%BC%85E1%EF%BC%8584%EF%BC%858F%EF%BC%85E1%EF%BC%8585%EF%BC%85B3%EF%BC%85E1%EF%BC%8584%EF%BC%8585%EF%BC%85E1%EF%BC%8585%EF%BC%85B5%EF%BC%85E1%EF%BC%8586%EF%BC%85AB%EF%BC%85E1%EF%BC%8584%EF%BC%8589%EF%BC%85E1%EF%BC%8585%EF%BC%85A3%EF%BC%85E1%EF%BC%8586%EF%BC%85BA%EF%BC%85202019-02-01%EF%BC%852000.20.41.png">
+<meta property="og:image" content="https://cdn.steemitimages.com/300x0/https://cdn.steemitimages.com/DQme4c9vEM5vAN2tV1iAMnPFMegvs3toxgy9fsDyihxqHFS/%EF%BC%85E1%EF%BC%8584%EF%BC%8589%EF%BC%85E1%EF%BC%8585%EF%BC%85B3%EF%BC%85E1%EF%BC%8584%EF%BC%858F%EF%BC%85E1%EF%BC%8585%EF%BC%85B3%EF%BC%85E1%EF%BC%8584%EF%BC%8585%EF%BC%85E1%EF%BC%8585%EF%BC%85B5%EF%BC%85E1%EF%BC%8586%EF%BC%85AB%EF%BC%85E1%EF%BC%8584%EF%BC%8589%EF%BC%85E1%EF%BC%8585%EF%BC%85A3%EF%BC%85E1%EF%BC%8586%EF%BC%85BA%EF%BC%85202019-02-01%EF%BC%852001.31.23.png">
+<meta property="article:published_time" content="2019-02-01T02:27:27.000Z">
+<meta property="article:modified_time" content="2021-04-21T11:50:30.068Z">
+<meta property="article:author" content="안피곤">
+<meta property="article:tag" content="이더리움">
+<meta property="article:tag" content="React Native">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.steemitimages.com/720x0/https://cdn.steemitimages.com/DQmTBYPHABLZoXJMWL9msssEoTsXz9LvVaK7dT49uXXGQi7/galaxy-2.png">
+
+<link rel="canonical" href="https://anpigon.github.io/kr/@anpigon/react-native-ethereum-mobile-wallet">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>[React Native] 이더리움 모바일 지갑(Ethereum Mobile Wallet) 만들기 #1 | 안피곤님의 블로그</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-20589042-10"></script>
+    <script pjax>
+      var host = window.location.hostname;
+      if (host !== "localhost" || !true) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-20589042-10');
+      }
+    </script>
+
+
+
+
+
+
+  
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-2365531018407022",
+          enable_page_level_ads: false
+     });
+</script>
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="안피곤님의 블로그" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">안피곤님의 블로그</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">코딩, 독서, 여행, 영화, 맛집</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>홈</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>태그<span class="badge">139</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>카테고리<span class="badge">25</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>아카이브<span class="badge">325</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>검색
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input" id="search-input"></div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="algolia-results">
+  <div id="algolia-stats"></div>
+  <div id="algolia-hits"></div>
+  <div id="algolia-pagination" class="algolia-pagination"></div>
+</div>
+
+  
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="ko">
+    <link itemprop="mainEntityOfPage" href="https://anpigon.github.io/kr/@anpigon/react-native-ethereum-mobile-wallet">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/me.jpg">
+      <meta itemprop="name" content="안피곤">
+      <meta itemprop="description" content="시간이 천천히 갔으면 좋겠다.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="안피곤님의 블로그">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          [React Native] 이더리움 모바일 지갑(Ethereum Mobile Wallet) 만들기 #1
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">작성일</span>
+
+              <time title="Post created: 2019-02-01 11:27:27" itemprop="dateCreated datePublished" datetime="2019-02-01T11:27:27+09:00">2019-02-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Updated at: 2021-04-21 20:50:30" itemprop="dateModified" datetime="2021-04-21T20:50:30+09:00">2021-04-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">개발 이야기</span>
+                  </a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/react-native/" itemprop="url" rel="index">
+                    <span itemprop="name">React Native</span>
+                  </a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/react-native/%EC%9D%B4%EB%8D%94%EB%A6%AC%EC%9B%80-%EC%A7%80%EA%B0%91-%EC%95%B1-%EB%A7%8C%EB%93%A4%EA%B8%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">이더리움 지갑 앱 만들기</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/kr/@anpigon/react-native-ethereum-mobile-wallet#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="/kr/@anpigon/react-native-ethereum-mobile-wallet" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+            <div style="margin-bottom:35px;margin-top:-20px;">
+              <!-- 블로그 본문 상단 광고 -->
+              <ins class="adsbygoogle"
+                  style="display:block"
+                  data-ad-client="ca-pub-2365531018407022"
+                  data-ad-slot="3390644000"
+                  data-ad-format="auto"
+                  data-full-width-responsive="true"></ins>
+              <script>
+                  (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+        <p><img alt data-src="https://cdn.steemitimages.com/720x0/https://cdn.steemitimages.com/DQmTBYPHABLZoXJMWL9msssEoTsXz9LvVaK7dT49uXXGQi7/galaxy-2.png"></p><blockquote>
+<p>오래 전 멀고 먼 블록체인 저편에…<br>
+암호화폐는 암흑의 시기이다. 하지만, 네드 베이더는 물리쳤고, 스티미디언 부대들은 스팀 얼라이언스 기지를 구축했다.</p>
+</blockquote><p> </p><p>이번에는 리액트 네이티브로 이더리움 모바일 지갑을 만들어 봅니다. 리액트 네이티브로 암호화폐 지갑을 만드는 과정이 쉽지는 않을 것입니다.</p><a id="more"></a>
+
+
+
+<p>개발하기 앞서 자신의 시스템 환경을 꼭 체크하기 바랍니다. Node 8, Python2, JDK 8 이 필요합니다. 자세한 설치 방법은 <a target="_blank" rel="noopener" href="https://facebook.github.io/react-native/docs/getting-started.html">「리액트 네이티브 설치 가이드 문서」</a>의 <strong>Building Projects with Native Code</strong> 탭을 참고하세요.</p>
+<blockquote>
+<p>개발환경이 윈도우OS이라면 윈도우 패키지 관리자인  <a target="_blank" rel="noopener" href="https://chocolatey.org/">Chocolatey</a>를 통해 Node와 Python2를 설치하길 권장합니다.</p>
+</blockquote>
+<p><br><center>* * *</center><br></p>
+<h1 id="프로젝트-생성하기"><a class="markdownIt-Anchor" href="#프로젝트-생성하기"></a> 프로젝트 생성하기</h1>
+<p>이번에는 <strong>expo</strong>를 사용하지 않고 <strong>React Native CLI</strong>를 사용하여 프로젝트를 생성합니다.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ react-native init rn_ethereum_wallet</span><br><span class="line">$ <span class="built_in">cd</span> rn_ethereum_wallet</span><br></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li><strong>React Native CLI</strong>가 없으면 설치해주세요. <code>npm i -g react-native-cli</code></li>
+</ul>
+</blockquote>
+<p> </p>
+<h1 id="라이브러리-설치"><a class="markdownIt-Anchor" href="#라이브러리-설치"></a> 라이브러리 설치</h1>
+<p>UI 라이브러리와 네비게이션 라이브러리를 설치합니다.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ npm install --save native-base react-navigation react-native-gesture-handler</span><br><span class="line">$ react-native link</span><br></pre></td></tr></table></figure>
+<p> </p>
+<h1 id="프로젝트-폴더-구조-만들기"><a class="markdownIt-Anchor" href="#프로젝트-폴더-구조-만들기"></a> 프로젝트 폴더 구조 만들기</h1>
+<p>첫 번째로 <code>src</code> 폴더를 생성합니다.  <code>src</code> 폴더 아래에 <code>components</code> 폴더를 생성합니다. 그리고 <code>src</code> 폴더에 <code>App.js</code> 파일을 생성합니다.</p>
+<p><strong>./src/App.js</strong></p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> ｛ createStackNavigator, createAppContainer ｝ <span class="keyword">from</span> <span class="string">&#x27;react-navigation&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> WalletsScreen <span class="keyword">from</span> <span class="string">&#x27;./components/WalletsScreen&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> AppStackNavigator = createStackNavigator(｛</span><br><span class="line">  Wallets: ｛ screen: WalletsScreen ｝,</span><br><span class="line">｝);</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> createAppContainer(AppStackNavigator);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>현재 네비게이터(Navigator)에는 지갑 목록을 보여주는 <strong>WalletsScreen</strong>가 하나 등록되어 있습니다.</li>
+</ul>
+</blockquote>
+<p> </p>
+<p>그다음 루트에 있는 <code>App.js</code> 파일을 수정합니다.</p>
+<p><strong>./App.js</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> App <span class="keyword">from</span> <span class="string">&#x27;./src/App&#x27;</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> () =&gt; <span class="xml"><span class="tag">&lt;<span class="name">App</span>/&gt;</span></span>;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>루트에 있는 <code>App.js</code>는  <code>./src/App.js</code> 컴포넌트를 반환하는 역할만 합니다.</li>
+</ul>
+</blockquote>
+<p> </p>
+<h1 id="walletsscreen-화면-만들기"><a class="markdownIt-Anchor" href="#walletsscreen-화면-만들기"></a> WalletsScreen 화면 만들기</h1>
+<p><code>components</code> 폴더에 <code>WalletsScreen.js</code> 파일을 생성합니다.</p>
+<p><strong>./src/components/WalletsScreen.js</strong></p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, ｛ Component ｝ <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> ｛ StyleSheet, View ｝ <span class="keyword">from</span> <span class="string">&#x27;react-native&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> ｛ Container, Content, Card, CardItem, Body, Text, Icon, Button ｝ <span class="keyword">from</span> <span class="string">&#x27;native-base&#x27;</span>; </span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">WalletsScreen</span> <span class="keyword">extends</span> <span class="title">Component</span> ｛</span></span><br><span class="line"><span class="class">  <span class="title">static</span> <span class="title">navigationOptions</span> </span>= ｛</span><br><span class="line">    title: <span class="string">&quot;Ethereum Wallet&quot;</span>,</span><br><span class="line">  ｝</span><br><span class="line"></span><br><span class="line">  render() ｛</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;Container style=｛styles.container｝&gt;</span><br><span class="line">        &lt;Content padder&gt;</span><br><span class="line">          &lt;Card&gt;</span><br><span class="line">            &lt;CardItem&gt;</span><br><span class="line">              &lt;Body&gt;</span><br><span class="line">                &lt;Button transparent iconLeft large block&gt;</span><br><span class="line">                  &lt;Icon name=<span class="string">&#x27;ios-add-circle-outline&#x27;</span> /&gt;</span><br><span class="line">                  &lt;Text&gt;지갑 생성&lt;/Text&gt;</span><br><span class="line">                &lt;/Button&gt;</span><br><span class="line">              &lt;/Body&gt;</span><br><span class="line">      			&lt;/CardItem&gt;</span><br><span class="line">      		&lt;/Card&gt;</span><br><span class="line">      	&lt;/Content&gt;</span><br><span class="line">      &lt;/Container&gt;</span><br><span class="line">		);</span><br><span class="line">  ｝</span><br><span class="line">｝</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> styles = StyleSheet.create(｛</span><br><span class="line">  container: ｛</span><br><span class="line">    flex: <span class="number">1</span>,</span><br><span class="line">    backgroundColor: <span class="string">&#x27;white&#x27;</span></span><br><span class="line">  ｝,</span><br><span class="line">｝);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li><strong>WalletsScreen</strong> 화면에는 앞으로 지갑 목록이 보여질 것입니다.</li>
+<li>지금은 생성된 지갑이 없으므로, 지갑 생성 버튼만 존재합니다.</li>
+</ul>
+</blockquote>
+<p> </p>
+<h1 id="실행하기"><a class="markdownIt-Anchor" href="#실행하기"></a> 실행하기</h1>
+<p>여기까지 작업하고 어떻게 보이는지 앱을 실행해봅니다.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ react-native run-ios</span><br></pre></td></tr></table></figure>
+<p><img alt data-src="https://cdn.steemitimages.com/300x0/https://cdn.steemitimages.com/DQmdMGhJyw4You8U9e17KDv4L1kktYmAuHfQMAzA3em4ETk/%EF%BC%85E1%EF%BC%8584%EF%BC%8589%EF%BC%85E1%EF%BC%8585%EF%BC%85B3%EF%BC%85E1%EF%BC%8584%EF%BC%858F%EF%BC%85E1%EF%BC%8585%EF%BC%85B3%EF%BC%85E1%EF%BC%8584%EF%BC%8585%EF%BC%85E1%EF%BC%8585%EF%BC%85B5%EF%BC%85E1%EF%BC%8586%EF%BC%85AB%EF%BC%85E1%EF%BC%8584%EF%BC%8589%EF%BC%85E1%EF%BC%8585%EF%BC%85A3%EF%BC%85E1%EF%BC%8586%EF%BC%85BA%EF%BC%85202019-02-01%EF%BC%852000.20.41.png"></p>
+<p> </p>
+<h1 id="createwalletscreen-화면-만들기"><a class="markdownIt-Anchor" href="#createwalletscreen-화면-만들기"></a> CreateWalletScreen 화면 만들기</h1>
+<p><code>components</code> 폴더에 <code>CreateWalletScreen.js</code> 파일을 생성합니다.</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, ｛ Component ｝ <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> ｛ StyleSheet, View ｝ <span class="keyword">from</span> <span class="string">&#x27;react-native&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> ｛ Container, Content, Segment, Text, Icon, Button, Header, Left, Body, Title, Right, Form, Textarea, Input, Item ｝ <span class="keyword">from</span> <span class="string">&#x27;native-base&#x27;</span>; </span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">CreateWalletScreen</span> <span class="keyword">extends</span> <span class="title">Component</span> ｛</span></span><br><span class="line"><span class="class">	<span class="title">static</span> <span class="title">navigationOptions</span> </span>= ｛</span><br><span class="line">    title: <span class="string">&#x27;지갑 생성하기&#x27;</span></span><br><span class="line">  ｝</span><br><span class="line"></span><br><span class="line">  render() ｛</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;Container style=｛styles.container｝&gt;</span><br><span class="line">        &lt;View style=｛｛ flex: <span class="number">1</span>, <span class="attr">padding</span>: <span class="number">10</span> ｝｝&gt;</span><br><span class="line">          &lt;View style=｛｛ flex: <span class="number">1</span> ｝｝&gt;</span><br><span class="line">            &lt;Text note&gt;아래 <span class="number">12</span>개 니모닉을 복사하여 백업하세요. 지갑을 복구하는데 매우 중요한 데이터입니다.&lt;/Text&gt;</span><br><span class="line">            &lt;Form&gt;</span><br><span class="line">              &lt;Textarea rowSpan=｛<span class="number">5</span>｝ bordered disabled /&gt;</span><br><span class="line">            &lt;/Form&gt;</span><br><span class="line">          &lt;/View&gt;</span><br><span class="line">          &lt;View style=｛｛ flex: <span class="number">1</span> ｝｝&gt;</span><br><span class="line">            &lt;Button block primary&gt;</span><br><span class="line">              &lt;Text&gt;생성하기&lt;/Text&gt;</span><br><span class="line">            &lt;/Button&gt;</span><br><span class="line">          &lt;/View&gt;</span><br><span class="line">        &lt;/View&gt;</span><br><span class="line">      &lt;/Container&gt;</span><br><span class="line">    );</span><br><span class="line">  ｝</span><br><span class="line">｝</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> styles = StyleSheet.create(｛</span><br><span class="line">  container: ｛</span><br><span class="line">    flex: <span class="number">1</span>,</span><br><span class="line">  ｝,</span><br><span class="line">｝);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>지갑 생성 화면에는 백업 및 복구용 니모닉을 보여줄 것입니다.</li>
+</ul>
+</blockquote>
+<p> </p>
+<p><code>./src/App.js</code>를 수정합니다.</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> ｛ createStackNavigator, createAppContainer ｝ <span class="keyword">from</span> <span class="string">&#x27;react-navigation&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> WalletsScreen <span class="keyword">from</span> <span class="string">&#x27;./components/WalletsScreen&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> CreateWalletScreen <span class="keyword">from</span> <span class="string">&#x27;./components/CreateWalletScreen&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> AppStackNavigator = createStackNavigator(｛</span><br><span class="line">  Wallets: ｛ screen: WalletsScreen ｝,</span><br><span class="line">  CreateWallet: ｛ screen: CreateWalletScreen ｝,</span><br><span class="line">｝, </span><br><span class="line">｛</span><br><span class="line">  defaultNavigationOptions: ｛</span><br><span class="line">    headerBackTitle: <span class="literal">null</span>, <span class="comment">// 뒤로가기 버튼 타이틀 제거.</span></span><br><span class="line">  ｝,</span><br><span class="line">｝);</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> createAppContainer(AppStackNavigator);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>네비게이터(Navigator)에 <code>CreateWallet: ｛ screen: CreateWalletScreen ｝</code>를 등록합니다.</li>
+<li>네비게이터의 <code>headerBackTitle: null</code> 옵션을 설정하여, 헤더에 뒤로가기 버튼 아이콘만 보이도록 하였습니다.</li>
+</ul>
+</blockquote>
+<p> </p>
+<p>마지막으로 <code>WalletsScreen.js</code> 파일을 수정합니다.</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">WalletsScreen</span> <span class="keyword">extends</span> <span class="title">Component</span> ｛</span></span><br><span class="line"><span class="class"></span></span><br><span class="line"><span class="class">  // (...)</span></span><br><span class="line"><span class="class"></span></span><br><span class="line"><span class="class">  <span class="title">render</span>() ｛</span></span><br><span class="line"><span class="class">    <span class="title">return</span> (</span></span><br><span class="line"><span class="class">      &lt;<span class="title">Container</span> <span class="title">style</span></span>=｛styles.container｝&gt;</span><br><span class="line">        &lt;Content padder&gt;</span><br><span class="line">          &lt;Card&gt;</span><br><span class="line">            &lt;CardItem&gt;</span><br><span class="line">              &lt;Body&gt;</span><br><span class="line">                &lt;Button transparent iconLeft large block</span><br><span class="line">                  onPress=｛() =&gt; <span class="built_in">this</span>.props.navigation.navigate(<span class="string">&#x27;CreateWallet&#x27;</span>)｝&gt;</span><br><span class="line">                  &lt;Icon name=<span class="string">&#x27;ios-add-circle-outline&#x27;</span> /&gt;</span><br><span class="line">                  &lt;Text&gt;지갑 생성&lt;/Text&gt;</span><br><span class="line">                &lt;/Button&gt;</span><br><span class="line">              &lt;/Body&gt;</span><br><span class="line">            &lt;/CardItem&gt;</span><br><span class="line">          &lt;/Card&gt;</span><br><span class="line">        &lt;/Content&gt;</span><br><span class="line">      &lt;/Container&gt;</span><br><span class="line">    );</span><br><span class="line">  ｝</span><br><span class="line">｝</span><br></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li><strong>Button</strong>의 <code>onPress</code> 속성에 <code>navigate('CreateWallet')</code>를 입력하였습니다. 이제 버튼을 누르면 <strong>CreateWallet</strong>  화면으로 이동합니다.</li>
+</ul>
+</blockquote>
+<p> </p>
+<p>이제 지갑 생성하기 화면이 어떻게 보이는지 확인해봅니다.</p>
+<p><img alt data-src="https://cdn.steemitimages.com/300x0/https://cdn.steemitimages.com/DQme4c9vEM5vAN2tV1iAMnPFMegvs3toxgy9fsDyihxqHFS/%EF%BC%85E1%EF%BC%8584%EF%BC%8589%EF%BC%85E1%EF%BC%8585%EF%BC%85B3%EF%BC%85E1%EF%BC%8584%EF%BC%858F%EF%BC%85E1%EF%BC%8585%EF%BC%85B3%EF%BC%85E1%EF%BC%8584%EF%BC%8585%EF%BC%85E1%EF%BC%8585%EF%BC%85B5%EF%BC%85E1%EF%BC%8586%EF%BC%85AB%EF%BC%85E1%EF%BC%8584%EF%BC%8589%EF%BC%85E1%EF%BC%8585%EF%BC%85A3%EF%BC%85E1%EF%BC%8586%EF%BC%85BA%EF%BC%85202019-02-01%EF%BC%852001.31.23.png"></p>
+<p><br><center>* * *</center><br></p>
+<p>스팀잇 커뮤니티에 암호 화폐 모바일 지갑 앱 개발에 관심 있는 분이 얼마나 있을지 모르겠습니다. 이더리움 지갑 부터 시작해서 비트코인, 스팀, 리플, 이오스, 스텔라루멘 모바일 지갑을 다 만들고 싶네요. 하지만, 제 능력으로 다 개발할 수 있을지는 잘 모르겠습니다.</p>
+<p>여기까지 읽어주셔서 감사합니다.</p>
+
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%EC%9D%B4%EB%8D%94%EB%A6%AC%EC%9B%80/" rel="tag"># 이더리움</a>
+              <a href="/tags/react-native/" rel="tag"># React Native</a>
+          </div>
+
+        
+  <div class="post-widgets">
+    <div class="wp_rating">
+      <div id="wpac-rating"></div>
+    </div>
+  </div>
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/kr/@steemory/or-or-890" rel="next" title="[세바시] 노트쓰기로 당신의 천재성을 끌어내세요 | 이재영 한동대학교 기계제어공학부 포스코 석좌교수 | 세바시 890회">
+                  <i class="fa fa-chevron-left"></i> [세바시] 노트쓰기로 당신의 천재성을 끌어내세요 | 이재영 한동대학교 기계제어공학부 포스코 석좌교수 | 세바시 890회
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/kr/@anpigon/react-native-ethereum-mobile-wallet-2" rel="prev" title="[React Native] 이더리움 모바일 지갑(Ethereum Mobile Wallet) 만들기 #2">
+                  [React Native] 이더리움 모바일 지갑(Ethereum Mobile Wallet) 만들기 #2 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    
+  <div class="comments" id="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          목차
+        </li>
+        <li class="sidebar-nav-overview">
+          흝어보기
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%83%9D%EC%84%B1%ED%95%98%EA%B8%B0"><span class="nav-number">1.</span> <span class="nav-text"> 프로젝트 생성하기</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC-%EC%84%A4%EC%B9%98"><span class="nav-number">2.</span> <span class="nav-text"> 라이브러리 설치</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%ED%8F%B4%EB%8D%94-%EA%B5%AC%EC%A1%B0-%EB%A7%8C%EB%93%A4%EA%B8%B0"><span class="nav-number">3.</span> <span class="nav-text"> 프로젝트 폴더 구조 만들기</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#walletsscreen-%ED%99%94%EB%A9%B4-%EB%A7%8C%EB%93%A4%EA%B8%B0"><span class="nav-number">4.</span> <span class="nav-text"> WalletsScreen 화면 만들기</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%EC%8B%A4%ED%96%89%ED%95%98%EA%B8%B0"><span class="nav-number">5.</span> <span class="nav-text"> 실행하기</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#createwalletscreen-%ED%99%94%EB%A9%B4-%EB%A7%8C%EB%93%A4%EA%B8%B0"><span class="nav-number">6.</span> <span class="nav-text"> CreateWalletScreen 화면 만들기</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="안피곤"
+    src="/images/me.jpg">
+  <p class="site-author-name" itemprop="name">안피곤</p>
+  <div class="site-description" itemprop="description">시간이 천천히 갔으면 좋겠다.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">325</span>
+          <span class="site-state-item-name">포스트</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-name">카테고리</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">139</span>
+        <span class="site-state-item-name">태그</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/anpigon" title="GitHub &rarr; https://github.com/anpigon" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:markan82@gmail.com" title="E-Mail &rarr; mailto:markan82@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+          <!-- 정사각형 광고 -->
+          <div style="margin-top: 15px;">
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-2365531018407022"
+                data-ad-slot="7521850306"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+          </div>
+    </div>
+  </aside>
+  <div id="sidebar-dimmer">3</div>
+
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">안피곤</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v5.4.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.4.2
+  </div>
+
+        
+
+
+
+
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-firestore.js"></script>
+  <script>
+    firebase.initializeApp({
+      apiKey: 'AIzaSyA4QZWCWb3IuIHjbkAmO0ttIM2b-qtLTP8',
+      projectId: 'next-blog-8f9a0'
+    });
+
+    function getCount(doc, increaseCount) {
+      // IncreaseCount will be false when not in article page
+
+      return doc.get().then(d => {
+        var count = 0;
+        if (!d.exists) { // Has no data, initialize count
+          if (increaseCount) {
+            doc.set({
+              count: 1
+            });
+            count = 1;
+          }
+        } else { // Has data
+          count = d.data().count;
+          if (increaseCount) {
+            // If first view this article
+            doc.set({ // Increase count
+              count: count + 1
+            });
+            count++;
+          }
+        }
+
+        return count;
+      });
+    }
+
+    function appendCountTo(el) {
+      return count => {
+        el.innerText = count;
+      }
+    }
+  </script>
+  <script pjax>
+    (function() {
+      var db = firebase.firestore();
+      var articles = db.collection('articles');
+
+      if (CONFIG.page.isPost) { // Is article page
+        var title = document.querySelector('.post-title').innerText.trim();
+        var doc = articles.doc(title);
+        var increaseCount = true;
+        if (localStorage.getItem(title)) {
+          increaseCount = false;
+        } else {
+          // Mark as visited
+          localStorage.setItem(title, true);
+        }
+        getCount(doc, increaseCount).then(appendCountTo(document.querySelector('.firestore-visitors-count')));
+      } else if (CONFIG.page.isHome) { // Is index page
+        var promises = [...document.querySelectorAll('.post-title')].map(element => {
+          var title = element.innerText.trim();
+          var doc = articles.doc(title);
+          return getCount(doc);
+        });
+        Promise.all(promises).then(counts => {
+          var metas = document.querySelectorAll('.firestore-visitors-count');
+          counts.forEach((val, idx) => {
+            appendCountTo(metas[idx])(val);
+          });
+        });
+      }
+    })();
+  </script>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.getAttribute('pjax') !== null) {
+      element.setAttribute('pjax', '');
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+  <script pjax>
+  if (CONFIG.page.isPost) {
+    wpac_init = window.wpac_init || [];
+    wpac_init.push({
+      widget: 'Rating',
+      id: 21712,
+      el: 'wpac-rating',
+      color: 'fc6423'
+    });
+    (function() {
+      if ('WIDGETPACK_LOADED' in window) return;
+      WIDGETPACK_LOADED = true;
+      var mc = document.createElement('script');
+      mc.type = 'text/javascript';
+      mc.async = true;
+      mc.src = '//embed.widgetpack.com/widget.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+    })();
+  }
+  </script>
+
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.4.1/dist/instantsearch.min.css">
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.4.1/dist/instantsearch.js"></script>
+<script src="/js/algolia-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+
+  
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://anpigon-github-io.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  function loadComments() {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: {page: {
+            url: "https://anpigon.github.io/kr/@anpigon/react-native-ethereum-mobile-wallet",
+            identifier: "/kr/@anpigon/react-native-ethereum-mobile-wallet",
+            title: "[React Native] 이더리움 모바일 지갑(Ethereum Mobile Wallet) 만들기 #1"
+          }
+        }
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://anpigon-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  }
+    (function() {
+      var offsetTop = document.getElementById('comments').offsetTop - window.innerHeight;
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        window.addEventListener('load', loadComments, false);
+      } else {
+        var disqus_scroll = () => {
+          // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = document.getElementById('comments').offsetTop - window.innerHeight;
+          var scrollTop = window.scrollY;
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            window.removeEventListener('scroll', disqus_scroll);
+            loadComments();
+          }
+        };
+        window.addEventListener('scroll', disqus_scroll);
+      }
+    })();
+  
+</script>
+
+    </div>
+</body>
+</html>

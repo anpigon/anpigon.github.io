@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="yfKOiBPD8WlKH3NPG_CG1zr4MsCgCG1YVdGKhMS2CKc">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Noto Serif KR:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.4.2',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: true,
+    pangu: false,
+    algolia: {
+      appID: 'YY693DUDAI',
+      apiKey: 'db449d453b150820f66e7bc3d4523a17',
+      indexName: 'my-hexo-blog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '복사',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="이번 시간에는 스팀잇에 등록된 글을 가져와서 출력하는 화면을 구현하겠습니다. 저도 학습하면서 구현하는 중이기 때문에 설명이 부족할 수 있습니다. 양해부탁드립니다. 이전글 스팀잇(Steemit)기반 앱 만들기 #1  스팀잇 최신글을 가져와서 출력하는 화면 만들기앱을 실행했을 때 처음에 보여질 메인화면를 생성하고 라우터(router)에 추가할 것입니다.  라우">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[Vue.js] 스팀잇(Steemit)기반 앱 만들기 #2 - 최근글 가져오기">
+<meta property="og:url" content="https://anpigon.github.io/kr/@anpigon/steemit-2">
+<meta property="og:site_name" content="안피곤님의 블로그">
+<meta property="og:description" content="이번 시간에는 스팀잇에 등록된 글을 가져와서 출력하는 화면을 구현하겠습니다. 저도 학습하면서 구현하는 중이기 때문에 설명이 부족할 수 있습니다. 양해부탁드립니다. 이전글 스팀잇(Steemit)기반 앱 만들기 #1  스팀잇 최신글을 가져와서 출력하는 화면 만들기앱을 실행했을 때 처음에 보여질 메인화면를 생성하고 라우터(router)에 추가할 것입니다.  라우">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:image" content="https://i.imgur.com/YbaYbgQ.png">
+<meta property="og:image" content="https://i.imgur.com/KHenBJI.png">
+<meta property="og:image" content="https://steemitimages.com/300x0/https://i.imgur.com/1pn8TFu.png">
+<meta property="og:image" content="https://steemitimages.com/300x0/https://i.imgur.com/f5Z45OW.png">
+<meta property="og:image" content="https://i.imgur.com/lbs2WEY.png">
+<meta property="og:image" content="https://steemitimages.com/300x0/https://i.imgur.com/lJ49TL7.png">
+<meta property="article:published_time" content="2018-08-01T04:40:00.000Z">
+<meta property="article:modified_time" content="2021-04-21T11:50:30.075Z">
+<meta property="article:author" content="안피곤">
+<meta property="article:tag" content="Vue">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/YbaYbgQ.png">
+
+<link rel="canonical" href="https://anpigon.github.io/kr/@anpigon/steemit-2">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>[Vue.js] 스팀잇(Steemit)기반 앱 만들기 #2 - 최근글 가져오기 | 안피곤님의 블로그</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-20589042-10"></script>
+    <script pjax>
+      var host = window.location.hostname;
+      if (host !== "localhost" || !true) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-20589042-10');
+      }
+    </script>
+
+
+
+
+
+
+  
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-2365531018407022",
+          enable_page_level_ads: false
+     });
+</script>
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="안피곤님의 블로그" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">안피곤님의 블로그</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">코딩, 독서, 여행, 영화, 맛집</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>홈</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>태그<span class="badge">139</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>카테고리<span class="badge">25</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>아카이브<span class="badge">325</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>검색
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input" id="search-input"></div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="algolia-results">
+  <div id="algolia-stats"></div>
+  <div id="algolia-hits"></div>
+  <div id="algolia-pagination" class="algolia-pagination"></div>
+</div>
+
+  
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="ko">
+    <link itemprop="mainEntityOfPage" href="https://anpigon.github.io/kr/@anpigon/steemit-2">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/me.jpg">
+      <meta itemprop="name" content="안피곤">
+      <meta itemprop="description" content="시간이 천천히 갔으면 좋겠다.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="안피곤님의 블로그">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          [Vue.js] 스팀잇(Steemit)기반 앱 만들기 #2 - 최근글 가져오기
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">작성일</span>
+
+              <time title="Post created: 2018-08-01 13:40:00" itemprop="dateCreated datePublished" datetime="2018-08-01T13:40:00+09:00">2018-08-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Updated at: 2021-04-21 20:50:30" itemprop="dateModified" datetime="2021-04-21T20:50:30+09:00">2021-04-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">개발 이야기</span>
+                  </a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/vue/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/kr/@anpigon/steemit-2#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="/kr/@anpigon/steemit-2" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+            <div style="margin-bottom:35px;margin-top:-20px;">
+              <!-- 블로그 본문 상단 광고 -->
+              <ins class="adsbygoogle"
+                  style="display:block"
+                  data-ad-client="ca-pub-2365531018407022"
+                  data-ad-slot="3390644000"
+                  data-ad-format="auto"
+                  data-full-width-responsive="true"></ins>
+              <script>
+                  (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+        <p>이번 시간에는 스팀잇에 등록된 글을 가져와서 출력하는 화면을 구현하겠습니다.<br>
+저도 학습하면서 구현하는 중이기 때문에 설명이 부족할 수 있습니다.<br>
+양해부탁드립니다.</p><hr><h6 id="이전글"><a class="markdownIt-Anchor" href="#이전글"></a> 이전글</h6><ul>
+<li><a target="_blank" rel="noopener" href="https://steemit.com/@anpigon/steemit-1-10f53977c621e">스팀잇(Steemit)기반 앱 만들기 #1</a></li>
+</ul><hr><br><h3 id="스팀잇-최신글을-가져와서-출력하는-화면-만들기"><a class="markdownIt-Anchor" href="#스팀잇-최신글을-가져와서-출력하는-화면-만들기"></a> 스팀잇 최신글을 가져와서 출력하는 화면 만들기</h3><br><p>앱을 실행했을 때 처음에 보여질 메인화면를 생성하고 라우터(router)에 추가할 것입니다.  라우터에 대한 설명은 <a target="_blank" rel="noopener" href="https://router.vuejs.org/kr/">여기</a>를 참고하세요.</p><a id="more"></a>
+
+
+
+
+
+
+
+
+<p>App.vue 파일에서 <code>&lt;v-content&gt;</code> 부분을 아래와 같이 수정합니다.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="tag">&lt;<span class="name">v-content</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">keep-alive</span>&gt;</span></span><br><span class="line">  	<span class="tag">&lt;<span class="name">router-view</span>&gt;</span><span class="tag">&lt;/<span class="name">router-view</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">keep-alive</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">v-content</span>&gt;</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p><code>&lt;router-view&gt;</code> 태그는 라우터에 의해 해당하는 컴포넌트를 렌더링하여 보여주는 영역입니다.</p>
+<p>그리고 router/index.js 파일에서 <code>routers</code> 부분을 아래와 같이 수정합니다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Main <span class="keyword">from</span> <span class="string">&#x27;@/components/Main&#x27;</span> <span class="comment">// Main 컴포넌트 임포트</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">new</span> Router(｛</span><br><span class="line">  routes: [</span><br><span class="line">    ｛</span><br><span class="line">      path: <span class="string">&#x27;/&#x27;</span>,</span><br><span class="line">      name: <span class="string">&#x27;Main&#x27;</span>,</span><br><span class="line">      component: Main</span><br><span class="line">    ｝</span><br><span class="line">  ]</span><br><span class="line">｝)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><code>/</code>경로로 접근하게 되었을때, <code>&lt;router-view&gt;</code> 영역에 <code>Main</code> 컴포넌트가 렌더링된 화면이 보여질 것입니다.</p>
+<p>마지막으로 최근글을 가져와서 출력할 화면인 components/Main.vue 파일을 생성합니다.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">v-container</span> <span class="attr">fill-height</span> <span class="attr">fluid</span> <span class="attr">grid-list-md</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">v-layout</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">v-flex</span> <span class="attr">xs12</span> <span class="attr">md9</span> <span class="attr">offset-md3</span>&gt;</span> </span><br><span class="line">        <span class="tag">&lt;<span class="name">v-layout</span> <span class="attr">row</span> <span class="attr">wrap</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">v-flex</span> <span class="attr">xs12</span> <span class="attr">md6</span> <span class="attr">xl4</span> <span class="attr">v-for</span>=<span class="string">&quot;idx in 3&quot;</span> <span class="attr">:key</span>=<span class="string">&quot;idx&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">v-card</span>&gt;</span></span><br><span class="line">              <span class="tag">&lt;<span class="name">v-list</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">v-list-tile</span>&gt;</span></span><br><span class="line">                  <span class="tag">&lt;<span class="name">v-list-tile-avatar</span>&gt;</span></span><br><span class="line">                  <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;https://steemitimages.com/u/anpigon/avatar&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;avatar&quot;</span>&gt;</span></span><br><span class="line">                  <span class="tag">&lt;/<span class="name">v-list-tile-avatar</span>&gt;</span></span><br><span class="line">                  <span class="tag">&lt;<span class="name">v-list-tile-content</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">v-list-tile-title</span>&gt;</span>anpigon (55)<span class="tag">&lt;/<span class="name">v-list-tile-title</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">v-list-tile-sub-title</span>&gt;</span>11시간 · KR<span class="tag">&lt;/<span class="name">v-list-tile-sub-title</span>&gt;</span></span><br><span class="line">                  <span class="tag">&lt;/<span class="name">v-list-tile-content</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">v-list-tile</span>&gt;</span></span><br><span class="line">              <span class="tag">&lt;/<span class="name">v-list</span>&gt;</span></span><br><span class="line">              &lt;v-card-media</span><br><span class="line">                src=&quot;https://cdn.vuetifyjs.com/images/cards/desert.jpg&quot;</span><br><span class="line">                height=&quot;200px&quot;&gt;<span class="tag">&lt;/<span class="name">v-card-media</span>&gt;</span></span><br><span class="line">              <span class="tag">&lt;<span class="name">v-card-title</span> <span class="attr">primary-title</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">                  <span class="tag">&lt;<span class="name">h3</span> <span class="attr">class</span>=<span class="string">&quot;headline mb-0&quot;</span>&gt;</span>Kangaroo Valley Safari<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line">                  <span class="tag">&lt;<span class="name">div</span>&gt;</span>Located two hours south of Sydney in the Southern Highlands of New South Wales, ...<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">              <span class="tag">&lt;/<span class="name">v-card-title</span>&gt;</span></span><br><span class="line">              <span class="tag">&lt;<span class="name">v-card-title</span>&gt;</span></span><br><span class="line">                좋아요 5명 · 댓글 5명</span><br><span class="line">                <span class="tag">&lt;<span class="name">v-spacer</span>&gt;</span><span class="tag">&lt;/<span class="name">v-spacer</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">strong</span>&gt;</span>$774.32<span class="tag">&lt;/<span class="name">strong</span>&gt;</span></span><br><span class="line">              <span class="tag">&lt;/<span class="name">v-card-title</span>&gt;</span></span><br><span class="line">              <span class="tag">&lt;<span class="name">v-divider</span>&gt;</span><span class="tag">&lt;/<span class="name">v-divider</span>&gt;</span></span><br><span class="line">              <span class="tag">&lt;<span class="name">v-card-actions</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">v-btn</span> <span class="attr">flat</span>&gt;</span><span class="tag">&lt;<span class="name">v-icon</span> <span class="attr">left</span> <span class="attr">dark</span>&gt;</span>favorite_border<span class="tag">&lt;/<span class="name">v-icon</span>&gt;</span> 좋아요<span class="tag">&lt;/<span class="name">v-btn</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">v-spacer</span>&gt;</span><span class="tag">&lt;/<span class="name">v-spacer</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">v-btn</span> <span class="attr">flat</span>&gt;</span><span class="tag">&lt;<span class="name">v-icon</span> <span class="attr">left</span> <span class="attr">dark</span>&gt;</span>comment<span class="tag">&lt;/<span class="name">v-icon</span>&gt;</span> 댓글달기<span class="tag">&lt;/<span class="name">v-btn</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">v-spacer</span>&gt;</span><span class="tag">&lt;/<span class="name">v-spacer</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">v-btn</span> <span class="attr">flat</span>&gt;</span><span class="tag">&lt;<span class="name">v-icon</span> <span class="attr">left</span> <span class="attr">dark</span>&gt;</span>reply<span class="tag">&lt;/<span class="name">v-icon</span>&gt;</span> 공유하기<span class="tag">&lt;/<span class="name">v-btn</span>&gt;</span></span><br><span class="line">              <span class="tag">&lt;/<span class="name">v-card-actions</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">v-card</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="name">v-flex</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">v-layout</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">v-flex</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">v-layout</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">v-container</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>그럼 아래와 같은 화면이 보일 것입니다. 우리는 스팀잇의 최근글을 가져와서 카드형태의 목록으로 보여줄 것입니다.</p>
+<p><img alt="img" data-src="https://i.imgur.com/YbaYbgQ.png"></p>
+<hr>
+<br>
+<h3 id="스팀잇에서-최신글-가져오기"><a class="markdownIt-Anchor" href="#스팀잇에서-최신글-가져오기"></a> 스팀잇에서 최신글 가져오기</h3>
+<p>이제 스팀잇 라이브러리(steem.js)를 사용해서 스팀잇에서 최근글을 가져오겠습니다.</p>
+<blockquote>
+<p>steem.js에 대한 자세한 사용방법은 <a target="_blank" rel="noopener" href="https://github.com/steemit/steem-js">github</a>에서 <strong>doc</strong>와 <strong>examples</strong>를 참고하세요.</p>
+</blockquote>
+<br>
+<p>아래와 같이 터미널을 열어 <strong>steem.js</strong>을 설치합니다.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install steem --save</span><br></pre></td></tr></table></figure>
+<p>설치하는데 시간이 좀 걸리네요. 설치가 완료될때 까지 기다립니다.</p>
+<p>저의 경우에는 아래와 같은 오류가 발생하였는데, 다시 설치를 시도하니 설치가 잘 되었습니다. 😃</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">npm WARN gentlyRm not removing C:\workspace\steemit-app\node_modules\@babel\template\node_modules\.bin\babylon as it wasn<span class="string">&#x27;t installed by C:\workspace\steemit-app\node_modules\@babel\template\node_modules\babylon</span></span><br><span class="line"><span class="string">npm ERR! path C:\workspace\steemit-app\node_modules\glob-parent\package.json.1597626054</span></span><br><span class="line"><span class="string">npm ERR! code EPERM</span></span><br><span class="line"><span class="string">npm ERR! errno -4048</span></span><br><span class="line"><span class="string">npm ERR! syscall rename</span></span><br><span class="line"><span class="string">npm ERR! Error: EPERM: operation not permitted, rename &#x27;</span>C:\workspace\steemit-app\node_modules\glob-parent\package.json.1597626054<span class="string">&#x27; -&gt; &#x27;</span>C:\workspace\steemit-app\node_modules\glob-parent\package.json<span class="string">&#x27;</span></span><br><span class="line"><span class="string">...</span></span><br></pre></td></tr></table></figure>
+<p>Main.vue 파일을 열어서 아래와 같이 script 코드를 추가합니다.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript"><span class="keyword">import</span> steem <span class="keyword">from</span> <span class="string">&#x27;steem&#x27;</span> <span class="comment">// 스팀잇 라이브러리 임포트</span></span></span><br><span class="line">  </span><br><span class="line"><span class="javascript"><span class="keyword">export</span> <span class="keyword">default</span> ｛</span></span><br><span class="line">  data () ｛</span><br><span class="line"><span class="javascript">    <span class="keyword">return</span> ｛</span></span><br><span class="line">      discussions: []</span><br><span class="line">    ｝</span><br><span class="line">  ｝,</span><br><span class="line">  methods: ｛</span><br><span class="line">    getDiscussions () ｛</span><br><span class="line"><span class="javascript">      <span class="keyword">let</span> query = ｛</span></span><br><span class="line"><span class="javascript">        tag: <span class="string">&#x27;kr&#x27;</span>,</span></span><br><span class="line">        limit: 10</span><br><span class="line">      ｝</span><br><span class="line"><span class="javascript">      <span class="comment">// 스팀잇 최근글 가져오기</span></span></span><br><span class="line"><span class="javascript">      steem.api.getDiscussionsByCreated(query, <span class="function">(<span class="params">err, result</span>) =&gt;</span> ｛</span></span><br><span class="line"><span class="javascript">        <span class="built_in">console</span>.log(err, result)</span></span><br><span class="line">      ｝)</span><br><span class="line">    ｝</span><br><span class="line">  ｝,</span><br><span class="line">  created () ｛</span><br><span class="line"><span class="javascript">    <span class="built_in">this</span>.getDiscussions()</span></span><br><span class="line">  ｝</span><br><span class="line">｝</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><code>data</code>에는 글을 가져와서 저장할 <code>discussions</code> 변수를 선언합니다.<br>
+<code>methods</code>에는 스팀잇에서 글을 가져오는 <code>getDiscussions</code> 함수를 구현합니다.<br>
+<code>created</code> 함수에는 컴포넌트가 생성되면, <code>getDiscussions</code>  함수를 호출하도록 하겠습니다.</p>
+<p>콘솔창(Console)을 보면 아래와 같이 스팀잇에서 최근글을 가져와서 출력한 것을 볼 수 있습니다.</p>
+<p><img alt="img" data-src="https://i.imgur.com/KHenBJI.png"></p>
+<blockquote>
+<p>크롬 브라우저에서 콘솔창을 보려면 개발자 도구를 열어서<sub>(단축키: Ctrl + Shift + i)</sub>, Console 탭을 선택하면 됩니다.</p>
+</blockquote>
+<hr>
+<br>
+<h3 id="화면에-데이터-출력하기"><a class="markdownIt-Anchor" href="#화면에-데이터-출력하기"></a> 화면에 데이터 출력하기</h3>
+<p>이번 다음 단계에서는 가져온 데이터를 화면에 출력 해보겠습니다.</p>
+<p>우리가 가져온 <code>discussion</code>데이터의 구조는 아래와 같습니다.</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">｛</span><br><span class="line">  &quot;id&quot;: 58212397,</span><br><span class="line">  &quot;author&quot;: &quot;anpigon&quot;,</span><br><span class="line">  &quot;permlink&quot;: &quot;steemit-1-10f53977c621e&quot;,</span><br><span class="line">  &quot;category&quot;: &quot;kr&quot;,</span><br><span class="line">  &quot;parent_author&quot;: &quot;&quot;,</span><br><span class="line">  &quot;parent_permlink&quot;: &quot;kr&quot;,</span><br><span class="line">  &quot;title&quot;: &quot;스팀잇(Steemit)기반 앱 만들기 #1&quot;,</span><br><span class="line">  &quot;body&quot;: &quot;스터디 목적으로 스팀잇 기반...&quot;,</span><br><span class="line">  ...</span><br><span class="line">｝</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>root_</code>, <code>parent_</code> 와 같은 prefix가 있는 데이터가 여러군데 보입니다.<br>
+<code>author</code>, <code>permlink</code>와 <code>parent_author</code>, <code>parent_permlink</code>, <code>root_author</code>, <code>root_permlink</code>, <code>root_title</code> 의 차이점은 저도 잘모르겠습니다.ㅠㅠ</p>
+</blockquote>
+<br>
+<p>위의 데이터 구조에 맞추어 화면에 출력 할 수 있도록 Main.vue 파일을 수정합니다.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">v-flex</span> <span class="attr">xs12</span> <span class="attr">md6</span> <span class="attr">xl4</span> <span class="attr">v-for</span>=<span class="string">&quot;d in discussions&quot;</span> <span class="attr">:key</span>=<span class="string">&quot;d.id&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">v-card</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">v-list</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">v-list-tile</span> <span class="attr">avatar</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">v-list-tile-avatar</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">img</span> <span class="attr">:src</span>=<span class="string">&quot;&#x27;https://steemitimages.com/u/&#x27; + d.author + &#x27;/avatar&#x27;&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;avatar&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">v-list-tile-avatar</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">v-list-tile-content</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">v-list-tile-title</span>&gt;</span>｛｛ d.author ｝｝ (｛｛ d.author_reputation ｝｝)<span class="tag">&lt;/<span class="name">v-list-tile-title</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">v-list-tile-sub-title</span>&gt;</span>｛｛ d.created ｝｝ · ｛｛ d.category ｝｝<span class="tag">&lt;/<span class="name">v-list-tile-sub-title</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">v-list-tile-content</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">v-list-tile</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">v-list</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">v-card-media</span> <span class="attr">src</span>=<span class="string">&quot;https://cdn.vuetifyjs.com/images/cards/desert.jpg&quot;</span> </span></span><br><span class="line"><span class="tag">                  <span class="attr">height</span>=<span class="string">&quot;200px&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">v-card-media</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">v-card-title</span> <span class="attr">primary-title</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">h3</span> <span class="attr">class</span>=<span class="string">&quot;headline&quot;</span>&gt;</span>｛｛ d.title ｝｝<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line">        ｛｛ d.body.substr(0, 100) ｝｝...</span><br><span class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">v-card-title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">v-card-title</span>&gt;</span></span><br><span class="line">      좋아요 ｛｛ d.net_votes ｝｝명 · 댓글 ｛｛ d.children ｝｝명</span><br><span class="line">      <span class="tag">&lt;<span class="name">v-spacer</span>&gt;</span><span class="tag">&lt;/<span class="name">v-spacer</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">strong</span>&gt;</span>$｛｛ d.payout_value ｝｝<span class="tag">&lt;/<span class="name">strong</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">v-card-title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">v-divider</span>&gt;</span><span class="tag">&lt;/<span class="name">v-divider</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">v-card-actions</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">v-btn</span> <span class="attr">flat</span>&gt;</span><span class="tag">&lt;<span class="name">v-icon</span> <span class="attr">left</span> <span class="attr">dark</span>&gt;</span>favorite_border<span class="tag">&lt;/<span class="name">v-icon</span>&gt;</span> 좋아요<span class="tag">&lt;/<span class="name">v-btn</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">v-spacer</span>&gt;</span><span class="tag">&lt;/<span class="name">v-spacer</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">v-btn</span> <span class="attr">flat</span>&gt;</span><span class="tag">&lt;<span class="name">v-icon</span> <span class="attr">left</span> <span class="attr">dark</span>&gt;</span>comment<span class="tag">&lt;/<span class="name">v-icon</span>&gt;</span> 댓글달기<span class="tag">&lt;/<span class="name">v-btn</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">v-spacer</span>&gt;</span><span class="tag">&lt;/<span class="name">v-spacer</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">v-btn</span> <span class="attr">flat</span>&gt;</span><span class="tag">&lt;<span class="name">v-icon</span> <span class="attr">left</span> <span class="attr">dark</span>&gt;</span>reply<span class="tag">&lt;/<span class="name">v-icon</span>&gt;</span> 공유하기<span class="tag">&lt;/<span class="name">v-btn</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">v-card-actions</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">v-card</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">v-flex</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>그리고 <code>getDiscussions</code> 함수를 아래와 같이 수정합니다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">steem.api.getDiscussionsByCreated(query, <span class="function">(<span class="params">err, result</span>) =&gt;</span> ｛</span><br><span class="line">  <span class="built_in">console</span>.log(err, result)</span><br><span class="line">  <span class="keyword">if</span> (!err) <span class="built_in">this</span>.discussions = result</span><br><span class="line">｝)</span><br></pre></td></tr></table></figure>
+<p><code>steem.api.getDiscussionsByCreated</code> 함수로 가져온 <code>result</code> 데이터를 <code>this.discussions</code>에 넣어주고 있습니다.</p>
+<p>아래와 같이 출력됩니다. 하지만 못생기게 출력되었어요.ㅠㅠ</p>
+<p><img alt="img" data-src="https://steemitimages.com/300x0/https://i.imgur.com/1pn8TFu.png"></p>
+<p>그래서 제목과 내용을 출력하는 부분에 style를 추가하고 아래와 같이 수정하였습니다.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  ...</span><br><span class="line">	<span class="tag">&lt;<span class="name">v-list</span> <span class="attr">three-line</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">v-list-tile</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">v-list-tile-content</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">v-list-tile-title</span>&gt;</span>｛｛ d.title ｝｝<span class="tag">&lt;/<span class="name">v-list-tile-title</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">v-list-tile-sub-title</span> <span class="attr">class</span>=<span class="string">&#x27;text-ellipsis&#x27;</span>&gt;</span>｛｛ d.body ｝｝<span class="tag">&lt;/<span class="name">v-list-tile-sub-title</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">v-list-tile-content</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">v-list-tile</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">v-list</span>&gt;</span></span><br><span class="line">...</span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line">.text-ellipsis ｛</span><br><span class="line"><span class="css">  <span class="attribute">overflow</span>: hidden;</span></span><br><span class="line"><span class="css">  <span class="attribute">text-overflow</span>: ellipsis;</span></span><br><span class="line"><span class="css">  -webkit-line-clamp: <span class="number">3</span>;</span></span><br><span class="line"><span class="css">  <span class="attribute">display</span>: -moz-box;</span></span><br><span class="line"><span class="css">  <span class="attribute">display</span>: -webkit-box;</span></span><br><span class="line"><span class="css">  <span class="attribute">display</span>: box;</span></span><br><span class="line"><span class="css">  <span class="comment">/*! autoprefixer: off */</span></span></span><br><span class="line"><span class="css">  -moz-box-orient: vertical;</span></span><br><span class="line"><span class="css">  -webkit-box-orient: vertical;</span></span><br><span class="line"><span class="css">  <span class="comment">/*! autoprefixer: on */</span></span></span><br><span class="line">｝</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>수정하고 나면 아래와 같이 나타납니다. 짠~<br>
+<img alt="img" data-src="https://steemitimages.com/300x0/https://i.imgur.com/f5Z45OW.png"></p>
+<br>
+<h4 id="이미지-출력하기"><a class="markdownIt-Anchor" href="#이미지-출력하기"></a> 이미지 출력하기</h4>
+<p>이미지가 포함되어 있는 글인 경우에 이미지를 출력해보도록 하겠습니다.</p>
+<p><code>getDiscussions</code> 함수에서 <code>result</code> 데이터 가져오는 부분을 아래와 같이 수정합니다. 그리고 <code>discussions</code>변수에는 필요한 데이터만 가지고 있도록 정리하였습니다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">this</span>.discussions = result.map(<span class="function">(<span class="params">item</span>) =&gt;</span> ｛</span><br><span class="line">  <span class="keyword">const</span> metadata = <span class="built_in">JSON</span>.parse(item.json_metadata) <span class="comment">// 메타데이터 JSON 파싱</span></span><br><span class="line">  <span class="keyword">const</span> image = metadata.image ? metadata.image[<span class="number">0</span>] : <span class="string">&#x27;&#x27;</span> <span class="comment">// 이미지 URL</span></span><br><span class="line">  <span class="keyword">return</span> ｛</span><br><span class="line">    image: image,</span><br><span class="line">    author: item.author,</span><br><span class="line">    author_reputation: item.author_reputation,</span><br><span class="line">    title: item.title,</span><br><span class="line">    created: item.created,</span><br><span class="line">    body: item.body.substr(<span class="number">0</span>, <span class="number">200</span>),</span><br><span class="line">    category: item.category,</span><br><span class="line">    permlink: item.permlink,</span><br><span class="line">    url: item.url,</span><br><span class="line">    payout_value: item.payout_value,</span><br><span class="line">    net_votes: item.net_votes,</span><br><span class="line">    children: item.children</span><br><span class="line">  ｝</span><br><span class="line">｝)</span><br></pre></td></tr></table></figure>
+<p>이미지를 출력하는 <code>&lt;v-card-media&gt;</code> HMLT 태그를 아래와 같이 수정합니다.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">v-card-media</span> <span class="attr">v-if</span>=<span class="string">&quot;d.image&quot;</span></span></span><br><span class="line"><span class="tag">              <span class="attr">:src</span>=<span class="string">&quot;d.image&quot;</span></span></span><br><span class="line"><span class="tag">              <span class="attr">height</span>=<span class="string">&quot;200px&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">v-card-media</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<br>
+<h4 id="보상금액payout-계산하기"><a class="markdownIt-Anchor" href="#보상금액payout-계산하기"></a> 보상금액(payout) 계산하기</h4>
+<p>글에 보상된 페이금액은 아래와 같이 계산합니다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> totalPayoutValue = <span class="built_in">parseFloat</span>(item.total_payout_value.split(<span class="string">&#x27; &#x27;</span>)[<span class="number">0</span>])</span><br><span class="line"><span class="keyword">const</span> curatorPayoutValue = <span class="built_in">parseFloat</span>(item.curator_payout_value.split(<span class="string">&#x27; &#x27;</span>)[<span class="number">0</span>])</span><br><span class="line"><span class="keyword">const</span> pendingPayoutCalue = <span class="built_in">parseFloat</span>(item.pending_payout_value.split(<span class="string">&#x27; &#x27;</span>)[<span class="number">0</span>])</span><br><span class="line">item.payout_value = (totalPayoutValue + curatorPayoutValue + pendingPayoutCalue).toFixed(<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+<br>
+<h4 id="저자-명성author-reputation-계산하기"><a class="markdownIt-Anchor" href="#저자-명성author-reputation-계산하기"></a> 저자 명성(author reputation) 계산하기</h4>
+<p>저자 명성은 아래와 같이 계산합니다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">item.author_reputation = steem.formatter.reputation(item.author_reputation) <span class="comment">// 저자 명성</span></span><br></pre></td></tr></table></figure>
+<br>
+<h4 id="글-등록시간을-경과-시간으로-보여주기"><a class="markdownIt-Anchor" href="#글-등록시간을-경과-시간으로-보여주기"></a> 글 등록시간을 경과 시간으로 보여주기</h4>
+<p>글 등록시간을 “2초 전”, “5분 전”, “1시간 전” 과 같은 형태로 보여줍니다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> now = <span class="keyword">new</span> <span class="built_in">Date</span>()</span><br><span class="line"><span class="keyword">const</span> created = <span class="keyword">new</span> <span class="built_in">Date</span>(item.created + <span class="string">&#x27;Z&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> elapsedSeconds = (now - created) / <span class="number">1000</span> <span class="comment">// 경과 시간(초)</span></span><br><span class="line"><span class="keyword">if</span> (elapsedSeconds &lt; <span class="number">60</span>) ｛</span><br><span class="line">  item.created = <span class="built_in">Math</span>.round(elapsedSeconds) + <span class="string">&#x27;초 전&#x27;</span></span><br><span class="line">｝ <span class="keyword">else</span> <span class="keyword">if</span> (elapsedSeconds &lt; <span class="number">360</span>) ｛</span><br><span class="line">  item.created = <span class="built_in">Math</span>.round(elapsedSeconds / <span class="number">60</span>) + <span class="string">&#x27;분 전&#x27;</span></span><br><span class="line">｝ <span class="keyword">else</span> <span class="keyword">if</span> (elapsedSeconds &lt; <span class="number">8640</span>) ｛</span><br><span class="line">  item.created = <span class="built_in">Math</span>.round(elapsedSeconds / <span class="number">60</span>) + <span class="string">&#x27;시간 전&#x27;</span></span><br><span class="line">｝ <span class="keyword">else</span> <span class="keyword">if</span> (elapsedSeconds &lt; <span class="number">207360</span>) ｛</span><br><span class="line">  item.created = <span class="string">&#x27;어제&#x27;</span></span><br><span class="line">｝ <span class="keyword">else</span> ｛</span><br><span class="line">  item.created = (now.getFullYear() !== created.getFullYear() ? created.getFullYear() + <span class="string">&#x27;년 &#x27;</span> : <span class="string">&#x27;&#x27;</span>) +</span><br><span class="line">    (created.getMonth() + <span class="number">1</span>) + <span class="string">&#x27;월 &#x27;</span> +</span><br><span class="line">    created.getDate() + <span class="string">&#x27;일&#x27;</span></span><br><span class="line">｝</span><br></pre></td></tr></table></figure>
+<br>
+<h4 id="글-내용에서-html-제거하기"><a class="markdownIt-Anchor" href="#글-내용에서-html-제거하기"></a> 글 내용에서 HTML 제거하기</h4>
+<p>스팀잇 글 내용은 HTML과 마크다운을 혼용해서 사용하기 때문에, 마크다운을 HTML로 변환해줄 필요가 있습니다. 터미널에서 아래 명령어를 실행하여 <code>remarkable</code> 를 설치합니다.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install remarkable --save</span><br></pre></td></tr></table></figure>
+<br>
+<p>사용방법은 아래와 같습니다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Remarkable <span class="keyword">from</span> <span class="string">&#x27;remarkable&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> md = <span class="keyword">new</span> Remarkable(｛ html: <span class="literal">true</span>, <span class="attr">linkify</span>: <span class="literal">true</span> ｝)</span><br></pre></td></tr></table></figure>
+<br>
+<p>이제 글 내용에서 HTML 코드를 제거하겠습니다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">item.body = md.render(item.body).replace(<span class="regexp">/&lt;\/?[^&gt;]+(&gt;|$)/g</span>, <span class="string">&#x27;&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<br>
+<p>아래 화면은 지금까지 작업한 결과물입니다.</p>
+<p><img alt="img" data-src="https://i.imgur.com/lbs2WEY.png"></p>
+<p>모바일에서는 아래와 같이 보입니다.</p>
+<p><img alt="img" data-src="https://steemitimages.com/300x0/https://i.imgur.com/lJ49TL7.png"></p>
+<br>
+<p>전체 소스 내용은 <a target="_blank" rel="noopener" href="https://github.com/anpigon/steemit-app">github</a>에서 볼 수 있습니다.</p>
+<blockquote>
+<ul>
+<li>github: <a target="_blank" rel="noopener" href="https://github.com/anpigon/steemit-app">https://github.com/anpigon/steemit-app</a></li>
+</ul>
+</blockquote>
+<br>
+<p>여기까지 읽어주셔서 감사합니다.</p>
+
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/vue/" rel="tag"># Vue</a>
+          </div>
+
+        
+  <div class="post-widgets">
+    <div class="wp_rating">
+      <div id="wpac-rating"></div>
+    </div>
+  </div>
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/kr/@anpigon/steemit-1-10f53977c621e" rel="next" title="[Vue.js] 스팀잇(Steemit)기반 앱 만들기 #1">
+                  <i class="fa fa-chevron-left"></i> [Vue.js] 스팀잇(Steemit)기반 앱 만들기 #1
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/kr/@anpigon/vote-value-javascript" rel="prev" title="[Steemit] 내 보팅 가치(Vote Value)를 JavaScript로 계산하기">
+                  [Steemit] 내 보팅 가치(Vote Value)를 JavaScript로 계산하기 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    
+  <div class="comments" id="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          목차
+        </li>
+        <li class="sidebar-nav-overview">
+          흝어보기
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#%EC%9D%B4%EC%A0%84%EA%B8%80"><span class="nav-number">1.</span> <span class="nav-text"> 이전글</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EC%8A%A4%ED%8C%80%EC%9E%87-%EC%B5%9C%EC%8B%A0%EA%B8%80%EC%9D%84-%EA%B0%80%EC%A0%B8%EC%99%80%EC%84%9C-%EC%B6%9C%EB%A0%A5%ED%95%98%EB%8A%94-%ED%99%94%EB%A9%B4-%EB%A7%8C%EB%93%A4%EA%B8%B0"><span class="nav-number"></span> <span class="nav-text"> 스팀잇 최신글을 가져와서 출력하는 화면 만들기</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EC%8A%A4%ED%8C%80%EC%9E%87%EC%97%90%EC%84%9C-%EC%B5%9C%EC%8B%A0%EA%B8%80-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0"><span class="nav-number"></span> <span class="nav-text"> 스팀잇에서 최신글 가져오기</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%ED%99%94%EB%A9%B4%EC%97%90-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%B6%9C%EB%A0%A5%ED%95%98%EA%B8%B0"><span class="nav-number"></span> <span class="nav-text"> 화면에 데이터 출력하기</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%EC%9D%B4%EB%AF%B8%EC%A7%80-%EC%B6%9C%EB%A0%A5%ED%95%98%EA%B8%B0"><span class="nav-number"></span> <span class="nav-text"> 이미지 출력하기</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%EB%B3%B4%EC%83%81%EA%B8%88%EC%95%A1payout-%EA%B3%84%EC%82%B0%ED%95%98%EA%B8%B0"><span class="nav-number"></span> <span class="nav-text"> 보상금액(payout) 계산하기</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%EC%A0%80%EC%9E%90-%EB%AA%85%EC%84%B1author-reputation-%EA%B3%84%EC%82%B0%ED%95%98%EA%B8%B0"><span class="nav-number"></span> <span class="nav-text"> 저자 명성(author reputation) 계산하기</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%EA%B8%80-%EB%93%B1%EB%A1%9D%EC%8B%9C%EA%B0%84%EC%9D%84-%EA%B2%BD%EA%B3%BC-%EC%8B%9C%EA%B0%84%EC%9C%BC%EB%A1%9C-%EB%B3%B4%EC%97%AC%EC%A3%BC%EA%B8%B0"><span class="nav-number"></span> <span class="nav-text"> 글 등록시간을 경과 시간으로 보여주기</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%EA%B8%80-%EB%82%B4%EC%9A%A9%EC%97%90%EC%84%9C-html-%EC%A0%9C%EA%B1%B0%ED%95%98%EA%B8%B0"><span class="nav-number"></span> <span class="nav-text"> 글 내용에서 HTML 제거하기</span></a></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="안피곤"
+    src="/images/me.jpg">
+  <p class="site-author-name" itemprop="name">안피곤</p>
+  <div class="site-description" itemprop="description">시간이 천천히 갔으면 좋겠다.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">325</span>
+          <span class="site-state-item-name">포스트</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-name">카테고리</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">139</span>
+        <span class="site-state-item-name">태그</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/anpigon" title="GitHub &rarr; https://github.com/anpigon" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:markan82@gmail.com" title="E-Mail &rarr; mailto:markan82@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+          <!-- 정사각형 광고 -->
+          <div style="margin-top: 15px;">
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-2365531018407022"
+                data-ad-slot="7521850306"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+          </div>
+    </div>
+  </aside>
+  <div id="sidebar-dimmer">3</div>
+
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">안피곤</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v5.4.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.4.2
+  </div>
+
+        
+
+
+
+
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-firestore.js"></script>
+  <script>
+    firebase.initializeApp({
+      apiKey: 'AIzaSyA4QZWCWb3IuIHjbkAmO0ttIM2b-qtLTP8',
+      projectId: 'next-blog-8f9a0'
+    });
+
+    function getCount(doc, increaseCount) {
+      // IncreaseCount will be false when not in article page
+
+      return doc.get().then(d => {
+        var count = 0;
+        if (!d.exists) { // Has no data, initialize count
+          if (increaseCount) {
+            doc.set({
+              count: 1
+            });
+            count = 1;
+          }
+        } else { // Has data
+          count = d.data().count;
+          if (increaseCount) {
+            // If first view this article
+            doc.set({ // Increase count
+              count: count + 1
+            });
+            count++;
+          }
+        }
+
+        return count;
+      });
+    }
+
+    function appendCountTo(el) {
+      return count => {
+        el.innerText = count;
+      }
+    }
+  </script>
+  <script pjax>
+    (function() {
+      var db = firebase.firestore();
+      var articles = db.collection('articles');
+
+      if (CONFIG.page.isPost) { // Is article page
+        var title = document.querySelector('.post-title').innerText.trim();
+        var doc = articles.doc(title);
+        var increaseCount = true;
+        if (localStorage.getItem(title)) {
+          increaseCount = false;
+        } else {
+          // Mark as visited
+          localStorage.setItem(title, true);
+        }
+        getCount(doc, increaseCount).then(appendCountTo(document.querySelector('.firestore-visitors-count')));
+      } else if (CONFIG.page.isHome) { // Is index page
+        var promises = [...document.querySelectorAll('.post-title')].map(element => {
+          var title = element.innerText.trim();
+          var doc = articles.doc(title);
+          return getCount(doc);
+        });
+        Promise.all(promises).then(counts => {
+          var metas = document.querySelectorAll('.firestore-visitors-count');
+          counts.forEach((val, idx) => {
+            appendCountTo(metas[idx])(val);
+          });
+        });
+      }
+    })();
+  </script>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.getAttribute('pjax') !== null) {
+      element.setAttribute('pjax', '');
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+  <script pjax>
+  if (CONFIG.page.isPost) {
+    wpac_init = window.wpac_init || [];
+    wpac_init.push({
+      widget: 'Rating',
+      id: 21712,
+      el: 'wpac-rating',
+      color: 'fc6423'
+    });
+    (function() {
+      if ('WIDGETPACK_LOADED' in window) return;
+      WIDGETPACK_LOADED = true;
+      var mc = document.createElement('script');
+      mc.type = 'text/javascript';
+      mc.async = true;
+      mc.src = '//embed.widgetpack.com/widget.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+    })();
+  }
+  </script>
+
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.4.1/dist/instantsearch.min.css">
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.4.1/dist/instantsearch.js"></script>
+<script src="/js/algolia-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+
+  
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://anpigon-github-io.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  function loadComments() {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: {page: {
+            url: "https://anpigon.github.io/kr/@anpigon/steemit-2",
+            identifier: "/kr/@anpigon/steemit-2",
+            title: "[Vue.js] 스팀잇(Steemit)기반 앱 만들기 #2 - 최근글 가져오기"
+          }
+        }
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://anpigon-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  }
+    (function() {
+      var offsetTop = document.getElementById('comments').offsetTop - window.innerHeight;
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        window.addEventListener('load', loadComments, false);
+      } else {
+        var disqus_scroll = () => {
+          // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = document.getElementById('comments').offsetTop - window.innerHeight;
+          var scrollTop = window.scrollY;
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            window.removeEventListener('scroll', disqus_scroll);
+            loadComments();
+          }
+        };
+        window.addEventListener('scroll', disqus_scroll);
+      }
+    })();
+  
+</script>
+
+    </div>
+</body>
+</html>

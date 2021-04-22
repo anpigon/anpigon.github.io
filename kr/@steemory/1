@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="yfKOiBPD8WlKH3NPG_CG1zr4MsCgCG1YVdGKhMS2CKc">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Noto Serif KR:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.4.2',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: true,
+    pangu: false,
+    algolia: {
+      appID: 'YY693DUDAI',
+      apiKey: 'db449d453b150820f66e7bc3d4523a17',
+      indexName: 'my-hexo-blog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '복사',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="책의 원제는 Peak: Secrets from the New Science of Expertise 이다. 그리고 안데르스 에릭슨(Anders Ericsson) 박사는 미국 심리학자이며 ‘1만 시간의 법칙’ 이론의 창시자이다.이 책은 &#39;올바른 연습’이란 무엇이며, 효과적인 실천방법에 대해서 설명한다. 어느 분야에서나 통하는 보편적인 방법을 &#39;의식적인 연습(d">
+<meta property="og:type" content="article">
+<meta property="og:title" content="⟪1만 시간의 재발견⟫ 안데르스 에릭슨">
+<meta property="og:url" content="https://anpigon.github.io/kr/@steemory/1">
+<meta property="og:site_name" content="안피곤님의 블로그">
+<meta property="og:description" content="책의 원제는 Peak: Secrets from the New Science of Expertise 이다. 그리고 안데르스 에릭슨(Anders Ericsson) 박사는 미국 심리학자이며 ‘1만 시간의 법칙’ 이론의 창시자이다.이 책은 &#39;올바른 연습’이란 무엇이며, 효과적인 실천방법에 대해서 설명한다. 어느 분야에서나 통하는 보편적인 방법을 &#39;의식적인 연습(d">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:image" content="https://steemitimages.com/0x0/https://image.aladin.co.kr/product/8632/15/letslook/K312535674_f.jpg">
+<meta property="article:published_time" content="2019-02-18T07:19:57.000Z">
+<meta property="article:modified_time" content="2021-04-21T11:50:30.106Z">
+<meta property="article:author" content="안피곤">
+<meta property="article:tag" content="독서 후기">
+<meta property="article:tag" content="안데르스 에릭슨">
+<meta property="article:tag" content="1만 시간의 법칙">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://steemitimages.com/0x0/https://image.aladin.co.kr/product/8632/15/letslook/K312535674_f.jpg">
+
+<link rel="canonical" href="https://anpigon.github.io/kr/@steemory/1">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>⟪1만 시간의 재발견⟫ 안데르스 에릭슨 | 안피곤님의 블로그</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-20589042-10"></script>
+    <script pjax>
+      var host = window.location.hostname;
+      if (host !== "localhost" || !true) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-20589042-10');
+      }
+    </script>
+
+
+
+
+
+
+  
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-2365531018407022",
+          enable_page_level_ads: false
+     });
+</script>
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="안피곤님의 블로그" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">안피곤님의 블로그</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">코딩, 독서, 여행, 영화, 맛집</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>홈</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>태그<span class="badge">139</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>카테고리<span class="badge">25</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>아카이브<span class="badge">325</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>검색
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input" id="search-input"></div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="algolia-results">
+  <div id="algolia-stats"></div>
+  <div id="algolia-hits"></div>
+  <div id="algolia-pagination" class="algolia-pagination"></div>
+</div>
+
+  
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="ko">
+    <link itemprop="mainEntityOfPage" href="https://anpigon.github.io/kr/@steemory/1">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/me.jpg">
+      <meta itemprop="name" content="안피곤">
+      <meta itemprop="description" content="시간이 천천히 갔으면 좋겠다.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="안피곤님의 블로그">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          ⟪1만 시간의 재발견⟫ 안데르스 에릭슨
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">작성일</span>
+
+              <time title="Post created: 2019-02-18 16:19:57" itemprop="dateCreated datePublished" datetime="2019-02-18T16:19:57+09:00">2019-02-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Updated at: 2021-04-21 20:50:30" itemprop="dateModified" datetime="2021-04-21T20:50:30+09:00">2021-04-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%EC%B1%85-%EC%9D%B4%EC%95%BC%EA%B8%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">책 이야기</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/kr/@steemory/1#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="/kr/@steemory/1" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+            <div style="margin-bottom:35px;margin-top:-20px;">
+              <!-- 블로그 본문 상단 광고 -->
+              <ins class="adsbygoogle"
+                  style="display:block"
+                  data-ad-client="ca-pub-2365531018407022"
+                  data-ad-slot="3390644000"
+                  data-ad-format="auto"
+                  data-full-width-responsive="true"></ins>
+              <script>
+                  (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+        <p><img alt data-src="https://steemitimages.com/0x0/https://image.aladin.co.kr/product/8632/15/letslook/K312535674_f.jpg"></p><p>책의 원제는 <em>Peak: Secrets from the New Science of Expertise</em> 이다. 그리고 <strong>안데르스 에릭슨(Anders Ericsson) 박사</strong>는 <strong>미국 심리학자</strong>이며 <strong>‘1만 시간의 법칙’</strong> 이론의 창시자이다.</p><p>이 책은 '올바른 연습’이란 무엇이며, 효과적인 실천방법에 대해서 설명한다. 어느 분야에서나 통하는 보편적인 방법을 '의식적인 연습(deliberate practice)'이라고 한다. '의식적인 연습’을 통하면 누구나 최고의 경지에 오를 수 있다.</p><a id="more"></a>
+
+
+<p>전반부에서는 '의식적인 연습’이란 무엇인지, 왜 효과적인지, 전문가들이 이것을 활용하여 비범한 능력을 만들어내는지를 설명한다. 그리고 후반부에서는 그동안 전문가 연구를 통해 '의식적인 연습’에 대해 터득한 모든 사항을 다룬다.</p>
+<hr>
+<h2 id="문제는-시간이-아니라-방법이다"><a class="markdownIt-Anchor" href="#문제는-시간이-아니라-방법이다"></a> 문제는 시간이 아니라 방법이다.</h2>
+<p>‘목적의식 있는 연습’은 단순한 연습을 벗어날 것을 요구한다. 단순한 연습이란 자신의 컴포트 존<em>comfort zone</em>’(편안삼을 느끼는 일정한 범위)을 말한다. '목적의식 있는 연습’에 요구되는 집중력과 노력을 유지하기 위해서는 지속적인 동기부여가 필요하다.</p>
+<blockquote>
+<p>그럼 이쯤에서 '목적의식 있는 연습’을 아주 간결하게 설명해보겠다. 자신의 컴포트 존을 벗어나되 분명한 목표, 목표에 도달할 계획, 진척 정도를 추적 관찰할 수단을 가지고, 집중하여 매진하라. 아, 그리고 자신의 동기부여를 유지할 방법도 파악하라. (p. 61)</p>
+</blockquote>
+<h2 id="뇌는-쓰면-쓸수록-발달한다"><a class="markdownIt-Anchor" href="#뇌는-쓰면-쓸수록-발달한다"></a> 뇌는 쓰면 쓸수록 발달한다.</h2>
+<p>우리 뇌의 구조와 기능은 고정되어 있지 않다. 누구든지 의식적인 훈련, 의식적인 연습을 통해 원하는 방향으로 뇌의 구조를 변화시킬 수 있다.</p>
+<blockquote>
+<p>특이한 실험 사례: 미국과 이스라엘의 신경과학자와 시각 연구자들이 2012년에 발표한 것으로, 노화로 인한 원시로 고생하는 사람이라면 누구든 효과를 볼 수 있을 방법이 나타나 있다. 실험 참자가들은 세 달 동안 일주일에 세 번 정도 연구실에 와서 30분씩 시력 훈련을 했다. 이들은 화면에서 작은 이미지를 찾아내는 훈련을 했다. 다만 이미지의 색과 배경의 색이 매우 흡사했는데, 다시 말해 찾아야 하는 이미지와 배경 상이에 대비가 거의 없었던 것이다. 따라서 이미지를 찾아내기 위해서는 강도 높은 집중력과 노력이 필요했다. 세 달이 지난 후 실험 참가자들은 훈련을 시작하기 전에 가능했던 것보다 60퍼센트 더 작은 글씨를 읽을 수 있었다. 3개월의 훈련으로 시력이 개선되었지만, 눈 자체의 변화에 따른 것은 아니었다. 수정체는 여전히 탄력 없고 경직된 상태를 유지하고 있었고, 초점 조절 장애도 있었다. 대신 눈을 통해 들어오는 시각 신호를 해석하는 뇌 부위에서 변화가 일어났고, 그 결과 보는 능력이 개선된 것이다.</p>
+</blockquote>
+<p><br>인간의 육체는 안정된 상태를 선호하는 경향이 있다. 이런 현상을 가르켜 항상성이라고 한다. 우리 몸을 충분히 강하게 그리고 오랫동안 압박을 하면 몸은 그런 압박 자체가 편해지는 방향으로 변화한다. 그런 과정에서 우리 몸은 이전보다 강해지고, 지구력과 근육의 협응력도 커진다. 하지만 압박의 강도를 계속 높이지 않으면, 우리 몸은 새로 얻은 항상성에 안주하게 된다.</p>
+<blockquote>
+<p>최근 연구에 따르면 뇌의 구조 변화를 유발하는 데 새로운 기술을 익히는 것이 이미 아는 기술을 계속 연습하는 것보다 훨씬 효과적이라는 사실이 밝혀졌다. 그러나 한편으로 압박의 강도와 기간이 지나치면 극도의 피로와 함께 학습 효율이 오히려 떨어진다. 몸과 마찬가지로 뇌도 컴포트 존 밖으로 밀어내는, 그렇지만 너무 멀리 밀어내지는 않는 최적의 지검, 구기 종목에서 공이 가장 잘 맞는 지검을 가리키는 ‘스위트 스폿 sweet spot’에서 가장 빠르게 변화한다. -p.88</p>
+</blockquote>
+<h2 id="최고의-훈련-방법"><a class="markdownIt-Anchor" href="#최고의-훈련-방법"></a> 최고의 훈련 방법</h2>
+<p>첫째, 다른 사람들이 방법을 알고 있고, 그것을 위한 효과적인 훈련 기법이 수립되어 있는 기술을 연마한다. 그리고 이런 능력을 개발할 방법도 잘 알고 있는 교사나 코치가 프로그램을 설계하고 실행 과정을 감독한다.</p>
+<p>둘째, 개인의 컴포트 존을 벗어난 지점에서 진행되며, 배우는 사람은 자신의 현재 능력을 살짝 넘어서는 작업을 지속적으로 시도해야 한다. 말하자면 개인의 최대치에 가까운 노력이 요구되는 것인데, 최대치에 가까운 노력을 하기란 일반적으로 즐겁지는 않은 일이다.</p>
+<p>셋째, 명확하고 구체적인 목표를 가지고 진행된다. 다소 모호한, 전반적인 향상을 목표로 하지 않는다. 일단 전반적인 목표가 설정되면, 교사나 코치가 단계적인 작은 변화들을 달성할 훈련 계획을 세운다. 이렇게 작고 구체적인 부분을 목표로 하여 훈련하는 경우, 학생이 훈련의 성과를 쉽게 가시적으로 확인할 수 있다는 장점이 있다.</p>
+<p>넷째, 신중하고 계획적이다. 즉, 개인이 온전히 집중하고 ‘의식적’으로 행동할 것을 요구한다. 단순히 교사나 코치의 지시를 따르는 것만으로는 충분하지 않다. 학생은 연습의 구체적인 목표에 집중해서 연습에 적응하고 연습을 통제할 수 있어야 한다.</p>
+<p>다섯째, 피드백과 피드백에 따른 행동 변경을 수반한다. 훈련 초기에는 교사나 코치가 진행과정을 모니터하고, 문제점을 지적하고, 해결방법을 제시한다. 시간이 흐르고 경험이 쌓이면서 학생이 스스로를 모니터하고, 실수를 발견하고, 수정해 나간다. 이렇게 스스로를 모니터하고 개선점을 찾으려면 효과적인 심적 표상(물체, 문제, 일의 상태 등에 관한 지식이 마음에 저장되는 방식)이 있어야 한다.</p>
+<p>여섯째, 효과적인 심적 표상을 만들어내는 한편으로 거기에 의존한다. 수행능력 향상은 심적 표상의 발전과 밀접히 관련되어 함께 이루어진다. 개인의 수행능력이 향상되면, 표상이 한층 상세해지고 효과적이 되며, 다시 이로 인해 수행능력이 향상된다. 심적 표상은 또한 개인이 연습과 실전 모두에서 스스로를 모니터할 수 있게 해 준다. 심적 표상 덕분에 개인은 올바른 수행 방법을 알 수 있고, 거기서 벗어나는 순간 이를 파악하고 바로잡을 수 있다.</p>
+<p>일곱째, 기존에 습득한 기술의 특정 부분을 집중적으로 개선함으로써 이를 한층 발전시키거나 수정하는 과정이 수반된다. 시간이 흐르면서 이런 단계적인 발전이 결국에는 전문가 수준의 수행능력으로 이어진다. 기존의 기술을 토대로 새로운 기술을 학습하는 이런 방식 때문에 교사나 코치가 초보자에게 정확한 기본 기술을 가르쳐주는 것이 중요하다. 상급 수준에 올라가서 기본 기술을 다시 배워야하는 불상사가 일어나지 않게 하기 위해서다.</p>
+<hr>
+<p>1만 시간을 연습하면 누구나  천재가 될 수 있습니다.</p>
+<ul>
+<li>단순 반복 연습보다는 목표를 계속 높여가며 <strong>의식적인 연습</strong>을 한다.</li>
+<li>연습 결과에 대한 피드백이 필요하다. 감독 코치가 있으면 좋다.</li>
+<li>지속적인 동기부여가 필요하다.</li>
+</ul>
+<p><br>책을 한 번 더 읽어볼 계획입니다. 한번만 읽었더니 후반부는 아직 기억하지 못한 내용이 많네요.</p>
+
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%EB%8F%85%EC%84%9C-%ED%9B%84%EA%B8%B0/" rel="tag"># 독서 후기</a>
+              <a href="/tags/%EC%95%88%EB%8D%B0%EB%A5%B4%EC%8A%A4-%EC%97%90%EB%A6%AD%EC%8A%A8/" rel="tag"># 안데르스 에릭슨</a>
+              <a href="/tags/1%EB%A7%8C-%EC%8B%9C%EA%B0%84%EC%9D%98-%EB%B2%95%EC%B9%99/" rel="tag"># 1만 시간의 법칙</a>
+          </div>
+
+        
+  <div class="post-widgets">
+    <div class="wp_rating">
+      <div id="wpac-rating"></div>
+    </div>
+  </div>
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/kr/@anpigon/react-native-ethereum-mobile-wallet-7" rel="next" title="[React Native] 이더리움 모바일 지갑(Ethereum Mobile Wallet) 만들기 #7">
+                  <i class="fa fa-chevron-left"></i> [React Native] 이더리움 모바일 지갑(Ethereum Mobile Wallet) 만들기 #7
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/kr/@anpigon/ethereum-mobile-wallet-8" rel="prev" title="이더리움 모바일 지갑(Ethereum Mobile Wallet) 만들기 #8 - 배포하기">
+                  이더리움 모바일 지갑(Ethereum Mobile Wallet) 만들기 #8 - 배포하기 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    
+  <div class="comments" id="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          목차
+        </li>
+        <li class="sidebar-nav-overview">
+          흝어보기
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%EB%AC%B8%EC%A0%9C%EB%8A%94-%EC%8B%9C%EA%B0%84%EC%9D%B4-%EC%95%84%EB%8B%88%EB%9D%BC-%EB%B0%A9%EB%B2%95%EC%9D%B4%EB%8B%A4"><span class="nav-number">1.</span> <span class="nav-text"> 문제는 시간이 아니라 방법이다.</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EB%87%8C%EB%8A%94-%EC%93%B0%EB%A9%B4-%EC%93%B8%EC%88%98%EB%A1%9D-%EB%B0%9C%EB%8B%AC%ED%95%9C%EB%8B%A4"><span class="nav-number">2.</span> <span class="nav-text"> 뇌는 쓰면 쓸수록 발달한다.</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EC%B5%9C%EA%B3%A0%EC%9D%98-%ED%9B%88%EB%A0%A8-%EB%B0%A9%EB%B2%95"><span class="nav-number">3.</span> <span class="nav-text"> 최고의 훈련 방법</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="안피곤"
+    src="/images/me.jpg">
+  <p class="site-author-name" itemprop="name">안피곤</p>
+  <div class="site-description" itemprop="description">시간이 천천히 갔으면 좋겠다.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">325</span>
+          <span class="site-state-item-name">포스트</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-name">카테고리</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">139</span>
+        <span class="site-state-item-name">태그</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/anpigon" title="GitHub &rarr; https://github.com/anpigon" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:markan82@gmail.com" title="E-Mail &rarr; mailto:markan82@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+          <!-- 정사각형 광고 -->
+          <div style="margin-top: 15px;">
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-2365531018407022"
+                data-ad-slot="7521850306"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+          </div>
+    </div>
+  </aside>
+  <div id="sidebar-dimmer">3</div>
+
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">안피곤</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v5.4.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.4.2
+  </div>
+
+        
+
+
+
+
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-firestore.js"></script>
+  <script>
+    firebase.initializeApp({
+      apiKey: 'AIzaSyA4QZWCWb3IuIHjbkAmO0ttIM2b-qtLTP8',
+      projectId: 'next-blog-8f9a0'
+    });
+
+    function getCount(doc, increaseCount) {
+      // IncreaseCount will be false when not in article page
+
+      return doc.get().then(d => {
+        var count = 0;
+        if (!d.exists) { // Has no data, initialize count
+          if (increaseCount) {
+            doc.set({
+              count: 1
+            });
+            count = 1;
+          }
+        } else { // Has data
+          count = d.data().count;
+          if (increaseCount) {
+            // If first view this article
+            doc.set({ // Increase count
+              count: count + 1
+            });
+            count++;
+          }
+        }
+
+        return count;
+      });
+    }
+
+    function appendCountTo(el) {
+      return count => {
+        el.innerText = count;
+      }
+    }
+  </script>
+  <script pjax>
+    (function() {
+      var db = firebase.firestore();
+      var articles = db.collection('articles');
+
+      if (CONFIG.page.isPost) { // Is article page
+        var title = document.querySelector('.post-title').innerText.trim();
+        var doc = articles.doc(title);
+        var increaseCount = true;
+        if (localStorage.getItem(title)) {
+          increaseCount = false;
+        } else {
+          // Mark as visited
+          localStorage.setItem(title, true);
+        }
+        getCount(doc, increaseCount).then(appendCountTo(document.querySelector('.firestore-visitors-count')));
+      } else if (CONFIG.page.isHome) { // Is index page
+        var promises = [...document.querySelectorAll('.post-title')].map(element => {
+          var title = element.innerText.trim();
+          var doc = articles.doc(title);
+          return getCount(doc);
+        });
+        Promise.all(promises).then(counts => {
+          var metas = document.querySelectorAll('.firestore-visitors-count');
+          counts.forEach((val, idx) => {
+            appendCountTo(metas[idx])(val);
+          });
+        });
+      }
+    })();
+  </script>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.getAttribute('pjax') !== null) {
+      element.setAttribute('pjax', '');
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+  <script pjax>
+  if (CONFIG.page.isPost) {
+    wpac_init = window.wpac_init || [];
+    wpac_init.push({
+      widget: 'Rating',
+      id: 21712,
+      el: 'wpac-rating',
+      color: 'fc6423'
+    });
+    (function() {
+      if ('WIDGETPACK_LOADED' in window) return;
+      WIDGETPACK_LOADED = true;
+      var mc = document.createElement('script');
+      mc.type = 'text/javascript';
+      mc.async = true;
+      mc.src = '//embed.widgetpack.com/widget.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+    })();
+  }
+  </script>
+
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.4.1/dist/instantsearch.min.css">
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.4.1/dist/instantsearch.js"></script>
+<script src="/js/algolia-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+
+  
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://anpigon-github-io.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  function loadComments() {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: {page: {
+            url: "https://anpigon.github.io/kr/@steemory/1",
+            identifier: "/kr/@steemory/1",
+            title: "⟪1만 시간의 재발견⟫ 안데르스 에릭슨"
+          }
+        }
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://anpigon-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  }
+    (function() {
+      var offsetTop = document.getElementById('comments').offsetTop - window.innerHeight;
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        window.addEventListener('load', loadComments, false);
+      } else {
+        var disqus_scroll = () => {
+          // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = document.getElementById('comments').offsetTop - window.innerHeight;
+          var scrollTop = window.scrollY;
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            window.removeEventListener('scroll', disqus_scroll);
+            loadComments();
+          }
+        };
+        window.addEventListener('scroll', disqus_scroll);
+      }
+    })();
+  
+</script>
+
+    </div>
+</body>
+</html>

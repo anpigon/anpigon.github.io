@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 3.9.0">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -58,10 +58,9 @@
 <meta property="og:url" content="https://anpigon.github.io/page/17/index.html">
 <meta property="og:site_name" content="안피곤님의 블로그">
 <meta property="og:description" content="시간이 천천히 갔으면 좋겠다.">
-<meta property="og:locale" content="ko">
+<meta property="og:locale" content="ko_KR">
+<meta property="article:author" content="안피곤">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="안피곤님의 블로그">
-<meta name="twitter:description" content="시간이 천천히 갔으면 좋겠다.">
 
 <link rel="canonical" href="https://anpigon.github.io/page/17/">
 
@@ -126,6 +125,7 @@
   </style>
 </noscript>
 
+<link rel="alternate" href="/atom.xml" title="안피곤님의 블로그" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -182,7 +182,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>아카이브<span class="badge">323</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>아카이브<span class="badge">325</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -238,7 +238,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="ko">
-    <link itemprop="mainEntityOfPage" href="https://anpigon.github.io/개발 이야기/블록체인/2018-6-28-ethereum-multisig-wallet-contract-use/">
+    <link itemprop="mainEntityOfPage" href="https://anpigon.github.io/%EA%B0%9C%EB%B0%9C%20%EC%9D%B4%EC%95%BC%EA%B8%B0/%EB%B8%94%EB%A1%9D%EC%B2%B4%EC%9D%B8/2018-07-07-erc20-token-create/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/me.jpg">
@@ -252,7 +252,229 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/개발 이야기/블록체인/2018-6-28-ethereum-multisig-wallet-contract-use/" class="post-title-link" itemprop="url">이더리움 멀티시그 지갑 컨트랙트에서 송금하기</a>
+            <a href="/%EA%B0%9C%EB%B0%9C%20%EC%9D%B4%EC%95%BC%EA%B8%B0/%EB%B8%94%EB%A1%9D%EC%B2%B4%EC%9D%B8/2018-07-07-erc20-token-create/" class="post-title-link" itemprop="url">이더리움 ERC20 토큰(또는 코인) 만들기</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">작성일</span>
+
+              <time title="Post created: 2018-07-07 00:00:00" itemprop="dateCreated datePublished" datetime="2018-07-07T00:00:00+09:00">2018-07-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Updated at: 2021-04-21 20:50:30" itemprop="dateModified" datetime="2021-04-21T20:50:30+09:00">2021-04-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">개발 이야기</span>
+                  </a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/%EB%B8%94%EB%A1%9D%EC%B2%B4%EC%9D%B8/" itemprop="url" rel="index">
+                    <span itemprop="name">블록체인</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/%EA%B0%9C%EB%B0%9C%20%EC%9D%B4%EC%95%BC%EA%B8%B0/%EB%B8%94%EB%A1%9D%EC%B2%B4%EC%9D%B8/2018-07-07-erc20-token-create/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="개발 이야기/블록체인/2018-07-07-erc20-token-create/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+            <p>이더리움의 스마트 컨트랙트를 사용하여 토큰(코인)을 만드는 방법을 알아보겠습니다. 이더리움 네트워크에 토큰 컨트랙트를 배포하면 해당 컨트랙트를 코인처럼 사용할 수 있습니다.</p><h2 id="erc20-토큰-컨트랙트-구현"><a class="markdownIt-Anchor" href="#erc20-토큰-컨트랙트-구현"></a> ERC20 토큰 컨트랙트 구현</h2><p>ERC20 토큰 컨트랙트는 <a target="_blank" rel="noopener" href="https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20.md">[EIP-20]</a> 규격문서 참고하여 구현합니다.  이미 구현된 오픈소스들이 있으므로 github에서 가져오겠습니다.</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/%EA%B0%9C%EB%B0%9C%20%EC%9D%B4%EC%95%BC%EA%B8%B0/%EB%B8%94%EB%A1%9D%EC%B2%B4%EC%9D%B8/2018-07-07-erc20-token-create/#more" rel="contents">
+                더 읽어보기 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="ko">
+    <link itemprop="mainEntityOfPage" href="https://anpigon.github.io/%EA%B0%9C%EB%B0%9C%20%EC%9D%B4%EC%95%BC%EA%B8%B0/%EB%B8%94%EB%A1%9D%EC%B2%B4%EC%9D%B8/2018-7-1-ethereum-geth-install-for-mac-md/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/me.jpg">
+      <meta itemprop="name" content="안피곤">
+      <meta itemprop="description" content="시간이 천천히 갔으면 좋겠다.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="안피곤님의 블로그">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/%EA%B0%9C%EB%B0%9C%20%EC%9D%B4%EC%95%BC%EA%B8%B0/%EB%B8%94%EB%A1%9D%EC%B2%B4%EC%9D%B8/2018-7-1-ethereum-geth-install-for-mac-md/" class="post-title-link" itemprop="url">이더리움 클라이언트 geth 맥에 설치하기</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">작성일</span>
+
+              <time title="Post created: 2018-07-01 00:00:00" itemprop="dateCreated datePublished" datetime="2018-07-01T00:00:00+09:00">2018-07-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Updated at: 2021-04-21 20:50:30" itemprop="dateModified" datetime="2021-04-21T20:50:30+09:00">2021-04-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">개발 이야기</span>
+                  </a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/%EB%B8%94%EB%A1%9D%EC%B2%B4%EC%9D%B8/" itemprop="url" rel="index">
+                    <span itemprop="name">블록체인</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/%EA%B0%9C%EB%B0%9C%20%EC%9D%B4%EC%95%BC%EA%B8%B0/%EB%B8%94%EB%A1%9D%EC%B2%B4%EC%9D%B8/2018-7-1-ethereum-geth-install-for-mac-md/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="개발 이야기/블록체인/2018-7-1-ethereum-geth-install-for-mac-md/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+            <p>이더리움 클라이언트 중 하나인 geth를 맥에 설치하여 사용하는 방법을 알아보겠습니다.</p><h2 id="brew-설치"><a class="markdownIt-Anchor" href="#brew-설치"></a> brew 설치</h2><p>brew는 Mac용 패키지 관리자입니다.</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/bin/ruby -e <span class="string">&quot;<span class="subst">$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)</span>&quot;</span></span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/%EA%B0%9C%EB%B0%9C%20%EC%9D%B4%EC%95%BC%EA%B8%B0/%EB%B8%94%EB%A1%9D%EC%B2%B4%EC%9D%B8/2018-7-1-ethereum-geth-install-for-mac-md/#more" rel="contents">
+                더 읽어보기 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="ko">
+    <link itemprop="mainEntityOfPage" href="https://anpigon.github.io/%EA%B0%9C%EB%B0%9C%20%EC%9D%B4%EC%95%BC%EA%B8%B0/%EB%B8%94%EB%A1%9D%EC%B2%B4%EC%9D%B8/2018-6-28-ethereum-multisig-wallet-contract-use/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/me.jpg">
+      <meta itemprop="name" content="안피곤">
+      <meta itemprop="description" content="시간이 천천히 갔으면 좋겠다.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="안피곤님의 블로그">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/%EA%B0%9C%EB%B0%9C%20%EC%9D%B4%EC%95%BC%EA%B8%B0/%EB%B8%94%EB%A1%9D%EC%B2%B4%EC%9D%B8/2018-6-28-ethereum-multisig-wallet-contract-use/" class="post-title-link" itemprop="url">이더리움 멀티시그 지갑 컨트랙트에서 송금하기</a>
         </h2>
 
         <div class="post-meta">
@@ -269,7 +491,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Updated at: 2019-11-11 22:41:49" itemprop="dateModified" datetime="2019-11-11T22:41:49+09:00">2019-11-11</time>
+                <time title="Updated at: 2021-04-21 20:50:30" itemprop="dateModified" datetime="2021-04-21T20:50:30+09:00">2021-04-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -277,13 +499,13 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/개발-이야기/" itemprop="url" rel="index">
+                  <a href="/categories/%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/" itemprop="url" rel="index">
                     <span itemprop="name">개발 이야기</span>
                   </a>
                 </span>
                   , 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/개발-이야기/블록체인/" itemprop="url" rel="index">
+                  <a href="/categories/%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/%EB%B8%94%EB%A1%9D%EC%B2%B4%EC%9D%B8/" itemprop="url" rel="index">
                     <span itemprop="name">블록체인</span>
                   </a>
                 </span>
@@ -305,7 +527,7 @@
       </span>
       <span class="post-meta-item-text">Disqus: </span>
     
-    <a title="disqus" href="/개발 이야기/블록체인/2018-6-28-ethereum-multisig-wallet-contract-use/#comments" itemprop="discussionUrl">
+    <a title="disqus" href="/%EA%B0%9C%EB%B0%9C%20%EC%9D%B4%EC%95%BC%EA%B8%B0/%EB%B8%94%EB%A1%9D%EC%B2%B4%EC%9D%B8/2018-6-28-ethereum-multisig-wallet-contract-use/#comments" itemprop="discussionUrl">
       <span class="post-comments-count disqus-comment-count" data-disqus-identifier="개발 이야기/블록체인/2018-6-28-ethereum-multisig-wallet-contract-use/" itemprop="commentCount"></span>
     </a>
   </span>
@@ -322,12 +544,12 @@
 
       
             <p>이번에는 이더리움 멀티시그 지갑 컨트랙트를 이용하여 송금하는 것을 알아봅니다.</p><p>이더리움 멀티시그 지갑 컴트랙트 배포 방법은 이전글을 참고바랍니다.</p><ul>
-<li><a href="https://markan82.github.io/ethereum-multisig-wallet-contract-deploy/" target="_blank" rel="noopener">이더리움 멀티시그 지갑 컨트랙트 배포하기</a></li>
+<li><a target="_blank" rel="noopener" href="https://markan82.github.io/ethereum-multisig-wallet-contract-deploy/">이더리움 멀티시그 지갑 컨트랙트 배포하기</a></li>
 </ul><h2 id="컨트랙트에-이더-송금하기"><a class="markdownIt-Anchor" href="#컨트랙트에-이더-송금하기"></a> 컨트랙트에 이더 송금하기</h2><p>멀티시그 지갑 컨트랙트에서 이더를 송금하기 위해서는 우선 컨트랙트에 잔액이 있어야 합니다.<br>
 그래서 컨트랙트 주소로 0.1 ether를 송금하여 컨트랙트가 잔액을 가지도록 합니다.</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/개발 이야기/블록체인/2018-6-28-ethereum-multisig-wallet-contract-use/#more" rel="contents">
+              <a class="btn" href="/%EA%B0%9C%EB%B0%9C%20%EC%9D%B4%EC%95%BC%EA%B8%B0/%EB%B8%94%EB%A1%9D%EC%B2%B4%EC%9D%B8/2018-6-28-ethereum-multisig-wallet-contract-use/#more" rel="contents">
                 더 읽어보기 &raquo;
               </a>
             </div>
@@ -352,7 +574,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="ko">
-    <link itemprop="mainEntityOfPage" href="https://anpigon.github.io/개발 이야기/블록체인/2018-6-24-ethereum-multisig-wallet-contract-deploy/">
+    <link itemprop="mainEntityOfPage" href="https://anpigon.github.io/%EA%B0%9C%EB%B0%9C%20%EC%9D%B4%EC%95%BC%EA%B8%B0/%EB%B8%94%EB%A1%9D%EC%B2%B4%EC%9D%B8/2018-6-24-ethereum-multisig-wallet-contract-deploy/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/me.jpg">
@@ -366,7 +588,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/개발 이야기/블록체인/2018-6-24-ethereum-multisig-wallet-contract-deploy/" class="post-title-link" itemprop="url">이더리움 멀티시그 지갑 컨트랙트 배포하기</a>
+            <a href="/%EA%B0%9C%EB%B0%9C%20%EC%9D%B4%EC%95%BC%EA%B8%B0/%EB%B8%94%EB%A1%9D%EC%B2%B4%EC%9D%B8/2018-6-24-ethereum-multisig-wallet-contract-deploy/" class="post-title-link" itemprop="url">이더리움 멀티시그 지갑 컨트랙트 배포하기</a>
         </h2>
 
         <div class="post-meta">
@@ -383,7 +605,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Updated at: 2019-11-11 22:41:49" itemprop="dateModified" datetime="2019-11-11T22:41:49+09:00">2019-11-11</time>
+                <time title="Updated at: 2021-04-21 20:50:30" itemprop="dateModified" datetime="2021-04-21T20:50:30+09:00">2021-04-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -391,13 +613,13 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/개발-이야기/" itemprop="url" rel="index">
+                  <a href="/categories/%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/" itemprop="url" rel="index">
                     <span itemprop="name">개발 이야기</span>
                   </a>
                 </span>
                   , 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/개발-이야기/블록체인/" itemprop="url" rel="index">
+                  <a href="/categories/%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/%EB%B8%94%EB%A1%9D%EC%B2%B4%EC%9D%B8/" itemprop="url" rel="index">
                     <span itemprop="name">블록체인</span>
                   </a>
                 </span>
@@ -419,7 +641,7 @@
       </span>
       <span class="post-meta-item-text">Disqus: </span>
     
-    <a title="disqus" href="/개발 이야기/블록체인/2018-6-24-ethereum-multisig-wallet-contract-deploy/#comments" itemprop="discussionUrl">
+    <a title="disqus" href="/%EA%B0%9C%EB%B0%9C%20%EC%9D%B4%EC%95%BC%EA%B8%B0/%EB%B8%94%EB%A1%9D%EC%B2%B4%EC%9D%B8/2018-6-24-ethereum-multisig-wallet-contract-deploy/#comments" itemprop="discussionUrl">
       <span class="post-comments-count disqus-comment-count" data-disqus-identifier="개발 이야기/블록체인/2018-6-24-ethereum-multisig-wallet-contract-deploy/" itemprop="commentCount"></span>
     </a>
   </span>
@@ -435,10 +657,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-            <p>이번에는 이더리움 멀티시그 지갑 컨트랙트를 배포하는 것을 알아봅니다.</p><p>해당 내용은 아래 블로그를 참고하여 구현하였습니다.</p><p><a href="https://medium.com/@ChrisLundkvist/exploring-simpler-ethereum-multisig-contracts-b71020c19037" target="_blank" rel="noopener">참고: Exploring Simpler Ethereum Multisig Contracts - Christian Lundkvist</a></p><h2 id="web3-모듈-설치"><a class="markdownIt-Anchor" href="#web3-모듈-설치"></a> web3 모듈 설치</h2><p>현재 web3 버전은 1.0.0-beta.34 까지 나왔지만, 여기서는 web3-0.20.6을 설치하여 사용합니다. 필요한 모듈들을 아래와 같이 설치합니다.</p>
+            <p>이번에는 이더리움 멀티시그 지갑 컨트랙트를 배포하는 것을 알아봅니다.</p><p>해당 내용은 아래 블로그를 참고하여 구현하였습니다.</p><p><a target="_blank" rel="noopener" href="https://medium.com/@ChrisLundkvist/exploring-simpler-ethereum-multisig-contracts-b71020c19037">참고: Exploring Simpler Ethereum Multisig Contracts - Christian Lundkvist</a></p><h2 id="web3-모듈-설치"><a class="markdownIt-Anchor" href="#web3-모듈-설치"></a> web3 모듈 설치</h2><p>현재 web3 버전은 1.0.0-beta.34 까지 나왔지만, 여기서는 web3-0.20.6을 설치하여 사용합니다. 필요한 모듈들을 아래와 같이 설치합니다.</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/개발 이야기/블록체인/2018-6-24-ethereum-multisig-wallet-contract-deploy/#more" rel="contents">
+              <a class="btn" href="/%EA%B0%9C%EB%B0%9C%20%EC%9D%B4%EC%95%BC%EA%B8%B0/%EB%B8%94%EB%A1%9D%EC%B2%B4%EC%9D%B8/2018-6-24-ethereum-multisig-wallet-contract-deploy/#more" rel="contents">
                 더 읽어보기 &raquo;
               </a>
             </div>
@@ -463,7 +685,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="ko">
-    <link itemprop="mainEntityOfPage" href="https://anpigon.github.io/redmine/@anpigon/redmine-svn-404/">
+    <link itemprop="mainEntityOfPage" href="https://anpigon.github.io/redmine/@anpigon/redmine-svn-404">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/me.jpg">
@@ -477,7 +699,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/redmine/@anpigon/redmine-svn-404/" class="post-title-link" itemprop="url">레드마인(Redmine) svn 저장소 등록시 404 오류가 발생할때</a>
+            <a href="/redmine/@anpigon/redmine-svn-404" class="post-title-link" itemprop="url">레드마인(Redmine) svn 저장소 등록시 404 오류가 발생할때</a>
         </h2>
 
         <div class="post-meta">
@@ -494,7 +716,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Updated at: 2019-11-11 22:41:49" itemprop="dateModified" datetime="2019-11-11T22:41:49+09:00">2019-11-11</time>
+                <time title="Updated at: 2021-04-21 20:50:30" itemprop="dateModified" datetime="2021-04-21T20:50:30+09:00">2021-04-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -502,7 +724,7 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/개발-이야기/" itemprop="url" rel="index">
+                  <a href="/categories/%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/" itemprop="url" rel="index">
                     <span itemprop="name">개발 이야기</span>
                   </a>
                 </span>
@@ -524,8 +746,8 @@
       </span>
       <span class="post-meta-item-text">Disqus: </span>
     
-    <a title="disqus" href="/redmine/@anpigon/redmine-svn-404/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="/redmine/@anpigon/redmine-svn-404/" itemprop="commentCount"></span>
+    <a title="disqus" href="/redmine/@anpigon/redmine-svn-404#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="/redmine/@anpigon/redmine-svn-404" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -541,10 +763,10 @@
 
       
             <p>레드마인에서 SVN 저장소 연결 정보를 입력하고 저장소 페이지를 가보면 404 오류가 계속 뜨는 경우,<br>
-에러로그를 살펴보면 아래와 같이 <code>No close tag for /lists/list</code> 오류가 나타난다.</p><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">No close tag for /lists/list</span><br><span class="line">Line: 4</span><br><span class="line">Position: 100</span><br><span class="line">Last 80 unconsumed characters:</span><br><span class="line"></span><br><span class="line">Output was:</span><br><span class="line"> <span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">lists</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">list</span></span></span><br><span class="line"><span class="tag">   <span class="attr">path</span>=<span class="string">"https://XXXXXXXX/svn/XX"</span>&gt;</span></span><br><span class="line">  Rendered common/error.html.erb within layouts/base (0.4ms)</span><br></pre></td></tr></table></figure>
+에러로그를 살펴보면 아래와 같이 <code>No close tag for /lists/list</code> 오류가 나타난다.</p><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">No close tag for /lists/list</span><br><span class="line">Line: 4</span><br><span class="line">Position: 100</span><br><span class="line">Last 80 unconsumed characters:</span><br><span class="line"></span><br><span class="line">Output was:</span><br><span class="line"> <span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">lists</span>&gt;</span></span><br><span class="line">&lt;list</span><br><span class="line">   path=&quot;https://XXXXXXXX/svn/XX&quot;&gt;</span><br><span class="line">  Rendered common/error.html.erb within layouts/base (0.4ms)</span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/redmine/@anpigon/redmine-svn-404/#more" rel="contents">
+              <a class="btn" href="/redmine/@anpigon/redmine-svn-404#more" rel="contents">
                 더 읽어보기 &raquo;
               </a>
             </div>
@@ -615,7 +837,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">323</span>
+          <span class="site-state-item-count">325</span>
           <span class="site-state-item-name">포스트</span>
         </a>
       </div>
@@ -673,13 +895,13 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2019</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">안피곤</span>
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.9.0
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v5.4.0
   </div>
   <span class="post-meta-divider">|</span>
   <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.4.2
@@ -783,9 +1005,17 @@
   <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
 <script src="/js/schemes/pisces.js"></script>
+
+
 <script src="/js/next-boot.js"></script>
+
   <script>
 var pjax = new Pjax({
   selectors: [
@@ -873,7 +1103,9 @@ window.addEventListener('pjax:success', () => {
 
   
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.4.1/dist/instantsearch.min.css">
-<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.4.1/dist/instantsearch.js"></script><script src="/js/algolia-search.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.4.1/dist/instantsearch.js"></script>
+<script src="/js/algolia-search.js"></script>
+
 
 
 

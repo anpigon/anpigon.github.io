@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="yfKOiBPD8WlKH3NPG_CG1zr4MsCgCG1YVdGKhMS2CKc">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Noto Serif KR:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.4.2',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: true,
+    pangu: false,
+    algolia: {
+      appID: 'YY693DUDAI',
+      apiKey: 'db449d453b150820f66e7bc3d4523a17',
+      indexName: 'my-hexo-blog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '복사',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="모순투성이이기 때문에 더욱 더 내 나라를 사랑하는 본 피고인은, 불의가 횡행하는 시대라면 언제 어디서나 타당한 격언인 네크라소프의 시구로 이 보잘것없는 독백을 마치고자 합니다. “슬픔도 노여움도 없이 살아가는 자는 조국을 사랑하고 있지 않다” - ‘1985년 5월 27일 성명 유시민’  [유시민의 항소이유서 전체보기]">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[세바시] 글쓰기를 잘할 수 있는 3가지 비법 | 고영성 &#39;일취월장&#39;, &#39;완벽한 공부법&#39; 저자 체인지그라운드 고문 | 세바시 900회 | 글쓰기 강연 듣기">
+<meta property="og:url" content="https://anpigon.github.io/kr/@steemory/3-or-or-900-or">
+<meta property="og:site_name" content="안피곤님의 블로그">
+<meta property="og:description" content="모순투성이이기 때문에 더욱 더 내 나라를 사랑하는 본 피고인은, 불의가 횡행하는 시대라면 언제 어디서나 타당한 격언인 네크라소프의 시구로 이 보잘것없는 독백을 마치고자 합니다. “슬픔도 노여움도 없이 살아가는 자는 조국을 사랑하고 있지 않다” - ‘1985년 5월 27일 성명 유시민’  [유시민의 항소이유서 전체보기]">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:image" content="https://cdn.steemitimages.com/DQmd6vaePqePGh3D9nSrqwfui4HH4B6EVbnhK2yNMNQkRZL/%EF%BC%85E1%EF%BC%8584%EF%BC%8589%EF%BC%85E1%EF%BC%8585%EF%BC%85B3%EF%BC%85E1%EF%BC%8584%EF%BC%858F%EF%BC%85E1%EF%BC%8585%EF%BC%85B3%EF%BC%85E1%EF%BC%8584%EF%BC%8585%EF%BC%85E1%EF%BC%8585%EF%BC%85B5%EF%BC%85E1%EF%BC%8586%EF%BC%85AB%EF%BC%85E1%EF%BC%8584%EF%BC%8589%EF%BC%85E1%EF%BC%8585%EF%BC%85A3%EF%BC%85E1%EF%BC%8586%EF%BC%85BA%EF%BC%85202019-02-13%EF%BC%852010.22.58.png">
+<meta property="article:published_time" content="2019-02-13T01:28:18.000Z">
+<meta property="article:modified_time" content="2021-04-21T11:50:30.101Z">
+<meta property="article:author" content="안피곤">
+<meta property="article:tag" content="세바시">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.steemitimages.com/DQmd6vaePqePGh3D9nSrqwfui4HH4B6EVbnhK2yNMNQkRZL/%EF%BC%85E1%EF%BC%8584%EF%BC%8589%EF%BC%85E1%EF%BC%8585%EF%BC%85B3%EF%BC%85E1%EF%BC%8584%EF%BC%858F%EF%BC%85E1%EF%BC%8585%EF%BC%85B3%EF%BC%85E1%EF%BC%8584%EF%BC%8585%EF%BC%85E1%EF%BC%8585%EF%BC%85B5%EF%BC%85E1%EF%BC%8586%EF%BC%85AB%EF%BC%85E1%EF%BC%8584%EF%BC%8589%EF%BC%85E1%EF%BC%8585%EF%BC%85A3%EF%BC%85E1%EF%BC%8586%EF%BC%85BA%EF%BC%85202019-02-13%EF%BC%852010.22.58.png">
+
+<link rel="canonical" href="https://anpigon.github.io/kr/@steemory/3-or-or-900-or">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>[세바시] 글쓰기를 잘할 수 있는 3가지 비법 | 고영성 '일취월장', '완벽한 공부법' 저자 체인지그라운드 고문 | 세바시 900회 | 글쓰기 강연 듣기 | 안피곤님의 블로그</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-20589042-10"></script>
+    <script pjax>
+      var host = window.location.hostname;
+      if (host !== "localhost" || !true) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-20589042-10');
+      }
+    </script>
+
+
+
+
+
+
+  
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-2365531018407022",
+          enable_page_level_ads: false
+     });
+</script>
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="안피곤님의 블로그" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">안피곤님의 블로그</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">코딩, 독서, 여행, 영화, 맛집</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>홈</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>태그<span class="badge">139</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>카테고리<span class="badge">25</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>아카이브<span class="badge">325</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>검색
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input" id="search-input"></div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="algolia-results">
+  <div id="algolia-stats"></div>
+  <div id="algolia-hits"></div>
+  <div id="algolia-pagination" class="algolia-pagination"></div>
+</div>
+
+  
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="ko">
+    <link itemprop="mainEntityOfPage" href="https://anpigon.github.io/kr/@steemory/3-or-or-900-or">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/me.jpg">
+      <meta itemprop="name" content="안피곤">
+      <meta itemprop="description" content="시간이 천천히 갔으면 좋겠다.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="안피곤님의 블로그">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          [세바시] 글쓰기를 잘할 수 있는 3가지 비법 | 고영성 '일취월장', '완벽한 공부법' 저자 체인지그라운드 고문 | 세바시 900회 | 글쓰기 강연 듣기
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">작성일</span>
+
+              <time title="Post created: 2019-02-13 10:28:18" itemprop="dateCreated datePublished" datetime="2019-02-13T10:28:18+09:00">2019-02-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Updated at: 2021-04-21 20:50:30" itemprop="dateModified" datetime="2021-04-21T20:50:30+09:00">2021-04-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%EC%9D%BC%EC%83%81-%EC%9D%B4%EC%95%BC%EA%B8%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">일상 이야기</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/kr/@steemory/3-or-or-900-or#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="/kr/@steemory/3-or-or-900-or" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+            <div style="margin-bottom:35px;margin-top:-20px;">
+              <!-- 블로그 본문 상단 광고 -->
+              <ins class="adsbygoogle"
+                  style="display:block"
+                  data-ad-client="ca-pub-2365531018407022"
+                  data-ad-slot="3390644000"
+                  data-ad-format="auto"
+                  data-full-width-responsive="true"></ins>
+              <script>
+                  (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/49aNGqK_6UU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br><blockquote>
+<p>모순투성이이기 때문에<br>
+더욱 더 내 나라를 사랑하는 본 피고인은,<br>
+불의가 횡행하는 시대라면 언제 어디서나 타당한 격언인<br>
+네크라소프의 시구로 이 보잘것없는 독백을 마치고자 합니다.</p>
+<p><em>“슬픔도 노여움도 없이 살아가는 자는 조국을 사랑하고 있지 않다”</em></p>
+<p>- ‘1985년 5월 27일 성명 유시민’ <br>
+<a target="_blank" rel="noopener" href="https://ko.m.wikisource.org/wiki/%EC%9C%A0%EC%8B%9C%EB%AF%BC%EC%9D%98_%ED%95%AD%EC%86%8C%EC%9D%B4%EC%9C%A0%EC%84%9C"><em>[유시민의 항소이유서 전체보기]</em></a></p>
+</blockquote><a id="more"></a>
+
+<br>
+![](https://steemitimages.com/p/2xVmzkbNCvpxFuJEEiPwkVxj4pHgMZAZywFAaoRemXS8uUYNtSrnPZAJJpaPDRQAZBAtYRYDsEoQRBUZFt6b1FBU1CCrVMZSqQk6bFBXrPqKqyJAooVD3RqyyfsMyWoUKrsAXN93vK97WnpdUPCjzDGtprWVYHXzSWtu5ESERrv4yS1tuTqy9fBnYJ47S7XQVQKDeH2w)
+<br>
+<center><h2>글쓰기를 두려워하지 마라</h2></center><hr>
+<h4 id="첫째-재능없음을-두려워하지-마라"><a class="markdownIt-Anchor" href="#첫째-재능없음을-두려워하지-마라"></a> 첫째, 재능없음을 두려워하지 마라.</h4>
+<ul>
+<li>누구든지 제대로된 방법으로 연습하면 글쓰기를 잘 할 수 있다.
+<blockquote>
+<p>의식적인 연습(올바른 노력 방법)으로 임계치가 넘는 노력을 하게 되면 전문가 반열에 오를 수 있다.<br>
+- '1만 시간의 법칙’의 창시자 안데르스 에릭슨 박사</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="둘째-맞춤법을-두려워하지-마라"><a class="markdownIt-Anchor" href="#둘째-맞춤법을-두려워하지-마라"></a> 둘째, 맞춤법을 두려워하지 마라.</h4>
+<ul>
+<li>우리의 인지 자원은 한정되어 있다. 한정된 인지 자원은 모두 글 쓰는데 몰입 해야 한다.</li>
+<li>맞춤법에 신경 쓰지 말자.</li>
+</ul>
+<h4 id="셋째-수준-낮은-글을-쓸까-봐-두려워하지-마라"><a class="markdownIt-Anchor" href="#셋째-수준-낮은-글을-쓸까-봐-두려워하지-마라"></a> 셋째, 수준 낮은 글을 쓸까 봐 두려워하지 마라.</h4>
+<ul>
+<li>못난 글도 계속 쓰다 보면, 그중에서 잘난 글이 나온다.</li>
+</ul>
+<br>
+<center><h2>글쓰기의 시작은 독서이다.</h2></center><hr>
+<ul>
+<li>글쓰기를 잘 하려면 독서를 많이 해야한다.</li>
+<li>좋은 자료가 많을수록 좋은 글이 나올 확률이 높다.
+<blockquote>
+<p>글은 자신이 제기하고자 하는 주제의 근거를 제시하고 <br>
+그 타당성을 입증해 보이는 싸움이다.</p>
+</blockquote>
+<blockquote>
+<p>이 싸움은 <strong>좋은 자료를 얼마나 많이 모으느냐</strong>에 성패가 좌우된다.<br>
+자료가 충분하면 그 안에 반드시 길이 있다. <br>
+자료를 찾다보면 새로운 생각이 떠오른다. <br>
+때로는 애초에 의도했던 방향과 전혀 다른 쪽으로 글이 써지기도 한다.</p>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<p><strong>글은 자료와 생각의 상호작용이 낳은 결과</strong>다.<br>
+- ‘대통령의 글쓰기’ 저자 강원국 작가</p>
+</blockquote>
+<br>
+<center><h2>3S 전법</h2></center><hr>
+<h4 id="첫-번째-short"><a class="markdownIt-Anchor" href="#첫-번째-short"></a> 첫 번째, <strong>Short</strong></h4>
+<ul>
+<li>문장을 짧게 쓴다.</li>
+<li>문장은 짧을수록 의미 전달력이 높다.</li>
+</ul>
+<h4 id="두-번째-stroy"><a class="markdownIt-Anchor" href="#두-번째-stroy"></a> 두 번째, <strong>Stroy</strong></h4>
+<ul>
+<li><strong>뇌는 스토리를 좋아한다.</strong> 어떤 주제나 교훈이 스토리에 담겨 전달될 때 기억에 잘 남는다.</li>
+<li>**최고의 스토리는 자신의 이야기이다.**자신의 이야기를 자신이 할 때 진정성이 있다. 진정성은 독자의 마음을 여는 힘이 있다.</li>
+<li><strong>리마커블한</strong>(<em>이야기할 만한 가치가 있는</em>) 스토리를 자신의 글에 접목해 써본다.</li>
+</ul>
+<h4 id="세-번쨰-seat"><a class="markdownIt-Anchor" href="#세-번쨰-seat"></a> 세  번쨰, <strong>Seat</strong></h4>
+<ul>
+<li>그냥 무작정 글을 써본다.</li>
+</ul>
+<blockquote>
+<p>나는 가능하면 글은 매일 쓰려고 노력한다. 영감이 오길 기다린다면 글을 한 줄도 쓰지 못할 것이다. - 알랭 드 보통(Alain de Botton)</p>
+</blockquote>
+<br>
+![](https://steemitimages.com/p/2xVmzkbNCvpxFuJEEiPwkVxj4pHgMZAZywFAaoRemXS8uUYNtSrnPZAJJpaPDRQAZBAtYRYDsEoQRBUZFt6b1FBU1CCrVMZSqQk6bFBXrPqKqyJAooVD3RqyyfsMyWoUKrsAXN93vK97WnpdUPCjzDGtprWVYHXzSWtu5ESERrv4yS1tuTqy9fBnYJ47S7XQVQKDeH2w)
+<br>
+<p>제 생각으로 중요 핵심은 이것인 것 같습니다.</p>
+<ul>
+<li><strong>독서를 많이 하자.</strong></li>
+<li><strong>아무 글이나 많이 써보자.</strong></li>
+<li><strong>자신의 이야기를 글로 표현해보자.</strong></li>
+</ul>
+<p><br><img alt="인간의 목표는 풍부하게 소유하는 것이 아니고 풍성하게 존재하는 것이다. 법정 스님" data-src="https://cdn.steemitimages.com/DQmd6vaePqePGh3D9nSrqwfui4HH4B6EVbnhK2yNMNQkRZL/%EF%BC%85E1%EF%BC%8584%EF%BC%8589%EF%BC%85E1%EF%BC%8585%EF%BC%85B3%EF%BC%85E1%EF%BC%8584%EF%BC%858F%EF%BC%85E1%EF%BC%8585%EF%BC%85B3%EF%BC%85E1%EF%BC%8584%EF%BC%8585%EF%BC%85E1%EF%BC%8585%EF%BC%85B5%EF%BC%85E1%EF%BC%8586%EF%BC%85AB%EF%BC%85E1%EF%BC%8584%EF%BC%8589%EF%BC%85E1%EF%BC%8585%EF%BC%85A3%EF%BC%85E1%EF%BC%8586%EF%BC%85BA%EF%BC%85202019-02-13%EF%BC%852010.22.58.png"></p>
+
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%EC%84%B8%EB%B0%94%EC%8B%9C/" rel="tag"># 세바시</a>
+          </div>
+
+        
+  <div class="post-widgets">
+    <div class="wp_rating">
+      <div id="wpac-rating"></div>
+    </div>
+  </div>
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/kr/@anpigon/34xdqb-react-native" rel="next" title="[React Native] 쌩광부님의 이더리움 모바일 지갑 만들기 강좌 소개">
+                  <i class="fa fa-chevron-left"></i> [React Native] 쌩광부님의 이더리움 모바일 지갑 만들기 강좌 소개
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/kr/@anpigon/react-native-ethereum-mobile-wallet-6" rel="prev" title="[React Native] 이더리움 모바일 지갑(Ethereum Mobile Wallet) 만들기 #6">
+                  [React Native] 이더리움 모바일 지갑(Ethereum Mobile Wallet) 만들기 #6 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    
+  <div class="comments" id="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          목차
+        </li>
+        <li class="sidebar-nav-overview">
+          흝어보기
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">글쓰기를 두려워하지 마라</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%EC%B2%AB%EC%A7%B8-%EC%9E%AC%EB%8A%A5%EC%97%86%EC%9D%8C%EC%9D%84-%EB%91%90%EB%A0%A4%EC%9B%8C%ED%95%98%EC%A7%80-%EB%A7%88%EB%9D%BC"><span class="nav-number">1.0.1.</span> <span class="nav-text"> 첫째, 재능없음을 두려워하지 마라.</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%EB%91%98%EC%A7%B8-%EB%A7%9E%EC%B6%A4%EB%B2%95%EC%9D%84-%EB%91%90%EB%A0%A4%EC%9B%8C%ED%95%98%EC%A7%80-%EB%A7%88%EB%9D%BC"><span class="nav-number">1.0.2.</span> <span class="nav-text"> 둘째, 맞춤법을 두려워하지 마라.</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%EC%85%8B%EC%A7%B8-%EC%88%98%EC%A4%80-%EB%82%AE%EC%9D%80-%EA%B8%80%EC%9D%84-%EC%93%B8%EA%B9%8C-%EB%B4%90-%EB%91%90%EB%A0%A4%EC%9B%8C%ED%95%98%EC%A7%80-%EB%A7%88%EB%9D%BC"><span class="nav-number">1.0.3.</span> <span class="nav-text"> 셋째, 수준 낮은 글을 쓸까 봐 두려워하지 마라.</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">글쓰기의 시작은 독서이다.</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">3S 전법</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%EC%B2%AB-%EB%B2%88%EC%A7%B8-short"><span class="nav-number">3.0.1.</span> <span class="nav-text"> 첫 번째, Short</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%EB%91%90-%EB%B2%88%EC%A7%B8-stroy"><span class="nav-number">3.0.2.</span> <span class="nav-text"> 두 번째, Stroy</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%EC%84%B8-%EB%B2%88%EC%A8%B0-seat"><span class="nav-number">3.0.3.</span> <span class="nav-text"> 세  번쨰, Seat</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="안피곤"
+    src="/images/me.jpg">
+  <p class="site-author-name" itemprop="name">안피곤</p>
+  <div class="site-description" itemprop="description">시간이 천천히 갔으면 좋겠다.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">325</span>
+          <span class="site-state-item-name">포스트</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-name">카테고리</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">139</span>
+        <span class="site-state-item-name">태그</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/anpigon" title="GitHub &rarr; https://github.com/anpigon" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:markan82@gmail.com" title="E-Mail &rarr; mailto:markan82@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+          <!-- 정사각형 광고 -->
+          <div style="margin-top: 15px;">
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-2365531018407022"
+                data-ad-slot="7521850306"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+          </div>
+    </div>
+  </aside>
+  <div id="sidebar-dimmer">3</div>
+
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">안피곤</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v5.4.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.4.2
+  </div>
+
+        
+
+
+
+
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-firestore.js"></script>
+  <script>
+    firebase.initializeApp({
+      apiKey: 'AIzaSyA4QZWCWb3IuIHjbkAmO0ttIM2b-qtLTP8',
+      projectId: 'next-blog-8f9a0'
+    });
+
+    function getCount(doc, increaseCount) {
+      // IncreaseCount will be false when not in article page
+
+      return doc.get().then(d => {
+        var count = 0;
+        if (!d.exists) { // Has no data, initialize count
+          if (increaseCount) {
+            doc.set({
+              count: 1
+            });
+            count = 1;
+          }
+        } else { // Has data
+          count = d.data().count;
+          if (increaseCount) {
+            // If first view this article
+            doc.set({ // Increase count
+              count: count + 1
+            });
+            count++;
+          }
+        }
+
+        return count;
+      });
+    }
+
+    function appendCountTo(el) {
+      return count => {
+        el.innerText = count;
+      }
+    }
+  </script>
+  <script pjax>
+    (function() {
+      var db = firebase.firestore();
+      var articles = db.collection('articles');
+
+      if (CONFIG.page.isPost) { // Is article page
+        var title = document.querySelector('.post-title').innerText.trim();
+        var doc = articles.doc(title);
+        var increaseCount = true;
+        if (localStorage.getItem(title)) {
+          increaseCount = false;
+        } else {
+          // Mark as visited
+          localStorage.setItem(title, true);
+        }
+        getCount(doc, increaseCount).then(appendCountTo(document.querySelector('.firestore-visitors-count')));
+      } else if (CONFIG.page.isHome) { // Is index page
+        var promises = [...document.querySelectorAll('.post-title')].map(element => {
+          var title = element.innerText.trim();
+          var doc = articles.doc(title);
+          return getCount(doc);
+        });
+        Promise.all(promises).then(counts => {
+          var metas = document.querySelectorAll('.firestore-visitors-count');
+          counts.forEach((val, idx) => {
+            appendCountTo(metas[idx])(val);
+          });
+        });
+      }
+    })();
+  </script>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.getAttribute('pjax') !== null) {
+      element.setAttribute('pjax', '');
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+  <script pjax>
+  if (CONFIG.page.isPost) {
+    wpac_init = window.wpac_init || [];
+    wpac_init.push({
+      widget: 'Rating',
+      id: 21712,
+      el: 'wpac-rating',
+      color: 'fc6423'
+    });
+    (function() {
+      if ('WIDGETPACK_LOADED' in window) return;
+      WIDGETPACK_LOADED = true;
+      var mc = document.createElement('script');
+      mc.type = 'text/javascript';
+      mc.async = true;
+      mc.src = '//embed.widgetpack.com/widget.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+    })();
+  }
+  </script>
+
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.4.1/dist/instantsearch.min.css">
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.4.1/dist/instantsearch.js"></script>
+<script src="/js/algolia-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+
+  
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://anpigon-github-io.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  function loadComments() {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: {page: {
+            url: "https://anpigon.github.io/kr/@steemory/3-or-or-900-or",
+            identifier: "/kr/@steemory/3-or-or-900-or",
+            title: "[세바시] 글쓰기를 잘할 수 있는 3가지 비법 | 고영성 '일취월장', '완벽한 공부법' 저자 체인지그라운드 고문 | 세바시 900회 | 글쓰기 강연 듣기"
+          }
+        }
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://anpigon-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  }
+    (function() {
+      var offsetTop = document.getElementById('comments').offsetTop - window.innerHeight;
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        window.addEventListener('load', loadComments, false);
+      } else {
+        var disqus_scroll = () => {
+          // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = document.getElementById('comments').offsetTop - window.innerHeight;
+          var scrollTop = window.scrollY;
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            window.removeEventListener('scroll', disqus_scroll);
+            loadComments();
+          }
+        };
+        window.addEventListener('scroll', disqus_scroll);
+      }
+    })();
+  
+</script>
+
+    </div>
+</body>
+</html>

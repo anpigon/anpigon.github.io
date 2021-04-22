@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 3.9.0">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -53,19 +53,20 @@
 </script>
 
   <meta name="description" content="대부분의 ICO는 이더리움Ethereum의 토큰으로 발행하고 있습니다. 이렇게 하는 이유는 이더리움은 생태계가 매우 잘되어 있고, 많은 사람들이 이더리움을 사용하고 있기 때문입니다.그러나 단점도 있습니다. 이더리움은 초당 약 15건의 트랜잭션만 처리할 수 있습니다. 이것은 이미 문제가 되고 있으며 일부 기존의 dApp들은 이더리움 플랫폼에서 벗어나고 있습니">
-<meta name="keywords" content="블록체인,스텔라 루멘">
 <meta property="og:type" content="article">
 <meta property="og:title" content="스텔라 루멘(Stellar Lumens) 토큰 만드는 방법">
-<meta property="og:url" content="https://anpigon.github.io/개발 이야기/블록체인/2018-07-20-how-to-make-a-custom-token-on-stellar/index.html">
+<meta property="og:url" content="https://anpigon.github.io/%EA%B0%9C%EB%B0%9C%20%EC%9D%B4%EC%95%BC%EA%B8%B0/%EB%B8%94%EB%A1%9D%EC%B2%B4%EC%9D%B8/2018-07-20-how-to-make-a-custom-token-on-stellar/index.html">
 <meta property="og:site_name" content="안피곤님의 블로그">
 <meta property="og:description" content="대부분의 ICO는 이더리움Ethereum의 토큰으로 발행하고 있습니다. 이렇게 하는 이유는 이더리움은 생태계가 매우 잘되어 있고, 많은 사람들이 이더리움을 사용하고 있기 때문입니다.그러나 단점도 있습니다. 이더리움은 초당 약 15건의 트랜잭션만 처리할 수 있습니다. 이것은 이미 문제가 되고 있으며 일부 기존의 dApp들은 이더리움 플랫폼에서 벗어나고 있습니">
-<meta property="og:locale" content="ko">
-<meta property="og:updated_time" content="2019-11-11T13:41:49.829Z">
+<meta property="og:locale" content="ko_KR">
+<meta property="article:published_time" content="2018-07-19T15:00:00.000Z">
+<meta property="article:modified_time" content="2021-04-21T11:50:30.077Z">
+<meta property="article:author" content="안피곤">
+<meta property="article:tag" content="블록체인">
+<meta property="article:tag" content="스텔라 루멘">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="스텔라 루멘(Stellar Lumens) 토큰 만드는 방법">
-<meta name="twitter:description" content="대부분의 ICO는 이더리움Ethereum의 토큰으로 발행하고 있습니다. 이렇게 하는 이유는 이더리움은 생태계가 매우 잘되어 있고, 많은 사람들이 이더리움을 사용하고 있기 때문입니다.그러나 단점도 있습니다. 이더리움은 초당 약 15건의 트랜잭션만 처리할 수 있습니다. 이것은 이미 문제가 되고 있으며 일부 기존의 dApp들은 이더리움 플랫폼에서 벗어나고 있습니">
 
-<link rel="canonical" href="https://anpigon.github.io/개발 이야기/블록체인/2018-07-20-how-to-make-a-custom-token-on-stellar/">
+<link rel="canonical" href="https://anpigon.github.io/%EA%B0%9C%EB%B0%9C%20%EC%9D%B4%EC%95%BC%EA%B8%B0/%EB%B8%94%EB%A1%9D%EC%B2%B4%EC%9D%B8/2018-07-20-how-to-make-a-custom-token-on-stellar/">
 
 
 <script id="page-configurations">
@@ -128,6 +129,7 @@
   </style>
 </noscript>
 
+<link rel="alternate" href="/atom.xml" title="안피곤님의 블로그" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -184,7 +186,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>아카이브<span class="badge">323</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>아카이브<span class="badge">325</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -240,7 +242,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="ko">
-    <link itemprop="mainEntityOfPage" href="https://anpigon.github.io/개발 이야기/블록체인/2018-07-20-how-to-make-a-custom-token-on-stellar/">
+    <link itemprop="mainEntityOfPage" href="https://anpigon.github.io/%EA%B0%9C%EB%B0%9C%20%EC%9D%B4%EC%95%BC%EA%B8%B0/%EB%B8%94%EB%A1%9D%EC%B2%B4%EC%9D%B8/2018-07-20-how-to-make-a-custom-token-on-stellar/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/me.jpg">
@@ -270,7 +272,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Updated at: 2019-11-11 22:41:49" itemprop="dateModified" datetime="2019-11-11T22:41:49+09:00">2019-11-11</time>
+                <time title="Updated at: 2021-04-21 20:50:30" itemprop="dateModified" datetime="2021-04-21T20:50:30+09:00">2021-04-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -278,13 +280,13 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/개발-이야기/" itemprop="url" rel="index">
+                  <a href="/categories/%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/" itemprop="url" rel="index">
                     <span itemprop="name">개발 이야기</span>
                   </a>
                 </span>
                   , 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/개발-이야기/블록체인/" itemprop="url" rel="index">
+                  <a href="/categories/%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/%EB%B8%94%EB%A1%9D%EC%B2%B4%EC%9D%B8/" itemprop="url" rel="index">
                     <span itemprop="name">블록체인</span>
                   </a>
                 </span>
@@ -306,7 +308,7 @@
       </span>
       <span class="post-meta-item-text">Disqus: </span>
     
-    <a title="disqus" href="/개발 이야기/블록체인/2018-07-20-how-to-make-a-custom-token-on-stellar/#comments" itemprop="discussionUrl">
+    <a title="disqus" href="/%EA%B0%9C%EB%B0%9C%20%EC%9D%B4%EC%95%BC%EA%B8%B0/%EB%B8%94%EB%A1%9D%EC%B2%B4%EC%9D%B8/2018-07-20-how-to-make-a-custom-token-on-stellar/#comments" itemprop="discussionUrl">
       <span class="post-comments-count disqus-comment-count" data-disqus-identifier="개발 이야기/블록체인/2018-07-20-how-to-make-a-custom-token-on-stellar/" itemprop="commentCount"></span>
     </a>
   </span>
@@ -350,17 +352,17 @@
 <li><strong>배포계정(base account)</strong>: 다른 계정과 거래하는 데 사용되는 기본 계정. 발행계정에서 발행한 토큰을 소유합니다.</li>
 </ul>
 <p>두 개의 계정이 필요한 이유는, 만약 발행계정에서 토큰을 무한으로 발행한다면 토큰의 가치가 점점 떨어지게 됩니다. 그것을 방지하기 위해 발행계정을 중단할 수 있는 방법이 없습니다. 따라서 발행계정은 토큰을 생성하고 배포계정에게 발행합니다. 그런 다음 발행계정은 더 이상 토큰을 발행 할 수 없도록 영구적으로 잠궈버립니다. 이것으로 토큰이 더 이상 발행되지 않을 것임을 모두에게 보장합니다.</p>
-<p>참고로 테스트넷 계정은 <a href="https://www.stellar.org/laboratory/#account-creator?network=test" target="_blank" rel="noopener"><em>https://www.stellar.org/laboratory</em></a> 에서 생성가능합니다.</p>
+<p>참고로 테스트넷 계정은 <a target="_blank" rel="noopener" href="https://www.stellar.org/laboratory/#account-creator?network=test"><em>https://www.stellar.org/laboratory</em></a> 에서 생성가능합니다.</p>
 <h2 id="두-계정의-트러스트trust-변경하기"><a class="markdownIt-Anchor" href="#두-계정의-트러스트trust-변경하기"></a> 두 계정의 트러스트(Trust) 변경하기</h2>
 <p>이더리움과 다르게 스텔라는 완벽한 스마트 컨트랙트를 제공하지는 않습니다. 이더리움 방식의 스마트 컨트랙트는 최대한의 유연성을 제공하지만 DAO와 같은 주요 해킹 사건과 비교적 최근 패리티(parity) 지갑 오류로  입증되는 것처럼 위험도가 높고 오류가 발생하기 쉽습니다.</p>
-<p>스텔라에서의 스마트 컨트랙트라고 하면 일종의 트랜잭션으로 다양한 유형이 있습니다. 이러한 트랜잭션 유형 중에 하나는 &quot;<a href="https://www.stellar.org/developers/guides/concepts/list-of-operations.html#change-trust" target="_blank" rel="noopener">Change Trust</a>&quot;입니다.</p>
+<p>스텔라에서의 스마트 컨트랙트라고 하면 일종의 트랜잭션으로 다양한 유형이 있습니다. 이러한 트랜잭션 유형 중에 하나는 &quot;<a target="_blank" rel="noopener" href="https://www.stellar.org/developers/guides/concepts/list-of-operations.html#change-trust">Change Trust</a>&quot;입니다.</p>
 <p>토큰을 발행하기 위해서는 배포계정과 발행계정 간에 <strong>Change Trust</strong> 트랜잭션이 선행되어야 합니다. 배포계정이 배포하는 토큰이 발행계정에서 발행한 신뢰할 수 있는 토큰이라고 선언하는 과정입니다.</p>
 <p>아래와 같이 트랜잭션을 빌드하여 실행합니다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 배포계정(base account)</span></span><br><span class="line"><span class="keyword">var</span> keyPair = StellarSdk.Keypair.fromSecret(secret);</span><br><span class="line"></span><br><span class="line">server</span><br><span class="line">  .loadAccount(keyPair.publicKey()) <span class="comment">// 1. 배포계정의 Account 정보 로드</span></span><br><span class="line">  .then(<span class="function"><span class="keyword">function</span> (<span class="params">account</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 2. 트랜잭션 빌드</span></span><br><span class="line">    <span class="keyword">var</span> transaction = <span class="keyword">new</span> StellarSdk.TransactionBuilder(account)</span><br><span class="line">      .addOperation(StellarSdk.Operation.changeTrust(&#123;</span><br><span class="line">        asset: <span class="keyword">new</span> StellarSdk.Asset(<span class="string">'ANPIGON'</span>, <span class="string">'GCCJZXGB5QRWNVUV2IYCEIFPLU2GB2FF7U4Y25MCCWYSVQYYE4O3ZIJT'</span>)</span><br><span class="line">      &#125;))</span><br><span class="line">      .build();</span><br><span class="line">  </span><br><span class="line">    <span class="comment">// 3. 트랜잭션 서명</span></span><br><span class="line">    transaction.sign(keyPair);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 4. 트랜잭션 전송</span></span><br><span class="line">    <span class="keyword">return</span> server.submitTransaction(transaction);</span><br><span class="line">  &#125;)</span><br><span class="line">  .then(<span class="function"><span class="keyword">function</span> (<span class="params">transactionResult</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(transactionResult);</span><br><span class="line">  &#125;)</span><br><span class="line">  .catch(<span class="function"><span class="keyword">function</span>(<span class="params">err</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(err);</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
-<p><code>changeTrust</code> 오퍼레이션의 <code>asset</code>에는 <code>new Asset('&lt;asset code&gt;', '&lt;issuer&gt;')</code>와 같이 자산코드<sub>asset code</sub>와 발행자<sub>Issuer</sub>가 포함됩니다. 자산코드는 관례에 따라 <a href="https://en.wikipedia.org/wiki/ISO_4217" target="_blank" rel="noopener">ISO 4217 code</a>로 표현합니다. 또는 자신만의 자산코드를 만들 수도 있습니다. 이 글에서는 자산코드에 &quot;ANPIGON&quot;을 입력하였습니다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 배포계정(base account)</span></span><br><span class="line"><span class="keyword">var</span> keyPair = StellarSdk.Keypair.fromSecret(secret);</span><br><span class="line"></span><br><span class="line">server</span><br><span class="line">  .loadAccount(keyPair.publicKey()) <span class="comment">// 1. 배포계정의 Account 정보 로드</span></span><br><span class="line">  .then(<span class="function"><span class="keyword">function</span> (<span class="params">account</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 2. 트랜잭션 빌드</span></span><br><span class="line">    <span class="keyword">var</span> transaction = <span class="keyword">new</span> StellarSdk.TransactionBuilder(account)</span><br><span class="line">      .addOperation(StellarSdk.Operation.changeTrust(&#123;</span><br><span class="line">        asset: <span class="keyword">new</span> StellarSdk.Asset(<span class="string">&#x27;ANPIGON&#x27;</span>, <span class="string">&#x27;GCCJZXGB5QRWNVUV2IYCEIFPLU2GB2FF7U4Y25MCCWYSVQYYE4O3ZIJT&#x27;</span>)</span><br><span class="line">      &#125;))</span><br><span class="line">      .build();</span><br><span class="line">  </span><br><span class="line">    <span class="comment">// 3. 트랜잭션 서명</span></span><br><span class="line">    transaction.sign(keyPair);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 4. 트랜잭션 전송</span></span><br><span class="line">    <span class="keyword">return</span> server.submitTransaction(transaction);</span><br><span class="line">  &#125;)</span><br><span class="line">  .then(<span class="function"><span class="keyword">function</span> (<span class="params">transactionResult</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(transactionResult);</span><br><span class="line">  &#125;)</span><br><span class="line">  .catch(<span class="function"><span class="keyword">function</span>(<span class="params">err</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(err);</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
+<p><code>changeTrust</code> 오퍼레이션의 <code>asset</code>에는 <code>new Asset('&lt;asset code&gt;', '&lt;issuer&gt;')</code>와 같이 자산코드<sub>asset code</sub>와 발행자<sub>Issuer</sub>가 포함됩니다. 자산코드는 관례에 따라 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/ISO_4217">ISO 4217 code</a>로 표현합니다. 또는 자신만의 자산코드를 만들 수도 있습니다. 이 글에서는 자산코드에 &quot;ANPIGON&quot;을 입력하였습니다.</p>
 <h2 id="토큰-발행하기"><a class="markdownIt-Anchor" href="#토큰-발행하기"></a> 토큰 발행하기</h2>
 <p>토큰 생성은 발행계정에서 배포계정으로 payment 트랜잭션을 보내면 됩니다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 발행계정(issuing account)</span></span><br><span class="line"><span class="keyword">var</span> issuer = StellarSdk.Keypair.fromSecret(secret);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 토큰발행</span></span><br><span class="line">server</span><br><span class="line">  .loadAccount(issuer.publicKey()) <span class="comment">// 1. 발행계정의 Account 정보 로드 </span></span><br><span class="line">  .then(<span class="function"><span class="keyword">function</span>(<span class="params">account</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 2. 트랜잭션 빌드</span></span><br><span class="line">    <span class="keyword">var</span> transaction = <span class="keyword">new</span> StellarSdk.TransactionBuilder(account)</span><br><span class="line">      .addOperation(StellarSdk.Operation.payment(&#123;</span><br><span class="line">        destination: keyPair.publicKey(), <span class="comment">// 배포계정의 주소</span></span><br><span class="line">        asset: <span class="keyword">new</span> StellarSdk.Asset(assetCode, issuer.publicKey()),</span><br><span class="line">        amount: <span class="string">'10000'</span>,</span><br><span class="line">      &#125;))</span><br><span class="line">      .addMemo(StellarSdk.Memo.text(assetCode + <span class="string">' 토큰 발행'</span>))</span><br><span class="line">      .build();</span><br><span class="line">  </span><br><span class="line">    <span class="comment">// 3. 트랜잭션 서명</span></span><br><span class="line">    transaction.sign(issuer);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 4. 트랜잭션 전송</span></span><br><span class="line">    <span class="keyword">return</span> server.submitTransaction(transaction);</span><br><span class="line">  &#125;)</span><br><span class="line">  .then(<span class="function"><span class="keyword">function</span> (<span class="params">transactionResult</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(transactionResult);</span><br><span class="line">  &#125;)</span><br><span class="line">  .catch(<span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(err);</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 발행계정(issuing account)</span></span><br><span class="line"><span class="keyword">var</span> issuer = StellarSdk.Keypair.fromSecret(secret);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 토큰발행</span></span><br><span class="line">server</span><br><span class="line">  .loadAccount(issuer.publicKey()) <span class="comment">// 1. 발행계정의 Account 정보 로드 </span></span><br><span class="line">  .then(<span class="function"><span class="keyword">function</span>(<span class="params">account</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 2. 트랜잭션 빌드</span></span><br><span class="line">    <span class="keyword">var</span> transaction = <span class="keyword">new</span> StellarSdk.TransactionBuilder(account)</span><br><span class="line">      .addOperation(StellarSdk.Operation.payment(&#123;</span><br><span class="line">        destination: keyPair.publicKey(), <span class="comment">// 배포계정의 주소</span></span><br><span class="line">        asset: <span class="keyword">new</span> StellarSdk.Asset(assetCode, issuer.publicKey()),</span><br><span class="line">        amount: <span class="string">&#x27;10000&#x27;</span>,</span><br><span class="line">      &#125;))</span><br><span class="line">      .addMemo(StellarSdk.Memo.text(assetCode + <span class="string">&#x27; 토큰 발행&#x27;</span>))</span><br><span class="line">      .build();</span><br><span class="line">  </span><br><span class="line">    <span class="comment">// 3. 트랜잭션 서명</span></span><br><span class="line">    transaction.sign(issuer);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 4. 트랜잭션 전송</span></span><br><span class="line">    <span class="keyword">return</span> server.submitTransaction(transaction);</span><br><span class="line">  &#125;)</span><br><span class="line">  .then(<span class="function"><span class="keyword">function</span> (<span class="params">transactionResult</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(transactionResult);</span><br><span class="line">  &#125;)</span><br><span class="line">  .catch(<span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(err);</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
 <p>자, 이제 테스트넷에 우리가 만든 토큰을 10,000개를 발행했습니다.</p>
 <h2 id="토큰-발행-계정-잠그기"><a class="markdownIt-Anchor" href="#토큰-발행-계정-잠그기"></a> 토큰 발행 계정 잠그기</h2>
 <p>이제 우리에게는 10,000개의 토큰이 존재하기 때문에 발행계정을 영원히 잠글 시간입니다. 이것은 스텔라에서 제공하는 멀티시그<sub>multi-sig</sub> 옵션을 사용하여 수행합니다. <strong>Set Options</strong> 트랜잭션을 사용할 것입니다.</p>
@@ -368,9 +370,9 @@
 <p>아래와 같이 Set Options 트랜잭션를 서명하고 전송하면 완료됩니다!</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 발행계정(issuing account)</span></span><br><span class="line"><span class="keyword">var</span> issuer = StellarSdk.Keypair.fromSecret(secret);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 토큰발행</span></span><br><span class="line">server</span><br><span class="line">  .loadAccount(issuer.publicKey()) <span class="comment">// 1. 발행계정의 Account 정보 로드 </span></span><br><span class="line">  .then(<span class="function"><span class="keyword">function</span>(<span class="params">account</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 2. 트랜잭션 빌드</span></span><br><span class="line">    <span class="keyword">var</span> transaction = <span class="keyword">new</span> StellarSdk.TransactionBuilder(account)</span><br><span class="line">      .addOperation(StellarSdk.Operation.setOptions(&#123;</span><br><span class="line">        masterWeight: <span class="number">0</span>, <span class="comment">// 발행계정 가중치</span></span><br><span class="line">        lowThreshold: <span class="number">1</span>,</span><br><span class="line">        medThreshold: <span class="number">1</span>,</span><br><span class="line">        highThreshold: <span class="number">1</span></span><br><span class="line">      &#125;))</span><br><span class="line">  </span><br><span class="line">    <span class="comment">// 3. 트랜잭션 서명</span></span><br><span class="line">    transaction.sign(issuer);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 4. 트랜잭션 전송</span></span><br><span class="line">    <span class="keyword">return</span> server.submitTransaction(transaction);</span><br><span class="line">  &#125;)</span><br><span class="line">  .then(<span class="function"><span class="keyword">function</span> (<span class="params">transactionResult</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(transactionResult);</span><br><span class="line">  &#125;)</span><br><span class="line">  .catch(<span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(err);</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
 <p>테스트넷에 토큰이 있는지 보려면 아래와 같이 배포계정 링크로 조회할 수 있습니다.</p>
-<p><a href="https://horizon-testnet.stellar.org/accounts/GAHST5MT3VALXJGCEVETQVYMCO2CODTW3DXVXIDQ5SISEZJIPBI62ITI" target="_blank" rel="noopener">https://horizon-testnet.stellar.org/accounts/GAHST5MT3VALXJGCEVETQVYMCO2CODTW3DXVXIDQ5SISEZJIPBI62ITI</a></p>
+<p><a target="_blank" rel="noopener" href="https://horizon-testnet.stellar.org/accounts/GAHST5MT3VALXJGCEVETQVYMCO2CODTW3DXVXIDQ5SISEZJIPBI62ITI">https://horizon-testnet.stellar.org/accounts/GAHST5MT3VALXJGCEVETQVYMCO2CODTW3DXVXIDQ5SISEZJIPBI62ITI</a></p>
 <p>보시다시피 10,000개의 ANPIGON 토큰이 있습니다.</p>
-<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"balances"</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="string">"balance"</span>: <span class="string">"10000.0000000"</span>,</span><br><span class="line">      <span class="string">"limit"</span>: <span class="string">"10000.0000000"</span>,</span><br><span class="line">      <span class="string">"asset_type"</span>: <span class="string">"credit_alphanum12"</span>,</span><br><span class="line">      <span class="string">"asset_code"</span>: <span class="string">"ANPIGON"</span>,</span><br><span class="line">      <span class="string">"asset_issuer"</span>: <span class="string">"GCCJZXGB5QRWNVUV2IYCEIFPLU2GB2FF7U4Y25MCCWYSVQYYE4O3ZIJT"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="string">"balance"</span>: <span class="string">"9999.9999900"</span>,</span><br><span class="line">      <span class="string">"asset_type"</span>: <span class="string">"native"</span></span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br></pre></td></tr></table></figure>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;balances&quot;</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="string">&quot;balance&quot;</span>: <span class="string">&quot;10000.0000000&quot;</span>,</span><br><span class="line">      <span class="string">&quot;limit&quot;</span>: <span class="string">&quot;10000.0000000&quot;</span>,</span><br><span class="line">      <span class="string">&quot;asset_type&quot;</span>: <span class="string">&quot;credit_alphanum12&quot;</span>,</span><br><span class="line">      <span class="string">&quot;asset_code&quot;</span>: <span class="string">&quot;ANPIGON&quot;</span>,</span><br><span class="line">      <span class="string">&quot;asset_issuer&quot;</span>: <span class="string">&quot;GCCJZXGB5QRWNVUV2IYCEIFPLU2GB2FF7U4Y25MCCWYSVQYYE4O3ZIJT&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="string">&quot;balance&quot;</span>: <span class="string">&quot;9999.9999900&quot;</span>,</span><br><span class="line">      <span class="string">&quot;asset_type&quot;</span>: <span class="string">&quot;native&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br></pre></td></tr></table></figure>
 <p>자! 방금 스텔라 테스트넷에 우리가 만든 토큰을 발행했습니다.</p>
 <p>이상 마칩니다.</p>
 
@@ -383,8 +385,8 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/블록체인/" rel="tag"># 블록체인</a>
-              <a href="/tags/스텔라-루멘/" rel="tag"># 스텔라 루멘</a>
+              <a href="/tags/%EB%B8%94%EB%A1%9D%EC%B2%B4%EC%9D%B8/" rel="tag"># 블록체인</a>
+              <a href="/tags/%EC%8A%A4%ED%85%94%EB%9D%BC-%EB%A3%A8%EB%A9%98/" rel="tag"># 스텔라 루멘</a>
           </div>
 
         
@@ -396,7 +398,7 @@
 
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
-                <a href="/개발 이야기/블록체인/2018-07-17-steller-lumens-get-started/" rel="next" title="스텔라 루멘(Stellar lumens) 시작하기">
+                <a href="/%EA%B0%9C%EB%B0%9C%20%EC%9D%B4%EC%95%BC%EA%B8%B0/%EB%B8%94%EB%A1%9D%EC%B2%B4%EC%9D%B8/2018-07-17-steller-lumens-get-started/" rel="next" title="스텔라 루멘(Stellar lumens) 시작하기">
                   <i class="fa fa-chevron-left"></i> 스텔라 루멘(Stellar lumens) 시작하기
                 </a>
             </div>
@@ -404,7 +406,7 @@
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-                <a href="/kr/@anpigon/hrmjw/" rel="prev" title="[Steemit] 보팅파워와 재생시간 분석하기">
+                <a href="/kr/@anpigon/hrmjw" rel="prev" title="[Steemit] 보팅파워와 재생시간 분석하기">
                   [Steemit] 보팅파워와 재생시간 분석하기 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
@@ -452,7 +454,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#스텔라-계정-생성하기"><span class="nav-number">1.</span> <span class="nav-text"> 스텔라 계정 생성하기</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#두-계정의-트러스트trust-변경하기"><span class="nav-number">2.</span> <span class="nav-text"> 두 계정의 트러스트(Trust) 변경하기</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#토큰-발행하기"><span class="nav-number">3.</span> <span class="nav-text"> 토큰 발행하기</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#토큰-발행-계정-잠그기"><span class="nav-number">4.</span> <span class="nav-text"> 토큰 발행 계정 잠그기</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%EC%8A%A4%ED%85%94%EB%9D%BC-%EA%B3%84%EC%A0%95-%EC%83%9D%EC%84%B1%ED%95%98%EA%B8%B0"><span class="nav-number">1.</span> <span class="nav-text"> 스텔라 계정 생성하기</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EB%91%90-%EA%B3%84%EC%A0%95%EC%9D%98-%ED%8A%B8%EB%9F%AC%EC%8A%A4%ED%8A%B8trust-%EB%B3%80%EA%B2%BD%ED%95%98%EA%B8%B0"><span class="nav-number">2.</span> <span class="nav-text"> 두 계정의 트러스트(Trust) 변경하기</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%ED%86%A0%ED%81%B0-%EB%B0%9C%ED%96%89%ED%95%98%EA%B8%B0"><span class="nav-number">3.</span> <span class="nav-text"> 토큰 발행하기</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%ED%86%A0%ED%81%B0-%EB%B0%9C%ED%96%89-%EA%B3%84%EC%A0%95-%EC%9E%A0%EA%B7%B8%EA%B8%B0"><span class="nav-number">4.</span> <span class="nav-text"> 토큰 발행 계정 잠그기</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -468,7 +470,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">323</span>
+          <span class="site-state-item-count">325</span>
           <span class="site-state-item-name">포스트</span>
         </a>
       </div>
@@ -526,13 +528,13 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2019</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">안피곤</span>
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.9.0
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v5.4.0
   </div>
   <span class="post-meta-divider">|</span>
   <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.4.2
@@ -636,9 +638,17 @@
   <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
 <script src="/js/schemes/pisces.js"></script>
+
+
 <script src="/js/next-boot.js"></script>
+
   <script>
 var pjax = new Pjax({
   selectors: [
@@ -726,7 +736,9 @@ window.addEventListener('pjax:success', () => {
 
   
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.4.1/dist/instantsearch.min.css">
-<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.4.1/dist/instantsearch.js"></script><script src="/js/algolia-search.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.4.1/dist/instantsearch.js"></script>
+<script src="/js/algolia-search.js"></script>
+
 
 
 
@@ -762,7 +774,7 @@ window.addEventListener('pjax:success', () => {
       DISQUS.reset({
         reload: true,
         config: {page: {
-            url: "https://anpigon.github.io/개발 이야기/블록체인/2018-07-20-how-to-make-a-custom-token-on-stellar/",
+            url: "https://anpigon.github.io/%EA%B0%9C%EB%B0%9C%20%EC%9D%B4%EC%95%BC%EA%B8%B0/%EB%B8%94%EB%A1%9D%EC%B2%B4%EC%9D%B8/2018-07-20-how-to-make-a-custom-token-on-stellar/",
             identifier: "개발 이야기/블록체인/2018-07-20-how-to-make-a-custom-token-on-stellar/",
             title: "스텔라 루멘(Stellar Lumens) 토큰 만드는 방법"
           }

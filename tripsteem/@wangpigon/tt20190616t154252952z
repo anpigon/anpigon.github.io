@@ -1,0 +1,1239 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="yfKOiBPD8WlKH3NPG_CG1zr4MsCgCG1YVdGKhMS2CKc">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Noto Serif KR:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.4.2',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: true,
+    pangu: false,
+    algolia: {
+      appID: 'YY693DUDAI',
+      apiKey: 'db449d453b150820f66e7bc3d4523a17',
+      indexName: 'my-hexo-blog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '복사',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="오늘 날씨가 너무 좋네요. 그래서 광명동굴에 다녀왔습니다. 광명동굴은 2017~2019 한국이 꼭 가봐야 할 한국 100대 대표관광지 입니다. 우리는 1호선 광명역에 내려서 투어를 시작했습니다.먼저, 광명동굴에 대해서 간단하게 설명하고 광명동굴 투어를 시작하겠습니다. 광명동굴에 대한 이야기는 가이드님께 들은 이야기입니다.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[여행] 광명동굴 (스크롤 압박 주의!!!)">
+<meta property="og:url" content="https://anpigon.github.io/tripsteem/@wangpigon/tt20190616t154252952z">
+<meta property="og:site_name" content="안피곤님의 블로그">
+<meta property="og:description" content="오늘 날씨가 너무 좋네요. 그래서 광명동굴에 다녀왔습니다. 광명동굴은 2017~2019 한국이 꼭 가봐야 할 한국 100대 대표관광지 입니다. 우리는 1호선 광명역에 내려서 투어를 시작했습니다.먼저, 광명동굴에 대해서 간단하게 설명하고 광명동굴 투어를 시작하겠습니다. 광명동굴에 대한 이야기는 가이드님께 들은 이야기입니다.">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_151837-1560692955070.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_130105-1560690536226.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_135749-1560690742042.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_140149-1560690779509.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_140221-1560690795651.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_135841-1560690758870.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_140308-1560690809846.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_160226-1560694122219.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_155948-1560694085099.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_160011-1560694091777.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_160018-1560694098797.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_160232-1560694171165.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_140607-1560691135139.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_140636-1560691166784.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_140638-1560691174743.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_140724-1560691152995.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_140802-1560691213273.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_141343-1560691245558.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_141405-1560691260082.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_141408-1560691314139.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_155225-1560693936912.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_155235-1560693952395.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_141512-1560691346914.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_142019-1560691515845.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_143339-1560691673145.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_143452-1560691699906.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_143559-1560691730335.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_144144-1560691774756.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_141741-1560691374837.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_141814-1560691395297.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_141837-1560691415399.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_144620-1560691886963.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_141846-1560691423755.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_144249-1560691793701.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_144304-1560691801436.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_144312-1560691822348.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_144315-1560691855054.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_144321-1560691862135.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_144327-1560691868453.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_144653-1560691922434.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_144657-1560691906505.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_144759-1560692252171.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_144855-1560692274863.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_144939-1560692286257.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_144958-1560692407701.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_145100-1560692422891.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_145055-1560692414338.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_145116-1560692432524.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_145122-1560692438655.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_145153-1560692447854.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_145306-1560692537540.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_145300-1560692455849.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_145343-1560692550700.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_145357-1560692579359.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_145415-1560692596996.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_145546-1560692614085.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_145558-1560692608765.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_145627-1560692668579.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_150129-1560692750400.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_150137-1560692767965.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_150306-1560692822750.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_150421-1560692844121.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_150446-1560692834153.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_151126-1560692860909.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_151208-1560692873438.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_151221-1560692878323.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_151722-1560692896047.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_151738-1560692906987.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_151743-1560692912995.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_151748-1560692917981.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_151755-1560692923271.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_151800-1560692928595.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_151850-1560693020056.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_151846-1560692996857.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_151857-1560693004508.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_151903-1560693033376.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_151918-1560693055618.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_151925-1560693061149.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_151938-1560693073926.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_151953-1560693082876.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_152014-1560693091932.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_152025-1560693097595.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_152103-1560693107847.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_152355-1560693126032.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_152504-1560693153454.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_152536-1560693159541.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_152559-1560693214087.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_15262315606-1560698041821.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_15263715606-1560698047417.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_152746-1560693293697.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_152808-1560693313793.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_152940-1560693331875.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_152743-1560693270181.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_153023-1560693346864.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_153027-1560693355705.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_153107-1560693388500.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_153309-1560693441225.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_153325-1560693474596.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_153203-1560693417760.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_153216-1560693424071.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_153304-1560693429773.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_153332-1560693481774.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_153354-1560693489887.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_15352015606-1560698624375.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_153551-1560693514570.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_153625-1560693521766.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_154441-1560693851643.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_15381115606-1560698795041.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_153827-1560693576733.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_153840-1560693586364.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_154100-1560693594040.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_154115-1560693604849.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_154111-1560693610292.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_154200-1560693708905.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_154213-1560693718091.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_154226-1560693727738.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_154534-1560693890180.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_153317-1560693781778.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_154358-1560693791819.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_154423-1560693803193.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_160800-1560694241565.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_160457-1560694261213.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_160526-1560694265594.jpg">
+<meta property="og:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_160536-1560694273098.jpg">
+<meta property="og:image" content="https://cdn.steemitimages.com/DQmUFZTyUVo6PuZGHeF9VxLHxkrufqLa37Wz8U6A9j115JU/%EF%BC%85EB%EF%BC%85B0%EF%BC%85B0%EF%BC%85EB%EF%BC%8584%EF%BC%8588_%EF%BC%85EB%EF%BC%85B4%EF%BC%8584.jpg">
+<meta property="article:published_time" content="2019-06-16T15:42:54.000Z">
+<meta property="article:modified_time" content="2021-04-21T11:50:30.095Z">
+<meta property="article:author" content="안피곤">
+<meta property="article:tag" content="트립스팀">
+<meta property="article:tag" content="국내여행">
+<meta property="article:tag" content="동굴">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_151837-1560692955070.jpg">
+
+<link rel="canonical" href="https://anpigon.github.io/tripsteem/@wangpigon/tt20190616t154252952z">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>[여행] 광명동굴 (스크롤 압박 주의!!!) | 안피곤님의 블로그</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-20589042-10"></script>
+    <script pjax>
+      var host = window.location.hostname;
+      if (host !== "localhost" || !true) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-20589042-10');
+      }
+    </script>
+
+
+
+
+
+
+  
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-2365531018407022",
+          enable_page_level_ads: false
+     });
+</script>
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="안피곤님의 블로그" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">안피곤님의 블로그</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">코딩, 독서, 여행, 영화, 맛집</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>홈</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>태그<span class="badge">139</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>카테고리<span class="badge">25</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>아카이브<span class="badge">325</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>검색
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input" id="search-input"></div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="algolia-results">
+  <div id="algolia-stats"></div>
+  <div id="algolia-hits"></div>
+  <div id="algolia-pagination" class="algolia-pagination"></div>
+</div>
+
+  
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="ko">
+    <link itemprop="mainEntityOfPage" href="https://anpigon.github.io/tripsteem/@wangpigon/tt20190616t154252952z">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/me.jpg">
+      <meta itemprop="name" content="안피곤">
+      <meta itemprop="description" content="시간이 천천히 갔으면 좋겠다.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="안피곤님의 블로그">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          [여행] 광명동굴 (스크롤 압박 주의!!!)
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">작성일</span>
+
+              <time title="Post created: 2019-06-17 00:42:54" itemprop="dateCreated datePublished" datetime="2019-06-17T00:42:54+09:00">2019-06-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Updated at: 2021-04-21 20:50:30" itemprop="dateModified" datetime="2021-04-21T20:50:30+09:00">2021-04-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%EC%97%AC%ED%96%89-%EC%9D%B4%EC%95%BC%EA%B8%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">여행 이야기</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/tripsteem/@wangpigon/tt20190616t154252952z#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="/tripsteem/@wangpigon/tt20190616t154252952z" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+            <div style="margin-bottom:35px;margin-top:-20px;">
+              <!-- 블로그 본문 상단 광고 -->
+              <ins class="adsbygoogle"
+                  style="display:block"
+                  data-ad-client="ca-pub-2365531018407022"
+                  data-ad-slot="3390644000"
+                  data-ad-format="auto"
+                  data-full-width-responsive="true"></ins>
+              <script>
+                  (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+        <center>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_151837-1560692955070.jpg"></p></center><p></p><p>오늘 날씨가 너무 좋네요. 그래서 <strong>광명동굴</strong>에 다녀왔습니다. 광명동굴은 <a target="_blank" rel="noopener" href="https://korean.visitkorea.or.kr/other/other_list.do?otdid=622bcd99-84fa-11e8-8165-020027310001&amp;choiceTag=19_20%EF%BC%85ED%EF%BC%8595%EF%BC%859C%EF%BC%85EA%EF%BC%85B5%EF%BC%85AD%EF%BC%85EA%EF%BC%85B4%EF%BC%8580%EF%BC%85EA%EF%BC%85B4%EF%BC%8591100%EF%BC%85EC%EF%BC%8584%EF%BC%85A0&amp;choiceTagId=b89af640-08d4-11e9-9488-02001c6b0001&amp;temp="><strong>2017~2019 한국이 꼭 가봐야 할 한국 100대 대표관광지</strong></a> 입니다. 우리는 1호선 광명역에 내려서 투어를 시작했습니다.</p><p>먼저, 광명동굴에 대해서 간단하게 설명하고 광명동굴 투어를 시작하겠습니다. 광명동굴에 대한 이야기는 가이드님께 들은 이야기입니다.</p><a id="more"></a>
+
+
+<blockquote>
+<p>광명동굴(구 시흥광산)은 일제강점기 자원수탁의 목적으로 개발되었습니다. 바로 일제강점기의 강제징용과 자원수탈의 현장이었습니다. 그리고 또한 해방 이후 근대 산업화의 흔적이 남아있는 곳입니다. 1972년 대홍수로 폐광 된 이후 40년간 새우젓 창고로 활용 되었습니다. 하지만 2011년 광명시에서 광명동굴을 매입하면서 이제는 문화예술 관광의 대표 명소가 되었습니다.</p>
+</blockquote>
+<p><br>지금부터 광명동굴의 모든 것을 싹 다 보여 드리겠습니다. 그래서 사진을 좀 많이 찍었습니다. 사진이 많아서 스크롤이 매우 깁니다.</p>
+<br>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_130105-1560690536226.jpg"></p>
+<blockquote>
+<p>광명역 8번 출구로 나오면 버스 정류장이 있습니다. 이곳에서 17번 또는 77B번 버스를 타면 광명동굴에 내려줍니다.</p>
+</blockquote>
+<br>
+<p>광명동굴 매표소에 도착했습니다. 팁을 알려드리면, 광명시와 카카오톡 플러스친구면 20％ 할인을 받을 수 있습니다. 광명시와 카카오플러스 친구가 아니라면 친구하고 할인권 받으세요. ㅋ</p>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_135749-1560690742042.jpg"></p>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_140149-1560690779509.jpg"></p>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_140221-1560690795651.jpg"></p>
+<blockquote>
+<p>2019년 4월 27일 부터 11월 24일까지 레인보우 팩토리 전시를 하고 있네요. 저는 보지 않았습니다. 하지만 관심있는 분들은 오셔서 관람하고 후기 남기세요. ㅋ</p>
+</blockquote>
+<br>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_135841-1560690758870.jpg"></p>
+<blockquote>
+<p>이것은 광명시자원회수시설 건물 굴뚝입니다. 쓰레기를 태우면 연기가 이 굴뚝으로 빠져나간다고 합니다.</p>
+</blockquote>
+<br>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_140308-1560690809846.jpg"></p>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_160226-1560694122219.jpg"></p>
+<blockquote>
+<p>많은 가족들이 광명동굴에 나들이 나왔어요. 오늘 날씨가 좋아서 그런지 사람이 무척 많았습니다.</p>
+</blockquote>
+<br>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_155948-1560694085099.jpg"></p>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_160011-1560694091777.jpg"></p>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_160018-1560694098797.jpg"></p>
+<blockquote>
+<p>사실 저는 VR체험관을 이용하지 않았어요. 그냥 VR체험관 건물 앞에서 사진만 찍었습니다.</p>
+</blockquote>
+<p><br><br></p>
+<hr><center><h1>광명동굴 입구</h1></center><hr><br>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_160232-1560694171165.jpg"></p>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_140607-1560691135139.jpg"></p>
+<blockquote>
+<p>동굴 입구 내부에서 에어콘보다 차가운 바람이 불어옵니다. 가실 분은 겉옷 꼭 챙겨가세요. 생각보다 많이 추워요.</p>
+</blockquote>
+<br>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_140636-1560691166784.jpg"></p>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_140638-1560691174743.jpg"></p>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_140724-1560691152995.jpg"></p>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_140802-1560691213273.jpg"></p>
+<blockquote>
+<p>여긴 사실 자연 동굴이 아니고 폐광을 동굴로 만든 곳입니다.</p>
+</blockquote>
+<p><br><br></p>
+<hr><center><h1>웜홀 광장</h1></center><hr><br>
+<p>웜홀 광장은 100년의 시공간을 넘어서 과거와 현재를 연결해줍니다. 이곳은 4개의 통로가 만나는 곳입니다. 그리고 동굴 세상으로 여행을 떠나는 출발지점입니다.</p>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_141343-1560691245558.jpg"></p>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_141405-1560691260082.jpg"></p>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_141408-1560691314139.jpg"></p>
+<p><br><br></p>
+<hr><center><h1>빛의 공간</h1></center><hr><br>
+<p>어둠 속에서 가장 아름다운 존재는 바로 빛입니다. 이곳은 빛을 주제로 하나의 터널을 예술공간으로 만들었습니다. 음악에 맞춰 반짝이는 LED 빛 터널과 작가의 조명 작품을 만날 수 있습니다.</p>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_155225-1560693936912.jpg"></p>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_155235-1560693952395.jpg"></p>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_141512-1560691346914.jpg"></p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/10wc5NFpyeI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<p><br><br></p>
+<hr><center><h1>동굴예술의 전당</h1></center><hr><br>
+<p>이곳은 대한민국에서 유일하게 동굴 내에 있는 예술의 전당입니다. 많은 예술가와 협업을 통한 공연과 미디어파사드쇼를 볼 수 있는 곳입니다. 동굴 벽을 스크린 삼아 빔프로젝트를 투영하여 보여주는 미디어파드쇼는 정말 환상적입니다. 여기 오시면 꼭 보아야 할 관광 포인트입니다.</p>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_142019-1560691515845.jpg"></p>
+<p><br>입구에 들어오니 미디어파드쇼가 바로 시작되었습니다.</p>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_143339-1560691673145.jpg"></p>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_143452-1560691699906.jpg"></p>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_143559-1560691730335.jpg"></p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/6hKR7OIfnKU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<p><br><br></p>
+<hr><center><h1>동굴아쿠아월드</h1></center><hr><br>
+<p>동굴 지하 암반수를 이용하여 만든 아쿠아리움입니다. 국내의 토종물고기와 전세계 다양한 어종을 볼 수 있습니다. 지하수라서 물이 정말 맑습니다.</p>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_144144-1560691774756.jpg"></p>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_141741-1560691374837.jpg"></p>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_141814-1560691395297.jpg"></p>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_141837-1560691415399.jpg"></p>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_144620-1560691886963.jpg"></p>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_141846-1560691423755.jpg"></p>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_144249-1560691793701.jpg"></p>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_144304-1560691801436.jpg"></p>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_144312-1560691822348.jpg"></p>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_144315-1560691855054.jpg"></p>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_144321-1560691862135.jpg"></p>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_144327-1560691868453.jpg"></p>
+<table>
+<thead>
+<tr>
+<th><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_144653-1560691922434.jpg"></th>
+<th><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_144657-1560691906505.jpg"></th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+<blockquote>
+<p>우리 피라냐는 이빨이 없어용. ㅠㅠ</p>
+</blockquote>
+<p><br><br></p>
+<hr><center><h1>황금길</h1></center><hr><br>
+<p>황금길은 황금을 주제로 만든 예술공간입니다. 황금벽, 황금궁전, 황금방 등을 볼 수 있습니다.</p>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_144759-1560692252171.jpg"></p>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_144855-1560692274863.jpg"></p>
+<blockquote>
+<p>벽을 황금색을 칠했는지 반짝 반짝 하네요.</p>
+</blockquote>
+<br>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_144939-1560692286257.jpg"></p>
+<blockquote>
+<p>소망의 초신성입니다. 방문객들의 소망을 적은 황금패를 보아서 만들었다고 합니다. 초신성 아래에서 소원을 기원하면 좋은 일이 있을 것이라고 합니다.</p>
+</blockquote>
+<br>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_144958-1560692407701.jpg"></p>
+<blockquote>
+<p>부를 가져다 주는 황금의 여신입니다. 뿔에 담겨있는 황금을 만지면 부자가 된다고 합니다.</p>
+</blockquote>
+<br>
+<table>
+<thead>
+<tr>
+<th><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_145100-1560692422891.jpg"></th>
+<th><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_145055-1560692414338.jpg"></th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+<blockquote>
+<p>그래서 만져보았습니다. 이곳에 와서 우리는 부자가 되는 행운을 받아갑니다.</p>
+</blockquote>
+<br>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_145116-1560692432524.jpg"></p>
+<blockquote>
+<p>방문객들의  소원이 적힌 황금패가 벽면 빼곡히 걸려있습니다. 눈에 띄는 황금패를 하나씩 읽어봅니다.</p>
+</blockquote>
+<br>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_145122-1560692438655.jpg"></p>
+<blockquote>
+<p>답십리 젠트리움 사업이 꼭 성공했으면 좋겠습니다. 그리고 김영운님과 김보람님의 사랑도 영원했으면 좋겠습니다.</p>
+</blockquote>
+<br>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_145153-1560692447854.jpg"></p>
+<blockquote>
+<p>조근남님은 로또 1등에 당첨되었으면 좋겠습니다. 그리고 우리 가족, 희정이 가족 모두 행복했으면 좋겠습니다.</p>
+</blockquote>
+<br>
+<table>
+<thead>
+<tr>
+<th><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_145306-1560692537540.jpg"></th>
+<th><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_145300-1560692455849.jpg"></th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+<blockquote>
+<p>황금패는 이곳에서 구입하여 소원을 적어서 벽에 걸면 됩니다. 황금패는 4 종류가 있습니다.</p>
+</blockquote>
+<br>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_145343-1560692550700.jpg"></p>
+<blockquote>
+<p>높이 9m, 너비 8.5m로 분당 1.4톤의 지하 암반수가 폭포가 되어 낙하합니다. 동굴 속이라서 폭포소리가 매우 웅장합니다. 조명 때문에 폭포가 매우 이쁩니다.</p>
+</blockquote>
+<p><br><br></p>
+<hr><center><h1>동굴지하세계</h1></center><hr><br>
+<p>여기는 동굴 지하세계로 내려가는 입구입니다. 163계단이라고 합니다. 하지만 계단이 매우 가파릅니다.</p>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_145357-1560692579359.jpg"></p>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_145415-1560692596996.jpg"></p>
+<p><br>이곳은 황금 궁전입니다. 황금 궁전에는 동굴요정 아이샤가 황금망치를 들고 황금의 방을 지키고 있습니다.</p>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_145546-1560692614085.jpg"></p>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_145558-1560692608765.jpg"></p>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_145627-1560692668579.jpg"></p>
+<blockquote>
+<p>여기는 황금의 방입니다. 동굴요정 아이샤가 만들어낸 황금보물이 있는 곳입니다. 관람객들이 이 방에 던진 기부금은 모두 청소년 복지를 위해서 사용된다고 합니다.</p>
+</blockquote>
+<br> 
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_150129-1560692750400.jpg"></p>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_150137-1560692767965.jpg"></p>
+<blockquote>
+<p>조명에 비치는 동굴 지하 호수는 정말 이뻤습니다.</p>
+</blockquote>
+<br> 
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_150306-1560692822750.jpg"></p>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_150421-1560692844121.jpg"></p>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_150446-1560692834153.jpg"></p>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_151126-1560692860909.jpg"></p>
+<br>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_151208-1560692873438.jpg"></p>
+<blockquote>
+<p>먹는 광부샘물은 동굴 지하 1레벨의 암반수를 활용한 약수터입니다. 지하 갱도에서 작업하던 광부들의 목마름을 해결해주던 곳이라고 합니다.</p>
+</blockquote>
+<br>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_151221-1560692878323.jpg"></p>
+<blockquote>
+<p>그냥 일반 아리수 식수대랑 똑같네요.</p>
+</blockquote>
+<br>
+<p>이곳은 근대역사관입니다. 그리고 광명동굴의 역사를 볼 수 있는 곳입니다.</p>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_151722-1560692896047.jpg"></p>
+<table>
+<thead>
+<tr>
+<th><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_151738-1560692906987.jpg"></th>
+<th><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_151743-1560692912995.jpg"></th>
+<th><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_151748-1560692917981.jpg"></th>
+<th><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_151755-1560692923271.jpg"></th>
+<th><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_151800-1560692928595.jpg"></th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+<br>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_151850-1560693020056.jpg"></p>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_151846-1560692996857.jpg"></p>
+<table>
+<thead>
+<tr>
+<th><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_151857-1560693004508.jpg"></th>
+<th><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_151903-1560693033376.jpg"></th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+<blockquote>
+<p>디오라마 디테일이 깨알 같습니다. 귀엽네요. ㅋ</p>
+</blockquote>
+<br>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_151918-1560693055618.jpg"></p>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_151925-1560693061149.jpg"></p>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_151938-1560693073926.jpg"></p>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_151953-1560693082876.jpg"></p>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_152014-1560693091932.jpg"></p>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_152025-1560693097595.jpg"></p>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_152103-1560693107847.jpg"></p>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_152355-1560693126032.jpg"></p>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_152504-1560693153454.jpg"></p>
+<p><br>다음 디오라마는 동굴 예술의전당 건설 당시의 모습을 재연한 것 같습니다. 너무 멋졌습니다.</p>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_152536-1560693159541.jpg"></p>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_152559-1560693214087.jpg"></p>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_15262315606-1560698041821.jpg"></p>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_15263715606-1560698047417.jpg"></p>
+<p><br><br></p>
+<hr><center><h1>동굴식물원</h1></center><hr><br>
+<p>동굴 속에도 식물원이 있습니다. 바로 동굴 식물원을 소개합니다. LED 빛으로 식물 광합성 작용을 돕는다고 합니다. 수족관에서 분해된 물고기의 배설물과 유기물을 영양분으로 활용하여 식물의 성장을 돕고 있습니다.</p>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_152746-1560693293697.jpg"></p>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_152808-1560693313793.jpg"></p>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_152940-1560693331875.jpg"></p>
+<p><br><br></p>
+<hr><center><h1>와인동굴</h1></center><hr><br>
+<p>이제 마지막 코스인 와인동굴 입니다. 이곳은 연중 12도를 항상 유지하기 때문에 와인을 보관하기 가장 좋은 장소입니다.</p>
+<p>그래서 와인 한방울 생산하지 않는 광명시가 와인동굴 덕분에 대한민국 국산화인의 메카가 되었습니다.</p>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_152743-1560693270181.jpg"></p>
+<table>
+<thead>
+<tr>
+<th><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_153023-1560693346864.jpg"></th>
+<th><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_153027-1560693355705.jpg"></th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_153107-1560693388500.jpg"></p>
+<blockquote>
+<p>참고로 와인동굴은 드라마와 뉴스에도 나온 매우 유명한 곳입니다. ㅋ 관련 기사도 찾아봤습니다. <a target="_blank" rel="noopener" href="http://www.ohmynews.com/NWS_Web/View/at_pg_w.aspx?CNTN_CD=A0002130997">“오마이뉴스 - 와인 한 방울 안 나는 광명 어떻게 국산 와인 메카 됐나”</a></p>
+</blockquote>
+<br>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_153309-1560693441225.jpg"></p>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_153325-1560693474596.jpg"></p>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_153203-1560693417760.jpg"></p>
+<blockquote>
+<p>이곳에서 와인을 공부하고 갑니다. 너무 잘만들어져 있어서 놀랐습니다.</p>
+</blockquote>
+<br>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_153216-1560693424071.jpg"></p>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_153304-1560693429773.jpg"></p>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_153332-1560693481774.jpg"></p>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_153354-1560693489887.jpg"></p>
+<p><br>와인시음대에 오시면 와인 시음을 할 수 있습니다.</p>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_15352015606-1560698624375.jpg"></p>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_153551-1560693514570.jpg"></p>
+<blockquote>
+<p>시음대에서 와인 판매도 같이 하는 것 같습니다.</p>
+</blockquote>
+<br>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_153625-1560693521766.jpg"></p>
+<blockquote>
+<p>현재 시음하는 와인은 로제 와인입니다. 와인의 장밋빛 색이 정말 이쁩니다.</p>
+</blockquote>
+<br>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_154441-1560693851643.jpg"></p>
+<blockquote>
+<p>마시기 전에 찍었어야 하는데 다 먹어버렸네요. 장밋빛 색의 와인을 보여드려야하는데 ㅠㅠ</p>
+</blockquote>
+<br>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_15381115606-1560698795041.jpg"></p>
+<br>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_153827-1560693576733.jpg"></p>
+<blockquote>
+<p>통로를 따라 가다 보니 와인판매대가 보입니다. 이곳에서 와인을 구입할 수 있을 것 같습니다.</p>
+</blockquote>
+<br>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_153840-1560693586364.jpg"></p>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_154100-1560693594040.jpg"></p>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_154115-1560693604849.jpg"></p>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_154111-1560693610292.jpg"></p>
+<br>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_154200-1560693708905.jpg"></p>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_154213-1560693718091.jpg"></p>
+<br>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_154226-1560693727738.jpg"></p>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_154534-1560693890180.jpg"></p>
+<p><br>와인동굴의 끝에는 <strong>마루드카브</strong> 레스토랑이 위치하고 있습니다.</p>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_153317-1560693781778.jpg"></p>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_154358-1560693791819.jpg"></p>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_154423-1560693803193.jpg"></p>
+<blockquote>
+<p>레스토랑 손님만 입장이 가능합니다. 그래서 내부에 들어가지는 않았습니다.</p>
+</blockquote>
+<p><br><br></p>
+<hr><center><h1>동굴 탈출</h1></center><hr><br>
+<p>와인동굴을 마지막으로 드디어 동굴 출구로 나왔습니다. 시계를 확인해보니 동굴 속에 약 2시간 정도 있었습니다. 꽤 오래 있었네요. 광명동굴에 볼거리가 많아서 시간 가는 줄 몰랐습니다.</p>
+<p><br>기념품 숍은 모든 관광의 마지막 필수 코스입니다. 이제 이 기념품 숍을 들어가면 오늘 관광도 끝이네요. 아쉽습니다.</p>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_160800-1560694241565.jpg"></p>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_160457-1560694261213.jpg"></p>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_160526-1560694265594.jpg"></p>
+<p><img alt data-src="https://pubbee.s3.ap-northeast-2.amazonaws.com/origin/20190616_160536-1560694273098.jpg"></p>
+<blockquote>
+<p>기념품 숖에는 광명동굴 캐릭터를 활용한 굿즈를 팔고 있습니다. 그리고 유리병으로 만든 접시가 매우 특이했습니다.</p>
+</blockquote>
+<p><br><br></p>
+<p>올 여름 광광지로 시원한 광명동굴을 추천합니다.</p>
+<hr><b>여행지 정보</b><br>● 대한민국 경기도 광명시 학온동 가학로85번길 142<br><br><hr><br><center><a target="_blank" rel="noopener" href="https://kr.tripsteem.com/post/tt20190616t154252952z">[여행] 광명동굴 (스크롤 압박 주의!!!)</a></center><br>
+<center>
+이 글은 스팀 기반 여행정보 서비스
+<p><a target="_blank" rel="noopener" href="https://kr.tripsteem.com/"><b>trips.teem</b></a> 으로 작성된 글 입니다.</p>
+<p><a target="_blank" rel="noopener" href="https://kr.tripsteem.com/"><img alt data-src="https://cdn.steemitimages.com/DQmUFZTyUVo6PuZGHeF9VxLHxkrufqLa37Wz8U6A9j115JU/%EF%BC%85EB%EF%BC%85B0%EF%BC%85B0%EF%BC%85EB%EF%BC%8584%EF%BC%8588_%EF%BC%85EB%EF%BC%85B4%EF%BC%8584.jpg"></a></p>
+</center>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%ED%8A%B8%EB%A6%BD%EC%8A%A4%ED%8C%80/" rel="tag"># 트립스팀</a>
+              <a href="/tags/%EA%B5%AD%EB%82%B4%EC%97%AC%ED%96%89/" rel="tag"># 국내여행</a>
+              <a href="/tags/%EB%8F%99%EA%B5%B4/" rel="tag"># 동굴</a>
+          </div>
+
+        
+  <div class="post-widgets">
+    <div class="wp_rating">
+      <div id="wpac-rating"></div>
+    </div>
+  </div>
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/tasteem/@wangpigon/tasteem-75f30d" rel="next" title="[카페] 뚝섬유원지역 분위기 좋은 카페 - 커피더쏠">
+                  <i class="fa fa-chevron-left"></i> [카페] 뚝섬유원지역 분위기 좋은 카페 - 커피더쏠
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/aaa/@wangpigon/32udcx" rel="prev" title="⟪맨 인 블랙: 인터내셔널⟫ - 저절로 하품 나오는 영화">
+                  ⟪맨 인 블랙: 인터내셔널⟫ - 저절로 하품 나오는 영화 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    
+  <div class="comments" id="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          목차
+        </li>
+        <li class="sidebar-nav-overview">
+          흝어보기
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">광명동굴 입구</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">웜홀 광장</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">빛의 공간</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">동굴예술의 전당</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">5.</span> <span class="nav-text">동굴아쿠아월드</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">6.</span> <span class="nav-text">황금길</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">7.</span> <span class="nav-text">동굴지하세계</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">8.</span> <span class="nav-text">동굴식물원</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">9.</span> <span class="nav-text">와인동굴</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">10.</span> <span class="nav-text">동굴 탈출</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="안피곤"
+    src="/images/me.jpg">
+  <p class="site-author-name" itemprop="name">안피곤</p>
+  <div class="site-description" itemprop="description">시간이 천천히 갔으면 좋겠다.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">325</span>
+          <span class="site-state-item-name">포스트</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-name">카테고리</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">139</span>
+        <span class="site-state-item-name">태그</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/anpigon" title="GitHub &rarr; https://github.com/anpigon" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:markan82@gmail.com" title="E-Mail &rarr; mailto:markan82@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+          <!-- 정사각형 광고 -->
+          <div style="margin-top: 15px;">
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-2365531018407022"
+                data-ad-slot="7521850306"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+          </div>
+    </div>
+  </aside>
+  <div id="sidebar-dimmer">3</div>
+
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">안피곤</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v5.4.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.4.2
+  </div>
+
+        
+
+
+
+
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-firestore.js"></script>
+  <script>
+    firebase.initializeApp({
+      apiKey: 'AIzaSyA4QZWCWb3IuIHjbkAmO0ttIM2b-qtLTP8',
+      projectId: 'next-blog-8f9a0'
+    });
+
+    function getCount(doc, increaseCount) {
+      // IncreaseCount will be false when not in article page
+
+      return doc.get().then(d => {
+        var count = 0;
+        if (!d.exists) { // Has no data, initialize count
+          if (increaseCount) {
+            doc.set({
+              count: 1
+            });
+            count = 1;
+          }
+        } else { // Has data
+          count = d.data().count;
+          if (increaseCount) {
+            // If first view this article
+            doc.set({ // Increase count
+              count: count + 1
+            });
+            count++;
+          }
+        }
+
+        return count;
+      });
+    }
+
+    function appendCountTo(el) {
+      return count => {
+        el.innerText = count;
+      }
+    }
+  </script>
+  <script pjax>
+    (function() {
+      var db = firebase.firestore();
+      var articles = db.collection('articles');
+
+      if (CONFIG.page.isPost) { // Is article page
+        var title = document.querySelector('.post-title').innerText.trim();
+        var doc = articles.doc(title);
+        var increaseCount = true;
+        if (localStorage.getItem(title)) {
+          increaseCount = false;
+        } else {
+          // Mark as visited
+          localStorage.setItem(title, true);
+        }
+        getCount(doc, increaseCount).then(appendCountTo(document.querySelector('.firestore-visitors-count')));
+      } else if (CONFIG.page.isHome) { // Is index page
+        var promises = [...document.querySelectorAll('.post-title')].map(element => {
+          var title = element.innerText.trim();
+          var doc = articles.doc(title);
+          return getCount(doc);
+        });
+        Promise.all(promises).then(counts => {
+          var metas = document.querySelectorAll('.firestore-visitors-count');
+          counts.forEach((val, idx) => {
+            appendCountTo(metas[idx])(val);
+          });
+        });
+      }
+    })();
+  </script>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.getAttribute('pjax') !== null) {
+      element.setAttribute('pjax', '');
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+  <script pjax>
+  if (CONFIG.page.isPost) {
+    wpac_init = window.wpac_init || [];
+    wpac_init.push({
+      widget: 'Rating',
+      id: 21712,
+      el: 'wpac-rating',
+      color: 'fc6423'
+    });
+    (function() {
+      if ('WIDGETPACK_LOADED' in window) return;
+      WIDGETPACK_LOADED = true;
+      var mc = document.createElement('script');
+      mc.type = 'text/javascript';
+      mc.async = true;
+      mc.src = '//embed.widgetpack.com/widget.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+    })();
+  }
+  </script>
+
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.4.1/dist/instantsearch.min.css">
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.4.1/dist/instantsearch.js"></script>
+<script src="/js/algolia-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+
+  
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://anpigon-github-io.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  function loadComments() {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: {page: {
+            url: "https://anpigon.github.io/tripsteem/@wangpigon/tt20190616t154252952z",
+            identifier: "/tripsteem/@wangpigon/tt20190616t154252952z",
+            title: "[여행] 광명동굴 (스크롤 압박 주의!!!)"
+          }
+        }
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://anpigon-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  }
+    (function() {
+      var offsetTop = document.getElementById('comments').offsetTop - window.innerHeight;
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        window.addEventListener('load', loadComments, false);
+      } else {
+        var disqus_scroll = () => {
+          // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = document.getElementById('comments').offsetTop - window.innerHeight;
+          var scrollTop = window.scrollY;
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            window.removeEventListener('scroll', disqus_scroll);
+            loadComments();
+          }
+        };
+        window.addEventListener('scroll', disqus_scroll);
+      }
+    })();
+  
+</script>
+
+    </div>
+</body>
+</html>

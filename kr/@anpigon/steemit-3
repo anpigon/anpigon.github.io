@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="yfKOiBPD8WlKH3NPG_CG1zr4MsCgCG1YVdGKhMS2CKc">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Noto Serif KR:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.4.2',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: true,
+    pangu: false,
+    algolia: {
+      appID: 'YY693DUDAI',
+      apiKey: 'db449d453b150820f66e7bc3d4523a17',
+      indexName: 'my-hexo-blog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '복사',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="이번 시간에는 스크롤을 내렸을때 글 목록을 자동으로 가져오는 기능을 구현해보도록 하겠습니다. 이런 기능을 인피니티 스크롤(Infinite Scroll) 또는 무한 스크롤이라고 합니다.아래는 무한 스크롤이 구현된 화면입니다. 이전글 스팀잇(Steemit)기반 앱 만들기 #1 스팀잇(Steemit)기반 앱 만들기 #2 - 최근글 가져오기">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[Vue.js] 스팀잇(Steemit)기반 앱 만들기 #3 - 무한 스크롤 구현하기">
+<meta property="og:url" content="https://anpigon.github.io/kr/@anpigon/steemit-3">
+<meta property="og:site_name" content="안피곤님의 블로그">
+<meta property="og:description" content="이번 시간에는 스크롤을 내렸을때 글 목록을 자동으로 가져오는 기능을 구현해보도록 하겠습니다. 이런 기능을 인피니티 스크롤(Infinite Scroll) 또는 무한 스크롤이라고 합니다.아래는 무한 스크롤이 구현된 화면입니다. 이전글 스팀잇(Steemit)기반 앱 만들기 #1 스팀잇(Steemit)기반 앱 만들기 #2 - 최근글 가져오기">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:image" content="https://imgur.com/ZrHgDFi.gif">
+<meta property="article:published_time" content="2018-08-03T15:28:45.000Z">
+<meta property="article:modified_time" content="2021-04-21T11:50:30.075Z">
+<meta property="article:author" content="안피곤">
+<meta property="article:tag" content="Vue">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://imgur.com/ZrHgDFi.gif">
+
+<link rel="canonical" href="https://anpigon.github.io/kr/@anpigon/steemit-3">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>[Vue.js] 스팀잇(Steemit)기반 앱 만들기 #3 - 무한 스크롤 구현하기 | 안피곤님의 블로그</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-20589042-10"></script>
+    <script pjax>
+      var host = window.location.hostname;
+      if (host !== "localhost" || !true) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-20589042-10');
+      }
+    </script>
+
+
+
+
+
+
+  
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-2365531018407022",
+          enable_page_level_ads: false
+     });
+</script>
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="안피곤님의 블로그" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">안피곤님의 블로그</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">코딩, 독서, 여행, 영화, 맛집</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>홈</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>태그<span class="badge">139</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>카테고리<span class="badge">25</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>아카이브<span class="badge">325</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>검색
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input" id="search-input"></div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="algolia-results">
+  <div id="algolia-stats"></div>
+  <div id="algolia-hits"></div>
+  <div id="algolia-pagination" class="algolia-pagination"></div>
+</div>
+
+  
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="ko">
+    <link itemprop="mainEntityOfPage" href="https://anpigon.github.io/kr/@anpigon/steemit-3">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/me.jpg">
+      <meta itemprop="name" content="안피곤">
+      <meta itemprop="description" content="시간이 천천히 갔으면 좋겠다.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="안피곤님의 블로그">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          [Vue.js] 스팀잇(Steemit)기반 앱 만들기 #3 - 무한 스크롤 구현하기
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">작성일</span>
+
+              <time title="Post created: 2018-08-04 00:28:45" itemprop="dateCreated datePublished" datetime="2018-08-04T00:28:45+09:00">2018-08-04</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Updated at: 2021-04-21 20:50:30" itemprop="dateModified" datetime="2021-04-21T20:50:30+09:00">2021-04-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">개발 이야기</span>
+                  </a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/vue/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/kr/@anpigon/steemit-3#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="/kr/@anpigon/steemit-3" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+            <div style="margin-bottom:35px;margin-top:-20px;">
+              <!-- 블로그 본문 상단 광고 -->
+              <ins class="adsbygoogle"
+                  style="display:block"
+                  data-ad-client="ca-pub-2365531018407022"
+                  data-ad-slot="3390644000"
+                  data-ad-format="auto"
+                  data-full-width-responsive="true"></ins>
+              <script>
+                  (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+        <p>이번 시간에는 스크롤을 내렸을때 글 목록을 자동으로 가져오는 기능을 구현해보도록 하겠습니다. 이런 기능을 인피니티 스크롤(Infinite Scroll) 또는 무한 스크롤이라고 합니다.</p><p>아래는 무한 스크롤이 구현된 화면입니다.</p><p><img alt data-src="https://imgur.com/ZrHgDFi.gif"></p><hr><h6 id="이전글"><a class="markdownIt-Anchor" href="#이전글"></a> 이전글</h6><ul>
+<li><a target="_blank" rel="noopener" href="https://steemit.com/@anpigon/steemit-1-10f53977c621e">스팀잇(Steemit)기반 앱 만들기 #1</a></li>
+<li><a target="_blank" rel="noopener" href="https://steemit.com/@anpigon/steemit-2">스팀잇(Steemit)기반 앱 만들기 #2 - 최근글 가져오기</a></li>
+</ul><a id="more"></a>
+
+
+
+
+
+<hr>
+<h3 id="무한-스크롤infinite-scroll-모듈-설치하기"><a class="markdownIt-Anchor" href="#무한-스크롤infinite-scroll-모듈-설치하기"></a> 무한 스크롤(Infinite Scroll) 모듈 설치하기</h3>
+<p>무한 스크롤 기능을 직접 구현해도 되지만, 이 글에서는 <a target="_blank" rel="noopener" href="https://github.com/ElemeFE/vue-infinite-scroll">vue-infinite-scroll</a> 모듈을 사용하여 구현하겠습니다. 아래와 같이 설치합니다.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install vue-infinite-scroll --save</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="글-목록-화면에-무한-스크롤-적용하기"><a class="markdownIt-Anchor" href="#글-목록-화면에-무한-스크롤-적용하기"></a> 글 목록 화면에 무한 스크롤 적용하기</h3>
+<p>무한 스크롤을 적용하기 위해 Main.vue 파일을 수정합니다. 글목록을 보여주는 영역을 <code>&lt;div&gt;</code>태그로 감쌉니다. 그리고 <code>v-infinite-scroll</code>, <code>infinite-scroll-disabled</code>, <code>infinite-scroll-distance</code> 속성을 추가합니다. 각 속성에 대한 내용은 아래쪽에서 다시 설명하겠습니다.</p>
+<p>수정된 코드는 다음과 같습니다. 참고로 코드량이 많아 일부 생략하였습니다.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">v-flex</span> <span class="attr">xs12</span> <span class="attr">md9</span> <span class="attr">offset-md3</span>&gt;</span></span><br><span class="line">  </span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">v-infinite-scroll</span>=<span class="string">&quot;loadMore&quot;</span> </span></span><br><span class="line"><span class="tag">       <span class="attr">infinite-scroll-disabled</span>=<span class="string">&quot;busy&quot;</span> </span></span><br><span class="line"><span class="tag">       <span class="attr">infinite-scroll-distance</span>=<span class="string">&quot;10&quot;</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">v-layout</span> <span class="attr">row</span> <span class="attr">wrap</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">v-flex</span> <span class="attr">xs12</span> <span class="attr">md6</span> <span class="attr">xl4</span> <span class="attr">v-for</span>=<span class="string">&quot;d in discussions&quot;</span> <span class="attr">:key</span>=<span class="string">&quot;d.id&quot;</span>&gt;</span></span><br><span class="line">        </span><br><span class="line">        ... 생략 ...</span><br><span class="line">        </span><br><span class="line">      <span class="tag">&lt;/<span class="name">v-flex</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">v-layout</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">v-flex</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><code>vue-infinite-scroll</code> 모듈에서 사용가능한 옵션은 아래와 같습니다.</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>infinite-scroll-disabled</td>
+<td>이 속성의 값이 <strong>TURE</strong> 이면 스크롤이 비활성화됩니다.</td>
+</tr>
+<tr>
+<td>infinite-scroll-distance</td>
+<td><code>v-infinite-scroll</code> 함수가 실행되기 전, 요소 하단과 뷰 포트 하단 사이의 최소 거리입니다. 기본값은 0입니다.</td>
+</tr>
+<tr>
+<td>infinite-scroll-immediate-check</td>
+<td>바인딩 되자마자 즉시 <code>directive</code>을 확인해야 함을 의미합니다. 내용이 스크롤 가능한 컨테이너를 채울만큼 많지 않을 때 유용합니다.  기본값은 true 입니다.</td>
+</tr>
+<tr>
+<td>infinite-scroll-listen-for-event</td>
+<td>Vue 인스턴스에서 이벤트가 생성되면 스크롤을 다시 검사합니다.</td>
+</tr>
+<tr>
+<td>infinite-scroll-throttle-delay</td>
+<td>이번 확인 시간과 다음 확인 시간 사이의 간격(밀리 초). 기본값은 200입니다.</td>
+</tr>
+</tbody>
+</table>
+<br>
+<hr>
+<p>이제 <code>data</code> 오브젝트에 무한 스크롤 기능 활성화 여부를 저장할 <code>busy</code> 변수를 추가합니다. 그리고 무한 스크롤 기능 작동시 호출되는 <code>loadMore</code> 함수를 구현합니다. <code>loadMore</code>함수에는 앞서 구현하였던, 최근글을 가져오는 <code>getDiscussions</code> 함수를 호출하도록 하겠습니다. <code>getDiscussions</code> 함수 호출 전에 <code>busy</code>값을 <em>true</em>로 변경하여 무한 스크롤이 중복하여 작동 하지 않도록 합니다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> ｛</span><br><span class="line">  data: <span class="function">() =&gt;</span> (｛</span><br><span class="line">    discussions: [],</span><br><span class="line">    busy: <span class="literal">false</span></span><br><span class="line">  ｝),</span><br><span class="line">  </span><br><span class="line">  ... 생략 ...</span><br><span class="line">  </span><br><span class="line">  methods: ｛</span><br><span class="line">    loadMore: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) ｛</span></span><br><span class="line"><span class="function">      <span class="title">this</span>.<span class="title">busy</span> = <span class="title">true</span> // 무한 스크롤 기능 비활성화</span></span><br><span class="line"><span class="function">      <span class="title">this</span>.<span class="title">getDiscussions</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    ｝,</span></span><br></pre></td></tr></table></figure>
+<p>글을 가져온 후에는 무한 스크롤 기능을 다시 활성화 해주어야 합니다. 그래서 <code>getDiscussions</code> 함수를 다음과 같이 수정합니다. <code>getDiscussionsByCreated</code>함수의 콜백에서 <code>busy</code>값을 다시 <em>false</em> 로 변경합니다. 그리고 새로 가져온 데이터가 기존 데이터를 유지하면서 추가될 수 있도록 <code>discussions</code> 변수에 담아주는 코드를 아래와 같이 수정합니다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 스팀잇 최근글 가져오기</span></span><br><span class="line">steem.api.getDiscussionsByCreated(query, <span class="function">(<span class="params">err, result</span>) =&gt;</span> ｛</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (!err) ｛</span><br><span class="line">      </span><br><span class="line">    <span class="comment">// 무한 스크롤 활성화</span></span><br><span class="line">    <span class="comment">// 가져온 글갯수가 10개 이상인 경우만 작동</span></span><br><span class="line">    <span class="keyword">if</span> (result.length &gt; <span class="number">10</span>) ｛ </span><br><span class="line">      <span class="built_in">this</span>.busy = <span class="literal">false</span> </span><br><span class="line">    ｝</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 가져온 데이터를 items에 담는다.</span></span><br><span class="line">    <span class="keyword">const</span> items = result.map(<span class="function"><span class="params">item</span> =&gt;</span> ｛ <span class="comment">// # 수정됨</span></span><br><span class="line">    </span><br><span class="line">      ... 생략 ...</span><br><span class="line">    ｝)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// items 배열을 기존 discussions 배열과 합친다.</span></span><br><span class="line">    <span class="built_in">this</span>.discussions = <span class="built_in">this</span>.discussions.concat(items)</span><br><span class="line">  ｝</span><br><span class="line">｝)</span><br></pre></td></tr></table></figure>
+<p>그리고 우리는 <code>loadMore</code>함수에서 스팀잇 글을 가져오도록 수정했기 때문에, <code>created</code> 함수에서는 스팀잇 글을 가져오는 <code>getDiscussions</code> 함수를 더 이상 호출하지 않도록 제거합니다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">created () ｛</span><br><span class="line">  <span class="comment">// this.getDiscussions() // # 제거됨</span></span><br><span class="line">｝</span><br></pre></td></tr></table></figure>
+<br>
+<hr>
+<p>위의 코드를 실행해보면 계속 동일한 글 목록만 가져오는 것을 볼 수 있습니다. 왜냐하면 우리는 같은 페이지의 글목록을 가져오고 있기 때문입니다. 다음 페이지의 글을 가져오기 위해서는 <code>steem.api.getDiscussionsByCreated</code>  함수를 호출할 때 <code>permlink</code>와  <code>author</code> 값을 넘겨줘야합니다. 다음 글을 가져오기 위해 이 두 값을 사용하려면, 글을 가져올때마다 마지막 값을 기억하고 있어야합니다. 아래와 같이 <code>data</code> 오브젝트에 <code>next</code> 오브젝트를 추가합니다. <code>next</code> 오브젝트는 <code>permlink</code> 와 <code>author</code> 를 가집니다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">data: <span class="function">() =&gt;</span> (｛</span><br><span class="line">  discussions: [],</span><br><span class="line">  busy: <span class="literal">false</span>,</span><br><span class="line">  next: ｛</span><br><span class="line">    permlink: <span class="literal">null</span>,</span><br><span class="line">    author: <span class="literal">null</span></span><br><span class="line">  ｝</span><br><span class="line">｝)</span><br></pre></td></tr></table></figure>
+<p>그리고 <code>methods</code> 에 있는 <code>getDiscussions</code> 함수를 다음과 같이 수정합니다. 스팀잇 최근글을 가져오는 함수를 호출할때 넘겨주는 <code>query</code> 오브젝트에 <code>start_permlink</code> 와 <code>start_author</code> 추가하고, <code>next.permlink</code> 와 <code>next.author</code> 값을 넘겨줍니다. 마지막으로<code>getDiscussionsByCreated</code> 함수 콜백에서 가져온 글목록에서 마지막 데이터의 <code>permlink</code> 와 <code>author</code> 값을 각각 <code>next.permlink</code> 와 <code>next.author</code> 에 저장합니다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">getDiscussions () ｛</span><br><span class="line">  <span class="keyword">let</span> query = ｛</span><br><span class="line">    tag: <span class="string">&#x27;kr&#x27;</span>,</span><br><span class="line">    limit: <span class="number">10</span>,</span><br><span class="line">    start_permlink: <span class="built_in">this</span>.next.permlink, </span><br><span class="line">    start_author: <span class="built_in">this</span>.next.author</span><br><span class="line">  ｝</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 스팀잇 최근글 가져오기</span></span><br><span class="line">  steem.api.getDiscussionsByCreated(query, <span class="function">(<span class="params">err, result</span>) =&gt;</span> ｛</span><br><span class="line"></span><br><span class="line">    ... 생략 ...</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">this</span>.next.permlink = item.permlink <span class="comment">// 마지막 permlink 값 저장  </span></span><br><span class="line">    <span class="built_in">this</span>.next.author = item.author <span class="comment">// 마지막 author 값 저장</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> ｛</span><br><span class="line">      id: item.id, <span class="comment">// # 추가됨</span></span><br><span class="line">      image: image,</span><br><span class="line">      author: item.author,</span><br><span class="line">      author_reputation: item.author_reputation,</span><br><span class="line">      title: item.title,</span><br><span class="line">      created: item.created,</span><br><span class="line">      body: item.body.substr(<span class="number">0</span>, <span class="number">200</span>),</span><br><span class="line">      category: item.category,</span><br><span class="line">      permlink: item.permlink,</span><br><span class="line">      url: item.url,</span><br><span class="line">      payout_value: item.payout_value,</span><br><span class="line">      net_votes: item.net_votes,</span><br><span class="line">      children: item.children</span><br><span class="line">    ｝</span><br><span class="line">  ｝)</span><br></pre></td></tr></table></figure>
+<br>
+<hr>
+<p>지금까지 작업한 코드를 실행해보면, 다음에 가져온 글 목록의 첫번째 글이 이전에 가져온 글 목록의 마지막 글이랑 동일하다는 것을 확인할 수 있습니다. 일부러 이렇게 의도한 것인지는 잘 모르겠습니다. 가져온 글목록의 글ID를 체크하여 글ID가 서로 동일하면 기존 글목록에 추가하지 않도록 합니다. 그래서 추가로 가져온 글 목록에서 첫번째 항목을 제거하도록 하겠습니다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 스팀잇 최근글 가져오기</span></span><br><span class="line">steem.api.getDiscussionsByCreated(query, <span class="function">(<span class="params">err, result</span>) =&gt;</span> ｛</span><br><span class="line">  <span class="built_in">this</span>.busy = <span class="literal">false</span></span><br><span class="line">  <span class="keyword">if</span> (!err) ｛</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 가져온 글의 첫번쨰 항목 제거</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">this</span>.discussions.length &gt; <span class="number">0</span>) ｛</span><br><span class="line">      result = result.slice(<span class="number">1</span>)</span><br><span class="line">    ｝</span><br><span class="line">    </span><br><span class="line">    ... 생략 ...</span><br></pre></td></tr></table></figure>
+<br>
+<hr>
+<p>글을 가져올때 아무런 변화가 없다가 화면에 글들이 갑자기 나타나면 아무래도 심심하기 때문에, 글을 가져올 때 화면에 로딩 이미지를 보여주도록 하겠습니다. 다음과 같이 <code>&lt;v-progress-circular&gt;</code> 태그를 글목록을 출력하는 부분 아래에 삽입합니다. 그리고 <code>v-show=&quot;busy&quot;</code> 옵션을 사용하여 무한 스크롤 기능이 작동 중일때만 로딩 이미지가 보이도록 합니다.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">    ... 생략 ...</span><br><span class="line">  <span class="tag">&lt;/<span class="name">v-flex</span>&gt;</span><span class="comment">&lt;!-- // v-for END --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">v-layout</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;text-xs-center mt-3&quot;</span> <span class="attr">v-show</span>=<span class="string">&quot;busy&quot;</span>&gt;</span></span><br><span class="line">  &lt;v-progress-circular</span><br><span class="line">            indeterminate</span><br><span class="line">            color=&quot;primary&quot;&gt;</span><br><span class="line">  <span class="tag">&lt;/<span class="name">v-progress-circular</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<br>
+<p>오늘 작업은 여기까지입니다.</p>
+<p>여기까지 읽어주셔서 감사합니다.</p>
+<hr>
+<blockquote>
+<p>전체 소스 내용은 <a target="_blank" rel="noopener" href="https://github.com/anpigon/steemit-app">github</a>에서 볼 수 있습니다.</p>
+</blockquote>
+<br>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/vue/" rel="tag"># Vue</a>
+          </div>
+
+        
+  <div class="post-widgets">
+    <div class="wp_rating">
+      <div id="wpac-rating"></div>
+    </div>
+  </div>
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/kr/@anpigon/vote-value-javascript" rel="next" title="[Steemit] 내 보팅 가치(Vote Value)를 JavaScript로 계산하기">
+                  <i class="fa fa-chevron-left"></i> [Steemit] 내 보팅 가치(Vote Value)를 JavaScript로 계산하기
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/kr/@anpigon/steemit-4" rel="prev" title="[Vue.js] 스팀잇(Steemit)기반 앱 만들기 #4 - 상세화면 구현하기">
+                  [Vue.js] 스팀잇(Steemit)기반 앱 만들기 #4 - 상세화면 구현하기 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    
+  <div class="comments" id="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          목차
+        </li>
+        <li class="sidebar-nav-overview">
+          흝어보기
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#%EC%9D%B4%EC%A0%84%EA%B8%80"><span class="nav-number">1.</span> <span class="nav-text"> 이전글</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EB%AC%B4%ED%95%9C-%EC%8A%A4%ED%81%AC%EB%A1%A4infinite-scroll-%EB%AA%A8%EB%93%88-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0"><span class="nav-number"></span> <span class="nav-text"> 무한 스크롤(Infinite Scroll) 모듈 설치하기</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EA%B8%80-%EB%AA%A9%EB%A1%9D-%ED%99%94%EB%A9%B4%EC%97%90-%EB%AC%B4%ED%95%9C-%EC%8A%A4%ED%81%AC%EB%A1%A4-%EC%A0%81%EC%9A%A9%ED%95%98%EA%B8%B0"><span class="nav-number"></span> <span class="nav-text"> 글 목록 화면에 무한 스크롤 적용하기</span></a></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="안피곤"
+    src="/images/me.jpg">
+  <p class="site-author-name" itemprop="name">안피곤</p>
+  <div class="site-description" itemprop="description">시간이 천천히 갔으면 좋겠다.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">325</span>
+          <span class="site-state-item-name">포스트</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-name">카테고리</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">139</span>
+        <span class="site-state-item-name">태그</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/anpigon" title="GitHub &rarr; https://github.com/anpigon" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:markan82@gmail.com" title="E-Mail &rarr; mailto:markan82@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+          <!-- 정사각형 광고 -->
+          <div style="margin-top: 15px;">
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-2365531018407022"
+                data-ad-slot="7521850306"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+          </div>
+    </div>
+  </aside>
+  <div id="sidebar-dimmer">3</div>
+
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">안피곤</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v5.4.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.4.2
+  </div>
+
+        
+
+
+
+
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-firestore.js"></script>
+  <script>
+    firebase.initializeApp({
+      apiKey: 'AIzaSyA4QZWCWb3IuIHjbkAmO0ttIM2b-qtLTP8',
+      projectId: 'next-blog-8f9a0'
+    });
+
+    function getCount(doc, increaseCount) {
+      // IncreaseCount will be false when not in article page
+
+      return doc.get().then(d => {
+        var count = 0;
+        if (!d.exists) { // Has no data, initialize count
+          if (increaseCount) {
+            doc.set({
+              count: 1
+            });
+            count = 1;
+          }
+        } else { // Has data
+          count = d.data().count;
+          if (increaseCount) {
+            // If first view this article
+            doc.set({ // Increase count
+              count: count + 1
+            });
+            count++;
+          }
+        }
+
+        return count;
+      });
+    }
+
+    function appendCountTo(el) {
+      return count => {
+        el.innerText = count;
+      }
+    }
+  </script>
+  <script pjax>
+    (function() {
+      var db = firebase.firestore();
+      var articles = db.collection('articles');
+
+      if (CONFIG.page.isPost) { // Is article page
+        var title = document.querySelector('.post-title').innerText.trim();
+        var doc = articles.doc(title);
+        var increaseCount = true;
+        if (localStorage.getItem(title)) {
+          increaseCount = false;
+        } else {
+          // Mark as visited
+          localStorage.setItem(title, true);
+        }
+        getCount(doc, increaseCount).then(appendCountTo(document.querySelector('.firestore-visitors-count')));
+      } else if (CONFIG.page.isHome) { // Is index page
+        var promises = [...document.querySelectorAll('.post-title')].map(element => {
+          var title = element.innerText.trim();
+          var doc = articles.doc(title);
+          return getCount(doc);
+        });
+        Promise.all(promises).then(counts => {
+          var metas = document.querySelectorAll('.firestore-visitors-count');
+          counts.forEach((val, idx) => {
+            appendCountTo(metas[idx])(val);
+          });
+        });
+      }
+    })();
+  </script>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.getAttribute('pjax') !== null) {
+      element.setAttribute('pjax', '');
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+  <script pjax>
+  if (CONFIG.page.isPost) {
+    wpac_init = window.wpac_init || [];
+    wpac_init.push({
+      widget: 'Rating',
+      id: 21712,
+      el: 'wpac-rating',
+      color: 'fc6423'
+    });
+    (function() {
+      if ('WIDGETPACK_LOADED' in window) return;
+      WIDGETPACK_LOADED = true;
+      var mc = document.createElement('script');
+      mc.type = 'text/javascript';
+      mc.async = true;
+      mc.src = '//embed.widgetpack.com/widget.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+    })();
+  }
+  </script>
+
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.4.1/dist/instantsearch.min.css">
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.4.1/dist/instantsearch.js"></script>
+<script src="/js/algolia-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+
+  
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://anpigon-github-io.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  function loadComments() {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: {page: {
+            url: "https://anpigon.github.io/kr/@anpigon/steemit-3",
+            identifier: "/kr/@anpigon/steemit-3",
+            title: "[Vue.js] 스팀잇(Steemit)기반 앱 만들기 #3 - 무한 스크롤 구현하기"
+          }
+        }
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://anpigon-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  }
+    (function() {
+      var offsetTop = document.getElementById('comments').offsetTop - window.innerHeight;
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        window.addEventListener('load', loadComments, false);
+      } else {
+        var disqus_scroll = () => {
+          // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = document.getElementById('comments').offsetTop - window.innerHeight;
+          var scrollTop = window.scrollY;
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            window.removeEventListener('scroll', disqus_scroll);
+            loadComments();
+          }
+        };
+        window.addEventListener('scroll', disqus_scroll);
+      }
+    })();
+  
+</script>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="yfKOiBPD8WlKH3NPG_CG1zr4MsCgCG1YVdGKhMS2CKc">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Noto Serif KR:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.4.2',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: true,
+    pangu: false,
+    algolia: {
+      appID: 'YY693DUDAI',
+      apiKey: 'db449d453b150820f66e7bc3d4523a17',
+      indexName: 'my-hexo-blog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '복사',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="이전글 &quot;[React] Mobx-state-tree 학습하기 #10 : Model Definitions Change되면 Hot Module Reloading를 사용하여 Model Tree State 복원하기&quot;에서 이어지는 내용입니다. 참고로 이 포스팅은 제가 학습한 내용을 노트에 정리하듯이 기록하여 올리는 글이기 때문에 보팅 안해주셔서 됩">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[React] Mobx-state-tree 학습하기 #11 : 더 많은 mobx-state-tree Types 배우기: map, literal, union, enumeration">
+<meta property="og:url" content="https://anpigon.github.io/zzan/@anpigon/react-mobx-state-tree-11-mobx-state-tree-types-map-literal-union-enumeration">
+<meta property="og:site_name" content="안피곤님의 블로그">
+<meta property="og:description" content="이전글 &quot;[React] Mobx-state-tree 학습하기 #10 : Model Definitions Change되면 Hot Module Reloading를 사용하여 Model Tree State 복원하기&quot;에서 이어지는 내용입니다. 참고로 이 포스팅은 제가 학습한 내용을 노트에 정리하듯이 기록하여 올리는 글이기 때문에 보팅 안해주셔서 됩">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:image" content="https://files.steempeak.com/file/steempeak/anpigon/sYISPibs-E1848CE185A6E18486E185A9E186A820E1848BE185A5E186B9E18482E185B3E186AB20E18483E185B5E1848CE185A1E1848BE185B5E186AB.png">
+<meta property="og:image" content="https://files.steempeak.com/file/steempeak/anpigon/p96ntRsb-E18489E185B3E1848FE185B3E18485E185B5E186ABE18489E185A3E186BA202019-08-2920E1848BE185A9E18492E185AE202.37.02.png">
+<meta property="og:image" content="https://files.steempeak.com/file/steempeak/anpigon/bxOzRmWy-E18489E185B3E1848FE185B3E18485E185B5E186ABE18489E185A3E186BA202019-08-2920E1848BE185A9E18492E185AE202.34.59.png">
+<meta property="og:image" content="https://files.steempeak.com/file/steempeak/anpigon/SaVyYpuM-_2019-08-25_20.10.49.png">
+<meta property="og:image" content="https://files.steempeak.com/file/steempeak/anpigon/dikK6ZBr-_2019-08-25_20.10.04.png">
+<meta property="og:image" content="https://files.steempeak.com/file/steempeak/anpigon/WFOjsL5m-_2019-08-25_20.15.04.png">
+<meta property="og:image" content="https://files.steempeak.com/file/steempeak/anpigon/wRrhfC49-2019-08-25_21-15-02.2019-08-25_21_16_57.gif">
+<meta property="og:image" content="https://steemitimages.com/400x0/https://cdn.steemitimages.com/DQmQmWhMN6zNrLmKJRKhvSScEgWZmpb8zCeE2Gray1krbv6/BC054B6E-6F73-46D0-88E4-C88EB8167037.jpeg">
+<meta property="article:published_time" content="2019-08-29T06:07:54.000Z">
+<meta property="article:modified_time" content="2021-04-21T11:50:30.073Z">
+<meta property="article:author" content="안피곤">
+<meta property="article:tag" content="React">
+<meta property="article:tag" content="Mobx">
+<meta property="article:tag" content="Mobx State Tree">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://files.steempeak.com/file/steempeak/anpigon/sYISPibs-E1848CE185A6E18486E185A9E186A820E1848BE185A5E186B9E18482E185B3E186AB20E18483E185B5E1848CE185A1E1848BE185B5E186AB.png">
+
+<link rel="canonical" href="https://anpigon.github.io/zzan/@anpigon/react-mobx-state-tree-11-mobx-state-tree-types-map-literal-union-enumeration">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>[React] Mobx-state-tree 학습하기 #11 : 더 많은 mobx-state-tree Types 배우기: map, literal, union, enumeration | 안피곤님의 블로그</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-20589042-10"></script>
+    <script pjax>
+      var host = window.location.hostname;
+      if (host !== "localhost" || !true) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-20589042-10');
+      }
+    </script>
+
+
+
+
+
+
+  
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-2365531018407022",
+          enable_page_level_ads: false
+     });
+</script>
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="안피곤님의 블로그" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">안피곤님의 블로그</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">코딩, 독서, 여행, 영화, 맛집</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>홈</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>태그<span class="badge">139</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>카테고리<span class="badge">25</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>아카이브<span class="badge">325</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>검색
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input" id="search-input"></div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="algolia-results">
+  <div id="algolia-stats"></div>
+  <div id="algolia-hits"></div>
+  <div id="algolia-pagination" class="algolia-pagination"></div>
+</div>
+
+  
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="ko">
+    <link itemprop="mainEntityOfPage" href="https://anpigon.github.io/zzan/@anpigon/react-mobx-state-tree-11-mobx-state-tree-types-map-literal-union-enumeration">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/me.jpg">
+      <meta itemprop="name" content="안피곤">
+      <meta itemprop="description" content="시간이 천천히 갔으면 좋겠다.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="안피곤님의 블로그">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          [React] Mobx-state-tree 학습하기 #11 : 더 많은 mobx-state-tree Types 배우기: map, literal, union, enumeration
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">작성일</span>
+
+              <time title="Post created: 2019-08-29 15:07:54" itemprop="dateCreated datePublished" datetime="2019-08-29T15:07:54+09:00">2019-08-29</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Updated at: 2021-04-21 20:50:30" itemprop="dateModified" datetime="2021-04-21T20:50:30+09:00">2021-04-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">개발 이야기</span>
+                  </a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/react/" itemprop="url" rel="index">
+                    <span itemprop="name">React</span>
+                  </a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/react/mobx/" itemprop="url" rel="index">
+                    <span itemprop="name">Mobx</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/zzan/@anpigon/react-mobx-state-tree-11-mobx-state-tree-types-map-literal-union-enumeration#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="/zzan/@anpigon/react-mobx-state-tree-11-mobx-state-tree-types-map-literal-union-enumeration" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+            <div style="margin-bottom:35px;margin-top:-20px;">
+              <!-- 블로그 본문 상단 광고 -->
+              <ins class="adsbygoogle"
+                  style="display:block"
+                  data-ad-client="ca-pub-2365531018407022"
+                  data-ad-slot="3390644000"
+                  data-ad-format="auto"
+                  data-full-width-responsive="true"></ins>
+              <script>
+                  (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+        <p>이전글 <a href="/zzan/@anpigon/react-mobx-state-tree-10-model-definitions-change-hot-module-reloading-model-tree-state">&quot;[React] Mobx-state-tree 학습하기 #10 : Model Definitions Change되면 Hot Module Reloading를 사용하여 Model Tree State 복원하기&quot;</a>에서 이어지는 내용입니다. 참고로 이 포스팅은 제가 학습한 내용을 노트에 정리하듯이 기록하여 올리는 글이기 때문에 보팅 안해주셔서 됩니다.  많은 분들이 코딩에 흥미를  느꼈으면 좋겠습니다.  ㅋ</p><a id="more"></a>
+<br>
+<hr>
+<p><img alt data-src="https://files.steempeak.com/file/steempeak/anpigon/sYISPibs-E1848CE185A6E18486E185A9E186A820E1848BE185A5E186B9E18482E185B3E186AB20E18483E185B5E1848CE185A1E1848BE185B5E186AB.png"></p>
+<ul>
+<li>출처: <a target="_blank" rel="noopener" href="https://egghead.io/courses/manage-application-state-with-mobx-state-tree">https://egghead.io/courses/manage-application-state-with-mobx-state-tree</a></li>
+</ul>
+<hr>
+<br>
+<h2 id="more-mobx-state-tree-types-map-literal-union-and-enumeration"><a class="markdownIt-Anchor" href="#more-mobx-state-tree-types-map-literal-union-and-enumeration"></a> More mobx-state-tree Types: map, literal, union, and enumeration</h2>
+<ul>
+<li>강의 링크: <a target="_blank" rel="noopener" href="https://egghead.io/lessons/react-more-mobx-state-tree-types-map-literal-union-and-enumeration">https://egghead.io/lessons/react-more-mobx-state-tree-types-map-literal-union-and-enumeration</a></li>
+</ul>
+<p><br>11번째 레슨입니다. 이번 레슨에서는 그룹 및 사용자의 개념을 소개합니다. 그룹 내에 여러 사용자를 관리할 수 있습니다. 그리고 각 사용자들은 각각의 위시 리스트를 가질 수 ​​있습니다. 또한 union 타입과 타입 discrimination의 강력한 기능을 간단히 살펴볼 것입니다.</p>
+<p><br>우리는 이번 레슨에서 다음을 배우게 됩니다.</p>
+<ul>
+<li>key로 데이터를 저장하기 위해 type map 사용하기</li>
+<li>single value types를 생성하기 위해  literals 사용하기</li>
+<li>type discrimination 하기 위해 literals 과 unions을 Combining 하기</li>
+<li>quick coding experiments를 위해 Quokka를 scratchpad로 사용하기</li>
+<li>enumerations 사용하기</li>
+<li>Enumerations는 literals의 union에 대한  just sugar 이다. 🤔</li>
+</ul>
+<br>
+<hr>
+<br>
+<p>이제 사용자 그룹을 만들고 각 사용자가 각자의 위시 리스트를 가지도록 모델을 개선해 봅시다.</p>
+<br>
+<h1 id="user-모델-만들기"><a class="markdownIt-Anchor" href="#user-모델-만들기"></a> User 모델 만들기</h1>
+<p><code>groups.js</code> 파일을 새로 생성합니다. 그리고 User 모델을 정의 합니다. User 모델은 <code>id</code> 와 <code>name</code>, 그리고 <code>gender</code> 속성을 가집니다.</p>
+<p><code>src/models/Group.js</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> ｛ types ｝ <span class="keyword">from</span> <span class="string">&#x27;mobx-state-tree&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> User = types.model(｛</span><br><span class="line">	id: types.string,</span><br><span class="line">	name: types.string,</span><br><span class="line">	gender: types.union(types.literal(<span class="string">&#x27;m&#x27;</span>), types.literal(<span class="string">&#x27;f&#x27;</span>))</span><br><span class="line">｝);</span><br></pre></td></tr></table></figure>
+<p>타입을 선택할 수 있는 유형을 일반적으로 union이라 합니다. 두 가지 타입을 결합하여 gender을 표현하게 됩니다. 여기서  <code>gender</code> 값은 반드시 <code>m</code> 또는 <code>f</code> 여야합니다.</p>
+<br>
+<br>
+<h1 id="quokka-사용하여-빠르게-테스트해보기"><a class="markdownIt-Anchor" href="#quokka-사용하여-빠르게-테스트해보기"></a> Quokka 사용하여 빠르게 테스트해보기</h1>
+<p>VSCode의 익스텐션 프로그램 <strong>Quokka</strong>를 사용하면 자바스크립트 또는 타입스크립트를 스크래치 패드에서 빠르게 만들고 실행할 수 있습니다.</p>
+<p>VSCode에 Quokka 익스텐션을 설치합니다.</p>
+<ul>
+<li>Quokka 익스텐션 설치 하기: <a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=WallabyJs.quokka-vscode">https://marketplace.visualstudio.com/items?itemName=WallabyJs.quokka-vscode</a><br>
+<img alt data-src="https://files.steempeak.com/file/steempeak/anpigon/p96ntRsb-E18489E185B3E1848FE185B3E18485E185B5E186ABE18489E185A3E186BA202019-08-2920E1848BE185A9E18492E185AE202.37.02.png"></li>
+</ul>
+<p><br>그다음 단축키 <code>Cmd + Shift + P</code>를 눌러 Quokka에서 New File를 생성합니다.</p>
+<p><img alt data-src="https://files.steempeak.com/file/steempeak/anpigon/bxOzRmWy-E18489E185B3E1848FE185B3E18485E185B5E186ABE18489E185A3E186BA202019-08-2920E1848BE185A9E18492E185AE202.34.59.png"></p>
+<p>위에서 작성한 코드를 Quokka에 복사&amp;붙여넣기 합니다. 그리고 User 모델 인스턴스를 생성하고 <code>genger</code> 속성에 <code>m</code> 또는 <code>f</code> 외에 엉뚱한 값을 넣어보세요. 그럼 다음과 같이 잘못된 타입이라는 에러가 발생합니다.<br>
+<img alt data-src="https://files.steempeak.com/file/steempeak/anpigon/SaVyYpuM-_2019-08-25_20.10.49.png"></p>
+<p>하지만 <code>genger</code>에 <code>m</code> 값을 입력하면 다음과 같이 에러가 발생하지 않습니다.<br>
+<img alt data-src="https://files.steempeak.com/file/steempeak/anpigon/dikK6ZBr-_2019-08-25_20.10.04.png"></p>
+<p>이제 Man과 Woman 모델을 각각 정의하고, 이 두 모델을 다시 union하여 Human을 정의해봅시다. 그리고 나서 Human 인스턴스를 생성할때 <code>gender</code>에 <code>m</code>을 입력하여 <code>somebody</code>를 생성합니다. 우리는 <code>somebody</code>가 man인지 아닌지 간단히 확인할 수 있습니다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> ｛ types ｝ <span class="keyword">from</span> <span class="string">&#x27;mobx-state-tree&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> Man = types.model(｛</span><br><span class="line">	id: types.string,</span><br><span class="line">	name: types.string,</span><br><span class="line">	gender: types.literal(<span class="string">&#x27;m&#x27;</span>)</span><br><span class="line">｝);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> Woman = types.model(｛</span><br><span class="line">	id: types.string,</span><br><span class="line">	name: types.string,</span><br><span class="line">	gender: types.literal(<span class="string">&#x27;f&#x27;</span>)</span><br><span class="line">｝);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> Human = types.union(Man, Woman);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> someone = Human.create(｛</span><br><span class="line">	id: <span class="string">&quot;123&quot;</span>,</span><br><span class="line">	name: <span class="string">&quot;michel&quot;</span>,</span><br><span class="line">	gender: <span class="string">&quot;m&quot;</span></span><br><span class="line">｝)</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(Man.is(someone))</span><br><span class="line"><span class="built_in">console</span>.log(Woman.is(someone))</span><br></pre></td></tr></table></figure>
+<p><code>Man.is(someone)</code>은 <strong>true</strong>, 그리고 <code>Woman.is(someone)</code>는 <strong>flase</strong>가 출력됩니다.<br>
+<img alt data-src="https://files.steempeak.com/file/steempeak/anpigon/WFOjsL5m-_2019-08-25_20.15.04.png"></p>
+<br>
+<br>
+<h1 id="enumeration-사용하기"><a class="markdownIt-Anchor" href="#enumeration-사용하기"></a> enumeration 사용하기</h1>
+<p>literal을 union하는 방식인 <code>types.union(types.literal('m'), types.literal('f'))</code> 이 가장 일반적인 패턴입니다. 하지만 더 간단한 표기법이 있습니다. 이를 <strong>enumeration</strong>이라고 합니다. User 모델의 <code>gender</code> Type을 <strong>enumeration</strong>를 사용하여 다시 표현하면 <code>types.enumeration(&quot;gender&quot;, [&quot;m&quot;, &quot;f&quot;])</code>가 됩니다.</p>
+<p><code>src/models/Group.js</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> ｛ types ｝ <span class="keyword">from</span> <span class="string">&#x27;mobx-state-tree&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> User = types.model(｛</span><br><span class="line">	id: types.string,</span><br><span class="line">	name: types.string,</span><br><span class="line">	gender: types.enumeration(<span class="string">&quot;gender&quot;</span>, [<span class="string">&quot;m&quot;</span>, <span class="string">&quot;f&quot;</span>])</span><br><span class="line">｝);</span><br></pre></td></tr></table></figure>
+<p><br>그다음 User 모델에 <code>wishList</code> 속성을 정의합니다. <code>wishList</code>는 <strong>optional</strong> 이며, 디폴트값은 비어있는 <code>Object ｛｝</code>입니다.</p>
+<p><code>src/models/Group.js</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> ｛ types ｝ <span class="keyword">from</span> <span class="string">&#x27;mobx-state-tree&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> ｛ WishList ｝ <span class="keyword">from</span> <span class="string">&quot;./WishList&quot;</span>; <span class="comment">// add here</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> User = types.model(｛</span><br><span class="line">	id: types.string,</span><br><span class="line">	name: types.string,</span><br><span class="line">	gender: types.enumeration(<span class="string">&quot;gender&quot;</span>, [<span class="string">&quot;m&quot;</span>, <span class="string">&quot;f&quot;</span>])</span><br><span class="line"></span><br><span class="line">	wishList: types.optional(WishList, ｛｝) <span class="comment">// add here</span></span><br><span class="line">｝);</span><br></pre></td></tr></table></figure>
+<br>
+<br>
+<h1 id="group-모델-만들기"><a class="markdownIt-Anchor" href="#group-모델-만들기"></a> Group 모델 만들기</h1>
+<p>이제 Group을 정의 합니다. Group은 User 그룹이라고 할 수 있습니다. 여기에서는 Map를 사용하였습니다. 하지만 우리는 Array를 사용할 수도 있습니다. <code>Group.js</code> 파일 맨 아래에 다음 코드를 입력합니다.</p>
+<p><code>src/models/Group.js</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> Group = types.model(｛</span><br><span class="line">  users: types.map(User)</span><br><span class="line">｝);</span><br></pre></td></tr></table></figure>
+<br>
+<br>
+다음은 지금까지 작성된 Group.js 파일의 전체 내용입니다.
+<p><code>src/models/Group.js</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> ｛ types ｝ <span class="keyword">from</span> <span class="string">&quot;mobx-state-tree&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> ｛ WishList ｝ <span class="keyword">from</span> <span class="string">&quot;./WishList&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> User = types.model(｛</span><br><span class="line">  id: types.string,</span><br><span class="line">  name: types.string,</span><br><span class="line">  gender: types.enumeration(<span class="string">&quot;gender&quot;</span>, [<span class="string">&quot;m&quot;</span>, <span class="string">&quot;f&quot;</span>]),</span><br><span class="line">  wishList: types.optional(WishList, ｛｝)</span><br><span class="line">｝);</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> Group = types.model(｛</span><br><span class="line">  users: types.map(User)</span><br><span class="line">｝);</span><br></pre></td></tr></table></figure>
+<br>
+<br>
+<h1 id="ui-수정하기"><a class="markdownIt-Anchor" href="#ui-수정하기"></a> UI 수정하기</h1>
+<p>모델을 재구성했으니 이제 UI를 수정해야합니다. <code>index.js</code> 파일을 편집합니다.</p>
+<p>Group 모델을 <strong>import</strong> 합니다. 그리고 간단한 작업을 위해 <code>initialState</code>에는 심슨 가족 데이터 셋트를 미리 준비했습니다.</p>
+<p><code>src/index.js</code></p>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">import ｛ Group ｝ from <span class="string">&quot;./models/Group&quot;</span>;</span><br><span class="line"></span><br><span class="line">let initialState = ｛</span><br><span class="line"><span class="symbol">  usres:</span> ｛</span><br><span class="line">    <span class="string">&quot;a342&quot;</span>: ｛</span><br><span class="line"><span class="symbol">      id:</span> <span class="string">&quot;a342&quot;</span>,</span><br><span class="line"><span class="symbol">      name:</span> <span class="string">&quot;Homer&quot;</span>,</span><br><span class="line"><span class="symbol">      gender:</span> <span class="string">&quot;m&quot;</span></span><br><span class="line">    ｝,</span><br><span class="line">    <span class="string">&quot;5fc2&quot;</span>: ｛</span><br><span class="line"><span class="symbol">      id:</span> <span class="string">&quot;5fc2&quot;</span>,</span><br><span class="line"><span class="symbol">      name:</span> <span class="string">&quot;Marge&quot;</span>,</span><br><span class="line"><span class="symbol">      gender:</span> <span class="string">&quot;f&quot;</span></span><br><span class="line">    ｝,</span><br><span class="line">    <span class="string">&quot;663b&quot;</span>: ｛</span><br><span class="line"><span class="symbol">      id:</span> <span class="string">&quot;663b&quot;</span>,</span><br><span class="line"><span class="symbol">      name:</span> <span class="string">&quot;Bart&quot;</span>,</span><br><span class="line"><span class="symbol">      gender:</span> <span class="string">&quot;m&quot;</span></span><br><span class="line">    ｝,</span><br><span class="line">    <span class="string">&quot;65aa&quot;</span>: ｛</span><br><span class="line"><span class="symbol">      id:</span> <span class="string">&quot;65aa&quot;</span>,</span><br><span class="line"><span class="symbol">      name:</span> <span class="string">&quot;Maggie&quot;</span>,</span><br><span class="line"><span class="symbol">      gender:</span> <span class="string">&quot;f&quot;</span></span><br><span class="line">    ｝,</span><br><span class="line">    <span class="string">&quot;ba32&quot;</span>: ｛</span><br><span class="line"><span class="symbol">      id:</span> <span class="string">&quot;ba32&quot;</span>,</span><br><span class="line"><span class="symbol">      name:</span> <span class="string">&quot;Lisa&quot;</span>,</span><br><span class="line"><span class="symbol">      gender:</span> <span class="string">&quot;f&quot;</span></span><br><span class="line">    ｝</span><br><span class="line">  ｝</span><br><span class="line">｝</span><br><span class="line"></span><br><span class="line"><span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">let group = Group.create(initialState);</span><br><span class="line"></span><br><span class="line">function renderApp() ｛</span><br><span class="line">  ReactDOM.render(<span class="params">&lt;App group=｛group｝ /&gt;</span>, document.getElementById(<span class="string">&quot;root&quot;</span>));</span><br><span class="line">｝</span><br><span class="line"></span><br><span class="line"><span class="comment">// ...</span></span><br></pre></td></tr></table></figure>
+<p><br>그다음 선택 박스에서 사용자를 선택하면 위시 리스트 목록, 편집 화면이 보이도록 고쳐보겠습니다. <code>App.js</code> 파일을 수정합니다.</p>
+<p>참고로 동영상 강의에서는 <code>group.users.values().map</code> 를 사용하고 있습니다. 하지만 Mobx 2에서 사용방법이 변경되었습니다. <code>Array.from(group.users.values()).map</code> 또는 <code>values(group.users).map</code> 를 사용하세요.</p>
+<p><code>src/components/App.js</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> ｛ values ｝ <span class="keyword">from</span> <span class="string">&#x27;mobx&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;./App.css&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> WishListView <span class="keyword">from</span> <span class="string">&quot;./WishListView&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> ｛</span></span><br><span class="line"><span class="class">  <span class="title">constructor</span>(<span class="title">props</span>) ｛</span></span><br><span class="line"><span class="class">    <span class="title">super</span>(<span class="title">props</span>)</span>;</span><br><span class="line">    <span class="built_in">this</span>.state = ｛</span><br><span class="line">      selectUser: <span class="literal">null</span></span><br><span class="line">    ｝;</span><br><span class="line">  ｝</span><br><span class="line"></span><br><span class="line">  render() ｛</span><br><span class="line">    <span class="keyword">const</span> ｛ group ｝ = <span class="built_in">this</span>.props;</span><br><span class="line">    <span class="keyword">const</span> selectedUser = group.users.get(<span class="built_in">this</span>.state.selectUser)</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        &lt;h1 className=<span class="string">&quot;App-title&quot;</span>&gt;WishList&lt;/h1&gt;</span><br><span class="line"></span><br><span class="line">        &lt;select onChange=｛<span class="built_in">this</span>.onSelectUser｝&gt;</span><br><span class="line">          &lt;option&gt;- Select user -&lt;/option&gt;</span><br><span class="line">          ｛｛values(group.users).map(<span class="function"><span class="params">user</span> =&gt;</span> (</span><br><span class="line">            &lt;option key=｛user.id｝ value=｛user.id｝&gt;</span><br><span class="line">              ｛user.name｝</span><br><span class="line">            &lt;/option&gt;</span><br><span class="line">          ))｝</span><br><span class="line">        &lt;/select&gt;</span><br><span class="line"></span><br><span class="line">        ｛</span><br><span class="line">          selectedUser &amp;&amp; <span class="xml"><span class="tag">&lt;<span class="name">WishListView</span> <span class="attr">wishList</span>=<span class="string">｛selectedUser.wishList｝</span> /&gt;</span></span></span><br><span class="line">        ｝</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    );</span><br><span class="line">  ｝</span><br><span class="line"></span><br><span class="line">  onSelectUser = <span class="function"><span class="params">event</span> =&gt;</span> ｛</span><br><span class="line">    <span class="built_in">this</span>.setState(｛</span><br><span class="line">      selectUser: event.target.value</span><br><span class="line">    ｝)</span><br><span class="line">  ｝;</span><br><span class="line">｝</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> App;</span><br></pre></td></tr></table></figure>
+<p><strong>실행화면</strong><br>
+<img alt data-src="https://files.steempeak.com/file/steempeak/anpigon/wRrhfC49-2019-08-25_21-15-02.2019-08-25_21_16_57.gif"></p>
+<p><br>오늘 수업 끝.</p>
+<br>
+<br>
+<p><code>댓글</code>, <code>팔로우</code>, <code>좋아요</code> 해 주시는 모든 분께 감사합니다.</p>
+<p>항상 행복한 하루 보내시길 바랍니다.</p>
+<hr>
+<center><img data-src="https://steemitimages.com/400x0/https://cdn.steemitimages.com/DQmQmWhMN6zNrLmKJRKhvSScEgWZmpb8zCeE2Gray1krbv6/BC054B6E-6F73-46D0-88E4-C88EB8167037.jpeg"><h5>vote, reblog, follow <code><a target="_blank" rel="noopener" href="https://steemit.com/@anpigon">@anpigon</a></code></h5></center>
+
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/react/" rel="tag"># React</a>
+              <a href="/tags/mobx/" rel="tag"># Mobx</a>
+              <a href="/tags/mobx-state-tree/" rel="tag"># Mobx State Tree</a>
+          </div>
+
+        
+  <div class="post-widgets">
+    <div class="wp_rating">
+      <div id="wpac-rating"></div>
+    </div>
+  </div>
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/zzan/@anpigon/react-mobx-state-tree-10-model-definitions-change-hot-module-reloading-model-tree-state" rel="next" title="[React] Mobx-state-tree 학습하기 #10 : Model Definitions Change되면 Hot Module Reloading를 사용하여 Model Tree State 복원하기">
+                  <i class="fa fa-chevron-left"></i> [React] Mobx-state-tree 학습하기 #10 : Model Definitions Change되면 Hot Module Reloading를 사용하여 Model Tree State 복원하기
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/zzan/@anpigon/react-mobx-state-tree-12-flow" rel="prev" title="[React] Mobx-state-tree 학습하기 #12 : Flow를 사용하여 비동기 프로세스 정의하기">
+                  [React] Mobx-state-tree 학습하기 #12 : Flow를 사용하여 비동기 프로세스 정의하기 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    
+  <div class="comments" id="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          목차
+        </li>
+        <li class="sidebar-nav-overview">
+          흝어보기
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#more-mobx-state-tree-types-map-literal-union-and-enumeration"><span class="nav-number">1.</span> <span class="nav-text"> More mobx-state-tree Types: map, literal, union, and enumeration</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#user-%EB%AA%A8%EB%8D%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0"><span class="nav-number"></span> <span class="nav-text"> User 모델 만들기</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#quokka-%EC%82%AC%EC%9A%A9%ED%95%98%EC%97%AC-%EB%B9%A0%EB%A5%B4%EA%B2%8C-%ED%85%8C%EC%8A%A4%ED%8A%B8%ED%95%B4%EB%B3%B4%EA%B8%B0"><span class="nav-number"></span> <span class="nav-text"> Quokka 사용하여 빠르게 테스트해보기</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#enumeration-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0"><span class="nav-number"></span> <span class="nav-text"> enumeration 사용하기</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#group-%EB%AA%A8%EB%8D%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0"><span class="nav-number"></span> <span class="nav-text"> Group 모델 만들기</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ui-%EC%88%98%EC%A0%95%ED%95%98%EA%B8%B0"><span class="nav-number"></span> <span class="nav-text"> UI 수정하기</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link"><span class="nav-number">0.0.0.1.</span> <span class="nav-text">vote, reblog, follow @anpigon</span></a></li></ol></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="안피곤"
+    src="/images/me.jpg">
+  <p class="site-author-name" itemprop="name">안피곤</p>
+  <div class="site-description" itemprop="description">시간이 천천히 갔으면 좋겠다.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">325</span>
+          <span class="site-state-item-name">포스트</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-name">카테고리</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">139</span>
+        <span class="site-state-item-name">태그</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/anpigon" title="GitHub &rarr; https://github.com/anpigon" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:markan82@gmail.com" title="E-Mail &rarr; mailto:markan82@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+          <!-- 정사각형 광고 -->
+          <div style="margin-top: 15px;">
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-2365531018407022"
+                data-ad-slot="7521850306"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+          </div>
+    </div>
+  </aside>
+  <div id="sidebar-dimmer">3</div>
+
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">안피곤</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v5.4.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.4.2
+  </div>
+
+        
+
+
+
+
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-firestore.js"></script>
+  <script>
+    firebase.initializeApp({
+      apiKey: 'AIzaSyA4QZWCWb3IuIHjbkAmO0ttIM2b-qtLTP8',
+      projectId: 'next-blog-8f9a0'
+    });
+
+    function getCount(doc, increaseCount) {
+      // IncreaseCount will be false when not in article page
+
+      return doc.get().then(d => {
+        var count = 0;
+        if (!d.exists) { // Has no data, initialize count
+          if (increaseCount) {
+            doc.set({
+              count: 1
+            });
+            count = 1;
+          }
+        } else { // Has data
+          count = d.data().count;
+          if (increaseCount) {
+            // If first view this article
+            doc.set({ // Increase count
+              count: count + 1
+            });
+            count++;
+          }
+        }
+
+        return count;
+      });
+    }
+
+    function appendCountTo(el) {
+      return count => {
+        el.innerText = count;
+      }
+    }
+  </script>
+  <script pjax>
+    (function() {
+      var db = firebase.firestore();
+      var articles = db.collection('articles');
+
+      if (CONFIG.page.isPost) { // Is article page
+        var title = document.querySelector('.post-title').innerText.trim();
+        var doc = articles.doc(title);
+        var increaseCount = true;
+        if (localStorage.getItem(title)) {
+          increaseCount = false;
+        } else {
+          // Mark as visited
+          localStorage.setItem(title, true);
+        }
+        getCount(doc, increaseCount).then(appendCountTo(document.querySelector('.firestore-visitors-count')));
+      } else if (CONFIG.page.isHome) { // Is index page
+        var promises = [...document.querySelectorAll('.post-title')].map(element => {
+          var title = element.innerText.trim();
+          var doc = articles.doc(title);
+          return getCount(doc);
+        });
+        Promise.all(promises).then(counts => {
+          var metas = document.querySelectorAll('.firestore-visitors-count');
+          counts.forEach((val, idx) => {
+            appendCountTo(metas[idx])(val);
+          });
+        });
+      }
+    })();
+  </script>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.getAttribute('pjax') !== null) {
+      element.setAttribute('pjax', '');
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+  <script pjax>
+  if (CONFIG.page.isPost) {
+    wpac_init = window.wpac_init || [];
+    wpac_init.push({
+      widget: 'Rating',
+      id: 21712,
+      el: 'wpac-rating',
+      color: 'fc6423'
+    });
+    (function() {
+      if ('WIDGETPACK_LOADED' in window) return;
+      WIDGETPACK_LOADED = true;
+      var mc = document.createElement('script');
+      mc.type = 'text/javascript';
+      mc.async = true;
+      mc.src = '//embed.widgetpack.com/widget.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+    })();
+  }
+  </script>
+
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.4.1/dist/instantsearch.min.css">
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.4.1/dist/instantsearch.js"></script>
+<script src="/js/algolia-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+
+  
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://anpigon-github-io.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  function loadComments() {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: {page: {
+            url: "https://anpigon.github.io/zzan/@anpigon/react-mobx-state-tree-11-mobx-state-tree-types-map-literal-union-enumeration",
+            identifier: "/zzan/@anpigon/react-mobx-state-tree-11-mobx-state-tree-types-map-literal-union-enumeration",
+            title: "[React] Mobx-state-tree 학습하기 #11 : 더 많은 mobx-state-tree Types 배우기: map, literal, union, enumeration"
+          }
+        }
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://anpigon-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  }
+    (function() {
+      var offsetTop = document.getElementById('comments').offsetTop - window.innerHeight;
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        window.addEventListener('load', loadComments, false);
+      } else {
+        var disqus_scroll = () => {
+          // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = document.getElementById('comments').offsetTop - window.innerHeight;
+          var scrollTop = window.scrollY;
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            window.removeEventListener('scroll', disqus_scroll);
+            loadComments();
+          }
+        };
+        window.addEventListener('scroll', disqus_scroll);
+      }
+    })();
+  
+</script>
+
+    </div>
+</body>
+</html>

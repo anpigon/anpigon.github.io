@@ -1,0 +1,1204 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="yfKOiBPD8WlKH3NPG_CG1zr4MsCgCG1YVdGKhMS2CKc">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Noto Serif KR:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.4.2',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: true,
+    pangu: false,
+    algolia: {
+      appID: 'YY693DUDAI',
+      apiKey: 'db449d453b150820f66e7bc3d4523a17',
+      indexName: 'my-hexo-blog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '복사',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="안녕하세요. 안피곤입니다.작년에 스팀잇을 시작하던 시기에는 블록체인, 머신러닝, Front-End(Vue.js)에 모두 관심을 가지고 있었습니다. 이 중에서 머신러닝과 블록체인에 가장 흥미가 있지만, 이 분야는 학습하고 이해하는데 정말 어려웠습니다.그나마 상대적으로 학습하기 쉬운 Front-End 분야는 하면 할수록 점점 더 재미있습니다. 작년에 Vue.j">
+<meta property="og:type" content="article">
+<meta property="og:title" content="그 동안의 스팀잇 활동을 돌아보며...">
+<meta property="og:url" content="https://anpigon.github.io/zzan/@anpigon/czw7w">
+<meta property="og:site_name" content="안피곤님의 블로그">
+<meta property="og:description" content="안녕하세요. 안피곤입니다.작년에 스팀잇을 시작하던 시기에는 블록체인, 머신러닝, Front-End(Vue.js)에 모두 관심을 가지고 있었습니다. 이 중에서 머신러닝과 블록체인에 가장 흥미가 있지만, 이 분야는 학습하고 이해하는데 정말 어려웠습니다.그나마 상대적으로 학습하기 쉬운 Front-End 분야는 하면 할수록 점점 더 재미있습니다. 작년에 Vue.j">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:image" content="https://files.steempeak.com/file/steempeak/anpigon/h6LrYd7T-Anpigon20Studio201.png">
+<meta property="og:image" content="https://steemitimages.com/640x0/https://cdn.steemitimages.com/DQmNpcHsY4vBGAxKez3HgK3B9k1MouVQ2YSqCHHVFi4QvPD/newLOGO_%EF%BC%85EC%EF%BC%8596%EF%BC%8587%EF%BC%85EC%EF%BC%859D%EF%BC%8580.png">
+<meta property="og:image" content="https://steemitimages.com/200x0/https://steemitimages.com/DQmRBpSQnmBfeG6oDFZ2mMrxSswzvtgdykXBE8VLHs4a6HV/%EF%BC%85E1%EF%BC%8584%EF%BC%8589%EF%BC%85E1%EF%BC%8585%EF%BC%85B3%EF%BC%85E1%EF%BC%8584%EF%BC%858F%EF%BC%85E1%EF%BC%8585%EF%BC%85B3%EF%BC%85E1%EF%BC%8584%EF%BC%8585%EF%BC%85E1%EF%BC%8585%EF%BC%85B5%EF%BC%85E1%EF%BC%8586%EF%BC%85AB%EF%BC%85E1%EF%BC%8584%EF%BC%8589%EF%BC%85E1%EF%BC%8585%EF%BC%85A3%EF%BC%85E1%EF%BC%8586%EF%BC%85BA%EF%BC%85202018-11-25%EF%BC%852001.30.54.png">
+<meta property="og:image" content="https://steemitimages.com/0x590/https://ipfs.busy.org/ipfs/QmZ46LrC3ep4mUsrzdGozfo6Zbu7BGAQvrRF4cSB7W9Agb">
+<meta property="og:image" content="https://steemitimages.com/DQmPD5CsLgDCZRxJLq3mtyZsu2DtwmCAh9BSZ7b1oXNWmNG/QmaXe6VQs1jck7KCa6kfDL654pWfNyUKzgCzRS9rN67BVT.gif">
+<meta property="og:image" content="https://steemitimages.com/DQmU8rDwcmpJmfDxWSuSqGtzTEgYMtY4YL64UoAPetKYR62/QmdEJ4tK1PSLiF5xXKmaKiAqCZFAgQ3eGwXLQgvDc3nQrV.gif">
+<meta property="og:image" content="https://steemitimages.com/0x600/https://user-images.githubusercontent.com/3969643/51506135-06079580-1e2e-11e9-973a-b25b1a3fb3cb.png">
+<meta property="og:image" content="https://steemitimages.com/0x600/https://steemitimages.com/p/7vqvwioC5cYNbtKc2fyNCtKRU5w1VUbTnsgs3sMwYa3Jj4GwLQx4ShMRiLJimtW3oKNmjaEqGD5makXMzxnBNSitEkv6WkCaoMpymaHHFWVGfqSfqJbzWnafANvnKcTMLPYQ1zMoMK1dUZfXaZ85JvVn1318SxfjjPWgj7PD74EEau6ssYGQUitKAmzimtr73iKPKFjC6bhAe8QMfWRhL7MnBc7caUcTroxQjH6Ru8rmLtfE1GESQAtch2BpQTTVLdkXEBRTMFJ2Tfm4uotf3QMgibpNuLD85No6wBtKBdFyCTTkKkB5CiTYsMorXdyPysS45TymXWS4oEybVTi4Snkp35bRMu3MoNdn81BJ6SP5JX8LE52yhFdX8sd5RQJf3wctJ8cthfmSNVUiwAjkQamx2m">
+<meta property="og:image" content="https://steemitimages.com/0x0/https://steemitimages.com/DQmNdRKUTLPzkJzEsddqkDF7tWhuZefHP6qS2PKpbL78W46/2019-01-25%EF%BC%852000-21-27.2019-01-25%EF%BC%852000_23_38.gif">
+<meta property="og:image" content="https://steemitimages.com/0x600/https://steemitimages.com/DQmNpmzypELfPkUqACifpBfs9BAx2HT7VwZ9jFQoNEbjaQh/%EF%BC%85E1%EF%BC%8584%EF%BC%8589%EF%BC%85E1%EF%BC%8585%EF%BC%85B3%EF%BC%85E1%EF%BC%8584%EF%BC%858F%EF%BC%85E1%EF%BC%8585%EF%BC%85B3%EF%BC%85E1%EF%BC%8584%EF%BC%8585%EF%BC%85E1%EF%BC%8585%EF%BC%85B5%EF%BC%85E1%EF%BC%8586%EF%BC%85AB%EF%BC%85E1%EF%BC%8584%EF%BC%8589%EF%BC%85E1%EF%BC%8585%EF%BC%85A3%EF%BC%85E1%EF%BC%8586%EF%BC%85BA%EF%BC%85202019-02-09%EF%BC%852013.58.33.png">
+<meta property="og:image" content="https://steemitimages.com/0x600/https://steemitimages.com/DQmZFgmGwquNWTTjAYGG6k8FbUfSYc1848AdqfEgmf3n431/%EF%BC%85E1%EF%BC%8584%EF%BC%8589%EF%BC%85E1%EF%BC%8585%EF%BC%85B3%EF%BC%85E1%EF%BC%8584%EF%BC%858F%EF%BC%85E1%EF%BC%8585%EF%BC%85B3%EF%BC%85E1%EF%BC%8584%EF%BC%8585%EF%BC%85E1%EF%BC%8585%EF%BC%85B5%EF%BC%85E1%EF%BC%8586%EF%BC%85AB%EF%BC%85E1%EF%BC%8584%EF%BC%8589%EF%BC%85E1%EF%BC%8585%EF%BC%85A3%EF%BC%85E1%EF%BC%8586%EF%BC%85BA%EF%BC%85202019-02-14%EF%BC%852013.24.41.png">
+<meta property="og:image" content="https://steemitimages.com/DQmY8wpWBMKDtTP9Fq5AwQ8nhaT4MfDyMDVAGHYZGSN2SH1/2019-02-15%EF%BC%852009-49-18.2019-02-15%EF%BC%852009_50_51.gif">
+<meta property="og:image" content="https://steemitimages.com/0x0/https://files.steempeak.com/file/steempeak/anpigon/NPlJ4SZZ-E18489E185B3E1848FE185B3E18485E185B5E186ABE18489E185A3E186BA202019-07-0120E1848BE185A9E1848CE185A5E186AB2011.37.14.png">
+<meta property="og:image" content="https://steemitimages.com/0x0/https://files.steempeak.com/file/steempeak/anpigon/jRf9ZiMk-E18489E185B3E1848FE185B3E18485E185B5E186ABE18489E185A3E186BA202019-07-0120E1848BE185A9E1848CE185A5E186AB2011.37.21.png">
+<meta property="og:image" content="https://files.steempeak.com/file/steempeak/anpigon/yu01JcGK-2019-06-292010-09-23.2019-06-292010_11_48.gif">
+<meta property="og:image" content="https://steemitimages.com/0x600/https://files.steempeak.com/file/steempeak/anpigon/kodrdzTA-Screenshot_20190601-101605_One20UI20Home.jpg">
+<meta property="og:image" content="https://steemitimages.com/0x600/https://steemitimages.com/DQmPxNju7GqUKbiLALcHjoHWZbkwJRAWdppwF1xfNUUeomS/KakaoTalk_Photo_2019-06-11-01-24-15-2.jpeg">
+<meta property="og:image" content="https://steemitimages.com/0x600/https://files.steempeak.com/file/steempeak/anpigon/guV8rARl-KakaoTalk_Photo_2019-06-11-01-24-15-1.jpeg">
+<meta property="og:image" content="https://steemitimages.com/470x0/https://files.steempeak.com/file/steempeak/anpigon/PUsySRgL-E18489E185B3E1848FE185B3E18485E185B5E186ABE18489E185A3E186BA202019-06-2320E1848BE185A9E1848CE185A5E186AB2012.40.37.png">
+<meta property="og:image" content="https://steemitimages.com/470x0/https://files.steempeak.com/file/steempeak/anpigon/EEXtSiQW-E18489E185B3E1848FE185B3E18485E185B5E186ABE18489E185A3E186BA202019-06-2220E1848BE185A9E1848CE185A5E186AB209.11.26.png">
+<meta property="og:image" content="hhttps://files.steempeak.com/file/steempeak/anpigon/t4tRTiQ2-2019-06-232009_13_56_2.gif">
+<meta property="og:image" content="https://steemitimages.com/0x600/https://files.steempeak.com/file/steempeak/anpigon/SnTSZZpr-54TLbcUcnRm42j8GnpdnmmbBwy8ezgJG9sn6BKTkFjLZTgXfPv3moHevaSpfy7gbvU2PLoCkxgx8Bnf1oK5gcYvFXdzCow1DPoHpb67ZnChhrmKnybkUFD6Eu2hPngb1Xs4ALEowU.jpeg">
+<meta property="og:image" content="https://steemitimages.com/500x0/https://img.esteem.ws/4azt4ps4c9.gif">
+<meta property="og:image" content="https://files.steempeak.com/file/steempeak/anpigon/s5dsNunu-test2.gif">
+<meta property="og:image" content="https://steemitimages.com/400x0/https://steemitimages.com/DQmQmWhMN6zNrLmKJRKhvSScEgWZmpb8zCeE2Gray1krbv6/BC054B6E-6F73-46D0-88E4-C88EB8167037.jpeg">
+<meta property="article:published_time" content="2019-07-13T13:55:15.000Z">
+<meta property="article:modified_time" content="2021-04-21T11:50:30.082Z">
+<meta property="article:author" content="안피곤">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://files.steempeak.com/file/steempeak/anpigon/h6LrYd7T-Anpigon20Studio201.png">
+
+<link rel="canonical" href="https://anpigon.github.io/zzan/@anpigon/czw7w">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>그 동안의 스팀잇 활동을 돌아보며... | 안피곤님의 블로그</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-20589042-10"></script>
+    <script pjax>
+      var host = window.location.hostname;
+      if (host !== "localhost" || !true) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-20589042-10');
+      }
+    </script>
+
+
+
+
+
+
+  
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-2365531018407022",
+          enable_page_level_ads: false
+     });
+</script>
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="안피곤님의 블로그" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">안피곤님의 블로그</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">코딩, 독서, 여행, 영화, 맛집</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>홈</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>태그<span class="badge">139</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>카테고리<span class="badge">25</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>아카이브<span class="badge">325</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>검색
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input" id="search-input"></div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="algolia-results">
+  <div id="algolia-stats"></div>
+  <div id="algolia-hits"></div>
+  <div id="algolia-pagination" class="algolia-pagination"></div>
+</div>
+
+  
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="ko">
+    <link itemprop="mainEntityOfPage" href="https://anpigon.github.io/zzan/@anpigon/czw7w">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/me.jpg">
+      <meta itemprop="name" content="안피곤">
+      <meta itemprop="description" content="시간이 천천히 갔으면 좋겠다.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="안피곤님의 블로그">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          그 동안의 스팀잇 활동을 돌아보며...
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">작성일</span>
+
+              <time title="Post created: 2019-07-13 22:55:15" itemprop="dateCreated datePublished" datetime="2019-07-13T22:55:15+09:00">2019-07-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Updated at: 2021-04-21 20:50:30" itemprop="dateModified" datetime="2021-04-21T20:50:30+09:00">2021-04-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">개발 이야기</span>
+                  </a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/%EC%8A%A4%ED%8C%80%EC%9E%87-steemit/" itemprop="url" rel="index">
+                    <span itemprop="name">스팀잇(Steemit)</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/zzan/@anpigon/czw7w#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="/zzan/@anpigon/czw7w" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+            <div style="margin-bottom:35px;margin-top:-20px;">
+              <!-- 블로그 본문 상단 광고 -->
+              <ins class="adsbygoogle"
+                  style="display:block"
+                  data-ad-client="ca-pub-2365531018407022"
+                  data-ad-slot="3390644000"
+                  data-ad-format="auto"
+                  data-full-width-responsive="true"></ins>
+              <script>
+                  (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+        <p><img alt data-src="https://files.steempeak.com/file/steempeak/anpigon/h6LrYd7T-Anpigon20Studio201.png"></p><hr><p>안녕하세요. 안피곤입니다.</p><p>작년에 스팀잇을 시작하던 시기에는 블록체인, 머신러닝, Front-End(Vue.js)에 모두 관심을 가지고 있었습니다. 이 중에서 머신러닝과 블록체인에 가장 흥미가 있지만, 이 분야는 학습하고 이해하는데 정말 어려웠습니다.</p><p>그나마 상대적으로 학습하기 쉬운 Front-End 분야는 하면 할수록 점점 더 재미있습니다. 작년에 Vue.js를 배우면서 React.js를  처음 알게 되었습니다. 그리고는 Vue.js를 버리고는 React.js로 갈아탔습니다.  React.js 강의 자료가 훨씬 더 많았기 때문입니다. 그리고 지금은 React Native가 가장 재미있습니다.</p><a id="more"></a>
+
+
+
+
+<p>작년 7월쯤에 스팀잇에서 활동하기 시작했습니다. 그리고 이제 스팀잇에서 시작한 지 약 1년 정도 되었습니다. 처음 스팀잇을 알게 되었을 때, 글을 작성하면 보상이 생기는 스팀잇 플랫폼이 무척 매력적이었습니다. 그래서 스팀잇에 많은 글을 올렸습니다. 그리고 이전보다 더 많은 결과물을 생산했습니다. 스팀잇 이전에는 티스토리에 구글 광고를 붙여서 블로그를 운영했었습니다. 하지만 출금 가능 최소 금액에 도달하지 못해서 한 번도 출금해본 적이 없습니다.</p>
+<p>그리고 약 3달 전에는 Whan Team에 합류하면서 능력(개발)자들을 알게 되었습니다. 현재 Whan 팀에 속해있는 개<sub>발자</sub><sup>그맨</sup> 들과 대화하면 무척 재미있습니다. 그리고 이분들과 함께 있으면 생산력이 2.5배가 됩니다. 다들 너무 열심히 하셔서 항상 제가 뒤처지는 느낌을 받습니다. 스팀잇을 활동하면서 얻은 가장 큰 선물라고 생각합니다.</p>
+<p><br>마지막으로 스팀잇에서 그동안 활동했던 흔적을 돌아봤습니다. 그리고 제가 올렸던 글을 시리즈별로 정리했습니다.</p>
+<p><br><center><img alt data-src="https://steemitimages.com/640x0/https://cdn.steemitimages.com/DQmNpcHsY4vBGAxKez3HgK3B9k1MouVQ2YSqCHHVFi4QvPD/newLOGO_%EF%BC%85EC%EF%BC%8596%EF%BC%8587%EF%BC%85EC%EF%BC%859D%EF%BC%8580.png"></center><br></p>
+<h2 id="날씨-앱-만들기"><a class="markdownIt-Anchor" href="#날씨-앱-만들기"></a> 날씨 앱 만들기</h2>
+<p>리액트 네이티브를 맨 처음 학습하면서 만들었던 첫 모바일앱입니다. 위치 기반으로 현재 날씨를 보여주는 입니다. 디자인이 정말 뷰티풀 합니다. 이 강의를 듣기 시작하면서 리액트 네이티브 매력에 빠지기 시작했습니다. ㅋ</p>
+<table>
+<thead>
+<tr>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt data-src="https://steemitimages.com/200x0/https://steemitimages.com/DQmRBpSQnmBfeG6oDFZ2mMrxSswzvtgdykXBE8VLHs4a6HV/%EF%BC%85E1%EF%BC%8584%EF%BC%8589%EF%BC%85E1%EF%BC%8585%EF%BC%85B3%EF%BC%85E1%EF%BC%8584%EF%BC%858F%EF%BC%85E1%EF%BC%8585%EF%BC%85B3%EF%BC%85E1%EF%BC%8584%EF%BC%8585%EF%BC%85E1%EF%BC%8585%EF%BC%85B5%EF%BC%85E1%EF%BC%8586%EF%BC%85AB%EF%BC%85E1%EF%BC%8584%EF%BC%8589%EF%BC%85E1%EF%BC%8585%EF%BC%85A3%EF%BC%85E1%EF%BC%8586%EF%BC%85BA%EF%BC%85202018-11-25%EF%BC%852001.30.54.png"></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/@anpigon/react-native-1--1542639852750">[React Native] 리액트 네이티브 시작하기</a></td>
+</tr>
+<tr>
+<td><a href="/@anpigon/react-native-2--1542732103861">[React Native] 리액트 네이티브 날씨앱 만들기 #1</a></td>
+</tr>
+<tr>
+<td><a href="/@anpigon/react-native-3-2-1542874472110">[React Native] 리액트 네이티브 날씨앱 만들기 #2</a></td>
+</tr>
+<tr>
+<td><a href="/@anpigon/react-native-4-3-1542990470234">[React Native] 리액트 네이티브 날씨앱 만들기 #3</a></td>
+</tr>
+<tr>
+<td><a href="/@anpigon/react-native-5-4-1543113530194">[React Native] 리액트 네이티브 날씨앱 만들기 #4</a></td>
+</tr>
+</tbody>
+</table>
+<br>
+<br>
+<h2 id="to-do-앱-만들기"><a class="markdownIt-Anchor" href="#to-do-앱-만들기"></a> TO-DO 앱 만들기</h2>
+<p>리액트 네이티브 학습하고 만든 두 번째 모바일앱입니다. 이 앱을 마지막으로 그다음부터는 제가 만들고 싶은 앱을 만들기 시작했습니다. 이것 다음에 무비 앱도 만들었는데 시리즈 글은 작성하지 않았네요. <em>“<a href="/@anpigon/3radqh">리액트 네이티브로 무비앱을 만들어서 스토어에 올렸어요!</a>”</em></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt data-src="https://steemitimages.com/0x590/https://ipfs.busy.org/ipfs/QmZ46LrC3ep4mUsrzdGozfo6Zbu7BGAQvrRF4cSB7W9Agb"></td>
+<td><img alt data-src="https://steemitimages.com/DQmPD5CsLgDCZRxJLq3mtyZsu2DtwmCAh9BSZ7b1oXNWmNG/QmaXe6VQs1jck7KCa6kfDL654pWfNyUKzgCzRS9rN67BVT.gif"></td>
+<td><img alt data-src="https://steemitimages.com/DQmU8rDwcmpJmfDxWSuSqGtzTEgYMtY4YL64UoAPetKYR62/QmdEJ4tK1PSLiF5xXKmaKiAqCZFAgQ3eGwXLQgvDc3nQrV.gif"></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/@anpigon/react-native-todo-1-1543931900794">[React Native] 리액트 네이티브 TO-DO 앱 만들기 #1</a></td>
+</tr>
+<tr>
+<td><a href="/@anpigon/react-native-todo-2-1544357245729">[React Native] 리액트 네이티브 TO-DO 앱 만들기 #2</a></td>
+</tr>
+<tr>
+<td><a href="/@anpigon/react-native-todo-3-1544444494475">[React Native] 리액트 네이티브 TO-DO 앱 만들기 #3</a></td>
+</tr>
+<tr>
+<td><a href="/@anpigon/react-native-todo-4-1544540786908">[React Native] 리액트 네이티브 TO-DO 앱 만들기 #4</a></td>
+</tr>
+<tr>
+<td><a href="/@anpigon/react-native-todo-5-1544624822669">[React Native] 리액트 네이티브 TO-DO 앱 만들기 #5</a></td>
+</tr>
+</tbody>
+</table>
+<br>
+<br>
+<h2 id="인스타그램-ui-모바일앱-만들기"><a class="markdownIt-Anchor" href="#인스타그램-ui-모바일앱-만들기"></a> 인스타그램 UI 모바일앱 만들기</h2>
+<p>스팀잇을 인스타그램 UI처럼 만들고 싶어서 유튜브 무료 강의를 보면서 따라 만들었습니다. 아직 스킬이 부족해서 그 이상의 기능은 업데이트는  못했습니다. 지금 생각하면 많이 아쉽습니다. 이 시리즈 이후부터 리액트 네이티브 스킬을 올리기 위해 부지런히 노력했습니다.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt data-src="https://steemitimages.com/0x600/https://user-images.githubusercontent.com/3969643/51506135-06079580-1e2e-11e9-973a-b25b1a3fb3cb.png"></td>
+<td><img alt data-src="https://steemitimages.com/0x600/https://steemitimages.com/p/7vqvwioC5cYNbtKc2fyNCtKRU5w1VUbTnsgs3sMwYa3Jj4GwLQx4ShMRiLJimtW3oKNmjaEqGD5makXMzxnBNSitEkv6WkCaoMpymaHHFWVGfqSfqJbzWnafANvnKcTMLPYQ1zMoMK1dUZfXaZ85JvVn1318SxfjjPWgj7PD74EEau6ssYGQUitKAmzimtr73iKPKFjC6bhAe8QMfWRhL7MnBc7caUcTroxQjH6Ru8rmLtfE1GESQAtch2BpQTTVLdkXEBRTMFJ2Tfm4uotf3QMgibpNuLD85No6wBtKBdFyCTTkKkB5CiTYsMorXdyPysS45TymXWS4oEybVTi4Snkp35bRMu3MoNdn81BJ6SP5JX8LE52yhFdX8sd5RQJf3wctJ8cthfmSNVUiwAjkQamx2m"></td>
+<td><img alt data-src="https://steemitimages.com/0x0/https://steemitimages.com/DQmNdRKUTLPzkJzEsddqkDF7tWhuZefHP6qS2PKpbL78W46/2019-01-25%EF%BC%852000-21-27.2019-01-25%EF%BC%852000_23_38.gif"></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/@anpigon/react-native-ui-1">[React Native] 인스타그램 UI 만들기 #1</a></td>
+</tr>
+<tr>
+<td><a href="/@anpigon/react-native-ui-2-1548079722841">[React Native] 인스타그램 UI 만들기 #2</a></td>
+</tr>
+<tr>
+<td><a href="/@anpigon/react-native-ui-3-1548134597178">[React Native] 인스타그램 UI 만들기 #3</a></td>
+</tr>
+<tr>
+<td><a href="/@anpigon/react-native-ui-4-1548207724086">[React Native] 인스타그램 UI 만들기 #4</a></td>
+</tr>
+<tr>
+<td><a href="/@anpigon/react-native-ui-5-1548346515419">[React Native] 인스타그램 UI 만들기 #5</a></td>
+</tr>
+</tbody>
+</table>
+<br>
+<br>
+<h2 id="이더리움-모바일-지갑앱-만들기"><a class="markdownIt-Anchor" href="#이더리움-모바일-지갑앱-만들기"></a> 이더리움 모바일 지갑앱 만들기</h2>
+<p>제가 보유하고 있는 다양한 코인들을 하나의 지갑 앱에서 관리하고 싶어서 만들기 시작했습니다. 이더리움 지갑 앱을 시작으로 비트코인, 이오스, 트론, 스텔라 루멘 등 코인을 하나의 앱에서 관리하는 지갑 앱을 만들고 싶었습니다.</p>
+<p>하지만 만들다 보니 블록체인마다 규격이 너무 다릅니다. 그래서 앱 구조가 점점 복잡해지고 구현 난이도가 너무 높아졌습니다. 그리고 블록체인마다 다른 UI를 어떻게 표현해야 할지가 제일 고민이었습니다.</p>
+<p>비트코인 잔액(UTXO) 조회, 네트워크 수수료 조회, 블록체인 트랜잭션 모니터링 등… 앞으로 구현해야 할 기술적 부채도 있습니다. 그리고 마켓에 검색해보면 훌륭한 모바일 지갑 앱이 다수 존재합니다. 그래서 지갑 앱 구현은 이 정도 구현 수준에서 마무리했습니다.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt data-src="https://steemitimages.com/0x600/https://steemitimages.com/DQmNpmzypELfPkUqACifpBfs9BAx2HT7VwZ9jFQoNEbjaQh/%EF%BC%85E1%EF%BC%8584%EF%BC%8589%EF%BC%85E1%EF%BC%8585%EF%BC%85B3%EF%BC%85E1%EF%BC%8584%EF%BC%858F%EF%BC%85E1%EF%BC%8585%EF%BC%85B3%EF%BC%85E1%EF%BC%8584%EF%BC%8585%EF%BC%85E1%EF%BC%8585%EF%BC%85B5%EF%BC%85E1%EF%BC%8586%EF%BC%85AB%EF%BC%85E1%EF%BC%8584%EF%BC%8589%EF%BC%85E1%EF%BC%8585%EF%BC%85A3%EF%BC%85E1%EF%BC%8586%EF%BC%85BA%EF%BC%85202019-02-09%EF%BC%852013.58.33.png"></td>
+<td><img alt data-src="https://steemitimages.com/0x600/https://steemitimages.com/DQmZFgmGwquNWTTjAYGG6k8FbUfSYc1848AdqfEgmf3n431/%EF%BC%85E1%EF%BC%8584%EF%BC%8589%EF%BC%85E1%EF%BC%8585%EF%BC%85B3%EF%BC%85E1%EF%BC%8584%EF%BC%858F%EF%BC%85E1%EF%BC%8585%EF%BC%85B3%EF%BC%85E1%EF%BC%8584%EF%BC%8585%EF%BC%85E1%EF%BC%8585%EF%BC%85B5%EF%BC%85E1%EF%BC%8586%EF%BC%85AB%EF%BC%85E1%EF%BC%8584%EF%BC%8589%EF%BC%85E1%EF%BC%8585%EF%BC%85A3%EF%BC%85E1%EF%BC%8586%EF%BC%85BA%EF%BC%85202019-02-14%EF%BC%852013.24.41.png"></td>
+<td><img alt data-src="https://steemitimages.com/DQmY8wpWBMKDtTP9Fq5AwQ8nhaT4MfDyMDVAGHYZGSN2SH1/2019-02-15%EF%BC%852009-49-18.2019-02-15%EF%BC%852009_50_51.gif"></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/@anpigon/react-native-ethereum-mobile-wallet">이더리움 모바일 지갑(Ethereum Mobile Wallet) 만들기 #1</a></td>
+</tr>
+<tr>
+<td><a href="/@anpigon/react-native-ethereum-mobile-wallet-2">이더리움 모바일 지갑(Ethereum Mobile Wallet) 만들기 #2</a></td>
+</tr>
+<tr>
+<td><a href="/@anpigon/react-native-ethereum-mobile-wallet-3">이더리움 모바일 지갑(Ethereum Mobile Wallet) 만들기 #3</a></td>
+</tr>
+<tr>
+<td><a href="/@anpigon/react-native-ethereum-mobile-wallet-4">이더리움 모바일 지갑(Ethereum Mobile Wallet) 만들기 #4</a></td>
+</tr>
+<tr>
+<td><a href="/@anpigon/react-native-ethereum-mobile-wallet-5">이더리움 모바일 지갑(Ethereum Mobile Wallet) 만들기 #5</a></td>
+</tr>
+<tr>
+<td><a href="/@anpigon/react-native-ethereum-mobile-wallet-6">이더리움 모바일 지갑(Ethereum Mobile Wallet) 만들기 #6</a></td>
+</tr>
+<tr>
+<td><a href="/@anpigon/react-native-ethereum-mobile-wallet-7">이더리움 모바일 지갑(Ethereum Mobile Wallet) 만들기 #7</a></td>
+</tr>
+<tr>
+<td><a href="/@anpigon/ethereum-mobile-wallet-8">이더리움 모바일 지갑(Ethereum Mobile Wallet) 만들기 #8 - 배포하기</a></td>
+</tr>
+</tbody>
+</table>
+<br>
+<br>
+<h2 id="steem-모바일-지갑앱-만들기"><a class="markdownIt-Anchor" href="#steem-모바일-지갑앱-만들기"></a> Steem 모바일 지갑앱 만들기</h2>
+<p>이때쯤 다양한 SCOT 토큰들이 등장했습니다. SCOT 토큰 잔액을 모바일앱에서 확인하고 싶어서 시작했습니다. 바로 이더리움 지갑을 개발하면서 얻은 경험을 바탕으로 금방 구현할 것 같았습니다. 하지만 scot-api가 너무 불안정했습니다. 잦은 HTTP 404 오류와 json 파싱 오류가 심각했습니다.</p>
+<p>지금 스팀과 토큰 잔액 조회 기능 외에는 구현되어 있지 않습니다. 시간 날 때마다 가끔씩 코드를 들여다보며 기능을 조금씩 추가하고 있습니다. 하지만 지갑 개발에 시간을 많이 할애하지 않아서 진도는 거의 안 나가고 있네요.</p>
+<p>그리고 개발의신👑원사마님께서 스팀 지갑을 개발하기 시작했으니, 저의 Steem 모바일 지갑 앱 만들기 시리즈는 여기서 마무리합니다. 원사마님 화이팅입니다. - <em>참고글: “원사마님의 <a href="/zzan/@wonsama/flutter-001-start">[flutter] 스팀 지갑 개발 #001 - START</a>”</em></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt data-src="https://steemitimages.com/0x0/https://files.steempeak.com/file/steempeak/anpigon/NPlJ4SZZ-E18489E185B3E1848FE185B3E18485E185B5E186ABE18489E185A3E186BA202019-07-0120E1848BE185A9E1848CE185A5E186AB2011.37.14.png"></td>
+<td><img alt data-src="https://steemitimages.com/0x0/https://files.steempeak.com/file/steempeak/anpigon/jRf9ZiMk-E18489E185B3E1848FE185B3E18485E185B5E186ABE18489E185A3E186BA202019-07-0120E1848BE185A9E1848CE185A5E186AB2011.37.21.png"></td>
+<td><img alt data-src="https://files.steempeak.com/file/steempeak/anpigon/yu01JcGK-2019-06-292010-09-23.2019-06-292010_11_48.gif"></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/@anpigon/react-native-steem-1">Steem 모바일 지갑앱 만들기 #1</a></td>
+</tr>
+<tr>
+<td><a href="/@anpigon/react-native-steem-2">Steem 모바일 지갑앱 만들기 #2</a></td>
+</tr>
+<tr>
+<td><a href="/@anpigon/react-native-steem-3">Steem 모바일 지갑앱 만들기 #3</a></td>
+</tr>
+<tr>
+<td><a href="/@anpigon/react-native-steem-4">Steem 모바일 지갑앱 만들기 #4</a></td>
+</tr>
+</tbody>
+</table>
+<p><br><br></p>
+<h2 id="steemsct-보팅파워vp-안드로이드-위젯-만들기"><a class="markdownIt-Anchor" href="#steemsct-보팅파워vp-안드로이드-위젯-만들기"></a> STEEM/SCT 보팅파워(VP) 안드로이드 위젯 만들기</h2>
+<p>각 Nitrous의 보팅 파워를 모바일에서 확인하기 위해 개발을 시작했습니다. 리액트 네이티브로 개발하기 시작했지만, 기술적인 문제로 결국 안드로이드 Java로 다시 구현했습니다. Android Oreo 버전부터 백그라운드 제약이 심해져서 조금 힘들었던 프로젝트였습니다.</p>
+<p>지금은 개인적으로 Whan 팀원들의 보팅 파워를 모니터링하고 감시하는데 사용하고 있습니다. 팀원들의 보팅 파워가 떨어지면 CHEER UP 해주고 있습니다.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt data-src="https://steemitimages.com/0x600/https://files.steempeak.com/file/steempeak/anpigon/kodrdzTA-Screenshot_20190601-101605_One20UI20Home.jpg"></td>
+<td><img alt data-src="https://steemitimages.com/0x600/https://steemitimages.com/DQmPxNju7GqUKbiLALcHjoHWZbkwJRAWdppwF1xfNUUeomS/KakaoTalk_Photo_2019-06-11-01-24-15-2.jpeg"></td>
+<td><img alt data-src="https://steemitimages.com/0x600/https://files.steempeak.com/file/steempeak/anpigon/guV8rARl-KakaoTalk_Photo_2019-06-11-01-24-15-1.jpeg"></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/@anpigon/steem-sct-vp-1">STEEM/SCT 보팅파워(VP) 안드로이드 위젯 #1</a></td>
+</tr>
+<tr>
+<td><a href="/@anpigon/steem-sct-vp-2">STEEM/SCT 보팅파워(VP) 안드로이드 위젯 #2 - 앱 업데이트 이야기</a></td>
+</tr>
+<tr>
+<td><a href="/@anpigon/steem-sct-vp-3-doze-app-standby">STEEM/SCT 보팅파워(VP) 안드로이드 위젯 #3 - Doze와 앱 대기(App Standby) 이야기</a></td>
+</tr>
+<tr>
+<td><a href="/@anpigon/steem-sct-vp-4">STEEM/SCT 보팅파워(VP) 안드로이드 위젯 #4 - 마지막 업데이트 이야기</a></td>
+</tr>
+</tbody>
+</table>
+<p><br><br></p>
+<h2 id="영화-리뷰-모바일-앱-개발-이야기"><a class="markdownIt-Anchor" href="#영화-리뷰-모바일-앱-개발-이야기"></a> 영화 리뷰 모바일 앱 개발 이야기</h2>
+<p>저는 소설책과 영화 보는 것을 매우 좋아합니다. 그래서 Triple A 커뮤니티가 오픈했을 때 기존에 만들고 있던 도서 리뷰 앱을 영화 리뷰 앱으로 바꾸어 시리즈를 연재했습니다. 도서 리뷰 앱은 만들기 바빠서 스팀잇에 글을 안 올렸네요. ㅎㅎ</p>
+<p>구현하면서 어떻게 하면 사용자들이 영화 리뷰를 쉽게 올리고 리뷰를 편하게 볼 수 있을까 고민을 했습니다. 그래서 다른 영화 리뷰 모바일앱들을 벤치마킹하면서 UI 고민을 정말 많이 했습니다. 스팀 블록체인 위에 동작하는 앱 UX를 기획하는 건 쉽지 않네요. 욕심은 왓챠같은 앱을 만들고 싶으나 기획 방향을 틀어야 할 것 같습니다.</p>
+<p>결국은 아이디어가 부족해서 잠시 시리즈 진행을 멈췄습니다. 여기서 기획 스킬의 부족함을 절실히 느꼈습니다. 하지만 아이디어 영감이 떠오르면 다시 진행할 계획입니다.<br>
+<sub>ps. 또한 만드시는 과정을 지켜보는 분이 계셔서 큰 부담이 작용한 것 같습니다. 엄청난 앱을 만들어야하는데 그게 잘 안되네요. ㅎㅎ</sub></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt data-src="https://steemitimages.com/470x0/https://files.steempeak.com/file/steempeak/anpigon/PUsySRgL-E18489E185B3E1848FE185B3E18485E185B5E186ABE18489E185A3E186BA202019-06-2320E1848BE185A9E1848CE185A5E186AB2012.40.37.png"></td>
+<td><img alt data-src="https://steemitimages.com/470x0/https://files.steempeak.com/file/steempeak/anpigon/EEXtSiQW-E18489E185B3E1848FE185B3E18485E185B5E186ABE18489E185A3E186BA202019-06-2220E1848BE185A9E1848CE185A5E186AB209.11.26.png"></td>
+<td><img alt data-src="hhttps://files.steempeak.com/file/steempeak/anpigon/t4tRTiQ2-2019-06-232009_13_56_2.gif"></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/@anpigon/react-native-1">영화 리뷰 모바일 앱 개발 이야기 #1</a></td>
+</tr>
+<tr>
+<td><a href="/@anpigon/react-native-2">영화 리뷰 모바일 앱 개발 이야기 #2</a></td>
+</tr>
+<tr>
+<td><a href="/@anpigon/react-native-3">영화 리뷰 모바일 앱 개발 이야기 #3</a></td>
+</tr>
+<tr>
+<td><a href="/@anpigon/react-native-4">영화 리뷰 모바일 앱 개발 이야기 #4</a></td>
+</tr>
+</tbody>
+</table>
+<br>
+<br>
+<h2 id="whan-app-개발-이야기"><a class="markdownIt-Anchor" href="#whan-app-개발-이야기"></a> WHAN APP 개발 이야기</h2>
+<p>최근에 오픈한 LIV 커뮤니티는 Nitrous UI를 일반 게시판처럼 바꿔버렸습니다. 여기서 아이디어를 얻었습니다. 그래서 스팀잇을 블로그나 SNS가 아닌 게시판이라는 관점으로 바라보고 개발하기 시작했습니다. 모두의 커뮤니티 모바일앱을 벤치마킹했습니다. 한동안은 이 시리즈를 계속 연재할 생각입니다. 많은 관심 바랍니다.</p>
+<p>제 앱에 큰 관심을 보여주신 philhyuntd님 너무 감사합니다. 단순히 앱 개발 시리즈로 끝날 뻔한 Whan Dapp을 살려주셨습니다. 그리고 적극적으로 테스트해주셔서 감사합니다.  - “<a target="_blank" rel="noopener" href="https://www.steemzzang.com/zzan/@philhyuntd/20190711t130630760z">WHAN Dapp 첫 테스트</a>”</p>
+<p>앞으로 philhyuntd님은 묻지도 따지지도 않고 풀보팅하겠습니다. ㅋ 보팅 파워가 작아서 금액이 적지만 언젠가 커지겠죠. ㅎㅎ</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt data-src="https://steemitimages.com/0x600/https://files.steempeak.com/file/steempeak/anpigon/SnTSZZpr-54TLbcUcnRm42j8GnpdnmmbBwy8ezgJG9sn6BKTkFjLZTgXfPv3moHevaSpfy7gbvU2PLoCkxgx8Bnf1oK5gcYvFXdzCow1DPoHpb67ZnChhrmKnybkUFD6Eu2hPngb1Xs4ALEowU.jpeg"></td>
+<td><img alt data-src="https://steemitimages.com/500x0/https://img.esteem.ws/4azt4ps4c9.gif"></td>
+<td><img alt data-src="https://files.steempeak.com/file/steempeak/anpigon/s5dsNunu-test2.gif"></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/@anpigon/snax-whan-app">WHAN APP 기획 개발 이야기 #1</a></td>
+</tr>
+<tr>
+<td><a href="/@anpigon/react-native-whan-app-2">WHAN APP 개발 이야기 #2</a></td>
+</tr>
+<tr>
+<td><a href="/@anpigon/20190709t020445612z">WHAN APP 개발 이야기 #3</a></td>
+</tr>
+<tr>
+<td><a href="/@anpigon/react-native-whan-app-4">WHAN APP 개발 이야기 #4</a></td>
+</tr>
+</tbody>
+</table>
+<br>
+<br>
+<h2 id="오픈소스-활동"><a class="markdownIt-Anchor" href="#오픈소스-활동"></a> 오픈소스 활동</h2>
+<p>올 상반기에 오픈소스에 기여했던 내용입니다. 이전에 잘 사용했던 스팀 툴을 다시 살리고 싶어서 시작했습니다. 첫 번째 타깃이 해피 베리 보이님의 스팀 툴이었습니다. 햅보이님께 스팀 툴을 업그레이드해보자고 조심스럽게 손을 내밀었는데 그 손을 꽉 잡아주셔서 감사합니다.</p>
+<p>그리고 steeme와 steem.apps도 버리기 너무 아까워 소스를 포크 하여 제가 기능을 추가했습니다. 이 두 앱은 스팀잇을 처음 시작할 때부터 시작해서 지금도 잘 사용하고 있는 앱입니다.</p>
+<p>그리고 ayogom님, realmankwon님 영향으로 Nitrous에 소스 투고도 하였습니다. Nitrous는 기능 추가보다 우선 UI부터 바꿨으면 좋겠습니다. ㅋ</p>
+<table>
+<thead>
+<tr>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://steemit.com/sct/@anpigon/4gusrb">[Steem Tools] 크롬 익스텐션 개발 : 커스텀 폰트 기능 추가</a></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://steemit.com/sct/@anpigon/steem-tools-20190604">[Steem Tools] 크롬 익스텐션 개발 : 스팀 엔진 토큰 목록 추가</a></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://steemit.com/sct/@anpigon/nhj12311-steem-apps-aaa-stc">nhj12311님이 만든 steem.apps에 #aaa, #stc 태그 추가.</a></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://steemit.com/sct/@anpigon/nhj12311-steem-apps">nhj12311님이 만든 steem.apps에 토큰 보상을 추가.</a></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://steemit.com/sct/@anpigon/2zgchx">asbear님이 만든 steeme에 티스토리 업로드 기능 추가.</a></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://steemit.com/sct/@anpigon/6vcmd">[소스투고] SCT 소스 수정 : 임대 금액 표시 오류(NaN) 수정</a></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://steemit.com/sct/@anpigon/sct-sct-token-style">[소스투고] SCT 소스 수정 : SCT 앱 아이콘 표시 기능과 토큰(Token) 잔액 Style 변경</a></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://steemit.com/sct/@anpigon/5lmuhk-nitrous">[소스 투고] Nitrous 태그를 색상으로 구분하기</a></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://steemit.com/zzan/@anpigon/7e4ab827f87e8">[소스 투고] Steemzzang 태그 선택 자동 입력 기능 </a></td>
+</tr>
+</tbody>
+</table>
+<br>
+<p>긴 글을 읽어주셔서 감사합니다.</p>
+<p>댓글, 팔로우, 업보팅해 주시는 모든 분들 감사합니다.</p>
+<p>항상 행복한 하루 보내시길 바랍니다.</p>
+<hr>
+<center><img data-src="https://steemitimages.com/400x0/https://steemitimages.com/DQmQmWhMN6zNrLmKJRKhvSScEgWZmpb8zCeE2Gray1krbv6/BC054B6E-6F73-46D0-88E4-C88EB8167037.jpeg"><h5>vote, reblog, follow <code><a target="_blank" rel="noopener" href="https://steemit.com/@anpigon">@anpigon</a></code></h5></center>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+  <div class="post-widgets">
+    <div class="wp_rating">
+      <div id="wpac-rating"></div>
+    </div>
+  </div>
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/zzan/@anpigon/react-native-whan-app-4" rel="next" title="[React Native] WHAN DAPP 개발 이야기 #4">
+                  <i class="fa fa-chevron-left"></i> [React Native] WHAN DAPP 개발 이야기 #4
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/zzan/@wangpigon/727v8a" rel="prev" title="[소설] 더글라스 케네디 ⟪더 잡⟫">
+                  [소설] 더글라스 케네디 ⟪더 잡⟫ <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    
+  <div class="comments" id="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          목차
+        </li>
+        <li class="sidebar-nav-overview">
+          흝어보기
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%EB%82%A0%EC%94%A8-%EC%95%B1-%EB%A7%8C%EB%93%A4%EA%B8%B0"><span class="nav-number">1.</span> <span class="nav-text"> 날씨 앱 만들기</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#to-do-%EC%95%B1-%EB%A7%8C%EB%93%A4%EA%B8%B0"><span class="nav-number">2.</span> <span class="nav-text"> TO-DO 앱 만들기</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EC%9D%B8%EC%8A%A4%ED%83%80%EA%B7%B8%EB%9E%A8-ui-%EB%AA%A8%EB%B0%94%EC%9D%BC%EC%95%B1-%EB%A7%8C%EB%93%A4%EA%B8%B0"><span class="nav-number">3.</span> <span class="nav-text"> 인스타그램 UI 모바일앱 만들기</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EC%9D%B4%EB%8D%94%EB%A6%AC%EC%9B%80-%EB%AA%A8%EB%B0%94%EC%9D%BC-%EC%A7%80%EA%B0%91%EC%95%B1-%EB%A7%8C%EB%93%A4%EA%B8%B0"><span class="nav-number">4.</span> <span class="nav-text"> 이더리움 모바일 지갑앱 만들기</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#steem-%EB%AA%A8%EB%B0%94%EC%9D%BC-%EC%A7%80%EA%B0%91%EC%95%B1-%EB%A7%8C%EB%93%A4%EA%B8%B0"><span class="nav-number">5.</span> <span class="nav-text"> Steem 모바일 지갑앱 만들기</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#steemsct-%EB%B3%B4%ED%8C%85%ED%8C%8C%EC%9B%8Cvp-%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C-%EC%9C%84%EC%A0%AF-%EB%A7%8C%EB%93%A4%EA%B8%B0"><span class="nav-number">6.</span> <span class="nav-text"> STEEM&#x2F;SCT 보팅파워(VP) 안드로이드 위젯 만들기</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EC%98%81%ED%99%94-%EB%A6%AC%EB%B7%B0-%EB%AA%A8%EB%B0%94%EC%9D%BC-%EC%95%B1-%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0"><span class="nav-number">7.</span> <span class="nav-text"> 영화 리뷰 모바일 앱 개발 이야기</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#whan-app-%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0"><span class="nav-number">8.</span> <span class="nav-text"> WHAN APP 개발 이야기</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4-%ED%99%9C%EB%8F%99"><span class="nav-number">9.</span> <span class="nav-text"> 오픈소스 활동</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link"><span class="nav-number">9.0.0.1.</span> <span class="nav-text">vote, reblog, follow @anpigon</span></a></li></ol></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="안피곤"
+    src="/images/me.jpg">
+  <p class="site-author-name" itemprop="name">안피곤</p>
+  <div class="site-description" itemprop="description">시간이 천천히 갔으면 좋겠다.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">325</span>
+          <span class="site-state-item-name">포스트</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-name">카테고리</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">139</span>
+        <span class="site-state-item-name">태그</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/anpigon" title="GitHub &rarr; https://github.com/anpigon" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:markan82@gmail.com" title="E-Mail &rarr; mailto:markan82@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+          <!-- 정사각형 광고 -->
+          <div style="margin-top: 15px;">
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-2365531018407022"
+                data-ad-slot="7521850306"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+          </div>
+    </div>
+  </aside>
+  <div id="sidebar-dimmer">3</div>
+
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">안피곤</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v5.4.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.4.2
+  </div>
+
+        
+
+
+
+
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-firestore.js"></script>
+  <script>
+    firebase.initializeApp({
+      apiKey: 'AIzaSyA4QZWCWb3IuIHjbkAmO0ttIM2b-qtLTP8',
+      projectId: 'next-blog-8f9a0'
+    });
+
+    function getCount(doc, increaseCount) {
+      // IncreaseCount will be false when not in article page
+
+      return doc.get().then(d => {
+        var count = 0;
+        if (!d.exists) { // Has no data, initialize count
+          if (increaseCount) {
+            doc.set({
+              count: 1
+            });
+            count = 1;
+          }
+        } else { // Has data
+          count = d.data().count;
+          if (increaseCount) {
+            // If first view this article
+            doc.set({ // Increase count
+              count: count + 1
+            });
+            count++;
+          }
+        }
+
+        return count;
+      });
+    }
+
+    function appendCountTo(el) {
+      return count => {
+        el.innerText = count;
+      }
+    }
+  </script>
+  <script pjax>
+    (function() {
+      var db = firebase.firestore();
+      var articles = db.collection('articles');
+
+      if (CONFIG.page.isPost) { // Is article page
+        var title = document.querySelector('.post-title').innerText.trim();
+        var doc = articles.doc(title);
+        var increaseCount = true;
+        if (localStorage.getItem(title)) {
+          increaseCount = false;
+        } else {
+          // Mark as visited
+          localStorage.setItem(title, true);
+        }
+        getCount(doc, increaseCount).then(appendCountTo(document.querySelector('.firestore-visitors-count')));
+      } else if (CONFIG.page.isHome) { // Is index page
+        var promises = [...document.querySelectorAll('.post-title')].map(element => {
+          var title = element.innerText.trim();
+          var doc = articles.doc(title);
+          return getCount(doc);
+        });
+        Promise.all(promises).then(counts => {
+          var metas = document.querySelectorAll('.firestore-visitors-count');
+          counts.forEach((val, idx) => {
+            appendCountTo(metas[idx])(val);
+          });
+        });
+      }
+    })();
+  </script>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.getAttribute('pjax') !== null) {
+      element.setAttribute('pjax', '');
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+  <script pjax>
+  if (CONFIG.page.isPost) {
+    wpac_init = window.wpac_init || [];
+    wpac_init.push({
+      widget: 'Rating',
+      id: 21712,
+      el: 'wpac-rating',
+      color: 'fc6423'
+    });
+    (function() {
+      if ('WIDGETPACK_LOADED' in window) return;
+      WIDGETPACK_LOADED = true;
+      var mc = document.createElement('script');
+      mc.type = 'text/javascript';
+      mc.async = true;
+      mc.src = '//embed.widgetpack.com/widget.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+    })();
+  }
+  </script>
+
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.4.1/dist/instantsearch.min.css">
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.4.1/dist/instantsearch.js"></script>
+<script src="/js/algolia-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+
+  
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://anpigon-github-io.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  function loadComments() {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: {page: {
+            url: "https://anpigon.github.io/zzan/@anpigon/czw7w",
+            identifier: "/zzan/@anpigon/czw7w",
+            title: "그 동안의 스팀잇 활동을 돌아보며..."
+          }
+        }
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://anpigon-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  }
+    (function() {
+      var offsetTop = document.getElementById('comments').offsetTop - window.innerHeight;
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        window.addEventListener('load', loadComments, false);
+      } else {
+        var disqus_scroll = () => {
+          // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = document.getElementById('comments').offsetTop - window.innerHeight;
+          var scrollTop = window.scrollY;
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            window.removeEventListener('scroll', disqus_scroll);
+            loadComments();
+          }
+        };
+        window.addEventListener('scroll', disqus_scroll);
+      }
+    })();
+  
+</script>
+
+    </div>
+</body>
+</html>

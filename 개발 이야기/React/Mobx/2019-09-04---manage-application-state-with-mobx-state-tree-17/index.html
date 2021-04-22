@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 3.9.0">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -53,19 +53,23 @@
 </script>
 
   <meta name="description" content="17번째 마지막 레슨입니다. Let’s make sure our changes get persisted. We will use the window.fetch api to store our changes in the json-server. And onSnapshot to do this automatically">
-<meta name="keywords" content="React,Mobx,Mobx State Tree">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[React] Mobx-state-tree #17 : Dynamic Types을 정의하고 Type Composition을 사용하여 공통 Functionality 추출하기">
-<meta property="og:url" content="https://anpigon.github.io/개발 이야기/React/Mobx/2019-09-04---manage-application-state-with-mobx-state-tree-17/index.html">
+<meta property="og:url" content="https://anpigon.github.io/%EA%B0%9C%EB%B0%9C%20%EC%9D%B4%EC%95%BC%EA%B8%B0/React/Mobx/2019-09-04---manage-application-state-with-mobx-state-tree-17/index.html">
 <meta property="og:site_name" content="안피곤님의 블로그">
 <meta property="og:description" content="17번째 마지막 레슨입니다. Let’s make sure our changes get persisted. We will use the window.fetch api to store our changes in the json-server. And onSnapshot to do this automatically">
-<meta property="og:locale" content="ko">
-<meta property="og:updated_time" content="2019-11-11T13:41:49.826Z">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:image" content="https://steemitimages.com/400x0/https://cdn.steemitimages.com/DQmQmWhMN6zNrLmKJRKhvSScEgWZmpb8zCeE2Gray1krbv6/BC054B6E-6F73-46D0-88E4-C88EB8167037.jpeg">
+<meta property="article:published_time" content="2019-09-03T15:00:00.000Z">
+<meta property="article:modified_time" content="2021-04-21T11:50:30.074Z">
+<meta property="article:author" content="안피곤">
+<meta property="article:tag" content="React">
+<meta property="article:tag" content="Mobx">
+<meta property="article:tag" content="Mobx State Tree">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="[React] Mobx-state-tree #17 : Dynamic Types을 정의하고 Type Composition을 사용하여 공통 Functionality 추출하기">
-<meta name="twitter:description" content="17번째 마지막 레슨입니다. Let’s make sure our changes get persisted. We will use the window.fetch api to store our changes in the json-server. And onSnapshot to do this automatically">
+<meta name="twitter:image" content="https://steemitimages.com/400x0/https://cdn.steemitimages.com/DQmQmWhMN6zNrLmKJRKhvSScEgWZmpb8zCeE2Gray1krbv6/BC054B6E-6F73-46D0-88E4-C88EB8167037.jpeg">
 
-<link rel="canonical" href="https://anpigon.github.io/개발 이야기/React/Mobx/2019-09-04---manage-application-state-with-mobx-state-tree-17/">
+<link rel="canonical" href="https://anpigon.github.io/%EA%B0%9C%EB%B0%9C%20%EC%9D%B4%EC%95%BC%EA%B8%B0/React/Mobx/2019-09-04---manage-application-state-with-mobx-state-tree-17/">
 
 
 <script id="page-configurations">
@@ -128,6 +132,7 @@
   </style>
 </noscript>
 
+<link rel="alternate" href="/atom.xml" title="안피곤님의 블로그" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -184,7 +189,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>아카이브<span class="badge">323</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>아카이브<span class="badge">325</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -240,7 +245,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="ko">
-    <link itemprop="mainEntityOfPage" href="https://anpigon.github.io/개발 이야기/React/Mobx/2019-09-04---manage-application-state-with-mobx-state-tree-17/">
+    <link itemprop="mainEntityOfPage" href="https://anpigon.github.io/%EA%B0%9C%EB%B0%9C%20%EC%9D%B4%EC%95%BC%EA%B8%B0/React/Mobx/2019-09-04---manage-application-state-with-mobx-state-tree-17/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/me.jpg">
@@ -270,7 +275,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Updated at: 2019-11-11 22:41:49" itemprop="dateModified" datetime="2019-11-11T22:41:49+09:00">2019-11-11</time>
+                <time title="Updated at: 2021-04-21 20:50:30" itemprop="dateModified" datetime="2021-04-21T20:50:30+09:00">2021-04-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -278,19 +283,19 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/개발-이야기/" itemprop="url" rel="index">
+                  <a href="/categories/%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/" itemprop="url" rel="index">
                     <span itemprop="name">개발 이야기</span>
                   </a>
                 </span>
                   , 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/개발-이야기/react/" itemprop="url" rel="index">
+                  <a href="/categories/%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/react/" itemprop="url" rel="index">
                     <span itemprop="name">React</span>
                   </a>
                 </span>
                   , 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/개발-이야기/react/mobx/" itemprop="url" rel="index">
+                  <a href="/categories/%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/react/mobx/" itemprop="url" rel="index">
                     <span itemprop="name">Mobx</span>
                   </a>
                 </span>
@@ -312,7 +317,7 @@
       </span>
       <span class="post-meta-item-text">Disqus: </span>
     
-    <a title="disqus" href="/개발 이야기/React/Mobx/2019-09-04---manage-application-state-with-mobx-state-tree-17/#comments" itemprop="discussionUrl">
+    <a title="disqus" href="/%EA%B0%9C%EB%B0%9C%20%EC%9D%B4%EC%95%BC%EA%B8%B0/React/Mobx/2019-09-04---manage-application-state-with-mobx-state-tree-17/#comments" itemprop="discussionUrl">
       <span class="post-comments-count disqus-comment-count" data-disqus-identifier="개발 이야기/React/Mobx/2019-09-04---manage-application-state-with-mobx-state-tree-17/" itemprop="commentCount"></span>
     </a>
   </span>
@@ -357,24 +362,24 @@
 <hr>
 <h1 id="create-dynamic-types-and-use-type-composition-to-extract-common-functionality"><a class="markdownIt-Anchor" href="#create-dynamic-types-and-use-type-composition-to-extract-common-functionality"></a> Create Dynamic Types and use Type Composition to Extract Common Functionality</h1>
 <blockquote>
-<p>강의 링크: <a href="https://egghead.io/lessons/react-create-dynamic-types-and-use-type-composition-to-extract-common-functionality" target="_blank" rel="noopener">https://egghead.io/lessons/react-create-dynamic-types-and-use-type-composition-to-extract-common-functionality</a></p>
+<p>강의 링크: <a target="_blank" rel="noopener" href="https://egghead.io/lessons/react-create-dynamic-types-and-use-type-composition-to-extract-common-functionality">https://egghead.io/lessons/react-create-dynamic-types-and-use-type-composition-to-extract-common-functionality</a></p>
 </blockquote>
 <br>
 <p>User 모델에서 데이터와 액션을 분리할 수 있습니다.</p>
 <p><code>src/models/Group.js</code></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; types, flow, applySnapshot, getSnapshot, onSnapshot &#125; <span class="keyword">from</span> <span class="string">"mobx-state-tree"</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; WishList &#125; <span class="keyword">from</span> <span class="string">"./WishList"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> UserBase = types</span><br><span class="line">  .model(&#123;</span><br><span class="line">    id: types.identifier, <span class="comment">// add here</span></span><br><span class="line">    name: types.string,</span><br><span class="line">    gender: types.enumeration(<span class="string">"gender"</span>, [<span class="string">"m"</span>, <span class="string">"f"</span>]),</span><br><span class="line">    wishList: types.optional(WishList, &#123;&#125;),</span><br><span class="line">    recipient: types.maybe(types.reference(types.late(<span class="function"><span class="params">()</span> =&gt;</span> User)))</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> User = UserBase.actions(<span class="function"><span class="params">self</span> =&gt;</span> (&#123;</span><br><span class="line">    getSuggestions: flow(<span class="function"><span class="keyword">function</span>* <span class="title">getSuggestions</span>(<span class="params"></span>) </span>&#123; <span class="comment">// (...) &#125;),</span></span><br><span class="line">    save: flow(<span class="function"><span class="keyword">function</span>* <span class="title">save</span>(<span class="params"></span>) </span>&#123;<span class="comment">// (...) &#125;),</span></span><br><span class="line">    afterCreate() &#123; <span class="comment">// ... &#125;</span></span><br><span class="line">  &#125;));</span><br><span class="line"></span><br><span class="line"><span class="comment">// (...)</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; types, flow, applySnapshot, getSnapshot, onSnapshot &#125; <span class="keyword">from</span> <span class="string">&quot;mobx-state-tree&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; WishList &#125; <span class="keyword">from</span> <span class="string">&quot;./WishList&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> UserBase = types</span><br><span class="line">  .model(&#123;</span><br><span class="line">    id: types.identifier, <span class="comment">// add here</span></span><br><span class="line">    name: types.string,</span><br><span class="line">    gender: types.enumeration(<span class="string">&quot;gender&quot;</span>, [<span class="string">&quot;m&quot;</span>, <span class="string">&quot;f&quot;</span>]),</span><br><span class="line">    wishList: types.optional(WishList, &#123;&#125;),</span><br><span class="line">    recipient: types.maybe(types.reference(types.late(<span class="function">() =&gt;</span> User)))</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> User = UserBase.actions(<span class="function"><span class="params">self</span> =&gt;</span> (&#123;</span><br><span class="line">    getSuggestions: flow(<span class="function"><span class="keyword">function</span>* <span class="title">getSuggestions</span>(<span class="params"></span>) </span>&#123; <span class="comment">// (...) &#125;),</span></span><br><span class="line">    save: flow(<span class="function"><span class="keyword">function</span>* <span class="title">save</span>(<span class="params"></span>) </span>&#123;<span class="comment">// (...) &#125;),</span></span><br><span class="line">    <span class="function"><span class="title">afterCreate</span>(<span class="params"></span>)</span> &#123; <span class="comment">// ... &#125;</span></span><br><span class="line">  &#125;));</span><br><span class="line"></span><br><span class="line"><span class="comment">// (...)</span></span><br></pre></td></tr></table></figure>
 <br>
 <p>또는 <code>types.compose</code>를 사용하여 이렇게 작성도 가능합니다.</p>
 <p><code>src/models/Group.js</code></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; types, flow, applySnapshot, getSnapshot, onSnapshot &#125; <span class="keyword">from</span> <span class="string">"mobx-state-tree"</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; WishList &#125; <span class="keyword">from</span> <span class="string">"./WishList"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> UserBase = types</span><br><span class="line">  .model(&#123;</span><br><span class="line">    id: types.identifier, <span class="comment">// add here</span></span><br><span class="line">    name: types.string,</span><br><span class="line">    gender: types.enumeration(<span class="string">"gender"</span>, [<span class="string">"m"</span>, <span class="string">"f"</span>]),</span><br><span class="line">    wishList: types.optional(WishList, &#123;&#125;),</span><br><span class="line">    recipient: types.maybe(types.reference(types.late(<span class="function"><span class="params">()</span> =&gt;</span> User)))</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> UserActions = types.model(&#123;&#125;).actions(<span class="function"><span class="params">self</span> =&gt;</span> (&#123;</span><br><span class="line">    getSuggestions: flow(<span class="function"><span class="keyword">function</span>* <span class="title">getSuggestions</span>(<span class="params"></span>) </span>&#123; <span class="comment">// (...) &#125;),</span></span><br><span class="line">    save: flow(<span class="function"><span class="keyword">function</span>* <span class="title">save</span>(<span class="params"></span>) </span>&#123;<span class="comment">// (...) &#125;),</span></span><br><span class="line">    afterCreate() &#123; <span class="comment">// (...) &#125;</span></span><br><span class="line">  &#125;));</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> User = types.compose(UserBase, UserActions);</span><br><span class="line"></span><br><span class="line"><span class="comment">// (...)</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; types, flow, applySnapshot, getSnapshot, onSnapshot &#125; <span class="keyword">from</span> <span class="string">&quot;mobx-state-tree&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; WishList &#125; <span class="keyword">from</span> <span class="string">&quot;./WishList&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> UserBase = types</span><br><span class="line">  .model(&#123;</span><br><span class="line">    id: types.identifier, <span class="comment">// add here</span></span><br><span class="line">    name: types.string,</span><br><span class="line">    gender: types.enumeration(<span class="string">&quot;gender&quot;</span>, [<span class="string">&quot;m&quot;</span>, <span class="string">&quot;f&quot;</span>]),</span><br><span class="line">    wishList: types.optional(WishList, &#123;&#125;),</span><br><span class="line">    recipient: types.maybe(types.reference(types.late(<span class="function">() =&gt;</span> User)))</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> UserActions = types.model(&#123;&#125;).actions(<span class="function"><span class="params">self</span> =&gt;</span> (&#123;</span><br><span class="line">    getSuggestions: flow(<span class="function"><span class="keyword">function</span>* <span class="title">getSuggestions</span>(<span class="params"></span>) </span>&#123; <span class="comment">// (...) &#125;),</span></span><br><span class="line">    save: flow(<span class="function"><span class="keyword">function</span>* <span class="title">save</span>(<span class="params"></span>) </span>&#123;<span class="comment">// (...) &#125;),</span></span><br><span class="line">    <span class="function"><span class="title">afterCreate</span>(<span class="params"></span>)</span> &#123; <span class="comment">// (...) &#125;</span></span><br><span class="line">  &#125;));</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> User = types.compose(UserBase, UserActions);</span><br><span class="line"></span><br><span class="line"><span class="comment">// (...)</span></span><br></pre></td></tr></table></figure>
 <br>
 <p>그다음 <code>Storable.js</code> 파일을 새로 생성한다. 여기서 REST-specific logic을 위한 dedicated type 소개하려고 한다.</p>
 <p><code>src/models/Storable.js</code></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; types &#125; <span class="keyword">from</span> <span class="string">'mobx'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; flow, getSnapshot, onSnapshot &#125; <span class="keyword">from</span> <span class="string">'mobx-state-tree'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> Storable = types.model(&#123;&#125;).actions(<span class="function"><span class="params">self</span> =&gt;</span> (&#123;</span><br><span class="line">  save: flow(<span class="function"><span class="keyword">function</span>* <span class="title">save</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      <span class="keyword">yield</span> <span class="built_in">window</span>.fetch(<span class="string">`http://localhost:3001/users/<span class="subst">$&#123;self.id&#125;</span>`</span>, &#123;</span><br><span class="line">        method: <span class="string">"PUT"</span>,</span><br><span class="line">        headers: &#123; <span class="string">"content-type"</span>: <span class="string">"application/json"</span> &#125;,</span><br><span class="line">        body: <span class="built_in">JSON</span>.stringify(getSnapshot(self))</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">      <span class="built_in">console</span>.error(<span class="string">"Uh oh, failed to save: "</span> + e);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;),</span><br><span class="line">  afterCreate() &#123;</span><br><span class="line">    onSnapshot(self, self.save);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;));</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; types &#125; <span class="keyword">from</span> <span class="string">&#x27;mobx&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; flow, getSnapshot, onSnapshot &#125; <span class="keyword">from</span> <span class="string">&#x27;mobx-state-tree&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> Storable = types.model(&#123;&#125;).actions(<span class="function"><span class="params">self</span> =&gt;</span> (&#123;</span><br><span class="line">  save: flow(<span class="function"><span class="keyword">function</span>* <span class="title">save</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      <span class="keyword">yield</span> <span class="built_in">window</span>.fetch(<span class="string">`http://localhost:3001/users/<span class="subst">$&#123;self.id&#125;</span>`</span>, &#123;</span><br><span class="line">        method: <span class="string">&quot;PUT&quot;</span>,</span><br><span class="line">        headers: &#123; <span class="string">&quot;content-type&quot;</span>: <span class="string">&quot;application/json&quot;</span> &#125;,</span><br><span class="line">        body: <span class="built_in">JSON</span>.stringify(getSnapshot(self))</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">      <span class="built_in">console</span>.error(<span class="string">&quot;Uh oh, failed to save: &quot;</span> + e);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;),</span><br><span class="line">  <span class="function"><span class="title">afterCreate</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    onSnapshot(self, self.save);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;));</span><br></pre></td></tr></table></figure>
 <br>
 <p>다시 <code>Group.js</code> 파일을 수정한다. <strong>UserAction</strong>에서 <code>save</code>와 <code>afterCreate</code>를 제거한다. 그리고 <code>types.compose</code>를 사용하여 <code>UserBase</code>, <code>UserAction</code>, <code>Storable</code>를 병합한다.</p>
 <p><code>src/models/Group.js</code></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="comment">// (...)</span></span><br><span class="line"><span class="keyword">import</span> &#123; Storable &#125; <span class="keyword">from</span> <span class="string">'./Storable'</span>; <span class="comment">// add here</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> UserBase = types.model(&#123; <span class="comment">// (...) &#125;);</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> UserAction = types.model(&#123;&#125;).actions(<span class="function"><span class="params">self</span> =&gt;</span> (&#123;</span><br><span class="line">  getSuggestions: flow(<span class="function"><span class="keyword">function</span>* <span class="title">getSuggestions</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> response = <span class="keyword">yield</span> <span class="built_in">window</span>.fetch(<span class="string">`http://localhost:3001/suggestions_<span class="subst">$&#123;self.gender&#125;</span>`</span>);</span><br><span class="line">    <span class="keyword">const</span> suggestions = <span class="keyword">yield</span> response.json();</span><br><span class="line">    self.wishList.items.push(...suggestions);</span><br><span class="line">  &#125;),</span><br><span class="line">  <span class="comment">// save: flow(function* save() &#123;// (...) &#125;), // remove here</span></span><br><span class="line">  <span class="comment">// afterCreate() &#123; // (...) &#125; // remove here</span></span><br><span class="line">&#125;));</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> User = types.compose(</span><br><span class="line">  UserBase,</span><br><span class="line">  UserAction,</span><br><span class="line">  Storable</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="comment">// (...)</span></span><br><span class="line"><span class="keyword">import</span> &#123; Storable &#125; <span class="keyword">from</span> <span class="string">&#x27;./Storable&#x27;</span>; <span class="comment">// add here</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> UserBase = types.model(&#123; <span class="comment">// (...) &#125;);</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> UserAction = types.model(&#123;&#125;).actions(<span class="function"><span class="params">self</span> =&gt;</span> (&#123;</span><br><span class="line">  getSuggestions: flow(<span class="function"><span class="keyword">function</span>* <span class="title">getSuggestions</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> response = <span class="keyword">yield</span> <span class="built_in">window</span>.fetch(<span class="string">`http://localhost:3001/suggestions_<span class="subst">$&#123;self.gender&#125;</span>`</span>);</span><br><span class="line">    <span class="keyword">const</span> suggestions = <span class="keyword">yield</span> response.json();</span><br><span class="line">    self.wishList.items.push(...suggestions);</span><br><span class="line">  &#125;),</span><br><span class="line">  <span class="comment">// save: flow(function* save() &#123;// (...) &#125;), // remove here</span></span><br><span class="line">  <span class="comment">// afterCreate() &#123; // (...) &#125; // remove here</span></span><br><span class="line">&#125;));</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> User = types.compose(</span><br><span class="line">  UserBase,</span><br><span class="line">  UserAction,</span><br><span class="line">  Storable</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
 <p><br>다음과 같이 액션을 일반화 할 수 있습니다. 그 다음 내용은 그냥 구글 번역기의 도움을 받았습니다. ㅋ</p>
 <p>03:28 사실 이것은 아직 재사용 할 수 없습니다. 문제는 여기에 여전히 하드 코딩 된 정보가 있다는 것입니다.이 storable는 항상 users’ collection에 stuff을 저장합니다.</p>
 <p>03:38 항상 ID property 아래에 저장합니다. 애플리케이션의 모든 엔터티에 적용되지 않을 수 있습니다. 실제로, 나는 이 타입을 보다 일반적인 것으로 만들고 싶습니다.</p>
@@ -382,16 +387,16 @@
 <p>04:01 <code>createStorable</code> 함수를 생성하고, 해당 컬렉션의 해당 attribute에 stuff을 저장해야 하도록 합니다.</p>
 <p>04:11 이제 이 함수를 export합니다.</p>
 <p><code>src/models/Storable.js</code></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; types &#125; <span class="keyword">from</span> <span class="string">'mobx'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; flow, getSnapshot, onSnapshot &#125; <span class="keyword">from</span> <span class="string">'mobx-state-tree'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">createStorable</span>(<span class="params">collection, attribute</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> types.model(&#123;&#125;).actions(<span class="function"><span class="params">self</span> =&gt;</span> (&#123;</span><br><span class="line">    save: flow(<span class="function"><span class="keyword">function</span>* <span class="title">save</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">yield</span> <span class="built_in">window</span>.fetch(<span class="string">`http://localhost:3001/users/<span class="subst">$&#123;collection&#125;</span>/<span class="subst">$&#123;self[attribute]&#125;</span>`</span>, &#123;</span><br><span class="line">          method: <span class="string">"PUT"</span>,</span><br><span class="line">          headers: &#123; <span class="string">"content-type"</span>: <span class="string">"application/json"</span> &#125;,</span><br><span class="line">          body: <span class="built_in">JSON</span>.stringify(getSnapshot(self))</span><br><span class="line">        &#125;);</span><br><span class="line">      &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">        <span class="built_in">console</span>.error(<span class="string">"Uh oh, failed to save: "</span> + e);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;),</span><br><span class="line">    afterCreate() &#123;</span><br><span class="line">      onSnapshot(self, self.save);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; types &#125; <span class="keyword">from</span> <span class="string">&#x27;mobx&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; flow, getSnapshot, onSnapshot &#125; <span class="keyword">from</span> <span class="string">&#x27;mobx-state-tree&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">createStorable</span>(<span class="params">collection, attribute</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> types.model(&#123;&#125;).actions(<span class="function"><span class="params">self</span> =&gt;</span> (&#123;</span><br><span class="line">    save: flow(<span class="function"><span class="keyword">function</span>* <span class="title">save</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">yield</span> <span class="built_in">window</span>.fetch(<span class="string">`http://localhost:3001/users/<span class="subst">$&#123;collection&#125;</span>/<span class="subst">$&#123;self[attribute]&#125;</span>`</span>, &#123;</span><br><span class="line">          method: <span class="string">&quot;PUT&quot;</span>,</span><br><span class="line">          headers: &#123; <span class="string">&quot;content-type&quot;</span>: <span class="string">&quot;application/json&quot;</span> &#125;,</span><br><span class="line">          body: <span class="built_in">JSON</span>.stringify(getSnapshot(self))</span><br><span class="line">        &#125;);</span><br><span class="line">      &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">        <span class="built_in">console</span>.error(<span class="string">&quot;Uh oh, failed to save: &quot;</span> + e);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;),</span><br><span class="line">    <span class="function"><span class="title">afterCreate</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">      onSnapshot(self, self.save);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>04:27 이제 이 기능은 완전히 일반화되었습니다.</p>
 <p>04:46 자,이 user type을 선언하면 즉시 새로운 유형이 생성됩니다. 여전히 동일한 동작을 하는 응용 프로그램이 있지만 이제는 매우 일반적인 논리를 가지므로이 유형과 같이 REST와 유사한 모든 유형에 대해 다른 유형에도 재사용 할 수 있습니다.</p>
 <p><code>src/models/Group.js</code></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="comment">// (...)</span></span><br><span class="line"><span class="keyword">import</span> &#123; createStorable &#125; <span class="keyword">from</span> <span class="string">'./Storable'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> User = types.compose(</span><br><span class="line">  types</span><br><span class="line">    .model(&#123; <span class="comment">// (...) &#125;),</span></span><br><span class="line">    .actions(<span class="function"><span class="params">self</span> =&gt;</span> (&#123;</span><br><span class="line">      getSuggestions: flow(<span class="function"><span class="keyword">function</span>* <span class="title">getSuggestions</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">const</span> response = <span class="keyword">yield</span> <span class="built_in">window</span>.fetch(<span class="string">`http://localhost:3001/suggestions_<span class="subst">$&#123;self.gender&#125;</span>`</span>);</span><br><span class="line">        self.wishList.items.push(...(<span class="keyword">yield</span> response.json()));</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;)),</span><br><span class="line">  createStorable(<span class="string">"users"</span>, <span class="string">"id"</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="comment">// (...)</span></span><br><span class="line"><span class="keyword">import</span> &#123; createStorable &#125; <span class="keyword">from</span> <span class="string">&#x27;./Storable&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> User = types.compose(</span><br><span class="line">  types</span><br><span class="line">    .model(&#123; <span class="comment">// (...) &#125;),</span></span><br><span class="line">    .actions(<span class="function"><span class="params">self</span> =&gt;</span> (&#123;</span><br><span class="line">      getSuggestions: flow(<span class="function"><span class="keyword">function</span>* <span class="title">getSuggestions</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">const</span> response = <span class="keyword">yield</span> <span class="built_in">window</span>.fetch(<span class="string">`http://localhost:3001/suggestions_<span class="subst">$&#123;self.gender&#125;</span>`</span>);</span><br><span class="line">        self.wishList.items.push(...(<span class="keyword">yield</span> response.json()));</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;)),</span><br><span class="line">  createStorable(<span class="string">&quot;users&quot;</span>, <span class="string">&quot;id&quot;</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
 <hr>
 <p><code>댓글</code>, <code>팔로우</code>, <code>좋아요</code> 해 주시는 모든 분께 감사합니다.</p>
 <p>항상 행복한 하루 보내시길 바랍니다.</p>
 <hr>
-<center><img data-src="https://steemitimages.com/400x0/https://cdn.steemitimages.com/DQmQmWhMN6zNrLmKJRKhvSScEgWZmpb8zCeE2Gray1krbv6/BC054B6E-6F73-46D0-88E4-C88EB8167037.jpeg"><h5>vote, reblog, follow <code><a href="https://steemit.com/@anpigon" target="_blank" rel="noopener">@anpigon</a></code></h5></center>
+<center><img data-src="https://steemitimages.com/400x0/https://cdn.steemitimages.com/DQmQmWhMN6zNrLmKJRKhvSScEgWZmpb8zCeE2Gray1krbv6/BC054B6E-6F73-46D0-88E4-C88EB8167037.jpeg"><h5>vote, reblog, follow <code><a target="_blank" rel="noopener" href="https://steemit.com/@anpigon">@anpigon</a></code></h5></center>
 <br>
 
     </div>
@@ -416,7 +421,7 @@
 
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
-                <a href="/zzan/@anpigon/hf22-or-22-2/" rel="next" title="[북클럽] 지금 읽고 있는 책 22쪽 2째줄 : 김영하 ⟪퀴즈쇼⟫">
+                <a href="/zzan/@anpigon/hf22-or-22-2" rel="next" title="[북클럽] 지금 읽고 있는 책 22쪽 2째줄 : 김영하 ⟪퀴즈쇼⟫">
                   <i class="fa fa-chevron-left"></i> [북클럽] 지금 읽고 있는 책 22쪽 2째줄 : 김영하 ⟪퀴즈쇼⟫
                 </a>
             </div>
@@ -424,7 +429,7 @@
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-                <a href="/tripsteem/@anpigon/tt20190905t061257794z/" rel="prev" title="[트립스팀] 잠실 롯데타워 에비뉴엘 아트홀 - 픽셀 아티스트 주재범의  ＜PICK X CELL＞展">
+                <a href="/tripsteem/@anpigon/tt20190905t061257794z" rel="prev" title="[트립스팀] 잠실 롯데타워 에비뉴엘 아트홀 - 픽셀 아티스트 주재범의  ＜PICK X CELL＞展">
                   [트립스팀] 잠실 롯데타워 에비뉴엘 아트홀 - 픽셀 아티스트 주재범의  ＜PICK X CELL＞展 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
@@ -472,7 +477,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#create-dynamic-types-and-use-type-composition-to-extract-common-functionality"><span class="nav-number">1.</span> <span class="nav-text"> Create Dynamic Types and use Type Composition to Extract Common Functionality</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#null"><span class="nav-number">1.0.0.0.1.</span> <span class="nav-text">vote, reblog, follow @anpigon</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#create-dynamic-types-and-use-type-composition-to-extract-common-functionality"><span class="nav-number">1.</span> <span class="nav-text"> Create Dynamic Types and use Type Composition to Extract Common Functionality</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link"><span class="nav-number">1.0.0.0.1.</span> <span class="nav-text">vote, reblog, follow @anpigon</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -488,7 +493,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">323</span>
+          <span class="site-state-item-count">325</span>
           <span class="site-state-item-name">포스트</span>
         </a>
       </div>
@@ -546,13 +551,13 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2019</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">안피곤</span>
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.9.0
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v5.4.0
   </div>
   <span class="post-meta-divider">|</span>
   <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.4.2
@@ -656,9 +661,17 @@
   <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
 <script src="/js/schemes/pisces.js"></script>
+
+
 <script src="/js/next-boot.js"></script>
+
   <script>
 var pjax = new Pjax({
   selectors: [
@@ -746,7 +759,9 @@ window.addEventListener('pjax:success', () => {
 
   
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.4.1/dist/instantsearch.min.css">
-<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.4.1/dist/instantsearch.js"></script><script src="/js/algolia-search.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.4.1/dist/instantsearch.js"></script>
+<script src="/js/algolia-search.js"></script>
+
 
 
 
@@ -782,7 +797,7 @@ window.addEventListener('pjax:success', () => {
       DISQUS.reset({
         reload: true,
         config: {page: {
-            url: "https://anpigon.github.io/개발 이야기/React/Mobx/2019-09-04---manage-application-state-with-mobx-state-tree-17/",
+            url: "https://anpigon.github.io/%EA%B0%9C%EB%B0%9C%20%EC%9D%B4%EC%95%BC%EA%B8%B0/React/Mobx/2019-09-04---manage-application-state-with-mobx-state-tree-17/",
             identifier: "개발 이야기/React/Mobx/2019-09-04---manage-application-state-with-mobx-state-tree-17/",
             title: "[React] Mobx-state-tree #17 : Dynamic Types을 정의하고 Type Composition을 사용하여 공통 Functionality 추출하기"
           }

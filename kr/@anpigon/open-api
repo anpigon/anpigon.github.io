@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="yfKOiBPD8WlKH3NPG_CG1zr4MsCgCG1YVdGKhMS2CKc">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Noto Serif KR:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.4.2',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: true,
+    pangu: false,
+    algolia: {
+      appID: 'YY693DUDAI',
+      apiKey: 'db449d453b150820f66e7bc3d4523a17',
+      indexName: 'my-hexo-blog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '복사',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="국내 도서 검색 OPEN API를 제공하는 서비스를 찾아서 정리해 보았습니다. 제가 원하는 데이터를 모두 제공하는 API는 없었습니다. ㅠㅠ 저는 아마도 다음이나 KOLIS-NET API를 사용할 것 같습니다.* * * 네이버 책 검색 OPEN APIhttps:&#x2F;&#x2F;developers.naver.com&#x2F;docs&#x2F;search&#x2F;book&#x2F;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="국내 도서 검색 OPEN API 비교">
+<meta property="og:url" content="https://anpigon.github.io/kr/@anpigon/open-api">
+<meta property="og:site_name" content="안피곤님의 블로그">
+<meta property="og:description" content="국내 도서 검색 OPEN API를 제공하는 서비스를 찾아서 정리해 보았습니다. 제가 원하는 데이터를 모두 제공하는 API는 없었습니다. ㅠㅠ 저는 아마도 다음이나 KOLIS-NET API를 사용할 것 같습니다.* * * 네이버 책 검색 OPEN APIhttps:&#x2F;&#x2F;developers.naver.com&#x2F;docs&#x2F;search&#x2F;book&#x2F;">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:image" content="https://files.steempeak.com/file/steempeak/anpigon/K0JdopgC-E18480E185AEE186A8E18482E185A220E1848EE185A2E186A820E18480E185A5E186B7E18489E185A2E186A820OPEN20API20E18487E185B5E18480E185AD.png">
+<meta property="article:published_time" content="2019-04-09T03:30:18.000Z">
+<meta property="article:modified_time" content="2021-04-21T11:50:30.057Z">
+<meta property="article:author" content="안피곤">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://files.steempeak.com/file/steempeak/anpigon/K0JdopgC-E18480E185AEE186A8E18482E185A220E1848EE185A2E186A820E18480E185A5E186B7E18489E185A2E186A820OPEN20API20E18487E185B5E18480E185AD.png">
+
+<link rel="canonical" href="https://anpigon.github.io/kr/@anpigon/open-api">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>국내 도서 검색 OPEN API 비교 | 안피곤님의 블로그</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-20589042-10"></script>
+    <script pjax>
+      var host = window.location.hostname;
+      if (host !== "localhost" || !true) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-20589042-10');
+      }
+    </script>
+
+
+
+
+
+
+  
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-2365531018407022",
+          enable_page_level_ads: false
+     });
+</script>
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="안피곤님의 블로그" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">안피곤님의 블로그</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">코딩, 독서, 여행, 영화, 맛집</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>홈</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>태그<span class="badge">139</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>카테고리<span class="badge">25</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>아카이브<span class="badge">325</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>검색
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input" id="search-input"></div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="algolia-results">
+  <div id="algolia-stats"></div>
+  <div id="algolia-hits"></div>
+  <div id="algolia-pagination" class="algolia-pagination"></div>
+</div>
+
+  
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="ko">
+    <link itemprop="mainEntityOfPage" href="https://anpigon.github.io/kr/@anpigon/open-api">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/me.jpg">
+      <meta itemprop="name" content="안피곤">
+      <meta itemprop="description" content="시간이 천천히 갔으면 좋겠다.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="안피곤님의 블로그">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          국내 도서 검색 OPEN API 비교
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">작성일</span>
+
+              <time title="Post created: 2019-04-09 12:30:18" itemprop="dateCreated datePublished" datetime="2019-04-09T12:30:18+09:00">2019-04-09</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Updated at: 2021-04-21 20:50:30" itemprop="dateModified" datetime="2021-04-21T20:50:30+09:00">2021-04-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">개발 이야기</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/kr/@anpigon/open-api#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="/kr/@anpigon/open-api" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+            <div style="margin-bottom:35px;margin-top:-20px;">
+              <!-- 블로그 본문 상단 광고 -->
+              <ins class="adsbygoogle"
+                  style="display:block"
+                  data-ad-client="ca-pub-2365531018407022"
+                  data-ad-slot="3390644000"
+                  data-ad-format="auto"
+                  data-full-width-responsive="true"></ins>
+              <script>
+                  (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+        <p><img alt data-src="https://files.steempeak.com/file/steempeak/anpigon/K0JdopgC-E18480E185AEE186A8E18482E185A220E1848EE185A2E186A820E18480E185A5E186B7E18489E185A2E186A820OPEN20API20E18487E185B5E18480E185AD.png"></p><p>국내 도서 검색 OPEN API를 제공하는 서비스를 찾아서 정리해 보았습니다.<br>
+제가 원하는 데이터를 모두 제공하는 API는 없었습니다. ㅠㅠ<br>
+저는 아마도 <strong>다음</strong>이나 <strong>KOLIS-NET</strong> API를 사용할 것 같습니다.</p><center><br>* * *<br></center><hr><h1 id="네이버-책-검색-open-api"><a class="markdownIt-Anchor" href="#네이버-책-검색-open-api"></a> 네이버 책 검색 OPEN API</h1><p><a target="_blank" rel="noopener" href="https://developers.naver.com/docs/search/book/">https://developers.naver.com/docs/search/book/</a></p><a id="more"></a>
+
+
+
+
+
+<table>
+<thead>
+<tr>
+<th>구분</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>호출 건수</td>
+<td>하루 2만5천 건</td>
+</tr>
+<tr>
+<td>검색 조건</td>
+<td>전체, 제목, 저자, 목차, ISBN, 출판사, 출간시작일, 출간종료일, 카테고리</td>
+</tr>
+<tr>
+<td>정렬 순서</td>
+<td>유사도순, 출간일순, 판매량순</td>
+</tr>
+<tr>
+<td>출력 형식</td>
+<td>XLM, JSON</td>
+</tr>
+<tr>
+<td>출력 데이터</td>
+<td>제목, 도서 상세 URL, 표지 이미지, 저자, 가격, 출판사, ISBN, 요약, 출간일</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>네이버는 너무 작은 크기의 도서 표지 이미지(82x116)를 제공하고 있습니다.<br>
+이 이유 하나 때문에 사용하기가 꺼려지네요.</p>
+</blockquote>
+<hr>
+<h1 id="다음-책-검색-open-api"><a class="markdownIt-Anchor" href="#다음-책-검색-open-api"></a> 다음 책 검색 OPEN API</h1>
+<p><a target="_blank" rel="noopener" href="https://developers.kakao.com/docs/restapi/search#%EF%BC%85EC%EF%BC%85B1%EF%BC%8585-%EF%BC%85EA%EF%BC%85B2%EF%BC%8580%EF%BC%85EC%EF%BC%8583%EF%BC%8589">https://developers.kakao.com/docs/restapi/search#％EC％B1％85-％EA％B2％80％EC％83％89</a></p>
+<table>
+<thead>
+<tr>
+<th>구분</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>호출 건수</td>
+<td>?</td>
+</tr>
+<tr>
+<td>검색 조건</td>
+<td>전체, 제목, ISBN, 출판사, 저자</td>
+</tr>
+<tr>
+<td>정렬 순서</td>
+<td>정확도순, 최신순</td>
+</tr>
+<tr>
+<td>출력 형식</td>
+<td>JSON</td>
+</tr>
+<tr>
+<td>출력 데이터</td>
+<td>제목, 소개, 도서 상세 URL, ISBN, 출간일, 출판사, 저자, 역자, 가격, 표지 이미지(120x174), 판매 상태</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h1 id="국가자료종합목록kolis-net"><a class="markdownIt-Anchor" href="#국가자료종합목록kolis-net"></a> 국가자료종합목록(KOLIS-NET)</h1>
+<p><a target="_blank" rel="noopener" href="https://www.nl.go.kr/kolisnet/contents/openAPI.do">https://www.nl.go.kr/kolisnet/contents/openAPI.do</a></p>
+<table>
+<thead>
+<tr>
+<th>구분</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>호출 건수</td>
+<td>?</td>
+</tr>
+<tr>
+<td>검색 조건</td>
+<td>전체, 제목, 저자, 출판사 (AND/OR 조건으로 검색어 5개 까지 연결 가능)</td>
+</tr>
+<tr>
+<td>검색 조건2</td>
+<td>표준 부호(ISBN, ISSN, CODEN, STRN, RNSTRN, CBN, CAN)</td>
+</tr>
+<tr>
+<td>검색 조건3</td>
+<td>분류 기호(KDC, KDCP, DDC, CEC, CWC, COC)</td>
+</tr>
+<tr>
+<td>검색 조건4</td>
+<td>발행년도 시작, 발행년도 끝</td>
+</tr>
+<tr>
+<td>정렬 조건</td>
+<td>제목, 저자, 발행년도 (DESC/ASC 가능)</td>
+</tr>
+<tr>
+<td>출력 형식</td>
+<td>XLM</td>
+</tr>
+<tr>
+<td>출력 데이터</td>
+<td>제목, 저자, 출판사, 발행년도, 자료유형, 표지이미지</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>다양한 검색 조건으로 조회할 수 있어서 매력적입니다. 하지만, JSON 출력 형식을 제공하지 않아서 불편합니다. 그리고 국립중앙도서관에서 보유하고 있는 서적만 검색 가능합니다.</p>
+</blockquote>
+<hr>
+<h1 id="인터파크-open-api"><a class="markdownIt-Anchor" href="#인터파크-open-api"></a> 인터파크 OPEN API</h1>
+<p><a target="_blank" rel="noopener" href="http://book.interpark.com/blog/api/openApiMain.rdo">http://book.interpark.com/blog/api/openApiMain.rdo</a><br>
+<a target="_blank" rel="noopener" href="http://book.interpark.com/bookPark/html/bookpinion/api_booksearch.html">http://book.interpark.com/bookPark/html/bookpinion/api_booksearch.html</a><br>
+<a target="_blank" rel="noopener" href="http://book.interpark.com/bookPark/html/bookpinion/openup_3.html">http://book.interpark.com/bookPark/html/bookpinion/openup_3.html</a></p>
+<table>
+<thead>
+<tr>
+<th>구분</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>호출 건수</td>
+<td>하루 1만 건</td>
+</tr>
+<tr>
+<td>검색 조건</td>
+<td>제목, 저자, 출판사, ISBN, 전체(제목, 저자, 출판사, ISBN)</td>
+</tr>
+<tr>
+<td>정렬 순서</td>
+<td>정확도, 출간일, 제목, 판매량, 고객평점, 리뷰갯수, 가격(오름차순/내림차순)</td>
+</tr>
+<tr>
+<td>출력 형식</td>
+<td>XLM, JSON</td>
+</tr>
+<tr>
+<td>출력 데이터</td>
+<td>제목, 도서 상세 URL, 표지이미지, ISBN, 저자, 역자, 설명, 가격, 카테고리, 출판사, 출간일</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>인터파크 OPEN API 서비스는 더는 관리하고 않고 있는 것 같습니다. API 문서 페이지 링크 찾기도 어렵습니다.<br>
+하지만 베스트셀러, 추천도서, 신간도서 API를 제공하고 있어서 조금 매력적입니다. 하지만 잘 동작할지는 모르겠습니다.</p>
+</blockquote>
+<hr>
+<h1 id="알라딘-open-api"><a class="markdownIt-Anchor" href="#알라딘-open-api"></a> 알라딘 OPEN API</h1>
+<p><a target="_blank" rel="noopener" href="http://blog.aladin.co.kr/openapi/5353304">http://blog.aladin.co.kr/openapi/5353304</a></p>
+<table>
+<thead>
+<tr>
+<th>구분</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>호출 건수</td>
+<td>하루 5천 건</td>
+</tr>
+<tr>
+<td>검색 조건</td>
+<td>제목, 저자, 출판사, 전체(제목+저자)</td>
+</tr>
+<tr>
+<td>정렬 조건</td>
+<td>정확도, 출간일, 제목, 판매량, 고객평점, 마이리뷰갯수</td>
+</tr>
+<tr>
+<td>출력 형식</td>
+<td>XLM, JSON</td>
+</tr>
+<tr>
+<td>출력 데이터</td>
+<td>제목, 도서 상세 URL, ISBN, 상품설명, 도서출간일, 상품가격, 표지이미지, 카테고리, 출판사, 고객평점</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>하루에 쿼리를 5천 건만 할 수 있습니다. 쿼리 건수가 매우 적네요. 그리고 ISBN 검색을 제공하지 않습니다.</p>
+</blockquote>
+<hr>
+<h5 id="sub-sponsored-powered-by-dclick-sub"><a class="markdownIt-Anchor" href="#sub-sponsored-powered-by-dclick-sub"></a> <sub> <strong>Sponsored ( Powered by <a target="_blank" rel="noopener" href="https://www.dclick.io">dclick</a> )</strong> </sub></h5>
+<h5 id="띠예유튜버-근황2019년-4월-초-기준"><a class="markdownIt-Anchor" href="#띠예유튜버-근황2019년-4월-초-기준"></a> <a target="_blank" rel="noopener" href="https://api.dclick.io/v1/c?x=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjIjoiYW5waWdvbiIsInMiOiJvcGVuLWFwaSIsImEiOlsidC0xNzY5Il0sInVybCI6Imh0dHBzOi8vc3RlZW1pdC5jb20va3IvQHNpbmRvamEvMjAxOS00IiwiaWF0IjoxNTU0NzgxMDMzLCJleHAiOjE4NzAxNDEwMzN9.RSbu791NvLhmbnzJDTMSwk_Bc6htC6yoz2MK1QpdMsk">띠예(유튜버) 근황(2019년 4월 초 기준…)</a></h5>
+<p><sup>이라고 붙은 제목에 '?'가 떠오르시면 클릭 권장 ㅋ</sup></p>
+
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+  <div class="post-widgets">
+    <div class="wp_rating">
+      <div id="wpac-rating"></div>
+    </div>
+  </div>
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/kr/@anpigon/rss" rel="next" title="구글 스프레드시트 스팀잇 RSS 만들기">
+                  <i class="fa fa-chevron-left"></i> 구글 스프레드시트 스팀잇 RSS 만들기
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/kr/@anpigon/react-native-api" rel="prev" title="[React Native] 카카오 책 검색 API 사용하기">
+                  [React Native] 카카오 책 검색 API 사용하기 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    
+  <div class="comments" id="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          목차
+        </li>
+        <li class="sidebar-nav-overview">
+          흝어보기
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%EB%84%A4%EC%9D%B4%EB%B2%84-%EC%B1%85-%EA%B2%80%EC%83%89-open-api"><span class="nav-number">1.</span> <span class="nav-text"> 네이버 책 검색 OPEN API</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%EB%8B%A4%EC%9D%8C-%EC%B1%85-%EA%B2%80%EC%83%89-open-api"><span class="nav-number">2.</span> <span class="nav-text"> 다음 책 검색 OPEN API</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%EA%B5%AD%EA%B0%80%EC%9E%90%EB%A3%8C%EC%A2%85%ED%95%A9%EB%AA%A9%EB%A1%9Dkolis-net"><span class="nav-number">3.</span> <span class="nav-text"> 국가자료종합목록(KOLIS-NET)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%EC%9D%B8%ED%84%B0%ED%8C%8C%ED%81%AC-open-api"><span class="nav-number">4.</span> <span class="nav-text"> 인터파크 OPEN API</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%EC%95%8C%EB%9D%BC%EB%94%98-open-api"><span class="nav-number">5.</span> <span class="nav-text"> 알라딘 OPEN API</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#sub-sponsored-powered-by-dclick-sub"><span class="nav-number">5.0.0.0.1.</span> <span class="nav-text">  Sponsored ( Powered by dclick ) </span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%EB%9D%A0%EC%98%88%EC%9C%A0%ED%8A%9C%EB%B2%84-%EA%B7%BC%ED%99%A92019%EB%85%84-4%EC%9B%94-%EC%B4%88-%EA%B8%B0%EC%A4%80"><span class="nav-number">5.0.0.0.2.</span> <span class="nav-text"> 띠예(유튜버) 근황(2019년 4월 초 기준…)</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="안피곤"
+    src="/images/me.jpg">
+  <p class="site-author-name" itemprop="name">안피곤</p>
+  <div class="site-description" itemprop="description">시간이 천천히 갔으면 좋겠다.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">325</span>
+          <span class="site-state-item-name">포스트</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-name">카테고리</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">139</span>
+        <span class="site-state-item-name">태그</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/anpigon" title="GitHub &rarr; https://github.com/anpigon" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:markan82@gmail.com" title="E-Mail &rarr; mailto:markan82@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+          <!-- 정사각형 광고 -->
+          <div style="margin-top: 15px;">
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-2365531018407022"
+                data-ad-slot="7521850306"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+          </div>
+    </div>
+  </aside>
+  <div id="sidebar-dimmer">3</div>
+
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">안피곤</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v5.4.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.4.2
+  </div>
+
+        
+
+
+
+
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-firestore.js"></script>
+  <script>
+    firebase.initializeApp({
+      apiKey: 'AIzaSyA4QZWCWb3IuIHjbkAmO0ttIM2b-qtLTP8',
+      projectId: 'next-blog-8f9a0'
+    });
+
+    function getCount(doc, increaseCount) {
+      // IncreaseCount will be false when not in article page
+
+      return doc.get().then(d => {
+        var count = 0;
+        if (!d.exists) { // Has no data, initialize count
+          if (increaseCount) {
+            doc.set({
+              count: 1
+            });
+            count = 1;
+          }
+        } else { // Has data
+          count = d.data().count;
+          if (increaseCount) {
+            // If first view this article
+            doc.set({ // Increase count
+              count: count + 1
+            });
+            count++;
+          }
+        }
+
+        return count;
+      });
+    }
+
+    function appendCountTo(el) {
+      return count => {
+        el.innerText = count;
+      }
+    }
+  </script>
+  <script pjax>
+    (function() {
+      var db = firebase.firestore();
+      var articles = db.collection('articles');
+
+      if (CONFIG.page.isPost) { // Is article page
+        var title = document.querySelector('.post-title').innerText.trim();
+        var doc = articles.doc(title);
+        var increaseCount = true;
+        if (localStorage.getItem(title)) {
+          increaseCount = false;
+        } else {
+          // Mark as visited
+          localStorage.setItem(title, true);
+        }
+        getCount(doc, increaseCount).then(appendCountTo(document.querySelector('.firestore-visitors-count')));
+      } else if (CONFIG.page.isHome) { // Is index page
+        var promises = [...document.querySelectorAll('.post-title')].map(element => {
+          var title = element.innerText.trim();
+          var doc = articles.doc(title);
+          return getCount(doc);
+        });
+        Promise.all(promises).then(counts => {
+          var metas = document.querySelectorAll('.firestore-visitors-count');
+          counts.forEach((val, idx) => {
+            appendCountTo(metas[idx])(val);
+          });
+        });
+      }
+    })();
+  </script>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.getAttribute('pjax') !== null) {
+      element.setAttribute('pjax', '');
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+  <script pjax>
+  if (CONFIG.page.isPost) {
+    wpac_init = window.wpac_init || [];
+    wpac_init.push({
+      widget: 'Rating',
+      id: 21712,
+      el: 'wpac-rating',
+      color: 'fc6423'
+    });
+    (function() {
+      if ('WIDGETPACK_LOADED' in window) return;
+      WIDGETPACK_LOADED = true;
+      var mc = document.createElement('script');
+      mc.type = 'text/javascript';
+      mc.async = true;
+      mc.src = '//embed.widgetpack.com/widget.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+    })();
+  }
+  </script>
+
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.4.1/dist/instantsearch.min.css">
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.4.1/dist/instantsearch.js"></script>
+<script src="/js/algolia-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+
+  
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://anpigon-github-io.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  function loadComments() {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: {page: {
+            url: "https://anpigon.github.io/kr/@anpigon/open-api",
+            identifier: "/kr/@anpigon/open-api",
+            title: "국내 도서 검색 OPEN API 비교"
+          }
+        }
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://anpigon-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  }
+    (function() {
+      var offsetTop = document.getElementById('comments').offsetTop - window.innerHeight;
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        window.addEventListener('load', loadComments, false);
+      } else {
+        var disqus_scroll = () => {
+          // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = document.getElementById('comments').offsetTop - window.innerHeight;
+          var scrollTop = window.scrollY;
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            window.removeEventListener('scroll', disqus_scroll);
+            loadComments();
+          }
+        };
+        window.addEventListener('scroll', disqus_scroll);
+      }
+    })();
+  
+</script>
+
+    </div>
+</body>
+</html>

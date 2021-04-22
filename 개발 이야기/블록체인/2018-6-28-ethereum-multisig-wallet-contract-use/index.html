@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 3.9.0">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -53,19 +53,23 @@
 </script>
 
   <meta name="description" content="이번에는 이더리움 멀티시그 지갑 컨트랙트를 이용하여 송금하는 것을 알아봅니다.이더리움 멀티시그 지갑 컴트랙트 배포 방법은 이전글을 참고바랍니다. 이더리움 멀티시그 지갑 컨트랙트 배포하기  컨트랙트에 이더 송금하기멀티시그 지갑 컨트랙트에서 이더를 송금하기 위해서는 우선 컨트랙트에 잔액이 있어야 합니다. 그래서 컨트랙트 주소로 0.1 ether를 송금하여 컨트">
-<meta name="keywords" content="블록체인,이더리움">
 <meta property="og:type" content="article">
 <meta property="og:title" content="이더리움 멀티시그 지갑 컨트랙트에서 송금하기">
-<meta property="og:url" content="https://anpigon.github.io/개발 이야기/블록체인/2018-6-28-ethereum-multisig-wallet-contract-use/index.html">
+<meta property="og:url" content="https://anpigon.github.io/%EA%B0%9C%EB%B0%9C%20%EC%9D%B4%EC%95%BC%EA%B8%B0/%EB%B8%94%EB%A1%9D%EC%B2%B4%EC%9D%B8/2018-6-28-ethereum-multisig-wallet-contract-use/index.html">
 <meta property="og:site_name" content="안피곤님의 블로그">
 <meta property="og:description" content="이번에는 이더리움 멀티시그 지갑 컨트랙트를 이용하여 송금하는 것을 알아봅니다.이더리움 멀티시그 지갑 컴트랙트 배포 방법은 이전글을 참고바랍니다. 이더리움 멀티시그 지갑 컨트랙트 배포하기  컨트랙트에 이더 송금하기멀티시그 지갑 컨트랙트에서 이더를 송금하기 위해서는 우선 컨트랙트에 잔액이 있어야 합니다. 그래서 컨트랙트 주소로 0.1 ether를 송금하여 컨트">
-<meta property="og:locale" content="ko">
-<meta property="og:updated_time" content="2019-11-11T13:41:49.830Z">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:image" content="https://anpigon.github.io/images/multisig_contract_2_1.png">
+<meta property="og:image" content="https://anpigon.github.io/images/multisig_contract_2_2.png">
+<meta property="article:published_time" content="2018-06-27T15:00:00.000Z">
+<meta property="article:modified_time" content="2021-04-21T11:50:30.078Z">
+<meta property="article:author" content="안피곤">
+<meta property="article:tag" content="블록체인">
+<meta property="article:tag" content="이더리움">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="이더리움 멀티시그 지갑 컨트랙트에서 송금하기">
-<meta name="twitter:description" content="이번에는 이더리움 멀티시그 지갑 컨트랙트를 이용하여 송금하는 것을 알아봅니다.이더리움 멀티시그 지갑 컴트랙트 배포 방법은 이전글을 참고바랍니다. 이더리움 멀티시그 지갑 컨트랙트 배포하기  컨트랙트에 이더 송금하기멀티시그 지갑 컨트랙트에서 이더를 송금하기 위해서는 우선 컨트랙트에 잔액이 있어야 합니다. 그래서 컨트랙트 주소로 0.1 ether를 송금하여 컨트">
+<meta name="twitter:image" content="https://anpigon.github.io/images/multisig_contract_2_1.png">
 
-<link rel="canonical" href="https://anpigon.github.io/개발 이야기/블록체인/2018-6-28-ethereum-multisig-wallet-contract-use/">
+<link rel="canonical" href="https://anpigon.github.io/%EA%B0%9C%EB%B0%9C%20%EC%9D%B4%EC%95%BC%EA%B8%B0/%EB%B8%94%EB%A1%9D%EC%B2%B4%EC%9D%B8/2018-6-28-ethereum-multisig-wallet-contract-use/">
 
 
 <script id="page-configurations">
@@ -128,6 +132,7 @@
   </style>
 </noscript>
 
+<link rel="alternate" href="/atom.xml" title="안피곤님의 블로그" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -184,7 +189,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>아카이브<span class="badge">323</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>아카이브<span class="badge">325</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -240,7 +245,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="ko">
-    <link itemprop="mainEntityOfPage" href="https://anpigon.github.io/개발 이야기/블록체인/2018-6-28-ethereum-multisig-wallet-contract-use/">
+    <link itemprop="mainEntityOfPage" href="https://anpigon.github.io/%EA%B0%9C%EB%B0%9C%20%EC%9D%B4%EC%95%BC%EA%B8%B0/%EB%B8%94%EB%A1%9D%EC%B2%B4%EC%9D%B8/2018-6-28-ethereum-multisig-wallet-contract-use/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/me.jpg">
@@ -270,7 +275,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Updated at: 2019-11-11 22:41:49" itemprop="dateModified" datetime="2019-11-11T22:41:49+09:00">2019-11-11</time>
+                <time title="Updated at: 2021-04-21 20:50:30" itemprop="dateModified" datetime="2021-04-21T20:50:30+09:00">2021-04-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -278,13 +283,13 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/개발-이야기/" itemprop="url" rel="index">
+                  <a href="/categories/%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/" itemprop="url" rel="index">
                     <span itemprop="name">개발 이야기</span>
                   </a>
                 </span>
                   , 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/개발-이야기/블록체인/" itemprop="url" rel="index">
+                  <a href="/categories/%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/%EB%B8%94%EB%A1%9D%EC%B2%B4%EC%9D%B8/" itemprop="url" rel="index">
                     <span itemprop="name">블록체인</span>
                   </a>
                 </span>
@@ -306,7 +311,7 @@
       </span>
       <span class="post-meta-item-text">Disqus: </span>
     
-    <a title="disqus" href="/개발 이야기/블록체인/2018-6-28-ethereum-multisig-wallet-contract-use/#comments" itemprop="discussionUrl">
+    <a title="disqus" href="/%EA%B0%9C%EB%B0%9C%20%EC%9D%B4%EC%95%BC%EA%B8%B0/%EB%B8%94%EB%A1%9D%EC%B2%B4%EC%9D%B8/2018-6-28-ethereum-multisig-wallet-contract-use/#comments" itemprop="discussionUrl">
       <span class="post-comments-count disqus-comment-count" data-disqus-identifier="개발 이야기/블록체인/2018-6-28-ethereum-multisig-wallet-contract-use/" itemprop="commentCount"></span>
     </a>
   </span>
@@ -336,26 +341,26 @@
             </div>
 
         <p>이번에는 이더리움 멀티시그 지갑 컨트랙트를 이용하여 송금하는 것을 알아봅니다.</p><p>이더리움 멀티시그 지갑 컴트랙트 배포 방법은 이전글을 참고바랍니다.</p><ul>
-<li><a href="https://markan82.github.io/ethereum-multisig-wallet-contract-deploy/" target="_blank" rel="noopener">이더리움 멀티시그 지갑 컨트랙트 배포하기</a></li>
+<li><a target="_blank" rel="noopener" href="https://markan82.github.io/ethereum-multisig-wallet-contract-deploy/">이더리움 멀티시그 지갑 컨트랙트 배포하기</a></li>
 </ul><h2 id="컨트랙트에-이더-송금하기"><a class="markdownIt-Anchor" href="#컨트랙트에-이더-송금하기"></a> 컨트랙트에 이더 송금하기</h2><p>멀티시그 지갑 컨트랙트에서 이더를 송금하기 위해서는 우선 컨트랙트에 잔액이 있어야 합니다.<br>
 그래서 컨트랙트 주소로 0.1 ether를 송금하여 컨트랙트가 잔액을 가지도록 합니다.</p><a id="more"></a>
 
 
 
 
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 이전에 배포한 컨트랙트 주소</span></span><br><span class="line"><span class="keyword">var</span> contractAddress = <span class="string">'0x57FC45cc929f84eC95cd6C6903bBcA8d1164d0B3'</span>; </span><br><span class="line"></span><br><span class="line"><span class="comment">// 가스비를 지출할 계정 주소</span></span><br><span class="line"><span class="keyword">var</span> fromAddress = <span class="string">'0xf6d0B5f612dEecB00345D...'</span>; </span><br><span class="line"></span><br><span class="line"><span class="comment">// 1. nonce 값 조회</span></span><br><span class="line"><span class="keyword">var</span> nonce = web3.eth.getTransactionCount(fromAddress); </span><br><span class="line"></span><br><span class="line"><span class="comment">// 2. 트랙잭션 데이터 생성 </span></span><br><span class="line"><span class="keyword">var</span> tx = <span class="keyword">new</span> ethTx(&#123; </span><br><span class="line">  nonce: web3.toHex(nonce), </span><br><span class="line">  to: contractAddress, </span><br><span class="line">  value: web3.toHex(web3.toWei(<span class="number">0.1</span>, <span class="string">'ether'</span>).toNumber()),					 </span><br><span class="line">  gasPrice: web3.toHex(<span class="number">1</span>), <span class="comment">// 가스 가격(wei 단위) </span></span><br><span class="line">  gasLimit: web3.toHex(<span class="number">3000000</span>), <span class="comment">// 가스 최대 사용량 </span></span><br><span class="line">  chainId: <span class="number">3</span>, <span class="comment">//네트워크 ID(3=Ropsten Tesetnet) </span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 3. 트랜잭션 서명</span></span><br><span class="line">tx.sign(privateKey);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 4. 트랜잭션 전송하기</span></span><br><span class="line">web3.eth.sendRawTransaction(<span class="string">'0x'</span> + tx.serialize().toString(<span class="string">'hex'</span>), <span class="function"><span class="keyword">function</span>(<span class="params">err, txId</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!err) &#123;</span><br><span class="line"> 		<span class="built_in">console</span>.log(<span class="string">'txId: '</span>, txId); <span class="comment">// 트랜잭션ID값</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 이전에 배포한 컨트랙트 주소</span></span><br><span class="line"><span class="keyword">var</span> contractAddress = <span class="string">&#x27;0x57FC45cc929f84eC95cd6C6903bBcA8d1164d0B3&#x27;</span>; </span><br><span class="line"></span><br><span class="line"><span class="comment">// 가스비를 지출할 계정 주소</span></span><br><span class="line"><span class="keyword">var</span> fromAddress = <span class="string">&#x27;0xf6d0B5f612dEecB00345D...&#x27;</span>; </span><br><span class="line"></span><br><span class="line"><span class="comment">// 1. nonce 값 조회</span></span><br><span class="line"><span class="keyword">var</span> nonce = web3.eth.getTransactionCount(fromAddress); </span><br><span class="line"></span><br><span class="line"><span class="comment">// 2. 트랙잭션 데이터 생성 </span></span><br><span class="line"><span class="keyword">var</span> tx = <span class="keyword">new</span> ethTx(&#123; </span><br><span class="line">  nonce: web3.toHex(nonce), </span><br><span class="line">  to: contractAddress, </span><br><span class="line">  value: web3.toHex(web3.toWei(<span class="number">0.1</span>, <span class="string">&#x27;ether&#x27;</span>).toNumber()),					 </span><br><span class="line">  gasPrice: web3.toHex(<span class="number">1</span>), <span class="comment">// 가스 가격(wei 단위) </span></span><br><span class="line">  gasLimit: web3.toHex(<span class="number">3000000</span>), <span class="comment">// 가스 최대 사용량 </span></span><br><span class="line">  chainId: <span class="number">3</span>, <span class="comment">//네트워크 ID(3=Ropsten Tesetnet) </span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 3. 트랜잭션 서명</span></span><br><span class="line">tx.sign(privateKey);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 4. 트랜잭션 전송하기</span></span><br><span class="line">web3.eth.sendRawTransaction(<span class="string">&#x27;0x&#x27;</span> + tx.serialize().toString(<span class="string">&#x27;hex&#x27;</span>), <span class="function"><span class="keyword">function</span>(<span class="params">err, txId</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!err) &#123;</span><br><span class="line"> 		<span class="built_in">console</span>.log(<span class="string">&#x27;txId: &#x27;</span>, txId); <span class="comment">// 트랜잭션ID값</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <h2 id="트랜잭션과-잔액-확인하기"><a class="markdownIt-Anchor" href="#트랜잭션과-잔액-확인하기"></a> 트랜잭션과 잔액 확인하기</h2>
 <p>컨트랙트 주소로 송금하는 트랜잭션이 성공하였으면, 컨트랙트에 잔액이 추가되었는지 확인합니다.</p>
 <p>트래잭션과 잔액은 아래 사이트에서 확인가능합니다.</p>
-<p><a href="https://ropsten.etherscan.io/address/0x57FC45cc929f84eC95cd6C6903bBcA8d1164d0B3" target="_blank" rel="noopener">https://ropsten.etherscan.io/</a></p>
+<p><a target="_blank" rel="noopener" href="https://ropsten.etherscan.io/address/0x57FC45cc929f84eC95cd6C6903bBcA8d1164d0B3">https://ropsten.etherscan.io/</a></p>
 <p>아래 화면은 아직 채굴전이라서 트랜잭션이 아직 pending 상태이고, 컨트랙트 잔액이 0 Ether 입니다.</p>
 <p><img alt data-src="/images/multisig_contract_2_1.png"></p>
 <p>채굴이 되어 트랜잭션이 블록에 포함되면, 트랜잭션 상태가 바뀌고 컨트랙트가 0.1 Ether를 가지고 있는 것을 확인할 수 있습니다.</p>
 <p><img alt data-src="/images/multisig_contract_2_2.png"></p>
 <h2 id="컨트랙트-멀티시그-함수-호출하기"><a class="markdownIt-Anchor" href="#컨트랙트-멀티시그-함수-호출하기"></a> 컨트랙트 멀티시그 함수 호출하기</h2>
 <p>이제 컨트랙트에 들어있는 0.1 ether를 멀티시그를 이용하여 송금해보겠습니다. 아래 코드에 보이는  <code>abiDefinition</code>에는 컨트랙트 소스를 컴파일해서 나온 abi 데이터를 사용합니다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> abiDefinition = &#123; <span class="comment">/* 컨트랙트 abi 데이터 */</span> &#125;;</span><br><span class="line"><span class="keyword">var</span> contract = web3.eth.contract(abiDefinition).at(contractAddress);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 1. 컨트랙트 실행하기 위한 데이터 생성 </span></span><br><span class="line"><span class="keyword">var</span> destination = <span class="string">'&lt;ehter를 수신받는 address&gt;'</span>;</span><br><span class="line"><span class="keyword">var</span> value = web3.toWei(<span class="keyword">new</span> BigNumber(<span class="number">0.01</span>), <span class="string">'ether'</span>);</span><br><span class="line"><span class="keyword">var</span> data = <span class="string">'0x'</span>;</span><br><span class="line"><span class="keyword">var</span> sigs = createSigs(signers, contract.address, nonce, destination, value, <span class="string">'0x'</span>)</span><br><span class="line"><span class="keyword">var</span> txInputData = contract.execute.getData(sigs.sigV, sigs.sigR, sigs.sigS, destination, web3.toHex(value), ata);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2. 트랙잭션 데이터 생성 </span></span><br><span class="line"><span class="keyword">var</span> tx = <span class="keyword">new</span> ethTx(&#123; </span><br><span class="line">  nonce: web3.toHex(nonce), </span><br><span class="line">  to: contract.address, </span><br><span class="line">  gasPrice: web3.toHex(<span class="number">1</span>), </span><br><span class="line">  gasLimit: web3.toHex(<span class="number">3000000</span>),</span><br><span class="line">  data: txInputData, </span><br><span class="line">  chainId: <span class="number">3</span>, <span class="comment">//네트워크 ID(3=Ropsten Tesetnet) </span></span><br><span class="line">&#125;); </span><br><span class="line"></span><br><span class="line"><span class="comment">// 3. 트랜잭션 서명하기 </span></span><br><span class="line">tx.sign(privateKey); </span><br><span class="line"></span><br><span class="line"><span class="comment">// 4. 트랜잭션 전송하기 </span></span><br><span class="line">web3.eth.sendRawTransaction(<span class="string">'0x'</span> + tx.serialize().toString(<span class="string">'hex'</span>), <span class="function"><span class="keyword">function</span>(<span class="params">err, txId</span>) </span>&#123; </span><br><span class="line">  <span class="keyword">if</span> (!err) &#123; 		</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'txId: '</span>, txId); <span class="comment">// 트랜잭션ID값 </span></span><br><span class="line">  &#125; </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p><code>createSigs</code> 함수 구현방법은 <a href="https://github.com/christianlundkvist/simple-multisig/blob/master/test/simplemultisig.js" target="_blank" rel="noopener">simplemultisig.js</a> 소스를 참고해주세요.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> abiDefinition = &#123; <span class="comment">/* 컨트랙트 abi 데이터 */</span> &#125;;</span><br><span class="line"><span class="keyword">var</span> contract = web3.eth.contract(abiDefinition).at(contractAddress);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 1. 컨트랙트 실행하기 위한 데이터 생성 </span></span><br><span class="line"><span class="keyword">var</span> destination = <span class="string">&#x27;&lt;ehter를 수신받는 address&gt;&#x27;</span>;</span><br><span class="line"><span class="keyword">var</span> value = web3.toWei(<span class="keyword">new</span> BigNumber(<span class="number">0.01</span>), <span class="string">&#x27;ether&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> data = <span class="string">&#x27;0x&#x27;</span>;</span><br><span class="line"><span class="keyword">var</span> sigs = createSigs(signers, contract.address, nonce, destination, value, <span class="string">&#x27;0x&#x27;</span>)</span><br><span class="line"><span class="keyword">var</span> txInputData = contract.execute.getData(sigs.sigV, sigs.sigR, sigs.sigS, destination, web3.toHex(value), ata);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2. 트랙잭션 데이터 생성 </span></span><br><span class="line"><span class="keyword">var</span> tx = <span class="keyword">new</span> ethTx(&#123; </span><br><span class="line">  nonce: web3.toHex(nonce), </span><br><span class="line">  to: contract.address, </span><br><span class="line">  gasPrice: web3.toHex(<span class="number">1</span>), </span><br><span class="line">  gasLimit: web3.toHex(<span class="number">3000000</span>),</span><br><span class="line">  data: txInputData, </span><br><span class="line">  chainId: <span class="number">3</span>, <span class="comment">//네트워크 ID(3=Ropsten Tesetnet) </span></span><br><span class="line">&#125;); </span><br><span class="line"></span><br><span class="line"><span class="comment">// 3. 트랜잭션 서명하기 </span></span><br><span class="line">tx.sign(privateKey); </span><br><span class="line"></span><br><span class="line"><span class="comment">// 4. 트랜잭션 전송하기 </span></span><br><span class="line">web3.eth.sendRawTransaction(<span class="string">&#x27;0x&#x27;</span> + tx.serialize().toString(<span class="string">&#x27;hex&#x27;</span>), <span class="function"><span class="keyword">function</span>(<span class="params">err, txId</span>) </span>&#123; </span><br><span class="line">  <span class="keyword">if</span> (!err) &#123; 		</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;txId: &#x27;</span>, txId); <span class="comment">// 트랜잭션ID값 </span></span><br><span class="line">  &#125; </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p><code>createSigs</code> 함수 구현방법은 <a target="_blank" rel="noopener" href="https://github.com/christianlundkvist/simple-multisig/blob/master/test/simplemultisig.js">simplemultisig.js</a> 소스를 참고해주세요.</p>
 <p>트랜잭션 요청이 끝나면 이더 스캔에서 확인가능합니다.</p>
 <p>채굴이 완료되어 컨트랙트에  있던 0.1 Ether 가 <code>destination</code>으로 전송되었는지 확인합니다.</p>
 <p>이상 마칩니다.</p>
@@ -369,8 +374,8 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/블록체인/" rel="tag"># 블록체인</a>
-              <a href="/tags/이더리움/" rel="tag"># 이더리움</a>
+              <a href="/tags/%EB%B8%94%EB%A1%9D%EC%B2%B4%EC%9D%B8/" rel="tag"># 블록체인</a>
+              <a href="/tags/%EC%9D%B4%EB%8D%94%EB%A6%AC%EC%9B%80/" rel="tag"># 이더리움</a>
           </div>
 
         
@@ -382,7 +387,7 @@
 
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
-                <a href="/개발 이야기/블록체인/2018-6-24-ethereum-multisig-wallet-contract-deploy/" rel="next" title="이더리움 멀티시그 지갑 컨트랙트 배포하기">
+                <a href="/%EA%B0%9C%EB%B0%9C%20%EC%9D%B4%EC%95%BC%EA%B8%B0/%EB%B8%94%EB%A1%9D%EC%B2%B4%EC%9D%B8/2018-6-24-ethereum-multisig-wallet-contract-deploy/" rel="next" title="이더리움 멀티시그 지갑 컨트랙트 배포하기">
                   <i class="fa fa-chevron-left"></i> 이더리움 멀티시그 지갑 컨트랙트 배포하기
                 </a>
             </div>
@@ -390,7 +395,7 @@
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-                <a href="/개발 이야기/블록체인/2018-7-1-ethereum-geth-install-for-mac-md/" rel="prev" title="이더리움 클라이언트 geth 맥에 설치하기">
+                <a href="/%EA%B0%9C%EB%B0%9C%20%EC%9D%B4%EC%95%BC%EA%B8%B0/%EB%B8%94%EB%A1%9D%EC%B2%B4%EC%9D%B8/2018-7-1-ethereum-geth-install-for-mac-md/" rel="prev" title="이더리움 클라이언트 geth 맥에 설치하기">
                   이더리움 클라이언트 geth 맥에 설치하기 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
@@ -438,7 +443,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#컨트랙트에-이더-송금하기"><span class="nav-number">1.</span> <span class="nav-text"> 컨트랙트에 이더 송금하기</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#트랜잭션과-잔액-확인하기"><span class="nav-number">2.</span> <span class="nav-text"> 트랜잭션과 잔액 확인하기</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#컨트랙트-멀티시그-함수-호출하기"><span class="nav-number">3.</span> <span class="nav-text"> 컨트랙트 멀티시그 함수 호출하기</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%EC%BB%A8%ED%8A%B8%EB%9E%99%ED%8A%B8%EC%97%90-%EC%9D%B4%EB%8D%94-%EC%86%A1%EA%B8%88%ED%95%98%EA%B8%B0"><span class="nav-number">1.</span> <span class="nav-text"> 컨트랙트에 이더 송금하기</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%ED%8A%B8%EB%9E%9C%EC%9E%AD%EC%85%98%EA%B3%BC-%EC%9E%94%EC%95%A1-%ED%99%95%EC%9D%B8%ED%95%98%EA%B8%B0"><span class="nav-number">2.</span> <span class="nav-text"> 트랜잭션과 잔액 확인하기</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EC%BB%A8%ED%8A%B8%EB%9E%99%ED%8A%B8-%EB%A9%80%ED%8B%B0%EC%8B%9C%EA%B7%B8-%ED%95%A8%EC%88%98-%ED%98%B8%EC%B6%9C%ED%95%98%EA%B8%B0"><span class="nav-number">3.</span> <span class="nav-text"> 컨트랙트 멀티시그 함수 호출하기</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -454,7 +459,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">323</span>
+          <span class="site-state-item-count">325</span>
           <span class="site-state-item-name">포스트</span>
         </a>
       </div>
@@ -512,13 +517,13 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2019</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">안피곤</span>
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.9.0
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v5.4.0
   </div>
   <span class="post-meta-divider">|</span>
   <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.4.2
@@ -622,9 +627,17 @@
   <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
 <script src="/js/schemes/pisces.js"></script>
+
+
 <script src="/js/next-boot.js"></script>
+
   <script>
 var pjax = new Pjax({
   selectors: [
@@ -712,7 +725,9 @@ window.addEventListener('pjax:success', () => {
 
   
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.4.1/dist/instantsearch.min.css">
-<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.4.1/dist/instantsearch.js"></script><script src="/js/algolia-search.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.4.1/dist/instantsearch.js"></script>
+<script src="/js/algolia-search.js"></script>
+
 
 
 
@@ -748,7 +763,7 @@ window.addEventListener('pjax:success', () => {
       DISQUS.reset({
         reload: true,
         config: {page: {
-            url: "https://anpigon.github.io/개발 이야기/블록체인/2018-6-28-ethereum-multisig-wallet-contract-use/",
+            url: "https://anpigon.github.io/%EA%B0%9C%EB%B0%9C%20%EC%9D%B4%EC%95%BC%EA%B8%B0/%EB%B8%94%EB%A1%9D%EC%B2%B4%EC%9D%B8/2018-6-28-ethereum-multisig-wallet-contract-use/",
             identifier: "개발 이야기/블록체인/2018-6-28-ethereum-multisig-wallet-contract-use/",
             title: "이더리움 멀티시그 지갑 컨트랙트에서 송금하기"
           }
