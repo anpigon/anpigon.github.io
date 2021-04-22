@@ -34,6 +34,6 @@ jobs:
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
-          deploy_key: ${{ secrets.PERSONAL_TOKEN }} # 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
+          personal_token: ${{ secrets.PERSONAL_TOKEN }} # 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
           external_repository: anpigon/anpigon.github.io
           publish_dir: ./public
