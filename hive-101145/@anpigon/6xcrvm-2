@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="yfKOiBPD8WlKH3NPG_CG1zr4MsCgCG1YVdGKhMS2CKc">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Noto Serif KR:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.4.2',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: true,
+    pangu: false,
+    algolia: {
+      appID: 'YY693DUDAI',
+      apiKey: 'db449d453b150820f66e7bc3d4523a17',
+      indexName: 'my-hexo-blog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '복사',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="이전 글에서 이어지는 내용입니다.ayogom님 말대로 Github에서 “자동 매매” 키워드로 검색하니 정말 많은 소스 코드가 공개되어 있습니다. 하지만 대부분  파이썬 코드로 작성되어 있습니다. 만약 주 개발언어가 파이썬이라면 괜찮아 보이는 소스 코드를 다운받아서, 코인 자동 매매를 바로 시작할 수 있을 것 같습니다.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="암호화폐 자동 거래 봇 개발하기  2번째: 변동성 돌파 전략에 따른 목표 가격 계산하기">
+<meta property="og:url" content="https://anpigon.github.io/hive-101145/@anpigon/6xcrvm-2">
+<meta property="og:site_name" content="안피곤님의 블로그">
+<meta property="og:description" content="이전 글에서 이어지는 내용입니다.ayogom님 말대로 Github에서 “자동 매매” 키워드로 검색하니 정말 많은 소스 코드가 공개되어 있습니다. 하지만 대부분  파이썬 코드로 작성되어 있습니다. 만약 주 개발언어가 파이썬이라면 괜찮아 보이는 소스 코드를 다운받아서, 코인 자동 매매를 바로 시작할 수 있을 것 같습니다.">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:image" content="https://steemitimages.com/640x0/https://images.velog.io/images/anpigon/post/ed26ea3e-b57a-48ea-ab08-3d6ebc8cdb59/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202021-04-20%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%2011.06.01.png">
+<meta property="og:image" content="https://steemitimages.com/1280x0/https://images.velog.io/images/anpigon/post/b832c802-cd57-4060-aa06-e00966c6bc19/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202021-04-20%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%2011.21.38.png">
+<meta property="og:image" content="https://steemitimages.com/300x0/https://images.velog.io/images/anpigon/post/b9d646df-13c4-4d21-8489-54ab4de021e7/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202021-04-20%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%2011.56.13.png">
+<meta property="article:published_time" content="2021-04-20T06:47:03.000Z">
+<meta property="article:modified_time" content="2021-04-22T03:52:48.869Z">
+<meta property="article:author" content="안피곤">
+<meta property="article:tag" content="sct">
+<meta property="article:tag" content="sct-kr">
+<meta property="article:tag" content="sct-freeboard">
+<meta property="article:tag" content="zzan">
+<meta property="article:tag" content="kr">
+<meta property="article:tag" content="kr-dev">
+<meta property="article:tag" content="hive-101145">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://steemitimages.com/640x0/https://images.velog.io/images/anpigon/post/ed26ea3e-b57a-48ea-ab08-3d6ebc8cdb59/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202021-04-20%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%2011.06.01.png">
+
+<link rel="canonical" href="https://anpigon.github.io/hive-101145/@anpigon/6xcrvm-2">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>암호화폐 자동 거래 봇 개발하기  2번째: 변동성 돌파 전략에 따른 목표 가격 계산하기 | 안피곤님의 블로그</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-20589042-10"></script>
+    <script pjax>
+      var host = window.location.hostname;
+      if (host !== "localhost" || !true) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-20589042-10');
+      }
+    </script>
+
+
+
+
+
+
+  
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-2365531018407022",
+          enable_page_level_ads: false
+     });
+</script>
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="안피곤님의 블로그" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">안피곤님의 블로그</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">코딩, 독서, 여행, 영화, 맛집</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>홈</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>태그<span class="badge">144</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>카테고리<span class="badge">25</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>아카이브<span class="badge">329</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>검색
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input" id="search-input"></div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="algolia-results">
+  <div id="algolia-stats"></div>
+  <div id="algolia-hits"></div>
+  <div id="algolia-pagination" class="algolia-pagination"></div>
+</div>
+
+  
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="ko">
+    <link itemprop="mainEntityOfPage" href="https://anpigon.github.io/hive-101145/@anpigon/6xcrvm-2">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/me.jpg">
+      <meta itemprop="name" content="안피곤">
+      <meta itemprop="description" content="시간이 천천히 갔으면 좋겠다.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="안피곤님의 블로그">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          암호화폐 자동 거래 봇 개발하기  2번째: 변동성 돌파 전략에 따른 목표 가격 계산하기
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">작성일</span>
+
+              <time title="Post created: 2021-04-20 15:47:03" itemprop="dateCreated datePublished" datetime="2021-04-20T15:47:03+09:00">2021-04-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Updated at: 2021-04-22 12:52:48" itemprop="dateModified" datetime="2021-04-22T12:52:48+09:00">2021-04-22</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">개발 이야기</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/hive-101145/@anpigon/6xcrvm-2#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="/hive-101145/@anpigon/6xcrvm-2" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+            <div style="margin-bottom:35px;margin-top:-20px;">
+              <!-- 블로그 본문 상단 광고 -->
+              <ins class="adsbygoogle"
+                  style="display:block"
+                  data-ad-client="ca-pub-2365531018407022"
+                  data-ad-slot="3390644000"
+                  data-ad-format="auto"
+                  data-full-width-responsive="true"></ins>
+              <script>
+                  (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+        <p><a href="/hive-101145/@anpigon/23vt7e">이전 글</a>에서 이어지는 내용입니다.</p><p>ayogom님 말대로 Github에서 <strong>“자동 매매”</strong> 키워드로 검색하니 정말 많은 소스 코드가 공개되어 있습니다. 하지만 대부분  파이썬 코드로 작성되어 있습니다. 만약 주 개발언어가 파이썬이라면 괜찮아 보이는 소스 코드를 다운받아서, 코인 자동 매매를 바로 시작할 수 있을 것 같습니다.</p><a id="more"></a>
+
+<table>
+<thead>
+<tr>
+<th><img alt data-src="https://steemitimages.com/640x0/https://images.velog.io/images/anpigon/post/ed26ea3e-b57a-48ea-ab08-3d6ebc8cdb59/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202021-04-20%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%2011.06.01.png"></th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+<br>
+<p>하지만 저는 &quot;자동 매매 프로그램&quot;을 타입스크립트(Typescript)로 개발할 겁니다. 제가 최근에 가장 많이 사용하는 개발 언어입니다. 그리고 개발 환경은 이렇습니다.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 개발환경</span></span><br><span class="line">- macOS Big Sur</span><br><span class="line">- Node v14.16.0</span><br><span class="line">- npm v6.14.11</span><br><span class="line">- Visual Studio Code</span><br></pre></td></tr></table></figure>
+<br>
+<h1 id="타입스크립트로-프로젝트-구성하기"><a class="markdownIt-Anchor" href="#타입스크립트로-프로젝트-구성하기"></a> 타입스크립트로 프로젝트 구성하기</h1>
+<p><a target="_blank" rel="noopener" href="https://www.typescriptlang.org">https://www.typescriptlang.org</a></p>
+<p>타입스크립트 홈페이지의 “<a target="_blank" rel="noopener" href="https://www.typescriptlang.org/docs/handbook/tsconfig-json.html">Project Configuration</a>” 문서를 참고하여 프로젝트를 구성합니다. 공식 문서에서 추천하는 방법으로 프로젝트를 구성해봅니다.</p>
+<p>먼저 <code>typescript</code>와 <code>@tsconfig/recommended</code> 를 설치합니다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm init -y</span><br><span class="line">npm install typescript</span><br><span class="line">npm install --save-dev @tsconfig&#x2F;recommended</span><br></pre></td></tr></table></figure>
+<br>
+<p>그다음 <code>tsconfig.json</code> 파일을 작성합니다.</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">｛</span><br><span class="line">  &quot;extends&quot;: &quot;@tsconfig/recommended/tsconfig.json&quot;,</span><br><span class="line"></span><br><span class="line">  &quot;compilerOptions&quot;: ｛</span><br><span class="line">    &quot;preserveConstEnums&quot;: true</span><br><span class="line">  ｝,</span><br><span class="line">  &quot;include&quot;: [&quot;src/**/*&quot;],</span><br><span class="line">  &quot;exclude&quot;: [&quot;node_modules&quot;, &quot;**/*.spec.ts&quot;]</span><br><span class="line">｝</span><br></pre></td></tr></table></figure>
+<br>
+<h1 id="업비트-api-패키지-설치하기"><a class="markdownIt-Anchor" href="#업비트-api-패키지-설치하기"></a> 업비트 API 패키지 설치하기</h1>
+<p>업비트 거래소의 Open API를 사용하기 위해서는 <a target="_blank" rel="noopener" href="https://docs.upbit.com/">업비트 개발자 센터</a>에서 API Reference 문서를 보면서 직접 구현해야합니다. 하지만 구현하기 귀찮으니 다른 개발자가 만들어 놓은 패키지가 있는지 먼저 검색해봤습니다.</p>
+<table>
+<thead>
+<tr>
+<th><img alt data-src="https://steemitimages.com/1280x0/https://images.velog.io/images/anpigon/post/b832c802-cd57-4060-aa06-e00966c6bc19/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202021-04-20%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%2011.21.38.png"></th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+<p>npm packages repository에서 “upbit” 키워드로 검색하니 몇 가지 패키지가 존재합니다. 각 패키지를 확인해보니 마지막 업데이트 날짜가 대부분 3년 전입니다. 하지만, 그 동안 업비트API 규격에 변동사항이 없었으니 그냥 사용해도 괜찮을 것 같습니다.</p>
+<p>이 중에서 다운로드 수가 가장 많고 타입스크립트로 개발되어 있는 <code>upbit-api</code>가 좋을 것 같습니다. upbit-api 를 설치합니다.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install upbit-api</span><br></pre></td></tr></table></figure>
+<p><br>방금 설치한 upbit-api 패키지를 그대로 사용해도 되지만, 저는 Upbit 래퍼 클래스를 만들어서 사용할꺼에요. 왜냐하면 upbit-api에서 제공하는 functions 이름이 마음에 들지 않는 것도 있지만, 혹시라도 더 좋은 upbit 패키지가 나오면 교체할 생각입니다.</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> upbitApi <span class="keyword">from</span> <span class="string">&quot;upbit-api&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">Upbit</span> ｛</span></span><br><span class="line"><span class="class">  <span class="title">getMarketCodes</span> </span>= upbitApi.allMarket;</span><br><span class="line">  getTicker = upbitApi.ticker;</span><br><span class="line">  getOrderBook = upbitApi.orderBook;</span><br><span class="line">  getTradesTicks = upbitApi.ticks;</span><br><span class="line">  getCandlesMinutes = upbitApi.candlesMinutes;</span><br><span class="line">  getCandlesDays = upbitApi.candlesDay;</span><br><span class="line">  getCandlesWeeks = upbitApi.candlesWeek;</span><br><span class="line">  getCandlesMonths = upbitApi.candlesMonth;</span><br><span class="line">｝</span><br></pre></td></tr></table></figure>
+<p><br>하지만 upbit-api 패키지의 <a target="_blank" rel="noopener" href="https://github.com/Shin-JaeHeon/upbit-api#readme">Readme.md</a>를 읽어보니,  업비트 API가 다 구현되어 있는것은 아니네요. 매매에 필요한 Order API가 구현 안되어 있습니다. upbit-api를 개발한 신재헌님이 나머지 API도 업데이트 해 주면 좋겠지만, 제 생각에 더이상 업데이트는 없을 것 같습니다.</p>
+<p>어쩔 수 없지만 구현되어 있지 않은 Order API는 나중에 제가 직접 구현해야 할 것 같습니다.</p>
+<br>
+<h1 id="변동성-돌파-전략에-따른-목표-가격-계산하기"><a class="markdownIt-Anchor" href="#변동성-돌파-전략에-따른-목표-가격-계산하기"></a> 변동성 돌파 전략에 따른 목표 가격 계산하기</h1>
+<p>래리 윌리엄스의 변동성 돌파 전략을 다시 복습해봅니다. 변동성 돌파 전략을 정리하면 다음과 같습니다.</p>
+<ul>
+<li>Range = 어제 고가(high) - 어제 저가(low)</li>
+<li>매수진입: 현재가(price) &gt; (오늘 시가(open) + Range * 0.5)</li>
+<li>매도청산: 다음날 시가(open)</li>
+</ul>
+<p><br>이제 위 전략을 사용하여 금일 매수 목표가를 계산합니다. 업비트 API의 일자별 캔들봉 데이터에서 전일 종가/고가/저가 정보를 가져옵니다.</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">getTargetPrice</span>(<span class="params">market: <span class="built_in">string</span></span>) ｛</span></span><br><span class="line"><span class="function">  <span class="title">const</span> <span class="title">data</span> = <span class="title">await</span> <span class="title">upbit</span>.<span class="title">getCandlesDays</span>(<span class="params">market, <span class="number">2</span></span>)</span>;</span><br><span class="line">  <span class="keyword">const</span> yesterdayCandle = data[<span class="number">1</span>]; <span class="comment">// 어제자 캔들</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> range = yesterdayCandle.high - yesterdayCandle.low;</span><br><span class="line">  <span class="keyword">const</span> targetPrice = yesterdayCandle.price + range * <span class="number">0.5</span>; <span class="comment">// 목표가격</span></span><br><span class="line">  <span class="keyword">return</span> targetPrice;</span><br><span class="line">｝</span><br></pre></td></tr></table></figure>
+<br>
+<p>그리고 STEEM 코인에 적용해서 목표 가격을 계산해보았습니다.</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">main</span>(<span class="params"></span>) ｛</span></span><br><span class="line"><span class="function">  <span class="title">const</span> <span class="title">targetPrice</span> = <span class="title">await</span> <span class="title">getTargetPrice</span>(<span class="params"><span class="string">&quot;KRW-STEEM&quot;</span></span>)</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(targetPrice);</span><br><span class="line">｝</span><br><span class="line">main();</span><br></pre></td></tr></table></figure>
+<p><br>1397.5 라는 값이 나옵니다. STEEM 가격이 1397.5에 도달하면 매수하면 될 것 같습니다.</p>
+<p>그리고 지금 시각에 STEEM 가격은 1175 이네요. 음…🤔</p>
+<p><img alt data-src="https://steemitimages.com/300x0/https://images.velog.io/images/anpigon/post/b9d646df-13c4-4d21-8489-54ab4de021e7/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202021-04-20%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%2011.56.13.png"></p>
+<p>생각보다 쉽지 않을 것 같습니다.</p>
+<p>이 글을 읽으신 분들 모두 성공적인 투자하시길 바랍니다.</p>
+<hr>
+<p><sub>이 글은 <a target="_blank" rel="noopener" href="https://steemit.com/trending/hive-196917">스팀잇</a>에서 작성되었습니다.</sub><br>
+<sup><a target="_blank" rel="noopener" href="https://steemit.com/hive-101145/@anpigon/6xcrvm-2">https://steemit.com/hive-101145/@anpigon/6xcrvm-2</a></sup></p>
+
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/sct/" rel="tag"># sct</a>
+              <a href="/tags/sct-kr/" rel="tag"># sct-kr</a>
+              <a href="/tags/sct-freeboard/" rel="tag"># sct-freeboard</a>
+              <a href="/tags/zzan/" rel="tag"># zzan</a>
+              <a href="/tags/kr/" rel="tag"># kr</a>
+              <a href="/tags/kr-dev/" rel="tag"># kr-dev</a>
+              <a href="/tags/hive-101145/" rel="tag"># hive-101145</a>
+          </div>
+
+        
+  <div class="post-widgets">
+    <div class="wp_rating">
+      <div id="wpac-rating"></div>
+    </div>
+  </div>
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/hive-101145/@anpigon/23vt7e" rel="next" title="암호화폐 자동 거래 봇 개발하기">
+                  <i class="fa fa-chevron-left"></i> 암호화폐 자동 거래 봇 개발하기
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    
+  <div class="comments" id="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          목차
+        </li>
+        <li class="sidebar-nav-overview">
+          흝어보기
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%ED%83%80%EC%9E%85%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8%EB%A1%9C-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EA%B5%AC%EC%84%B1%ED%95%98%EA%B8%B0"><span class="nav-number">1.</span> <span class="nav-text"> 타입스크립트로 프로젝트 구성하기</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%EC%97%85%EB%B9%84%ED%8A%B8-api-%ED%8C%A8%ED%82%A4%EC%A7%80-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0"><span class="nav-number">2.</span> <span class="nav-text"> 업비트 API 패키지 설치하기</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%EB%B3%80%EB%8F%99%EC%84%B1-%EB%8F%8C%ED%8C%8C-%EC%A0%84%EB%9E%B5%EC%97%90-%EB%94%B0%EB%A5%B8-%EB%AA%A9%ED%91%9C-%EA%B0%80%EA%B2%A9-%EA%B3%84%EC%82%B0%ED%95%98%EA%B8%B0"><span class="nav-number">3.</span> <span class="nav-text"> 변동성 돌파 전략에 따른 목표 가격 계산하기</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="안피곤"
+    src="/images/me.jpg">
+  <p class="site-author-name" itemprop="name">안피곤</p>
+  <div class="site-description" itemprop="description">시간이 천천히 갔으면 좋겠다.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">329</span>
+          <span class="site-state-item-name">포스트</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-name">카테고리</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">144</span>
+        <span class="site-state-item-name">태그</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/anpigon" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;anpigon" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:markan82@gmail.com" title="E-Mail &amp;rarr; mailto:markan82@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+          <!-- 정사각형 광고 -->
+          <div style="margin-top: 15px;">
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-2365531018407022"
+                data-ad-slot="7521850306"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+          </div>
+    </div>
+  </aside>
+  <div id="sidebar-dimmer">3</div>
+
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">안피곤</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v5.4.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.4.2
+  </div>
+
+        
+
+
+
+
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-firestore.js"></script>
+  <script>
+    firebase.initializeApp({
+      apiKey: 'AIzaSyA4QZWCWb3IuIHjbkAmO0ttIM2b-qtLTP8',
+      projectId: 'next-blog-8f9a0'
+    });
+
+    function getCount(doc, increaseCount) {
+      // IncreaseCount will be false when not in article page
+
+      return doc.get().then(d => {
+        var count = 0;
+        if (!d.exists) { // Has no data, initialize count
+          if (increaseCount) {
+            doc.set({
+              count: 1
+            });
+            count = 1;
+          }
+        } else { // Has data
+          count = d.data().count;
+          if (increaseCount) {
+            // If first view this article
+            doc.set({ // Increase count
+              count: count + 1
+            });
+            count++;
+          }
+        }
+
+        return count;
+      });
+    }
+
+    function appendCountTo(el) {
+      return count => {
+        el.innerText = count;
+      }
+    }
+  </script>
+  <script pjax>
+    (function() {
+      var db = firebase.firestore();
+      var articles = db.collection('articles');
+
+      if (CONFIG.page.isPost) { // Is article page
+        var title = document.querySelector('.post-title').innerText.trim();
+        var doc = articles.doc(title);
+        var increaseCount = true;
+        if (localStorage.getItem(title)) {
+          increaseCount = false;
+        } else {
+          // Mark as visited
+          localStorage.setItem(title, true);
+        }
+        getCount(doc, increaseCount).then(appendCountTo(document.querySelector('.firestore-visitors-count')));
+      } else if (CONFIG.page.isHome) { // Is index page
+        var promises = [...document.querySelectorAll('.post-title')].map(element => {
+          var title = element.innerText.trim();
+          var doc = articles.doc(title);
+          return getCount(doc);
+        });
+        Promise.all(promises).then(counts => {
+          var metas = document.querySelectorAll('.firestore-visitors-count');
+          counts.forEach((val, idx) => {
+            appendCountTo(metas[idx])(val);
+          });
+        });
+      }
+    })();
+  </script>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.getAttribute('pjax') !== null) {
+      element.setAttribute('pjax', '');
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+  <script pjax>
+  if (CONFIG.page.isPost) {
+    wpac_init = window.wpac_init || [];
+    wpac_init.push({
+      widget: 'Rating',
+      id: 21712,
+      el: 'wpac-rating',
+      color: 'fc6423'
+    });
+    (function() {
+      if ('WIDGETPACK_LOADED' in window) return;
+      WIDGETPACK_LOADED = true;
+      var mc = document.createElement('script');
+      mc.type = 'text/javascript';
+      mc.async = true;
+      mc.src = '//embed.widgetpack.com/widget.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+    })();
+  }
+  </script>
+
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.4.1/dist/instantsearch.min.css">
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.4.1/dist/instantsearch.js"></script>
+<script src="/js/algolia-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+
+  
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://anpigon-github-io.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  function loadComments() {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: {page: {
+            url: "https://anpigon.github.io/hive-101145/@anpigon/6xcrvm-2",
+            identifier: "/hive-101145/@anpigon/6xcrvm-2",
+            title: "암호화폐 자동 거래 봇 개발하기  2번째: 변동성 돌파 전략에 따른 목표 가격 계산하기"
+          }
+        }
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://anpigon-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  }
+    (function() {
+      var offsetTop = document.getElementById('comments').offsetTop - window.innerHeight;
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        window.addEventListener('load', loadComments, false);
+      } else {
+        var disqus_scroll = () => {
+          // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = document.getElementById('comments').offsetTop - window.innerHeight;
+          var scrollTop = window.scrollY;
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            window.removeEventListener('scroll', disqus_scroll);
+            loadComments();
+          }
+        };
+        window.addEventListener('scroll', disqus_scroll);
+      }
+    })();
+  
+</script>
+
+    </div>
+</body>
+</html>

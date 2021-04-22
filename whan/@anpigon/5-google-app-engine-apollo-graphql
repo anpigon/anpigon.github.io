@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="yfKOiBPD8WlKH3NPG_CG1zr4MsCgCG1YVdGKhMS2CKc">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Noto Serif KR:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.4.2',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: true,
+    pangu: false,
+    algolia: {
+      appID: 'YY693DUDAI',
+      apiKey: 'db449d453b150820f66e7bc3d4523a17',
+      indexName: 'my-hexo-blog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '복사',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="Design by @imrahelk구글 앱 엔진(Google App Engine)은 서버 없이 백엔드 API 서버를 구축하기 좋은 플랫폼입니다. 개발자가 오로지 앱 개발에만 집중할 수 있습니다. 웹서버, 로드밸런스, 네트워크 구성 등 몰라도 됩니다. ㅎㅎ 현재 GAE는 JAVA, PHP, Node.js, Python, C#, .Net, Ruby, Go 등">
+<meta property="og:type" content="article">
+<meta property="og:title" content="🚀5분 안에 Google App Engine에 Apollo GraphQL 서버 구성하기!">
+<meta property="og:url" content="https://anpigon.github.io/whan/@anpigon/5-google-app-engine-apollo-graphql">
+<meta property="og:site_name" content="안피곤님의 블로그">
+<meta property="og:description" content="Design by @imrahelk구글 앱 엔진(Google App Engine)은 서버 없이 백엔드 API 서버를 구축하기 좋은 플랫폼입니다. 개발자가 오로지 앱 개발에만 집중할 수 있습니다. 웹서버, 로드밸런스, 네트워크 구성 등 몰라도 됩니다. ㅎㅎ 현재 GAE는 JAVA, PHP, Node.js, Python, C#, .Net, Ruby, Go 등">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:image" content="https://steemitimages.com/0x0/https://cdn.steemitimages.com/DQmXtBYt3kXFAhrVjuGUGa5TQrgUZ2nL8npNsg67WYqZQ57/11A557AA-ADD4-484C-AD9E-FCD37D09C38B.jpeg">
+<meta property="og:image" content="https://files.steempeak.com/file/steempeak/anpigon/8SU1eomQ-E18489E185B3E1848FE185B3E18485E185B5E186ABE18489E185A3E186BA202019-05-0220E1848BE185A9E1848CE185A5E186AB2012.40.41.png">
+<meta property="og:image" content="https://files.steempeak.com/file/steempeak/anpigon/8F3sbJ0V-E18489E185B3E1848FE185B3E18485E185B5E186ABE18489E185A3E186BA202019-05-0220E1848BE185A9E1848CE185A5E186AB202.06.35.png">
+<meta property="og:image" content="https://steemitimages.com/400x0/https://cdn.steemitimages.com/DQmQmWhMN6zNrLmKJRKhvSScEgWZmpb8zCeE2Gray1krbv6/BC054B6E-6F73-46D0-88E4-C88EB8167037.jpeg">
+<meta property="article:published_time" content="2019-05-01T08:41:33.000Z">
+<meta property="article:modified_time" content="2021-04-22T03:52:48.869Z">
+<meta property="article:author" content="안피곤">
+<meta property="article:tag" content="GraphQL">
+<meta property="article:tag" content="Google App Engine">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://steemitimages.com/0x0/https://cdn.steemitimages.com/DQmXtBYt3kXFAhrVjuGUGa5TQrgUZ2nL8npNsg67WYqZQ57/11A557AA-ADD4-484C-AD9E-FCD37D09C38B.jpeg">
+
+<link rel="canonical" href="https://anpigon.github.io/whan/@anpigon/5-google-app-engine-apollo-graphql">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>🚀5분 안에 Google App Engine에 Apollo GraphQL 서버 구성하기! | 안피곤님의 블로그</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-20589042-10"></script>
+    <script pjax>
+      var host = window.location.hostname;
+      if (host !== "localhost" || !true) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-20589042-10');
+      }
+    </script>
+
+
+
+
+
+
+  
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-2365531018407022",
+          enable_page_level_ads: false
+     });
+</script>
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="안피곤님의 블로그" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">안피곤님의 블로그</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">코딩, 독서, 여행, 영화, 맛집</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>홈</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>태그<span class="badge">144</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>카테고리<span class="badge">25</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>아카이브<span class="badge">329</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>검색
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input" id="search-input"></div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="algolia-results">
+  <div id="algolia-stats"></div>
+  <div id="algolia-hits"></div>
+  <div id="algolia-pagination" class="algolia-pagination"></div>
+</div>
+
+  
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="ko">
+    <link itemprop="mainEntityOfPage" href="https://anpigon.github.io/whan/@anpigon/5-google-app-engine-apollo-graphql">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/me.jpg">
+      <meta itemprop="name" content="안피곤">
+      <meta itemprop="description" content="시간이 천천히 갔으면 좋겠다.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="안피곤님의 블로그">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          🚀5분 안에 Google App Engine에 Apollo GraphQL 서버 구성하기!
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">작성일</span>
+
+              <time title="Post created: 2019-05-01 17:41:33" itemprop="dateCreated datePublished" datetime="2019-05-01T17:41:33+09:00">2019-05-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Updated at: 2021-04-22 12:52:48" itemprop="dateModified" datetime="2021-04-22T12:52:48+09:00">2021-04-22</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">개발 이야기</span>
+                  </a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/nodejs/" itemprop="url" rel="index">
+                    <span itemprop="name">NodeJS</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/whan/@anpigon/5-google-app-engine-apollo-graphql#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="/whan/@anpigon/5-google-app-engine-apollo-graphql" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+            <div style="margin-bottom:35px;margin-top:-20px;">
+              <!-- 블로그 본문 상단 광고 -->
+              <ins class="adsbygoogle"
+                  style="display:block"
+                  data-ad-client="ca-pub-2365531018407022"
+                  data-ad-slot="3390644000"
+                  data-ad-format="auto"
+                  data-full-width-responsive="true"></ins>
+              <script>
+                  (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+        <p><img alt data-src="https://steemitimages.com/0x0/https://cdn.steemitimages.com/DQmXtBYt3kXFAhrVjuGUGa5TQrgUZ2nL8npNsg67WYqZQ57/11A557AA-ADD4-484C-AD9E-FCD37D09C38B.jpeg"><br>
+<sup><em>Design by @imrahelk</em></sup></p><hr><p><br>구글 앱 엔진(Google App Engine)은 서버 없이 백엔드 API 서버를 구축하기 좋은 플랫폼입니다. 개발자가 오로지 <strong>앱 개발에만 집중</strong>할 수 있습니다. 웹서버, 로드밸런스, 네트워크 구성 등 몰라도 됩니다. ㅎㅎ<br>
+현재 GAE는 JAVA, PHP, Node.js, Python, C#, .Net, Ruby, Go 등의 언어를 지원합니다. 자세한 내용은 <a target="_blank" rel="noopener" href="https://cloud.google.com/appengine/">GAE 사이트</a>를 참고하세요.</p><a id="more"></a>
+
+
+<p>저는 2014년도에 <a target="_blank" rel="noopener" href="https://www.slideshare.net/curioe_/lezhincomics-google-appengine-30453946">“왜 레진코믹스는 구글 앱엔진을 선택했나”</a> 슬라이드를 보고나서, GAE를 정말 많이 이용했습니다. GAE는 PaaS(Platform as a service) 서비스입니다. 파스(PaaS)말고도 SaaS, IaaS, BaaS 등 다양한 형태의 클라우드 서비스가 존재합니다.</p>
+<p>BaaS가 예전에는 <em><strong>Backend</strong> as a service</em>를 의미했습니다. 하지만 이제는 <em><strong>Blockchain</strong> as a service</em>를 의미하는 것 같습니다. 이제는 블록체인도 클라우드 서비스 형태로 사용하는 시대입니다. 아마존은 작년(2018)부터 블록체인 클라우드 서비스를 시작했습니다.<br>
+<a target="_blank" rel="noopener" href="https://aws.amazon.com/ko/blockchain/">- AWS에서의 블록체인: https://aws.amazon.com/ko/blockchain/</a></p>
+<p>그리고 BaaS 하니깐 국내 KTH에서 서비스했던 baas.io가 생각납니다. baas.io도 정말 잘 사용했었습니다. 하지만 정식 오픈도 하기전에 역사의 뒤안길로 사라져서 너무 안타까웠습니다. 참고로 baas.io는 가격이 무척 저렴했습니다. baas.io를 모르시는 분을 위해 관련 기사를 링크합니다.<br>
+<a target="_blank" rel="noopener" href="http://www.bloter.net/archives/132383">- KTH, 모바일 앱 개발 도우미 서비스 출시: http://www.bloter.net/archives/132383</a></p>
+<p><br><center>*</center><br></p>
+<p>아래의 단계를 따르면  5분 안에 <strong>Apollo GraphQL Server</strong>를 **Google App Engine (GAE)**에서 실행할 수 있습니다. 내용은 <a target="_blank" rel="noopener" href="https://medium.com/google-cloud/apollo-graphql-server-on-google-app-engine-in-under-5-minutes-bbd64050e9ff">“Apollo GraphQL Server on Google App Engine in under 5 minutes!”</a> 블로그를 참고하였습니다.</p>
+<br>
+<h2 id="프로젝트-생성하기"><a class="markdownIt-Anchor" href="#프로젝트-생성하기"></a> 프로젝트 생성하기</h2>
+<p><code>apollo-graphql-server</code> 디렉토리를 만듭니다.</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$</span> mkdir apollo<span class="literal">-graphql</span><span class="literal">-server</span></span><br><span class="line"><span class="variable">$</span> <span class="built_in">cd</span> apollo<span class="literal">-graphql</span><span class="literal">-server</span></span><br></pre></td></tr></table></figure>
+<p><br>아래 명령을 실행하고 <code>package.json</code> 파일을 생성합니다.</p>
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">npm</span> init</span><br></pre></td></tr></table></figure>
+<p><br>아래 명령을 실행하여 필요한 모듈을 설치합니다.</p>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install <span class="comment">--save graphql-yoga</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>graphql-yoga</strong>를 사용하면 GraphQL Server를 매우 쉽게 구현할 수 있습니다. 자세한 내용은 <a target="_blank" rel="noopener" href="https://github.com/prisma/graphql-yoga">graphql-yoga 사이트</a>에서 확인해주세요.</p>
+</blockquote>
+<br>
+<br>
+<h2 id="indexjs-만들기"><a class="markdownIt-Anchor" href="#indexjs-만들기"></a> index.js 만들기</h2>
+<p><code>ndex.js</code> 파일을 만들고 아래 내용을 입력합니다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> ｛ GraphQLServer ｝ = <span class="built_in">require</span>(<span class="string">&#x27;graphql-yoga&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> PORT = process.env.PORT || <span class="number">8080</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> typeDefs = <span class="string">`</span></span><br><span class="line"><span class="string">	type Query ｛</span></span><br><span class="line"><span class="string">		hello: String!</span></span><br><span class="line"><span class="string">	｝</span></span><br><span class="line"><span class="string">`</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> resolvers = ｛</span><br><span class="line">	Query: ｛</span><br><span class="line">		hello: <span class="function">() =&gt;</span> <span class="string">&quot;Hi&quot;</span></span><br><span class="line">	｝</span><br><span class="line">｝ </span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> server = <span class="keyword">new</span> GraphQLServer(｛ typeDefs, resolvers ｝);</span><br><span class="line">server.start(｛ port: PORT ｝, <span class="function">() =&gt;</span> ｛</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">`Server running on http://localhost:$｛PORT｝`</span>)</span><br><span class="line">｝);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>서버는 <code>process.env.PORT</code> 변수에서 포트를 지정하도록 합니다. 이것은 GAE 런타임에 의해 설정된 환경 변수입니다. 그리고 <code>PORT</code> 값은 GAE 런타임에 의해 <strong>8080</strong>으로 설정됩니다.</p>
+</blockquote>
+<br>
+<br>
+<h2 id="packagejson"><a class="markdownIt-Anchor" href="#packagejson"></a> package.json</h2>
+<p><code>package.json</code> 파일에서 시작 스크립트와 node 및 npm 버전을 지정합니다.</p>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;scripts&quot;</span>: ｛ </span><br><span class="line">  <span class="string">&quot;start&quot;</span>: <span class="string">&quot;npx babel-node index&quot;</span></span><br><span class="line">｝</span><br><span class="line"><span class="string">&quot;engines&quot;</span>: ｛ </span><br><span class="line">  <span class="string">&quot;node&quot;</span>: <span class="string">&quot;&gt; = 8.16&quot;</span>, </span><br><span class="line">  <span class="string">&quot;npm&quot;</span>: <span class="string">&quot;5.x&quot;</span> </span><br><span class="line">｝</span><br></pre></td></tr></table></figure>
+<br>
+<br>
+<h2 id="appyaml"><a class="markdownIt-Anchor" href="#appyaml"></a> app.yaml</h2>
+<p>GAE에 배포하기 위해서는 <code>app.yaml</code> 파일이 필요합니다. <code>app.yaml</code> 파일을 만들고 아래 내용을 입력합니다.</p>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">runtime:</span> nodejs</span><br><span class="line"><span class="symbol">env:</span> flex</span><br><span class="line"><span class="symbol">resources:</span></span><br><span class="line"><span class="symbol">  cpu:</span> <span class="number">1</span></span><br><span class="line"><span class="symbol">  memory_gb:</span> <span class="number">0.5</span></span><br><span class="line"><span class="symbol">  disk_size_gb:</span> <span class="number">10</span> </span><br><span class="line"><span class="symbol">automatic_scaling:</span></span><br><span class="line"><span class="symbol">  min_num_instances:</span> <span class="number">1</span></span><br><span class="line"><span class="symbol">  max_num_instances:</span> <span class="number">20</span></span><br><span class="line"><span class="symbol">  cool_down_period_sec:</span> <span class="number">60</span></span><br><span class="line"><span class="symbol">  cpu_utilization:</span></span><br><span class="line"><span class="symbol">    target_utilization:</span> <span class="number">0.80</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>app.yaml 파일 정보는 <a target="_blank" rel="noopener" href="https://cloud.google.com/appengine/docs/flexible/nodejs/configuring-your-app-with-app-yaml">공식 문서</a>를 참고하세요.</p>
+</blockquote>
+<br>
+<br>
+<h2 id="앱-배포하기"><a class="markdownIt-Anchor" href="#앱-배포하기"></a> 앱 배포하기</h2>
+<p>아래 명령을 실행하면 앱을 배포하기 시작합니다. 배포가 완료되기까지 1~2분 정도 소요됩니다.</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">gcloud app deploy</span></span><br></pre></td></tr></table></figure>
+<p><img alt data-src="https://files.steempeak.com/file/steempeak/anpigon/8SU1eomQ-E18489E185B3E1848FE185B3E18485E185B5E186ABE18489E185A3E186BA202019-05-0220E1848BE185A9E1848CE185A5E186AB2012.40.41.png"></p>
+<br>
+<br>
+<h2 id="앱-실행하기"><a class="markdownIt-Anchor" href="#앱-실행하기"></a> 앱 실행하기</h2>
+<p>아래 명령을 실행하면 기본 브라우저에서 앱 URL로 이동합니다.</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcloud <span class="keyword">app</span> <span class="keyword">browse</span></span><br></pre></td></tr></table></figure>
+<p><br><code>https://[your-project-id].appspot.com</code>와 같은 URL로 이동하게 됩니다. 그럼 아래와 같이 GraphiQL 인터페이스를 볼 수 있습니다.<br>
+<img alt data-src="https://files.steempeak.com/file/steempeak/anpigon/8F3sbJ0V-E18489E185B3E1848FE185B3E18485E185B5E186ABE18489E185A3E186BA202019-05-0220E1848BE185A9E1848CE185A5E186AB202.06.35.png"></p>
+<p><br>여기까지 읽어주셔서 감사합니다.</p>
+<hr>
+<center>
+<p><img alt data-src="https://steemitimages.com/400x0/https://cdn.steemitimages.com/DQmQmWhMN6zNrLmKJRKhvSScEgWZmpb8zCeE2Gray1krbv6/BC054B6E-6F73-46D0-88E4-C88EB8167037.jpeg"></p>
+</center>
+
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/graphql/" rel="tag"># GraphQL</a>
+              <a href="/tags/google-app-engine/" rel="tag"># Google App Engine</a>
+          </div>
+
+        
+  <div class="post-widgets">
+    <div class="wp_rating">
+      <div id="wpac-rating"></div>
+    </div>
+  </div>
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/whan/@anpigon/prisma-3" rel="next" title="프리즈마(Prisma) 사용하기 #3 : 태그별  통계 계산하기">
+                  <i class="fa fa-chevron-left"></i> 프리즈마(Prisma) 사용하기 #3 : 태그별  통계 계산하기
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/whan/@anpigon/google-app-engine-graphql-api" rel="prev" title="Google App Engine + GraphQL으로 스팀잇 API 서버 만들기">
+                  Google App Engine + GraphQL으로 스팀잇 API 서버 만들기 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    
+  <div class="comments" id="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          목차
+        </li>
+        <li class="sidebar-nav-overview">
+          흝어보기
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%83%9D%EC%84%B1%ED%95%98%EA%B8%B0"><span class="nav-number">1.</span> <span class="nav-text"> 프로젝트 생성하기</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#indexjs-%EB%A7%8C%EB%93%A4%EA%B8%B0"><span class="nav-number">2.</span> <span class="nav-text"> index.js 만들기</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#packagejson"><span class="nav-number">3.</span> <span class="nav-text"> package.json</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#appyaml"><span class="nav-number">4.</span> <span class="nav-text"> app.yaml</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EC%95%B1-%EB%B0%B0%ED%8F%AC%ED%95%98%EA%B8%B0"><span class="nav-number">5.</span> <span class="nav-text"> 앱 배포하기</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EC%95%B1-%EC%8B%A4%ED%96%89%ED%95%98%EA%B8%B0"><span class="nav-number">6.</span> <span class="nav-text"> 앱 실행하기</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="안피곤"
+    src="/images/me.jpg">
+  <p class="site-author-name" itemprop="name">안피곤</p>
+  <div class="site-description" itemprop="description">시간이 천천히 갔으면 좋겠다.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">329</span>
+          <span class="site-state-item-name">포스트</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-name">카테고리</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">144</span>
+        <span class="site-state-item-name">태그</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/anpigon" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;anpigon" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:markan82@gmail.com" title="E-Mail &amp;rarr; mailto:markan82@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+          <!-- 정사각형 광고 -->
+          <div style="margin-top: 15px;">
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-2365531018407022"
+                data-ad-slot="7521850306"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+          </div>
+    </div>
+  </aside>
+  <div id="sidebar-dimmer">3</div>
+
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">안피곤</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v5.4.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.4.2
+  </div>
+
+        
+
+
+
+
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-firestore.js"></script>
+  <script>
+    firebase.initializeApp({
+      apiKey: 'AIzaSyA4QZWCWb3IuIHjbkAmO0ttIM2b-qtLTP8',
+      projectId: 'next-blog-8f9a0'
+    });
+
+    function getCount(doc, increaseCount) {
+      // IncreaseCount will be false when not in article page
+
+      return doc.get().then(d => {
+        var count = 0;
+        if (!d.exists) { // Has no data, initialize count
+          if (increaseCount) {
+            doc.set({
+              count: 1
+            });
+            count = 1;
+          }
+        } else { // Has data
+          count = d.data().count;
+          if (increaseCount) {
+            // If first view this article
+            doc.set({ // Increase count
+              count: count + 1
+            });
+            count++;
+          }
+        }
+
+        return count;
+      });
+    }
+
+    function appendCountTo(el) {
+      return count => {
+        el.innerText = count;
+      }
+    }
+  </script>
+  <script pjax>
+    (function() {
+      var db = firebase.firestore();
+      var articles = db.collection('articles');
+
+      if (CONFIG.page.isPost) { // Is article page
+        var title = document.querySelector('.post-title').innerText.trim();
+        var doc = articles.doc(title);
+        var increaseCount = true;
+        if (localStorage.getItem(title)) {
+          increaseCount = false;
+        } else {
+          // Mark as visited
+          localStorage.setItem(title, true);
+        }
+        getCount(doc, increaseCount).then(appendCountTo(document.querySelector('.firestore-visitors-count')));
+      } else if (CONFIG.page.isHome) { // Is index page
+        var promises = [...document.querySelectorAll('.post-title')].map(element => {
+          var title = element.innerText.trim();
+          var doc = articles.doc(title);
+          return getCount(doc);
+        });
+        Promise.all(promises).then(counts => {
+          var metas = document.querySelectorAll('.firestore-visitors-count');
+          counts.forEach((val, idx) => {
+            appendCountTo(metas[idx])(val);
+          });
+        });
+      }
+    })();
+  </script>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.getAttribute('pjax') !== null) {
+      element.setAttribute('pjax', '');
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+  <script pjax>
+  if (CONFIG.page.isPost) {
+    wpac_init = window.wpac_init || [];
+    wpac_init.push({
+      widget: 'Rating',
+      id: 21712,
+      el: 'wpac-rating',
+      color: 'fc6423'
+    });
+    (function() {
+      if ('WIDGETPACK_LOADED' in window) return;
+      WIDGETPACK_LOADED = true;
+      var mc = document.createElement('script');
+      mc.type = 'text/javascript';
+      mc.async = true;
+      mc.src = '//embed.widgetpack.com/widget.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+    })();
+  }
+  </script>
+
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.4.1/dist/instantsearch.min.css">
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.4.1/dist/instantsearch.js"></script>
+<script src="/js/algolia-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+
+  
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://anpigon-github-io.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  function loadComments() {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: {page: {
+            url: "https://anpigon.github.io/whan/@anpigon/5-google-app-engine-apollo-graphql",
+            identifier: "/whan/@anpigon/5-google-app-engine-apollo-graphql",
+            title: "🚀5분 안에 Google App Engine에 Apollo GraphQL 서버 구성하기!"
+          }
+        }
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://anpigon-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  }
+    (function() {
+      var offsetTop = document.getElementById('comments').offsetTop - window.innerHeight;
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        window.addEventListener('load', loadComments, false);
+      } else {
+        var disqus_scroll = () => {
+          // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = document.getElementById('comments').offsetTop - window.innerHeight;
+          var scrollTop = window.scrollY;
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            window.removeEventListener('scroll', disqus_scroll);
+            loadComments();
+          }
+        };
+        window.addEventListener('scroll', disqus_scroll);
+      }
+    })();
+  
+</script>
+
+    </div>
+</body>
+</html>
