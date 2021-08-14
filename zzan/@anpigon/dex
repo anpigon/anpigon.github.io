@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="yfKOiBPD8WlKH3NPG_CG1zr4MsCgCG1YVdGKhMS2CKc">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Noto Serif KR:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.4.2',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: true,
+    pangu: false,
+    algolia: {
+      appID: 'YY693DUDAI',
+      apiKey: 'db449d453b150820f66e7bc3d4523a17',
+      indexName: 'my-hexo-blog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '복사',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="안녕하세요. 안피곤입니다. 이번에도 재미있는 앱을 하나 만들었습니다. 앱 이름은 Happigon이라고 지었습니다. 서론제가 스팀잇을 시작하게 된 계기는 저자 보상 때문이었습니다. 지금도 여전히 그렇습니다. 다른 블로그에 올리는 것보다 스팀잇에 글을 올리면 보상이 100원이라도 발생했습니다. 그리고 블록체인 기술에 대한 관심도 한몫했습니다.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="스팀엔진 토큰 DEX 거래소 개발 이야기">
+<meta property="og:url" content="https://anpigon.github.io/zzan/@anpigon/dex">
+<meta property="og:site_name" content="안피곤님의 블로그">
+<meta property="og:description" content="안녕하세요. 안피곤입니다. 이번에도 재미있는 앱을 하나 만들었습니다. 앱 이름은 Happigon이라고 지었습니다. 서론제가 스팀잇을 시작하게 된 계기는 저자 보상 때문이었습니다. 지금도 여전히 그렇습니다. 다른 블로그에 올리는 것보다 스팀잇에 글을 올리면 보상이 100원이라도 발생했습니다. 그리고 블록체인 기술에 대한 관심도 한몫했습니다.">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:image" content="https://files.steempeak.com/file/steempeak/anpigon/lKg8bp72-1.png">
+<meta property="og:image" content="https://steemitimages.com/400x0/https://cdn.steemitimages.com/DQmQmWhMN6zNrLmKJRKhvSScEgWZmpb8zCeE2Gray1krbv6/BC054B6E-6F73-46D0-88E4-C88EB8167037.jpeg">
+<meta property="article:published_time" content="2019-07-27T06:57:36.000Z">
+<meta property="article:modified_time" content="2021-08-14T10:47:06.080Z">
+<meta property="article:author" content="안피곤">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://files.steempeak.com/file/steempeak/anpigon/lKg8bp72-1.png">
+
+<link rel="canonical" href="https://anpigon.github.io/zzan/@anpigon/dex">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>스팀엔진 토큰 DEX 거래소 개발 이야기 | 안피곤님의 블로그</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-20589042-10"></script>
+    <script pjax>
+      var host = window.location.hostname;
+      if (host !== "localhost" || !true) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-20589042-10');
+      }
+    </script>
+
+
+
+
+
+
+  
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-2365531018407022",
+          enable_page_level_ads: false
+     });
+</script>
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="안피곤님의 블로그" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">안피곤님의 블로그</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">코딩, 독서, 여행, 영화, 맛집</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>홈</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>태그<span class="badge">144</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>카테고리<span class="badge">25</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>아카이브<span class="badge">327</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>검색
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input" id="search-input"></div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="algolia-results">
+  <div id="algolia-stats"></div>
+  <div id="algolia-hits"></div>
+  <div id="algolia-pagination" class="algolia-pagination"></div>
+</div>
+
+  
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="ko">
+    <link itemprop="mainEntityOfPage" href="https://anpigon.github.io/zzan/@anpigon/dex">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/me.jpg">
+      <meta itemprop="name" content="안피곤">
+      <meta itemprop="description" content="시간이 천천히 갔으면 좋겠다.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="안피곤님의 블로그">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          스팀엔진 토큰 DEX 거래소 개발 이야기
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">작성일</span>
+
+              <time title="Post created: 2019-07-27 15:57:36" itemprop="dateCreated datePublished" datetime="2019-07-27T15:57:36+09:00">2019-07-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Updated at: 2021-08-14 19:47:06" itemprop="dateModified" datetime="2021-08-14T19:47:06+09:00">2021-08-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">개발 이야기</span>
+                  </a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/%EC%8A%A4%ED%8C%80%EC%9E%87-steemit/" itemprop="url" rel="index">
+                    <span itemprop="name">스팀잇(Steemit)</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/zzan/@anpigon/dex#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="/zzan/@anpigon/dex" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+            <div style="margin-bottom:35px;margin-top:-20px;">
+              <!-- 블로그 본문 상단 광고 -->
+              <ins class="adsbygoogle"
+                  style="display:block"
+                  data-ad-client="ca-pub-2365531018407022"
+                  data-ad-slot="3390644000"
+                  data-ad-format="auto"
+                  data-full-width-responsive="true"></ins>
+              <script>
+                  (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+        <p><img alt data-src="https://files.steempeak.com/file/steempeak/anpigon/lKg8bp72-1.png"></p><hr><p>안녕하세요. 안피곤입니다.<br>
+이번에도 재미있는 앱을 하나 만들었습니다. 앱 이름은 <strong>Happigon</strong>이라고 지었습니다.</p><br><h1 id="서론"><a class="markdownIt-Anchor" href="#서론"></a> 서론</h1><p>제가 스팀잇을 시작하게 된 계기는 저자 보상 때문이었습니다. 지금도 여전히 그렇습니다. 다른 블로그에 올리는 것보다 스팀잇에 글을 올리면 보상이 100원이라도 발생했습니다. 그리고 블록체인 기술에 대한 관심도 한몫했습니다.</p><a id="more"></a>
+
+
+
+
+
+<br>
+<h4 id="스팀로그steemlog-앱"><a class="markdownIt-Anchor" href="#스팀로그steemlog-앱"></a> 스팀로그(Steemlog) 앱</h4>
+<p>스팀잇을 처음 접했을 때 이곳은 너무 불편하고 촌스러운 UI를 가지고 있었습니다. 지금도 여전히 그렇습니다. 그리고 스팀 API을 이용해서 제가 좀 더 나은 플랫폼을 만들 수 있다는 생각도 했었습니다. 그래서 Steemlog 앱을 개발했었습니다. 아래가 그 결과물입니다. 사실 개발하는 도중에 busy와 steempeak를 알게 되면서, 개발을 중단했습니다. 이게 벌써 1년 전이네요. ㅎㅎ</p>
+<hr>
+<center>[https://steemlog.github.io](https://steemlog.github.io)
+![](https://files.steempeak.com/file/steempeak/anpigon/KC2g6Dp4-E18489E185B3E1848FE185B3E18485E185B5E186ABE18489E185A3E186BA202019-07-2720E1848BE185A9E18492E185AE2010.20.36.png)</center>
+<p><br><br></p>
+<h4 id="스팀잇-펫-연구소"><a class="markdownIt-Anchor" href="#스팀잇-펫-연구소"></a> 스팀잇 펫 연구소</h4>
+<p>그다음에 스팀잇 보팅을 연구하면서 재미난 앱을 하나 만들었습니다. 바로 스팀잇 펫 연구소입니다. 원래 계획은 부계정을 생성하면서 펫을 하나씩 늘려나갈 계획이었습니다. 스팀잇에 HF20이 업데이트된 후, 흥미를 잃고 개발을 중단했습니다. 만든 지 오래되었지만, 아직도 연구소를 꾸준하게 이용하는 사람이 있네요. 만들 당시에는 거북이랑 토끼가 보팅해주는 금액이 합치면 <strong>$0.001</strong>였는데, 이제는 <strong>$0.0005</strong>가 되어버렸네요.ㅎㅎ</p>
+<hr>
+<center>[https://anpigon.github.io/pet/](https://anpigon.github.io/pet/#/)![](https://files.steempeak.com/file/steempeak/anpigon/3ar4ix6B-E18489E185B3E1848FE185B3E18485E185B5E186ABE18489E185A3E186BA202019-07-2820E1848BE185A9E1848CE185A5E186AB2012.05.34.png)</center>
+<p><br><br></p>
+<h4 id="스팀잇-커뮤니티"><a class="markdownIt-Anchor" href="#스팀잇-커뮤니티"></a> 스팀잇 커뮤니티</h4>
+<p>그다음은 스팀잇에 등록된 글 분류와 개인 블로그가 최대 관심사였습니다. 글 분류는 AI로 풀어보려고 머신러닝을 학습했었습니다. 결국에는 복잡하고 어려운 머신러닝을 구현하는 대신 태그 기반으로 글을 분류했습니다. 글을 분류해서 제공하기 위해서는 결국 API 서버가 필요합니다. 저는 개인적으로 나가는 비용이 아까워 최대한 무료 서비스를 이용해서 시스템을 구축했습니다. 결국 무료 DB 서버 계정이 차단당했습니다. 아무래도 스팀 블록을 모니터링하면서 실시간으로 데이터를 insert 했던 부분이 원인이 되지 않았을까 생각합니다. 계획했던 것보다 개발을 빨리 포기했습니다.</p>
+<hr>
+<center>[https://anpigon.github.io/steemit-community](https://anpigon.github.io/steemit-community)
+![](https://files.steempeak.com/file/steempeak/anpigon/VtEbcVkG-E18489E185B3E1848FE185B3E18485E185B5E186ABE18489E185A3E186BA202019-07-2720E1848BE185A9E18492E185AE2010.06.18.png)</center>
+<p><br><br></p>
+<h1 id="본론"><a class="markdownIt-Anchor" href="#본론"></a> 본론</h1>
+<p>서론이 길었습니다. 최근 니트러스가 다수 등장하면서 스팀잇 태그의 글을 분류 기능은 거의 상실했습니다. 읽고 싶은 글만 필터링해서 보는 것이 더 어려워졌습니다. 그리고 스팀잇에서 채굴이나 SCOT토큰에 관한 글이 많이 보입니다. 그래서 저도 요즘은 SCOT 토큰 관련 앱 개발에 재미를 느끼고 있습니다.</p>
+<p>최근에 토큰 정보(홀더계정, 오더북, 거래이력)을 볼 수 있는 앱을 의뢰받았었습니다. 참고로 해당 앱 개발은 드랍했습니다. 그런데 개발을 하다 보니 약간의 욕심이 생겼습니다. 그래서 개발하던 코드를 재활용하여 재미있는 앱을 개발했습니다. 앱 이름은 <strong>Happigon</strong> 입니다.</p>
+<p>Happigon은 해피베리보이님과 채팅하다가 갑자기 생각난 이름입니다. Happy + Pigon = Happygon 입니다. 그런데 Github 계정을 생성하려고 하니 Happygon이 있습니다. 그래서 그냥 Happigon으로 만들었습니다.</p>
+<hr>
+<center>[https://happigon.github.io/](https://happigon.github.io/)![](https://files.steempeak.com/file/steempeak/anpigon/lKg8bp72-1.png)</center>
+<p>개발할 시간만 충분히 있다면 이 앱에 커뮤니티와 지갑 기능도 구현해보고 싶네요. 그리고 가능하다면 부르주아의 끝을 보여주는 커뮤니티를 만들어보고 싶어요. 빈부 격차를 매우 심하게 보여줄 겁니다. 예를 들면 축적한 보유 자산에 따라서 UI가 다르게 보입니다. 스팀 파워 + 스팀 잔액이 15이하는 UI가 없을 수도 있습니다. 그리고 계급에 따라 사용할 수 있는 기능이 제한됩니다. 사실 이 앱도 개발하다가 중단될 가능성이 매우 큽니다. steem-engine API가 불안정해서 개발하기 너무 불편합니다.</p>
+<br>
+<p>최근 야근이 많아져서 수면시간이 줄었습니다. 그래서 피로가 누적되어 피곤함을 많이 느끼고 있습니다. 다시 한번 왕피곤으로 변신할 때가 온 것 같습니다.</p>
+<p>댓글, 팔로우, 업보팅해 주시는 모든 분들 감사합니다.</p>
+<p>항상 행복한 하루 보내시길 바랍니다.</p>
+<hr>
+<center><img data-src="https://steemitimages.com/400x0/https://cdn.steemitimages.com/DQmQmWhMN6zNrLmKJRKhvSScEgWZmpb8zCeE2Gray1krbv6/BC054B6E-6F73-46D0-88E4-C88EB8167037.jpeg"><h5>vote, reblog, follow <code><a target="_blank" rel="noopener" href="https://steemit.com/@anpigon">@anpigon</a></code></h5></center>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+  <div class="post-widgets">
+    <div class="wp_rating">
+      <div id="wpac-rating"></div>
+    </div>
+  </div>
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/zzan/@anpigon/20190721033641041z" rel="next" title="[React Native] WHAN DAPP 개발 이야기 #7">
+                  <i class="fa fa-chevron-left"></i> [React Native] WHAN DAPP 개발 이야기 #7
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/zzan/@anpigon/52wsdf" rel="prev" title="니트러스에서 글작성시 미리보기가 오른쪽에 위치하면 좋을 것 같습니다.">
+                  니트러스에서 글작성시 미리보기가 오른쪽에 위치하면 좋을 것 같습니다. <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    
+  <div class="comments" id="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          목차
+        </li>
+        <li class="sidebar-nav-overview">
+          흝어보기
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%EC%84%9C%EB%A1%A0"><span class="nav-number">1.</span> <span class="nav-text"> 서론</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%EC%8A%A4%ED%8C%80%EB%A1%9C%EA%B7%B8steemlog-%EC%95%B1"><span class="nav-number">1.0.0.1.</span> <span class="nav-text"> 스팀로그(Steemlog) 앱</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%EC%8A%A4%ED%8C%80%EC%9E%87-%ED%8E%AB-%EC%97%B0%EA%B5%AC%EC%86%8C"><span class="nav-number">1.0.0.2.</span> <span class="nav-text"> 스팀잇 펫 연구소</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%EC%8A%A4%ED%8C%80%EC%9E%87-%EC%BB%A4%EB%AE%A4%EB%8B%88%ED%8B%B0"><span class="nav-number">1.0.0.3.</span> <span class="nav-text"> 스팀잇 커뮤니티</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%EB%B3%B8%EB%A1%A0"><span class="nav-number">2.</span> <span class="nav-text"> 본론</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link"><span class="nav-number">2.0.0.0.1.</span> <span class="nav-text">vote, reblog, follow @anpigon</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="안피곤"
+    src="/images/me.jpg">
+  <p class="site-author-name" itemprop="name">안피곤</p>
+  <div class="site-description" itemprop="description">시간이 천천히 갔으면 좋겠다.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">327</span>
+          <span class="site-state-item-name">포스트</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-name">카테고리</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">144</span>
+        <span class="site-state-item-name">태그</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/anpigon" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;anpigon" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:markan82@gmail.com" title="E-Mail &amp;rarr; mailto:markan82@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+          <!-- 정사각형 광고 -->
+          <div style="margin-top: 15px;">
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-2365531018407022"
+                data-ad-slot="7521850306"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+          </div>
+    </div>
+  </aside>
+  <div id="sidebar-dimmer">3</div>
+
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">안피곤</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v5.4.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.4.2
+  </div>
+
+        
+
+
+
+
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-firestore.js"></script>
+  <script>
+    firebase.initializeApp({
+      apiKey: 'AIzaSyA4QZWCWb3IuIHjbkAmO0ttIM2b-qtLTP8',
+      projectId: 'next-blog-8f9a0'
+    });
+
+    function getCount(doc, increaseCount) {
+      // IncreaseCount will be false when not in article page
+
+      return doc.get().then(d => {
+        var count = 0;
+        if (!d.exists) { // Has no data, initialize count
+          if (increaseCount) {
+            doc.set({
+              count: 1
+            });
+            count = 1;
+          }
+        } else { // Has data
+          count = d.data().count;
+          if (increaseCount) {
+            // If first view this article
+            doc.set({ // Increase count
+              count: count + 1
+            });
+            count++;
+          }
+        }
+
+        return count;
+      });
+    }
+
+    function appendCountTo(el) {
+      return count => {
+        el.innerText = count;
+      }
+    }
+  </script>
+  <script pjax>
+    (function() {
+      var db = firebase.firestore();
+      var articles = db.collection('articles');
+
+      if (CONFIG.page.isPost) { // Is article page
+        var title = document.querySelector('.post-title').innerText.trim();
+        var doc = articles.doc(title);
+        var increaseCount = true;
+        if (localStorage.getItem(title)) {
+          increaseCount = false;
+        } else {
+          // Mark as visited
+          localStorage.setItem(title, true);
+        }
+        getCount(doc, increaseCount).then(appendCountTo(document.querySelector('.firestore-visitors-count')));
+      } else if (CONFIG.page.isHome) { // Is index page
+        var promises = [...document.querySelectorAll('.post-title')].map(element => {
+          var title = element.innerText.trim();
+          var doc = articles.doc(title);
+          return getCount(doc);
+        });
+        Promise.all(promises).then(counts => {
+          var metas = document.querySelectorAll('.firestore-visitors-count');
+          counts.forEach((val, idx) => {
+            appendCountTo(metas[idx])(val);
+          });
+        });
+      }
+    })();
+  </script>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.getAttribute('pjax') !== null) {
+      element.setAttribute('pjax', '');
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+  <script pjax>
+  if (CONFIG.page.isPost) {
+    wpac_init = window.wpac_init || [];
+    wpac_init.push({
+      widget: 'Rating',
+      id: 21712,
+      el: 'wpac-rating',
+      color: 'fc6423'
+    });
+    (function() {
+      if ('WIDGETPACK_LOADED' in window) return;
+      WIDGETPACK_LOADED = true;
+      var mc = document.createElement('script');
+      mc.type = 'text/javascript';
+      mc.async = true;
+      mc.src = '//embed.widgetpack.com/widget.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+    })();
+  }
+  </script>
+
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.4.1/dist/instantsearch.min.css">
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.4.1/dist/instantsearch.js"></script>
+<script src="/js/algolia-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+
+  
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://anpigon-github-io.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  function loadComments() {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: {page: {
+            url: "https://anpigon.github.io/zzan/@anpigon/dex",
+            identifier: "/zzan/@anpigon/dex",
+            title: "스팀엔진 토큰 DEX 거래소 개발 이야기"
+          }
+        }
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://anpigon-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  }
+    (function() {
+      var offsetTop = document.getElementById('comments').offsetTop - window.innerHeight;
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        window.addEventListener('load', loadComments, false);
+      } else {
+        var disqus_scroll = () => {
+          // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = document.getElementById('comments').offsetTop - window.innerHeight;
+          var scrollTop = window.scrollY;
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            window.removeEventListener('scroll', disqus_scroll);
+            loadComments();
+          }
+        };
+        window.addEventListener('scroll', disqus_scroll);
+      }
+    })();
+  
+</script>
+
+    </div>
+</body>
+</html>

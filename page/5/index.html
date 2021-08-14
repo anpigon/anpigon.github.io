@@ -1,0 +1,2809 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="yfKOiBPD8WlKH3NPG_CG1zr4MsCgCG1YVdGKhMS2CKc">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Noto Serif KR:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.4.2',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: true,
+    pangu: false,
+    algolia: {
+      appID: 'YY693DUDAI',
+      apiKey: 'db449d453b150820f66e7bc3d4523a17',
+      indexName: 'my-hexo-blog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '복사',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="시간이 천천히 갔으면 좋겠다.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="안피곤님의 블로그">
+<meta property="og:url" content="https://anpigon.github.io/page/5/index.html">
+<meta property="og:site_name" content="안피곤님의 블로그">
+<meta property="og:description" content="시간이 천천히 갔으면 좋겠다.">
+<meta property="og:locale" content="ko_KR">
+<meta property="article:author" content="안피곤">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://anpigon.github.io/page/5/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: true,
+    isPost: false,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>안피곤님의 블로그</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-20589042-10"></script>
+    <script pjax>
+      var host = window.location.hostname;
+      if (host !== "localhost" || !true) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-20589042-10');
+      }
+    </script>
+
+
+
+
+
+
+  
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-2365531018407022",
+          enable_page_level_ads: false
+     });
+</script>
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="안피곤님의 블로그" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">안피곤님의 블로그</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">코딩, 독서, 여행, 영화, 맛집</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>홈</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>태그<span class="badge">144</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>카테고리<span class="badge">25</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>아카이브<span class="badge">327</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>검색
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input" id="search-input"></div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="algolia-results">
+  <div id="algolia-stats"></div>
+  <div id="algolia-hits"></div>
+  <div id="algolia-pagination" class="algolia-pagination"></div>
+</div>
+
+  
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="ko">
+    <link itemprop="mainEntityOfPage" href="https://anpigon.github.io/zzan/@wangpigon/or">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/me.jpg">
+      <meta itemprop="name" content="안피곤">
+      <meta itemprop="description" content="시간이 천천히 갔으면 좋겠다.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="안피곤님의 블로그">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/zzan/@wangpigon/or" class="post-title-link" itemprop="url">하루 한 번 하늘보기 | 매일</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">작성일</span>
+
+              <time title="Post created: 2019-07-08 05:42:06" itemprop="dateCreated datePublished" datetime="2019-07-08T05:42:06+09:00">2019-07-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Updated at: 2021-08-14 19:47:06" itemprop="dateModified" datetime="2021-08-14T19:47:06+09:00">2021-08-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%EC%9D%BC%EC%83%81-%EC%9D%B4%EC%95%BC%EA%B8%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">일상 이야기</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/zzan/@wangpigon/or#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="/zzan/@wangpigon/or" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+            <p><img alt data-src="https://cdn.steemitimages.com/DQmXvQhsqhYnrT75QBjyGqWL1vKZgmZA4yCTJbrDAMjA8dY/20190708_124306.jpg"></p><p>원래 habit 앱으로 올리려고 했는데 업로드가 안되었네용. ㅠㅠ</p><p>그래서 스팀잇에서 다시 작성합니다.</p><hr><p>오늘 날씨 맑음. 기온 32도. 서울의 하늘입니다.</p><p>너무 이뻐서 찍었습니다. 사진에 잘 담겼는지 모르겠네요.</p><p>오늘은 하늘에 구름이 무척 많았습니다.</p><br><p>저는 가끔씩 하늘을 보며 힐링 합니다.</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/zzan/@wangpigon/or#more" rel="contents">
+                더 읽어보기 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="ko">
+    <link itemprop="mainEntityOfPage" href="https://anpigon.github.io/zzan/@anpigon/react-native-whan-app-2">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/me.jpg">
+      <meta itemprop="name" content="안피곤">
+      <meta itemprop="description" content="시간이 천천히 갔으면 좋겠다.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="안피곤님의 블로그">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/zzan/@anpigon/react-native-whan-app-2" class="post-title-link" itemprop="url">[React Native] WHAN DAPP 개발 이야기 #2</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">작성일</span>
+
+              <time title="Post created: 2019-07-08 05:01:36" itemprop="dateCreated datePublished" datetime="2019-07-08T05:01:36+09:00">2019-07-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Updated at: 2021-08-14 19:47:06" itemprop="dateModified" datetime="2021-08-14T19:47:06+09:00">2021-08-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">개발 이야기</span>
+                  </a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/react-native/" itemprop="url" rel="index">
+                    <span itemprop="name">React Native</span>
+                  </a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/react-native/whan-dapp-%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">WHAN DAPP 개발 이야기</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/zzan/@anpigon/react-native-whan-app-2#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="/zzan/@anpigon/react-native-whan-app-2" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+            <center>![whan_dapp_dev.png](https://files.steempeak.com/file/steempeak/anpigon/PA0Z9o93-whan_dapp_dev.png)</center><p>안녕하세요. 안피곤입니다.</p><p>SCOT 등장 이전에는 스팀잇글을 태그별로 볼 수 있는 앱이 필요하다고 생각했었습니다. 하지만 요즘 SCOT 기반 Nitrous 사이트가 계속 생겨나고 있습니다. 그래서 해당 사이트의 글을 모아 볼 수 있는 앱이 필요하다고 생각하고 있습니다. 물론 각 서비스의 특성을 지닌 앱도 필요하다고 생각하고 있습니다. 예를 들면 왓차같은 영화 리뷰앱, 비블리(Bibly)같은 독서 리뷰앱, 아하 같은 QnA앱 이런 앱들도 만들어 보고 싶습니다.</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/zzan/@anpigon/react-native-whan-app-2#more" rel="contents">
+                더 읽어보기 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="ko">
+    <link itemprop="mainEntityOfPage" href="https://anpigon.github.io/zzan/@wangpigon/49hsst">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/me.jpg">
+      <meta itemprop="name" content="안피곤">
+      <meta itemprop="description" content="시간이 천천히 갔으면 좋겠다.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="안피곤님의 블로그">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/zzan/@wangpigon/49hsst" class="post-title-link" itemprop="url">이승환 “사랑이 어떻게 그래요” 비하인드 스토리</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">작성일</span>
+
+              <time title="Post created: 2019-07-08 02:11:15" itemprop="dateCreated datePublished" datetime="2019-07-08T02:11:15+09:00">2019-07-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Updated at: 2021-08-14 19:47:06" itemprop="dateModified" datetime="2021-08-14T19:47:06+09:00">2021-08-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%EC%9D%BC%EC%83%81-%EC%9D%B4%EC%95%BC%EA%B8%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">일상 이야기</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/zzan/@wangpigon/49hsst#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="/zzan/@wangpigon/49hsst" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/VlgZ_LknNzA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><p><br>최근에 이승환 노래를 듣다가 “사랑이 어떻게 그래요” 노래의 비하인드 스토리를 이제서야 알게 되었습니다. 이승환은 2014년 히든싱어에서 “사랑이 어떻게 그래요” 노래가 2006년에 방송된  ‘MBC 휴먼다큐 사랑: 너는 내 운명’ 편을 보고 15분만에 만든 곡이라고 밝혔습니다.</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/zzan/@wangpigon/49hsst#more" rel="contents">
+                더 읽어보기 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="ko">
+    <link itemprop="mainEntityOfPage" href="https://anpigon.github.io/aaa/@wangpigon/4dpkse">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/me.jpg">
+      <meta itemprop="name" content="안피곤">
+      <meta itemprop="description" content="시간이 천천히 갔으면 좋겠다.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="안피곤님의 블로그">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/aaa/@wangpigon/4dpkse" class="post-title-link" itemprop="url">스파이더맨: 파 프롬 홈</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">작성일</span>
+
+              <time title="Post created: 2019-07-07 14:36:18" itemprop="dateCreated datePublished" datetime="2019-07-07T14:36:18+09:00">2019-07-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Updated at: 2021-08-14 19:47:06" itemprop="dateModified" datetime="2021-08-14T19:47:06+09:00">2021-08-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%EC%98%81%ED%99%94-%EC%9D%B4%EC%95%BC%EA%B8%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">영화 이야기</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/aaa/@wangpigon/4dpkse#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="/aaa/@wangpigon/4dpkse" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+            <p><img alt data-src="https://cdn.steemitimages.com/DQmeCMR5uvMFkvP8atzfSkFKz7gPddb9ZfUPRcihg7HRw1f/1.png"></p><p>오늘 <strong>스파이더맨: 파 프롬 홈</strong>을 보고 왔습니다. 전작인 <strong>스파이더맨: 홈커밍</strong>을 재미있게 본 기억이 있어서 이번 영화도 기대가 컸습니다. 최근에 개봉했기 때문에 스포일러를 하지않고 매우 짧게 리뷰하겠습니다.</p><p><strong>스파이더맨: 파 프롬 홈</strong>는 MCU 페이즈 3의 마지막 편입니다. 그리고 영화가 끝나면 쿠키영상이 2개 있습니다. 쿠키 영상의 내용은 조금 충격이었습니다. 아마도 다음에 상영할 페이즈 4를 예고하는 영상이라고 생각됩니다. 벌써 MCU 페이즈 4가 기대되네요.</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/aaa/@wangpigon/4dpkse#more" rel="contents">
+                더 읽어보기 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="ko">
+    <link itemprop="mainEntityOfPage" href="https://anpigon.github.io/kr/@wangpigon/6vmgts">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/me.jpg">
+      <meta itemprop="name" content="안피곤">
+      <meta itemprop="description" content="시간이 천천히 갔으면 좋겠다.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="안피곤님의 블로그">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/kr/@wangpigon/6vmgts" class="post-title-link" itemprop="url">[소설] 도로시 길먼 ⟪폴리팩스 부인과 꼬마 스파이⟫</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">작성일</span>
+
+              <time title="Post created: 2019-07-05 02:44:06" itemprop="dateCreated datePublished" datetime="2019-07-05T02:44:06+09:00">2019-07-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Updated at: 2021-08-14 19:47:06" itemprop="dateModified" datetime="2021-08-14T19:47:06+09:00">2021-08-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%EC%B1%85-%EC%9D%B4%EC%95%BC%EA%B8%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">책 이야기</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/kr/@wangpigon/6vmgts#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="/kr/@wangpigon/6vmgts" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+            <p><img alt data-src="https://files.steempeak.com/file/steempeak/wangpigon/CcebK4Q0-Screenshot.png"></p><br><blockquote>
+<p><strong>“폴리팩스 부인, 새로운 임무가 생겼습니다.<br>
+지금 당장 떠나실 수 있나요?”</strong></p>
+</blockquote><br><p>《뜻밖의 스파이 폴리팩스 부인》부터 시작해서 《폴리팩스 부인 미션 이스탄불》, 《폴리팩스 부인 여덟개의 여권》에 이어 4번째 시리즈입니다. 4번째 시리즈도 저를 실망시키지 않았습니다. 이번에도 역시 시간 가는 줄 모르고 읽었습니다.</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/kr/@wangpigon/6vmgts#more" rel="contents">
+                더 읽어보기 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="ko">
+    <link itemprop="mainEntityOfPage" href="https://anpigon.github.io/sct/@anpigon/5lmuhk-nitrous">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/me.jpg">
+      <meta itemprop="name" content="안피곤">
+      <meta itemprop="description" content="시간이 천천히 갔으면 좋겠다.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="안피곤님의 블로그">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/sct/@anpigon/5lmuhk-nitrous" class="post-title-link" itemprop="url">[소스 투고] Nitrous 태그를 색상으로 구분하기</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">작성일</span>
+
+              <time title="Post created: 2019-07-05 01:48:54" itemprop="dateCreated datePublished" datetime="2019-07-05T01:48:54+09:00">2019-07-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Updated at: 2021-08-14 19:47:06" itemprop="dateModified" datetime="2021-08-14T19:47:06+09:00">2021-08-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">개발 이야기</span>
+                  </a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/%EC%8A%A4%ED%8C%80%EC%9E%87-steemit/" itemprop="url" rel="index">
+                    <span itemprop="name">스팀잇(Steemit)</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/sct/@anpigon/5lmuhk-nitrous#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="/sct/@anpigon/5lmuhk-nitrous" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+            <p><img alt data-src="https://files.steempeak.com/file/steempeak/anpigon/WncO6xUB-E18489E185B3E1848FE185B3E18485E185B5E186ABE18489E185A3E186BA202019-07-0520E1848BE185A9E1848CE185A5E186AB209.51.13.png"></p><p><br>안녕하세요. 안피곤입니다.</p><p>요즘 Nitrous SteemCoinpan 오픈소스에 기여하는 재미에 빠져있습니다. 내가 필요하는 기능을 구현하고 반영되는 것을 보니 무척이나 재미있습니다. 그리고 realmankwon님이나 ayogom처럼 저도 이제부터 <strong>[소스 투고]</strong> 라는 타이틀을 사용할께요.</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/sct/@anpigon/5lmuhk-nitrous#more" rel="contents">
+                더 읽어보기 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="ko">
+    <link itemprop="mainEntityOfPage" href="https://anpigon.github.io/sct/@anpigon/sct-sct-token-style">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/me.jpg">
+      <meta itemprop="name" content="안피곤">
+      <meta itemprop="description" content="시간이 천천히 갔으면 좋겠다.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="안피곤님의 블로그">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/sct/@anpigon/sct-sct-token-style" class="post-title-link" itemprop="url">[오픈소스] SCT 소스 수정 : SCT 앱 아이콘 표시 기능과 토큰(Token) 잔액 Style 변경</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">작성일</span>
+
+              <time title="Post created: 2019-07-04 04:23:09" itemprop="dateCreated datePublished" datetime="2019-07-04T04:23:09+09:00">2019-07-04</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Updated at: 2021-08-14 19:47:06" itemprop="dateModified" datetime="2021-08-14T19:47:06+09:00">2021-08-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">개발 이야기</span>
+                  </a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/%EC%8A%A4%ED%8C%80%EC%9E%87-steemit/" itemprop="url" rel="index">
+                    <span itemprop="name">스팀잇(Steemit)</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/sct/@anpigon/sct-sct-token-style#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="/sct/@anpigon/sct-sct-token-style" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+            <p><img alt data-src="https://steemitimages.com/0x0/https://cdn.steemitimages.com/DQmXtBYt3kXFAhrVjuGUGa5TQrgUZ2nL8npNsg67WYqZQ57/11A557AA-ADD4-484C-AD9E-FCD37D09C38B.jpeg"></p><hr><p>안녕하세요. 안피곤입니다.</p><p>@jacobyu님이 공지한 <a href="/@jacobyu/6mg54u">“스팀코인판, 니트로 관련 개발 아이디어”</a> 글을 읽고, 제일 간단해 보이는 기능을 구현했습니다.</p><p><img alt="r.png" data-src="https://files.steempeak.com/file/steempeak/anpigon/aRDfkuAm-r.png"></p><p><br>그런데 작업하고 보니, 블록체인스튜디오님(@blockchainstudio)이 먼저 구현해서 PR 하셨더군요. 블록체인스튜디오님은 정말 빠르네요. ㅎㅎ 저도 구현한 코드가 아까워서 그냥 PR 했습니다. ㅋ</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/sct/@anpigon/sct-sct-token-style#more" rel="contents">
+                더 읽어보기 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="ko">
+    <link itemprop="mainEntityOfPage" href="https://anpigon.github.io/sct/@anpigon/nhj12311-steem-apps">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/me.jpg">
+      <meta itemprop="name" content="안피곤">
+      <meta itemprop="description" content="시간이 천천히 갔으면 좋겠다.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="안피곤님의 블로그">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/sct/@anpigon/nhj12311-steem-apps" class="post-title-link" itemprop="url">@nhj12311님이 만든 steem.apps 댑에 토큰 보상을 추가했어요.</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">작성일</span>
+
+              <time title="Post created: 2019-07-03 03:01:03" itemprop="dateCreated datePublished" datetime="2019-07-03T03:01:03+09:00">2019-07-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Updated at: 2021-08-14 19:47:06" itemprop="dateModified" datetime="2021-08-14T19:47:06+09:00">2021-08-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">개발 이야기</span>
+                  </a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/%EC%8A%A4%ED%8C%80%EC%9E%87-steemit/" itemprop="url" rel="index">
+                    <span itemprop="name">스팀잇(Steemit)</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/sct/@anpigon/nhj12311-steem-apps#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="/sct/@anpigon/nhj12311-steem-apps" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+            <p><img alt data-src="https://cdn.steemitimages.com/DQmcBPSfdjJkyiBswcXNrhK2pUQp7dL74QsinPWKHESnXnZ/1.png"></p><br><p>안녕하세요. 안피곤입니다.</p><p>제목 그대로 @nhj12311님이 만든 steem.apps 댑에 각 토큰 보상금액을 한 번에 볼수 있는 기능을 추가했습니다. 그리고 저자보상을 받을 수 있는 태그는 Curious Blue 컬러로 강조 표시했습니다.</p><blockquote>
+<p><code>steem.apps</code> <a href="https://anpigon.github.io/steem.apps/">https://anpigon.github.io/steem.apps/</a></p>
+</blockquote>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/sct/@anpigon/nhj12311-steem-apps#more" rel="contents">
+                더 읽어보기 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="ko">
+    <link itemprop="mainEntityOfPage" href="https://anpigon.github.io/sct/@anpigon/nitrous">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/me.jpg">
+      <meta itemprop="name" content="안피곤">
+      <meta itemprop="description" content="시간이 천천히 갔으면 좋겠다.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="안피곤님의 블로그">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/sct/@anpigon/nitrous" class="post-title-link" itemprop="url">헤로쿠 서버에서 Nitrous(스코판) 사이트 서비스하기</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">작성일</span>
+
+              <time title="Post created: 2019-07-02 05:05:54" itemprop="dateCreated datePublished" datetime="2019-07-02T05:05:54+09:00">2019-07-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Updated at: 2021-08-14 19:47:06" itemprop="dateModified" datetime="2021-08-14T19:47:06+09:00">2021-08-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">개발 이야기</span>
+                  </a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/%EC%8A%A4%ED%8C%80%EC%9E%87-steemit/" itemprop="url" rel="index">
+                    <span itemprop="name">스팀잇(Steemit)</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/sct/@anpigon/nitrous#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="/sct/@anpigon/nitrous" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+            <p><img alt data-src="https://steemitimages.com/0x0/https://cdn.steemitimages.com/DQmXtBYt3kXFAhrVjuGUGa5TQrgUZ2nL8npNsg67WYqZQ57/11A557AA-ADD4-484C-AD9E-FCD37D09C38B.jpeg"></p><hr><p>안녕하세요. 안피곤입니다.</p><p>최근에 스팀코인판에서 <strong>코드 바운티 프로그램 운영/보상 발표</strong>가 있었습니다.</p><blockquote>
+<p>관련글: &quot;<a href="/sct/@sct.jcob/notice-code-bounty-program">[Notice] 코드 바운티 프로그램 운영, 보상 발표 (code bounty program)&quot;</a></p>
+</blockquote><p><br>이 발표를 계기로 스팀잇에 많은 개발자들의 유입이 있었으면 좋겠습니다. 그리고 #kr-dev 태그에 개발글이 넘쳤으면 좋겠어요. ㅋ</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/sct/@anpigon/nitrous#more" rel="contents">
+                더 읽어보기 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="ko">
+    <link itemprop="mainEntityOfPage" href="https://anpigon.github.io/sct/@anpigon/react-native-steem-4">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/me.jpg">
+      <meta itemprop="name" content="안피곤">
+      <meta itemprop="description" content="시간이 천천히 갔으면 좋겠다.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="안피곤님의 블로그">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/sct/@anpigon/react-native-steem-4" class="post-title-link" itemprop="url">[React Native] Steem 모바일 지갑앱 만들기 #4</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">작성일</span>
+
+              <time title="Post created: 2019-07-01 04:02:36" itemprop="dateCreated datePublished" datetime="2019-07-01T04:02:36+09:00">2019-07-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Updated at: 2021-08-14 19:47:06" itemprop="dateModified" datetime="2021-08-14T19:47:06+09:00">2021-08-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">개발 이야기</span>
+                  </a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/react-native/" itemprop="url" rel="index">
+                    <span itemprop="name">React Native</span>
+                  </a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/react-native/steem-%EC%A7%80%EA%B0%91%EC%95%B1-%EB%A7%8C%EB%93%A4%EA%B8%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">Steem  지갑앱 만들기</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/sct/@anpigon/react-native-steem-4#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="/sct/@anpigon/react-native-steem-4" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+            <p>Steem 모바일 지갑앱 만들기 4번째 포스팅입니다.</p><hr><h6 id="시리즈글"><a class="markdownIt-Anchor" href="#시리즈글"></a> 시리즈글</h6><p>▪︎ <a href="/kr/@anpigon/react-native-steem-1">[React Native] Steem 모바일 지갑앱 만들기 #1</a><br>
+▪︎ <a href="/kr/@anpigon/react-native-steem-2">[React Native] Steem 모바일 지갑앱 만들기 #2</a><br>
+▪︎ <a href="/kr/@anpigon/react-native-steem-3">[React Native] Steem 모바일 지갑앱 만들기 #3</a></p><hr><p>이번에는 스팀 + 스팀엔진 토큰의 마켓 가격을 계산하여 총 자산 금액을 보여주는 기능을 추가하였습니다. <strong>Total Assets</strong> 에 표시된 금액이 제가 보유하고 있는 총 자산의 USD 금액입니다.</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/sct/@anpigon/react-native-steem-4#more" rel="contents">
+                더 읽어보기 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="ko">
+    <link itemprop="mainEntityOfPage" href="https://anpigon.github.io/sct/@anpigon/react-native-steem-3">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/me.jpg">
+      <meta itemprop="name" content="안피곤">
+      <meta itemprop="description" content="시간이 천천히 갔으면 좋겠다.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="안피곤님의 블로그">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/sct/@anpigon/react-native-steem-3" class="post-title-link" itemprop="url">[React Native] Steem 모바일 지갑앱 만들기 #3</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">작성일</span>
+
+              <time title="Post created: 2019-06-29 02:15:15" itemprop="dateCreated datePublished" datetime="2019-06-29T02:15:15+09:00">2019-06-29</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Updated at: 2021-08-14 19:47:06" itemprop="dateModified" datetime="2021-08-14T19:47:06+09:00">2021-08-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">개발 이야기</span>
+                  </a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/react-native/" itemprop="url" rel="index">
+                    <span itemprop="name">React Native</span>
+                  </a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/react-native/steem-%EC%A7%80%EA%B0%91%EC%95%B1-%EB%A7%8C%EB%93%A4%EA%B8%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">Steem  지갑앱 만들기</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/sct/@anpigon/react-native-steem-3#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="/sct/@anpigon/react-native-steem-3" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+            <p>Steem 모바일 지갑앱 만들기 3번째 포스팅입니다.</p><hr><h6 id="시리즈글"><a class="markdownIt-Anchor" href="#시리즈글"></a> 시리즈글</h6><p>▪︎ <a href="/kr/@anpigon/react-native-steem-1">[React Native] Steem 모바일 지갑앱 만들기 #1</a><br>
+▪︎ <a href="/kr/@anpigon/react-native-steem-2">[React Native] Steem 모바일 지갑앱 만들기 #2</a></p><hr><h2 id="개발-내용"><a class="markdownIt-Anchor" href="#개발-내용"></a> 개발 내용</h2><p>지갑 목록 화면에서 스팀, 스팀달러, 스팀파워, 그리고 스팀엔진 토큰 잔액을 보여줍니다. 그리고 부기님(gfriend96) 요청으로 <strong>보유 코인만 보기 옵션</strong>을 추가했습니다. STEEM과 SBD 가격은 코인마켓캡 API를 이용하였습니다. 새로고침(Refresh)은 끌어당김(Pull Down)으로 동작합니다.</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/sct/@anpigon/react-native-steem-3#more" rel="contents">
+                더 읽어보기 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="ko">
+    <link itemprop="mainEntityOfPage" href="https://anpigon.github.io/sct/@anpigon/2zgchx">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/me.jpg">
+      <meta itemprop="name" content="안피곤">
+      <meta itemprop="description" content="시간이 천천히 갔으면 좋겠다.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="안피곤님의 블로그">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/sct/@anpigon/2zgchx" class="post-title-link" itemprop="url">스팀잇 글을 티스토리에 올리기</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">작성일</span>
+
+              <time title="Post created: 2019-06-28 04:19:03" itemprop="dateCreated datePublished" datetime="2019-06-28T04:19:03+09:00">2019-06-28</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Updated at: 2021-08-14 19:47:06" itemprop="dateModified" datetime="2021-08-14T19:47:06+09:00">2021-08-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">개발 이야기</span>
+                  </a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/%EC%8A%A4%ED%8C%80%EC%9E%87-%EA%B0%9C%EC%9D%B8-%EB%B8%94%EB%A1%9C%EA%B7%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">스팀잇 개인 블로그 만들기</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/sct/@anpigon/2zgchx#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="/sct/@anpigon/2zgchx" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+            <p><img alt data-src="https://files.steempeak.com/file/steempeak/anpigon/UKUCaO5K-E18489E185B3E1848FE185B3E18485E185B5E186ABE18489E185A3E186BA202019-06-2820E1848BE185A9E18492E185AE2012.34.37.png"></p><p>안녕하세요. 안피곤입니다.</p><p>최근에 티스토리 블로그를 다시 시작했습니다. 그리고 다음 AdFit 광고를 신청해서 달았습니다. 티스토리 글은 모두 스팀잇에서 작성한 글로 채웠어요. 스팀잇에서 글을  복사한 다음  티스토리 에디터에 붙여넣기 하면 거의 그대로 붙여넣기 됩니다. ㅎㅎ</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/sct/@anpigon/2zgchx#more" rel="contents">
+                더 읽어보기 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="ko">
+    <link itemprop="mainEntityOfPage" href="https://anpigon.github.io/sct/@anpigon/nhj12311-steem-apps-aaa-stc">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/me.jpg">
+      <meta itemprop="name" content="안피곤">
+      <meta itemprop="description" content="시간이 천천히 갔으면 좋겠다.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="안피곤님의 블로그">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/sct/@anpigon/nhj12311-steem-apps-aaa-stc" class="post-title-link" itemprop="url">@nhj12311님이 만든 steem.apps 댑에 #aaa, #stc 태그를 추가했어요.</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">작성일</span>
+
+              <time title="Post created: 2019-06-25 00:57:36" itemprop="dateCreated datePublished" datetime="2019-06-25T00:57:36+09:00">2019-06-25</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Updated at: 2021-08-14 19:47:06" itemprop="dateModified" datetime="2021-08-14T19:47:06+09:00">2021-08-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">개발 이야기</span>
+                  </a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/%EC%8A%A4%ED%8C%80%EC%9E%87-steemit/" itemprop="url" rel="index">
+                    <span itemprop="name">스팀잇(Steemit)</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/sct/@anpigon/nhj12311-steem-apps-aaa-stc#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="/sct/@anpigon/nhj12311-steem-apps-aaa-stc" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+            <p><img alt data-src="https://files.steempeak.com/file/steempeak/anpigon/zUD2oPhk-E18489E185B3E1848FE185B3E18485E185B5E186ABE18489E185A3E186BA202019-06-2120E1848BE185A9E18492E185AE202.25.56.png"></p><p>안녕하세요. 안피곤(@anpigon)입니다.</p><p><strong>steem.apps</strong> 댑은 제가 스팀잇 처음 시작했을 때 가장 많이 이용했던 최애 스팀댑입니다. 바로 @nhj12311님이 만드셨죠. 태그별로 피드(Feed)를 볼 수 있고, 댓글을 바로 확인 할 수 있습니다.</p><p>그리고는 스팀잇에 익숙해지면서 시간이 지나 한 동안 잊고 지냈습니다. 그러다가 갑자기 #태그를 간편하게 조회해서 볼 수 있는 페이지가 필요하고 생각했습니다. steempeak에도 <strong>FAVORITE TOPICS</strong> 기능이 있습니다. 하지만 모바일에서 steempeak 메뉴 사용이 불편하네요.</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/sct/@anpigon/nhj12311-steem-apps-aaa-stc#more" rel="contents">
+                더 읽어보기 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="ko">
+    <link itemprop="mainEntityOfPage" href="https://anpigon.github.io/aaa/@wangpigon/4">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/me.jpg">
+      <meta itemprop="name" content="안피곤">
+      <meta itemprop="description" content="시간이 천천히 갔으면 좋겠다.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="안피곤님의 블로그">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/aaa/@wangpigon/4" class="post-title-link" itemprop="url">⟪토이 스토리4⟫ - 픽사 최고의 걸작</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">작성일</span>
+
+              <time title="Post created: 2019-06-24 04:42:27" itemprop="dateCreated datePublished" datetime="2019-06-24T04:42:27+09:00">2019-06-24</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Updated at: 2021-08-14 19:47:06" itemprop="dateModified" datetime="2021-08-14T19:47:06+09:00">2021-08-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%EC%98%81%ED%99%94-%EC%9D%B4%EC%95%BC%EA%B8%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">영화 이야기</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/aaa/@wangpigon/4#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="/aaa/@wangpigon/4" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+            <p><img alt data-src="https://cdn.steemitimages.com/DQmfKxinbMmXvfRNq2fnf4TTxygTDM9MFjRAvA36nE8PjSr/%EF%BC%85E1%EF%BC%8584%EF%BC%8589%EF%BC%85E1%EF%BC%8585%EF%BC%85B3%EF%BC%85E1%EF%BC%8584%EF%BC%858F%EF%BC%85E1%EF%BC%8585%EF%BC%85B3%EF%BC%85E1%EF%BC%8584%EF%BC%8585%EF%BC%85E1%EF%BC%8585%EF%BC%85B5%EF%BC%85E1%EF%BC%8586%EF%BC%85AB%EF%BC%85E1%EF%BC%8584%EF%BC%8589%EF%BC%85E1%EF%BC%8585%EF%BC%85A3%EF%BC%85E1%EF%BC%8586%EF%BC%85BA%EF%BC%85202019-06-24%EF%BC%8520%EF%BC%85E1%EF%BC%8584%EF%BC%858B%EF%BC%85E1%EF%BC%8585%EF%BC%85A9%EF%BC%85E1%EF%BC%8584%EF%BC%8592%EF%BC%85E1%EF%BC%8585%EF%BC%85AE%EF%BC%852012.46.43.png"></p><p>이번 주말에 토이스토리4를 보고 왔습니다. 토이스토리3(2010)가 개봉한지도 벌써 9년이 흘렀네요. 저는 토이스토리 시리즈 1, 2, 3 모두 명작이라고 생각합니다. 그리고 토이스토리 4는 토이스토리 시리즈에서 최고의 걸작입니다. 웃음·감동·재미 모두 전작을 뛰어넘었습니다. 영화 후기는 최대한 스포일러를 자제하면서 적어볼게요.</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/aaa/@wangpigon/4#more" rel="contents">
+                더 읽어보기 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="ko">
+    <link itemprop="mainEntityOfPage" href="https://anpigon.github.io/sct/@anpigon/react-native-4">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/me.jpg">
+      <meta itemprop="name" content="안피곤">
+      <meta itemprop="description" content="시간이 천천히 갔으면 좋겠다.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="안피곤님의 블로그">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/sct/@anpigon/react-native-4" class="post-title-link" itemprop="url">[React Native] 영화 리뷰 모바일 앱 개발 이야기 #4</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">작성일</span>
+
+              <time title="Post created: 2019-06-23 23:00:09" itemprop="dateCreated datePublished" datetime="2019-06-23T23:00:09+09:00">2019-06-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Updated at: 2021-08-14 19:47:06" itemprop="dateModified" datetime="2021-08-14T19:47:06+09:00">2021-08-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">개발 이야기</span>
+                  </a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/react-native/" itemprop="url" rel="index">
+                    <span itemprop="name">React Native</span>
+                  </a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/react-native/%EC%98%81%ED%99%94-%EB%A6%AC%EB%B7%B0-%EC%95%B1-%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">영화 리뷰 앱 개발 이야기</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/sct/@anpigon/react-native-4#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="/sct/@anpigon/react-native-4" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+            <p>이 시리즈는 리액트 네이티브로 영화 리뷰 모바일 앱을 만드는 과정입니다.</p><p>이번에는 포스팅 본문 내용을 보여주는 상세 화면을 구현합니다. body에 포함된 마크다운/HTML을 파싱하여 렌더링된 결과물을 네이티브 화면으로 출력합니다.</p><p>웹 화면과 최대한 비슷하게 구현하려고 노력했습니다. 하지만 아직 미흡한 부분이 보여서 WEB으로 가는 링크를 우측상단에 넣었습니다. 클릭하면 웹페이지로 이동합니다.</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/sct/@anpigon/react-native-4#more" rel="contents">
+                더 읽어보기 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="ko">
+    <link itemprop="mainEntityOfPage" href="https://anpigon.github.io/makeahabit/@wangpigon/makeahabit-1561275105">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/me.jpg">
+      <meta itemprop="name" content="안피곤">
+      <meta itemprop="description" content="시간이 천천히 갔으면 좋겠다.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="안피곤님의 블로그">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/makeahabit/@wangpigon/makeahabit-1561275105" class="post-title-link" itemprop="url">하루 한 번 하늘보기 | 매일</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">작성일</span>
+
+              <time title="Post created: 2019-06-23 07:31:48" itemprop="dateCreated datePublished" datetime="2019-06-23T07:31:48+09:00">2019-06-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Updated at: 2021-08-14 19:47:06" itemprop="dateModified" datetime="2021-08-14T19:47:06+09:00">2021-08-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%EC%9D%BC%EC%83%81-%EC%9D%B4%EC%95%BC%EA%B8%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">일상 이야기</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/makeahabit/@wangpigon/makeahabit-1561275105#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="/makeahabit/@wangpigon/makeahabit-1561275105" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="make-a-habit"><a class="markdownIt-Anchor" href="#make-a-habit"></a> Make a habit</h3><p>하루 한 번 하늘보기 | 매일</p><hr><p>오늘 한강 하늘 구름.<br>
+습하고 더워서 숨이 막히는 날씨다.</p><hr><p><img alt="makeahabit" data-src="https://steemitimages.com/300x0/https://s3.ap-northeast-2.amazonaws.com/img.passionbull.net/public/wangpigon/1561275101.jpg"></p><hr><p><img alt data-src="https://files.steempeak.com/file/steempeak/wangpigon/NLtyvqwl-20190623_162945.jpg"></p><hr><p>from make a habit app</p>
+      
+
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="ko">
+    <link itemprop="mainEntityOfPage" href="https://anpigon.github.io/sct/@anpigon/react-native-3">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/me.jpg">
+      <meta itemprop="name" content="안피곤">
+      <meta itemprop="description" content="시간이 천천히 갔으면 좋겠다.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="안피곤님의 블로그">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/sct/@anpigon/react-native-3" class="post-title-link" itemprop="url">[React Native] 영화 리뷰 모바일 앱 개발 이야기 #3</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">작성일</span>
+
+              <time title="Post created: 2019-06-22 23:51:21" itemprop="dateCreated datePublished" datetime="2019-06-22T23:51:21+09:00">2019-06-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Updated at: 2021-08-14 19:47:06" itemprop="dateModified" datetime="2021-08-14T19:47:06+09:00">2021-08-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">개발 이야기</span>
+                  </a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/react-native/" itemprop="url" rel="index">
+                    <span itemprop="name">React Native</span>
+                  </a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/react-native/%EC%98%81%ED%99%94-%EB%A6%AC%EB%B7%B0-%EC%95%B1-%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">영화 리뷰 앱 개발 이야기</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/sct/@anpigon/react-native-3#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="/sct/@anpigon/react-native-3" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+            <p>이 시리즈는 리액트 네이티브로 영화 리뷰 모바일 앱을 만드는 과정입니다.</p><p><br>이번에는 스팀커넥트를 이용한 로그인을 구현했어요. &quot;<a target="_blank" rel="noopener" href="https://steemit.com/kr/@anpigon/react-native-steemconnect--1548595799187">[React Native] 스팀커넥트(Steemconnect) 로그인 만들기</a>&quot;에서 작성했던 코드를 재활용했습니다. 덕분에 금방 구현했습니다.</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/sct/@anpigon/react-native-3#more" rel="contents">
+                더 읽어보기 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="ko">
+    <link itemprop="mainEntityOfPage" href="https://anpigon.github.io/makeahabit/@wangpigon/makeahabit-1561184031">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/me.jpg">
+      <meta itemprop="name" content="안피곤">
+      <meta itemprop="description" content="시간이 천천히 갔으면 좋겠다.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="안피곤님의 블로그">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/makeahabit/@wangpigon/makeahabit-1561184031" class="post-title-link" itemprop="url">하루 한 번 하늘보기 | 매일</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">작성일</span>
+
+              <time title="Post created: 2019-06-22 06:13:51" itemprop="dateCreated datePublished" datetime="2019-06-22T06:13:51+09:00">2019-06-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Updated at: 2021-08-14 19:47:06" itemprop="dateModified" datetime="2021-08-14T19:47:06+09:00">2021-08-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%EC%9D%BC%EC%83%81-%EC%9D%B4%EC%95%BC%EA%B8%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">일상 이야기</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/makeahabit/@wangpigon/makeahabit-1561184031#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="/makeahabit/@wangpigon/makeahabit-1561184031" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="make-a-habit"><a class="markdownIt-Anchor" href="#make-a-habit"></a> Make a habit</h3><p>하루 한 번 하늘보기 | 매일</p><hr><p>서래마을 몽마르뜨 언덕에 왔어요.<br>
+하늘 구름이 이뻐요.</p><hr><p><img alt="makeahabit" data-src="https://steemitimages.com/300x0/https://s3.ap-northeast-2.amazonaws.com/img.passionbull.net/public/wangpigon/1561184028.jpg"></p><p><img alt data-src="https://files.steempeak.com/file/steempeak/wangpigon/kkwlUG80-20190622_151409.jpg"></p><p>from make a habit app</p>
+      
+
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="ko">
+    <link itemprop="mainEntityOfPage" href="https://anpigon.github.io/sct/@anpigon/react-native-2">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/me.jpg">
+      <meta itemprop="name" content="안피곤">
+      <meta itemprop="description" content="시간이 천천히 갔으면 좋겠다.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="안피곤님의 블로그">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/sct/@anpigon/react-native-2" class="post-title-link" itemprop="url">[React Native] 영화 리뷰 모바일 앱 개발 이야기 #2</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">작성일</span>
+
+              <time title="Post created: 2019-06-22 01:29:03" itemprop="dateCreated datePublished" datetime="2019-06-22T01:29:03+09:00">2019-06-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Updated at: 2021-08-14 19:47:06" itemprop="dateModified" datetime="2021-08-14T19:47:06+09:00">2021-08-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">개발 이야기</span>
+                  </a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/react-native/" itemprop="url" rel="index">
+                    <span itemprop="name">React Native</span>
+                  </a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/react-native/%EC%98%81%ED%99%94-%EB%A6%AC%EB%B7%B0-%EC%95%B1-%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">영화 리뷰 앱 개발 이야기</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/sct/@anpigon/react-native-2#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="/sct/@anpigon/react-native-2" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+            <p>이 시리즈는 리액트 네이티브로 모바일 앱을 만드는 과정을 기록합니다. #AAA 태그 글을 보여주는 영화 리뷰 앱을 만들려고 기획하고 개발을 시작했습니다. 사실은 기획 없이 시작하였습니다. 세세한 기능들은 생각나는 데로 또는 사용자의 피드백이 있으면 천천히 확장해 가겠습니다.<br>
+<br></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/sct/@anpigon/react-native-2#more" rel="contents">
+                더 읽어보기 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="ko">
+    <link itemprop="mainEntityOfPage" href="https://anpigon.github.io/sct/@anpigon/6vcmd">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/me.jpg">
+      <meta itemprop="name" content="안피곤">
+      <meta itemprop="description" content="시간이 천천히 갔으면 좋겠다.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="안피곤님의 블로그">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/sct/@anpigon/6vcmd" class="post-title-link" itemprop="url">[오픈소스] 스팀코인판에 제가 수정한 코드가 반영되었습니다.</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">작성일</span>
+
+              <time title="Post created: 2019-06-21 01:59:27" itemprop="dateCreated datePublished" datetime="2019-06-21T01:59:27+09:00">2019-06-21</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Updated at: 2021-08-14 19:47:06" itemprop="dateModified" datetime="2021-08-14T19:47:06+09:00">2021-08-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">개발 이야기</span>
+                  </a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/%EC%8A%A4%ED%8C%80%EC%9E%87-steemit/" itemprop="url" rel="index">
+                    <span itemprop="name">스팀잇(Steemit)</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/sct/@anpigon/6vcmd#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="/sct/@anpigon/6vcmd" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+            <p><img alt data-src="https://steemitimages.com/640x0/https://cdn.steemitimages.com/DQmXtBYt3kXFAhrVjuGUGa5TQrgUZ2nL8npNsg67WYqZQ57/11A557AA-ADD4-484C-AD9E-FCD37D09C38B.jpeg"></p><p>안녕하세요. 안피곤입니다.</p><p>어제 제이콥(@jacobyu)님 도움을 받아, Nitros를 로컬에 셋팅하고 한번 돌려보았습니다. 그리고 제 눈에 거슬리는 부분이 있어서 바로 수정했습니다. 그리고 오픈 소스는 처음으로 기여를 해보게 되었네요. 저는 다른 사람의 코드를 이해하고 수정하는데 약간의 두려움이 있습니다. 그래서 제 코드가 반영된 사실이 매우 기쁩니다. ㅎㅎ</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/sct/@anpigon/6vcmd#more" rel="contents">
+                더 읽어보기 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+  </div>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left" aria-label="이전 페이지"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right" aria-label="다음 페이지"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          목차
+        </li>
+        <li class="sidebar-nav-overview">
+          흝어보기
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="안피곤"
+    src="/images/me.jpg">
+  <p class="site-author-name" itemprop="name">안피곤</p>
+  <div class="site-description" itemprop="description">시간이 천천히 갔으면 좋겠다.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">327</span>
+          <span class="site-state-item-name">포스트</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-name">카테고리</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">144</span>
+        <span class="site-state-item-name">태그</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/anpigon" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;anpigon" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:markan82@gmail.com" title="E-Mail &amp;rarr; mailto:markan82@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+          <!-- 정사각형 광고 -->
+          <div style="margin-top: 15px;">
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-2365531018407022"
+                data-ad-slot="7521850306"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+          </div>
+    </div>
+  </aside>
+  <div id="sidebar-dimmer">3</div>
+
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">안피곤</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v5.4.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.4.2
+  </div>
+
+        
+
+
+
+
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-firestore.js"></script>
+  <script>
+    firebase.initializeApp({
+      apiKey: 'AIzaSyA4QZWCWb3IuIHjbkAmO0ttIM2b-qtLTP8',
+      projectId: 'next-blog-8f9a0'
+    });
+
+    function getCount(doc, increaseCount) {
+      // IncreaseCount will be false when not in article page
+
+      return doc.get().then(d => {
+        var count = 0;
+        if (!d.exists) { // Has no data, initialize count
+          if (increaseCount) {
+            doc.set({
+              count: 1
+            });
+            count = 1;
+          }
+        } else { // Has data
+          count = d.data().count;
+          if (increaseCount) {
+            // If first view this article
+            doc.set({ // Increase count
+              count: count + 1
+            });
+            count++;
+          }
+        }
+
+        return count;
+      });
+    }
+
+    function appendCountTo(el) {
+      return count => {
+        el.innerText = count;
+      }
+    }
+  </script>
+  <script pjax>
+    (function() {
+      var db = firebase.firestore();
+      var articles = db.collection('articles');
+
+      if (CONFIG.page.isPost) { // Is article page
+        var title = document.querySelector('.post-title').innerText.trim();
+        var doc = articles.doc(title);
+        var increaseCount = true;
+        if (localStorage.getItem(title)) {
+          increaseCount = false;
+        } else {
+          // Mark as visited
+          localStorage.setItem(title, true);
+        }
+        getCount(doc, increaseCount).then(appendCountTo(document.querySelector('.firestore-visitors-count')));
+      } else if (CONFIG.page.isHome) { // Is index page
+        var promises = [...document.querySelectorAll('.post-title')].map(element => {
+          var title = element.innerText.trim();
+          var doc = articles.doc(title);
+          return getCount(doc);
+        });
+        Promise.all(promises).then(counts => {
+          var metas = document.querySelectorAll('.firestore-visitors-count');
+          counts.forEach((val, idx) => {
+            appendCountTo(metas[idx])(val);
+          });
+        });
+      }
+    })();
+  </script>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.getAttribute('pjax') !== null) {
+      element.setAttribute('pjax', '');
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+  <script pjax>
+  if (CONFIG.page.isPost) {
+    wpac_init = window.wpac_init || [];
+    wpac_init.push({
+      widget: 'Rating',
+      id: 21712,
+      el: 'wpac-rating',
+      color: 'fc6423'
+    });
+    (function() {
+      if ('WIDGETPACK_LOADED' in window) return;
+      WIDGETPACK_LOADED = true;
+      var mc = document.createElement('script');
+      mc.type = 'text/javascript';
+      mc.async = true;
+      mc.src = '//embed.widgetpack.com/widget.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+    })();
+  }
+  </script>
+
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.4.1/dist/instantsearch.min.css">
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.4.1/dist/instantsearch.js"></script>
+<script src="/js/algolia-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+
+  
+
+  
+    <script src="//cdn.jsdelivr.net/npm/quicklink@1/dist/quicklink.umd.js"></script>
+    <script>
+        window.addEventListener('load', () => {
+        quicklink({
+          timeout: 3000,
+          priority: true,
+          ignores: [uri => uri.includes('#'),uri => uri == 'https://anpigon.github.io/page/5/',]
+        });
+        });
+    </script>
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://anpigon-github-io.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+
+    </div>
+</body>
+</html>

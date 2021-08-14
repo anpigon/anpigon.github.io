@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="yfKOiBPD8WlKH3NPG_CG1zr4MsCgCG1YVdGKhMS2CKc">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Noto Serif KR:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.4.2',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: true,
+    pangu: false,
+    algolia: {
+      appID: 'YY693DUDAI',
+      apiKey: 'db449d453b150820f66e7bc3d4523a17',
+      indexName: 'my-hexo-blog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '복사',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="안녕하세요. 안피곤입니다.사실 스팀 위젯에 기능을 업데이트를 할 계획은 없었습니다. 그런데 막상 구현하고 보니 욕심이 계속 생깁니다. 앱에 버그도 있고 기능도 거의 없는게 계속 마음에 걸리네요.그리고 위젯 UI 디자인은 포기했습니다. 해상도, OS 버전, 시스템 폰트 크기와 글꼴에 영향을 많이 받습니다. 안드로이드 UI 개발은 경험이 없어서 매우 어렵습니다">
+<meta property="og:type" content="article">
+<meta property="og:title" content="STEEM&#x2F;SCT 보팅파워(VP) 안드로이드 위젯 #3 - Doze와 앱 대기(App Standby) 이야기">
+<meta property="og:url" content="https://anpigon.github.io/sct/@anpigon/steem-sct-vp-3-doze-app-standby">
+<meta property="og:site_name" content="안피곤님의 블로그">
+<meta property="og:description" content="안녕하세요. 안피곤입니다.사실 스팀 위젯에 기능을 업데이트를 할 계획은 없었습니다. 그런데 막상 구현하고 보니 욕심이 계속 생깁니다. 앱에 버그도 있고 기능도 거의 없는게 계속 마음에 걸리네요.그리고 위젯 UI 디자인은 포기했습니다. 해상도, OS 버전, 시스템 폰트 크기와 글꼴에 영향을 많이 받습니다. 안드로이드 UI 개발은 경험이 없어서 매우 어렵습니다">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:image" content="https://files.steempeak.com/file/steempeak/anpigon/Tag0yss8-image.png">
+<meta property="og:image" content="https://cdn.steemitimages.com/250x0/https://files.steempeak.com/file/steempeak/anpigon/kodrdzTA-Screenshot_20190601-101605_One20UI20Home.jpg">
+<meta property="og:image" content="https://cdn.steemitimages.com/250x0/https://files.steempeak.com/file/steempeak/anpigon/atXUHDQq-Screenshot_20190601-101738_One20UI20Home.jpg">
+<meta property="og:image" content="https://cdn.steemitimages.com/250x0/https://files.steempeak.com/file/steempeak/anpigon/ElGpvgWp-Screenshot_20190601-101805_Steem20Widget.jpg">
+<meta property="og:image" content="https://cdn.steemitimages.com/250x0/https://files.steempeak.com/file/steempeak/anpigon/P5mfKs9t-dog-1639528_640.jpg">
+<meta property="og:image" content="https://files.steempeak.com/file/steempeak/anpigon/0J6WGmza-Screenshot_20190601-101622_One20UI20Home.jpg">
+<meta property="article:published_time" content="2019-05-31T22:22:18.000Z">
+<meta property="article:modified_time" content="2021-08-14T10:47:06.076Z">
+<meta property="article:author" content="안피곤">
+<meta property="article:tag" content="React Native">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://files.steempeak.com/file/steempeak/anpigon/Tag0yss8-image.png">
+
+<link rel="canonical" href="https://anpigon.github.io/sct/@anpigon/steem-sct-vp-3-doze-app-standby">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>STEEM/SCT 보팅파워(VP) 안드로이드 위젯 #3 - Doze와 앱 대기(App Standby) 이야기 | 안피곤님의 블로그</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-20589042-10"></script>
+    <script pjax>
+      var host = window.location.hostname;
+      if (host !== "localhost" || !true) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-20589042-10');
+      }
+    </script>
+
+
+
+
+
+
+  
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-2365531018407022",
+          enable_page_level_ads: false
+     });
+</script>
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="안피곤님의 블로그" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">안피곤님의 블로그</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">코딩, 독서, 여행, 영화, 맛집</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>홈</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>태그<span class="badge">144</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>카테고리<span class="badge">25</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>아카이브<span class="badge">327</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>검색
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input" id="search-input"></div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="algolia-results">
+  <div id="algolia-stats"></div>
+  <div id="algolia-hits"></div>
+  <div id="algolia-pagination" class="algolia-pagination"></div>
+</div>
+
+  
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="ko">
+    <link itemprop="mainEntityOfPage" href="https://anpigon.github.io/sct/@anpigon/steem-sct-vp-3-doze-app-standby">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/me.jpg">
+      <meta itemprop="name" content="안피곤">
+      <meta itemprop="description" content="시간이 천천히 갔으면 좋겠다.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="안피곤님의 블로그">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          STEEM/SCT 보팅파워(VP) 안드로이드 위젯 #3 - Doze와 앱 대기(App Standby) 이야기
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">작성일</span>
+
+              <time title="Post created: 2019-06-01 07:22:18" itemprop="dateCreated datePublished" datetime="2019-06-01T07:22:18+09:00">2019-06-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Updated at: 2021-08-14 19:47:06" itemprop="dateModified" datetime="2021-08-14T19:47:06+09:00">2021-08-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">개발 이야기</span>
+                  </a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/react-native/" itemprop="url" rel="index">
+                    <span itemprop="name">React Native</span>
+                  </a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/react-native/%EC%8A%A4%ED%8C%80%EB%B3%B4%ED%8C%85%ED%8C%8C%EC%9B%8C-%EC%9C%84%EC%A0%AF-%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">스팀보팅파워 위젯 개발 이야기</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/sct/@anpigon/steem-sct-vp-3-doze-app-standby#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="/sct/@anpigon/steem-sct-vp-3-doze-app-standby" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+            <div style="margin-bottom:35px;margin-top:-20px;">
+              <!-- 블로그 본문 상단 광고 -->
+              <ins class="adsbygoogle"
+                  style="display:block"
+                  data-ad-client="ca-pub-2365531018407022"
+                  data-ad-slot="3390644000"
+                  data-ad-format="auto"
+                  data-full-width-responsive="true"></ins>
+              <script>
+                  (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+        <p><img alt data-src="https://files.steempeak.com/file/steempeak/anpigon/Tag0yss8-image.png"></p><p>안녕하세요. 안피곤입니다.</p><p>사실 스팀 위젯에 기능을 업데이트를 할 계획은 없었습니다. 그런데 막상 구현하고 보니 욕심이 계속 생깁니다. 앱에 버그도 있고 기능도 거의 없는게 계속 마음에 걸리네요.</p><p>그리고 위젯 UI 디자인은 포기했습니다. 해상도, OS 버전, 시스템 폰트 크기와 글꼴에 영향을 많이 받습니다. 안드로이드 UI 개발은 경험이 없어서 매우 어렵습니다. ㅠㅠ</p><a id="more"></a>
+
+
+
+<p>이번에 @griend96님이 제안하신 기능을 넣었습니다. 바탕화면에 위젯을 여러개 설치할 수 있습니다. 부 계정을 여러개 가지고 있는 스팀잇 사용자에게는 유용할 것 같습니다.</p>
+<br>
+<p><em><strong>사용 예시</strong></em><br>
+<img alt data-src="https://cdn.steemitimages.com/250x0/https://files.steempeak.com/file/steempeak/anpigon/kodrdzTA-Screenshot_20190601-101605_One20UI20Home.jpg"></p>
+<blockquote>
+<p>저는 <strong>완(WHAN)팀</strong> 멤버들을 바탕화면 위젯에 추가하여 모니터링(?) 하고 있습니다. 이제 <strong>완팀</strong>에 @griend96도 합류하셔서 이제 6명이 되었습니다. 축하해주세요. ㅋ</p>
+</blockquote>
+<br>
+<br>
+<h2 id="사용방법"><a class="markdownIt-Anchor" href="#사용방법"></a> 사용방법</h2>
+<p>사용 방법은 매우 간단합니다. 아래 순서만 지키면 누구나 쉽게 바탕화면에 위젯을 추가할 수 있습니다. 저는 매우 직관적이고 간단한 사용방법을 구현하기 위해서 항상 노력합니다.</p>
+<table>
+<thead>
+<tr>
+<th>1. 바탕화면에 위젯을 추가한다.</th>
+<th>2. 스팀잇 아이디를 입력하고 확인을 누른다.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt data-src="https://cdn.steemitimages.com/250x0/https://files.steempeak.com/file/steempeak/anpigon/atXUHDQq-Screenshot_20190601-101738_One20UI20Home.jpg"></td>
+<td><img alt data-src="https://cdn.steemitimages.com/250x0/https://files.steempeak.com/file/steempeak/anpigon/ElGpvgWp-Screenshot_20190601-101805_Steem20Widget.jpg"></td>
+</tr>
+</tbody>
+</table>
+<br>
+<br>
+<h2 id="doze-모드와-앱-대기app-standby-모드-이야기"><a class="markdownIt-Anchor" href="#doze-모드와-앱-대기app-standby-모드-이야기"></a> Doze 모드와 앱 대기(App Standby) 모드 이야기</h2>
+<p>Android 6.0 마시멜로(API 레벨 23)부터 <a target="_blank" rel="noopener" href="https://developer.android.com/training/monitoring-device-state/doze-standby?hl=ko">Doze 모드</a>라는 게 존재합니다. 앱이 Doze 모드나 앱 대기 모드(App Standby)에 들어가게 되면 네트워크 엑세스, Wake Lock, SyncAdapter, JobScheduler, AlarmManager이 작동하지 않게됩니다.</p>
+<p><strong>&quot;이 이유 때문에 위젯앱 설치하고 하루가 지나면 업데이트가 되지 않았던 것입니다.&quot;</strong></p>
+<p>하지만 충전 중일때는 두 모드에서 빠져나옵니다. 해당 모드는 배터리를 아낄수 있어서 사용자에게는 매우 좋습니다. 하지만 개발자에겐 헬입니다. ㅠㅠ</p>
+<p>그리고 삼성 갤럭시폰에는 스마트매니저(Smart Manager) 라는 녀석도 있습니다. 스마트 매니저는 장기간 사용하지 않는 앱을 강제로 잠재워 버립니다. <em>자장~ 자장~</em> ㅋ</p>
+<p><img alt data-src="https://cdn.steemitimages.com/250x0/https://files.steempeak.com/file/steempeak/anpigon/P5mfKs9t-dog-1639528_640.jpg"></p>
+<p>결국 저는 Doze, App Standby, Smart Manager에 항복했습니다. 해당 모드에서 빠져나가는 것은 코드 레벨에서 처리할 수 없다고 판단내렸습니다.</p>
+<p>Background Service를 버리고 Foreground Service로 개발하였습니다. Foreground Service는 해당 모드 영향을 안받는다고 합니다. 대신 서비스 동작시 상태바에 노티 알람 발생합니다.</p>
+<p><img alt data-src="https://files.steempeak.com/file/steempeak/anpigon/0J6WGmza-Screenshot_20190601-101622_One20UI20Home.jpg"></p>
+<blockquote>
+<p>위 화면에서 보는 거와 같이 서비스가 동작 중일때는 상태바에 아이콘이 표시됩니다. 만약 노티에 아이콘이 오랫동안 보인다면 사용자가 강제로 종료시킬 수 있습니다.</p>
+</blockquote>
+<br>
+<br>
+<center>*</center>
+<br>
+<br>
+<h2 id="노티-알람-발생시-진동과-소리를-없애기"><a class="markdownIt-Anchor" href="#노티-알람-발생시-진동과-소리를-없애기"></a> 노티 알람 발생시 진동과 소리를 없애기</h2>
+<p><br>노티 알람 발생시 진동과 소리를 없애려면 아래와 같이 설정하세요.</p>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">NotificationChannel channel = <span class="keyword">new</span> <span class="constructor">NotificationChannel(CHANNEL_ID, <span class="string">&quot;SteemWidget Service Channel&quot;</span>, NotificationManager.IMPORTANCE_LOW)</span>;</span><br><span class="line">((NotificationManager) get<span class="constructor">SystemService(Context.NOTIFICATION_SERVICE)</span>).create<span class="constructor">NotificationChannel(<span class="params">channel</span>)</span>;</span><br><span class="line">NotificationCompat.Builder builder = <span class="keyword">new</span> NotificationCompat.<span class="constructor">Builder(<span class="params">this</span>, CHANNEL_ID)</span>;</span><br><span class="line">builder.set<span class="constructor">SmallIcon(R.<span class="params">mipmap</span>.<span class="params">ic_launcher</span>)</span>;</span><br><span class="line">builder.set<span class="constructor">Vibrate(<span class="params">null</span>)</span>;</span><br><span class="line">builder.set<span class="constructor">Sound(<span class="params">null</span>)</span>;</span><br><span class="line">start<span class="constructor">Foreground(1, <span class="params">builder</span>.<span class="params">build</span>()</span>);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/">Stack Overflow</a>에서는 <code>builder.setVibrate(null)</code> 와 <code>builder.setSound(null)</code> 적용하면 된다고 했습니다. 그런데 적용해도 진동과 소리가 발생합니다. 저는 채널에 <code>NotificationManager.IMPORTANCE_LOW</code>를 설정하니 진동과 소리가 나지 않습니다.</p>
+</blockquote>
+<br>
+<br>
+<h2 id="보팅-파워-계산-로직"><a class="markdownIt-Anchor" href="#보팅-파워-계산-로직"></a> 보팅 파워 계산 로직</h2>
+<p>안드로이드 Java 코드에서 보팅 파워는 다음과 같이 계산합니다. ISO 날짜 파싱을 위해서 <code>SimpleDateFormat</code>를 사용하였습니다.</p>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> static final long VP_REGENERATION_SECS_STEEM = <span class="number">432000</span>;</span><br><span class="line"></span><br><span class="line">    public static String calculate<span class="constructor">VotingPower(String <span class="params">lastVoteTime</span>, <span class="params">int</span> <span class="params">votingPower</span>)</span> ｛</span><br><span class="line">        <span class="keyword">try</span> ｛</span><br><span class="line">            SimpleDateFormat df = <span class="keyword">new</span> <span class="constructor">SimpleDateFormat(<span class="string">&quot;yyyy-MM-dd&#x27;T&#x27;HH:mm:ssZ&quot;</span>)</span>;</span><br><span class="line">            Date d = df.parse(lastVoteTime+<span class="string">&quot;+00:00&quot;</span>);</span><br><span class="line">            double elapsed = (<span class="keyword">new</span> <span class="constructor">Date()</span>.get<span class="constructor">Time()</span> - d.get<span class="constructor">Time()</span>)<span class="operator"> / </span><span class="number">1000</span>;</span><br><span class="line">            double vp = votingPower + (<span class="number">10000.0</span><span class="operator"> * </span>elapsed)<span class="operator"> / </span>VP_REGENERATION_SECS_STEEM;</span><br><span class="line">            vp = <span class="module-access"><span class="module"><span class="identifier">Math</span>.</span></span>min(<span class="module-access"><span class="module"><span class="identifier">Math</span>.</span></span>floor(vp)<span class="operator"> / </span><span class="number">100</span>, <span class="number">100</span>);</span><br><span class="line">            return <span class="module-access"><span class="module"><span class="identifier">String</span>.</span></span>value<span class="constructor">Of(<span class="params">vp</span>)</span>;</span><br><span class="line">        ｝ catch(Exception ex) ｛</span><br><span class="line">             <span class="module-access"><span class="module"><span class="identifier">Log</span>.</span></span>e(TAG,<span class="string">&quot;&quot;</span>, ex);</span><br><span class="line">        ｝</span><br><span class="line">        return <span class="string">&quot;0&quot;</span>;</span><br><span class="line">    ｝</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>날짜 계산에 <a target="_blank" rel="noopener" href="https://www.joda.org/joda-time/">Joda Time</a> 라이브러리를 사용하고 싶었습니다. 하지만 React Native에서 릴리즈 빌드시 오류가 발생합니다. ㅠㅠ Low Level에서 오류가 발생하는 것 같아서 원인을 찾다가 포기했습니다.</p>
+</blockquote>
+<p><br><hr></p>
+<ul>
+<li><strong>구글 스토어 다운로드 링크:</strong> <a target="_blank" rel="noopener" href="https://play.google.com/store/apps/details?id=com.steem_widget">https://play.google.com/store/apps/details?id=com.steem_widget</a></li>
+</ul>
+<hr><br>
+<p>리액트 네이티브 기반으로 스팀 위젯 앱 개발을 시작했습니다. 그런데 구현하다보니 여러가지 문제(?)로 위젯 기능을 안드로이드 Java로 다시 구현했습니다. 요 몇일동안 구글 문서보면서 Android 공부하느라 기능 업데이트가 늦어졌습니다. 그리고 피드백은 댓글로 남겨주세요.</p>
+<p>위젯 기능을 제외하고는 다른 기능은 리액트 네이티브로 구현하면서 조금씩 업데이트 해보려고 합니다. ㅋ 참고로 저는 본업은 백엔드 개발자입니다. 프론트엔드와 모바일 개발은 취미로  하고 있습니다. 취미로 하는 개발이 더 재미있습니다.</p>
+<br>
+<p>마지막으로 안드로이드 위젯 개발하면서 참고했던 블로그 자료를 모두 공유합니다.</p>
+<p>오늘도 해피 코딩하세요~!</p>
+<br>
+<hr>
+<h6 id="관련-자료"><a class="markdownIt-Anchor" href="#관련-자료"></a> 관련 자료</h6>
+<ul>
+<li><strong>Doze 및 앱 대기 모드 최적화 | Android Developers:</strong> <a target="_blank" rel="noopener" href="https://developer.android.com/training/monitoring-device-state/doze-standby?hl=ko">https://developer.android.com/training/monitoring-device-state/doze-standby?hl=ko</a></li>
+<li><strong>백그라운드 실행 제한 | Android Developers:</strong> <a target="_blank" rel="noopener" href="https://developer.android.com/training/monitoring-device-state/doze-standby?hl=ko">https://developer.android.com/training/monitoring-device-state/doze-standby?hl=ko</a></li>
+<li><strong>Android 8.0 동작 변경 사항 | Android Developers:</strong> <a target="_blank" rel="noopener" href="https://developer.android.com/about/versions/oreo/android-8.0-changes?hl=ko">https://developer.android.com/about/versions/oreo/android-8.0-changes?hl=ko</a></li>
+<li><strong>Android O에서의 백그라운드 처리를 위한 JobIntentService:</strong> <a target="_blank" rel="noopener" href="https://medium.com/til-kotlin-ko/android-o%EF%BC%85EC%EF%BC%8597%EF%BC%8590%EF%BC%85EC%EF%BC%8584%EF%BC%859C%EF%BC%85EC%EF%BC%859D%EF%BC%8598-%EF%BC%85EB%EF%BC%85B0%EF%BC%85B1%EF%BC%85EA%EF%BC%85B7%EF%BC%85B8%EF%BC%85EB%EF%BC%859D%EF%BC%85BC%EF%BC%85EC%EF%BC%859A%EF%BC%85B4%EF%BC%85EB%EF%BC%8593%EF%BC%859C-%EF%BC%85EC%EF%BC%85B2%EF%BC%8598%EF%BC%85EB%EF%BC%85A6%EF%BC%85AC%EF%BC%85EB%EF%BC%85A5%EF%BC%85BC-%EF%BC%85EC%EF%BC%859C%EF%BC%8584%EF%BC%85ED%EF%BC%8595%EF%BC%859C-jobintentservice-250af2f7783c">https://medium.com/til-kotlin-ko/android-o％EC％97％90％EC％84％9C％EC％9D％98-％EB％B0％B1％EA％B7％B8％EB％9D％BC％EC％9A％B4％EB％93％9C-％EC％B2％98％EB％A6％AC％EB％A5％BC-％EC％9C％84％ED％95％9C-jobintentservice-250af2f7783c</a></li>
+<li><strong>Doze 모드에서 서비스 실행 방법:</strong> <a target="_blank" rel="noopener" href="https://hashedin.com/blog/save-your-android-service-from-doze-mode/">https://hashedin.com/blog/save-your-android-service-from-doze-mode/</a></li>
+<li><strong>Android 오레오(API 26)에서 백그라운드 서비스 유지하는 방법</strong>: <a target="_blank" rel="noopener" href="https://android.jlelse.eu/keep-those-background-services-working-when-targeting-android-oreo-sdk-26-cbf6cc2bdb7f">https://android.jlelse.eu/keep-those-background-services-working-when-targeting-android-oreo-sdk-26-cbf6cc2bdb7f</a></li>
+<li><strong>[Android] 배터리 최적화 대응하기: 도즈(Doze)와 어플 대기모드(App Standby)</strong>: <a target="_blank" rel="noopener" href="https://m.blog.naver.com/PostView.nhn?blogId=nife0719&amp;logNo=221029613969&amp;categoryNo=26&amp;proxyReferer=http%EF%BC%853A%EF%BC%852F%EF%BC%852Fwebs.co.kr%EF%BC%852Findex.php%EF%BC%853Fdocument_srl%EF%BC%853D3312655">https://m.blog.naver.com/PostView.nhn?blogId=nife0719&amp;logNo=221029613969&amp;categoryNo=26&amp;proxyReferer=http％3A％2F％2Fwebs.co.kr％2Findex.php％3Fdocument_srl％3D3312655</a></li>
+<li><strong>Google Developers Korea Blog: 안드로이드 6.0 마시멜로 무엇을 테스트 할까요?</strong> <a target="_blank" rel="noopener" href="https://developers-kr.googleblog.com/2015/08/testyourapponandroid60.html">https://developers-kr.googleblog.com/2015/08/testyourapponandroid60.html</a></li>
+<li><strong>adb로 안드로이드 배터리 상태 모킹(Mocking) 하기</strong>: <a target="_blank" rel="noopener" href="https://www.intellectsoft.net/blog/android-shell-part-1-mocking-battery-status/">https://www.intellectsoft.net/blog/android-shell-part-1-mocking-battery-status/</a></li>
+</ul>
+<hr>
+
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/react-native/" rel="tag"># React Native</a>
+          </div>
+
+        
+  <div class="post-widgets">
+    <div class="wp_rating">
+      <div id="wpac-rating"></div>
+    </div>
+  </div>
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/tasteem/@wangpigon/tasteem-1a6ef2" rel="next" title="[맛집] 제주도 이중섭거리 맛있는 덮밥 - 중섭이네식당">
+                  <i class="fa fa-chevron-left"></i> [맛집] 제주도 이중섭거리 맛있는 덮밥 - 중섭이네식당
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/tasteem/@wangpigon/tasteem-72ab71" rel="prev" title="[맛집] 제주 통갈치조림 맛집 - 제주어멍">
+                  [맛집] 제주 통갈치조림 맛집 - 제주어멍 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    
+  <div class="comments" id="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          목차
+        </li>
+        <li class="sidebar-nav-overview">
+          흝어보기
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%EC%82%AC%EC%9A%A9%EB%B0%A9%EB%B2%95"><span class="nav-number">1.</span> <span class="nav-text"> 사용방법</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#doze-%EB%AA%A8%EB%93%9C%EC%99%80-%EC%95%B1-%EB%8C%80%EA%B8%B0app-standby-%EB%AA%A8%EB%93%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0"><span class="nav-number">2.</span> <span class="nav-text"> Doze 모드와 앱 대기(App Standby) 모드 이야기</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EB%85%B8%ED%8B%B0-%EC%95%8C%EB%9E%8C-%EB%B0%9C%EC%83%9D%EC%8B%9C-%EC%A7%84%EB%8F%99%EA%B3%BC-%EC%86%8C%EB%A6%AC%EB%A5%BC-%EC%97%86%EC%95%A0%EA%B8%B0"><span class="nav-number">3.</span> <span class="nav-text"> 노티 알람 발생시 진동과 소리를 없애기</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EB%B3%B4%ED%8C%85-%ED%8C%8C%EC%9B%8C-%EA%B3%84%EC%82%B0-%EB%A1%9C%EC%A7%81"><span class="nav-number">4.</span> <span class="nav-text"> 보팅 파워 계산 로직</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%EA%B4%80%EB%A0%A8-%EC%9E%90%EB%A3%8C"><span class="nav-number">4.0.0.0.1.</span> <span class="nav-text"> 관련 자료</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="안피곤"
+    src="/images/me.jpg">
+  <p class="site-author-name" itemprop="name">안피곤</p>
+  <div class="site-description" itemprop="description">시간이 천천히 갔으면 좋겠다.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">327</span>
+          <span class="site-state-item-name">포스트</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-name">카테고리</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">144</span>
+        <span class="site-state-item-name">태그</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/anpigon" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;anpigon" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:markan82@gmail.com" title="E-Mail &amp;rarr; mailto:markan82@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+          <!-- 정사각형 광고 -->
+          <div style="margin-top: 15px;">
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-2365531018407022"
+                data-ad-slot="7521850306"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+          </div>
+    </div>
+  </aside>
+  <div id="sidebar-dimmer">3</div>
+
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">안피곤</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v5.4.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.4.2
+  </div>
+
+        
+
+
+
+
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-firestore.js"></script>
+  <script>
+    firebase.initializeApp({
+      apiKey: 'AIzaSyA4QZWCWb3IuIHjbkAmO0ttIM2b-qtLTP8',
+      projectId: 'next-blog-8f9a0'
+    });
+
+    function getCount(doc, increaseCount) {
+      // IncreaseCount will be false when not in article page
+
+      return doc.get().then(d => {
+        var count = 0;
+        if (!d.exists) { // Has no data, initialize count
+          if (increaseCount) {
+            doc.set({
+              count: 1
+            });
+            count = 1;
+          }
+        } else { // Has data
+          count = d.data().count;
+          if (increaseCount) {
+            // If first view this article
+            doc.set({ // Increase count
+              count: count + 1
+            });
+            count++;
+          }
+        }
+
+        return count;
+      });
+    }
+
+    function appendCountTo(el) {
+      return count => {
+        el.innerText = count;
+      }
+    }
+  </script>
+  <script pjax>
+    (function() {
+      var db = firebase.firestore();
+      var articles = db.collection('articles');
+
+      if (CONFIG.page.isPost) { // Is article page
+        var title = document.querySelector('.post-title').innerText.trim();
+        var doc = articles.doc(title);
+        var increaseCount = true;
+        if (localStorage.getItem(title)) {
+          increaseCount = false;
+        } else {
+          // Mark as visited
+          localStorage.setItem(title, true);
+        }
+        getCount(doc, increaseCount).then(appendCountTo(document.querySelector('.firestore-visitors-count')));
+      } else if (CONFIG.page.isHome) { // Is index page
+        var promises = [...document.querySelectorAll('.post-title')].map(element => {
+          var title = element.innerText.trim();
+          var doc = articles.doc(title);
+          return getCount(doc);
+        });
+        Promise.all(promises).then(counts => {
+          var metas = document.querySelectorAll('.firestore-visitors-count');
+          counts.forEach((val, idx) => {
+            appendCountTo(metas[idx])(val);
+          });
+        });
+      }
+    })();
+  </script>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.getAttribute('pjax') !== null) {
+      element.setAttribute('pjax', '');
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+  <script pjax>
+  if (CONFIG.page.isPost) {
+    wpac_init = window.wpac_init || [];
+    wpac_init.push({
+      widget: 'Rating',
+      id: 21712,
+      el: 'wpac-rating',
+      color: 'fc6423'
+    });
+    (function() {
+      if ('WIDGETPACK_LOADED' in window) return;
+      WIDGETPACK_LOADED = true;
+      var mc = document.createElement('script');
+      mc.type = 'text/javascript';
+      mc.async = true;
+      mc.src = '//embed.widgetpack.com/widget.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+    })();
+  }
+  </script>
+
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.4.1/dist/instantsearch.min.css">
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.4.1/dist/instantsearch.js"></script>
+<script src="/js/algolia-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+
+  
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://anpigon-github-io.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  function loadComments() {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: {page: {
+            url: "https://anpigon.github.io/sct/@anpigon/steem-sct-vp-3-doze-app-standby",
+            identifier: "/sct/@anpigon/steem-sct-vp-3-doze-app-standby",
+            title: "STEEM/SCT 보팅파워(VP) 안드로이드 위젯 #3 - Doze와 앱 대기(App Standby) 이야기"
+          }
+        }
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://anpigon-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  }
+    (function() {
+      var offsetTop = document.getElementById('comments').offsetTop - window.innerHeight;
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        window.addEventListener('load', loadComments, false);
+      } else {
+        var disqus_scroll = () => {
+          // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = document.getElementById('comments').offsetTop - window.innerHeight;
+          var scrollTop = window.scrollY;
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            window.removeEventListener('scroll', disqus_scroll);
+            loadComments();
+          }
+        };
+        window.addEventListener('scroll', disqus_scroll);
+      }
+    })();
+  
+</script>
+
+    </div>
+</body>
+</html>

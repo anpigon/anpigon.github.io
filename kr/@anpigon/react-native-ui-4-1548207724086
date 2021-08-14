@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="yfKOiBPD8WlKH3NPG_CG1zr4MsCgCG1YVdGKhMS2CKc">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Noto Serif KR:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.4.2',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: true,
+    pangu: false,
+    algolia: {
+      appID: 'YY693DUDAI',
+      apiKey: 'db449d453b150820f66e7bc3d4523a17',
+      indexName: 'my-hexo-blog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '복사',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="리액트 네이티브(React Native)로 인스타그램 UI를 구현하는 네 번째 강의입니다. 이번에는 프로필 화면을 구현합니다. 이 포스팅은 아래 무료 동영상 강의를 참고하여 작성되었습니다.https:&#x2F;&#x2F;youtu.be&#x2F;9g_73wEbX8E 상단바 수정하기탭 화면마다 상단바가 다르기 때문에 수정해야합니다. 현재는 모든 탭 화면에서 같은 상단바가 보입니다.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[React Native] 인스타그램 UI 만들기 #4">
+<meta property="og:url" content="https://anpigon.github.io/kr/@anpigon/react-native-ui-4-1548207724086">
+<meta property="og:site_name" content="안피곤님의 블로그">
+<meta property="og:description" content="리액트 네이티브(React Native)로 인스타그램 UI를 구현하는 네 번째 강의입니다. 이번에는 프로필 화면을 구현합니다. 이 포스팅은 아래 무료 동영상 강의를 참고하여 작성되었습니다.https:&#x2F;&#x2F;youtu.be&#x2F;9g_73wEbX8E 상단바 수정하기탭 화면마다 상단바가 다르기 때문에 수정해야합니다. 현재는 모든 탭 화면에서 같은 상단바가 보입니다.">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:image" content="https://user-images.githubusercontent.com/3969643/51441420-b41f1c80-1d14-11e9-9f5d-af5cd3a6aaae.png">
+<meta property="og:image" content="https://steemitimages.com/400x0/https://user-images.githubusercontent.com/3969643/51536516-2fa4d900-1e8f-11e9-89cb-a91a577cca92.png">
+<meta property="og:image" content="https://steemitimages.com/300x0/https://user-images.githubusercontent.com/3969643/51537133-0e44ec80-1e91-11e9-85c2-97692ed82ea7.png">
+<meta property="og:image" content="https://steemitimages.com/300x0/https://user-images.githubusercontent.com/3969643/51538633-2d457d80-1e95-11e9-9f4c-972a66732fa0.png">
+<meta property="og:image" content="https://steemitimages.com/300x0/https://user-images.githubusercontent.com/3969643/51541690-caf07b00-1e9c-11e9-8103-a8c9c904b3a5.png">
+<meta property="article:published_time" content="2019-01-22T16:42:06.000Z">
+<meta property="article:modified_time" content="2021-08-14T10:47:06.076Z">
+<meta property="article:author" content="안피곤">
+<meta property="article:tag" content="React Native">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://user-images.githubusercontent.com/3969643/51441420-b41f1c80-1d14-11e9-9f5d-af5cd3a6aaae.png">
+
+<link rel="canonical" href="https://anpigon.github.io/kr/@anpigon/react-native-ui-4-1548207724086">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>[React Native] 인스타그램 UI 만들기 #4 | 안피곤님의 블로그</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-20589042-10"></script>
+    <script pjax>
+      var host = window.location.hostname;
+      if (host !== "localhost" || !true) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-20589042-10');
+      }
+    </script>
+
+
+
+
+
+
+  
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-2365531018407022",
+          enable_page_level_ads: false
+     });
+</script>
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="안피곤님의 블로그" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">안피곤님의 블로그</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">코딩, 독서, 여행, 영화, 맛집</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>홈</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>태그<span class="badge">144</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>카테고리<span class="badge">25</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>아카이브<span class="badge">327</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>검색
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input" id="search-input"></div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="algolia-results">
+  <div id="algolia-stats"></div>
+  <div id="algolia-hits"></div>
+  <div id="algolia-pagination" class="algolia-pagination"></div>
+</div>
+
+  
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="ko">
+    <link itemprop="mainEntityOfPage" href="https://anpigon.github.io/kr/@anpigon/react-native-ui-4-1548207724086">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/me.jpg">
+      <meta itemprop="name" content="안피곤">
+      <meta itemprop="description" content="시간이 천천히 갔으면 좋겠다.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="안피곤님의 블로그">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          [React Native] 인스타그램 UI 만들기 #4
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">작성일</span>
+
+              <time title="Post created: 2019-01-23 01:42:06" itemprop="dateCreated datePublished" datetime="2019-01-23T01:42:06+09:00">2019-01-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Updated at: 2021-08-14 19:47:06" itemprop="dateModified" datetime="2021-08-14T19:47:06+09:00">2021-08-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">개발 이야기</span>
+                  </a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/react-native/" itemprop="url" rel="index">
+                    <span itemprop="name">React Native</span>
+                  </a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/react-native/%EC%9D%B8%EC%8A%A4%ED%83%80%EA%B7%B8%EB%9E%A8-%EB%A7%8C%EB%93%A4%EA%B8%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">인스타그램 만들기</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/kr/@anpigon/react-native-ui-4-1548207724086#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="/kr/@anpigon/react-native-ui-4-1548207724086" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+            <div style="margin-bottom:35px;margin-top:-20px;">
+              <!-- 블로그 본문 상단 광고 -->
+              <ins class="adsbygoogle"
+                  style="display:block"
+                  data-ad-client="ca-pub-2365531018407022"
+                  data-ad-slot="3390644000"
+                  data-ad-format="auto"
+                  data-full-width-responsive="true"></ins>
+              <script>
+                  (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+        <p><img alt data-src="https://user-images.githubusercontent.com/3969643/51441420-b41f1c80-1d14-11e9-9f5d-af5cd3a6aaae.png"></p><p>리액트 네이티브(React Native)로 인스타그램 UI를 구현하는 네 번째 강의입니다. 이번에는 프로필 화면을 구현합니다. 이 포스팅은 아래 무료 동영상 강의를 참고하여 작성되었습니다.</p><p><a target="_blank" rel="noopener" href="https://youtu.be/9g_73wEbX8E">https://youtu.be/9g_73wEbX8E</a></p><br><h1 id="상단바-수정하기"><a class="markdownIt-Anchor" href="#상단바-수정하기"></a> 상단바 수정하기</h1><p>탭 화면마다 상단바가 다르기 때문에 수정해야합니다. 현재는 모든 탭 화면에서 같은 상단바가 보입니다.</p><a id="more"></a>
+
+
+
+
+
+<p>먼저 <code>MainScreen.js</code> 파일을 수정합니다. 아래와 같이 <code>header</code>에 <em>null</em> 을 입력합니다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">MainScreen</span> <span class="keyword">extends</span> <span class="title">Component</span> ｛</span></span><br><span class="line"><span class="class"></span></span><br><span class="line"><span class="class">  <span class="title">static</span> <span class="title">navigationOptions</span> </span>= ｛</span><br><span class="line">    <span class="attr">header</span>: <span class="literal">null</span></span><br><span class="line">  ｝</span><br><span class="line"></span><br><span class="line"><span class="comment">// ... 일부 코드 생략 ...</span></span><br></pre></td></tr></table></figure>
+<br>
+<p>그다음 <code>./Components/AppTabNavigator/HomeTab.js</code> 파일을 수정합니다. <code>Header, Left, Right, Body</code>를 추가로 <strong>import</strong> 합니다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> ｛ Container, Content, Icon, Thumbnail, Header, Left, Right, Body ｝ <span class="keyword">from</span> <span class="string">&#x27;native-base&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<br>
+<p>그리고 <code>render()</code> 함수를 수정합니다. <strong>Container</strong> 아래에 <strong>Header</strong>를 추가합니다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">HomeTab</span> <span class="keyword">extends</span> <span class="title">Component</span> ｛</span></span><br><span class="line"><span class="class">    <span class="title">render</span>() ｛</span></span><br><span class="line"><span class="class">        <span class="title">return</span> (</span></span><br><span class="line"><span class="class">            &lt;<span class="title">Container</span> <span class="title">style</span></span>=｛style.container｝&gt;</span><br><span class="line">                <span class="xml"><span class="tag">&lt;<span class="name">Header</span>&gt;</span></span></span><br><span class="line"><span class="xml">                    <span class="tag">&lt;<span class="name">Left</span>&gt;</span><span class="tag">&lt;<span class="name">Icon</span> <span class="attr">name</span>=<span class="string">&#x27;ios-camera&#x27;</span> <span class="attr">style</span>=<span class="string">｛｛</span> <span class="attr">paddingLeft:10</span> ｝｝/&gt;</span><span class="tag">&lt;/<span class="name">Left</span>&gt;</span></span></span><br><span class="line"><span class="xml">                    <span class="tag">&lt;<span class="name">Body</span>&gt;</span><span class="tag">&lt;<span class="name">Text</span>&gt;</span>Instagram<span class="tag">&lt;/<span class="name">Text</span>&gt;</span><span class="tag">&lt;/<span class="name">Body</span>&gt;</span></span></span><br><span class="line"><span class="xml">                    <span class="tag">&lt;<span class="name">Right</span>&gt;</span><span class="tag">&lt;<span class="name">Icon</span> <span class="attr">name</span>=<span class="string">&#x27;ios-send&#x27;</span> <span class="attr">style</span>=<span class="string">｛｛</span> <span class="attr">paddingRight:10</span> ｝｝/&gt;</span><span class="tag">&lt;/<span class="name">Right</span>&gt;</span></span></span><br><span class="line"><span class="xml">                <span class="tag">&lt;/<span class="name">Header</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line">｛<span class="comment">/* ... 일부 코드 생략 ... */</span>｝</span><br></pre></td></tr></table></figure>
+<br>
+<p>여기까지 작업하고 확인해보겠습니다. 확인해보면 <strong>HomeTab</strong> 에만 헤더가 있고, 나머지 탭 화면는 헤더가 없습니다.</p>
+<p><img alt data-src="https://steemitimages.com/400x0/https://user-images.githubusercontent.com/3969643/51536516-2fa4d900-1e8f-11e9-89cb-a91a577cca92.png"></p>
+<br>
+<h1 id="프로필-페이지-헤더-만들기"><a class="markdownIt-Anchor" href="#프로필-페이지-헤더-만들기"></a> 프로필 페이지 헤더 만들기</h1>
+<p><code>./Components/AppTabNavigator/ProfileTab.js</code>를 수정합니다. <code>Image</code>와 <code>Container, Content, Header, Left, Body, Right, Button</code>를 추가로 <strong>import</strong> 합니다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> ｛ View, Text, StyleSheet, Image ｝ <span class="keyword">from</span> <span class="string">&#x27;react-native&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> ｛ Icon, Container, Content, Header, Left, Body, Right, Button, Image ｝ <span class="keyword">from</span> <span class="string">&#x27;native-base&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<br>
+<p>그다음 <code>render()</code> 함수를 수정합니다. 다음과 같이 <strong>Header</strong> 를 추가합니다.</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">export default class ProfileTab extends Component｛</span><br><span class="line"></span><br><span class="line">    render() ｛</span><br><span class="line">        return (</span><br><span class="line">            <span class="tag">&lt;<span class="name">Container</span> <span class="attr">style</span>=<span class="string">｛｛</span> <span class="attr">flex:1</span>, <span class="attr">backgroundColor:</span> &#x27;<span class="attr">white</span>&#x27;｝｝&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">Header</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">Left</span>&gt;</span><span class="tag">&lt;<span class="name">Icon</span> <span class="attr">name</span>=<span class="string">&quot;md-person-add&quot;</span> <span class="attr">style</span>=<span class="string">｛｛</span> <span class="attr">paddingLeft:10</span> ｝｝ /&gt;</span><span class="tag">&lt;/<span class="name">Left</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">Body</span>&gt;</span><span class="tag">&lt;<span class="name">Text</span>&gt;</span>anpigon<span class="tag">&lt;/<span class="name">Text</span>&gt;</span><span class="tag">&lt;/<span class="name">Body</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">Right</span>&gt;</span><span class="tag">&lt;<span class="name">EntypoIcon</span> <span class="attr">name</span>=<span class="string">&quot;back-in-time&quot;</span> <span class="attr">style</span>=<span class="string">｛｛</span> <span class="attr">paddingRight:10</span>, <span class="attr">fontSize:</span> <span class="attr">32</span> ｝｝ /&gt;</span><span class="tag">&lt;/<span class="name">Right</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">Header</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">Container</span>&gt;</span></span><br><span class="line">        );</span><br><span class="line">    ｝</span><br><span class="line"></span><br><span class="line">｛/* ... 일부 코드 생략 ... */｝</span><br></pre></td></tr></table></figure>
+<p><br>여기까지 작업한 화면입니다. 상단 좌우에 아이콘이 생겼습니다.</p>
+<p><img alt data-src="https://steemitimages.com/300x0/https://user-images.githubusercontent.com/3969643/51537133-0e44ec80-1e91-11e9-85c2-97692ed82ea7.png"></p>
+<br>
+<p><strong>Header</strong> 바로 아래에 다음 코드를 입력합니다. 프로필 이미지, 포스팅 수, 팔로워 수, 팔로잉 수를 출력합니다. 바로 아래에 프로필 수정 버튼과 설정 버튼이 위치하고 있습니다. 그리고 그 아래에 이름과 프로필 정보가 출력됩니다.</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Content</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">View</span> <span class="attr">style</span>=<span class="string">｛｛flexDirection:</span>&#x27;<span class="attr">row</span>&#x27;, <span class="attr">paddingTop:10</span>｝｝&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">View</span> <span class="attr">style</span>=<span class="string">｛｛flex:1,</span> <span class="attr">alignItems:</span>&#x27;<span class="attr">center</span>&#x27;｝｝&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">Image</span> <span class="attr">source</span>=<span class="string">｛｛</span> <span class="attr">url:</span> &#x27;<span class="attr">https:</span>//<span class="attr">steemitimages.com</span>/<span class="attr">u</span>/<span class="attr">anpigon</span>/<span class="attr">avatar</span>&#x27; ｝｝</span></span><br><span class="line"><span class="tag">             <span class="attr">style</span>=<span class="string">｛｛width:75,</span> <span class="attr">height:75</span>, <span class="attr">borderRadius:37.5</span>｝｝/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">View</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">View</span> <span class="attr">style</span>=<span class="string">｛｛flex:3｝｝</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">View</span> <span class="attr">style</span>=<span class="string">｛｛flexDirection:</span>&#x27;<span class="attr">row</span>&#x27;, <span class="attr">justifyContent:</span>&#x27;<span class="attr">space-around</span>&#x27;｝｝&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">View</span> <span class="attr">style</span>=<span class="string">｛｛alignItems:</span>&#x27;<span class="attr">center</span>&#x27;｝｝&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">Text</span>&gt;</span>167<span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">Text</span> <span class="attr">style</span>=<span class="string">｛｛fontSize:10,</span> <span class="attr">color:</span>&#x27;<span class="attr">gray</span>&#x27;｝｝&gt;</span>posts<span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">View</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">View</span> <span class="attr">style</span>=<span class="string">｛｛alignItems:</span>&#x27;<span class="attr">center</span>&#x27;｝｝&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">Text</span>&gt;</span>346<span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">Text</span> <span class="attr">style</span>=<span class="string">｛｛fontSize:10,</span> <span class="attr">color:</span>&#x27;<span class="attr">gray</span>&#x27;｝｝&gt;</span>follower<span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">View</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">View</span> <span class="attr">style</span>=<span class="string">｛｛alignItems:</span>&#x27;<span class="attr">center</span>&#x27;｝｝&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">Text</span>&gt;</span>192<span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">Text</span> <span class="attr">style</span>=<span class="string">｛｛fontSize:10,</span> <span class="attr">color:</span>&#x27;<span class="attr">gray</span>&#x27;｝｝&gt;</span>following<span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">View</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">View</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">View</span> <span class="attr">style</span>=<span class="string">｛｛flexDirection:</span>&#x27;<span class="attr">row</span>&#x27;｝｝&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Button</span> <span class="attr">bordered</span> <span class="attr">dark</span></span></span><br><span class="line"><span class="tag">                <span class="attr">style</span>=<span class="string">｛｛flex:4,</span> <span class="attr">marginLeft:10</span>, <span class="attr">justifyContent:</span>&#x27;<span class="attr">center</span>&#x27;, <span class="attr">height:30</span>, <span class="attr">marginTop:10</span>｝｝&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">Text</span>&gt;</span>Edit Profile<span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">Button</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Button</span> <span class="attr">bordered</span> <span class="attr">dark</span> <span class="attr">small</span> <span class="attr">icon</span></span></span><br><span class="line"><span class="tag">                <span class="attr">style</span>=<span class="string">｛｛flex:1,</span> <span class="attr">marginRight:10</span>, <span class="attr">marginLeft:5</span>, <span class="attr">justifyContent:</span>&#x27;<span class="attr">center</span>&#x27;, <span class="attr">height:30</span>, <span class="attr">marginTop:10</span>｝｝&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">Icon</span> <span class="attr">name</span>=<span class="string">&quot;settings&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">Button</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">View</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">View</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">View</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">View</span> <span class="attr">style</span>=<span class="string">｛｛paddingHorizontal:10,</span> <span class="attr">paddingVertical:10</span>｝｝&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Text</span> <span class="attr">style</span>=<span class="string">｛｛fontWeight:</span>&#x27;<span class="attr">bold</span>&#x27;｝｝&gt;</span>안피곤<span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Text</span>&gt;</span>Lark | Computer Jock | Commercial Pilot<span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Text</span>&gt;</span>www.steemit.com/@anpigon<span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">View</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">Content</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><br>여기까지 작업한 화면입니다.</p>
+<p><img alt data-src="https://steemitimages.com/300x0/https://user-images.githubusercontent.com/3969643/51538633-2d457d80-1e95-11e9-9f4c-972a66732fa0.png"></p>
+<br>
+<h1 id="스팀잇-프로필-정보-출력하기"><a class="markdownIt-Anchor" href="#스팀잇-프로필-정보-출력하기"></a> 스팀잇 프로필 정보 출력하기</h1>
+<p>스팀잇 서버에서 계정 정보를 가져오는 함수를 입력합니다. 스팀잇의 <code>database_api.get_accounts</code> API를 사용합니다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">fetchAccount(username) ｛</span><br><span class="line">  <span class="keyword">const</span> data = ｛</span><br><span class="line">    <span class="attr">id</span>: <span class="number">3</span>,</span><br><span class="line">    <span class="attr">jsonrpc</span>: <span class="string">&quot;2.0&quot;</span>,</span><br><span class="line">    <span class="attr">method</span>: <span class="string">&quot;call&quot;</span>,</span><br><span class="line">    <span class="attr">params</span>: [</span><br><span class="line">      <span class="string">&quot;database_api&quot;</span>,</span><br><span class="line">      <span class="string">&quot;get_accounts&quot;</span>,</span><br><span class="line">      [[username]]</span><br><span class="line">    ]</span><br><span class="line">  ｝;</span><br><span class="line">  <span class="keyword">return</span> fetch(<span class="string">&#x27;https://api.steemit.com&#x27;</span>, ｛</span><br><span class="line">    <span class="attr">method</span>: <span class="string">&#x27;POST&#x27;</span>,</span><br><span class="line">    <span class="attr">body</span>: <span class="built_in">JSON</span>.stringify(data)</span><br><span class="line">  ｝)</span><br><span class="line">  .then(<span class="function"><span class="params">res</span> =&gt;</span> res.json())</span><br><span class="line">  .then(<span class="function"><span class="params">res</span> =&gt;</span> res.result[<span class="number">0</span>])</span><br><span class="line">｝</span><br></pre></td></tr></table></figure>
+<br>
+<p>그리고 스팀잇 팔로우 수와 팔로잉 수를 가져오는 함수를 입력합니다. <code>follow_api.get_follow_count</code> API를 사용합니다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">fetchFollowCount(username) ｛</span><br><span class="line">  <span class="keyword">const</span> data = ｛</span><br><span class="line">    <span class="attr">id</span>: <span class="number">4</span>,</span><br><span class="line">    <span class="attr">jsonrpc</span>: <span class="string">&quot;2.0&quot;</span>,</span><br><span class="line">    <span class="attr">method</span>: <span class="string">&quot;call&quot;</span>,</span><br><span class="line">    <span class="attr">params</span>: [</span><br><span class="line">      <span class="string">&quot;follow_api&quot;</span>,</span><br><span class="line">      <span class="string">&quot;get_follow_count&quot;</span>,</span><br><span class="line">      [username]</span><br><span class="line">    ]</span><br><span class="line">  ｝;</span><br><span class="line">  <span class="keyword">return</span> fetch(<span class="string">&#x27;https://api.steemit.com&#x27;</span>, ｛</span><br><span class="line">    <span class="attr">method</span>: <span class="string">&#x27;POST&#x27;</span>,</span><br><span class="line">    <span class="attr">body</span>: <span class="built_in">JSON</span>.stringify(data)</span><br><span class="line">  ｝)</span><br><span class="line">  .then(<span class="function"><span class="params">res</span> =&gt;</span> res.json())</span><br><span class="line">  .then(<span class="function"><span class="params">res</span> =&gt;</span> res.result)</span><br><span class="line">｝</span><br></pre></td></tr></table></figure>
+<p><br>그다음 <code>componentWillMount()</code> 를 구현합니다. 그리고 방금 구현한 함수를 호출합니다. 계정 정보와 팔로우 수를 가져와서 <code>state</code> 에 저장합니다. 명성(reputation)도 계산하여 저장하고 있습니다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">componentWillMount() ｛</span><br><span class="line">  <span class="keyword">const</span> username = <span class="string">&#x27;anpigon&#x27;</span>;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">this</span>.fetchAccount(username).then(<span class="function">(<span class="params">｛name, post_count, reputation, json_metadata｝</span>) =&gt;</span> ｛</span><br><span class="line">    <span class="keyword">const</span> ｛ profile ｝ = <span class="built_in">JSON</span>.parse(json_metadata); <span class="comment">// JSON 파싱</span></span><br><span class="line">    <span class="keyword">const</span> log = <span class="built_in">Math</span>.log(<span class="built_in">parseInt</span>(reputation.substring(<span class="number">0</span>, <span class="number">4</span>))) / <span class="built_in">Math</span>.log(<span class="number">10</span>);</span><br><span class="line">    <span class="built_in">this</span>.setState(｛</span><br><span class="line">      name, <span class="comment">// 이름</span></span><br><span class="line">      <span class="attr">reputation</span>: <span class="built_in">Math</span>.max(reputation.length - <span class="number">1</span> + log - <span class="built_in">parseInt</span>(log) - <span class="number">9</span>, <span class="number">0</span>) * <span class="number">9</span> + <span class="number">25</span>, <span class="comment">// 명성도 계산</span></span><br><span class="line">      <span class="attr">postCount</span>: post_count, <span class="comment">// 포스팅 수</span></span><br><span class="line">      profile <span class="comment">// 프로필 정보</span></span><br><span class="line">    ｝)</span><br><span class="line">  ｝);</span><br><span class="line"></span><br><span class="line">  <span class="built_in">this</span>.fetchFollowCount(username).then(<span class="function">(<span class="params">｛following_count, follower_count｝</span>) =&gt;</span> ｛</span><br><span class="line">    <span class="built_in">this</span>.setState(｛</span><br><span class="line">      <span class="attr">followingCount</span>: following_count, <span class="comment">// 팔로잉 수</span></span><br><span class="line">      <span class="attr">followerCount</span>: follower_count <span class="comment">// 팔로워 수</span></span><br><span class="line">    ｝)</span><br><span class="line">  ｝);</span><br><span class="line">｝</span><br></pre></td></tr></table></figure>
+<p><br>마지막으로 <code>render()</code> 함수를 수정합니다. 앞에서 가져온 정보들을 출력하기 위해 데이터를 맵핑합니다.</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">render() ｛</span><br><span class="line">  const ｛</span><br><span class="line">    name,</span><br><span class="line">    reputation,</span><br><span class="line">    profile,</span><br><span class="line">    postCount,</span><br><span class="line">    followingCount,</span><br><span class="line">    followerCount</span><br><span class="line">  ｝ = this.state;</span><br><span class="line"></span><br><span class="line">  return (</span><br><span class="line">  <span class="tag">&lt;<span class="name">Container</span> <span class="attr">style</span>=<span class="string">｛｛</span> <span class="attr">flex:1</span>, <span class="attr">backgroundColor:</span> &#x27;<span class="attr">white</span>&#x27;｝｝&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Header</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">Left</span>&gt;</span><span class="tag">&lt;<span class="name">Icon</span> <span class="attr">name</span>=<span class="string">&quot;md-person-add&quot;</span> <span class="attr">style</span>=<span class="string">｛｛</span> <span class="attr">paddingLeft:10</span> ｝｝ /&gt;</span><span class="tag">&lt;/<span class="name">Left</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">Body</span>&gt;</span><span class="tag">&lt;<span class="name">Text</span>&gt;</span>｛name｝<span class="tag">&lt;/<span class="name">Text</span>&gt;</span><span class="tag">&lt;/<span class="name">Body</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">Right</span>&gt;</span><span class="tag">&lt;<span class="name">EntypoIcon</span> <span class="attr">name</span>=<span class="string">&quot;back-in-time&quot;</span> <span class="attr">style</span>=<span class="string">｛｛</span> <span class="attr">paddingRight:10</span>, <span class="attr">fontSize:</span> <span class="attr">32</span> ｝｝ /&gt;</span><span class="tag">&lt;/<span class="name">Right</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">Header</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Content</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">View</span> <span class="attr">style</span>=<span class="string">｛｛flexDirection:</span>&#x27;<span class="attr">row</span>&#x27;, <span class="attr">paddingTop:10</span>｝｝&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">View</span> <span class="attr">style</span>=<span class="string">｛｛flex:1,</span> <span class="attr">alignItems:</span>&#x27;<span class="attr">center</span>&#x27;｝｝&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">Image</span> <span class="attr">source</span>=<span class="string">｛｛</span> <span class="attr">url:</span> <span class="attr">profile.profile_image</span> ｝｝</span></span><br><span class="line"><span class="tag">                 <span class="attr">style</span>=<span class="string">｛｛width:75,</span> <span class="attr">height:75</span>, <span class="attr">borderRadius:37.5</span>｝｝/&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">View</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">View</span> <span class="attr">style</span>=<span class="string">｛｛flex:3｝｝</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">View</span> <span class="attr">style</span>=<span class="string">｛｛flexDirection:</span>&#x27;<span class="attr">row</span>&#x27;, <span class="attr">justifyContent:</span>&#x27;<span class="attr">space-around</span>&#x27;｝｝&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">View</span> <span class="attr">style</span>=<span class="string">｛｛alignItems:</span>&#x27;<span class="attr">center</span>&#x27;｝｝&gt;</span></span><br><span class="line">              <span class="tag">&lt;<span class="name">Text</span>&gt;</span>｛postCount｝<span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span><br><span class="line">              <span class="tag">&lt;<span class="name">Text</span> <span class="attr">style</span>=<span class="string">｛｛fontSize:10,</span> <span class="attr">color:</span>&#x27;<span class="attr">gray</span>&#x27;｝｝&gt;</span>posts<span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">View</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">View</span> <span class="attr">style</span>=<span class="string">｛｛alignItems:</span>&#x27;<span class="attr">center</span>&#x27;｝｝&gt;</span></span><br><span class="line">              <span class="tag">&lt;<span class="name">Text</span>&gt;</span>｛followingCount｝<span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span><br><span class="line">              <span class="tag">&lt;<span class="name">Text</span> <span class="attr">style</span>=<span class="string">｛｛fontSize:10,</span> <span class="attr">color:</span>&#x27;<span class="attr">gray</span>&#x27;｝｝&gt;</span>follower<span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">View</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">View</span> <span class="attr">style</span>=<span class="string">｛｛alignItems:</span>&#x27;<span class="attr">center</span>&#x27;｝｝&gt;</span></span><br><span class="line">              <span class="tag">&lt;<span class="name">Text</span>&gt;</span>｛followerCount｝<span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span><br><span class="line">              <span class="tag">&lt;<span class="name">Text</span> <span class="attr">style</span>=<span class="string">｛｛fontSize:10,</span> <span class="attr">color:</span>&#x27;<span class="attr">gray</span>&#x27;｝｝&gt;</span>following<span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">View</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="name">View</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">View</span> <span class="attr">style</span>=<span class="string">｛｛flexDirection:</span>&#x27;<span class="attr">row</span>&#x27;｝｝&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">Button</span> <span class="attr">bordered</span> <span class="attr">dark</span></span></span><br><span class="line"><span class="tag">                    <span class="attr">style</span>=<span class="string">｛｛flex:4,</span> <span class="attr">marginLeft:10</span>, <span class="attr">justifyContent:</span>&#x27;<span class="attr">center</span>&#x27;, <span class="attr">height:30</span>, <span class="attr">marginTop:10</span>｝｝&gt;</span></span><br><span class="line">              <span class="tag">&lt;<span class="name">Text</span>&gt;</span>Edit Profile<span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">Button</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">Button</span> <span class="attr">bordered</span> <span class="attr">dark</span> <span class="attr">small</span> <span class="attr">icon</span></span></span><br><span class="line"><span class="tag">                    <span class="attr">style</span>=<span class="string">｛｛flex:1,</span> <span class="attr">marginRight:10</span>, <span class="attr">marginLeft:5</span>, <span class="attr">justifyContent:</span>&#x27;<span class="attr">center</span>&#x27;, <span class="attr">height:30</span>, <span class="attr">marginTop:10</span>｝｝&gt;</span></span><br><span class="line">              <span class="tag">&lt;<span class="name">Icon</span> <span class="attr">name</span>=<span class="string">&quot;settings&quot;</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">Button</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="name">View</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">View</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">View</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">View</span> <span class="attr">style</span>=<span class="string">｛｛paddingHorizontal:10,</span> <span class="attr">paddingVertical:10</span>｝｝&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Text</span> <span class="attr">style</span>=<span class="string">｛｛fontWeight:</span>&#x27;<span class="attr">bold</span>&#x27;｝｝&gt;</span>｛profile.name｝ (｛reputation.toFixed(2)｝)<span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Text</span>&gt;</span>｛profile.about｝<span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Text</span>&gt;</span>｛profile.website｝<span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">View</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">Content</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">Container</span>&gt;</span></span><br><span class="line">);</span><br><span class="line">｝</span><br></pre></td></tr></table></figure>
+<p><br>오늘 작업한 결과 화면입니다.</p>
+<p><img alt data-src="https://steemitimages.com/300x0/https://user-images.githubusercontent.com/3969643/51541690-caf07b00-1e9c-11e9-8103-a8c9c904b3a5.png"></p>
+<p><br>작업한 코드는 모두 깃허브에 업로드되어 있습니다.</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/anpigon/rn_instagram_clone">https://github.com/anpigon/rn_instagram_clone</a></p>
+<p>여기까지 읽어주셔서 감사합니다.</p>
+<hr>
+<h6 id="시리즈"><a class="markdownIt-Anchor" href="#시리즈"></a> 시리즈</h6>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://busy.org/@anpigon/react-native-ui-1">[React Native] 인스타그램 UI 만들기 #1</a></li>
+<li><a target="_blank" rel="noopener" href="https://busy.org/@anpigon/react-native-ui-2-1548079722841">[React Native] 인스타그램 UI 만들기 #2</a></li>
+<li><a target="_blank" rel="noopener" href="https://busy.org/@anpigon/react-native-ui-3-1548134597178">[React Native] 인스타그램 UI 만들기 #3</a></li>
+<li><a target="_blank" rel="noopener" href="https://busy.org/@anpigon/react-native-ui-4-1548207724086">[React Native] 인스타그램 UI 만들기 #4</a></li>
+<li><a target="_blank" rel="noopener" href="https://busy.org/@anpigon/react-native-ui-5-1548346515419">[React Native] 인스타그램 UI 만들기 #5</a></li>
+</ul>
+
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/react-native/" rel="tag"># React Native</a>
+          </div>
+
+        
+  <div class="post-widgets">
+    <div class="wp_rating">
+      <div id="wpac-rating"></div>
+    </div>
+  </div>
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/kr/@anpigon/react-native-ui-3-1548134597178" rel="next" title="[React Native] 인스타그램 UI 만들기 #3">
+                  <i class="fa fa-chevron-left"></i> [React Native] 인스타그램 UI 만들기 #3
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/kr/@anpigon/react-native-ui-5-1548346515419" rel="prev" title="[React Native] 인스타그램 UI 만들기 #5">
+                  [React Native] 인스타그램 UI 만들기 #5 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    
+  <div class="comments" id="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          목차
+        </li>
+        <li class="sidebar-nav-overview">
+          흝어보기
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%EC%83%81%EB%8B%A8%EB%B0%94-%EC%88%98%EC%A0%95%ED%95%98%EA%B8%B0"><span class="nav-number">1.</span> <span class="nav-text"> 상단바 수정하기</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%ED%94%84%EB%A1%9C%ED%95%84-%ED%8E%98%EC%9D%B4%EC%A7%80-%ED%97%A4%EB%8D%94-%EB%A7%8C%EB%93%A4%EA%B8%B0"><span class="nav-number">2.</span> <span class="nav-text"> 프로필 페이지 헤더 만들기</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%EC%8A%A4%ED%8C%80%EC%9E%87-%ED%94%84%EB%A1%9C%ED%95%84-%EC%A0%95%EB%B3%B4-%EC%B6%9C%EB%A0%A5%ED%95%98%EA%B8%B0"><span class="nav-number">3.</span> <span class="nav-text"> 스팀잇 프로필 정보 출력하기</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%EC%8B%9C%EB%A6%AC%EC%A6%88"><span class="nav-number">3.0.0.0.0.1.</span> <span class="nav-text"> 시리즈</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="안피곤"
+    src="/images/me.jpg">
+  <p class="site-author-name" itemprop="name">안피곤</p>
+  <div class="site-description" itemprop="description">시간이 천천히 갔으면 좋겠다.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">327</span>
+          <span class="site-state-item-name">포스트</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-name">카테고리</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">144</span>
+        <span class="site-state-item-name">태그</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/anpigon" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;anpigon" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:markan82@gmail.com" title="E-Mail &amp;rarr; mailto:markan82@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+          <!-- 정사각형 광고 -->
+          <div style="margin-top: 15px;">
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-2365531018407022"
+                data-ad-slot="7521850306"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+          </div>
+    </div>
+  </aside>
+  <div id="sidebar-dimmer">3</div>
+
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">안피곤</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v5.4.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.4.2
+  </div>
+
+        
+
+
+
+
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-firestore.js"></script>
+  <script>
+    firebase.initializeApp({
+      apiKey: 'AIzaSyA4QZWCWb3IuIHjbkAmO0ttIM2b-qtLTP8',
+      projectId: 'next-blog-8f9a0'
+    });
+
+    function getCount(doc, increaseCount) {
+      // IncreaseCount will be false when not in article page
+
+      return doc.get().then(d => {
+        var count = 0;
+        if (!d.exists) { // Has no data, initialize count
+          if (increaseCount) {
+            doc.set({
+              count: 1
+            });
+            count = 1;
+          }
+        } else { // Has data
+          count = d.data().count;
+          if (increaseCount) {
+            // If first view this article
+            doc.set({ // Increase count
+              count: count + 1
+            });
+            count++;
+          }
+        }
+
+        return count;
+      });
+    }
+
+    function appendCountTo(el) {
+      return count => {
+        el.innerText = count;
+      }
+    }
+  </script>
+  <script pjax>
+    (function() {
+      var db = firebase.firestore();
+      var articles = db.collection('articles');
+
+      if (CONFIG.page.isPost) { // Is article page
+        var title = document.querySelector('.post-title').innerText.trim();
+        var doc = articles.doc(title);
+        var increaseCount = true;
+        if (localStorage.getItem(title)) {
+          increaseCount = false;
+        } else {
+          // Mark as visited
+          localStorage.setItem(title, true);
+        }
+        getCount(doc, increaseCount).then(appendCountTo(document.querySelector('.firestore-visitors-count')));
+      } else if (CONFIG.page.isHome) { // Is index page
+        var promises = [...document.querySelectorAll('.post-title')].map(element => {
+          var title = element.innerText.trim();
+          var doc = articles.doc(title);
+          return getCount(doc);
+        });
+        Promise.all(promises).then(counts => {
+          var metas = document.querySelectorAll('.firestore-visitors-count');
+          counts.forEach((val, idx) => {
+            appendCountTo(metas[idx])(val);
+          });
+        });
+      }
+    })();
+  </script>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.getAttribute('pjax') !== null) {
+      element.setAttribute('pjax', '');
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+  <script pjax>
+  if (CONFIG.page.isPost) {
+    wpac_init = window.wpac_init || [];
+    wpac_init.push({
+      widget: 'Rating',
+      id: 21712,
+      el: 'wpac-rating',
+      color: 'fc6423'
+    });
+    (function() {
+      if ('WIDGETPACK_LOADED' in window) return;
+      WIDGETPACK_LOADED = true;
+      var mc = document.createElement('script');
+      mc.type = 'text/javascript';
+      mc.async = true;
+      mc.src = '//embed.widgetpack.com/widget.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+    })();
+  }
+  </script>
+
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.4.1/dist/instantsearch.min.css">
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.4.1/dist/instantsearch.js"></script>
+<script src="/js/algolia-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+
+  
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://anpigon-github-io.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  function loadComments() {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: {page: {
+            url: "https://anpigon.github.io/kr/@anpigon/react-native-ui-4-1548207724086",
+            identifier: "/kr/@anpigon/react-native-ui-4-1548207724086",
+            title: "[React Native] 인스타그램 UI 만들기 #4"
+          }
+        }
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://anpigon-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  }
+    (function() {
+      var offsetTop = document.getElementById('comments').offsetTop - window.innerHeight;
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        window.addEventListener('load', loadComments, false);
+      } else {
+        var disqus_scroll = () => {
+          // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = document.getElementById('comments').offsetTop - window.innerHeight;
+          var scrollTop = window.scrollY;
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            window.removeEventListener('scroll', disqus_scroll);
+            loadComments();
+          }
+        };
+        window.addEventListener('scroll', disqus_scroll);
+      }
+    })();
+  
+</script>
+
+    </div>
+</body>
+</html>

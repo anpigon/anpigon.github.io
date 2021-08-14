@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="yfKOiBPD8WlKH3NPG_CG1zr4MsCgCG1YVdGKhMS2CKc">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Noto Serif KR:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.4.2',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: true,
+    pangu: false,
+    algolia: {
+      appID: 'YY693DUDAI',
+      apiKey: 'db449d453b150820f66e7bc3d4523a17',
+      indexName: 'my-hexo-blog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '복사',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="안녕하세요. @anpigon입니다.이제 **나만의 스팀잇 블로그 만들기**의 마지막 강좌입니다. 이 시리즈는 개발 지식이 전혀 없는 분들도 쉽게 따라 할 수 있습니다.이 강좌에서 사용한 소스는 GitHub 저장소에 올려놓았습니다.  https:&#x2F;&#x2F;github.com&#x2F;anpigon&#x2F;steemit-django-blog">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[파이썬] 나만의 스팀잇 블로그 만들기 #4 - 글 상세">
+<meta property="og:url" content="https://anpigon.github.io/kr/@anpigon/python-steemit-blog-4">
+<meta property="og:site_name" content="안피곤님의 블로그">
+<meta property="og:description" content="안녕하세요. @anpigon입니다.이제 **나만의 스팀잇 블로그 만들기**의 마지막 강좌입니다. 이 시리즈는 개발 지식이 전혀 없는 분들도 쉽게 따라 할 수 있습니다.이 강좌에서 사용한 소스는 GitHub 저장소에 올려놓았습니다.  https:&#x2F;&#x2F;github.com&#x2F;anpigon&#x2F;steemit-django-blog">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:image" content="https://imgur.com/T86bXj7.png">
+<meta property="og:image" content="https://imgur.com/xvNZa3I.png">
+<meta property="og:image" content="https://imgur.com/deDatXw.png">
+<meta property="og:image" content="https://imgur.com/fK31oJg.png">
+<meta property="og:image" content="https://i.imgur.com/XsrnKq3.png">
+<meta property="og:image" content="https://i.imgur.com/Rh2e90w.jpg">
+<meta property="og:image" content="https://i.imgur.com/hnFxoAa.jpg">
+<meta property="og:image" content="https://i.imgur.com/coRBfM7.jpg">
+<meta property="og:image" content="https://i.imgur.com/w8dbdoi.jpg">
+<meta property="og:image" content="https://media.giphy.com/media/2UpzC3iPenf44/giphy.gif">
+<meta property="og:image" content="https://steemitimages.com/0x0/https://i.creativecommons.org/l/by-sa/4.0/88x31.png">
+<meta property="article:published_time" content="2018-10-04T04:17:27.000Z">
+<meta property="article:modified_time" content="2021-08-14T10:47:06.084Z">
+<meta property="article:author" content="안피곤">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="Django">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://imgur.com/T86bXj7.png">
+
+<link rel="canonical" href="https://anpigon.github.io/kr/@anpigon/python-steemit-blog-4">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>[파이썬] 나만의 스팀잇 블로그 만들기 #4 - 글 상세 | 안피곤님의 블로그</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-20589042-10"></script>
+    <script pjax>
+      var host = window.location.hostname;
+      if (host !== "localhost" || !true) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-20589042-10');
+      }
+    </script>
+
+
+
+
+
+
+  
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-2365531018407022",
+          enable_page_level_ads: false
+     });
+</script>
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="안피곤님의 블로그" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">안피곤님의 블로그</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">코딩, 독서, 여행, 영화, 맛집</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>홈</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>태그<span class="badge">144</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>카테고리<span class="badge">25</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>아카이브<span class="badge">327</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>검색
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input" id="search-input"></div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="algolia-results">
+  <div id="algolia-stats"></div>
+  <div id="algolia-hits"></div>
+  <div id="algolia-pagination" class="algolia-pagination"></div>
+</div>
+
+  
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="ko">
+    <link itemprop="mainEntityOfPage" href="https://anpigon.github.io/kr/@anpigon/python-steemit-blog-4">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/me.jpg">
+      <meta itemprop="name" content="안피곤">
+      <meta itemprop="description" content="시간이 천천히 갔으면 좋겠다.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="안피곤님의 블로그">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          [파이썬] 나만의 스팀잇 블로그 만들기 #4 - 글 상세
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">작성일</span>
+
+              <time title="Post created: 2018-10-04 13:17:27" itemprop="dateCreated datePublished" datetime="2018-10-04T13:17:27+09:00">2018-10-04</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Updated at: 2021-08-14 19:47:06" itemprop="dateModified" datetime="2021-08-14T19:47:06+09:00">2021-08-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">개발 이야기</span>
+                  </a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/%ED%8C%8C%EC%9D%B4%EC%8D%AC-python/" itemprop="url" rel="index">
+                    <span itemprop="name">파이썬(python)</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/kr/@anpigon/python-steemit-blog-4#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="/kr/@anpigon/python-steemit-blog-4" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+            <div style="margin-bottom:35px;margin-top:-20px;">
+              <!-- 블로그 본문 상단 광고 -->
+              <ins class="adsbygoogle"
+                  style="display:block"
+                  data-ad-client="ca-pub-2365531018407022"
+                  data-ad-slot="3390644000"
+                  data-ad-format="auto"
+                  data-full-width-responsive="true"></ins>
+              <script>
+                  (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+        <p>안녕하세요. @anpigon입니다.</p><p>이제 **<q>나만의 스팀잇 블로그 만들기</q>**의 마지막 강좌입니다. 이 시리즈는 개발 지식이 전혀 없는 분들도 쉽게 따라 할 수 있습니다.</p><p>이 강좌에서 사용한 소스는 GitHub 저장소에 올려놓았습니다.</p><blockquote>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/anpigon/steemit-django-blog/">https://github.com/anpigon/steemit-django-blog</a></li>
+</ul>
+</blockquote><a id="more"></a>
+
+
+
+<br>
+<hr>
+<h6 id="이전-글"><a class="markdownIt-Anchor" href="#이전-글"></a> 이전 글</h6>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://steemit.com/kr/@anpigon/python-steemit-blog-1">나만의 스팀잇 블로그 만들기 #1</a></li>
+<li><a target="_blank" rel="noopener" href="https://steemit.com/kr/@anpigon/python-steemit-blog-2">나만의 스팀잇 블로그 만들기 #2</a></li>
+<li><a target="_blank" rel="noopener" href="https://steemit.com/kr/@anpigon/python-steemit-blog-3">나만의 스팀잇 블로그 만들기 #3</a></li>
+</ul>
+<hr>
+<p><img alt data-src="https://imgur.com/T86bXj7.png"></p>
+<hr><br>
+<p>이번 시간에는 글 목록을 클릭했을 때 글 상세 화면으로 이동하도록 구현해보자. 글 상세 화면까지 구현하고 나면 멋짐 블로그가 완성될 것이다.</p>
+<br>
+<h1 id="블로그-글-상세-url-추가하기"><a class="markdownIt-Anchor" href="#블로그-글-상세-url-추가하기"></a> 블로그 글 상세 URL 추가하기</h1>
+<p><br><strong>pythonanywhere</strong>의 <strong>Files</strong> 화면에서 <code>web/blog/</code> 디렉토리를 찾아 들어간다. 그리고 <code>urls.py</code> 파일을 클릭하여 편집 화면으로 이동해서 아래와 같이 수정한다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">urlpatterns = [</span><br><span class="line">    re_path(<span class="string">&#x27;^$&#x27;</span>, views.post_list, name=<span class="string">&#x27;post_list&#x27;</span>),</span><br><span class="line">    <span class="comment"># re_path(&#x27;^@(?P&lt;author&gt;[\w-]+)/(?P&lt;permlink&gt;[\w-]+)/$&#x27;, views.post_detail, name=&#x27;post_detail&#x27;)</span></span><br><span class="line">    re_path(<span class="string">&#x27;^@(?P&lt;author&gt;[\._\w-]+)/(?P&lt;permlink&gt;[\._\w-]+)/$&#x27;</span>, views.post_detail, name=<span class="string">&#x27;post_detail&#x27;</span>)</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p><code>@author/permlink</code> URL에 글 상세를 보여주는 뷰(View) <code>views.post_detail</code>를 맵핑하였다. <code>@author/permlink</code> URL은 정규식 <code>'^@(?P&lt;author&gt;[\w-]+)/(?P&lt;permlink&gt;[\w-]+)/$'</code> 을 사용하여 <strong>author</strong>와 <strong>permlink</strong>은 매개 변수(parameter)으로 받았다. <strong>author</strong>를 매개 변수로 받는 이유는 내 블로그에 리스팀한 글이 포함되어 있어서 일단 추가하였다.</p>
+<p>잘 모르겠다면 아래 화면을 참고하자.</p>
+<p><img alt data-src="https://imgur.com/xvNZa3I.png"></p>
+<p><br>이제 글 목록에서 <strong>글 상세 화면</strong>으로 이동할 수 있는 링크를 연결해야 한다. <code>templates/blog/post_list.html</code> 템플릿 파일을 열고 <code>&lt;a href=&quot;#&quot;&gt;</code>로 되어 있는 코드를 아래와 같이 수정한다.</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a <span class="attribute">href</span>=<span class="string">&quot;/@｛｛ post.author ｝｝/｛｛ post.permlink ｝｝&quot;</span>&gt;</span><br></pre></td></tr></table></figure>
+<p><br>수정하는 위치를 잘 모르겠으면 아래 화면을 참고한다.</p>
+<p><img alt="Imgur" data-src="https://imgur.com/deDatXw.png"></p>
+<p><br><hr><br></p>
+<h1 id="블로그-글-상세-view-생성하기"><a class="markdownIt-Anchor" href="#블로그-글-상세-view-생성하기"></a> 블로그 글 상세 View 생성하기</h1>
+<p><code>blog/views.py</code> 파일을 열고 <code>post_detail</code> 함수를 추가한다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">post_detail</span>(<span class="params">request, author=<span class="string">&#x27;&#x27;</span>, permlink=<span class="string">&#x27;&#x27;</span></span>):</span></span><br><span class="line">    <span class="comment"># 스팀잇에서 게시글 본문 가져오기</span></span><br><span class="line">    data = <span class="string">&#x27;&#x27;&#x27;｛</span></span><br><span class="line"><span class="string">        &quot;jsonrpc&quot;: &quot;2.0&quot;,</span></span><br><span class="line"><span class="string">        &quot;method&quot;: &quot;condenser_api.get_content&quot;,</span></span><br><span class="line"><span class="string">        &quot;params&quot;: [&quot;％s&quot;, &quot;％s&quot;],</span></span><br><span class="line"><span class="string">        &quot;id&quot;: 1</span></span><br><span class="line"><span class="string">    ｝&#x27;&#x27;&#x27;</span> ％(author, permlink)</span><br><span class="line">    response = requests.post(URL, data=data)</span><br><span class="line"></span><br><span class="line">    post = ｛｝</span><br><span class="line">    <span class="keyword">if</span> response.status_code == <span class="number">200</span>: <span class="comment"># 응답이 성공이라면</span></span><br><span class="line">        data = json.loads(response.text) <span class="comment"># JSON 파싱</span></span><br><span class="line">        post = data[<span class="string">&#x27;result&#x27;</span>]</span><br><span class="line">        <span class="comment"># post[&#x27;body&#x27;] = md.convert(post[&#x27;body&#x27;])</span></span><br><span class="line">        replaced = re.sub(<span class="string">r&#x27;(^https?://([a-zA-Z0-9][a-zA-Z0-9_-]+([.][a-zA-Z0-9][a-zA-Z0-9_-]+)｛1,2｝(/[a-zA-Z0-9][a-zA-Z0-9_-]*)+)[.](png|PNG|jpg|JPG|jpeg|JPEG|bmp|BMP|gif|GIF))&#x27;</span>, <span class="string">r&#x27;&lt;img src=&quot;\1&quot;&gt;&#x27;</span>, post[<span class="string">&#x27;body&#x27;</span>])</span><br><span class="line">        post[<span class="string">&#x27;body&#x27;</span>] = md.convert(replaced)</span><br><span class="line">        post[<span class="string">&#x27;created&#x27;</span>] = parse_time(post[<span class="string">&#x27;created&#x27;</span>])</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> render(request, <span class="string">&#x27;blog/post_detail.html&#x27;</span>, ｛ <span class="string">&#x27;post&#x27;</span>: post ｝)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://steemit.com/kr/@apmmh/re-anpigon-anpigon-re-apmmh-re-anpigon-anpigon-re-glory7-re-apmmh-re-anpigon-anpigon-coding-contest-20181010t070239125z">https://steemit.com/kr/@apmmh/re-anpigon-anpigon-re-apmmh-re-anpigon-anpigon-re-glory7-re-apmmh-re-anpigon-anpigon-coding-contest-20181010t070239125z</a> 글을 참고하여 이미지URL을 이미지 태그로 치환하는 정규식을 추가하였습니다.</p>
+</blockquote>
+<p><br>아래 화면을 참고하자.</p>
+<p><img alt data-src="https://imgur.com/fK31oJg.png"></p>
+<p><br><hr><br></p>
+<h1 id="블로그-글-상세-템플릿-html-생성"><a class="markdownIt-Anchor" href="#블로그-글-상세-템플릿-html-생성"></a> 블로그 글 상세 템플릿 html 생성</h1>
+<p><br><code>templates/blog/</code> 디렉토리에 <code>post_detail.html</code> 파일을 신규 생성한다.</p>
+<p><img alt="Imgur" data-src="https://i.imgur.com/XsrnKq3.png"></p>
+<p>그리고 아래 코드를 복사&amp;붙여넣기 하자.</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">｛％ <span class="keyword">extends</span> <span class="string">&#x27;blog/base.html&#x27;</span> ％｝</span><br><span class="line"></span><br><span class="line">｛％ load <span class="keyword">static</span> ％｝</span><br><span class="line"></span><br><span class="line">｛％ block content ％｝</span><br><span class="line">    &lt;header <span class="keyword">class</span>=<span class="string">&quot;masthead&quot;</span> style=<span class="string">&quot;background-image: url(｛％ static &#x27;img/post-bg.jpg&#x27; ％｝)&quot;</span>&gt;</span><br><span class="line">      &lt;<span class="keyword">div</span> <span class="keyword">class</span>=<span class="string">&quot;overlay&quot;</span>&gt;&lt;/<span class="keyword">div</span>&gt;</span><br><span class="line">      &lt;<span class="keyword">div</span> <span class="keyword">class</span>=<span class="string">&quot;container&quot;</span>&gt;</span><br><span class="line">        &lt;<span class="keyword">div</span> <span class="keyword">class</span>=<span class="string">&quot;row&quot;</span>&gt;</span><br><span class="line">          &lt;<span class="keyword">div</span> <span class="keyword">class</span>=<span class="string">&quot;col-lg-8 col-md-10 mx-auto&quot;</span>&gt;</span><br><span class="line">            &lt;<span class="keyword">div</span> <span class="keyword">class</span>=<span class="string">&quot;post-heading&quot;</span>&gt;</span><br><span class="line">              &lt;h1&gt;｛｛ post.title ｝｝&lt;/h1&gt;</span><br><span class="line">              &lt;span <span class="keyword">class</span>=<span class="string">&quot;meta&quot;</span>&gt;Posted by</span><br><span class="line">                &lt;a href=<span class="string">&quot;#&quot;</span>&gt;｛｛ post.author ｝｝&lt;/a&gt;</span><br><span class="line">                ｛｛ post.created ｝｝&lt;/span&gt;</span><br><span class="line">            &lt;/<span class="keyword">div</span>&gt;</span><br><span class="line">          &lt;/<span class="keyword">div</span>&gt;</span><br><span class="line">        &lt;/<span class="keyword">div</span>&gt;</span><br><span class="line">      &lt;/<span class="keyword">div</span>&gt;</span><br><span class="line">    &lt;/header&gt;</span><br><span class="line">    &lt;article&gt;</span><br><span class="line">      &lt;<span class="keyword">div</span> <span class="keyword">class</span>=<span class="string">&quot;container&quot;</span>&gt;</span><br><span class="line">        &lt;<span class="keyword">div</span> <span class="keyword">class</span>=<span class="string">&quot;row&quot;</span>&gt;</span><br><span class="line">          &lt;<span class="keyword">div</span> <span class="keyword">class</span>=<span class="string">&quot;col-lg-8 col-md-10 mx-auto&quot;</span>&gt;</span><br><span class="line">            ｛％ autoescape off ％｝</span><br><span class="line">                ｛｛ post.body ｝｝</span><br><span class="line">            ｛％ endautoescape ％｝</span><br><span class="line">          &lt;/<span class="keyword">div</span>&gt;</span><br><span class="line">        &lt;/<span class="keyword">div</span>&gt;</span><br><span class="line">      &lt;/<span class="keyword">div</span>&gt;</span><br><span class="line">    &lt;/article&gt;</span><br><span class="line">｛％ endblock ％｝</span><br></pre></td></tr></table></figure>
+<p><br>마지막으로 본문에 포함된 이미지 크기 조정을 위해 아래 스타일 CSS 코드를 추가하였다. <code>css.style</code> 파일을 만들어서 적용해도 되고, <code>post_detail.html</code> 파일에 적용해도 된다.</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line"><span class="selector-tag">article</span> <span class="selector-tag">img</span> ｛</span><br><span class="line">    <span class="attribute">max-width</span>: <span class="number">100</span>％;</span><br><span class="line">｝</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+<p><br>여기까지 완료했으면 본인의 블로그에 가서 글 목록을 클릭했을 때 글 상세 화면으로 이동하는지 확인해보자.</p>
+<p><br><hr><br></p>
+<h1 id="댓글-서비스disqus"><a class="markdownIt-Anchor" href="#댓글-서비스disqus"></a> 댓글 서비스(disqus)</h1>
+<p><br>나는 스팀잇 사용자가 아닌 사람도 댓글을 쓸 수 있게 하기 위해서 Disqus 위젯을 사용하였다. <a target="_blank" rel="noopener" href="https://disqus.com/">Disqus</a>는 소셜 댓글 서비스이다. 쉽게 설명하면 구글, 페이스북, 트위터 서비스에 가입되어 있으면 회원가입 없이 바로 댓글을 쓸 수 있다. 참고로 한국 서비스 중에는 <a target="_blank" rel="noopener" href="https://livere.com/">라이브리(LiveRe)</a>가 있다.</p>
+<p>본문 내용 하단에 Disqus 위젯을 삽입하면 이렇게 보여진다.</p>
+<p><img alt="Imgur" data-src="https://i.imgur.com/Rh2e90w.jpg"></p>
+<p><br>적용방법은 간단하게 설명하겠다. 우선 <a target="_blank" rel="noopener" href="https://disqus.xn--com-568n">https://disqus.com에</a> 회원가입을 한다. 가입이 완료되면 아래 화면에서 보이는 <strong>Disqus Install 버튼</strong>을 클릭한다.</p>
+<p><img alt="Imgur" data-src="https://i.imgur.com/hnFxoAa.jpg"></p>
+<p><br>사이트 플랫폼 선택 화면에서는 맨 아래로 내리면 “I don’t see my platform listed, install manually with Universal Code” 버튼이 보인다. 이 버튼을 클릭한다.</p>
+<p><img alt="Imgur" data-src="https://i.imgur.com/coRBfM7.jpg"></p>
+<p><br>붉은 박스에 보이는 코드를 복사하여 내 블로그에 삽입하면 된다.</p>
+<p><img alt="Imgur" data-src="https://i.imgur.com/w8dbdoi.jpg"></p>
+<p><br>참고로 Disqus 삽입 위치는 <code>post_detail.html</code> 파일의 이 코드 바로 아래입니다.</p>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">｛％ autoescape off ％｝</span><br><span class="line">  ｛｛ post.<span class="keyword">body</span> ｝｝</span><br><span class="line">｛％ endautoescape ％｝</span><br></pre></td></tr></table></figure>
+<p><br><hr><br></p>
+<p>여기까지 성공적으로 따라오신 분들 모두 축하드립니다.</p>
+<p>오늘부터 파이썬 웹 개발자가 되셨습니다.</p>
+<p><img alt data-src="https://media.giphy.com/media/2UpzC3iPenf44/giphy.gif"></p>
+<p><br>하다가 막히는 부분이 있으면 댓글에 질문 남겨주세요. 그리고 <code>kr-dev</code> 태그에 개발관련 글을 올리면 제가 보팅해드립니다.</p>
+<p>여기까지 읽어주셔서 감사합니다.</p>
+<hr>
+<p><a target="_blank" href="http://creativecommons.org/licenses/by-sa/4.0/" rel="nofollow noopener noopener" title="This link will take you away from steemit.com"><img alt="크리에이티브 커먼즈 라이선스" data-src="https://steemitimages.com/0x0/https://i.creativecommons.org/l/by-sa/4.0/88x31.png"></a><br>이 저작물은 <a target="_blank" href="http://creativecommons.org/licenses/by-sa/4.0/" rel="nofollow noopener noopener" title="This link will take you away from steemit.com">크리에이티브 커먼즈 저작자표시-동일조건변경허락 4.0 국제 라이선스</a>에 따라 이용할 수 있습니다.</p>
+
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/python/" rel="tag"># Python</a>
+              <a href="/tags/django/" rel="tag"># Django</a>
+          </div>
+
+        
+  <div class="post-widgets">
+    <div class="wp_rating">
+      <div id="wpac-rating"></div>
+    </div>
+  </div>
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/kr/@anpigon/python-steemit-blog-3" rel="next" title="[파이썬] 나만의 스팀잇 블로그 만들기 #3 - 페이징 구현">
+                  <i class="fa fa-chevron-left"></i> [파이썬] 나만의 스팀잇 블로그 만들기 #3 - 페이징 구현
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/kr/@anpigon/anpigon-coding-contest" rel="prev" title="(종료) 안피곤 천하제일 코딩 대회를 개최합니다.">
+                  (종료) 안피곤 천하제일 코딩 대회를 개최합니다. <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    
+  <div class="comments" id="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          목차
+        </li>
+        <li class="sidebar-nav-overview">
+          흝어보기
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#%EC%9D%B4%EC%A0%84-%EA%B8%80"><span class="nav-number">1.</span> <span class="nav-text"> 이전 글</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%EB%B8%94%EB%A1%9C%EA%B7%B8-%EA%B8%80-%EC%83%81%EC%84%B8-url-%EC%B6%94%EA%B0%80%ED%95%98%EA%B8%B0"><span class="nav-number"></span> <span class="nav-text"> 블로그 글 상세 URL 추가하기</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%EB%B8%94%EB%A1%9C%EA%B7%B8-%EA%B8%80-%EC%83%81%EC%84%B8-view-%EC%83%9D%EC%84%B1%ED%95%98%EA%B8%B0"><span class="nav-number"></span> <span class="nav-text"> 블로그 글 상세 View 생성하기</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%EB%B8%94%EB%A1%9C%EA%B7%B8-%EA%B8%80-%EC%83%81%EC%84%B8-%ED%85%9C%ED%94%8C%EB%A6%BF-html-%EC%83%9D%EC%84%B1"><span class="nav-number"></span> <span class="nav-text"> 블로그 글 상세 템플릿 html 생성</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%EB%8C%93%EA%B8%80-%EC%84%9C%EB%B9%84%EC%8A%A4disqus"><span class="nav-number"></span> <span class="nav-text"> 댓글 서비스(disqus)</span></a></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="안피곤"
+    src="/images/me.jpg">
+  <p class="site-author-name" itemprop="name">안피곤</p>
+  <div class="site-description" itemprop="description">시간이 천천히 갔으면 좋겠다.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">327</span>
+          <span class="site-state-item-name">포스트</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-name">카테고리</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">144</span>
+        <span class="site-state-item-name">태그</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/anpigon" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;anpigon" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:markan82@gmail.com" title="E-Mail &amp;rarr; mailto:markan82@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+          <!-- 정사각형 광고 -->
+          <div style="margin-top: 15px;">
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-2365531018407022"
+                data-ad-slot="7521850306"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+          </div>
+    </div>
+  </aside>
+  <div id="sidebar-dimmer">3</div>
+
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">안피곤</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v5.4.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.4.2
+  </div>
+
+        
+
+
+
+
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-firestore.js"></script>
+  <script>
+    firebase.initializeApp({
+      apiKey: 'AIzaSyA4QZWCWb3IuIHjbkAmO0ttIM2b-qtLTP8',
+      projectId: 'next-blog-8f9a0'
+    });
+
+    function getCount(doc, increaseCount) {
+      // IncreaseCount will be false when not in article page
+
+      return doc.get().then(d => {
+        var count = 0;
+        if (!d.exists) { // Has no data, initialize count
+          if (increaseCount) {
+            doc.set({
+              count: 1
+            });
+            count = 1;
+          }
+        } else { // Has data
+          count = d.data().count;
+          if (increaseCount) {
+            // If first view this article
+            doc.set({ // Increase count
+              count: count + 1
+            });
+            count++;
+          }
+        }
+
+        return count;
+      });
+    }
+
+    function appendCountTo(el) {
+      return count => {
+        el.innerText = count;
+      }
+    }
+  </script>
+  <script pjax>
+    (function() {
+      var db = firebase.firestore();
+      var articles = db.collection('articles');
+
+      if (CONFIG.page.isPost) { // Is article page
+        var title = document.querySelector('.post-title').innerText.trim();
+        var doc = articles.doc(title);
+        var increaseCount = true;
+        if (localStorage.getItem(title)) {
+          increaseCount = false;
+        } else {
+          // Mark as visited
+          localStorage.setItem(title, true);
+        }
+        getCount(doc, increaseCount).then(appendCountTo(document.querySelector('.firestore-visitors-count')));
+      } else if (CONFIG.page.isHome) { // Is index page
+        var promises = [...document.querySelectorAll('.post-title')].map(element => {
+          var title = element.innerText.trim();
+          var doc = articles.doc(title);
+          return getCount(doc);
+        });
+        Promise.all(promises).then(counts => {
+          var metas = document.querySelectorAll('.firestore-visitors-count');
+          counts.forEach((val, idx) => {
+            appendCountTo(metas[idx])(val);
+          });
+        });
+      }
+    })();
+  </script>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.getAttribute('pjax') !== null) {
+      element.setAttribute('pjax', '');
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+  <script pjax>
+  if (CONFIG.page.isPost) {
+    wpac_init = window.wpac_init || [];
+    wpac_init.push({
+      widget: 'Rating',
+      id: 21712,
+      el: 'wpac-rating',
+      color: 'fc6423'
+    });
+    (function() {
+      if ('WIDGETPACK_LOADED' in window) return;
+      WIDGETPACK_LOADED = true;
+      var mc = document.createElement('script');
+      mc.type = 'text/javascript';
+      mc.async = true;
+      mc.src = '//embed.widgetpack.com/widget.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+    })();
+  }
+  </script>
+
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.4.1/dist/instantsearch.min.css">
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.4.1/dist/instantsearch.js"></script>
+<script src="/js/algolia-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+
+  
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://anpigon-github-io.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  function loadComments() {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: {page: {
+            url: "https://anpigon.github.io/kr/@anpigon/python-steemit-blog-4",
+            identifier: "/kr/@anpigon/python-steemit-blog-4",
+            title: "[파이썬] 나만의 스팀잇 블로그 만들기 #4 - 글 상세"
+          }
+        }
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://anpigon-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  }
+    (function() {
+      var offsetTop = document.getElementById('comments').offsetTop - window.innerHeight;
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        window.addEventListener('load', loadComments, false);
+      } else {
+        var disqus_scroll = () => {
+          // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = document.getElementById('comments').offsetTop - window.innerHeight;
+          var scrollTop = window.scrollY;
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            window.removeEventListener('scroll', disqus_scroll);
+            loadComments();
+          }
+        };
+        window.addEventListener('scroll', disqus_scroll);
+      }
+    })();
+  
+</script>
+
+    </div>
+</body>
+</html>

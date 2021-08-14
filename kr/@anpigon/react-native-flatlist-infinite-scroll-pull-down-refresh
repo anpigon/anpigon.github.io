@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="yfKOiBPD8WlKH3NPG_CG1zr4MsCgCG1YVdGKhMS2CKc">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Noto Serif KR:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.4.2',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: true,
+    pangu: false,
+    algolia: {
+      appID: 'YY693DUDAI',
+      apiKey: 'db449d453b150820f66e7bc3d4523a17',
+      indexName: 'my-hexo-blog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '복사',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="https:&#x2F;&#x2F;youtu.be&#x2F;Jc2MX0Ew3PE microcode님의 리액트 네이티브 강의입니다. 이분은 말 한마디 없이 코딩만 하네요.React Native에서 제공하는 FlatList를 사용하여 무한 스크롤(Infinite Scroll)과 Pull Down Refresh 기능을 구현합니다. FlatList에 대한 자세한 내용은 공식 문서에서 확인하세">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[React Native] FlatList으로 Infinite Scroll와 Pull Down Refresh 구현하기">
+<meta property="og:url" content="https://anpigon.github.io/kr/@anpigon/react-native-flatlist-infinite-scroll-pull-down-refresh">
+<meta property="og:site_name" content="안피곤님의 블로그">
+<meta property="og:description" content="https:&#x2F;&#x2F;youtu.be&#x2F;Jc2MX0Ew3PE microcode님의 리액트 네이티브 강의입니다. 이분은 말 한마디 없이 코딩만 하네요.React Native에서 제공하는 FlatList를 사용하여 무한 스크롤(Infinite Scroll)과 Pull Down Refresh 기능을 구현합니다. FlatList에 대한 자세한 내용은 공식 문서에서 확인하세">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:image" content="https://files.steempeak.com/file/steempeak/anpigon/LfuQuA6M-E18489E185B3E1848FE185B3E18485E185B5E186ABE18489E185A3E186BA202019-03-292013.49.56.png">
+<meta property="og:image" content="https://steemitimages.com/300x0/https://files.steempeak.com/file/steempeak/anpigon/mcj3nVAN-E18489E185B3E1848FE185B3E18485E185B5E186ABE18489E185A3E186BA202019-03-292014.09.33.png">
+<meta property="og:image" content="https://files.steempeak.com/file/steempeak/anpigon/2sdlIhST-E18489E185B3E1848FE185B3E18485E185B5E186ABE18489E185A3E186BA202019-03-292014.17.35.png">
+<meta property="og:image" content="https://files.steempeak.com/file/steempeak/anpigon/MofIm3k6-E18489E185B3E1848FE185B3E18485E185B5E186ABE18489E185A3E186BA202019-03-292014.18.01.png">
+<meta property="og:image" content="https://steemitimages.com/300x0/https://files.steempeak.com/file/steempeak/anpigon/CC1fJp4x-E18489E185B3E1848FE185B3E18485E185B5E186ABE18489E185A3E186BA202019-03-292014.29.28.png">
+<meta property="og:image" content="https://files.steempeak.com/file/steempeak/anpigon/MmScFXWl-2019-03-292014-46-41.2019-03-292014_47_12.gif">
+<meta property="og:image" content="https://files.steempeak.com/file/steempeak/anpigon/Z1I9E54D-2019-03-292015-03-11.2019-03-292015_04_24.gif">
+<meta property="article:published_time" content="2019-03-28T21:11:12.000Z">
+<meta property="article:modified_time" content="2021-08-14T10:47:06.072Z">
+<meta property="article:author" content="안피곤">
+<meta property="article:tag" content="React Native">
+<meta property="article:tag" content="Infinite Scroll">
+<meta property="article:tag" content="Pull Down Refresh">
+<meta property="article:tag" content="FlatList">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://files.steempeak.com/file/steempeak/anpigon/LfuQuA6M-E18489E185B3E1848FE185B3E18485E185B5E186ABE18489E185A3E186BA202019-03-292013.49.56.png">
+
+<link rel="canonical" href="https://anpigon.github.io/kr/@anpigon/react-native-flatlist-infinite-scroll-pull-down-refresh">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>[React Native] FlatList으로 Infinite Scroll와 Pull Down Refresh 구현하기 | 안피곤님의 블로그</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-20589042-10"></script>
+    <script pjax>
+      var host = window.location.hostname;
+      if (host !== "localhost" || !true) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-20589042-10');
+      }
+    </script>
+
+
+
+
+
+
+  
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-2365531018407022",
+          enable_page_level_ads: false
+     });
+</script>
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="안피곤님의 블로그" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">안피곤님의 블로그</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">코딩, 독서, 여행, 영화, 맛집</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>홈</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>태그<span class="badge">144</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>카테고리<span class="badge">25</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>아카이브<span class="badge">327</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>검색
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input" id="search-input"></div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="algolia-results">
+  <div id="algolia-stats"></div>
+  <div id="algolia-hits"></div>
+  <div id="algolia-pagination" class="algolia-pagination"></div>
+</div>
+
+  
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="ko">
+    <link itemprop="mainEntityOfPage" href="https://anpigon.github.io/kr/@anpigon/react-native-flatlist-infinite-scroll-pull-down-refresh">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/me.jpg">
+      <meta itemprop="name" content="안피곤">
+      <meta itemprop="description" content="시간이 천천히 갔으면 좋겠다.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="안피곤님의 블로그">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          [React Native] FlatList으로 Infinite Scroll와 Pull Down Refresh 구현하기
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">작성일</span>
+
+              <time title="Post created: 2019-03-29 06:11:12" itemprop="dateCreated datePublished" datetime="2019-03-29T06:11:12+09:00">2019-03-29</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Updated at: 2021-08-14 19:47:06" itemprop="dateModified" datetime="2021-08-14T19:47:06+09:00">2021-08-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">개발 이야기</span>
+                  </a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/react-native/" itemprop="url" rel="index">
+                    <span itemprop="name">React Native</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/kr/@anpigon/react-native-flatlist-infinite-scroll-pull-down-refresh#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="/kr/@anpigon/react-native-flatlist-infinite-scroll-pull-down-refresh" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+            <div style="margin-bottom:35px;margin-top:-20px;">
+              <!-- 블로그 본문 상단 광고 -->
+              <ins class="adsbygoogle"
+                  style="display:block"
+                  data-ad-client="ca-pub-2365531018407022"
+                  data-ad-slot="3390644000"
+                  data-ad-format="auto"
+                  data-full-width-responsive="true"></ins>
+              <script>
+                  (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+        <p><a target="_blank" rel="noopener" href="https://youtu.be/Jc2MX0Ew3PE">https://youtu.be/Jc2MX0Ew3PE</a><br>
+<sup><strong>microcode</strong>님의 리액트 네이티브 강의입니다. 이분은 말 한마디 없이 코딩만 하네요.</sup></p><p><strong>React Native</strong>에서 제공하는 <code>FlatList</code>를 사용하여 무한 스크롤(Infinite Scroll)과 Pull Down Refresh 기능을 구현합니다. FlatList에 대한 자세한 내용은 <a target="_blank" rel="noopener" href="https://facebook.github.io/react-native/docs/flatlist.html">공식 문서</a>에서 확인하세요.</p><a id="more"></a>
+
+<p>이번 예제를 위해서 <a target="_blank" rel="noopener" href="https://snack.expo.io">snack</a>를 이용하였습니다. 아래 화면처럼 브라우저에서 코딩하고 결과를 바로 확인 할 수 있습니다. 간단한 코딩 연습을 하기에 좋은 플랫폼입니다.<br>
+<img alt data-src="https://files.steempeak.com/file/steempeak/anpigon/LfuQuA6M-E18489E185B3E1848FE185B3E18485E185B5E186ABE18489E185A3E186BA202019-03-292013.49.56.png"></p>
+<h1 id="샘플-컴포넌트-생성하기"><a class="markdownIt-Anchor" href="#샘플-컴포넌트-생성하기"></a> 샘플 컴포넌트 생성하기</h1>
+<p><code>App.js</code> 파일을 수정합니다. <code>FlatList</code>의 <strong>data</strong> 속성에는 배열 데이터를 입력합니다. 그리고 <strong>renderItem</strong> 속성에는 렌더링 함수를 입력합니다.</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="type">React</span> from <span class="symbol">&#x27;reac</span>t&#x27;;</span><br><span class="line"><span class="keyword">import</span> ｛</span><br><span class="line">  <span class="type">View</span>,</span><br><span class="line">  <span class="type">Image</span>,</span><br><span class="line">  <span class="type">Text</span>,</span><br><span class="line">	<span class="type">FlatList</span>, <span class="comment">// here</span></span><br><span class="line">｝ from <span class="symbol">&#x27;react</span>-native&#x27;;</span><br><span class="line"></span><br><span class="line">export <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> <span class="title">｛</span></span></span><br><span class="line"></span><br><span class="line">  state = ｛</span><br><span class="line">    data: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">  ｝</span><br><span class="line"></span><br><span class="line">  _renderItem = (｛item｝) =&gt; (</span><br><span class="line">    &lt;<span class="type">Text</span>&gt;｛item｝&lt;/<span class="type">Text</span>&gt;</span><br><span class="line">  );</span><br><span class="line"></span><br><span class="line">  render() ｛</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;<span class="type">FlatList</span></span><br><span class="line">        data=｛<span class="keyword">this</span>.state.data｝</span><br><span class="line">        renderItem=｛<span class="keyword">this</span>._renderItem｝</span><br><span class="line">      /&gt;</span><br><span class="line">    );</span><br><span class="line">  ｝</span><br><span class="line">｝</span><br></pre></td></tr></table></figure>
+<p><br>아래는 결과화면입니다.<br>
+<img alt data-src="https://steemitimages.com/300x0/https://files.steempeak.com/file/steempeak/anpigon/mcj3nVAN-E18489E185B3E1848FE185B3E18485E185B5E186ABE18489E185A3E186BA202019-03-292014.09.33.png"></p>
+<br>
+<h1 id="fake-online-rest-api"><a class="markdownIt-Anchor" href="#fake-online-rest-api"></a> Fake Online REST API</h1>
+<p>우리는 이번 예제를 위해서 <a target="_blank" rel="noopener" href="https://jsonplaceholder.typicode.com/">JSONPlaceholder</a>에서 제공하는 Fake Online REST API를 사용할 것입니다. <a target="_blank" rel="noopener" href="https://jsonplaceholder.typicode.com/">JSONPlaceholder</a>에서는 아래와 같이 다양한 샘플 API를 제공하고 있습니다.<br>
+<img alt data-src="https://files.steempeak.com/file/steempeak/anpigon/2sdlIhST-E18489E185B3E1848FE185B3E18485E185B5E186ABE18489E185A3E186BA202019-03-292014.17.35.png"></p>
+<p>이중에서 <code>/photos</code> API를 사용해 보겠습니다. JSON 데이터 형태는 아래와 같습니다.</p>
+<p><img alt data-src="https://files.steempeak.com/file/steempeak/anpigon/MofIm3k6-E18489E185B3E1848FE185B3E18485E185B5E186ABE18489E185A3E186BA202019-03-292014.18.01.png"></p>
+<br>
+<h1 id="서버에서-데이터-가져와서-출력하기"><a class="markdownIt-Anchor" href="#서버에서-데이터-가져와서-출력하기"></a> 서버에서 데이터 가져와서 출력하기</h1>
+<p>REST API에서 데이터를 가져오는 함수를 입력합니다. 한번에 10개씩 가져옵니다.</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">_getData = <span class="keyword">async</span> () =&gt; ｛</span><br><span class="line">  <span class="keyword">const</span> url = <span class="string">&#x27;https://jsonplaceholder.typicode.com/photos?_limit=10&#x27;</span>;</span><br><span class="line">  fetch(url)</span><br><span class="line">    .then(res =&gt; res.json())</span><br><span class="line">    .then(json =&gt; ｛</span><br><span class="line">      <span class="keyword">this</span>.setState(｛</span><br><span class="line">        data: json</span><br><span class="line">      ｝);</span><br><span class="line">    ｝);</span><br><span class="line">｝</span><br></pre></td></tr></table></figure>
+<p><br>그리고 컴포넌트가 마운트되고 나서 호출되도록 합니다.</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">componentDidMount() ｛</span><br><span class="line">  <span class="keyword">this</span>._getData();</span><br><span class="line">｝</span><br></pre></td></tr></table></figure>
+<p><br>마지막으로 <code>_renderItem</code> 함수를 수정합니다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">_renderItem = <span class="function">(<span class="params">｛item｝</span>) =&gt;</span> (</span><br><span class="line">  <span class="xml"><span class="tag">&lt;<span class="name">View</span> <span class="attr">style</span>=<span class="string">｛｛borderBottomWidth:1,</span> <span class="attr">marginTop:</span> <span class="attr">20</span>｝｝&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">Image</span> <span class="attr">source</span>=<span class="string">｛｛</span> <span class="attr">uri:</span> <span class="attr">item.url</span> ｝｝ <span class="attr">style</span>=<span class="string">｛｛</span> <span class="attr">height:</span> <span class="attr">200</span>｝｝ /&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">Text</span>&gt;</span>｛item.title｝<span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span></span><br><span class="line"><span class="xml">  <span class="tag">&lt;/<span class="name">View</span>&gt;</span></span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<br>
+> 여기까지 작업한 전체 코드입니다.
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> ｛</span><br><span class="line">  View,</span><br><span class="line">  Image,</span><br><span class="line">  Text,</span><br><span class="line">	FlatList, <span class="comment">// here</span></span><br><span class="line">｝ <span class="keyword">from</span> <span class="string">&#x27;react-native&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> ｛</span></span><br><span class="line"><span class="class"></span></span><br><span class="line"><span class="class">  <span class="title">state</span> </span>= ｛</span><br><span class="line">    <span class="attr">data</span>: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">  ｝</span><br><span class="line"></span><br><span class="line">  _getData = <span class="keyword">async</span> () =&gt; ｛</span><br><span class="line">    <span class="keyword">const</span> url = <span class="string">&#x27;https://jsonplaceholder.typicode.com/photos?_limit=10&#x27;</span>;</span><br><span class="line">    fetch(url)</span><br><span class="line">      .then(<span class="function"><span class="params">res</span> =&gt;</span> res.json())</span><br><span class="line">      .then(<span class="function"><span class="params">json</span> =&gt;</span> ｛</span><br><span class="line">        <span class="built_in">this</span>.setState(｛</span><br><span class="line">          <span class="attr">data</span>: json</span><br><span class="line">        ｝);</span><br><span class="line">      ｝);</span><br><span class="line">  ｝</span><br><span class="line"></span><br><span class="line">  componentDidMount() ｛</span><br><span class="line">    <span class="built_in">this</span>._getData();</span><br><span class="line">  ｝</span><br><span class="line"></span><br><span class="line">  _renderItem = <span class="function">(<span class="params">｛item｝</span>) =&gt;</span> (</span><br><span class="line">    <span class="xml"><span class="tag">&lt;<span class="name">View</span> <span class="attr">style</span>=<span class="string">｛｛borderBottomWidth:1,</span> <span class="attr">marginTop:</span> <span class="attr">20</span>｝｝&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">Image</span> <span class="attr">source</span>=<span class="string">｛｛</span> <span class="attr">uri:</span> <span class="attr">item.url</span> ｝｝ <span class="attr">style</span>=<span class="string">｛｛</span> <span class="attr">height:</span> <span class="attr">200</span>｝｝ /&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">Text</span>&gt;</span>｛item.title｝<span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">View</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line"></span><br><span class="line">  render() ｛</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="xml"><span class="tag">&lt;<span class="name">FlatList</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">        <span class="attr">data</span>=<span class="string">｛this.state.data｝</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">        <span class="attr">renderItem</span>=<span class="string">｛this._renderItem｝</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">        <span class="attr">keyExtractor</span>=<span class="string">｛(item,</span> <span class="attr">index</span>) =&gt;</span> item.id｝</span></span><br><span class="line"><span class="xml">      /&gt;</span></span><br><span class="line">    );</span><br><span class="line">  ｝</span><br><span class="line">｝</span><br></pre></td></tr></table></figure>
+<p><br>그리고 결과 화면입니다.</p>
+<p><img alt data-src="https://steemitimages.com/300x0/https://files.steempeak.com/file/steempeak/anpigon/CC1fJp4x-E18489E185B3E1848FE185B3E18485E185B5E186ABE18489E185A3E186BA202019-03-292014.29.28.png"></p>
+<br>
+<h1 id="무한-스크롤-구현하기"><a class="markdownIt-Anchor" href="#무한-스크롤-구현하기"></a> 무한 스크롤 구현하기</h1>
+<p>맨 아래 항목까지 스크롤되면, 다음 데이터를 자동으로 가져와서 목록에 추가하는 기능을 구현할 것입니다… 이 기능을 Infinite Scroll 또는 무한 스크롤이라고 합니다.</p>
+<p><code>state</code>에 <code>page</code> 변수를 추가합니다.</p>
+<figure class="highlight pf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">state</span> = ｛</span><br><span class="line">  data: [],</span><br><span class="line">  page: <span class="number">1</span> // here</span><br><span class="line">｝</span><br></pre></td></tr></table></figure>
+<p><br>그리고 <code>_getData</code> 함수를 수정합니다. 데이터를 가져올때마다 <code>_page</code> 번호를 증가합니다. 이렇게 하면 다음 요청에서는 다음 페이지의 데이터를 가져올 것입니다. 그리고 가져온 데이터를 기존 <code>data</code>에 추가(concat)합니다.</p>
+<figure class="highlight pf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">_getData = () =&gt; ｛</span><br><span class="line">  <span class="keyword">const</span> url = &#x27;https://jsonplaceholder.typicode.com/photos?_limit=<span class="number">10</span>&amp;_page=&#x27; + this.<span class="keyword">state</span>.page;</span><br><span class="line">  fetch(url)</span><br><span class="line">    .then(r =&gt; r.json())</span><br><span class="line">    .then(data =&gt; ｛</span><br><span class="line">      this.<span class="built_in">set</span>State(｛</span><br><span class="line">        data: this.<span class="keyword">state</span>.data.concat(data), // 기존 data에 추가.</span><br><span class="line">        page: this.<span class="keyword">state</span>.page + <span class="number">1</span></span><br><span class="line">      ｝)</span><br><span class="line">    ｝);</span><br><span class="line">｝</span><br></pre></td></tr></table></figure>
+<p><br>그리고 <code>_handleLoadMore</code> 함수를 입력합니다. 이 함수는 스크롤이 끝까지 도달했을때 호출됩니다.</p>
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">_handleLoadMore</span> = <span class="params">()</span> =&gt;</span> ｛</span><br><span class="line">  <span class="built_in">this</span>._getData();</span><br><span class="line">｝</span><br></pre></td></tr></table></figure>
+<p><br>마지막으로 <code>render</code> 함수를 수정합니다.</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">render() ｛</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;FlatList</span><br><span class="line">      <span class="keyword">data</span>=｛<span class="keyword">this</span>.state.<span class="keyword">data</span>｝</span><br><span class="line">      renderItem=｛<span class="keyword">this</span>._renderItem｝</span><br><span class="line">      keyExtractor=｛(item, index) =&gt; item.id｝</span><br><span class="line">      onEndReached=｛<span class="keyword">this</span>._handleLoadMore｝</span><br><span class="line">      onEndReachedThreshold=｛<span class="number">1</span>｝</span><br><span class="line">    /&gt;</span><br><span class="line">  );</span><br><span class="line">｝</span><br></pre></td></tr></table></figure>
+<br>
+> 다음은 전체 코드입니다.
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> ｛</span><br><span class="line">  View,</span><br><span class="line">  Image,</span><br><span class="line">  Text,</span><br><span class="line">	FlatList, <span class="comment">// here</span></span><br><span class="line">｝ <span class="keyword">from</span> <span class="string">&#x27;react-native&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> ｛</span></span><br><span class="line"><span class="class"></span></span><br><span class="line"><span class="class">  <span class="title">state</span> </span>= ｛</span><br><span class="line">    <span class="attr">data</span>: [],</span><br><span class="line">    <span class="attr">page</span>: <span class="number">1</span> <span class="comment">// here</span></span><br><span class="line">  ｝</span><br><span class="line"></span><br><span class="line">  _renderItem = <span class="function">(<span class="params">｛item｝</span>) =&gt;</span> (</span><br><span class="line">    <span class="xml"><span class="tag">&lt;<span class="name">View</span> <span class="attr">style</span>=<span class="string">｛｛borderBottomWidth:1,</span> <span class="attr">marginTop:</span> <span class="attr">20</span>｝｝&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">Image</span> <span class="attr">source</span>=<span class="string">｛｛</span> <span class="attr">uri:</span> <span class="attr">item.url</span> ｝｝ <span class="attr">style</span>=<span class="string">｛｛</span> <span class="attr">height:</span> <span class="attr">200</span>｝｝ /&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">Text</span>&gt;</span>｛item.title｝<span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">Text</span>&gt;</span>｛item.id｝<span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">View</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line"></span><br><span class="line">  <span class="comment">// _getData 함수 수정</span></span><br><span class="line">  _getData = <span class="function">() =&gt;</span> ｛</span><br><span class="line">    <span class="keyword">const</span> url = <span class="string">&#x27;https://jsonplaceholder.typicode.com/photos?_limit=10&amp;_page=&#x27;</span> + <span class="built_in">this</span>.state.page;</span><br><span class="line">    fetch(url)</span><br><span class="line">      .then(<span class="function"><span class="params">r</span> =&gt;</span> r.json())</span><br><span class="line">      .then(<span class="function"><span class="params">data</span> =&gt;</span> ｛</span><br><span class="line">        <span class="built_in">this</span>.setState(｛</span><br><span class="line">          <span class="attr">data</span>: <span class="built_in">this</span>.state.data.concat(data),</span><br><span class="line">          <span class="attr">page</span>: <span class="built_in">this</span>.state.page + <span class="number">1</span></span><br><span class="line">        ｝)</span><br><span class="line">      ｝);</span><br><span class="line">  ｝</span><br><span class="line"></span><br><span class="line">  componentDidMount() ｛</span><br><span class="line">    <span class="built_in">this</span>._getData();</span><br><span class="line">  ｝</span><br><span class="line"></span><br><span class="line">  <span class="comment">// here</span></span><br><span class="line">  _handleLoadMore = <span class="function">() =&gt;</span> ｛</span><br><span class="line">    <span class="built_in">this</span>._getData();</span><br><span class="line">  ｝</span><br><span class="line"></span><br><span class="line">  render() ｛</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="xml"><span class="tag">&lt;<span class="name">FlatList</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">        <span class="attr">data</span>=<span class="string">｛this.state.data｝</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">        <span class="attr">renderItem</span>=<span class="string">｛this._renderItem｝</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">        <span class="attr">keyExtractor</span>=<span class="string">｛(item,</span> <span class="attr">index</span>) =&gt;</span> item.id｝</span></span><br><span class="line"><span class="xml">        onEndReached=｛this._handleLoadMore｝</span></span><br><span class="line"><span class="xml">        onEndReachedThreshold=｛1｝</span></span><br><span class="line"><span class="xml">      /&gt;</span></span><br><span class="line">    );</span><br><span class="line">  ｝</span><br><span class="line">｝</span><br></pre></td></tr></table></figure>
+<p><br>다음은 결과 화면입니다. 스크롤이 끊임없이 됩니다.</p>
+<p><img alt data-src="https://files.steempeak.com/file/steempeak/anpigon/MmScFXWl-2019-03-292014-46-41.2019-03-292014_47_12.gif"></p>
+<br>
+<h1 id="pull-down-refresh-구현하기"><a class="markdownIt-Anchor" href="#pull-down-refresh-구현하기"></a> Pull Down Refresh 구현하기</h1>
+<p>이제 마지막입니다.</p>
+<p><code>state</code>에 <code>refreshing</code> 변수를 추가합니다. <code>refreshing</code> 는 데이터를 가져오는 중인지를 판단합니다.</p>
+<figure class="highlight pf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">state</span> = ｛</span><br><span class="line">  data: [],</span><br><span class="line">  page: <span class="number">1</span>,</span><br><span class="line">  refreshing: false // here</span><br><span class="line">｝</span><br></pre></td></tr></table></figure>
+<p><br><code>_handleRefresh</code> 함수를 입력합니다. 이 함수는 화면을 <strong>Pull Down</strong>하면 호출될 것입니다. 데이터를 새로 가져올 것이기 때문에, page 번호를 1로 초기화해 줍니다.</p>
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">_handleRefresh</span> = <span class="params">()</span> =&gt;</span> ｛</span><br><span class="line">  <span class="built_in">this</span>.setState(｛</span><br><span class="line">    refreshing: <span class="literal">true</span>,</span><br><span class="line">    page: <span class="number">1</span>,</span><br><span class="line">  ｝, <span class="built_in">this</span>._getData);</span><br><span class="line">｝</span><br></pre></td></tr></table></figure>
+<p><br><code>render</code> 함수를 수정합니다. refreshing 속성과 onRefresh 속성을 추가하였습니다.</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">render() ｛</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;FlatList</span><br><span class="line">      <span class="keyword">data</span>=｛<span class="keyword">this</span>.state.<span class="keyword">data</span>｝</span><br><span class="line">      renderItem=｛<span class="keyword">this</span>._renderItem｝</span><br><span class="line">      keyExtractor=｛(item, index) =&gt; item.id｝</span><br><span class="line">      onEndReached=｛<span class="keyword">this</span>._handleLoadMore｝</span><br><span class="line">      onEndReachedThreshold=｛<span class="number">1</span>｝</span><br><span class="line">      refreshing=｛<span class="keyword">this</span>.state.refreshing｝</span><br><span class="line">      onRefresh=｛<span class="keyword">this</span>._handleRefresh｝</span><br><span class="line">    /&gt;</span><br><span class="line">  );</span><br><span class="line">｝</span><br></pre></td></tr></table></figure>
+<p><br>마지막으로 <code>_getData</code> 함수를 수정합니다. <code>refreshing</code>가 <strong>true</strong> 일때는 가져온 데이터를 기존 데이터에 추가(concat)하지 않습니다.</p>
+<figure class="highlight pf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">_getData = () =&gt; ｛</span><br><span class="line">  <span class="keyword">const</span> url = &#x27;https://jsonplaceholder.typicode.com/photos?_limit=<span class="number">10</span>&amp;_page=&#x27; + this.<span class="keyword">state</span>.page;</span><br><span class="line">  fetch(url)</span><br><span class="line">    .then(r =&gt; r.json())</span><br><span class="line">    .then(data =&gt; ｛</span><br><span class="line">      this.<span class="built_in">set</span>State(｛</span><br><span class="line">        data: this.<span class="keyword">state</span>.refreshing?data:this.<span class="keyword">state</span>.data.concat(data),</span><br><span class="line">        page: this.<span class="keyword">state</span>.page + <span class="number">1</span>,</span><br><span class="line">        refreshing: false</span><br><span class="line">      ｝)</span><br><span class="line">    ｝);</span><br><span class="line">｝</span><br></pre></td></tr></table></figure>
+<p><br>다음은 결과 화면입니다. 화면을 아래로 당기면 <code>onRefresh</code> 이벤트가 발생합니다. 새로고침 해도 같은 데이터를 가져오기 때문에 화면의 변화는 없네요.</p>
+<p><img alt data-src="https://files.steempeak.com/file/steempeak/anpigon/Z1I9E54D-2019-03-292015-03-11.2019-03-292015_04_24.gif"></p>
+<hr>
+<p>예제에 사용한 코드는 <a target="_blank" rel="noopener" href="https://snack.expo.io/@markan/infinite-scroll-flatlist"><strong>여기</strong></a>에서 확인할 수 있습니다.</p>
+<p>감사합니다.</p>
+
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/react-native/" rel="tag"># React Native</a>
+              <a href="/tags/infinite-scroll/" rel="tag"># Infinite Scroll</a>
+              <a href="/tags/pull-down-refresh/" rel="tag"># Pull Down Refresh</a>
+              <a href="/tags/flatlist/" rel="tag"># FlatList</a>
+          </div>
+
+        
+  <div class="post-widgets">
+    <div class="wp_rating">
+      <div id="wpac-rating"></div>
+    </div>
+  </div>
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/kr/@anpigon/3radqh" rel="next" title="리액트 네이티브로 무비앱을 만들어서 스토어에 올렸어요!">
+                  <i class="fa fa-chevron-left"></i> 리액트 네이티브로 무비앱을 만들어서 스토어에 올렸어요!
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/kr/@steemory/2d5ory" rel="prev" title="[팁] 모바일 크롬 브라우저 성능 및 네트워크 데이터 절약 방법">
+                  [팁] 모바일 크롬 브라우저 성능 및 네트워크 데이터 절약 방법 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    
+  <div class="comments" id="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          목차
+        </li>
+        <li class="sidebar-nav-overview">
+          흝어보기
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%EC%83%98%ED%94%8C-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8-%EC%83%9D%EC%84%B1%ED%95%98%EA%B8%B0"><span class="nav-number">1.</span> <span class="nav-text"> 샘플 컴포넌트 생성하기</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#fake-online-rest-api"><span class="nav-number">2.</span> <span class="nav-text"> Fake Online REST API</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%EC%84%9C%EB%B2%84%EC%97%90%EC%84%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EA%B0%80%EC%A0%B8%EC%99%80%EC%84%9C-%EC%B6%9C%EB%A0%A5%ED%95%98%EA%B8%B0"><span class="nav-number">3.</span> <span class="nav-text"> 서버에서 데이터 가져와서 출력하기</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%EB%AC%B4%ED%95%9C-%EC%8A%A4%ED%81%AC%EB%A1%A4-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0"><span class="nav-number">4.</span> <span class="nav-text"> 무한 스크롤 구현하기</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#pull-down-refresh-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0"><span class="nav-number">5.</span> <span class="nav-text"> Pull Down Refresh 구현하기</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="안피곤"
+    src="/images/me.jpg">
+  <p class="site-author-name" itemprop="name">안피곤</p>
+  <div class="site-description" itemprop="description">시간이 천천히 갔으면 좋겠다.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">327</span>
+          <span class="site-state-item-name">포스트</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-name">카테고리</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">144</span>
+        <span class="site-state-item-name">태그</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/anpigon" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;anpigon" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:markan82@gmail.com" title="E-Mail &amp;rarr; mailto:markan82@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+          <!-- 정사각형 광고 -->
+          <div style="margin-top: 15px;">
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-2365531018407022"
+                data-ad-slot="7521850306"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+          </div>
+    </div>
+  </aside>
+  <div id="sidebar-dimmer">3</div>
+
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">안피곤</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v5.4.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.4.2
+  </div>
+
+        
+
+
+
+
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-firestore.js"></script>
+  <script>
+    firebase.initializeApp({
+      apiKey: 'AIzaSyA4QZWCWb3IuIHjbkAmO0ttIM2b-qtLTP8',
+      projectId: 'next-blog-8f9a0'
+    });
+
+    function getCount(doc, increaseCount) {
+      // IncreaseCount will be false when not in article page
+
+      return doc.get().then(d => {
+        var count = 0;
+        if (!d.exists) { // Has no data, initialize count
+          if (increaseCount) {
+            doc.set({
+              count: 1
+            });
+            count = 1;
+          }
+        } else { // Has data
+          count = d.data().count;
+          if (increaseCount) {
+            // If first view this article
+            doc.set({ // Increase count
+              count: count + 1
+            });
+            count++;
+          }
+        }
+
+        return count;
+      });
+    }
+
+    function appendCountTo(el) {
+      return count => {
+        el.innerText = count;
+      }
+    }
+  </script>
+  <script pjax>
+    (function() {
+      var db = firebase.firestore();
+      var articles = db.collection('articles');
+
+      if (CONFIG.page.isPost) { // Is article page
+        var title = document.querySelector('.post-title').innerText.trim();
+        var doc = articles.doc(title);
+        var increaseCount = true;
+        if (localStorage.getItem(title)) {
+          increaseCount = false;
+        } else {
+          // Mark as visited
+          localStorage.setItem(title, true);
+        }
+        getCount(doc, increaseCount).then(appendCountTo(document.querySelector('.firestore-visitors-count')));
+      } else if (CONFIG.page.isHome) { // Is index page
+        var promises = [...document.querySelectorAll('.post-title')].map(element => {
+          var title = element.innerText.trim();
+          var doc = articles.doc(title);
+          return getCount(doc);
+        });
+        Promise.all(promises).then(counts => {
+          var metas = document.querySelectorAll('.firestore-visitors-count');
+          counts.forEach((val, idx) => {
+            appendCountTo(metas[idx])(val);
+          });
+        });
+      }
+    })();
+  </script>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.getAttribute('pjax') !== null) {
+      element.setAttribute('pjax', '');
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+  <script pjax>
+  if (CONFIG.page.isPost) {
+    wpac_init = window.wpac_init || [];
+    wpac_init.push({
+      widget: 'Rating',
+      id: 21712,
+      el: 'wpac-rating',
+      color: 'fc6423'
+    });
+    (function() {
+      if ('WIDGETPACK_LOADED' in window) return;
+      WIDGETPACK_LOADED = true;
+      var mc = document.createElement('script');
+      mc.type = 'text/javascript';
+      mc.async = true;
+      mc.src = '//embed.widgetpack.com/widget.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+    })();
+  }
+  </script>
+
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.4.1/dist/instantsearch.min.css">
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.4.1/dist/instantsearch.js"></script>
+<script src="/js/algolia-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+
+  
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://anpigon-github-io.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  function loadComments() {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: {page: {
+            url: "https://anpigon.github.io/kr/@anpigon/react-native-flatlist-infinite-scroll-pull-down-refresh",
+            identifier: "/kr/@anpigon/react-native-flatlist-infinite-scroll-pull-down-refresh",
+            title: "[React Native] FlatList으로 Infinite Scroll와 Pull Down Refresh 구현하기"
+          }
+        }
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://anpigon-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  }
+    (function() {
+      var offsetTop = document.getElementById('comments').offsetTop - window.innerHeight;
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        window.addEventListener('load', loadComments, false);
+      } else {
+        var disqus_scroll = () => {
+          // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = document.getElementById('comments').offsetTop - window.innerHeight;
+          var scrollTop = window.scrollY;
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            window.removeEventListener('scroll', disqus_scroll);
+            loadComments();
+          }
+        };
+        window.addEventListener('scroll', disqus_scroll);
+      }
+    })();
+  
+</script>
+
+    </div>
+</body>
+</html>

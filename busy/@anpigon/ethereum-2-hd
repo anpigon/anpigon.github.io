@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="yfKOiBPD8WlKH3NPG_CG1zr4MsCgCG1YVdGKhMS2CKc">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Noto Serif KR:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.4.2',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: true,
+    pangu: false,
+    algolia: {
+      appID: 'YY693DUDAI',
+      apiKey: 'db449d453b150820f66e7bc3d4523a17',
+      indexName: 'my-hexo-blog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '복사',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="안녕하세요. @anpigon입니다.마스터 이더리움(Mastering Ethereum) 책을 보면서 정리한 글입니다. 아직 전체 내용을 다 보지는 못하였습니다. 하지만 궁금한 사항을 댓글로 문의하면, 최대한 답변해드리도록 노력하겠습니다. 책 전체 내용은 깃허브에서 볼 수 있습니다. https:&#x2F;&#x2F;github.com&#x2F;ethereumbook&#x2F;ethereumboo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[블록체인] 이더리움(Ethereum) 공부 #2 - HD 지갑과 니모닉 코드">
+<meta property="og:url" content="https://anpigon.github.io/busy/@anpigon/ethereum-2-hd">
+<meta property="og:site_name" content="안피곤님의 블로그">
+<meta property="og:description" content="안녕하세요. @anpigon입니다.마스터 이더리움(Mastering Ethereum) 책을 보면서 정리한 글입니다. 아직 전체 내용을 다 보지는 못하였습니다. 하지만 궁금한 사항을 댓글로 문의하면, 최대한 답변해드리도록 노력하겠습니다. 책 전체 내용은 깃허브에서 볼 수 있습니다. https:&#x2F;&#x2F;github.com&#x2F;ethereumbook&#x2F;ethereumboo">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:image" content="https://steemitimages.com/150x0/https://images-na.ssl-images-amazon.com/images/I/51eW3hlp3jL._SX379_BO1,204,203,200_.jpg">
+<meta property="article:published_time" content="2018-08-28T04:41:27.000Z">
+<meta property="article:modified_time" content="2021-08-14T10:47:06.076Z">
+<meta property="article:author" content="안피곤">
+<meta property="article:tag" content="블록체인">
+<meta property="article:tag" content="이더리움">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://steemitimages.com/150x0/https://images-na.ssl-images-amazon.com/images/I/51eW3hlp3jL._SX379_BO1,204,203,200_.jpg">
+
+<link rel="canonical" href="https://anpigon.github.io/busy/@anpigon/ethereum-2-hd">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>[블록체인] 이더리움(Ethereum) 공부 #2 - HD 지갑과 니모닉 코드 | 안피곤님의 블로그</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-20589042-10"></script>
+    <script pjax>
+      var host = window.location.hostname;
+      if (host !== "localhost" || !true) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-20589042-10');
+      }
+    </script>
+
+
+
+
+
+
+  
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-2365531018407022",
+          enable_page_level_ads: false
+     });
+</script>
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="안피곤님의 블로그" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">안피곤님의 블로그</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">코딩, 독서, 여행, 영화, 맛집</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>홈</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>태그<span class="badge">144</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>카테고리<span class="badge">25</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>아카이브<span class="badge">327</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>검색
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input" id="search-input"></div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="algolia-results">
+  <div id="algolia-stats"></div>
+  <div id="algolia-hits"></div>
+  <div id="algolia-pagination" class="algolia-pagination"></div>
+</div>
+
+  
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="ko">
+    <link itemprop="mainEntityOfPage" href="https://anpigon.github.io/busy/@anpigon/ethereum-2-hd">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/me.jpg">
+      <meta itemprop="name" content="안피곤">
+      <meta itemprop="description" content="시간이 천천히 갔으면 좋겠다.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="안피곤님의 블로그">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          [블록체인] 이더리움(Ethereum) 공부 #2 - HD 지갑과 니모닉 코드
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">작성일</span>
+
+              <time title="Post created: 2018-08-28 13:41:27" itemprop="dateCreated datePublished" datetime="2018-08-28T13:41:27+09:00">2018-08-28</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Updated at: 2021-08-14 19:47:06" itemprop="dateModified" datetime="2021-08-14T19:47:06+09:00">2021-08-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">개발 이야기</span>
+                  </a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/%EB%B8%94%EB%A1%9D%EC%B2%B4%EC%9D%B8/" itemprop="url" rel="index">
+                    <span itemprop="name">블록체인</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/busy/@anpigon/ethereum-2-hd#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="/busy/@anpigon/ethereum-2-hd" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+            <div style="margin-bottom:35px;margin-top:-20px;">
+              <!-- 블로그 본문 상단 광고 -->
+              <ins class="adsbygoogle"
+                  style="display:block"
+                  data-ad-client="ca-pub-2365531018407022"
+                  data-ad-slot="3390644000"
+                  data-ad-format="auto"
+                  data-full-width-responsive="true"></ins>
+              <script>
+                  (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+        <p>안녕하세요. @anpigon입니다.</p><div class="pull-right"><img data-src="https://steemitimages.com/150x0/https://images-na.ssl-images-amazon.com/images/I/51eW3hlp3jL._SX379_BO1,204,203,200_.jpg"></div><p><strong>마스터 이더리움(Mastering Ethereum)</strong> 책을 보면서 정리한 글입니다. 아직 전체 내용을 다 보지는 못하였습니다. 하지만 궁금한 사항을 댓글로 문의하면, 최대한 답변해드리도록 노력하겠습니다.</p><blockquote>
+<p>책 전체 내용은 깃허브에서 볼 수 있습니다.<br>
+<a target="_blank" rel="noopener" href="https://github.com/ethereumbook/ethereumbook/blob/develop/README.md">https://github.com/ethereumbook/ethereumbook</a></p>
+</blockquote><a id="more"></a>
+
+
+
+<br>
+<hr>
+<br>
+<p>이더리움 지갑에는 이더(ether)나 토큰(token)이 들어있지 않다. 지갑에는 한 쌍의 공개키와 개인키만 있을 뿐이다. 이더나 토큰은 이더리움 블록체인에 기록되어 있다. 지갑의 유형은 크게 비결정적 지갑(Nondeterministic Wallet)과 결정적 지갑(Deterministic Wallets)으로 구분된다. 결정적 지갑 중에서 가장 많이 사용되는 HD 지갑에 대해서 알아본다.</p>
+<hr>
+<h1 id="계층-결정적-지갑hd-wallets"><a class="markdownIt-Anchor" href="#계층-결정적-지갑hd-wallets"></a> 계층 결정적 지갑(HD Wallets)</h1>
+<p>결정적 지갑(Deterministic Wallets)은 단일 **시드(seed)**에서 많은 키를 생성하기 위해 개발되었다. 결정적 지갑 중에서 가장 발전된 형태는 계층 결정적 지갑(Hierarchical Deterministic Wallets)이다. 계층 결정적 지갑은 HD 지갑(HD Wallet)이라고도 한다. HD 지갑은 비트코인의 <a target="_blank" rel="noopener" href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki">BIP-32</a>와 <a target="_blank" rel="noopener" href="https://github.com/bitcoin/bips/blob/master/bip-0044.mediawiki">BIP-44</a> 표준에 정의되어 있다. HD 지갑은 트리 구조로 생성된 키를 가지고 있다. 이 트리 구조는 부모키에서 자식키를 만들 수 있고, 그 자식키에서 손자키를 만들 수 있다. 이런 방법으로 키를 무한대로 생성한다. 이렇게 키를 여러 개 생성하여 관리하는 이유는 블록체인의 투명성과 관련된 보안 문제 때문이다. 이와 관련된 문제는 나중에 별도 포스팅으로 설명하겠다.</p>
+<center>https://steemitimages.com/400x0/https://imgur.com/hppMB4b.png</center>
+<br>
+<hr>
+<h2 id="시드에서-hd-지갑-생성하기"><a class="markdownIt-Anchor" href="#시드에서-hd-지갑-생성하기"></a> 시드에서 HD 지갑 생성하기</h2>
+<p>HD 지갑은 <strong>루트 시드(Root Seed)</strong> 한 개로부터 많은 키와 주소가 생성된다. 따라서 루트 시드만 알고 있으면 수천 또는 수백만 개의 키를 가지고 있는 HD 지갑 전체를 복원할 수 있다. 루트 시드는 니모닉 단어 순서(Mnemonic Word Sequence)를 가장 많이 사용한다.</p>
+<p>루트 시드를 HMAC-SHA512 알고리즘 함수를 사용하여 해시한 값에서 마스터 개인키(Mater Private Key)과 마스터 체인코드(Master Chain Code)를 생성한다. 512비트의 해시된 값에서 왼쪽 256비트를 마스터 개인키로 사용하고, 오른쪽 256비트를 체인코드로 사용한다. 그리고 마스터 공개키는 타원곡선 곱셈 함수를 사용하여 마스터 개인키로부터 계산된다.</p>
+<center>https://steemitimages.com/500x0/https://imgur.com/Vu0SpXy.png</center>
+<p>계층 결정적 지갑은 자식키 유도 함수(<em>CKD</em>)를 사용하여 부모키로 부터 자식키를 파생한다. 자식키 생성에는 부모키, 체인코드, 인덱스 번호가 사용된다. 자식키를 생성하기 위해 부모키, 체인코드, 인덱스 번호를 결합하여 HMAC-SHA512로  해시한다. 해시된 값(512비트)을 반으로 나눠 개인키(256비트)와 체인코드(256비트)를 생성한다. 이 방법으로 자식키를 계속 생성할 수 있다.</p>
+<p>위에서 보았듯이 체인코드는 자식키를 파생하는데 사용된다. 키와 체인코드를 포함하고 있는 키를 확장키(Extended Key)라고 한다. 대부분의 HD 지갑은 키 생성을 위해 비트코인의 <a target="_blank" rel="noopener" href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki">BIP-32</a> 표준을 사용한다. 그리고 확장 개인키는 <strong>xprv</strong>, 확장 공개키는 <strong>xpub</strong>라는 접두어를 사용하여 식별한다.</p>
+<hr>
+<h2 id="강화된-유도법hardened-derivation으로-자식키-생성"><a class="markdownIt-Anchor" href="#강화된-유도법hardened-derivation으로-자식키-생성"></a> 강화된 유도법(Hardened Derivation)으로 자식키 생성</h2>
+<p>만약 자식 확장 개인키가 유출되는 경우, 자식 확장 개인키가 포함하고 있는 키와 체인코드를 사용하면 다른 자식의 개인키 전부를 알아 낼 수 있다. 이러한 문제에 대응하기 위해 HD지갑은 강화된 유도(Hardened Derivation) 함수를 사용한다. 강화된 유도 함수는 부모 키와 자식 체인코드 관계를 끊어버린다. 이렇게 해서 부모키오 자식키 사이에 **방화벽(firewall)**을 만든다.</p>
+<hr>
+<h2 id="hd-지갑-키-식별자path"><a class="markdownIt-Anchor" href="#hd-지갑-키-식별자path"></a> HD 지갑 키 식별자(path)</h2>
+<p>HD 지갑의 키는 명명 규칙인 'path’를 사용하여 식별한다. 그리고 트리의 각 레벨은 슬래시(/) 문자로 구분된다. 마스터 개인키에서 생성된 자식 개인키는 'm’으로 시작하고, 마스터 공개키에서 생성된 자식 공개키는 'M’으로 시작한다.</p>
+<p>예를 들면, 마스터 개인키의 0번째 자식 개인키의 path는 <code>m/0</code>이다. 그리고 0번째 자식 공개키의 path는 <code>M/0</code>이다. 0번째 자식 개인키의 1번째 손자 개인키는 <code>m/0/1</code>이 된다.</p>
+<hr>
+<h2 id="bip-44"><a class="markdownIt-Anchor" href="#bip-44"></a> BIP-44</h2>
+<p>비트코인의 <a target="_blank" rel="noopener" href="https://github.com/bitcoin/bips/blob/master/bip-0044.mediawiki">BIP-44</a> 표준은 복잡한 키 생성에 대한 방법을 제공한다. BIP-44는 미리 정의된 5개의 레벨의 path로 구성된다.</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">m / purpos<span class="string">e&#x27; / coin_type&#x27;</span> / account<span class="string">&#x27; / change / address_index</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>경로에 있는 아포스트로피(’) 문자는 BIP-32의 강화된 유도(hardened derivation)가 사용됨을 나타낸다.</p>
+</blockquote>
+<ul>
+<li><code>purpose</code>는 44’를 사용한다. BIP-44 규격이 사용됨을 의미한다.</li>
+<li><code>coin_type</code>은 가상화폐 코인 유형을 의미한다. 이더리움은 60’을 사용한다. 다른 코인 유형 코드는 <a target="_blank" rel="noopener" href="https://github.com/satoshilabs/slips/blob/master/slip-0044.md">SLIP0044</a> 표준 문서에서 찾아 볼 수 있다.</li>
+<li><code>account</code>은 회계나 조직 목적을 위해 지갑을 하위 계좌로 세분화할 때 사용한다.</li>
+<li><code>change</code>은 이더리움에서 사용하지 않는다. 비트코인에서 수신 주소(receiving address)와 잔액 주소(change address)를 구분하기 위해 사용한다.</li>
+<li><code>address_index</code>는 주소 번호를 의미한다. 순차적으로 증가한다.</li>
+</ul>
+<br>
+<p>이제 자바스크립트로 확장 개인키와 자식키를 생성해보자.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Bitcore = <span class="built_in">require</span>(<span class="string">&#x27;bitcore-lib&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 마스터 확장 개인키 생성</span></span><br><span class="line"><span class="keyword">var</span> xPriKey = <span class="keyword">new</span> Bitcore.HDPrivateKey();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 단절된 확장 자식 공개키 생성</span></span><br><span class="line"><span class="keyword">var</span> xPubKey = xPriKey.deriveChild(<span class="string">&quot;m/44&#x27;/60&#x27;/0&#x27;&quot;</span>).hdPublicKey;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 0번째 자식 공개키 생성</span></span><br><span class="line"><span class="keyword">var</span> pubKey = xPubKey.deriveChild(<span class="string">&quot;m/0/0&quot;</span>).publicKey;</span><br><span class="line"><span class="built_in">console</span>.log(publicKey)</span><br></pre></td></tr></table></figure>
+<p>실행결과:<br>
+<a target="_blank" rel="noopener" href="https://imgur.com/dOI6JdD.png">https://imgur.com/dOI6JdD.png</a></p>
+<br>
+<hr>
+<h1 id="니모닉-코드-단어bip-39"><a class="markdownIt-Anchor" href="#니모닉-코드-단어bip-39"></a> 니모닉 코드 단어(BIP-39)</h1>
+<p>니모닉 코드 단어(mnemonic code words)는 순서대로 나열된 영어 단어에서 시드(seed)를 만드는 방법이다. 니모닉 코드는 <a target="_blank" rel="noopener" href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki">BIP-39</a> 표준에 정의되어 있다. 니모닉 코드를 사용하면 HD 지갑을 쉽게 복원할 수 있다.  니모닉 코드 단어열은 12 ~ 24 단어로 구성된다</p>
+<p>아래 두 시드를 비교해보면, 니모닉 시드가 쉽게 읽히고 종이에 적어서 백업하기 좋다.</p>
+<h6 id="16진수-시드"><a class="markdownIt-Anchor" href="#16진수-시드"></a> 16진수 시드</h6>
+<figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FCCF1AB3329FD5DA3DA95<span class="number">77511F8F137</span></span><br></pre></td></tr></table></figure>
+<h6 id="12개의-단어-니모닉-시드"><a class="markdownIt-Anchor" href="#12개의-단어-니모닉-시드"></a> 12개의 단어 니모닉 시드</h6>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wolf <span class="keyword">juice </span>proud gown wool unfair wall cliff <span class="keyword">insect </span>more detail hub</span><br></pre></td></tr></table></figure>
+<br>
+<p>자바스크립트를 사용하여 니모닉 시드에서 키를 생성해보자.</p>
+<p>우선 <strong>bitcore-mnemonic</strong> 라이브러리를 설치한다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install bitcore-mnemonic --save</span><br></pre></td></tr></table></figure>
+<br>
+<p>아래와 같이 니모닉 단어를 생성하고 니모닉으로 부터 개인키를 생성한다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Mnemonic = <span class="built_in">require</span>(<span class="string">&#x27;bitcore-mnemonic&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 니모닉 코드 생성</span></span><br><span class="line"><span class="keyword">var</span> code = <span class="keyword">new</span> Mnemonic(Mnemonic.Words.ENGLISH);</span><br><span class="line"><span class="built_in">console</span>.log(code.toString());</span><br><span class="line"></span><br><span class="line"><span class="comment">// 니모닉 코드에서 개인키 생성</span></span><br><span class="line"><span class="keyword">var</span> xPriKey = code.toHDPrivateKey();</span><br><span class="line"><span class="built_in">console</span>.log(xPriKey);</span><br></pre></td></tr></table></figure>
+<p>실행 결과<br>
+<a target="_blank" rel="noopener" href="https://imgur.com/NMCAnza.png">https://imgur.com/NMCAnza.png</a></p>
+<br>
+<p>이제 앞에서 생성한 니모닉 단어로부터 개인키를 복원해보자.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 복원용 니모니 단어</span></span><br><span class="line"><span class="keyword">var</span> words = <span class="string">&quot;damage clog alert hurt fork purchase iron cotton apple buffalo survey vast&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 니모닉 단어로 부터 개인키 복원</span></span><br><span class="line"><span class="keyword">var</span> xPriKey = Mnemonic(words).toHDPrivateKey();</span><br><span class="line"><span class="built_in">console</span>.log(xPriKey);</span><br></pre></td></tr></table></figure>
+<p>실행 결과<br>
+<a target="_blank" rel="noopener" href="https://imgur.com/oQsOIRB.png">https://imgur.com/oQsOIRB.png</a></p>
+<blockquote>
+<p>참고로 <a target="_blank" rel="noopener" href="https://github.com/bitcoinjs/bip39">bip39</a> 라이브러리를 사용하면 한글을 니모닉 단어로 사용 할 수 있다.</p>
+</blockquote>
+<br>
+<p>만약 이더리움 지갑을 개발한다면 BIP-32, BIP-39, BIP-43, BIP-44 표준에 따라 니모닉 코드를 시드로 사용하는 HD지갑으로 구현하자.</p>
+<p>여기까지 읽어주셔서 감사합니다.</p>
+<blockquote>
+<p>지갑과 니모닉을 공부하면서 생소한 용어들이 많이 등장하였습니다. 한글로 어떻게 표기할지 몰라 임의로 번역하거나 영어 발음 그대로 작성한 문장이 많습니다. 이 글을 읽으면서 용어에 대한 일관성이 없어라도 이해 부탁드립니다.</p>
+</blockquote>
+<hr>
+<p>이전글</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://steemit.com/@anpigon/ethereum-1">이더리움(Ethereum) 공부 #1 - 키와 주소</a></li>
+</ul>
+
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%EB%B8%94%EB%A1%9D%EC%B2%B4%EC%9D%B8/" rel="tag"># 블록체인</a>
+              <a href="/tags/%EC%9D%B4%EB%8D%94%EB%A6%AC%EC%9B%80/" rel="tag"># 이더리움</a>
+          </div>
+
+        
+  <div class="post-widgets">
+    <div class="wp_rating">
+      <div id="wpac-rating"></div>
+    </div>
+  </div>
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/artisteem/@anpigon/artisteem--anpigon--2143501942--artisteem-sky-busy-jjangjjangman-kr--2018-08-27-23-05-06--artwork--none" rel="next" title="[아티스팀] 서울 한강 야경">
+                  <i class="fa fa-chevron-left"></i> [아티스팀] 서울 한강 야경
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/busy/@anpigon/6sns8d" rel="prev" title="블록체인 기반 은행 인증서비스 “뱅크사인” 사용후기">
+                  블록체인 기반 은행 인증서비스 “뱅크사인” 사용후기 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    
+  <div class="comments" id="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          목차
+        </li>
+        <li class="sidebar-nav-overview">
+          흝어보기
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%EA%B3%84%EC%B8%B5-%EA%B2%B0%EC%A0%95%EC%A0%81-%EC%A7%80%EA%B0%91hd-wallets"><span class="nav-number">1.</span> <span class="nav-text"> 계층 결정적 지갑(HD Wallets)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%EC%8B%9C%EB%93%9C%EC%97%90%EC%84%9C-hd-%EC%A7%80%EA%B0%91-%EC%83%9D%EC%84%B1%ED%95%98%EA%B8%B0"><span class="nav-number">1.1.</span> <span class="nav-text"> 시드에서 HD 지갑 생성하기</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EA%B0%95%ED%99%94%EB%90%9C-%EC%9C%A0%EB%8F%84%EB%B2%95hardened-derivation%EC%9C%BC%EB%A1%9C-%EC%9E%90%EC%8B%9D%ED%82%A4-%EC%83%9D%EC%84%B1"><span class="nav-number">1.2.</span> <span class="nav-text"> 강화된 유도법(Hardened Derivation)으로 자식키 생성</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hd-%EC%A7%80%EA%B0%91-%ED%82%A4-%EC%8B%9D%EB%B3%84%EC%9E%90path"><span class="nav-number">1.3.</span> <span class="nav-text"> HD 지갑 키 식별자(path)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bip-44"><span class="nav-number">1.4.</span> <span class="nav-text"> BIP-44</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%EB%8B%88%EB%AA%A8%EB%8B%89-%EC%BD%94%EB%93%9C-%EB%8B%A8%EC%96%B4bip-39"><span class="nav-number">2.</span> <span class="nav-text"> 니모닉 코드 단어(BIP-39)</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#16%EC%A7%84%EC%88%98-%EC%8B%9C%EB%93%9C"><span class="nav-number">2.0.0.0.0.1.</span> <span class="nav-text"> 16진수 시드</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#12%EA%B0%9C%EC%9D%98-%EB%8B%A8%EC%96%B4-%EB%8B%88%EB%AA%A8%EB%8B%89-%EC%8B%9C%EB%93%9C"><span class="nav-number">2.0.0.0.0.2.</span> <span class="nav-text"> 12개의 단어 니모닉 시드</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="안피곤"
+    src="/images/me.jpg">
+  <p class="site-author-name" itemprop="name">안피곤</p>
+  <div class="site-description" itemprop="description">시간이 천천히 갔으면 좋겠다.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">327</span>
+          <span class="site-state-item-name">포스트</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-name">카테고리</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">144</span>
+        <span class="site-state-item-name">태그</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/anpigon" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;anpigon" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:markan82@gmail.com" title="E-Mail &amp;rarr; mailto:markan82@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+          <!-- 정사각형 광고 -->
+          <div style="margin-top: 15px;">
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-2365531018407022"
+                data-ad-slot="7521850306"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+          </div>
+    </div>
+  </aside>
+  <div id="sidebar-dimmer">3</div>
+
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">안피곤</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v5.4.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.4.2
+  </div>
+
+        
+
+
+
+
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-firestore.js"></script>
+  <script>
+    firebase.initializeApp({
+      apiKey: 'AIzaSyA4QZWCWb3IuIHjbkAmO0ttIM2b-qtLTP8',
+      projectId: 'next-blog-8f9a0'
+    });
+
+    function getCount(doc, increaseCount) {
+      // IncreaseCount will be false when not in article page
+
+      return doc.get().then(d => {
+        var count = 0;
+        if (!d.exists) { // Has no data, initialize count
+          if (increaseCount) {
+            doc.set({
+              count: 1
+            });
+            count = 1;
+          }
+        } else { // Has data
+          count = d.data().count;
+          if (increaseCount) {
+            // If first view this article
+            doc.set({ // Increase count
+              count: count + 1
+            });
+            count++;
+          }
+        }
+
+        return count;
+      });
+    }
+
+    function appendCountTo(el) {
+      return count => {
+        el.innerText = count;
+      }
+    }
+  </script>
+  <script pjax>
+    (function() {
+      var db = firebase.firestore();
+      var articles = db.collection('articles');
+
+      if (CONFIG.page.isPost) { // Is article page
+        var title = document.querySelector('.post-title').innerText.trim();
+        var doc = articles.doc(title);
+        var increaseCount = true;
+        if (localStorage.getItem(title)) {
+          increaseCount = false;
+        } else {
+          // Mark as visited
+          localStorage.setItem(title, true);
+        }
+        getCount(doc, increaseCount).then(appendCountTo(document.querySelector('.firestore-visitors-count')));
+      } else if (CONFIG.page.isHome) { // Is index page
+        var promises = [...document.querySelectorAll('.post-title')].map(element => {
+          var title = element.innerText.trim();
+          var doc = articles.doc(title);
+          return getCount(doc);
+        });
+        Promise.all(promises).then(counts => {
+          var metas = document.querySelectorAll('.firestore-visitors-count');
+          counts.forEach((val, idx) => {
+            appendCountTo(metas[idx])(val);
+          });
+        });
+      }
+    })();
+  </script>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.getAttribute('pjax') !== null) {
+      element.setAttribute('pjax', '');
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+  <script pjax>
+  if (CONFIG.page.isPost) {
+    wpac_init = window.wpac_init || [];
+    wpac_init.push({
+      widget: 'Rating',
+      id: 21712,
+      el: 'wpac-rating',
+      color: 'fc6423'
+    });
+    (function() {
+      if ('WIDGETPACK_LOADED' in window) return;
+      WIDGETPACK_LOADED = true;
+      var mc = document.createElement('script');
+      mc.type = 'text/javascript';
+      mc.async = true;
+      mc.src = '//embed.widgetpack.com/widget.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+    })();
+  }
+  </script>
+
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.4.1/dist/instantsearch.min.css">
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.4.1/dist/instantsearch.js"></script>
+<script src="/js/algolia-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+
+  
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://anpigon-github-io.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  function loadComments() {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: {page: {
+            url: "https://anpigon.github.io/busy/@anpigon/ethereum-2-hd",
+            identifier: "/busy/@anpigon/ethereum-2-hd",
+            title: "[블록체인] 이더리움(Ethereum) 공부 #2 - HD 지갑과 니모닉 코드"
+          }
+        }
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://anpigon-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  }
+    (function() {
+      var offsetTop = document.getElementById('comments').offsetTop - window.innerHeight;
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        window.addEventListener('load', loadComments, false);
+      } else {
+        var disqus_scroll = () => {
+          // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = document.getElementById('comments').offsetTop - window.innerHeight;
+          var scrollTop = window.scrollY;
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            window.removeEventListener('scroll', disqus_scroll);
+            loadComments();
+          }
+        };
+        window.addEventListener('scroll', disqus_scroll);
+      }
+    })();
+  
+</script>
+
+    </div>
+</body>
+</html>

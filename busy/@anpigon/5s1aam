@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="yfKOiBPD8WlKH3NPG_CG1zr4MsCgCG1YVdGKhMS2CKc">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Noto Serif KR:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.4.2',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: true,
+    pangu: false,
+    algolia: {
+      appID: 'YY693DUDAI',
+      apiKey: 'db449d453b150820f66e7bc3d4523a17',
+      indexName: 'my-hexo-blog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '복사',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="안녕하세요. @anpigon 입니다.구글 Keynote (Google I&#x2F;O &#39;18) 발표 영상을 이제서야 봤습니다. 발표 내용은 구글 어시스턴트의 새로운 기능에 관한 내용입니다. 여기서 주목할 기능은 인공지능(AI)이 미용실이나 레스토랑에 전화를 걸어 예약을 해주는 기능입니다.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[머신러닝] 파이썬으로 스팀잇 형태소 분석하기 #1">
+<meta property="og:url" content="https://anpigon.github.io/busy/@anpigon/5s1aam">
+<meta property="og:site_name" content="안피곤님의 블로그">
+<meta property="og:description" content="안녕하세요. @anpigon 입니다.구글 Keynote (Google I&#x2F;O &#39;18) 발표 영상을 이제서야 봤습니다. 발표 내용은 구글 어시스턴트의 새로운 기능에 관한 내용입니다. 여기서 주목할 기능은 인공지능(AI)이 미용실이나 레스토랑에 전화를 걸어 예약을 해주는 기능입니다.">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:image" content="https://steemitimages.com/650x0/https://i.imgur.com/xOneO8J.png">
+<meta property="og:image" content="https://imgur.com/ibGRHoe.png">
+<meta property="og:image" content="https://imgur.com/ZI0EbuA.png">
+<meta property="article:published_time" content="2018-09-10T06:28:06.000Z">
+<meta property="article:modified_time" content="2021-08-14T10:47:06.080Z">
+<meta property="article:author" content="안피곤">
+<meta property="article:tag" content="파이썬">
+<meta property="article:tag" content="머신러닝">
+<meta property="article:tag" content="형태소 분석">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://steemitimages.com/650x0/https://i.imgur.com/xOneO8J.png">
+
+<link rel="canonical" href="https://anpigon.github.io/busy/@anpigon/5s1aam">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>[머신러닝] 파이썬으로 스팀잇 형태소 분석하기 #1 | 안피곤님의 블로그</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-20589042-10"></script>
+    <script pjax>
+      var host = window.location.hostname;
+      if (host !== "localhost" || !true) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-20589042-10');
+      }
+    </script>
+
+
+
+
+
+
+  
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-2365531018407022",
+          enable_page_level_ads: false
+     });
+</script>
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="안피곤님의 블로그" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">안피곤님의 블로그</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">코딩, 독서, 여행, 영화, 맛집</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>홈</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>태그<span class="badge">144</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>카테고리<span class="badge">25</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>아카이브<span class="badge">327</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>검색
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input" id="search-input"></div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="algolia-results">
+  <div id="algolia-stats"></div>
+  <div id="algolia-hits"></div>
+  <div id="algolia-pagination" class="algolia-pagination"></div>
+</div>
+
+  
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="ko">
+    <link itemprop="mainEntityOfPage" href="https://anpigon.github.io/busy/@anpigon/5s1aam">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/me.jpg">
+      <meta itemprop="name" content="안피곤">
+      <meta itemprop="description" content="시간이 천천히 갔으면 좋겠다.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="안피곤님의 블로그">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          [머신러닝] 파이썬으로 스팀잇 형태소 분석하기 #1
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">작성일</span>
+
+              <time title="Post created: 2018-09-10 15:28:06" itemprop="dateCreated datePublished" datetime="2018-09-10T15:28:06+09:00">2018-09-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Updated at: 2021-08-14 19:47:06" itemprop="dateModified" datetime="2021-08-14T19:47:06+09:00">2021-08-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">개발 이야기</span>
+                  </a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/" itemprop="url" rel="index">
+                    <span itemprop="name">파이썬 머신러닝</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/busy/@anpigon/5s1aam#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="/busy/@anpigon/5s1aam" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+            <div style="margin-bottom:35px;margin-top:-20px;">
+              <!-- 블로그 본문 상단 광고 -->
+              <ins class="adsbygoogle"
+                  style="display:block"
+                  data-ad-client="ca-pub-2365531018407022"
+                  data-ad-slot="3390644000"
+                  data-ad-format="auto"
+                  data-full-width-responsive="true"></ins>
+              <script>
+                  (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+        <p>안녕하세요. @anpigon 입니다.</p><p>구글 Keynote (Google I/O '18) 발표 영상을 이제서야 봤습니다. 발표 내용은 구글 어시스턴트의 새로운 기능에 관한 내용입니다. 여기서 주목할 기능은 인공지능(AI)이 미용실이나 레스토랑에 전화를 걸어 예약을 해주는 기능입니다.</p><a id="more"></a>
+
+<p>인공지능이 미용실에 직접 전화를 걸어 대화하면서 예약하는 장면은 소름 돋을 정도였습니다. 사람인지 인공지능인지 구분할 수 없을 정도입니다. 심지어 대화 중간에 망설이는 듯이 &quot;음…&quot;하는 소리까지 냅니다.</p>
+<p>아래 유튜브 링크에서 해당 발표 영상을 볼 수 있습니다. 35분부터 해당 내용이 나옵니다. 한글 자막으로 설정하고 보세요.</p>
+<table>
+<thead>
+<tr>
+<th><div class="text-center"><a target="_blank" rel="noopener" href="https://goo.gl/WyqKBe"><img alt data-src="https://steemitimages.com/650x0/https://i.imgur.com/xOneO8J.png"></a></div></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><sup>(라이센스 관련 내용을 찾지 못하여 영상을 포스트 내용에 포함시키지 않았습니다. 클릭해서 유튜브에서 감상하기실 바랍니다.)</sup></td>
+</tr>
+</tbody>
+</table>
+<p>이 영상을 보고  인공지능(AI)에 관심이 생겼습니다. 관심있는 기술부터 공부하면서 정리할 예정입니다. 관심 분야가 너무 많아서 큰일이네요.🤯</p>
+<p>서론은 여기까지 하고 본론으로 들어가겠습니다.</p>
+<hr>
+<h1 id="konlpy-모듈-설치"><a class="markdownIt-Anchor" href="#konlpy-모듈-설치"></a> KoNLPy 모듈 설치</h1>
+<p>한글 형태소 분석을 위해서는 <a target="_blank" rel="noopener" href="https://www.lucypark.kr/">Lucy Park(박은정)</a>님이 개발한 <a target="_blank" rel="noopener" href="http://konlpy.org/">KoNLPy</a> 모듈이 필수다. 아래는 제26회 한글 및 한국어 정보처리 학술대회 논문집(2014년)에 발표한 요약본이다. 너무 멋진 글이라고 생각하여 발췌하였다.</p>
+<blockquote>
+<p>파이썬은 간결한 아름다움을 추구하는 동시에 강력한 스트링 연산이 가능한 언어다. KoNLPy는 그러한 특장점을 살려, 파이썬으로 한국어 정보처리를 할 수 있게 하는 패키지이다. 꼬꼬마, 한나눔, MeCab-ko 등 국내외에서 개발된 여러 형태소 분석기를 포함하고, 자연어처리에 필요한 각종 사전, 말뭉치, 도구 및 다양한 튜토리얼을 포함하여 누구나 손쉽게 한국어 분석을 할 수 있도록 만들었다.</p>
+</blockquote>
+<p><sup>출처: <a target="_blank" rel="noopener" href="https://www.lucypark.kr/docs/2014-10-10-hclt.pdf">https://www.lucypark.kr/docs/2014-10-10-hclt.pdf</a></sup></p>
+<p>우선 파이썬과 자바는 설치가 되어있다고 가정한다. 설치방법에 대한 자세한 내용은 아래 홈페이지를 참고한다.</p>
+<p><a target="_blank" rel="noopener" href="http://konlpy.org/ko/latest/install/">http://konlpy.org/ko/latest/install/</a></p>
+<figure class="highlight q"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-<span class="built_in">get</span> install g++ openjdk<span class="number">-7</span>-jdk python-<span class="built_in">dev</span> python3-<span class="built_in">dev</span></span><br></pre></td></tr></table></figure>
+<p><br>아래와 같이 <code>KoNLPy</code> 를 설치한다.</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ pip install konlpy</span><br><span class="line">Collecting konlpy</span><br><span class="line">  Downloading https:<span class="regexp">//</span>files.pythonhosted.org<span class="regexp">/packages/</span>b1<span class="regexp">/41/</span><span class="number">73127</span>de031d710fa6fc640cc4d4d399977e7a96423131fcd180b9f69627c/konlpy-<span class="number">0.4</span>.<span class="number">4</span>-py2.py3-none-any.whl (<span class="number">22.5</span>MB)</span><br><span class="line">    <span class="number">100</span>％ |████████████████████████████████| <span class="number">22.5</span>MB <span class="number">25</span>kB/s</span><br><span class="line">Installing collected packages: konlpy</span><br><span class="line">Successfully installed konlpy-<span class="number">0.4</span>.<span class="number">4</span></span><br></pre></td></tr></table></figure>
+<p><br>환경변수에 JAVA_HOME을 설정한다. 맥OS는 아래와 같이 입력한다.</p>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">JAVA_HOME=<span class="constructor">$(<span class="operator">/</span><span class="params">usr</span><span class="operator">/</span><span class="params">libexec</span><span class="operator">/</span><span class="params">java_home</span>)</span></span><br></pre></td></tr></table></figure>
+<p><br>그리고 <code>Jpype1-py3</code>를 설치한다.</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pip <span class="keyword">install</span> Jpype1-py3</span><br></pre></td></tr></table></figure>
+<p><br>그 다음에는 Python에서 아래와 같이 입력한다.</p>
+<figure class="highlight python-repl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ python</span><br><span class="line"><span class="meta">&gt;&gt;&gt;</span> <span class="python"><span class="keyword">import</span> nltk</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt;</span> <span class="python">nltk.download()</span></span><br></pre></td></tr></table></figure>
+<p><br>아래와 같이 창이 뜨면 All Package 탭을 선택한 후 stopwords와 punkt를 더블 클릭하여 다운로드 한다.</p>
+<table>
+<thead>
+<tr>
+<th><div class="text-center"><img alt data-src="https://imgur.com/ibGRHoe.png"></div></th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+<p><br>필요한 모듈 설치가 모두 완료되었다.</p>
+<h1 id="한글-형태소-분석하기"><a class="markdownIt-Anchor" href="#한글-형태소-분석하기"></a> 한글 형태소 분석하기</h1>
+<p>KoNLPy를 사용하면 꼬꼬마, 한나눔 등의 형태소 분석기를 사용할 수 있다.</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/jupyter/notebook/blob/master/docs-translations/ko-KR/Installation.md">주피터 노트북</a>에서 코드를 작성하면 테스트하기 편리하다. 다음과 같이 주피터 노트북을 설치하고 실행한다.</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ pip <span class="keyword">install </span><span class="keyword">jupyter</span></span><br><span class="line"><span class="keyword"></span>$ <span class="keyword">jupyter </span>notebook</span><br></pre></td></tr></table></figure>
+<br>
+<h2 id="꼬꼬마-형태소-분석기-사용하기"><a class="markdownIt-Anchor" href="#꼬꼬마-형태소-분석기-사용하기"></a> 꼬꼬마 형태소 분석기 사용하기</h2>
+<p><a target="_blank" rel="noopener" href="http://kkma.snu.ac.kr/">꼬꼬마(Kkma) 형태소 분석기</a>는 서울대학교 IDS (Intelligent Data Systems) 연구실에서 개발하였다.</p>
+<p>꼬꼬마 모듈을 사용하기 위해 import 한다.</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">from konlpy.<span class="keyword">tag</span> <span class="title">import</span> Kkma</span><br><span class="line">kkma = Kkma()</span><br></pre></td></tr></table></figure>
+<p><br>아래와 같이 문장(sentences)분석을 한다. 마침표가 없어도 2개의 문장으로 분석한다.</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">kkma</span><span class="selector-class">.sentences</span>(<span class="string">&#x27;이것은 형태소 분석기 입니다 아버지가방에들어가신다&#x27;</span>)</span><br><span class="line"><span class="selector-attr">[이것은 형태소 분석기 입니다<span class="string">&#x27;, &#x27;</span>아버지가방에 들어가신다<span class="string">&#x27;]`</span></span></span><br></pre></td></tr></table></figure>
+<p><br>아래와 같이 명사(nouns) 분석도 한다.</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">kkma</span><span class="selector-class">.nouns</span>(<span class="string">&#x27;이것은 형태소 분석기 입니다 아버지가방에들어가신다&#x27;</span>)</span><br><span class="line"><span class="selector-attr">[<span class="string">&#x27;이것&#x27;</span>, <span class="string">&#x27;형태소&#x27;</span>, <span class="string">&#x27;분석기&#x27;</span>, <span class="string">&#x27;아버지&#x27;</span>, <span class="string">&#x27;아버지가방&#x27;</span>, <span class="string">&#x27;가방&#x27;</span>]</span></span><br></pre></td></tr></table></figure>
+<p><br>형태소(pos) 분석을 한다. 한글은 영어와는 다르게 형태의 변화가 많다. 그래서 최소한의 의미 단위인 형태소로 분석한다.</p>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">kkma.pos(<span class="string">&#x27;이것은 형태소 분석기 입니다 아버지가방에들어가신다&#x27;</span>)</span><br><span class="line">[(<span class="string">&#x27;이것&#x27;</span>, <span class="string">&#x27;NP&#x27;</span>), </span><br><span class="line"> (<span class="string">&#x27;은&#x27;</span>, <span class="string">&#x27;JX&#x27;</span>),</span><br><span class="line"> (<span class="string">&#x27;형태소&#x27;</span>, <span class="string">&#x27;NNG&#x27;</span>), </span><br><span class="line">(<span class="string">&#x27;분석기&#x27;</span>, <span class="string">&#x27;NNG&#x27;</span>), </span><br><span class="line">(<span class="string">&#x27;이&#x27;</span>, <span class="string">&#x27;VCP&#x27;</span>), </span><br><span class="line">(<span class="string">&#x27;ㅂ니다&#x27;</span>, <span class="string">&#x27;EFN&#x27;</span>), </span><br><span class="line">(<span class="string">&#x27;아버지&#x27;</span>, <span class="string">&#x27;NNG&#x27;</span>), </span><br><span class="line">(<span class="string">&#x27;가방&#x27;</span>, <span class="string">&#x27;NNG&#x27;</span>), </span><br><span class="line">(<span class="string">&#x27;에&#x27;</span>, <span class="string">&#x27;JKM&#x27;</span>), </span><br><span class="line">(<span class="string">&#x27;들어가&#x27;</span>, <span class="string">&#x27;VV&#x27;</span>), </span><br><span class="line">(<span class="string">&#x27;시&#x27;</span>, <span class="string">&#x27;EPH&#x27;</span>),</span><br><span class="line">(<span class="string">&#x27;ㄴ다&#x27;</span>, <span class="string">&#x27;EFN&#x27;</span>)]</span><br></pre></td></tr></table></figure>
+<br>
+<h2 id="한나눔-형태소-분석기-사용하기"><a class="markdownIt-Anchor" href="#한나눔-형태소-분석기-사용하기"></a> 한나눔 형태소 분석기 사용하기</h2>
+<p><a target="_blank" rel="noopener" href="http://semanticweb.kaist.ac.kr/hannanum/index.html">한나눔(Hannanum) 형태소 분석기</a> 는 카이스트 SWRC 연구소에서 개발하였다.</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">from konlpy.<span class="keyword">tag</span> <span class="title">import</span> Hannanum</span><br><span class="line">hannanum = Hannanum()</span><br></pre></td></tr></table></figure>
+<p><br>한나눔 명사 분석은 꼬꼬마와는 분석 결과가 다르다.</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">hannanum</span><span class="selector-class">.nouns</span>(<span class="string">&#x27;이것은 형태소 분석기 입니다 아버지가방에들어가신다&#x27;</span>)</span><br><span class="line"><span class="selector-attr">[<span class="string">&#x27;이것&#x27;</span>, <span class="string">&#x27;형태소&#x27;</span>, <span class="string">&#x27;분석기&#x27;</span>, <span class="string">&#x27;아버지가방에들어가&#x27;</span>]</span></span><br></pre></td></tr></table></figure>
+<p><br>한나눔 형태소 분석 결과이다.</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">hannanum</span><span class="selector-class">.morphs</span>(<span class="string">&#x27;이것은 형태소 분석기 입니다 아버지가방에들어가신다&#x27;</span>)</span><br><span class="line"><span class="selector-attr">[<span class="string">&#x27;이것&#x27;</span>, <span class="string">&#x27;은&#x27;</span>, <span class="string">&#x27;형태소&#x27;</span>, <span class="string">&#x27;분석기&#x27;</span>, <span class="string">&#x27;일&#x27;</span>, <span class="string">&#x27;ㅂ니다&#x27;</span>, <span class="string">&#x27;아버지가방에들어가&#x27;</span>, <span class="string">&#x27;이&#x27;</span>, <span class="string">&#x27;시ㄴ다&#x27;</span>]</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">hannanum.pos(<span class="string">&#x27;이것은 형태소 분석기 입니다 아버지가방에들어가신다&#x27;</span></span><br><span class="line">[(<span class="string">&#x27;이것&#x27;</span>, <span class="string">&#x27;N&#x27;</span>), </span><br><span class="line"> (<span class="string">&#x27;은&#x27;</span>, <span class="string">&#x27;J&#x27;</span>), </span><br><span class="line"> (<span class="string">&#x27;형태소&#x27;</span>, <span class="string">&#x27;N&#x27;</span>), </span><br><span class="line"> (<span class="string">&#x27;분석기&#x27;</span>, <span class="string">&#x27;N&#x27;</span>), </span><br><span class="line"> (<span class="string">&#x27;일&#x27;</span>, <span class="string">&#x27;P&#x27;</span>), </span><br><span class="line"> (<span class="string">&#x27;ㅂ니다&#x27;</span>, <span class="string">&#x27;E&#x27;</span>), </span><br><span class="line"> (<span class="string">&#x27;아버지가방에들어가&#x27;</span>, <span class="string">&#x27;N&#x27;</span>), </span><br><span class="line"> (<span class="string">&#x27;이&#x27;</span>, <span class="string">&#x27;J&#x27;</span>), </span><br><span class="line"> (<span class="string">&#x27;시ㄴ다&#x27;</span>, <span class="string">&#x27;E&#x27;</span>)]</span><br></pre></td></tr></table></figure>
+<br>
+<h2 id="open-korean-text-형태소-분석기-사용하기"><a class="markdownIt-Anchor" href="#open-korean-text-형태소-분석기-사용하기"></a> Open Korean Text 형태소 분석기 사용하기</h2>
+<p>이전에 트위터에서 만든 형태소 분석기가 <a target="_blank" rel="noopener" href="https://github.com/open-korean-text/open-korean-text">Open Korean Text</a>로 바뀌었다.</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">from konlpy.<span class="keyword">tag</span> <span class="title">import</span> Okt</span><br><span class="line">okt = Okt()</span><br></pre></td></tr></table></figure>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">okt</span><span class="selector-class">.nouns</span>(<span class="string">&#x27;이것은 형태소 분석기 입니다 아버지가방에들어가신다&#x27;</span>)</span><br><span class="line"><span class="selector-attr">[<span class="string">&#x27;것&#x27;</span>, <span class="string">&#x27;형태소&#x27;</span>, <span class="string">&#x27;분석&#x27;</span>, <span class="string">&#x27;기&#x27;</span>, <span class="string">&#x27;아버지&#x27;</span>, <span class="string">&#x27;가방&#x27;</span>]</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">okt</span><span class="selector-class">.morphs</span>(<span class="string">&#x27;이것은 형태소 분석기 입니다 아버지가방에들어가신다&#x27;</span>)</span><br><span class="line"><span class="selector-attr">[<span class="string">&#x27;이&#x27;</span>, <span class="string">&#x27;것&#x27;</span>, <span class="string">&#x27;은&#x27;</span>, <span class="string">&#x27;형태소&#x27;</span>, <span class="string">&#x27;분석&#x27;</span>, <span class="string">&#x27;기&#x27;</span>, <span class="string">&#x27;입니&#x27;</span>, <span class="string">&#x27;다&#x27;</span>, <span class="string">&#x27;아버지&#x27;</span>, <span class="string">&#x27;가방&#x27;</span>, <span class="string">&#x27;에&#x27;</span>, <span class="string">&#x27;들어가신&#x27;</span>, <span class="string">&#x27;다&#x27;</span>]</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight erlang-repl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">okt.pos(<span class="string">&#x27;이것은 형태소 분석기 입니다 아버지가방에들어가신다&#x27;</span>)</span><br><span class="line">[(<span class="string">&#x27;이&#x27;</span>, <span class="string">&#x27;Determiner&#x27;</span>), </span><br><span class="line"> (<span class="string">&#x27;것&#x27;</span>, <span class="string">&#x27;Noun&#x27;</span>), </span><br><span class="line"> (<span class="string">&#x27;은&#x27;</span>, <span class="string">&#x27;Josa&#x27;</span>), </span><br><span class="line"> (<span class="string">&#x27;형태소&#x27;</span>, <span class="string">&#x27;Noun&#x27;</span>), </span><br><span class="line"> (<span class="string">&#x27;분석&#x27;</span>, <span class="string">&#x27;Noun&#x27;</span>), </span><br><span class="line"> (<span class="string">&#x27;기&#x27;</span>, <span class="string">&#x27;Noun&#x27;</span>),</span><br><span class="line"> (<span class="string">&#x27;입니&#x27;</span>, <span class="string">&#x27;Adjective&#x27;</span>), </span><br><span class="line"> (<span class="string">&#x27;다&#x27;</span>, <span class="string">&#x27;Eomi&#x27;</span>), </span><br><span class="line"> (<span class="string">&#x27;아버지&#x27;</span>, <span class="string">&#x27;Noun&#x27;</span>), </span><br><span class="line"> (<span class="string">&#x27;가방&#x27;</span>, <span class="string">&#x27;Noun&#x27;</span>), </span><br><span class="line"> (<span class="string">&#x27;에&#x27;</span>, <span class="string">&#x27;Josa&#x27;</span>), </span><br><span class="line"> (<span class="string">&#x27;들어가신&#x27;</span>, <span class="string">&#x27;Verb&#x27;</span>), </span><br><span class="line"> (<span class="string">&#x27;다&#x27;</span>, <span class="string">&#x27;Eomi&#x27;</span>)]</span><br></pre></td></tr></table></figure>
+<br>
+<h2 id="코모란-형태소-분석기-사용하기"><a class="markdownIt-Anchor" href="#코모란-형태소-분석기-사용하기"></a> 코모란 형태소 분석기 사용하기</h2>
+<p><a target="_blank" rel="noopener" href="http://www.shineware.co.kr/products/komoran/">코모란(Komoran) 형태소 분석기</a>은 Shineware Soft에서 개발하였다.</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">from konlpy.<span class="keyword">tag</span> <span class="title">import</span> Komoran</span><br><span class="line">komoran = Komoran()</span><br></pre></td></tr></table></figure>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">komoran</span><span class="selector-class">.nouns</span>(<span class="string">&#x27;이것은 형태소 분석기 입니다 아버지가방에들어가신다&#x27;</span>)</span><br><span class="line"><span class="selector-attr">[<span class="string">&#x27;형태소&#x27;</span>, <span class="string">&#x27;분석기&#x27;</span>, <span class="string">&#x27;아버지가방에들어가신다&#x27;</span>]</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">komoran</span><span class="selector-class">.morphs</span>(<span class="string">&#x27;이것은 형태소 분석기 입니다 아버지가방에들어가신다&#x27;</span>)</span><br><span class="line"><span class="selector-attr">[<span class="string">&#x27;이것&#x27;</span>, <span class="string">&#x27;은&#x27;</span>, <span class="string">&#x27;형태소&#x27;</span>, <span class="string">&#x27;분석기&#x27;</span>, <span class="string">&#x27;이&#x27;</span>, <span class="string">&#x27;ㅂ니다&#x27;</span>, <span class="string">&#x27;아버지가방에들어가신다&#x27;</span>]</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">komoran.pos(<span class="string">&#x27;이것은 형태소 분석기 입니다 아버지가방에들어가신다&#x27;</span>)</span><br><span class="line">[(<span class="string">&#x27;이것&#x27;</span>, <span class="string">&#x27;NP&#x27;</span>), </span><br><span class="line"> (<span class="string">&#x27;은&#x27;</span>, <span class="string">&#x27;JX&#x27;</span>), </span><br><span class="line"> (<span class="string">&#x27;형태소&#x27;</span>, <span class="string">&#x27;NNP&#x27;</span>), </span><br><span class="line"> (<span class="string">&#x27;분석기&#x27;</span>, <span class="string">&#x27;NNG&#x27;</span>), </span><br><span class="line"> (<span class="string">&#x27;이&#x27;</span>, <span class="string">&#x27;VV&#x27;</span>), </span><br><span class="line"> (<span class="string">&#x27;ㅂ니다&#x27;</span>, <span class="string">&#x27;EC&#x27;</span>), </span><br><span class="line"> (<span class="string">&#x27;아버지가방에들어가신다&#x27;</span>, <span class="string">&#x27;NNP&#x27;</span>)]</span><br></pre></td></tr></table></figure>
+<br>
+<h2 id="은전한닢-형태소-분석기-사용하기"><a class="markdownIt-Anchor" href="#은전한닢-형태소-분석기-사용하기"></a> 은전한닢 형태소 분석기 사용하기</h2>
+<p><a target="_blank" rel="noopener" href="http://eunjeon.blogspot.com/">은전한닢(Mecab) 형태소 분석기</a>는 카카오에 근무중인 유영호, 이용운 개발자님이 개발하였다.</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">from konlpy.<span class="keyword">tag</span> <span class="title">import</span> Mecab</span><br><span class="line">mecab = Mecab()</span><br></pre></td></tr></table></figure>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">mecab</span><span class="selector-class">.nouns</span>(<span class="string">&#x27;이것은 형태소 분석기 입니다 아버지가방에들어가신다&#x27;</span>)</span><br><span class="line"><span class="selector-attr">[<span class="string">&#x27;이것&#x27;</span>, <span class="string">&#x27;형태소&#x27;</span>, <span class="string">&#x27;분석기&#x27;</span>, <span class="string">&#x27;아버지&#x27;</span>, <span class="string">&#x27;방&#x27;</span>]</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">mecab</span><span class="selector-class">.morphs</span>(<span class="string">&#x27;이것은 형태소 분석기 입니다 아버지가방에들어가신다&#x27;</span>)</span><br><span class="line"><span class="selector-attr">[<span class="string">&#x27;이것&#x27;</span>, <span class="string">&#x27;은&#x27;</span>, <span class="string">&#x27;형태소&#x27;</span>, <span class="string">&#x27;분석기&#x27;</span>, <span class="string">&#x27;입니다&#x27;</span>, <span class="string">&#x27;아버지&#x27;</span>, <span class="string">&#x27;가&#x27;</span>, <span class="string">&#x27;방&#x27;</span>, <span class="string">&#x27;에&#x27;</span>, <span class="string">&#x27;들어가&#x27;</span>, <span class="string">&#x27;신다&#x27;</span>]</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">mecab.pos(<span class="string">&#x27;이것은 형태소 분석기 입니다 아버지가방에들어가신다&#x27;</span>)</span><br><span class="line">[(<span class="string">&#x27;이것&#x27;</span>, <span class="string">&#x27;NP&#x27;</span>), </span><br><span class="line"> (<span class="string">&#x27;은&#x27;</span>, <span class="string">&#x27;JX&#x27;</span>), </span><br><span class="line"> (<span class="string">&#x27;형태소&#x27;</span>, <span class="string">&#x27;NNG&#x27;</span>), </span><br><span class="line"> (<span class="string">&#x27;분석기&#x27;</span>, <span class="string">&#x27;NNG&#x27;</span>), </span><br><span class="line"> (<span class="string">&#x27;입니다&#x27;</span>, <span class="string">&#x27;VCP+EF&#x27;</span>), </span><br><span class="line"> (<span class="string">&#x27;아버지&#x27;</span>, <span class="string">&#x27;NNG&#x27;</span>), </span><br><span class="line"> (<span class="string">&#x27;가&#x27;</span>, <span class="string">&#x27;JKS&#x27;</span>), </span><br><span class="line"> (<span class="string">&#x27;방&#x27;</span>, <span class="string">&#x27;NNG&#x27;</span>), </span><br><span class="line"> (<span class="string">&#x27;에&#x27;</span>, <span class="string">&#x27;JKB&#x27;</span>), </span><br><span class="line"> (<span class="string">&#x27;들어가&#x27;</span>, <span class="string">&#x27;VV&#x27;</span>), </span><br><span class="line"> (<span class="string">&#x27;신다&#x27;</span>, <span class="string">&#x27;EP+EC&#x27;</span>)]</span><br></pre></td></tr></table></figure>
+<p><br>형태소 분석기 5개 중에서 어떤 것을 사용해야 좋을지 선택하기가 어려웠다. 그래서 내가 작성한 스팀잇 글 전체(26개)를 형태소 분석하는데 걸리는 시간을 체크해보았다.</p>
+<p>꼬꼬마는 품사 분석 정확도가 매우 뛰어나지만, 분석 시간이 너무 오래 걸리는 단점이 있다. 빠른 형태소 분석이 필요하면 은전한닢을 사용하는 것이 좋다.</p>
+<table>
+<thead>
+<tr>
+<th>구분</th>
+<th>꼬꼬마</th>
+<th>오픈한국어</th>
+<th>코모란</th>
+<th>한나눔</th>
+<th>은전한닢</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>소요시간(초)</td>
+<td>30.779</td>
+<td>7.050</td>
+<td>5.499</td>
+<td>9.607</td>
+<td>1.187</td>
+</tr>
+</tbody>
+</table>
+<p><img alt data-src="https://imgur.com/ZI0EbuA.png"></p>
+<p><br>아래는 각 형태소 분석기가 분석하는데 걸리는 시간을 체크하는데 사용한 코드 내용이다.</p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">import <span class="built_in">time</span></span><br><span class="line"><span class="built_in">from</span> konlpy.tag import Kkma, Okt, Komoran, Hannanum, Mecab</span><br><span class="line"><span class="built_in">from</span> steem import Steem </span><br><span class="line"><span class="built_in">from</span> steem.blog import Blog</span><br><span class="line"></span><br><span class="line">username = <span class="string">&#x27;anpigon&#x27;</span></span><br><span class="line">b = Blog(username)</span><br><span class="line">posts = b.all()</span><br><span class="line"><span class="comment"># posts = b.take(10)</span></span><br><span class="line"></span><br><span class="line">texts = []</span><br><span class="line"><span class="keyword">for</span> <span class="built_in">post</span> <span class="keyword">in</span> posts:</span><br><span class="line">  <span class="keyword">if</span> <span class="built_in">post</span>.body != <span class="string">&quot;&quot;</span>:</span><br><span class="line">    texts.append(<span class="built_in">post</span>.body.<span class="built_in">replace</span>(<span class="string">&#x27;\n&#x27;</span>, <span class="string">&#x27;&#x27;</span>))</span><br><span class="line"></span><br><span class="line">pos_taggers = [(<span class="string">&#x27;Kkma&#x27;</span>, Kkma()), (<span class="string">&#x27;Okt&#x27;</span>, Okt()), (<span class="string">&#x27;Komoran&#x27;</span>, Komoran()), (<span class="string">&#x27;Hannanum&#x27;</span>, Hannanum()), (<span class="string">&#x27;Mecab&#x27;</span>, Mecab())]</span><br><span class="line"><span class="keyword">for</span> name, tagger <span class="keyword">in</span> pos_taggers:</span><br><span class="line">  process_time = <span class="built_in">time</span>.<span class="built_in">time</span>()</span><br><span class="line">  <span class="keyword">for</span> <span class="keyword">text</span> <span class="keyword">in</span> texts:</span><br><span class="line">    tagger.pos(<span class="keyword">text</span>)</span><br><span class="line">  process_time = <span class="built_in">time</span>.<span class="built_in">time</span>() - process_time</span><br><span class="line">  print(<span class="string">&#x27;module = ％10s, ％.3f secs&#x27;</span> ％ (name, process_time))</span><br></pre></td></tr></table></figure>
+<p><br>여기까지 읽어주셔서 감사합니다.</p>
+<hr>
+<ul>
+<li>추가: python steem SDK는 <a target="_blank" rel="noopener" href="https://github.com/steemit/steem-python">https://github.com/steemit/steem-python</a> 에서 가이드를 보고 설치해주세요.</li>
+</ul>
+
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%ED%8C%8C%EC%9D%B4%EC%8D%AC/" rel="tag"># 파이썬</a>
+              <a href="/tags/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/" rel="tag"># 머신러닝</a>
+              <a href="/tags/%ED%98%95%ED%83%9C%EC%86%8C-%EB%B6%84%EC%84%9D/" rel="tag"># 형태소 분석</a>
+          </div>
+
+        
+  <div class="post-widgets">
+    <div class="wp_rating">
+      <div id="wpac-rating"></div>
+    </div>
+  </div>
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/busy/@anpigon/steem-project-1" rel="next" title="[Steem Project #1] 스팀잇 펫 연구소">
+                  <i class="fa fa-chevron-left"></i> [Steem Project #1] 스팀잇 펫 연구소
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/busy/@anpigon/emoji" rel="prev" title="크롬브라우저에서 이모지(emoji) 쉽게 입력하는 방법">
+                  크롬브라우저에서 이모지(emoji) 쉽게 입력하는 방법 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    
+  <div class="comments" id="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          목차
+        </li>
+        <li class="sidebar-nav-overview">
+          흝어보기
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#konlpy-%EB%AA%A8%EB%93%88-%EC%84%A4%EC%B9%98"><span class="nav-number">1.</span> <span class="nav-text"> KoNLPy 모듈 설치</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%ED%95%9C%EA%B8%80-%ED%98%95%ED%83%9C%EC%86%8C-%EB%B6%84%EC%84%9D%ED%95%98%EA%B8%B0"><span class="nav-number">2.</span> <span class="nav-text"> 한글 형태소 분석하기</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%EA%BC%AC%EA%BC%AC%EB%A7%88-%ED%98%95%ED%83%9C%EC%86%8C-%EB%B6%84%EC%84%9D%EA%B8%B0-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0"><span class="nav-number">2.1.</span> <span class="nav-text"> 꼬꼬마 형태소 분석기 사용하기</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%ED%95%9C%EB%82%98%EB%88%94-%ED%98%95%ED%83%9C%EC%86%8C-%EB%B6%84%EC%84%9D%EA%B8%B0-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0"><span class="nav-number">2.2.</span> <span class="nav-text"> 한나눔 형태소 분석기 사용하기</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#open-korean-text-%ED%98%95%ED%83%9C%EC%86%8C-%EB%B6%84%EC%84%9D%EA%B8%B0-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0"><span class="nav-number">2.3.</span> <span class="nav-text"> Open Korean Text 형태소 분석기 사용하기</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EC%BD%94%EB%AA%A8%EB%9E%80-%ED%98%95%ED%83%9C%EC%86%8C-%EB%B6%84%EC%84%9D%EA%B8%B0-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0"><span class="nav-number">2.4.</span> <span class="nav-text"> 코모란 형태소 분석기 사용하기</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EC%9D%80%EC%A0%84%ED%95%9C%EB%8B%A2-%ED%98%95%ED%83%9C%EC%86%8C-%EB%B6%84%EC%84%9D%EA%B8%B0-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0"><span class="nav-number">2.5.</span> <span class="nav-text"> 은전한닢 형태소 분석기 사용하기</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="안피곤"
+    src="/images/me.jpg">
+  <p class="site-author-name" itemprop="name">안피곤</p>
+  <div class="site-description" itemprop="description">시간이 천천히 갔으면 좋겠다.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">327</span>
+          <span class="site-state-item-name">포스트</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-name">카테고리</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">144</span>
+        <span class="site-state-item-name">태그</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/anpigon" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;anpigon" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:markan82@gmail.com" title="E-Mail &amp;rarr; mailto:markan82@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+          <!-- 정사각형 광고 -->
+          <div style="margin-top: 15px;">
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-2365531018407022"
+                data-ad-slot="7521850306"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+          </div>
+    </div>
+  </aside>
+  <div id="sidebar-dimmer">3</div>
+
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">안피곤</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v5.4.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.4.2
+  </div>
+
+        
+
+
+
+
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-firestore.js"></script>
+  <script>
+    firebase.initializeApp({
+      apiKey: 'AIzaSyA4QZWCWb3IuIHjbkAmO0ttIM2b-qtLTP8',
+      projectId: 'next-blog-8f9a0'
+    });
+
+    function getCount(doc, increaseCount) {
+      // IncreaseCount will be false when not in article page
+
+      return doc.get().then(d => {
+        var count = 0;
+        if (!d.exists) { // Has no data, initialize count
+          if (increaseCount) {
+            doc.set({
+              count: 1
+            });
+            count = 1;
+          }
+        } else { // Has data
+          count = d.data().count;
+          if (increaseCount) {
+            // If first view this article
+            doc.set({ // Increase count
+              count: count + 1
+            });
+            count++;
+          }
+        }
+
+        return count;
+      });
+    }
+
+    function appendCountTo(el) {
+      return count => {
+        el.innerText = count;
+      }
+    }
+  </script>
+  <script pjax>
+    (function() {
+      var db = firebase.firestore();
+      var articles = db.collection('articles');
+
+      if (CONFIG.page.isPost) { // Is article page
+        var title = document.querySelector('.post-title').innerText.trim();
+        var doc = articles.doc(title);
+        var increaseCount = true;
+        if (localStorage.getItem(title)) {
+          increaseCount = false;
+        } else {
+          // Mark as visited
+          localStorage.setItem(title, true);
+        }
+        getCount(doc, increaseCount).then(appendCountTo(document.querySelector('.firestore-visitors-count')));
+      } else if (CONFIG.page.isHome) { // Is index page
+        var promises = [...document.querySelectorAll('.post-title')].map(element => {
+          var title = element.innerText.trim();
+          var doc = articles.doc(title);
+          return getCount(doc);
+        });
+        Promise.all(promises).then(counts => {
+          var metas = document.querySelectorAll('.firestore-visitors-count');
+          counts.forEach((val, idx) => {
+            appendCountTo(metas[idx])(val);
+          });
+        });
+      }
+    })();
+  </script>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.getAttribute('pjax') !== null) {
+      element.setAttribute('pjax', '');
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+  <script pjax>
+  if (CONFIG.page.isPost) {
+    wpac_init = window.wpac_init || [];
+    wpac_init.push({
+      widget: 'Rating',
+      id: 21712,
+      el: 'wpac-rating',
+      color: 'fc6423'
+    });
+    (function() {
+      if ('WIDGETPACK_LOADED' in window) return;
+      WIDGETPACK_LOADED = true;
+      var mc = document.createElement('script');
+      mc.type = 'text/javascript';
+      mc.async = true;
+      mc.src = '//embed.widgetpack.com/widget.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+    })();
+  }
+  </script>
+
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.4.1/dist/instantsearch.min.css">
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.4.1/dist/instantsearch.js"></script>
+<script src="/js/algolia-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+
+  
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://anpigon-github-io.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  function loadComments() {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: {page: {
+            url: "https://anpigon.github.io/busy/@anpigon/5s1aam",
+            identifier: "/busy/@anpigon/5s1aam",
+            title: "[머신러닝] 파이썬으로 스팀잇 형태소 분석하기 #1"
+          }
+        }
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://anpigon-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  }
+    (function() {
+      var offsetTop = document.getElementById('comments').offsetTop - window.innerHeight;
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        window.addEventListener('load', loadComments, false);
+      } else {
+        var disqus_scroll = () => {
+          // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = document.getElementById('comments').offsetTop - window.innerHeight;
+          var scrollTop = window.scrollY;
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            window.removeEventListener('scroll', disqus_scroll);
+            loadComments();
+          }
+        };
+        window.addEventListener('scroll', disqus_scroll);
+      }
+    })();
+  
+</script>
+
+    </div>
+</body>
+</html>

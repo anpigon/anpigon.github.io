@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="yfKOiBPD8WlKH3NPG_CG1zr4MsCgCG1YVdGKhMS2CKc">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Noto Serif KR:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.4.2',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: true,
+    pangu: false,
+    algolia: {
+      appID: 'YY693DUDAI',
+      apiKey: 'db449d453b150820f66e7bc3d4523a17',
+      indexName: 'my-hexo-blog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '복사',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="스팀잇 블로그 서비스는 티스토리나 워드프레스처럼 내가 원하는 테마로 UI를 바꿀수가 없습니다. 그리고 카테고리 분류도 안 됩니다. 구글 통계&#x2F;구글 광고도 사용할 수 없습니다. 그래서 아쉬운 점이 많아요.이번에도 스팀잇 글로 깃허브 페이지 블로그를 만들었습니다. 블로그 UI(테마)는 오픈소스에서 찾아서 적용하고, 카테고리는 스팀잇에 글 제목이 [카테고리] 제">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[Steem Project] 개츠비(gatsby)로 스팀잇 블로그 만들기">
+<meta property="og:url" content="https://anpigon.github.io/kr/@anpigon/gatsby--1545544522965">
+<meta property="og:site_name" content="안피곤님의 블로그">
+<meta property="og:description" content="스팀잇 블로그 서비스는 티스토리나 워드프레스처럼 내가 원하는 테마로 UI를 바꿀수가 없습니다. 그리고 카테고리 분류도 안 됩니다. 구글 통계&#x2F;구글 광고도 사용할 수 없습니다. 그래서 아쉬운 점이 많아요.이번에도 스팀잇 글로 깃허브 페이지 블로그를 만들었습니다. 블로그 UI(테마)는 오픈소스에서 찾아서 적용하고, 카테고리는 스팀잇에 글 제목이 [카테고리] 제">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:image" content="https://cdn.steemitimages.com/DQmQmWhMN6zNrLmKJRKhvSScEgWZmpb8zCeE2Gray1krbv6/BC054B6E-6F73-46D0-88E4-C88EB8167037.jpeg">
+<meta property="og:image" content="https://cdn.steemitimages.com/DQmbR7ENwc743M1QwixDBBPjbsGkxWrW7kDNHQBPK8LpbRC/%EF%BC%85E1%EF%BC%8584%EF%BC%8589%EF%BC%85E1%EF%BC%8585%EF%BC%85B3%EF%BC%85E1%EF%BC%8584%EF%BC%858F%EF%BC%85E1%EF%BC%8585%EF%BC%85B3%EF%BC%85E1%EF%BC%8584%EF%BC%8585%EF%BC%85E1%EF%BC%8585%EF%BC%85B5%EF%BC%85E1%EF%BC%8586%EF%BC%85AB%EF%BC%85E1%EF%BC%8584%EF%BC%8589%EF%BC%85E1%EF%BC%8585%EF%BC%85A3%EF%BC%85E1%EF%BC%8586%EF%BC%85BA%EF%BC%85202018-12-22%EF%BC%852001.58.18.png">
+<meta property="og:image" content="https://cdn.steemitimages.com/DQmbpLHX9Uxq1yDekbjQXr3ULnNfSj781XEe3tUPfT5Z1vr/%EF%BC%85E1%EF%BC%8584%EF%BC%8589%EF%BC%85E1%EF%BC%8585%EF%BC%85B3%EF%BC%85E1%EF%BC%8584%EF%BC%858F%EF%BC%85E1%EF%BC%8585%EF%BC%85B3%EF%BC%85E1%EF%BC%8584%EF%BC%8585%EF%BC%85E1%EF%BC%8585%EF%BC%85B5%EF%BC%85E1%EF%BC%8586%EF%BC%85AB%EF%BC%85E1%EF%BC%8584%EF%BC%8589%EF%BC%85E1%EF%BC%8585%EF%BC%85A3%EF%BC%85E1%EF%BC%8586%EF%BC%85BA%EF%BC%85202018-12-18%EF%BC%852012.20.39.png">
+<meta property="og:image" content="https://cdn.steemitimages.com/DQmdBVXJSwFPZkTVvuu2d1achHfdDo4Sya1KPRAbkrgFt2X/%EF%BC%85E1%EF%BC%8584%EF%BC%8589%EF%BC%85E1%EF%BC%8585%EF%BC%85B3%EF%BC%85E1%EF%BC%8584%EF%BC%858F%EF%BC%85E1%EF%BC%8585%EF%BC%85B3%EF%BC%85E1%EF%BC%8584%EF%BC%8585%EF%BC%85E1%EF%BC%8585%EF%BC%85B5%EF%BC%85E1%EF%BC%8586%EF%BC%85AB%EF%BC%85E1%EF%BC%8584%EF%BC%8589%EF%BC%85E1%EF%BC%8585%EF%BC%85A3%EF%BC%85E1%EF%BC%8586%EF%BC%85BA%EF%BC%85202018-12-21%EF%BC%852010.51.33.png">
+<meta property="og:image" content="https://cdn.steemitimages.com/DQmWiBPdafVaFgBYpox158rS7Bgy2x2Yr4qSDPCm19nTADw/%EF%BC%85E1%EF%BC%8584%EF%BC%8589%EF%BC%85E1%EF%BC%8585%EF%BC%85B3%EF%BC%85E1%EF%BC%8584%EF%BC%858F%EF%BC%85E1%EF%BC%8585%EF%BC%85B3%EF%BC%85E1%EF%BC%8584%EF%BC%8585%EF%BC%85E1%EF%BC%8585%EF%BC%85B5%EF%BC%85E1%EF%BC%8586%EF%BC%85AB%EF%BC%85E1%EF%BC%8584%EF%BC%8589%EF%BC%85E1%EF%BC%8585%EF%BC%85A3%EF%BC%85E1%EF%BC%8586%EF%BC%85BA%EF%BC%85202018-12-23%EF%BC%852002.43.29.png">
+<meta property="article:published_time" content="2018-12-22T20:55:24.000Z">
+<meta property="article:modified_time" content="2021-08-14T10:47:06.080Z">
+<meta property="article:author" content="안피곤">
+<meta property="article:tag" content="Gatsby">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.steemitimages.com/DQmQmWhMN6zNrLmKJRKhvSScEgWZmpb8zCeE2Gray1krbv6/BC054B6E-6F73-46D0-88E4-C88EB8167037.jpeg">
+
+<link rel="canonical" href="https://anpigon.github.io/kr/@anpigon/gatsby--1545544522965">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>[Steem Project] 개츠비(gatsby)로 스팀잇 블로그 만들기 | 안피곤님의 블로그</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-20589042-10"></script>
+    <script pjax>
+      var host = window.location.hostname;
+      if (host !== "localhost" || !true) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-20589042-10');
+      }
+    </script>
+
+
+
+
+
+
+  
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-2365531018407022",
+          enable_page_level_ads: false
+     });
+</script>
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="안피곤님의 블로그" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">안피곤님의 블로그</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">코딩, 독서, 여행, 영화, 맛집</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>홈</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>태그<span class="badge">144</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>카테고리<span class="badge">25</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>아카이브<span class="badge">327</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>검색
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input" id="search-input"></div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="algolia-results">
+  <div id="algolia-stats"></div>
+  <div id="algolia-hits"></div>
+  <div id="algolia-pagination" class="algolia-pagination"></div>
+</div>
+
+  
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="ko">
+    <link itemprop="mainEntityOfPage" href="https://anpigon.github.io/kr/@anpigon/gatsby--1545544522965">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/me.jpg">
+      <meta itemprop="name" content="안피곤">
+      <meta itemprop="description" content="시간이 천천히 갔으면 좋겠다.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="안피곤님의 블로그">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          [Steem Project] 개츠비(gatsby)로 스팀잇 블로그 만들기
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">작성일</span>
+
+              <time title="Post created: 2018-12-23 05:55:24" itemprop="dateCreated datePublished" datetime="2018-12-23T05:55:24+09:00">2018-12-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Updated at: 2021-08-14 19:47:06" itemprop="dateModified" datetime="2021-08-14T19:47:06+09:00">2021-08-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">개발 이야기</span>
+                  </a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/%EC%8A%A4%ED%8C%80%EC%9E%87-%EA%B0%9C%EC%9D%B8-%EB%B8%94%EB%A1%9C%EA%B7%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">스팀잇 개인 블로그 만들기</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/kr/@anpigon/gatsby--1545544522965#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="/kr/@anpigon/gatsby--1545544522965" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+            <div style="margin-bottom:35px;margin-top:-20px;">
+              <!-- 블로그 본문 상단 광고 -->
+              <ins class="adsbygoogle"
+                  style="display:block"
+                  data-ad-client="ca-pub-2365531018407022"
+                  data-ad-slot="3390644000"
+                  data-ad-format="auto"
+                  data-full-width-responsive="true"></ins>
+              <script>
+                  (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+        <p><img alt data-src="https://cdn.steemitimages.com/DQmQmWhMN6zNrLmKJRKhvSScEgWZmpb8zCeE2Gray1krbv6/BC054B6E-6F73-46D0-88E4-C88EB8167037.jpeg"></p><p><strong>스팀잇 블로그 서비스</strong>는 <strong>티스토리</strong>나 <strong>워드프레스</strong>처럼 내가 원하는 테마로 UI를 바꿀수가 없습니다. 그리고 카테고리 분류도 안 됩니다. 구글 통계/구글 광고도 사용할 수 없습니다. 그래서 아쉬운 점이 많아요.</p><p>이번에도 스팀잇 글로 깃허브 페이지 블로그를 만들었습니다. 블로그 UI(테마)는 오픈소스에서 찾아서 적용하고, 카테고리는 스팀잇에 글 제목이 <code>[카테고리] 제목</code> 형태면 분류하도록 했습니다. 참고로, 이전 글 <a target="_blank" rel="noopener" href="https://steemit.com/kr/@anpigon/steemproject-1-hexo-steem--1541261792948">[Hexo Steem 개인 블로그 만들기]</a>에서도 <strong>깃허브 페이지(GitHub Pages)로 블로그 만들기</strong> 포스팅을 한번 했었습니다.</p><a id="more"></a>
+
+
+<p>깃허브 페이지(GitHub Pages)는 <strong>무료</strong>입니다. 그래서 개인 블로그에 많이 사용됩니다. 깃허브 페이지에 블로그 배포하는 방법은 <strong>Jekyll</strong>, <strong>Hexo</strong>, <strong>Gatsby</strong> 등이 있습니다. 대표적으로 <a target="_blank" rel="noopener" href="http://tech.kakao.com/">[카카오 기술 블로그]</a>가 깃허브 페이지로 운영되고 있습니다.</p>
+<p>이번에는 <strong>Gatsby</strong>를 사용하여 깃허브 페이지에 블로그를 만들어 보겠습니다. <strong>Gatsby</strong>는 빌드 속도가 매우 빠릅니다. 그리고 <em>React</em>와 <em>GraphQL</em>을 사용하기 때문에 사이트가 가볍고 빠릅니다.</p>
+<blockquote>
+<p>참고로 Hexo와 Gatsby는 둘 다 정적(HTML) 사이트 생성기입니다. Hexo는 모든 페이지(HTML)을 생성하는 반면, Gatsby는 React와 GraphQL를 사용하여 사이트를 SPA로 만듭니다.</p>
+</blockquote>
+<br>
+<p><strong>Gatsby</strong>를 이용하여 만든 블로그는 아래 URL로 접속하면 볼 수 있습니다.</p>
+<ul>
+<li>안피곤의 블로그: <a href="https://anpigon.github.io/blog/">https://anpigon.github.io/blog/</a></li>
+</ul>
+<p><img alt data-src="https://cdn.steemitimages.com/DQmbR7ENwc743M1QwixDBBPjbsGkxWrW7kDNHQBPK8LpbRC/%EF%BC%85E1%EF%BC%8584%EF%BC%8589%EF%BC%85E1%EF%BC%8585%EF%BC%85B3%EF%BC%85E1%EF%BC%8584%EF%BC%858F%EF%BC%85E1%EF%BC%8585%EF%BC%85B3%EF%BC%85E1%EF%BC%8584%EF%BC%8585%EF%BC%85E1%EF%BC%8585%EF%BC%85B5%EF%BC%85E1%EF%BC%8586%EF%BC%85AB%EF%BC%85E1%EF%BC%8584%EF%BC%8589%EF%BC%85E1%EF%BC%8585%EF%BC%85A3%EF%BC%85E1%EF%BC%8586%EF%BC%85BA%EF%BC%85202018-12-22%EF%BC%852001.58.18.png"></p>
+<p><br>아래부터는 스팀잇을 Gatsby 블로그로 생성하고, 깃허브 페이지에 배포하는 과정을 기록한 글입니다. Gatsby 사용 방법을 더 자세히 알고 싶으면 <a target="_blank" rel="noopener" href="https://www.gatsbyjs.org/tutorial/">Gatsby 공식 튜토리얼</a>을 참고하기 바랍니다. 그리고 블로그 소스는 깃허브(<a target="_blank" rel="noopener" href="https://github.com/anpigon/blog">https://github.com/anpigon/blog</a>)에 모두 공개되어있습니다.</p>
+<p><br><center>* * *</center><br></p>
+<h1 id="개츠비gatsby-사이트-생성하기"><a class="markdownIt-Anchor" href="#개츠비gatsby-사이트-생성하기"></a> 개츠비(Gatsby) 사이트 생성하기</h1>
+<p><br>먼저 Gatsby CLI를 설치한다. 나는 주로 <code>yarn</code>을 사용한다. 그래서 <code>yarn</code>과 <code>npm</code> 두 가지 방법을 모두 기술하였다.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ yarn global add gatsby-cli</span><br><span class="line"></span><br><span class="line"><span class="comment">#또는</span></span><br><span class="line">$ npm i -g gatsby-cli</span><br></pre></td></tr></table></figure>
+<br>
+<p>사이트 생성은 <code>gatsby new &lt;프로젝트명&gt;</code> 명령으로 한다. gatsby는 <strong>“스타터”</strong>(<em>기본 구성이 있는 일부만 구성된 사이트</em>)를 사용하여 사이트를 생성할 수도 있다. 나는 <strong>lumen</strong> 테마를 사용하기 위해 <strong>gatsby-starter-lumen 스타터</strong>를 사용하여 사이트를 생성했다.</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://github.com/alxshelepenok/gatsby-starter-lumen">https://github.com/alxshelepenok/gatsby-starter-lumen</a></p>
+</blockquote>
+<p><br>사이트를 생성하려면, 아래 명령어를 차례대로 입력한다.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ gatsby new blog https://github.com/alxshelepenok/gatsby-starter-lumen</span><br><span class="line">$ <span class="built_in">cd</span> blog</span><br><span class="line">$ yarn develop <span class="comment">#또는 npm run develop</span></span><br></pre></td></tr></table></figure>
+<br>
+<p><code>develop</code>가 성공하고 나서, 브라우저에서 <a target="_blank" rel="noopener" href="http://localhost:8000">http://localhost:8000</a> 를 접속하면 확인 할 수 있다.</p>
+<blockquote>
+<p>보이는 페이지는 샘플 블로그 사이트다.</p>
+</blockquote>
+<p><img alt data-src="https://cdn.steemitimages.com/DQmbpLHX9Uxq1yDekbjQXr3ULnNfSj781XEe3tUPfT5Z1vr/%EF%BC%85E1%EF%BC%8584%EF%BC%8589%EF%BC%85E1%EF%BC%8585%EF%BC%85B3%EF%BC%85E1%EF%BC%8584%EF%BC%858F%EF%BC%85E1%EF%BC%8585%EF%BC%85B3%EF%BC%85E1%EF%BC%8584%EF%BC%8585%EF%BC%85E1%EF%BC%8585%EF%BC%85B5%EF%BC%85E1%EF%BC%8586%EF%BC%85AB%EF%BC%85E1%EF%BC%8584%EF%BC%8589%EF%BC%85E1%EF%BC%8585%EF%BC%85A3%EF%BC%85E1%EF%BC%8586%EF%BC%85BA%EF%BC%85202018-12-18%EF%BC%852012.20.39.png"></p>
+<p><br><br></p>
+<h1 id="개츠비gatsby-스팀잇-플러그인"><a class="markdownIt-Anchor" href="#개츠비gatsby-스팀잇-플러그인"></a> 개츠비(Gatsby) 스팀잇 플러그인</h1>
+<p><br>혹시 hexo처럼 gatsby도 스팀잇 플러그인이 있지 않을까? 해서 찾아봤다. 역시 있었다.</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://github.com/Sekhmet/gatsby-source-steem">https://github.com/Sekhmet/gatsby-source-steem</a></p>
+</blockquote>
+<p><br><code>gatsby-source-steem</code> 플러그인을 설치한다.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">yarn add gatsby-source-steem</span><br><span class="line"></span><br><span class="line"><span class="comment">#또는</span></span><br><span class="line">$ npm i -save gatsby-source-steem</span><br></pre></td></tr></table></figure>
+<p><br>그리고 <code>gatsby-config.js</code> 파일에 <strong>gatsby-source-steem</strong> 플러그인 설정을 추가한다.</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">module.exports = ｛</span><br><span class="line">  plugins: [</span><br><span class="line">    ｛</span><br><span class="line">      resolve: &#x27;gatsby-source-steem&#x27;,</span><br><span class="line">      options: ｛</span><br><span class="line">        tag: &#x27;sekhmet&#x27;, <span class="comment">// 스팀잇 아이디 입력</span></span><br><span class="line">        sortBy: &#x27;blog&#x27;,</span><br><span class="line">      ｝,</span><br><span class="line">    ｝</span><br><span class="line">  ],</span><br><span class="line">｝;</span><br></pre></td></tr></table></figure>
+<p><br>그런데 원하는데로 동작하지 않았다. 그래서 해당 프로젝트를 내 깃허브로 포크(Fork)하고 코드를 수정했다.</p>
+<br>
+<h3 id="수정된-gatsby-source-steem-플러그인-사용하기"><a class="markdownIt-Anchor" href="#수정된-gatsby-source-steem-플러그인-사용하기"></a> 수정된 gatsby-source-steem 플러그인 사용하기</h3>
+<p><br>내가 수정한 gatsby-source-steem 플러그인을 사용하려면 다음과 같이 설치한다.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ yarn add git+https://github.com/anpigon/gatsby-source-steem.git</span><br><span class="line"></span><br><span class="line"><span class="comment">#또는</span></span><br><span class="line">$ npm i -save git+https://github.com/anpigon/gatsby-source-steem.git</span><br></pre></td></tr></table></figure>
+<p><br>그리고 <code>gatsby-config.js</code> 파일은 아래와 같이 설정한다.</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">plugins: [</span><br><span class="line">    ｛</span><br><span class="line">    resolve: &#x27;gatsby-source-steem&#x27;,</span><br><span class="line">    options: ｛</span><br><span class="line">      path: `$｛__dirname｝/src/pages/articles`, <span class="comment">// posts.md 파일 생성 경로</span></span><br><span class="line">      tag: &#x27;anpigon&#x27;, <span class="comment">// 스팀잇 아이디</span></span><br><span class="line">      sortBy: &#x27;blog&#x27;,</span><br><span class="line">    ｝,</span><br><span class="line">  ｝,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p><br><br></p>
+<h1 id="로컬에서-테스트하기"><a class="markdownIt-Anchor" href="#로컬에서-테스트하기"></a> 로컬에서 테스트하기</h1>
+<p><br><code>develop</code>를 실행하여 로컬에서 확인해보자.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ gatsby develop</span><br></pre></td></tr></table></figure>
+<p><br>브라우저에서 <code>http://localhost:8000</code>를 접속하면 아래와 비슷한 화면을 볼 수 있다. 내가 스팀잇에서 작성한 글들이다.</p>
+<p><img alt data-src="https://cdn.steemitimages.com/DQmdBVXJSwFPZkTVvuu2d1achHfdDo4Sya1KPRAbkrgFt2X/%EF%BC%85E1%EF%BC%8584%EF%BC%8589%EF%BC%85E1%EF%BC%8585%EF%BC%85B3%EF%BC%85E1%EF%BC%8584%EF%BC%858F%EF%BC%85E1%EF%BC%8585%EF%BC%85B3%EF%BC%85E1%EF%BC%8584%EF%BC%8585%EF%BC%85E1%EF%BC%8585%EF%BC%85B5%EF%BC%85E1%EF%BC%8586%EF%BC%85AB%EF%BC%85E1%EF%BC%8584%EF%BC%8589%EF%BC%85E1%EF%BC%8585%EF%BC%85A3%EF%BC%85E1%EF%BC%8586%EF%BC%85BA%EF%BC%85202018-12-21%EF%BC%852010.51.33.png"></p>
+<p><br><br></p>
+<h1 id="깃허브-페이지에-블로그-배포하기"><a class="markdownIt-Anchor" href="#깃허브-페이지에-블로그-배포하기"></a> 깃허브 페이지에 블로그 배포하기</h1>
+<p><br>깃허브에 저장소를 생성한다. 그리고 <code>package.json</code> 파일을 열어 <code>repository</code>의 url를 수정한다. 그리고 <code>homepage</code>를 추가한다. <code>homepage</code>는 <code>https://&lt;유저명&gt;.github.io/&lt;프로젝트명&gt;</code>형태이다.</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">｛</span><br><span class="line">  <span class="string">&quot;repository&quot;</span>: <span class="string">&quot;git+https://github.com/anpigon/blog.git&quot;</span>,</span><br><span class="line">  <span class="string">&quot;homepage&quot;</span>: <span class="string">&quot;https://anpigon.github.io/blog&quot;</span>,</span><br><span class="line">｝</span><br></pre></td></tr></table></figure>
+<p><br>마지막으로 <code>deploy</code>명령을 실행한다. 생성된 블로그를 깃허브 페이지에 업로드하는 <strong>제일 중요한 과정</strong>이다.</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>yarn deploy</span><br><span class="line"></span><br><span class="line"><span class="comment">#또는</span></span><br><span class="line"><span class="variable">$ </span>npm run deploy</span><br></pre></td></tr></table></figure>
+<p><br>여기까지 블로그 생성하고 배포하기 끝.</p>
+<p><br><center>* * *</center><br></p>
+<p>사실 저는 <a target="_blank" rel="noopener" href="https://travis-ci.org">Travis-ci</a> 에서 블로그를 자동 배포하는 과정까지 하고 싶었습니다. 그런데 Travis-ci에서는 빌드하는 과정 중에 <code>sharp</code> 모듈 오류가 발생합니다. 그래서 빌드가 안되네요. ㅠㅠ<br>
+<img alt data-src="https://cdn.steemitimages.com/DQmWiBPdafVaFgBYpox158rS7Bgy2x2Yr4qSDPCm19nTADw/%EF%BC%85E1%EF%BC%8584%EF%BC%8589%EF%BC%85E1%EF%BC%8585%EF%BC%85B3%EF%BC%85E1%EF%BC%8584%EF%BC%858F%EF%BC%85E1%EF%BC%8585%EF%BC%85B3%EF%BC%85E1%EF%BC%8584%EF%BC%8585%EF%BC%85E1%EF%BC%8585%EF%BC%85B5%EF%BC%85E1%EF%BC%8586%EF%BC%85AB%EF%BC%85E1%EF%BC%8584%EF%BC%8589%EF%BC%85E1%EF%BC%8585%EF%BC%85A3%EF%BC%85E1%EF%BC%8586%EF%BC%85BA%EF%BC%85202018-12-23%EF%BC%852002.43.29.png"></p>
+<blockquote>
+<p>Travis-ci에는 sharp 모듈 컴파일에 필요한 라이브러리가 누락되어 있어서, 오류가 나는 게 아닐까 생각하고 있습니다. 혹시 이 오류 해결 방법을 아시는 분은 알려주세요. ㅎㅎ</p>
+</blockquote>
+<br>
+<p>요즘은 개인 블로그 호스팅에 <a target="_blank" rel="noopener" href="https://www.netlify.com/">Netlify</a> 서비스도 많이 이용하고 있는 것 같습니다. 이 서비스는 자동 빌드/배포/호스팅 기능을 제공한다고 해요. 그래서 다음번에는 <strong>Netlify</strong>를 사용한 스팀잇 블로그 자동 배포를 해볼 거예요. ㅎㅎ</p>
+<blockquote>
+<p>참고: <a target="_blank" rel="noopener" href="http://www.usefulparadigm.com/2017/11/24/building-smashing-website-with-hugo-and-netlify/">Hugo와 Netlify로 ‘스매싱’ 웹사이트 만들기</a></p>
+</blockquote>
+<p>여기까지 읽어주셔서 감사합니다.</p>
+
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/gatsby/" rel="tag"># Gatsby</a>
+          </div>
+
+        
+  <div class="post-widgets">
+    <div class="wp_rating">
+      <div id="wpac-rating"></div>
+    </div>
+  </div>
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/tripsteem/@steemory/tt20181219t003857696z" rel="next" title="제주도 세화해변 - 카페 한라산">
+                  <i class="fa fa-chevron-left"></i> 제주도 세화해변 - 카페 한라산
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/tripsteem/@steemory/tt20181224t131526300z" rel="prev" title="[창신동 문구완구시장] 즐거운 장난감 시장">
+                  [창신동 문구완구시장] 즐거운 장난감 시장 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    
+  <div class="comments" id="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          목차
+        </li>
+        <li class="sidebar-nav-overview">
+          흝어보기
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%EA%B0%9C%EC%B8%A0%EB%B9%84gatsby-%EC%82%AC%EC%9D%B4%ED%8A%B8-%EC%83%9D%EC%84%B1%ED%95%98%EA%B8%B0"><span class="nav-number">1.</span> <span class="nav-text"> 개츠비(Gatsby) 사이트 생성하기</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%EA%B0%9C%EC%B8%A0%EB%B9%84gatsby-%EC%8A%A4%ED%8C%80%EC%9E%87-%ED%94%8C%EB%9F%AC%EA%B7%B8%EC%9D%B8"><span class="nav-number">2.</span> <span class="nav-text"> 개츠비(Gatsby) 스팀잇 플러그인</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%EC%88%98%EC%A0%95%EB%90%9C-gatsby-source-steem-%ED%94%8C%EB%9F%AC%EA%B7%B8%EC%9D%B8-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0"><span class="nav-number">2.0.1.</span> <span class="nav-text"> 수정된 gatsby-source-steem 플러그인 사용하기</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%EB%A1%9C%EC%BB%AC%EC%97%90%EC%84%9C-%ED%85%8C%EC%8A%A4%ED%8A%B8%ED%95%98%EA%B8%B0"><span class="nav-number">3.</span> <span class="nav-text"> 로컬에서 테스트하기</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%EA%B9%83%ED%97%88%EB%B8%8C-%ED%8E%98%EC%9D%B4%EC%A7%80%EC%97%90-%EB%B8%94%EB%A1%9C%EA%B7%B8-%EB%B0%B0%ED%8F%AC%ED%95%98%EA%B8%B0"><span class="nav-number">4.</span> <span class="nav-text"> 깃허브 페이지에 블로그 배포하기</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="안피곤"
+    src="/images/me.jpg">
+  <p class="site-author-name" itemprop="name">안피곤</p>
+  <div class="site-description" itemprop="description">시간이 천천히 갔으면 좋겠다.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">327</span>
+          <span class="site-state-item-name">포스트</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-name">카테고리</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">144</span>
+        <span class="site-state-item-name">태그</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/anpigon" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;anpigon" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:markan82@gmail.com" title="E-Mail &amp;rarr; mailto:markan82@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+          <!-- 정사각형 광고 -->
+          <div style="margin-top: 15px;">
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-2365531018407022"
+                data-ad-slot="7521850306"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+          </div>
+    </div>
+  </aside>
+  <div id="sidebar-dimmer">3</div>
+
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">안피곤</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v5.4.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.4.2
+  </div>
+
+        
+
+
+
+
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-firestore.js"></script>
+  <script>
+    firebase.initializeApp({
+      apiKey: 'AIzaSyA4QZWCWb3IuIHjbkAmO0ttIM2b-qtLTP8',
+      projectId: 'next-blog-8f9a0'
+    });
+
+    function getCount(doc, increaseCount) {
+      // IncreaseCount will be false when not in article page
+
+      return doc.get().then(d => {
+        var count = 0;
+        if (!d.exists) { // Has no data, initialize count
+          if (increaseCount) {
+            doc.set({
+              count: 1
+            });
+            count = 1;
+          }
+        } else { // Has data
+          count = d.data().count;
+          if (increaseCount) {
+            // If first view this article
+            doc.set({ // Increase count
+              count: count + 1
+            });
+            count++;
+          }
+        }
+
+        return count;
+      });
+    }
+
+    function appendCountTo(el) {
+      return count => {
+        el.innerText = count;
+      }
+    }
+  </script>
+  <script pjax>
+    (function() {
+      var db = firebase.firestore();
+      var articles = db.collection('articles');
+
+      if (CONFIG.page.isPost) { // Is article page
+        var title = document.querySelector('.post-title').innerText.trim();
+        var doc = articles.doc(title);
+        var increaseCount = true;
+        if (localStorage.getItem(title)) {
+          increaseCount = false;
+        } else {
+          // Mark as visited
+          localStorage.setItem(title, true);
+        }
+        getCount(doc, increaseCount).then(appendCountTo(document.querySelector('.firestore-visitors-count')));
+      } else if (CONFIG.page.isHome) { // Is index page
+        var promises = [...document.querySelectorAll('.post-title')].map(element => {
+          var title = element.innerText.trim();
+          var doc = articles.doc(title);
+          return getCount(doc);
+        });
+        Promise.all(promises).then(counts => {
+          var metas = document.querySelectorAll('.firestore-visitors-count');
+          counts.forEach((val, idx) => {
+            appendCountTo(metas[idx])(val);
+          });
+        });
+      }
+    })();
+  </script>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.getAttribute('pjax') !== null) {
+      element.setAttribute('pjax', '');
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+  <script pjax>
+  if (CONFIG.page.isPost) {
+    wpac_init = window.wpac_init || [];
+    wpac_init.push({
+      widget: 'Rating',
+      id: 21712,
+      el: 'wpac-rating',
+      color: 'fc6423'
+    });
+    (function() {
+      if ('WIDGETPACK_LOADED' in window) return;
+      WIDGETPACK_LOADED = true;
+      var mc = document.createElement('script');
+      mc.type = 'text/javascript';
+      mc.async = true;
+      mc.src = '//embed.widgetpack.com/widget.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+    })();
+  }
+  </script>
+
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.4.1/dist/instantsearch.min.css">
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.4.1/dist/instantsearch.js"></script>
+<script src="/js/algolia-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+
+  
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://anpigon-github-io.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  function loadComments() {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: {page: {
+            url: "https://anpigon.github.io/kr/@anpigon/gatsby--1545544522965",
+            identifier: "/kr/@anpigon/gatsby--1545544522965",
+            title: "[Steem Project] 개츠비(gatsby)로 스팀잇 블로그 만들기"
+          }
+        }
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://anpigon-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  }
+    (function() {
+      var offsetTop = document.getElementById('comments').offsetTop - window.innerHeight;
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        window.addEventListener('load', loadComments, false);
+      } else {
+        var disqus_scroll = () => {
+          // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = document.getElementById('comments').offsetTop - window.innerHeight;
+          var scrollTop = window.scrollY;
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            window.removeEventListener('scroll', disqus_scroll);
+            loadComments();
+          }
+        };
+        window.addEventListener('scroll', disqus_scroll);
+      }
+    })();
+  
+</script>
+
+    </div>
+</body>
+</html>

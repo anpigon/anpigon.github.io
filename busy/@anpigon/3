@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="yfKOiBPD8WlKH3NPG_CG1zr4MsCgCG1YVdGKhMS2CKc">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Noto Serif KR:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.4.2',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: true,
+    pangu: false,
+    algolia: {
+      appID: 'YY693DUDAI',
+      apiKey: 'db449d453b150820f66e7bc3d4523a17',
+      indexName: 'my-hexo-blog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '복사',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="안녕하세요. @anpigon 입니다.이전에 **“파이썬 형태소 분석”**이란 제목으로 시리즈를 시작했는데, 시리즈 제목을 머신러닝으로 변경했습니다. 형태소 분석은 스팀잇에 작성한 글로 &quot;단어구름&quot;를 만들어보고 싶어서 시작했습니다. 하지만, 형태소 분석만 하고 끝내기엔 아쉬워 머신러닝을 공부해서 재미난 걸 만들어 보려고 합니다.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[머신러닝] 파이썬 머신러닝 #3 - 스팀잇 아이디로 성별  예측하기">
+<meta property="og:url" content="https://anpigon.github.io/busy/@anpigon/3">
+<meta property="og:site_name" content="안피곤님의 블로그">
+<meta property="og:description" content="안녕하세요. @anpigon 입니다.이전에 **“파이썬 형태소 분석”**이란 제목으로 시리즈를 시작했는데, 시리즈 제목을 머신러닝으로 변경했습니다. 형태소 분석은 스팀잇에 작성한 글로 &quot;단어구름&quot;를 만들어보고 싶어서 시작했습니다. 하지만, 형태소 분석만 하고 끝내기엔 아쉬워 머신러닝을 공부해서 재미난 걸 만들어 보려고 합니다.">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:image" content="https://files.steempeak.com/file/steempeak/anpigon/2TR0dGML-mindset-3536805_1920.jpg">
+<meta property="og:image" content="https://imgur.com/jQuN3wU.png">
+<meta property="og:image" content="https://imgur.com/BgiLpEK.png">
+<meta property="og:image" content="https://imgur.com/vl1pIgu.png">
+<meta property="og:image" content="https://imgur.com/QXOgHAF.png">
+<meta property="og:image" content="https://imgur.com/MOuPUtG.png">
+<meta property="article:published_time" content="2018-09-15T04:43:24.000Z">
+<meta property="article:modified_time" content="2021-08-14T10:47:06.080Z">
+<meta property="article:author" content="안피곤">
+<meta property="article:tag" content="파이썬">
+<meta property="article:tag" content="머신러닝">
+<meta property="article:tag" content="나이브 베이즈 분류">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://files.steempeak.com/file/steempeak/anpigon/2TR0dGML-mindset-3536805_1920.jpg">
+
+<link rel="canonical" href="https://anpigon.github.io/busy/@anpigon/3">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>[머신러닝] 파이썬 머신러닝 #3 - 스팀잇 아이디로 성별  예측하기 | 안피곤님의 블로그</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-20589042-10"></script>
+    <script pjax>
+      var host = window.location.hostname;
+      if (host !== "localhost" || !true) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-20589042-10');
+      }
+    </script>
+
+
+
+
+
+
+  
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-2365531018407022",
+          enable_page_level_ads: false
+     });
+</script>
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="안피곤님의 블로그" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">안피곤님의 블로그</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">코딩, 독서, 여행, 영화, 맛집</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>홈</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>태그<span class="badge">144</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>카테고리<span class="badge">25</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>아카이브<span class="badge">327</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>검색
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input" id="search-input"></div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="algolia-results">
+  <div id="algolia-stats"></div>
+  <div id="algolia-hits"></div>
+  <div id="algolia-pagination" class="algolia-pagination"></div>
+</div>
+
+  
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="ko">
+    <link itemprop="mainEntityOfPage" href="https://anpigon.github.io/busy/@anpigon/3">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/me.jpg">
+      <meta itemprop="name" content="안피곤">
+      <meta itemprop="description" content="시간이 천천히 갔으면 좋겠다.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="안피곤님의 블로그">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          [머신러닝] 파이썬 머신러닝 #3 - 스팀잇 아이디로 성별  예측하기
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">작성일</span>
+
+              <time title="Post created: 2018-09-15 13:43:24" itemprop="dateCreated datePublished" datetime="2018-09-15T13:43:24+09:00">2018-09-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Updated at: 2021-08-14 19:47:06" itemprop="dateModified" datetime="2021-08-14T19:47:06+09:00">2021-08-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">개발 이야기</span>
+                  </a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/" itemprop="url" rel="index">
+                    <span itemprop="name">파이썬 머신러닝</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/busy/@anpigon/3#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="/busy/@anpigon/3" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+            <div style="margin-bottom:35px;margin-top:-20px;">
+              <!-- 블로그 본문 상단 광고 -->
+              <ins class="adsbygoogle"
+                  style="display:block"
+                  data-ad-client="ca-pub-2365531018407022"
+                  data-ad-slot="3390644000"
+                  data-ad-format="auto"
+                  data-full-width-responsive="true"></ins>
+              <script>
+                  (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+        <p><img alt="mindset3536805_1920.jpg" data-src="https://files.steempeak.com/file/steempeak/anpigon/2TR0dGML-mindset-3536805_1920.jpg"></p><p>안녕하세요. @anpigon 입니다.</p><p>이전에 **“파이썬 형태소 분석”**이란 제목으로 시리즈를 시작했는데, 시리즈 제목을 <strong>머신러닝</strong>으로 변경했습니다. 형태소 분석은 스팀잇에 작성한 글로 &quot;단어구름&quot;를 만들어보고 싶어서 시작했습니다. 하지만, 형태소 분석만 하고 끝내기엔 아쉬워 머신러닝을 공부해서 재미난 걸 만들어 보려고 합니다.</p><a id="more"></a>
+
+
+<p>이번에는 머신러닝을 사용하여 스팀잇 아이디의 성별을 예측해보겠습니다.</p>
+<blockquote>
+<p>참고로, <a target="_blank" rel="noopener" href="https://steemit.com/busy/@anpigon/2">단어구름 만들기</a> 포스팅에 댓글을 남기시면 여러분이 스팀잇에 작성한 글을 분석하여 단어구름를 만들어 드립니다. 현재 봇이 돌고 있습니다. 하지만, 노트북에서 봇을 돌리고 있어서 분석 시간은 조금 걸립니다.</p>
+</blockquote>
+<p><br><hr></p>
+<h1 id="나이브-베이즈-분류"><a class="markdownIt-Anchor" href="#나이브-베이즈-분류"></a> 나이브 베이즈 분류</h1>
+<p>나이브 베이즈 분류(Naïve Bayes Classification)는 텍스트 분류에 사용됩니다. 대표적으로 스팸 메일을 필터링하는 데 사용되고 있습니다.</p>
+<blockquote>
+<p>자세한 설명은 조대협님 블로그에 설명이 잘 되어있어 링크로 대신합니다.<br>
+<a target="_blank" rel="noopener" href="http://bcho.tistory.com/1010">[조대협의 블로그] 나이브 베이즈 분류 (Naive Bayesian classification) #1 - 소개</a></p>
+</blockquote>
+<p><br>아래 나이브 베이즈 분류 예제는 <a target="_blank" rel="noopener" href="https://www.nltk.org/book/">https://www.nltk.org/book/</a>를 참고 했습니다.</p>
+<p><br><hr></p>
+<h2 id="이름-성별-분류하기"><a class="markdownIt-Anchor" href="#이름-성별-분류하기"></a> 이름 성별 분류하기</h2>
+<p>남성과 여성의 이름에는 몇 가지 독특한 특성이 있다. a, e, i 로 끝나면 여성이고 k, o, r, s, t 로 끝나면 남성일 가능성이 크다. 이러한 차이를 이용하여 데이터를 학습하는 머신러닝을 구현해 보자.</p>
+<p>먼저 이름에서 맨 마지막 알파벳을 가져오는 함수를 구현한다. 이 함수는 <strong>feature set</strong>이라고 불리는 데이터를 반환한다.</p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line"></span><br><span class="line">def gender_features(<span class="built_in">word</span>):</span><br><span class="line">    <span class="literal">return</span> ｛<span class="string">&#x27;last_letter&#x27;</span>: re.sub(<span class="string">&#x27;[0-9]&#x27;</span>, <span class="string">&#x27;&#x27;</span>, <span class="built_in">word</span>)[<span class="number">-1</span>].<span class="built_in">lower</span>()｝</span><br></pre></td></tr></table></figure>
+<p><br>구현된 <code>gender_features()</code> 함수를 실행하고 결과를 확인해보자.</p>
+<p><img alt data-src="https://imgur.com/jQuN3wU.png"></p>
+<br>
+<h2 id="학습-데이터-준비하기"><a class="markdownIt-Anchor" href="#학습-데이터-준비하기"></a> 학습 데이터 준비하기</h2>
+<p>머신러닝을 학습할 데이터를 준비하자. <code>male.txt</code> 파일과 <code>female.txt</code> 파일에서 머신러닝이 학습할 데이터를 가져온다. 해당 파일은 <a target="_blank" rel="noopener" href="https://github.com/tomazas/py-nltk-dev/tree/master/archives">&lt;github.com/tomazas&gt;</a>에서 가져왔다.</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">labeled_names = ([(<span class="type">name</span>, <span class="string">&#x27;male&#x27;</span>) <span class="keyword">for</span> <span class="type">name</span> <span class="keyword">in</span> <span class="keyword">open</span>(<span class="string">&#x27;male.txt&#x27;</span>).<span class="keyword">read</span>().split(<span class="string">&#x27;\n&#x27;</span>)] +</span><br><span class="line">[(<span class="type">name</span>, <span class="string">&#x27;female&#x27;</span>) <span class="keyword">for</span> <span class="type">name</span> <span class="keyword">in</span> <span class="keyword">open</span>(<span class="string">&#x27;female.txt&#x27;</span>).<span class="keyword">read</span>().split(<span class="string">&#x27;\n&#x27;</span>)])</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line">random.shuffle(labeled_names)</span><br></pre></td></tr></table></figure>
+<h6 id="결과"><a class="markdownIt-Anchor" href="#결과"></a> 결과</h6>
+<p><img alt data-src="https://imgur.com/BgiLpEK.png"></p>
+<br>
+<h2 id="분류기-학습시키기"><a class="markdownIt-Anchor" href="#분류기-학습시키기"></a> 분류기 학습시키기</h2>
+<p><code>gender_features()</code> 함수로 학습 데이터 처리하여 <strong>feature set</strong>를 만든다. 그리고 <strong>feature set</strong>에서 학습 세트(train set)와 테스트 세트(test set)로 나눈다. 학습 세트는 나이브 베이즈 분류 머신러닝을 학습시키는 데 사용된다. 그리고 테스트 세트는 학습된 머신러닝을 검증하는 데 사용한다.</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import nltk</span><br><span class="line"></span><br><span class="line">featuresets = <span class="selector-attr">[(gender_features(n), gender) for (n, gender) in labeled_names]</span></span><br><span class="line">train_set, test_set = featuresets<span class="selector-attr">[500:]</span>, featuresets<span class="selector-attr">[:500]</span></span><br><span class="line"></span><br><span class="line">classifier = nltk<span class="selector-class">.NaiveBayesClassifier</span><span class="selector-class">.train</span>(train_set)</span><br></pre></td></tr></table></figure>
+<br>
+<h1 id="머신러닝-테스트하기"><a class="markdownIt-Anchor" href="#머신러닝-테스트하기"></a> 머신러닝 테스트하기</h1>
+<p>학습 데이터에 없는 이름을 가지고 테스트해보자. <strong>Neo</strong>는 남성, <strong>Trinity</strong>는 여성이라는 결과가 나왔다.</p>
+<p><img alt data-src="https://imgur.com/vl1pIgu.png"></p>
+<p><br>테스트 세트를 이용하여 나이브 베이즈 분류기의 정확도를 확인해보자. 이 학습된 분류기의 정확도는 **74.2％**이다.</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nltk<span class="selector-class">.classify</span><span class="selector-class">.accuracy</span>(classifier, test_set)</span><br><span class="line"><span class="number">0.742</span></span><br></pre></td></tr></table></figure>
+<p><br>마지막으로 <code>show_most_informative_features()</code> 함수를 사용하면 이름의 성별을 구별하는 기준을 확인할 수 있다. <code>a</code>로 끝나는 이름은 여성일 확률이 35.8％이다. 그리고 <code>k</code>로 끝나는 이름은 남성일 확률이 32.8％이다.</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">classifier</span><span class="selector-class">.show_most_informative_features</span>()</span><br></pre></td></tr></table></figure>
+<p><img alt data-src="https://imgur.com/QXOgHAF.png"></p>
+<br>
+<h2 id="스팀잇-아이디로-성별-알아내기"><a class="markdownIt-Anchor" href="#스팀잇-아이디로-성별-알아내기"></a> 스팀잇 아이디로 성별 알아내기</h2>
+<p>성별을 분류해주는 머신러닝 학습이 완료되었습니다. 이제 이 포스팅의 목적인 스팀잇 아이디로 성별을 예측해보겠습니다.</p>
+<p>아래와 같이 성별을 예측하여 결과를 반환하는 함수를 구현합니다.</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">predict</span><span class="params">(usernames)</span></span>:</span><br><span class="line">    <span class="keyword">return</span> [｛<span class="symbol">u:</span> classifier.classify(gender_features(u))｝ <span class="keyword">for</span> u <span class="keyword">in</span> usernames]</span><br></pre></td></tr></table></figure>
+<p><br>성별을 알고 싶은 스팀잇 아이디 데이터를 준비합니다. 아래 데이터는 나의 팔로우에서 무작위로 가져왔습니다. 익숙한 아이디가 많이 보이네요.</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">input_data</span> = [</span><br><span class="line">    <span class="string">&#x27;ned&#x27;</span>, </span><br><span class="line">    <span class="string">&#x27;etainclub&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;codingart&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;codingman&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;ksc&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;imrahelk&#x27;</span>, </span><br><span class="line">    <span class="string">&#x27;newbijohn&#x27;</span>, </span><br><span class="line">    <span class="string">&#x27;coinfarmer165&#x27;</span>, </span><br><span class="line">    <span class="string">&#x27;ponzipanda&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;blockchainstudio&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;jisoooh0202&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;jamieinthedark&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;xinnong&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;bbooaae&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;onehand&#x27;</span>,            </span><br><span class="line">    <span class="string">&#x27;osyvv&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;bluengel&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;jungjunghoon&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;duplicate&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;lucky2&#x27;</span>,       </span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p><br>앞에서 구현한 <code>predict()</code> 함수를 실행하니, 아래와 같은 결과가 나왔습니다.</p>
+<p><img alt data-src="https://imgur.com/MOuPUtG.png"></p>
+<p>머신러닝 학습 데이터가 스팀잇 아이디가 아니었고, 정확도가 74％인 것을 참작하면 만족한 결과가 나왔습니다. 성별이 반대로 나오신 분들께는 죄송합니다.</p>
+<p><br>여기까지 읽어주셔서 감사합니다.</p>
+<hr>
+<h6 id="이전글"><a class="markdownIt-Anchor" href="#이전글"></a> 이전글</h6>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://steemit.com/busy/@anpigon/5s1aam">파이썬으로 스팀잇 형태소 분석하기 #1</a></li>
+<li><a target="_blank" rel="noopener" href="https://steemit.com/busy/@anpigon/2">파이썬으로 스팀잇 형태소 분석하기 #2 - 단어구름 만들기</a></li>
+</ul>
+
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%ED%8C%8C%EC%9D%B4%EC%8D%AC/" rel="tag"># 파이썬</a>
+              <a href="/tags/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/" rel="tag"># 머신러닝</a>
+              <a href="/tags/%EB%82%98%EC%9D%B4%EB%B8%8C-%EB%B2%A0%EC%9D%B4%EC%A6%88-%EB%B6%84%EB%A5%98/" rel="tag"># 나이브 베이즈 분류</a>
+          </div>
+
+        
+  <div class="post-widgets">
+    <div class="wp_rating">
+      <div id="wpac-rating"></div>
+    </div>
+  </div>
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/busy/@anpigon/1-iss-hd" rel="next" title="안드로이드앱 소개 #1 - ISS HD 라이브">
+                  <i class="fa fa-chevron-left"></i> 안드로이드앱 소개 #1 - ISS HD 라이브
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/kr/@anpigon/4" rel="prev" title="[머신러닝] 파이썬 머신러닝 #4 - 스팀잇 글 감정 분류하기">
+                  [머신러닝] 파이썬 머신러닝 #4 - 스팀잇 글 감정 분류하기 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    
+  <div class="comments" id="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          목차
+        </li>
+        <li class="sidebar-nav-overview">
+          흝어보기
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%EB%82%98%EC%9D%B4%EB%B8%8C-%EB%B2%A0%EC%9D%B4%EC%A6%88-%EB%B6%84%EB%A5%98"><span class="nav-number">1.</span> <span class="nav-text"> 나이브 베이즈 분류</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%EC%9D%B4%EB%A6%84-%EC%84%B1%EB%B3%84-%EB%B6%84%EB%A5%98%ED%95%98%EA%B8%B0"><span class="nav-number">1.1.</span> <span class="nav-text"> 이름 성별 분류하기</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%ED%95%99%EC%8A%B5-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A4%80%EB%B9%84%ED%95%98%EA%B8%B0"><span class="nav-number">1.2.</span> <span class="nav-text"> 학습 데이터 준비하기</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%EA%B2%B0%EA%B3%BC"><span class="nav-number">1.2.0.0.0.1.</span> <span class="nav-text"> 결과</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EB%B6%84%EB%A5%98%EA%B8%B0-%ED%95%99%EC%8A%B5%EC%8B%9C%ED%82%A4%EA%B8%B0"><span class="nav-number">1.3.</span> <span class="nav-text"> 분류기 학습시키기</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D-%ED%85%8C%EC%8A%A4%ED%8A%B8%ED%95%98%EA%B8%B0"><span class="nav-number">2.</span> <span class="nav-text"> 머신러닝 테스트하기</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%EC%8A%A4%ED%8C%80%EC%9E%87-%EC%95%84%EC%9D%B4%EB%94%94%EB%A1%9C-%EC%84%B1%EB%B3%84-%EC%95%8C%EC%95%84%EB%82%B4%EA%B8%B0"><span class="nav-number">2.1.</span> <span class="nav-text"> 스팀잇 아이디로 성별 알아내기</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%EC%9D%B4%EC%A0%84%EA%B8%80"><span class="nav-number">2.1.0.0.0.1.</span> <span class="nav-text"> 이전글</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="안피곤"
+    src="/images/me.jpg">
+  <p class="site-author-name" itemprop="name">안피곤</p>
+  <div class="site-description" itemprop="description">시간이 천천히 갔으면 좋겠다.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">327</span>
+          <span class="site-state-item-name">포스트</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-name">카테고리</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">144</span>
+        <span class="site-state-item-name">태그</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/anpigon" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;anpigon" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:markan82@gmail.com" title="E-Mail &amp;rarr; mailto:markan82@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+          <!-- 정사각형 광고 -->
+          <div style="margin-top: 15px;">
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-2365531018407022"
+                data-ad-slot="7521850306"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+          </div>
+    </div>
+  </aside>
+  <div id="sidebar-dimmer">3</div>
+
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">안피곤</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v5.4.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.4.2
+  </div>
+
+        
+
+
+
+
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-firestore.js"></script>
+  <script>
+    firebase.initializeApp({
+      apiKey: 'AIzaSyA4QZWCWb3IuIHjbkAmO0ttIM2b-qtLTP8',
+      projectId: 'next-blog-8f9a0'
+    });
+
+    function getCount(doc, increaseCount) {
+      // IncreaseCount will be false when not in article page
+
+      return doc.get().then(d => {
+        var count = 0;
+        if (!d.exists) { // Has no data, initialize count
+          if (increaseCount) {
+            doc.set({
+              count: 1
+            });
+            count = 1;
+          }
+        } else { // Has data
+          count = d.data().count;
+          if (increaseCount) {
+            // If first view this article
+            doc.set({ // Increase count
+              count: count + 1
+            });
+            count++;
+          }
+        }
+
+        return count;
+      });
+    }
+
+    function appendCountTo(el) {
+      return count => {
+        el.innerText = count;
+      }
+    }
+  </script>
+  <script pjax>
+    (function() {
+      var db = firebase.firestore();
+      var articles = db.collection('articles');
+
+      if (CONFIG.page.isPost) { // Is article page
+        var title = document.querySelector('.post-title').innerText.trim();
+        var doc = articles.doc(title);
+        var increaseCount = true;
+        if (localStorage.getItem(title)) {
+          increaseCount = false;
+        } else {
+          // Mark as visited
+          localStorage.setItem(title, true);
+        }
+        getCount(doc, increaseCount).then(appendCountTo(document.querySelector('.firestore-visitors-count')));
+      } else if (CONFIG.page.isHome) { // Is index page
+        var promises = [...document.querySelectorAll('.post-title')].map(element => {
+          var title = element.innerText.trim();
+          var doc = articles.doc(title);
+          return getCount(doc);
+        });
+        Promise.all(promises).then(counts => {
+          var metas = document.querySelectorAll('.firestore-visitors-count');
+          counts.forEach((val, idx) => {
+            appendCountTo(metas[idx])(val);
+          });
+        });
+      }
+    })();
+  </script>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.getAttribute('pjax') !== null) {
+      element.setAttribute('pjax', '');
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+  <script pjax>
+  if (CONFIG.page.isPost) {
+    wpac_init = window.wpac_init || [];
+    wpac_init.push({
+      widget: 'Rating',
+      id: 21712,
+      el: 'wpac-rating',
+      color: 'fc6423'
+    });
+    (function() {
+      if ('WIDGETPACK_LOADED' in window) return;
+      WIDGETPACK_LOADED = true;
+      var mc = document.createElement('script');
+      mc.type = 'text/javascript';
+      mc.async = true;
+      mc.src = '//embed.widgetpack.com/widget.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+    })();
+  }
+  </script>
+
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.4.1/dist/instantsearch.min.css">
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.4.1/dist/instantsearch.js"></script>
+<script src="/js/algolia-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+
+  
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://anpigon-github-io.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  function loadComments() {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: {page: {
+            url: "https://anpigon.github.io/busy/@anpigon/3",
+            identifier: "/busy/@anpigon/3",
+            title: "[머신러닝] 파이썬 머신러닝 #3 - 스팀잇 아이디로 성별  예측하기"
+          }
+        }
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://anpigon-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  }
+    (function() {
+      var offsetTop = document.getElementById('comments').offsetTop - window.innerHeight;
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        window.addEventListener('load', loadComments, false);
+      } else {
+        var disqus_scroll = () => {
+          // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = document.getElementById('comments').offsetTop - window.innerHeight;
+          var scrollTop = window.scrollY;
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            window.removeEventListener('scroll', disqus_scroll);
+            loadComments();
+          }
+        };
+        window.addEventListener('scroll', disqus_scroll);
+      }
+    })();
+  
+</script>
+
+    </div>
+</body>
+</html>

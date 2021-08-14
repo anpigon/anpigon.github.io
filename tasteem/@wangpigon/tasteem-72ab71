@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="yfKOiBPD8WlKH3NPG_CG1zr4MsCgCG1YVdGKhMS2CKc">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Noto Serif KR:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.4.2',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: true,
+    pangu: false,
+    algolia: {
+      appID: 'YY693DUDAI',
+      apiKey: 'db449d453b150820f66e7bc3d4523a17',
+      indexName: 'my-hexo-blog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '복사',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="제주어멍통갈치전복문어조림이번에는 제주갈치조림이 가장 맛있다는 제주어멍에 다녀왔습니다. 제주어멍은 제주공항 뒷편 해안가에 위치하고 있어요. 네이버 예약하고 가면 5％ 할인을 해줍니다.저는 통갈치전복문어조림과 통갈치구이 세트를 고민했습니다. 이왕 제주도에 온김에 다 먹어보자고 생각하고 통갈치전복문어조림을 주문했습니다. ㅋ">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[맛집] 제주 통갈치조림 맛집 - 제주어멍">
+<meta property="og:url" content="https://anpigon.github.io/tasteem/@wangpigon/tasteem-72ab71">
+<meta property="og:site_name" content="안피곤님의 블로그">
+<meta property="og:description" content="제주어멍통갈치전복문어조림이번에는 제주갈치조림이 가장 맛있다는 제주어멍에 다녀왔습니다. 제주어멍은 제주공항 뒷편 해안가에 위치하고 있어요. 네이버 예약하고 가면 5％ 할인을 해줍니다.저는 통갈치전복문어조림과 통갈치구이 세트를 고민했습니다. 이왕 제주도에 온김에 다 먹어보자고 생각하고 통갈치전복문어조림을 주문했습니다. ㅋ">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:image" content="https://static.tasteem.io/uploads/4928/post/35305/content_a937420b-2e81-4955-ad39-8ca7f1a12422.jpeg">
+<meta property="og:image" content="https://static.tasteem.io/uploads/image/image/178721/4c28d287-446a-43fd-a946-d41bb6da2e1f.jpeg">
+<meta property="og:image" content="https://static.tasteem.io/uploads/image/image/178723/4c28d287-446a-43fd-a946-d41bb6da2e1f.jpeg">
+<meta property="og:image" content="https://static.tasteem.io/uploads/image/image/178724/4c28d287-446a-43fd-a946-d41bb6da2e1f.jpeg">
+<meta property="og:image" content="https://static.tasteem.io/uploads/image/image/178725/4c28d287-446a-43fd-a946-d41bb6da2e1f.jpeg">
+<meta property="og:image" content="https://static.tasteem.io/uploads/image/image/178727/4c28d287-446a-43fd-a946-d41bb6da2e1f.jpeg">
+<meta property="og:image" content="https://static.tasteem.io/uploads/image/image/178728/4c28d287-446a-43fd-a946-d41bb6da2e1f.jpeg">
+<meta property="og:image" content="https://static.tasteem.io/uploads/image/image/178729/4c28d287-446a-43fd-a946-d41bb6da2e1f.jpeg">
+<meta property="og:image" content="https://static.tasteem.io/uploads/image/image/178730/4c28d287-446a-43fd-a946-d41bb6da2e1f.jpeg">
+<meta property="og:image" content="https://static.tasteem.io/uploads/image/image/178731/4c28d287-446a-43fd-a946-d41bb6da2e1f.jpeg">
+<meta property="og:image" content="https://static.tasteem.io/uploads/image/image/178732/4c28d287-446a-43fd-a946-d41bb6da2e1f.jpeg">
+<meta property="og:image" content="https://static.tasteem.io/uploads/image/image/178736/4c28d287-446a-43fd-a946-d41bb6da2e1f.jpeg">
+<meta property="og:image" content="https://static.tasteem.io/images/steem/1Crowns.png">
+<meta property="og:image" content="https://static.tasteem.io/images/tasteem_banner_v3.png">
+<meta property="article:published_time" content="2019-06-01T17:02:03.000Z">
+<meta property="article:modified_time" content="2021-08-14T10:47:06.084Z">
+<meta property="article:author" content="안피곤">
+<meta property="article:tag" content="테이스팀">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://static.tasteem.io/uploads/4928/post/35305/content_a937420b-2e81-4955-ad39-8ca7f1a12422.jpeg">
+
+<link rel="canonical" href="https://anpigon.github.io/tasteem/@wangpigon/tasteem-72ab71">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>[맛집] 제주 통갈치조림 맛집 - 제주어멍 | 안피곤님의 블로그</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-20589042-10"></script>
+    <script pjax>
+      var host = window.location.hostname;
+      if (host !== "localhost" || !true) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-20589042-10');
+      }
+    </script>
+
+
+
+
+
+
+  
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-2365531018407022",
+          enable_page_level_ads: false
+     });
+</script>
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="안피곤님의 블로그" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">안피곤님의 블로그</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">코딩, 독서, 여행, 영화, 맛집</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>홈</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>태그<span class="badge">144</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>카테고리<span class="badge">25</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>아카이브<span class="badge">327</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>검색
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input" id="search-input"></div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="algolia-results">
+  <div id="algolia-stats"></div>
+  <div id="algolia-hits"></div>
+  <div id="algolia-pagination" class="algolia-pagination"></div>
+</div>
+
+  
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="ko">
+    <link itemprop="mainEntityOfPage" href="https://anpigon.github.io/tasteem/@wangpigon/tasteem-72ab71">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/me.jpg">
+      <meta itemprop="name" content="안피곤">
+      <meta itemprop="description" content="시간이 천천히 갔으면 좋겠다.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="안피곤님의 블로그">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          [맛집] 제주 통갈치조림 맛집 - 제주어멍
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">작성일</span>
+
+              <time title="Post created: 2019-06-02 02:02:03" itemprop="dateCreated datePublished" datetime="2019-06-02T02:02:03+09:00">2019-06-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Updated at: 2021-08-14 19:47:06" itemprop="dateModified" datetime="2021-08-14T19:47:06+09:00">2021-08-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%EB%A7%9B%EC%A7%91-%EC%9D%B4%EC%95%BC%EA%B8%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">맛집 이야기</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/tasteem/@wangpigon/tasteem-72ab71#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="/tasteem/@wangpigon/tasteem-72ab71" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+            <div style="margin-bottom:35px;margin-top:-20px;">
+              <!-- 블로그 본문 상단 광고 -->
+              <ins class="adsbygoogle"
+                  style="display:block"
+                  data-ad-client="ca-pub-2365531018407022"
+                  data-ad-slot="3390644000"
+                  data-ad-format="auto"
+                  data-full-width-responsive="true"></ins>
+              <script>
+                  (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+        <p><img alt data-src="https://static.tasteem.io/uploads/4928/post/35305/content_a937420b-2e81-4955-ad39-8ca7f1a12422.jpeg"><br>
+<br></p><hr><center><h1>제주어멍</h1>통갈치전복문어조림</center><hr><p>이번에는 제주갈치조림이 가장 맛있다는 제주어멍에 다녀왔습니다. 제주어멍은 제주공항 뒷편 해안가에 위치하고 있어요. 네이버 예약하고 가면 5％ 할인을 해줍니다.</p><p><img alt data-src="https://static.tasteem.io/uploads/image/image/178721/4c28d287-446a-43fd-a946-d41bb6da2e1f.jpeg"></p><br><p>저는 통갈치전복문어조림과 통갈치구이 세트를 고민했습니다.<br>
+<img alt data-src="https://static.tasteem.io/uploads/image/image/178723/4c28d287-446a-43fd-a946-d41bb6da2e1f.jpeg"></p><p><img alt data-src="https://static.tasteem.io/uploads/image/image/178724/4c28d287-446a-43fd-a946-d41bb6da2e1f.jpeg"></p><p>이왕 제주도에 온김에 다 먹어보자고 생각하고 통갈치전복문어조림을 주문했습니다. ㅋ</p><a id="more"></a>
+
+
+
+
+
+
+
+<br>
+<p>음식은 가짓수가 매우 많고 깔끔합니다. 나오는 모든 음식이 다 맛있습니다.</p>
+<p><img alt data-src="https://static.tasteem.io/uploads/image/image/178725/4c28d287-446a-43fd-a946-d41bb6da2e1f.jpeg"></p>
+<p>반찬으로 나온 음식들도 맛있었어요. 여기 중에서는 간장 게장이 정말 맛있었습니다. 저는 이곳 식당에서 맛있다는 말을 백번도 넘게 했던것 같습니다.</p>
+<br>
+<p>아래 사진에서 왼쪽에 보이는 음식은 갈치회와 고등어회입니다. 전 갈치회와 고등어회를 처음 먹어봤습니다. 입에서 살살 녹습니다. 너무 맛있습니다.</p>
+<p><img alt data-src="https://static.tasteem.io/uploads/image/image/178727/4c28d287-446a-43fd-a946-d41bb6da2e1f.jpeg"></p>
+<br>
+다음 고등어 구이 정말 맛있습니다. 저는 고등어 구이를 정말 좋아합니다. 하지만 여기 식당이 제일 맛있는것 같습니다.
+<p><img alt data-src="https://static.tasteem.io/uploads/image/image/178728/4c28d287-446a-43fd-a946-d41bb6da2e1f.jpeg"></p>
+<p>고등어 살이 매우 도톰하고 쫄깃합니다. 그리고 적당히 짭짜롬하니 제 입맛에 너무 딱 맞습니다. 전 이 고등어 구이 하나만 있어도 밥 2공기는 거뜬히 먹을 수 있을 것 같습니다.</p>
+<br>
+다음은 전복으로 만든 요리입니다. 아마도 튀긴 것 같습니다.
+<p><img alt data-src="https://static.tasteem.io/uploads/image/image/178729/4c28d287-446a-43fd-a946-d41bb6da2e1f.jpeg"><br>
+데코가 정말 이뻤습니다. 하지만 사진을 찍기 전에 요렇게 되어버렸습니다. 바삭바삭하니 소스에 찍어먹으면 맛있습니다.</p>
+<p><br>마지막 끝판왕 요리입니다. 바로 갈치조림입니다. 버너 2개를 사용합니다. 요리 양이 생각보다 매우 많았습니다.</p>
+<p><img alt data-src="https://static.tasteem.io/uploads/image/image/178730/4c28d287-446a-43fd-a946-d41bb6da2e1f.jpeg"></p>
+<p>갈치조림이 메인 요리입니다. 하지만 앞서 나온 맛있는 음식들을 너무 많이 먹어서 배가 불러오기 시작합니다. 이때 큰일이라고 생각했습니다.</p>
+<p>통갈치전복문어조림이 2 ~ 3 분이라고 해서 주문했는데 양이 생각보다 너무 많았습니다. 제 생각에는 3 ~ 4인분이라고 표기해야 옳을 것 같습니다.</p>
+<br>
+<p>갈치도 생각보다 매우 큽니다. 제주도에서 직접 잡은 갈치라고 합니다. 갈치 하나를 들어보니 갈치 살코기에 양념이 잘 배어 있습니다.</p>
+<p><img alt data-src="https://static.tasteem.io/uploads/image/image/178731/4c28d287-446a-43fd-a946-d41bb6da2e1f.jpeg"></p>
+<p>갈치 살에서 가시를 발라내고 입에 넣으면 고기를 씹을 것도 없습니다. 그냥 입에서 녹아 없어집니다. ㅋ</p>
+<br>
+<p>문어다리도 사진으로 찍었습니다. 갈치에 밀려서 찬밥 신세지만 그래도 맛있습니다.</p>
+<p><img alt data-src="https://static.tasteem.io/uploads/image/image/178732/4c28d287-446a-43fd-a946-d41bb6da2e1f.jpeg"></p>
+<p>제주도에 와서 문어는 질리도록 먹었습니다.</p>
+<br>
+<p><img alt data-src="https://static.tasteem.io/uploads/image/image/178736/4c28d287-446a-43fd-a946-d41bb6da2e1f.jpeg"></p>
+<hr>
+<h4 id="맛집정보"><a class="markdownIt-Anchor" href="#맛집정보"></a> 맛집정보</h4>
+<h3 id="제주어멍"><a class="markdownIt-Anchor" href="#제주어멍"></a> 제주어멍</h3>
+<p><img alt="score" data-src="https://static.tasteem.io/images/steem/1Crowns.png"></p>
+<p><a target="_blank" rel="noopener" href="https://kr.tasteem.io/post/35305#map">대한민국 제주특별자치도 제주시 용담삼동 2576-3</a></p>
+<hr>
+<center>[[맛집] 제주 통갈치조림 맛집 - 제주어멍](https://kr.tasteem.io/post/35305)
+<br>이 글은 Tasteem 컨테스트
+ [내가 소개하는  이번 주 맛집](https://kr.tasteem.io/event/450)에 참가한 글입니다.
+<p><br><a target="_blank" rel="noopener" href="https://kr.tasteem.io/about">테이스팀은 무엇인가요?</a></p>
+<p><a target="_blank" rel="noopener" href="https://kr.tasteem.io"><img alt="tasteem_banner.png" data-src="https://static.tasteem.io/images/tasteem_banner_v3.png"></a></p></center><p></p>
+
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%ED%85%8C%EC%9D%B4%EC%8A%A4%ED%8C%80/" rel="tag"># 테이스팀</a>
+          </div>
+
+        
+  <div class="post-widgets">
+    <div class="wp_rating">
+      <div id="wpac-rating"></div>
+    </div>
+  </div>
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/sct/@anpigon/steem-sct-vp-3-doze-app-standby" rel="next" title="STEEM/SCT 보팅파워(VP) 안드로이드 위젯 #3 - Doze와 앱 대기(App Standby) 이야기">
+                  <i class="fa fa-chevron-left"></i> STEEM/SCT 보팅파워(VP) 안드로이드 위젯 #3 - Doze와 앱 대기(App Standby) 이야기
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/sct/@anpigon/steem-tools-20190604" rel="prev" title="[Steem Tools] 크롬 익스텐션 개발 : 스팀 엔진 토큰 목록 업데이트 (20190604)">
+                  [Steem Tools] 크롬 익스텐션 개발 : 스팀 엔진 토큰 목록 업데이트 (20190604) <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    
+  <div class="comments" id="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          목차
+        </li>
+        <li class="sidebar-nav-overview">
+          흝어보기
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">제주어멍</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%EB%A7%9B%EC%A7%91%EC%A0%95%EB%B3%B4"><span class="nav-number">1.0.0.1.</span> <span class="nav-text"> 맛집정보</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EC%A0%9C%EC%A3%BC%EC%96%B4%EB%A9%8D"><span class="nav-number">1.0.1.</span> <span class="nav-text"> 제주어멍</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="안피곤"
+    src="/images/me.jpg">
+  <p class="site-author-name" itemprop="name">안피곤</p>
+  <div class="site-description" itemprop="description">시간이 천천히 갔으면 좋겠다.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">327</span>
+          <span class="site-state-item-name">포스트</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-name">카테고리</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">144</span>
+        <span class="site-state-item-name">태그</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/anpigon" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;anpigon" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:markan82@gmail.com" title="E-Mail &amp;rarr; mailto:markan82@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+          <!-- 정사각형 광고 -->
+          <div style="margin-top: 15px;">
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-2365531018407022"
+                data-ad-slot="7521850306"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+          </div>
+    </div>
+  </aside>
+  <div id="sidebar-dimmer">3</div>
+
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">안피곤</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v5.4.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.4.2
+  </div>
+
+        
+
+
+
+
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-firestore.js"></script>
+  <script>
+    firebase.initializeApp({
+      apiKey: 'AIzaSyA4QZWCWb3IuIHjbkAmO0ttIM2b-qtLTP8',
+      projectId: 'next-blog-8f9a0'
+    });
+
+    function getCount(doc, increaseCount) {
+      // IncreaseCount will be false when not in article page
+
+      return doc.get().then(d => {
+        var count = 0;
+        if (!d.exists) { // Has no data, initialize count
+          if (increaseCount) {
+            doc.set({
+              count: 1
+            });
+            count = 1;
+          }
+        } else { // Has data
+          count = d.data().count;
+          if (increaseCount) {
+            // If first view this article
+            doc.set({ // Increase count
+              count: count + 1
+            });
+            count++;
+          }
+        }
+
+        return count;
+      });
+    }
+
+    function appendCountTo(el) {
+      return count => {
+        el.innerText = count;
+      }
+    }
+  </script>
+  <script pjax>
+    (function() {
+      var db = firebase.firestore();
+      var articles = db.collection('articles');
+
+      if (CONFIG.page.isPost) { // Is article page
+        var title = document.querySelector('.post-title').innerText.trim();
+        var doc = articles.doc(title);
+        var increaseCount = true;
+        if (localStorage.getItem(title)) {
+          increaseCount = false;
+        } else {
+          // Mark as visited
+          localStorage.setItem(title, true);
+        }
+        getCount(doc, increaseCount).then(appendCountTo(document.querySelector('.firestore-visitors-count')));
+      } else if (CONFIG.page.isHome) { // Is index page
+        var promises = [...document.querySelectorAll('.post-title')].map(element => {
+          var title = element.innerText.trim();
+          var doc = articles.doc(title);
+          return getCount(doc);
+        });
+        Promise.all(promises).then(counts => {
+          var metas = document.querySelectorAll('.firestore-visitors-count');
+          counts.forEach((val, idx) => {
+            appendCountTo(metas[idx])(val);
+          });
+        });
+      }
+    })();
+  </script>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.getAttribute('pjax') !== null) {
+      element.setAttribute('pjax', '');
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+  <script pjax>
+  if (CONFIG.page.isPost) {
+    wpac_init = window.wpac_init || [];
+    wpac_init.push({
+      widget: 'Rating',
+      id: 21712,
+      el: 'wpac-rating',
+      color: 'fc6423'
+    });
+    (function() {
+      if ('WIDGETPACK_LOADED' in window) return;
+      WIDGETPACK_LOADED = true;
+      var mc = document.createElement('script');
+      mc.type = 'text/javascript';
+      mc.async = true;
+      mc.src = '//embed.widgetpack.com/widget.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+    })();
+  }
+  </script>
+
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.4.1/dist/instantsearch.min.css">
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.4.1/dist/instantsearch.js"></script>
+<script src="/js/algolia-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+
+  
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://anpigon-github-io.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  function loadComments() {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: {page: {
+            url: "https://anpigon.github.io/tasteem/@wangpigon/tasteem-72ab71",
+            identifier: "/tasteem/@wangpigon/tasteem-72ab71",
+            title: "[맛집] 제주 통갈치조림 맛집 - 제주어멍"
+          }
+        }
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://anpigon-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  }
+    (function() {
+      var offsetTop = document.getElementById('comments').offsetTop - window.innerHeight;
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        window.addEventListener('load', loadComments, false);
+      } else {
+        var disqus_scroll = () => {
+          // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = document.getElementById('comments').offsetTop - window.innerHeight;
+          var scrollTop = window.scrollY;
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            window.removeEventListener('scroll', disqus_scroll);
+            loadComments();
+          }
+        };
+        window.addEventListener('scroll', disqus_scroll);
+      }
+    })();
+  
+</script>
+
+    </div>
+</body>
+</html>

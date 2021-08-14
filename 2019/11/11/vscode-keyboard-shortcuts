@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="yfKOiBPD8WlKH3NPG_CG1zr4MsCgCG1YVdGKhMS2CKc">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Noto Serif KR:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.4.2',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: true,
+    pangu: false,
+    algolia: {
+      appID: 'YY693DUDAI',
+      apiKey: 'db449d453b150820f66e7bc3d4523a17',
+      indexName: 'my-hexo-blog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '복사',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="아래 유튜브를 보고 VSCode에서 유용한 단축키를 정리해 보았습니다. 반복되는 코드를 한번에 수정하기 맥 단축키: Command + D 윈도우 단축키: CTRL + D 반복된 코드를 한번에 수정할 때 유용하다. 단축키를 누를 때마다 해당 코드가 반복 선택된다. 아래 화면은 preDocumentInfo 코드를 location으로 변경하고 있다.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="VSCode 단축키 5분 정리">
+<meta property="og:url" content="https://anpigon.github.io/2019/11/11/vscode-keyboard-shortcuts">
+<meta property="og:site_name" content="안피곤님의 블로그">
+<meta property="og:description" content="아래 유튜브를 보고 VSCode에서 유용한 단축키를 정리해 보았습니다. 반복되는 코드를 한번에 수정하기 맥 단축키: Command + D 윈도우 단축키: CTRL + D 반복된 코드를 한번에 수정할 때 유용하다. 단축키를 누를 때마다 해당 코드가 반복 선택된다. 아래 화면은 preDocumentInfo 코드를 location으로 변경하고 있다.">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:image" content="https://anpigon.github.io/images/2019-11-11/2019-11-11_21-20-36-054e4de3-3fa7-42ec-bc11-2068d918e301.2019-11-11_21_24_04.gif">
+<meta property="og:image" content="https://anpigon.github.io/images/2019-11-11/2019-11-11_22-05-56-b6bbf364-14a5-41a2-a9b2-1c8789c6050b.2019-11-11_22_07_04.gif">
+<meta property="og:image" content="https://anpigon.github.io/images/2019-11-11/2019-11-11_21-28-57-90dbf9cb-0c06-4bde-b3c2-09d328cfca77.2019-11-11_21_29_38.gif">
+<meta property="og:image" content="https://anpigon.github.io/images/2019-11-11/2019-11-11_21-34-04-aa0e21ea-4029-4240-b7ee-9f60f5678842.2019-11-11_21_35_02.gif">
+<meta property="og:image" content="https://anpigon.github.io/images/2019-11-11/2019-11-11_21-37-18-5312fdd1-baec-424d-9dae-f6ffe1b4e373.2019-11-11_21_37_56.gif">
+<meta property="og:image" content="https://anpigon.github.io/images/2019-11-11/2019-11-11_21-24-45-b15a8623-c8ad-46cc-a0a9-b7e398e4a5e2.2019-11-11_21_26_04.2019-11-11_21_30_30.gif">
+<meta property="og:image" content="https://anpigon.github.io/images/2019-11-11/2019-11-11_21-54-14-326c1765-899c-49ad-80d1-86180f6a8c83.2019-11-11_21_54_52.gif">
+<meta property="og:image" content="https://anpigon.github.io/images/2019-11-11/2019-11-11_21-41-33-3c41af30-73a5-4118-b944-a94490cab7f0.2019-11-11_21_42_56.gif">
+<meta property="og:image" content="https://anpigon.github.io/images/2019-11-11/2019-11-11_21-49-17-2d248ceb-4fd7-4ae7-aec5-c1ba9b48ba19.2019-11-11_21_49_58.gif">
+<meta property="og:image" content="https://anpigon.github.io/images/2019-11-11/2019-11-11_21-55-52-3479736c-9f43-4963-8ebd-36e8eb918f1a.2019-11-11_21_56_31.gif">
+<meta property="og:image" content="https://anpigon.github.io/images/2019-11-11/2019-11-11_22-09-40-fc5dbfc4-5c55-4851-a602-a9b8479b168d.2019-11-11_22_10_26.gif">
+<meta property="og:image" content="https://anpigon.github.io/images/2019-11-11/2019-11-11_22-22-13-84745d92-d37e-431c-b672-7f06e2da967a.2019-11-11_22_23_01.gif">
+<meta property="article:published_time" content="2019-11-10T15:00:00.000Z">
+<meta property="article:modified_time" content="2021-08-14T10:47:06.072Z">
+<meta property="article:author" content="안피곤">
+<meta property="article:tag" content="VSCode">
+<meta property="article:tag" content="단축키">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://anpigon.github.io/images/2019-11-11/2019-11-11_21-20-36-054e4de3-3fa7-42ec-bc11-2068d918e301.2019-11-11_21_24_04.gif">
+
+<link rel="canonical" href="https://anpigon.github.io/2019/11/11/vscode-keyboard-shortcuts">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>VSCode 단축키 5분 정리 | 안피곤님의 블로그</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-20589042-10"></script>
+    <script pjax>
+      var host = window.location.hostname;
+      if (host !== "localhost" || !true) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-20589042-10');
+      }
+    </script>
+
+
+
+
+
+
+  
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-2365531018407022",
+          enable_page_level_ads: false
+     });
+</script>
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="안피곤님의 블로그" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">안피곤님의 블로그</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">코딩, 독서, 여행, 영화, 맛집</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>홈</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>태그<span class="badge">144</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>카테고리<span class="badge">25</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>아카이브<span class="badge">327</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>검색
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input" id="search-input"></div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="algolia-results">
+  <div id="algolia-stats"></div>
+  <div id="algolia-hits"></div>
+  <div id="algolia-pagination" class="algolia-pagination"></div>
+</div>
+
+  
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="ko">
+    <link itemprop="mainEntityOfPage" href="https://anpigon.github.io/2019/11/11/vscode-keyboard-shortcuts">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/me.jpg">
+      <meta itemprop="name" content="안피곤">
+      <meta itemprop="description" content="시간이 천천히 갔으면 좋겠다.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="안피곤님의 블로그">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          VSCode 단축키 5분 정리
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">작성일</span>
+
+              <time title="Post created: 2019-11-11 00:00:00" itemprop="dateCreated datePublished" datetime="2019-11-11T00:00:00+09:00">2019-11-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Updated at: 2021-08-14 19:47:06" itemprop="dateModified" datetime="2021-08-14T19:47:06+09:00">2021-08-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%EA%B0%9C%EB%B0%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">개발 이야기</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="firestore-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2019/11/11/vscode-keyboard-shortcuts#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="/2019/11/11/vscode-keyboard-shortcuts" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+            <div style="margin-bottom:35px;margin-top:-20px;">
+              <!-- 블로그 본문 상단 광고 -->
+              <ins class="adsbygoogle"
+                  style="display:block"
+                  data-ad-client="ca-pub-2365531018407022"
+                  data-ad-slot="3390644000"
+                  data-ad-format="auto"
+                  data-full-width-responsive="true"></ins>
+              <script>
+                  (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+        <p>아래 유튜브를 보고 VSCode에서 유용한 단축키를 정리해 보았습니다.</p><hr><iframe width="560" height="315" src="https://www.youtube.com/embed/Wn7j5dfbJF4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><hr><br><h1 id="반복되는-코드를-한번에-수정하기"><a class="markdownIt-Anchor" href="#반복되는-코드를-한번에-수정하기"></a> 반복되는 코드를 한번에 수정하기</h1><ul>
+<li><strong>맥 단축키:</strong> <code>Command</code> + <code>D</code></li>
+<li><strong>윈도우 단축키:</strong> <code>CTRL</code> + <code>D</code></li>
+</ul><p>반복된 코드를 한번에 수정할 때 유용하다. 단축키를 누를 때마다 해당 코드가 반복 선택된다.<br>
+아래 화면은 <code>preDocumentInfo</code> 코드를 <code>location</code>으로 변경하고 있다.</p><a id="more"></a>
+
+
+
+
+
+
+<p><img alt data-src="/images/2019-11-11/2019-11-11_21-20-36-054e4de3-3fa7-42ec-bc11-2068d918e301.2019-11-11_21_24_04.gif"><br><br></p>
+<h1 id="변수명함수명-한번에-바꾸기"><a class="markdownIt-Anchor" href="#변수명함수명-한번에-바꾸기"></a> 변수명/함수명 한번에 바꾸기</h1>
+<ul>
+<li><strong>단축키:</strong> <code>F2</code></li>
+</ul>
+<p>함수나 변수명을 한번에 변경할 때 유용하다. 위의 단축키와는 다르게 선택한 변수명을 수정하면 해당 변수명이 모두 변경된다.</p>
+<p><img alt data-src="/images/2019-11-11/2019-11-11_22-05-56-b6bbf364-14a5-41a2-a9b2-1c8789c6050b.2019-11-11_22_07_04.gif"><br><br></p>
+<h1 id="코드-위아래로-이동하기"><a class="markdownIt-Anchor" href="#코드-위아래로-이동하기"></a> 코드 위/아래로 이동하기</h1>
+<ul>
+<li><strong>맥 단축키:</strong> <code>Option</code> + <code>↑ 또는 ↓</code></li>
+<li><strong>윈도우 단축키:</strong> <code>Alt</code> + <code>↑ 또는 ↓</code></li>
+</ul>
+<p>이동할 코드에 커서를 두고 단축키를 누르면 해당 코드가 위/아래로 이동한다. 여러 줄의 코드를 선택하면 선택된 코드가 모두 이동한다.</p>
+<p><img alt data-src="/images/2019-11-11/2019-11-11_21-28-57-90dbf9cb-0c06-4bde-b3c2-09d328cfca77.2019-11-11_21_29_38.gif"><br><br></p>
+<h1 id="코드-위아래로-복사하기"><a class="markdownIt-Anchor" href="#코드-위아래로-복사하기"></a> 코드 위/아래로 복사하기</h1>
+<ul>
+<li><strong>맥 단축키:</strong> <code>Shift</code> + <code>Option</code> + <code>↑ 또는 ↓</code></li>
+<li><strong>윈도우 단축키</strong>: <code>Shift</code> + <code>↑ 또는 ↓</code></li>
+</ul>
+<p>위와 다르게 코드를 위/아래로 복사한다. 같은 코드를 복사&amp;붙여넣기 할 때 유용하다.</p>
+<p><img alt data-src="/images/2019-11-11/2019-11-11_21-34-04-aa0e21ea-4029-4240-b7ee-9f60f5678842.2019-11-11_21_35_02.gif"><br><br></p>
+<h1 id="코드를-한번에-주석-처리하기"><a class="markdownIt-Anchor" href="#코드를-한번에-주석-처리하기"></a> 코드를 한번에 주석 처리하기</h1>
+<ul>
+<li><strong>맥 단축키:</strong> <code>Command</code> + <code>/</code></li>
+<li><strong>윈도우 단축키:</strong>  <code>Ctrl</code>+ <code>/</code></li>
+</ul>
+<p>해당 언어 문법에 맞게 자동으로 주석 처리해준다. 단축키를 다시 누르면 주석이 해제된다.</p>
+<p><img alt data-src="/images/2019-11-11/2019-11-11_21-37-18-5312fdd1-baec-424d-9dae-f6ffe1b4e373.2019-11-11_21_37_56.gif"><br><br></p>
+<h1 id="여러-곳에-커서를-두고-수정하기"><a class="markdownIt-Anchor" href="#여러-곳에-커서를-두고-수정하기"></a> 여러 곳에 커서를 두고 수정하기</h1>
+<ul>
+<li><strong>맥 단축키</strong>: <code>Option</code> + 마우스 클릭</li>
+<li><strong>윈도우 단축키:</strong> <code>Alt</code> + 마우스 클릭</li>
+</ul>
+<p>단축키를 누르고 마우스를 클릭하면, 클릭하는 곳마다 커서가 생성된다.</p>
+<p><img alt data-src="/images/2019-11-11/2019-11-11_21-24-45-b15a8623-c8ad-46cc-a0a9-b7e398e4a5e2.2019-11-11_21_26_04.2019-11-11_21_30_30.gif"><br><br></p>
+<h1 id="다중-커서-선택하여-수정하기"><a class="markdownIt-Anchor" href="#다중-커서-선택하여-수정하기"></a> 다중 커서 선택하여 수정하기</h1>
+<ul>
+<li><strong>맥 단축키</strong>: <code>Command</code> + <code>Option</code> +  <code>↑ 또는 ↓</code></li>
+<li><strong>윈도우 단축키</strong>: <code>Ctrl</code> + <code>Alt</code> +  <code>↑ 또는 ↓</code></li>
+</ul>
+<p>수정해야 할 세로 위치가 동일하다면, 다음 단축키를 사용하여 커서를 여러 곳에 두고 수정할 수 있다.</p>
+<p><img alt data-src="/images/2019-11-11/2019-11-11_21-54-14-326c1765-899c-49ad-80d1-86180f6a8c83.2019-11-11_21_54_52.gif"><br><br></p>
+<h1 id="코드-맨-마지막에-커서-두기"><a class="markdownIt-Anchor" href="#코드-맨-마지막에-커서-두기"></a> 코드 맨 마지막에 커서 두기</h1>
+<ul>
+<li><strong>맥 단축키:</strong> <code>Shift</code> + <code>Option</code> + <code>I</code></li>
+<li><strong>윈도우 단축키:</strong>  <code>Shift</code> + <code>Alt</code> + <code>I</code></li>
+</ul>
+<p>이 단축키도 매우 유용하다. 주로 변수를  복사&amp;붙여넣기 한 다음, 끝에 콤마(,)나 세미콜론(😉 을 넣을 때 자주 사용한다.</p>
+<p><img alt data-src="/images/2019-11-11/2019-11-11_21-41-33-3c41af30-73a5-4118-b944-a94490cab7f0.2019-11-11_21_42_56.gif"><br><br></p>
+<h1 id="커서-위치에서-박스-형태로-선택하기"><a class="markdownIt-Anchor" href="#커서-위치에서-박스-형태로-선택하기"></a> 커서 위치에서 박스 형태로 선택하기</h1>
+<ul>
+<li><strong>맥 단축키:</strong> <code>Shift</code> + <code>Option</code> + 마우스 드래그</li>
+<li><strong>윈도우 단축키:</strong>  <code>Shift</code> + <code>Alt</code> + 마우스 드래그</li>
+</ul>
+<p>코드를 커서 위치에서 박스 형태로 선택할 때 유용하다.</p>
+<p><img alt data-src="/images/2019-11-11/2019-11-11_21-49-17-2d248ceb-4fd7-4ae7-aec5-c1ba9b48ba19.2019-11-11_21_49_58.gif"><br><br></p>
+<h1 id="코드-맨-위-또는-맨-아래로-이동하기"><a class="markdownIt-Anchor" href="#코드-맨-위-또는-맨-아래로-이동하기"></a> 코드 맨 위 또는 맨 아래로 이동하기</h1>
+<ul>
+<li><strong>맥 단축키:</strong> <code>Command</code>  +  <code>↑ 또는 ↓</code></li>
+<li><strong>윈도우: 단축키:</strong> <code>Ctrl</code>  +  <code>Home 또는</code> <code>End</code></li>
+</ul>
+<p>import를 입력하기 위해 코드 맨 위로 이동하거나, 코드를 추가하기 위해 맨 아래로 이동할 때 유용하다.</p>
+<p><img alt data-src="/images/2019-11-11/2019-11-11_21-55-52-3479736c-9f43-4963-8ebd-36e8eb918f1a.2019-11-11_21_56_31.gif"><br><br></p>
+<h1 id="사이드바-숨김보이기"><a class="markdownIt-Anchor" href="#사이드바-숨김보이기"></a> 사이드바 숨김/보이기</h1>
+<ul>
+<li><strong>맥 단축키</strong>: <code>Command</code> + <code>B</code></li>
+<li><strong>윈도우 단축키</strong>: <code>Ctrl</code> + <code>B</code></li>
+</ul>
+<p>코드 창을 넓게 보고 싶을 때 사용한다.</p>
+<p><img alt data-src="/images/2019-11-11/2019-11-11_22-09-40-fc5dbfc4-5c55-4851-a602-a9b8479b168d.2019-11-11_22_10_26.gif"><br><br></p>
+<h1 id="단축키-모두-확인하기"><a class="markdownIt-Anchor" href="#단축키-모두-확인하기"></a> 단축키 모두 확인하기</h1>
+<p>맥 기준으로 설명하겠습니다.<br>
+단축키를 볼 수 있는 페이지는 메뉴 <code>Code &gt; Preferences &gt; Keyboard Shortcuts</code>에 있다. <code>Shift</code> + <code>Command</code> + <code>P</code> 를 눌러서 keyboard shortcuts를 검색하면 쉽게 찾을 수 있다. 또는 단축키로 <code>Command</code> + <code>S</code>,  <code>Command</code> + <code>K</code> 를 차례대로 입력하면 단축키 페이지로 이동한다.</p>
+<p>이곳에서 모든 단축키를 볼 수 있다.</p>
+<p><img alt data-src="/images/2019-11-11/2019-11-11_22-22-13-84745d92-d37e-431c-b672-7f06e2da967a.2019-11-11_22_23_01.gif"><br><br></p>
+
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/vscode/" rel="tag"># VSCode</a>
+              <a href="/tags/%EB%8B%A8%EC%B6%95%ED%82%A4/" rel="tag"># 단축키</a>
+          </div>
+
+        
+  <div class="post-widgets">
+    <div class="wp_rating">
+      <div id="wpac-rating"></div>
+    </div>
+  </div>
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/engrave/@anpigon/seujjang-bugkeulreob-misyeon-nae-insaeng-gajang-seulpeun-caeg-mi-bipo-yu" rel="next" title="[북클럽] 내 인생 가장 슬픈 책 ⟪미 비포 유⟫">
+                  <i class="fa fa-chevron-left"></i> [북클럽] 내 인생 가장 슬픈 책 ⟪미 비포 유⟫
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/hive-197929/@anpigon/5mhvws" rel="prev" title="인생은 소설이다">
+                  인생은 소설이다 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    
+  <div class="comments" id="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          목차
+        </li>
+        <li class="sidebar-nav-overview">
+          흝어보기
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%EB%B0%98%EB%B3%B5%EB%90%98%EB%8A%94-%EC%BD%94%EB%93%9C%EB%A5%BC-%ED%95%9C%EB%B2%88%EC%97%90-%EC%88%98%EC%A0%95%ED%95%98%EA%B8%B0"><span class="nav-number">1.</span> <span class="nav-text"> 반복되는 코드를 한번에 수정하기</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%EB%B3%80%EC%88%98%EB%AA%85%ED%95%A8%EC%88%98%EB%AA%85-%ED%95%9C%EB%B2%88%EC%97%90-%EB%B0%94%EA%BE%B8%EA%B8%B0"><span class="nav-number">2.</span> <span class="nav-text"> 변수명&#x2F;함수명 한번에 바꾸기</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%EC%BD%94%EB%93%9C-%EC%9C%84%EC%95%84%EB%9E%98%EB%A1%9C-%EC%9D%B4%EB%8F%99%ED%95%98%EA%B8%B0"><span class="nav-number">3.</span> <span class="nav-text"> 코드 위&#x2F;아래로 이동하기</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%EC%BD%94%EB%93%9C-%EC%9C%84%EC%95%84%EB%9E%98%EB%A1%9C-%EB%B3%B5%EC%82%AC%ED%95%98%EA%B8%B0"><span class="nav-number">4.</span> <span class="nav-text"> 코드 위&#x2F;아래로 복사하기</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%EC%BD%94%EB%93%9C%EB%A5%BC-%ED%95%9C%EB%B2%88%EC%97%90-%EC%A3%BC%EC%84%9D-%EC%B2%98%EB%A6%AC%ED%95%98%EA%B8%B0"><span class="nav-number">5.</span> <span class="nav-text"> 코드를 한번에 주석 처리하기</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%EC%97%AC%EB%9F%AC-%EA%B3%B3%EC%97%90-%EC%BB%A4%EC%84%9C%EB%A5%BC-%EB%91%90%EA%B3%A0-%EC%88%98%EC%A0%95%ED%95%98%EA%B8%B0"><span class="nav-number">6.</span> <span class="nav-text"> 여러 곳에 커서를 두고 수정하기</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%EB%8B%A4%EC%A4%91-%EC%BB%A4%EC%84%9C-%EC%84%A0%ED%83%9D%ED%95%98%EC%97%AC-%EC%88%98%EC%A0%95%ED%95%98%EA%B8%B0"><span class="nav-number">7.</span> <span class="nav-text"> 다중 커서 선택하여 수정하기</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%EC%BD%94%EB%93%9C-%EB%A7%A8-%EB%A7%88%EC%A7%80%EB%A7%89%EC%97%90-%EC%BB%A4%EC%84%9C-%EB%91%90%EA%B8%B0"><span class="nav-number">8.</span> <span class="nav-text"> 코드 맨 마지막에 커서 두기</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%EC%BB%A4%EC%84%9C-%EC%9C%84%EC%B9%98%EC%97%90%EC%84%9C-%EB%B0%95%EC%8A%A4-%ED%98%95%ED%83%9C%EB%A1%9C-%EC%84%A0%ED%83%9D%ED%95%98%EA%B8%B0"><span class="nav-number">9.</span> <span class="nav-text"> 커서 위치에서 박스 형태로 선택하기</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%EC%BD%94%EB%93%9C-%EB%A7%A8-%EC%9C%84-%EB%98%90%EB%8A%94-%EB%A7%A8-%EC%95%84%EB%9E%98%EB%A1%9C-%EC%9D%B4%EB%8F%99%ED%95%98%EA%B8%B0"><span class="nav-number">10.</span> <span class="nav-text"> 코드 맨 위 또는 맨 아래로 이동하기</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%EC%82%AC%EC%9D%B4%EB%93%9C%EB%B0%94-%EC%88%A8%EA%B9%80%EB%B3%B4%EC%9D%B4%EA%B8%B0"><span class="nav-number">11.</span> <span class="nav-text"> 사이드바 숨김&#x2F;보이기</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%EB%8B%A8%EC%B6%95%ED%82%A4-%EB%AA%A8%EB%91%90-%ED%99%95%EC%9D%B8%ED%95%98%EA%B8%B0"><span class="nav-number">12.</span> <span class="nav-text"> 단축키 모두 확인하기</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="안피곤"
+    src="/images/me.jpg">
+  <p class="site-author-name" itemprop="name">안피곤</p>
+  <div class="site-description" itemprop="description">시간이 천천히 갔으면 좋겠다.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">327</span>
+          <span class="site-state-item-name">포스트</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-name">카테고리</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">144</span>
+        <span class="site-state-item-name">태그</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/anpigon" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;anpigon" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:markan82@gmail.com" title="E-Mail &amp;rarr; mailto:markan82@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+          <!-- 정사각형 광고 -->
+          <div style="margin-top: 15px;">
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-2365531018407022"
+                data-ad-slot="7521850306"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+          </div>
+    </div>
+  </aside>
+  <div id="sidebar-dimmer">3</div>
+
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">안피곤</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v5.4.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.4.2
+  </div>
+
+        
+
+
+
+
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-firestore.js"></script>
+  <script>
+    firebase.initializeApp({
+      apiKey: 'AIzaSyA4QZWCWb3IuIHjbkAmO0ttIM2b-qtLTP8',
+      projectId: 'next-blog-8f9a0'
+    });
+
+    function getCount(doc, increaseCount) {
+      // IncreaseCount will be false when not in article page
+
+      return doc.get().then(d => {
+        var count = 0;
+        if (!d.exists) { // Has no data, initialize count
+          if (increaseCount) {
+            doc.set({
+              count: 1
+            });
+            count = 1;
+          }
+        } else { // Has data
+          count = d.data().count;
+          if (increaseCount) {
+            // If first view this article
+            doc.set({ // Increase count
+              count: count + 1
+            });
+            count++;
+          }
+        }
+
+        return count;
+      });
+    }
+
+    function appendCountTo(el) {
+      return count => {
+        el.innerText = count;
+      }
+    }
+  </script>
+  <script pjax>
+    (function() {
+      var db = firebase.firestore();
+      var articles = db.collection('articles');
+
+      if (CONFIG.page.isPost) { // Is article page
+        var title = document.querySelector('.post-title').innerText.trim();
+        var doc = articles.doc(title);
+        var increaseCount = true;
+        if (localStorage.getItem(title)) {
+          increaseCount = false;
+        } else {
+          // Mark as visited
+          localStorage.setItem(title, true);
+        }
+        getCount(doc, increaseCount).then(appendCountTo(document.querySelector('.firestore-visitors-count')));
+      } else if (CONFIG.page.isHome) { // Is index page
+        var promises = [...document.querySelectorAll('.post-title')].map(element => {
+          var title = element.innerText.trim();
+          var doc = articles.doc(title);
+          return getCount(doc);
+        });
+        Promise.all(promises).then(counts => {
+          var metas = document.querySelectorAll('.firestore-visitors-count');
+          counts.forEach((val, idx) => {
+            appendCountTo(metas[idx])(val);
+          });
+        });
+      }
+    })();
+  </script>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.getAttribute('pjax') !== null) {
+      element.setAttribute('pjax', '');
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+  <script pjax>
+  if (CONFIG.page.isPost) {
+    wpac_init = window.wpac_init || [];
+    wpac_init.push({
+      widget: 'Rating',
+      id: 21712,
+      el: 'wpac-rating',
+      color: 'fc6423'
+    });
+    (function() {
+      if ('WIDGETPACK_LOADED' in window) return;
+      WIDGETPACK_LOADED = true;
+      var mc = document.createElement('script');
+      mc.type = 'text/javascript';
+      mc.async = true;
+      mc.src = '//embed.widgetpack.com/widget.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+    })();
+  }
+  </script>
+
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.4.1/dist/instantsearch.min.css">
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.4.1/dist/instantsearch.js"></script>
+<script src="/js/algolia-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+
+  
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://anpigon-github-io.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  function loadComments() {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: {page: {
+            url: "https://anpigon.github.io/2019/11/11/vscode-keyboard-shortcuts",
+            identifier: "/2019/11/11/vscode-keyboard-shortcuts",
+            title: "VSCode 단축키 5분 정리"
+          }
+        }
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://anpigon-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  }
+    (function() {
+      var offsetTop = document.getElementById('comments').offsetTop - window.innerHeight;
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        window.addEventListener('load', loadComments, false);
+      } else {
+        var disqus_scroll = () => {
+          // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = document.getElementById('comments').offsetTop - window.innerHeight;
+          var scrollTop = window.scrollY;
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            window.removeEventListener('scroll', disqus_scroll);
+            loadComments();
+          }
+        };
+        window.addEventListener('scroll', disqus_scroll);
+      }
+    })();
+  
+</script>
+
+    </div>
+</body>
+</html>
